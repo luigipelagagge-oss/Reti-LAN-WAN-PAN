@@ -2,58 +2,77 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <title>Laboratorio Reti e Arduino</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratorio Reti e IoT</title>
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-light">
 
-<div class="container text-center mt-5">
-    <h1 class="mb-4">Corso di Reti e Laboratorio Arduino</h1>
-    <p class="lead">Seleziona un argomento per iniziare</p>
+    <div class="container text-center mt-5">
+        
+        <h1 class="display-4 fw-bold text-primary">Corso di Reti di Calcolatori</h1>
+        <p class="lead text-secondary">Seleziona un modulo didattico per iniziare l'apprendimento.</p>
 
-    <div class="row justify-content-center mt-5">
-        <div class="col-md-3">
-            <a href="teoria/iso_osi.html" class="btn btn-primary btn-lg w-100 p-4">
-                🌐 Modello ISO/OSI
-            </a>
+        <div class="row justify-content-center mt-5 g-4">
+            
+            <div class="col-md-3">
+                <a href="#" class="btn btn-white card-hover w-100 p-4 shadow-sm border">
+                    <div class="fs-1">🌐</div>
+                    <h5 class="mt-2">Modello ISO/OSI</h5>
+                    <small class="text-muted">Teoria e Livelli</small>
+                </a>
+            </div>
+
+            <div class="col-md-3">
+                <a href="arduino/hub_arduino.html" class="btn btn-white card-hover w-100 p-4 shadow-sm border">
+                    <div class="fs-1">🤖</div>
+                    <h5 class="mt-2">Laboratorio Arduino</h5>
+                    <small class="text-muted">IoT e Simulazioni</small>
+                </a>
+            </div>
+
+            <div class="col-md-3">
+                <a href="#" class="btn btn-white card-hover w-100 p-4 shadow-sm border">
+                    <div class="fs-1">📡</div>
+                    <h5 class="mt-2">Protocolli TCP/IP</h5>
+                    <small class="text-muted">Analisi pacchetti</small>
+                </a>
+            </div>
         </div>
-        <div class="col-md-3">
-            <a href="arduino/hub_arduino.html" class="btn btn-success btn-lg w-100 p-4">
-                🤖 Arduino & IoT
-            </a>
+
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-6">
+                <div class="alert alert-info" role="alert">
+                    <strong>Come funziona questo sito?</strong><br>
+                    Clicca qui sotto per vedere il codice HTML e JavaScript che fa funzionare questa pagina.
+                </div>
+                <button onclick="mostraSorgente('index')" class="btn btn-dark px-5">
+                    ⚙️ Visualizza Sorgente Pagina
+                </button>
+            </div>
         </div>
-        <div class="col-md-3">
-            <a href="#" class="btn btn-info btn-lg w-100 p-4 text-white">
-                📡 Protocolli TCP/IP
-            </a>
+
+    </div>
+
+    <div class="modal fade" id="codeModal" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header bg-dark text-white">
+                    <h5 class="modal-title">Codice Sorgente</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body bg-light">
+                    <pre id="codeDisplay" class="p-3 border rounded bg-white code-text"></pre>
+                </div>
+            </div>
         </div>
     </div>
 
-    <div class="row justify-content-center mt-4">
-        <div class="col-md-6">
-            <button onclick="mostraSorgente('index')" class="btn btn-dark w-100">
-                ⚙️ Come è fatto questo sito? (Struttura)
-            </button>
-        </div>
-    </div>
-</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
 
-<div class="modal fade" id="codeModal" tabindex="-1">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Codice Sorgente</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-      <div class="modal-body">
-        <pre id="codeDisplay" class="bg-dark text-white p-3"></pre>
-      </div>
-    </div>
-  </div>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="script.js"></script>
 </body>
 </html>
