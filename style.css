@@ -1,0 +1,25 @@
+/* --- style.css --- */
+
+/* Impostiamo un font leggibile per tutto il sito */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Effetto al passaggio del mouse sui bottoni principali */
+.card-hover {
+    transition: transform 0.2s, box-shadow 0.2s; /* Animazione fluida */
+}
+
+.card-hover:hover {
+    transform: translateY(-5px); /* Sposta leggermente in alto */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important; /* Aumenta l'ombra */
+    background-color: #ffffff;
+}
+
+/* Stile per il testo del codice sorgente nel modale */
+.code-text {
+    font-family: 'Courier New', Courier, monospace; /* Font monospaziato tipico del codice */
+    font-size: 0.9rem;
+    color: #d63384; /* Un colore rosato simile agli editor di codice */
+    white-space: pre-wrap; /* Manda a capo il testo se troppo lungo */
+}
