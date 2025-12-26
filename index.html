@@ -3,76 +3,375 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laboratorio Reti e IoT</title>
-    
+    <title>Corso Reti e Arduino Lab</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <link rel="stylesheet" href="style.css">
-</head>
-<body class="bg-light">
-
-    <div class="container text-center mt-5">
+    <style>
+        /* --- IL TUO STILE ORIGINALE (Mantenuto e integrato) --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         
-        <h1 class="display-4 fw-bold text-primary">Corso di Reti di Calcolatori</h1>
-        <p class="lead text-secondary">Seleziona un modulo didattico per iniziare l'apprendimento.</p>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            color: #333;
+            min-height: 100vh;
+        }
+        
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+            margin-bottom: 80px; /* Spazio per il bottone flottante */
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        header h1 { font-size: 2.5em; margin-bottom: 10px; }
+        header p { font-size: 1.2em; opacity: 0.9; }
+        
+        /* TABS PRINCIPALI */
+        .tabs {
+            display: flex;
+            background: #f8f9fa;
+            border-bottom: 3px solid #667eea;
+            flex-wrap: wrap; /* Per mobile */
+        }
+        
+        .tab {
+            flex: 1;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            border: none;
+            background: transparent;
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #666;
+            transition: all 0.3s;
+            min-width: 150px;
+        }
+        
+        .tab:hover { background: #e9ecef; }
+        
+        .tab.active {
+            background: white;
+            color: #667eea;
+            border-bottom: 3px solid #667eea;
+            margin-bottom: -3px;
+        }
+        
+        .content-area { padding: 40px; }
+        
+        .section { display: none; animation: fadeIn 0.5s; }
+        .section.active { display: block; }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* STILI CARDS E CONTENUTI */
+        .card-custom {
+            background: #f8f9fa;
+            border-left: 5px solid #667eea;
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .card-custom h2 { color: #667eea; margin-bottom: 15px; }
+        .card-custom h3 { color: #764ba2; margin: 20px 0 10px 0; }
+        
+        .feature-box {
+            background: white;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            border: 2px solid #e9ecef;
+        }
+        
+        .grid-custom {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        /* CODICE ARDUINO */
+        .code-block {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        .code-block .comment { color: #6a9955; }
+        .code-block .keyword { color: #569cd6; }
+        .code-block .string { color: #ce9178; }
+        
+        /* SOTTO-TABS ARDUINO */
+        .arduino-selector { display: flex; gap: 10px; margin: 20px 0; flex-wrap: wrap; }
+        .arduino-btn {
+            flex: 1;
+            padding: 15px;
+            border: 2px solid #667eea;
+            background: white;
+            color: #667eea;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        .arduino-btn.active, .arduino-btn:hover {
+            background: #667eea;
+            color: white;
+        }
+        .arduino-content { display: none; }
+        .arduino-content.active { display: block; animation: fadeIn 0.5s; }
 
-        <div class="row justify-content-center mt-5 g-4">
+        /* STILE MAPPA SITO */
+        .sitemap-tree ul { padding-left: 20px; border-left: 2px solid #ccc; }
+        .sitemap-tree li { list-style: none; margin: 10px 0; position: relative; }
+        .sitemap-tree li::before {
+            content: ""; position: absolute; left: -20px; top: 15px;
+            width: 20px; height: 2px; background: #ccc;
+        }
+        
+        /* BOTTONE SORGENTE FLOTTANTE */
+        .fab-source {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #212529;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            z-index: 1000;
+            font-weight: bold;
+            border: 2px solid white;
+        }
+        .fab-source:hover { transform: scale(1.05); background: #000; }
+    </style>
+</head>
+<body>
+
+    <div class="main-container">
+        <header>
+            <h1>🌐 Reti di Computer & Lab Arduino</h1>
+            <p>Dal PC Stand-Alone ai Protocolli di Rete</p>
+        </header>
+        
+        <div class="tabs">
+            <button class="tab active" onclick="switchMainTab('standalone')">💻 Stand-Alone</button>
+            <button class="tab" onclick="switchMainTab('domestica')">📡 Rete Domestica</button>
+            <button class="tab" onclick="switchMainTab('isoosi')">📚 Modello ISO/OSI</button>
+            <button class="tab" onclick="switchMainTab('arduino')">🔧 Arduino Lab</button>
+            <button class="tab" onclick="switchMainTab('mappa')">🗺️ Mappa Sito</button>
+        </div>
+        
+        <div class="content-area">
             
-            <div class="col-md-3">
-                <a href="#" class="btn btn-white card-hover w-100 p-4 shadow-sm border">
-                    <div class="fs-1">🌐</div>
-                    <h5 class="mt-2">Modello ISO/OSI</h5>
-                    <small class="text-muted">Teoria e Livelli</small>
-                </a>
-            </div>
-
-            <div class="col-md-3">
-                <a href="arduino/hub_arduino.html" class="btn btn-white card-hover w-100 p-4 shadow-sm border">
-                    <div class="fs-1">🤖</div>
-                    <h5 class="mt-2">Laboratorio Arduino</h5>
-                    <small class="text-muted">IoT e Simulazioni</small>
-                </a>
-            </div>
-
-            <div class="col-md-3">
-                <a href="#" class="btn btn-white card-hover w-100 p-4 shadow-sm border">
-                    <div class="fs-1">📡</div>
-                    <h5 class="mt-2">Protocolli TCP/IP</h5>
-                    <small class="text-muted">Analisi pacchetti</small>
-                </a>
-            </div>
-        </div>
-
-        <div class="row justify-content-center mt-5">
-            <div class="col-md-6">
-                <div class="alert alert-info" role="alert">
-                    <strong>Come funziona questo sito?</strong><br>
-                    Clicca qui sotto per vedere il codice HTML e JavaScript che fa funzionare questa pagina.
+            <div id="standalone" class="section active">
+                <div class="card-custom">
+                    <h2>Cosa significa "Stand-Alone"?</h2>
+                    <p>Un computer <strong>stand-alone</strong> opera in totale isolamento.</p>
+                    <div class="grid-custom">
+                        <div class="feature-box"><h4>🔒 Sicurezza</h4><p>Immune da attacchi remoti.</p></div>
+                        <div class="feature-box"><h4>⚡ Prestazioni</h4><p>Risorse dedicate al 100%.</p></div>
+                        <div class="feature-box"><h4>❌ Svantaggi</h4><p>Nessun accesso al Cloud o condivisione.</p></div>
+                    </div>
                 </div>
-                <button onclick="mostraSorgente('index')" class="btn btn-dark px-5">
-                    ⚙️ Visualizza Sorgente Pagina
-                </button>
             </div>
-        </div>
+            
+            <div id="domestica" class="section">
+                <div class="card-custom">
+                    <h2>La Rete Domestica (LAN)</h2>
+                    <div class="feature-box" style="border-left: 5px solid #007bff;">
+                        <h4>📡 Router</h4>
+                        <p>Il cervello della rete. Assegna IP (es. 192.168.1.1) e gestisce il traffico.</p>
+                    </div>
+                    <div class="feature-box">
+                        <h4>🔑 Indirizzo IP</h4>
+                        <p>Come un numero civico: <code>192.168.1.X</code> permette ai dispositivi di trovarsi.</p>
+                    </div>
+                </div>
+            </div>
 
-    </div>
+            <div id="isoosi" class="section">
+                <div class="card-custom">
+                    <h2>Il Modello ISO/OSI</h2>
+                    <p>La "grammatica" universale delle reti. 7 Livelli di astrazione.</p>
+                    
+                    <div class="accordion mt-4" id="osiAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#lev7">
+                                <strong>7. Applicazione</strong> (Es. HTTP, Browser)
+                            </button></h2>
+                            <div id="lev7" class="accordion-collapse collapse show" data-bs-parent="#osiAccordion">
+                                <div class="accordion-body">Il livello più vicino all'utente. Qui operano Chrome, Firefox, Email.</div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#lev4">
+                                <strong>4. Trasporto</strong> (Es. TCP/UDP)
+                            </button></h2>
+                            <div id="lev4" class="accordion-collapse collapse" data-bs-parent="#osiAccordion">
+                                <div class="accordion-body">Gestisce l'affidabilità della trasmissione (TCP) o la velocità (UDP).</div>
+                            </div>
+                        </div>
+                        <div class="alert alert-info mt-3">🚧 Altri livelli in arrivo nelle prossime lezioni!</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="arduino" class="section">
+                <div class="card-custom">
+                    <h2>Arduino Network Lab</h2>
+                    <p>Simulazioni pratiche di protocolli di rete.</p>
+                </div>
+                
+                <div class="arduino-selector">
+                    <button class="arduino-btn active" onclick="showArduinoSub('client')">Client</button>
+                    <button class="arduino-btn" onclick="showArduinoSub('server')">Server</button>
+                    <button class="arduino-btn" onclick="showArduinoSub('comunicazione')">Ping-Pong</button>
+                </div>
+                
+                <div id="client" class="arduino-content active">
+                    <div class="feature-box">
+                        <h3>Arduino come Client</h3>
+                        <p>Si connette al WiFi e richiede dati (es. che ore sono?).</p>
+                        <div class="code-block">
+<span class="keyword">void</span> setup() {
+  WiFi.begin(<span class="string">"ReteCasa"</span>, <span class="string">"Password"</span>);
+  <span class="comment">// ... attesa connessione ...</span>
+}
+                        </div>
+                    </div>
+                </div>
 
-    <div class="modal fade" id="codeModal" tabindex="-1">
+                <div id="server" class="arduino-content">
+                    <div class="feature-box">
+                        <h3>Arduino come Server</h3>
+                        <p>Crea una pagina Web visibile dal tuo smartphone.</p>
+                        <div class="code-block">
+server.on(<span class="string">"/"</span>, handleRoot); <span class="comment">// Risponde alla home page</span>
+server.begin();
+                        </div>
+                    </div>
+                </div>
+
+                <div id="comunicazione" class="arduino-content">
+                    <div class="feature-box">
+                        <h3>Comunicazione Seriale (Ping-Pong)</h3>
+                        <p>Le basi dello scambio pacchetti.</p>
+                        <div class="code-block">
+Serial.println(<span class="string">"PING"</span>); <span class="comment">// Invio richiesta</span>
+<span class="keyword">if</span> (Serial.readString() == <span class="string">"PONG"</span>) { ... } <span class="comment">// Controllo risposta</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="mappa" class="section">
+                <div class="card-custom">
+                    <h2>🗺️ Mappa del Sito</h2>
+                    <p>Struttura logica delle lezioni.</p>
+                    <div class="sitemap-tree mt-4" style="font-size: 1.2em;">
+                        <strong>🏠 Home (index.html)</strong>
+                        <ul>
+                            <li><strong>💻 PC Stand-Alone</strong>
+                                <ul><li>Sicurezza</li><li>Risorse Locali</li></ul>
+                            </li>
+                            <li><strong>📡 Rete Domestica</strong>
+                                <ul><li>Router & IP</li><li>Servizi (Stampa, File)</li></ul>
+                            </li>
+                            <li><strong>📚 Teoria ISO/OSI</strong>
+                                <ul><li>Livello 7: Applicazione</li><li>Livello 4: Trasporto</li><li>(Altri in sviluppo)</li></ul>
+                            </li>
+                            <li><strong>🔧 Laboratorio Arduino</strong>
+                                <ul>
+                                    <li>Esercizio 1: Client WiFi</li>
+                                    <li>Esercizio 2: Web Server</li>
+                                    <li>Esercizio 3: Seriale PING/PONG</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div> </div> <button class="fab-source" onclick="mostraSorgente()">
+        ⚙️ Vedi Sorgente
+    </button>
+
+    <div class="modal fade" id="sourceModal" tabindex="-1">
         <div class="modal-dialog modal-lg modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header bg-dark text-white">
-                    <h5 class="modal-title">Codice Sorgente</h5>
+                    <h5 class="modal-title">Codice di questa pagina</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body bg-light">
-                    <pre id="codeDisplay" class="p-3 border rounded bg-white code-text"></pre>
+                    <pre id="sourceCode" class="p-3" style="font-size: 0.8em; color: #d63384;"></pre>
                 </div>
             </div>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="script.js"></script>
+    <script>
+        // Funzione per cambiare le TAB Principali
+        function switchMainTab(sectionId) {
+            // Nascondi tutte le sezioni
+            document.querySelectorAll('.section').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
+            
+            // Mostra quella scelta
+            document.getElementById(sectionId).classList.add('active');
+            // Attiva il bottone corrispondente (cerchiamo il bottone che chiama questa funzione con questo ID)
+            const buttons = document.querySelectorAll('.tab');
+            buttons.forEach(btn => {
+                if(btn.getAttribute('onclick').includes(sectionId)) {
+                    btn.classList.add('active');
+                }
+            });
+        }
 
+        // Funzione per le sotto-tabs di Arduino
+        function showArduinoSub(subId) {
+            document.querySelectorAll('.arduino-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.arduino-btn').forEach(el => el.classList.remove('active'));
+            
+            document.getElementById(subId).classList.add('active');
+            // Trova il bottone cliccato (un po' semplificato)
+            event.target.classList.add('active'); 
+        }
+
+        // Funzione MAGICA per mostrare il sorgente
+        function mostraSorgente() {
+            // Prende tutto l'HTML della pagina attuale
+            const htmlContent = document.documentElement.outerHTML;
+            // Lo inietta nel modale codificando i caratteri speciali per non rompere l'HTML
+            document.getElementById('sourceCode').textContent = htmlContent;
+            // Apre il modale Bootstrap
+            const modal = new bootstrap.Modal(document.getElementById('sourceModal'));
+            modal.show();
+        }
+    </script>
 </body>
 </html>
