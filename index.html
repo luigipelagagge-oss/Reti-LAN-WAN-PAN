@@ -5,8 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Introduzione alle Reti di Computer</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
     <style>
-        /* --- IL TUO STILE ORIGINALE (Mantenuto Intatto) --- */
+        /* --- IL TUO STILE ORIGINALE --- */
+        /* Ho aggiunto solo piccole classi per gestire le tab nascoste */
+        
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
@@ -25,7 +28,7 @@
             border-radius: 20px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.3);
             overflow: hidden;
-            margin-bottom: 80px;
+            margin-bottom: 80px; /* Spazio per il bottone flottante */
         }
         
         header {
@@ -38,8 +41,8 @@
         header h1 { font-size: 2.5em; margin-bottom: 10px; }
         header p { font-size: 1.2em; opacity: 0.9; }
         
-        /* NAVIGAZIONE A TAB (Stile coerente con il tuo) */
-        .tabs {
+        /* NAVIGAZIONE TABS (Stile coerente con il tuo design) */
+        .tabs-header {
             display: flex;
             background: #f8f9fa;
             border-bottom: 1px solid #ddd;
@@ -67,15 +70,22 @@
             border-bottom: 4px solid #764ba2;
         }
         
-        .content { padding: 40px; display: none; animation: fadeIn 0.5s; }
-        .content.active { display: block; }
+        /* CONTENUTO TABS */
+        .tab-content {
+            padding: 40px;
+            display: none; /* Nascosto di default */
+            animation: fadeIn 0.5s;
+        }
+        
+        .tab-content.active { display: block; } /* Visibile se attivo */
         
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         
+        /* TIPOGRAFIA INTERNA */
         h2 { color: #764ba2; border-bottom: 2px solid #eee; padding-bottom: 10px; margin-bottom: 20px; }
         h3 { color: #444; margin: 25px 0 15px; }
         
-        .card {
+        .card-box {
             background: #f8f9fa;
             border-left: 5px solid #764ba2;
             padding: 20px;
@@ -83,7 +93,10 @@
             border-radius: 5px;
         }
         
-        /* STILE CODICE (Dal tuo file) */
+        ul, ol { margin-left: 20px; margin-bottom: 15px; }
+        li { margin-bottom: 8px; }
+        
+        /* STILE CODICE (Preso dal tuo file) */
         .code-block {
             background: #2d2d2d;
             color: #ccc;
@@ -92,12 +105,28 @@
             font-family: 'Consolas', 'Monaco', monospace;
             overflow-x: auto;
             margin: 15px 0;
+            font-size: 0.9em;
         }
         .keyword { color: #cc99cd; }
         .string { color: #7ec699; }
         .comment { color: #999; font-style: italic; }
 
-        /* BOTTONE SORGENTE FLOTTANTE */
+        /* SEGNOPOSTO PER LE IMMAGINI FUTURE */
+        .img-placeholder {
+            width: 100%;
+            height: 200px;
+            background-color: #e9ecef;
+            border: 2px dashed #adb5bd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6c757d;
+            font-weight: bold;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        /* BOTTONE FLOTTANTE "VEDI SORGENTE" */
         .fab-source {
             position: fixed;
             bottom: 30px;
@@ -111,116 +140,172 @@
             z-index: 1000;
             font-weight: bold;
             border: 2px solid white;
-            text-decoration: none;
+            transition: transform 0.2s;
         }
-        .fab-source:hover { background: #000; color: white; transform: scale(1.05); }
+        .fab-source:hover { transform: scale(1.05); background: #000; }
     </style>
 </head>
 <body>
 
 <div class="container-custom">
     <header>
-        <h1>Corso Reti e Arduino</h1>
-        <p>Dal PC isolato alla comunicazione seriale</p>
+        <h1>Introduzione alle Reti di Computer</h1>
+        <p>Dal PC Stand-Alone alla Comunicazione Seriale</p>
     </header>
 
-    <div class="tabs">
-        <button class="tab-btn active" onclick="openTab('intro')">💻 Intro & Stand-Alone</button>
-        <button class="tab-btn" onclick="openTab('domestica')">🏠 Rete Domestica</button>
-        <button class="tab-btn" onclick="openTab('isoosi')">📚 ISO/OSI</button>
-        <button class="tab-btn" onclick="openTab('arduino')">🔧 Lab Arduino</button>
-        <button class="tab-btn" onclick="openTab('mappa')">🗺️ Mappa</button>
+    <div class="tabs-header">
+        <button class="tab-btn active" onclick="openTab('tab1')">💻 1. Stand-Alone</button>
+        <button class="tab-btn" onclick="openTab('tab2')">🏠 2. Rete Domestica</button>
+        <button class="tab-btn" onclick="openTab('tab3')">📚 3. ISO/OSI (New)</button>
+        <button class="tab-btn" onclick="openTab('tab5')">🗺️ Mappa Sito (New)</button>
+        <button class="tab-btn" onclick="openTab('tab4')">🔧 5. Lab Arduino</button>
     </div>
 
-    <div id="intro" class="content active">
+    <div id="tab1" class="tab-content active">
         <h2>Il Computer "Stand-Alone"</h2>
-        <p>Immagina di essere in una stanza chiusa, senza telefono né internet...</p>
+        <p>Prima di capire le reti, dobbiamo capire cosa succede quando una rete NON c'è.</p>
         
-        <div class="card">
-            <h3>Caratteristiche principali:</h3>
-            <ul>
-                <li><strong>Isolamento:</strong> Non comunica con l'esterno.</li>
-                <li><strong>Sicurezza Fisica:</strong> I dati sono al sicuro finché nessuno tocca fisicamente il PC.</li>
-                <li><strong>Limite:</strong> Per spostare un file serve una chiavetta USB ("Sneakernet").</li>
-            </ul>
-        </div>
-    </div>
-
-    <div id="domestica" class="content">
-        <h2>La Rete Domestica (LAN)</h2>
-        <p>Ora immagina di collegare un cavo tra il tuo PC e quello di un amico...</p>
-        <div class="card">
-            <h3>Componenti chiave:</h3>
-            <ul>
-                <li><strong>Switch/Router:</strong> Il "vigile" che smista i dati.</li>
-                <li><strong>Indirizzo IP:</strong> L'identificativo unico (es. 192.168.1.5).</li>
-                <li><strong>Ping:</strong> Il comando per dire "Ci sei?".</li>
-            </ul>
-        </div>
-    </div>
-
-    <div id="isoosi" class="content">
-        <h2>Il Modello ISO/OSI</h2>
-        <p>Qui inseriremo la spiegazione dei 7 livelli (Fisico, Collegamento, Rete, ecc.).</p>
-        <div class="alert alert-info">🚧 Sezione in allestimento</div>
-    </div>
-
-    <div id="arduino" class="content">
-        <h2>Lab: Comunicazione Seriale (Ping-Pong)</h2>
-        <p>Simuliamo una rete minimale tra due Arduino collegati via cavo (TX-RX).</p>
-        
-        <div class="row">
-            <div class="col-md-12 text-center mb-4">
-                <img src="schema_serial.png" alt="Schema Collegamento" class="img-fluid border rounded" style="max-height: 300px;">
-                <p class="text-muted small mt-2">Schema logico: Il TX di uno va all'RX dell'altro.</p>
-            </div>
+        <div class="card-box">
+            <h3>Definizione</h3>
+            <p>Un computer si definisce <strong>stand-alone</strong> (autonomo) quando opera in completo isolamento, senza alcuna connessione fisica o logica con altri dispositivi.</p>
         </div>
 
-        <div class="card">
-            <h3>Il Protocollo:</h3>
-            <ol>
-                <li>Arduino 1 invia "PING"</li>
-                <li>Arduino 2 riceve, controlla e risponde "PONG"</li>
-                <li>Arduino 1 riceve conferma.</li>
-            </ol>
-        </div>
-
-        <h3>Codice Arduino 1 (Trasmettitore)</h3>
-        <div class="code-block">
-<span class="keyword">void</span> setup() {
-  Serial.begin(9600);
-  Serial.println(<span class="string">"Inizio comunicazione..."</span>);
-}
-
-<span class="keyword">void</span> loop() {
-  Serial.println(<span class="string">"PING"</span>); <span class="comment">// Invio il pacchetto</span>
-  delay(1000);
-}
-        </div>
-    </div>
-
-    <div id="mappa" class="content">
-        <h2>Mappa del Sito</h2>
+        <h3>Caratteristiche Principali</h3>
         <ul>
-            <li>Home</li>
-            <li>Teoria Reti</li>
-            <li>Lab Arduino</li>
+            <li><strong>Isolamento Totale:</strong> Impossibile accedere a risorse esterne (niente internet, niente file condivisi).</li>
+            <li><strong>Sicurezza Fisica:</strong> L'unico modo per rubare dati è accedere fisicamente alla macchina.</li>
+            <li><strong>Trasferimento Dati:</strong> Avviene solo tramite supporti rimovibili (CD, USB, Floppy). Questo metodo è scherzosamente chiamato <em>"Sneakernet"</em> (rete delle scarpe da ginnastica).</li>
         </ul>
     </div>
 
-</div>
+    <div id="tab2" class="tab-content">
+        <h2>La Rete Domestica (SOHO)</h2>
+        <p>Il primo passo verso la connessione globale è la rete di casa o del piccolo ufficio.</p>
+        
+        <div class="card-box">
+            <h3>Componenti Fondamentali</h3>
+            <ol>
+                <li><strong>Dispositivi Finali (Host):</strong> PC, Smartphone, Tablet, Stampanti Smart.</li>
+                <li><strong>Dispositivi Intermedi:</strong>
+                    <ul>
+                        <li><em>Switch:</em> Collega i dispositivi via cavo nella stessa stanza.</li>
+                        <li><em>Access Point:</em> Collega i dispositivi via WiFi.</li>
+                        <li><em>Router:</em> Collega la tua rete di casa a Internet.</li>
+                    </ul>
+                </li>
+                <li><strong>Mezzi Trasmissivi:</strong> Cavi Ethernet (Rame), Onde Radio (WiFi), Fibra Ottica.</li>
+            </ol>
+        </div>
+    </div>
 
-<button class="fab-source" onclick="mostraSorgente()">⚙️ Vedi Sorgente</button>
+    <div id="tab3" class="tab-content">
+        <h2>Il Modello ISO/OSI</h2>
+        <p>Qui spiegheremo come i dati viaggiano attraverso i 7 livelli.</p>
+        
+        <div class="img-placeholder">
+            [QUI ANDRÀ LA FIGURA DELLA PILA ISO/OSI]
+        </div>
 
-<div class="modal fade" id="sourceModal" tabindex="-1">
+        <div class="card-box">
+            <h3>I 7 Livelli (Dall'alto al basso)</h3>
+            <ul>
+                <li><strong>7. Applicazione:</strong> Il browser, l'email (quello che vedi).</li>
+                <li><strong>6. Presentazione:</strong> Traduzione e criptazione dati.</li>
+                <li><strong>5. Sessione:</strong> Gestione del dialogo tra due PC.</li>
+                <li><strong>4. Trasporto:</strong> (TCP/UDP) Affidabilità della consegna.</li>
+                <li><strong>3. Rete:</strong> (IP) Indirizzamento e percorso migliore.</li>
+                <li><strong>2. Collegamento:</strong> (MAC) Accesso al cavo/WiFi.</li>
+                <li><strong>1. Fisico:</strong> (Bit) Segnali elettrici o luce.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="tab5" class="tab-content">
+        <h2>Mappa del Sito</h2>
+        <p>Struttura logica delle lezioni presenti in questo portale.</p>
+        
+        <div class="card-box">
+            <ul>
+                <li><strong>🏠 Home Page</strong>
+                    <ul>
+                        <li>Concetto di Stand-Alone</li>
+                        <li>Componenti Rete Domestica</li>
+                    </ul>
+                </li>
+                <li><strong>📚 Teoria</strong>
+                    <ul>
+                        <li>Modello ISO/OSI</li>
+                        <li>Protocolli</li>
+                    </ul>
+                </li>
+                <li><strong>🔧 Laboratorio</strong>
+                    <ul>
+                        <li>Arduino: Ping-Pong Seriale</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="tab4" class="tab-content">
+        <h2>Laboratorio: Comunicazione Seriale</h2>
+        <p>Simuliamo la più semplice rete possibile: due dispositivi collegati direttamente.</p>
+        
+        <div class="img-placeholder">
+            [QUI ANDRÀ LO SCHEMA PYTHON COLLEGAMENTO ARDUINO]
+        </div>
+
+        <div class="card-box">
+            <h3>L'esperimento "PING-PONG"</h3>
+            <p>Colleghiamo due schede Arduino incrociando i cavi (TX su RX):</p>
+            <ol>
+                <li><strong>Arduino 1</strong> invia la stringa "PING".</li>
+                <li><strong>Arduino 2</strong> legge, controlla se è "PING" e risponde con "PONG".</li>
+                <li><strong>Arduino 1</strong> riceve "PONG" e conferma che la rete funziona.</li>
+            </ol>
+        </div>
+        
+        <h4>Codice Arduino 1 - Trasmettitore:</h4>
+        <div class="code-block">
+<span class="keyword">void</span> setup() {
+  Serial.begin(9600);
+  Serial.println(<span class="string">"Arduino 1 - Ready"</span>);
+}
+
+<span class="keyword">void</span> loop() {
+  Serial.println(<span class="string">"PING"</span>); <span class="comment">// Invia dati</span>
+  delay(1000);
+}
+        </div>
+
+        <h4>Codice Arduino 2 - Ricevitore:</h4>
+        <div class="code-block">
+<span class="keyword">void</span> setup() {
+  Serial.begin(9600);
+}
+
+<span class="keyword">void</span> loop() {
+  if (Serial.available()) {
+    String msg = Serial.readStringUntil('\n');
+    if (msg.trim() == <span class="string">"PING"</span>) {
+       Serial.println(<span class="string">"PONG"</span>); <span class="comment">// Risponde</span>
+    }
+  }
+}
+        </div>
+    </div>
+
+</div> <button class="fab-source" onclick="mostraSorgente()">⚙️ Vedi Sorgente</button>
+
+<div class="modal fade" id="sourceModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header bg-dark text-white">
-                <h5 class="modal-title">Sorgente Pagina</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                <h5 class="modal-title">Codice Sorgente di questa Pagina</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body bg-light">
-                <pre id="sourceCode" class="p-3" style="color: #d63384; font-size: 0.85rem;"></pre>
+                <pre id="sourceCodeDisplay" class="p-3 border rounded bg-white text-danger" style="font-size: 0.8em;"></pre>
             </div>
         </div>
     </div>
@@ -228,31 +313,38 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-    // Gestione Tabs
-    function openTab(tabName) {
-        var i, content, tabBtns;
-        content = document.getElementsByClassName("content");
-        for (i = 0; i < content.length; i++) {
-            content[i].classList.remove("active");
-        }
-        tabBtns = document.getElementsByClassName("tab-btn");
-        for (i = 0; i < tabBtns.length; i++) {
-            tabBtns[i].classList.remove("active");
-        }
-        document.getElementById(tabName).classList.add("active");
+    // 1. Funzione per cambiare Tab
+    function openTab(tabId) {
+        // Nascondi tutti i contenuti
+        document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+        // Disattiva tutti i bottoni
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
         
-        // Trova il bottone cliccato e attivalo (semplificato)
-        var clickedBtn = Array.from(tabBtns).find(btn => btn.getAttribute('onclick').includes(tabName));
-        if(clickedBtn) clickedBtn.classList.add("active");
+        // Attiva contenuto e bottone specifico
+        document.getElementById(tabId).classList.add('active');
+        
+        // Trova il bottone che ha chiamato la funzione (trucco per evidenziarlo)
+        const buttons = document.querySelectorAll('.tab-btn');
+        buttons.forEach(btn => {
+            if(btn.getAttribute('onclick').includes(tabId)) {
+                btn.classList.add('active');
+            }
+        });
     }
 
-    // Funzione Mostra Sorgente
+    // 2. Funzione per mostrare il codice sorgente
     function mostraSorgente() {
-        document.getElementById('sourceCode').textContent = document.documentElement.outerHTML;
-        new bootstrap.Modal(document.getElementById('sourceModal')).show();
+        // Prende tutto l'HTML della pagina corrente
+        const htmlContent = document.documentElement.outerHTML;
+        
+        // Lo inserisce nel modale
+        document.getElementById('sourceCodeDisplay').textContent = htmlContent;
+        
+        // Mostra il modale usando Bootstrap
+        const myModal = new bootstrap.Modal(document.getElementById('sourceModal'));
+        myModal.show();
     }
 </script>
 
 </body>
 </html>
-     
