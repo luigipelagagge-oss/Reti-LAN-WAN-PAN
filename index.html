@@ -90,6 +90,15 @@
             margin-bottom: 20px;
             border-radius: 5px;
         }
+
+        /* Box specifico per la definizione PDU */
+        .pdu-box {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 20px;
+            margin-top: 30px;
+            border-radius: 5px;
+        }
         
         ul, ol { margin-left: 20px; margin-bottom: 15px; }
         li { margin-bottom: 10px; }
@@ -320,12 +329,19 @@
             </div>
         </div>
 
-        <div class="card-box mt-4">
-            <p>Questo schema mostra come i dati vengono "impacchettati" da chi spedisce e "aperti" da chi riceve.</p>
+        <div class="pdu-box">
+            <h3>⚠️ Ma cos'è che viaggia? La "PDU"</h3>
+            <p><strong>PDU (Protocol Data Unit)</strong> è il termine tecnico per indicare il "pacchetto" di dati. A seconda del livello in cui si trova, cambia nome:</p>
+            <ul>
+                <li>Livello 4 (Trasporto): Si chiama <strong>SEGMENTO</strong>.</li>
+                <li>Livello 3 (Rete): Si chiama <strong>PACCHETTO</strong>.</li>
+                <li>Livello 2 (Collegamento): Si chiama <strong>FRAME</strong> (o Trama).</li>
+                <li>Livello 1 (Fisico): Sono semplici <strong>BIT</strong>.</li>
+            </ul>
         </div>
 
         <div style="text-align: center; margin-top: 30px;">
-            <p>Vuoi vedere cosa c'è dentro ogni pacchetto?</p>
+            <p>Vuoi vedere il dettaglio di questi pacchetti?</p>
             <a href="descrizione_livelli.html" class="btn-cta">🚀 Clicca qui per il Dettaglio delle Matriosche</a>
         </div>
     </div>
@@ -344,7 +360,7 @@
                 </li>
                 <li><strong>📚 Teoria</strong>
                     <ul>
-                        <li class="map-link" onclick="openTab('tab3')">Modello ISO/OSI (Le 2 Torri)</li>
+                        <li class="map-link" onclick="openTab('tab3')">Modello ISO/OSI (Le 2 Torri e PDU)</li>
                         <li><a href="descrizione_livelli.html" class="external-link">➡️ Descrizione Approfondita dei 7 Livelli</a></li>
                     </ul>
                 </li>
