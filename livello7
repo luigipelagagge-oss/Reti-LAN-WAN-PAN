@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Livello 7: Applicazione</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <h1>Livello 7: Applicazione</h1>
+    <div class="pdu-badge">PDU (La Matriosca): DATI</div>
+
+    <h2>📝 Descrizione Semplice</h2>
+    <p>È il livello più vicino all'utente. Non è il software stesso (come Chrome o Outlook), ma lo "sportello" che permette a questi programmi di interagire con la rete. Qui nasce il messaggio originale.</p>
+
+    <h2>⚙️ Funzione Tecnica</h2>
+    <p>Fornisce servizi di rete alle applicazioni utente (email, trasferimento file, web). Identifica i partner della comunicazione.</p>
+
+    <h2>📦 Incapsulamento</h2>
+    <p>È la matriosca più interna, il cuore del messaggio.</p>
+
+    <div class="nav-links">
+        <a href="descrizione_livelli.html">🔙 Indice</a> | 
+        <a href="livello6.html">⬇️ Vai al Livello 6</a>
+    </div>
+</div>
+</body>
+</html>
