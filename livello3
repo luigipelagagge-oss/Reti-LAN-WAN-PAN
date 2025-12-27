@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Livello 3: Rete</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <h1>Livello 3: Rete</h1>
+    <div class="pdu-badge" style="background-color: #f39c12;">PDU: PACCHETTO (Packet)</div>
+
+    <h2>📝 Descrizione Semplice</h2>
+    <p>È il <strong>GPS</strong> di Internet. Trova il percorso migliore attraverso il mondo per arrivare a destinazione. Qui lavorano i <strong>Router</strong>.</p>
+
+    <h2>⚙️ Funzione Tecnica</h2>
+    <p>Gestisce l'indirizzamento logico tramite gli <strong>Indirizzi IP</strong> (Mittente e Destinatario).</p>
+
+    <h2>📦 Incapsulamento</h2>
+    <p>Il Segmento viene chiuso in una busta più grande: il <strong>Pacchetto</strong>, su cui viene scritto l'indirizzo IP.</p>
+
+    <div class="nav-links">
+        <a href="livello4.html">⬆️ Livello 4</a> | 
+        <a href="descrizione_livelli.html">🔙 Indice</a> | 
+        <a href="livello2.html">⬇️ Livello 2</a>
+    </div>
+</div>
+</body>
+</html>
