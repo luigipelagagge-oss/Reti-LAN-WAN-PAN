@@ -91,8 +91,9 @@
         }
         
         ul, ol { margin-left: 20px; margin-bottom: 15px; }
-        li { margin-bottom: 8px; }
+        li { margin-bottom: 10px; } /* Aumentato leggermente lo spazio tra le liste */
 
+        /* Link interattivi della mappa */
         .map-link {
             cursor: pointer;
             color: #0d6efd;
@@ -194,17 +195,26 @@
 
     <div id="tab3" class="tab-content">
         <h2>Il Modello ISO/OSI</h2>
-        <p>I 7 livelli della comunicazione.</p>
+        <p>Il modello di riferimento per capire come comunicano i computer. È diviso in 7 "strati".</p>
         
         <img src="iso_osi_stack.png" alt="Pila ISO/OSI" class="img-fluid-custom" style="max-height: 500px;">
 
         <div class="card-box">
-            <h3>I 7 Livelli</h3>
-            <ul>
-                <li>7. Applicazione</li>
-                <li>4. Trasporto</li>
-                <li>3. Rete (IP)</li>
-                <li>1. Fisico (Bit)</li>
+            <h3>I 7 Livelli (Dall'alto verso il basso)</h3>
+            <ul style="list-style-type: none; padding-left: 0;">
+                <li><strong>7. Applicazione:</strong><br> È l'interfaccia con l'utente (es. Chrome, Outlook). È dove i dati vengono creati e visualizzati.</li>
+                
+                <li><strong>6. Presentazione:</strong><br> "Il Traduttore". Si occupa di formattare, cifrare o comprimere i dati affinché siano leggibili (es. JPG, MP3, SSL).</li>
+                
+                <li><strong>5. Sessione:</strong><br> "Il Vigile". Mantiene attiva la connessione tra due dispositivi, decidendo chi parla e per quanto tempo.</li>
+                
+                <li><strong>4. Trasporto:</strong><br> (TCP/UDP) Spezzetta i dati in pacchetti più piccoli (segmenti) e controlla che arrivino tutti a destinazione.</li>
+                
+                <li><strong>3. Rete:</strong><br> (IP, Router) "Il Postino". Aggiunge l'indirizzo mittente/destinatario e sceglie la strada migliore (routing) nel traffico.</li>
+                
+                <li><strong>2. Collegamento:</strong><br> (MAC, Switch) Organizza i dati in "frame" per il passaggio fisico e gestisce l'accesso al cavo o al WiFi.</li>
+                
+                <li><strong>1. Fisico:</strong><br> (Bit) La trasmissione pura. Trasforma i dati digitali (0 e 1) in segnali elettrici, luce o onde radio.</li>
             </ul>
         </div>
     </div>
@@ -224,7 +234,7 @@
                 <li><strong>📚 Teoria</strong>
                     <ul>
                         <li class="map-link" onclick="openTab('tab3')">Modello ISO/OSI</li>
-                        <li class="map-link" onclick="openTab('tab3')">I 7 Livelli</li>
+                        <li class="map-link" onclick="openTab('tab3')">Descrizione dei 7 Livelli</li>
                     </ul>
                 </li>
                 <li><strong>🔧 Laboratorio</strong>
