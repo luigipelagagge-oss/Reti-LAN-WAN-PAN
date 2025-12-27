@@ -1,25 +1,58 @@
-/* --- style.css --- */
-
-/* Impostiamo un font leggibile per tutto il sito */
+/* style.css */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+.container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+h1 { color: #2c3e50; text-align: center; border-bottom: 2px solid #ecf0f1; padding-bottom: 15px;}
+h2 { color: #2980b9; margin-top: 25px; font-size: 1.4em; }
+
+/* Immagini */
+.matrioska-img {
+    display: block;
+    margin: 20px auto;
+    max-width: 80%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
-/* Effetto al passaggio del mouse sui bottoni principali */
-.card-hover {
-    transition: transform 0.2s, box-shadow 0.2s; /* Animazione fluida */
+/* Badge PDU */
+.pdu-badge {
+    background-color: #34495e;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: inline-block;
+    font-weight: bold;
+    margin-bottom: 15px;
+    border-left: 5px solid #e74c3c; /* Accento rosso */
 }
 
-.card-hover:hover {
-    transform: translateY(-5px); /* Sposta leggermente in alto */
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important; /* Aumenta l'ombra */
-    background-color: #ffffff;
+/* Menu Pulsanti */
+.layer-menu { display: grid; gap: 10px; margin-top: 20px; }
+.btn-layer {
+    display: block; padding: 15px; text-decoration: none; color: #fff;
+    font-weight: bold; text-align: center; border-radius: 5px;
+    transition: all 0.3s ease;
 }
+.btn-layer:hover { transform: translateX(5px); opacity: 0.9; }
 
-/* Stile per il testo del codice sorgente nel modale */
-.code-text {
-    font-family: 'Courier New', Courier, monospace; /* Font monospaziato tipico del codice */
-    font-size: 0.9rem;
-    color: #d63384; /* Un colore rosato simile agli editor di codice */
-    white-space: pre-wrap; /* Manda a capo il testo se troppo lungo */
-}
+/* Colori specifici */
+.upper { background-color: #27ae60; } /* Verde - Software */
+.middle { background-color: #f39c12; } /* Arancio - Trasporto */
+.lower { background-color: #c0392b; } /* Rosso - Hardware */
+
+/* Navigazione */
+.nav-links { margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; text-align: center; }
+.nav-links a { margin: 0 10px; text-decoration: none; color: #2980b9; font-weight: bold; }
