@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Livello 1: Fisico</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <h1>Livello 1: Fisico</h1>
+    <div class="pdu-badge" style="background-color: #c0392b;">PDU: BIT</div>
+
+    <h2>📝 Descrizione Semplice</h2>
+    <p>Siamo arrivati al cavo. Qui non c'è più logica, solo fisica: elettricità, luce o onde radio.</p>
+
+    <h2>⚙️ Funzione Tecnica</h2>
+    <p>Trasmette il flusso grezzo di bit (0 e 1) attraverso il mezzo trasmissivo (Rame, Fibra, Wi-Fi).</p>
+
+    <h2>📦 Decostruzione</h2>
+    <p>La matriosca sparisce. La Trama viene "tritata" in segnali elettrici.</p>
+
+    <div class="nav-links">
+        <a href="livello2.html">⬆️ Livello 2</a> | 
+        <a href="descrizione_livelli.html">🔙 Indice</a>
+    </div>
+</div>
+</body>
+</html>
