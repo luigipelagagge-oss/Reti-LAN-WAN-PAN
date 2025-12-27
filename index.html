@@ -94,6 +94,45 @@
         ul, ol { margin-left: 20px; margin-bottom: 15px; }
         li { margin-bottom: 10px; }
 
+        /* STILE PER LE TORRI ISO/OSI */
+        .tower-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 30px;
+            gap: 20px;
+        }
+        .tower {
+            flex: 1;
+            min-width: 300px;
+            background: #fdfdfd;
+            padding: 15px;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        .tower-level {
+            padding: 10px;
+            margin: 5px 0;
+            text-align: center;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.9em;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+        /* Colori sfumati per i livelli */
+        .lvl-7 { background-color: #ffe5d9; color: #d63384; }
+        .lvl-6 { background-color: #ffd7e6; color: #d63384; }
+        .lvl-5 { background-color: #f3ddfc; color: #6f42c1; }
+        .lvl-4 { background-color: #e0cffc; color: #6f42c1; }
+        .lvl-3 { background-color: #cfe2ff; color: #0d6efd; }
+        .lvl-2 { background-color: #d1e7dd; color: #198754; }
+        .lvl-1 { background-color: #343a40; color: #fff; }
+
+        /* Frecce direzionali */
+        .arrow-down { color: #dc3545; font-size: 1.2em; }
+        .arrow-up { color: #198754; font-size: 1.2em; }
+
         /* Link interattivi della mappa */
         .map-link {
             cursor: pointer;
@@ -106,7 +145,6 @@
             font-weight: bold;
         }
         
-        /* Link ESTERNI (quelli che portano alle nuove pagine) */
         .external-link {
             color: #d63384; 
             font-weight: bold;
@@ -135,7 +173,6 @@
         .string { color: #7ec699; }
         .comment { color: #999; font-style: italic; }
 
-        /* CLASSE PER LE IMMAGINI */
         .img-fluid-custom {
             max-width: 100%;
             height: auto;
@@ -146,7 +183,6 @@
             display: block;
         }
 
-        /* Bottone Call to Action */
         .btn-cta {
             background-color: #764ba2;
             color: white;
@@ -192,14 +228,14 @@
     </header>
 
     <div class="tabs-header">
-        <button class="tab-btn active" onclick="openTab('tab1')">💻 1. Stand-Alone</button>
+        <button class="tab-btn" onclick="openTab('tab1')">💻 1. Stand-Alone</button>
         <button class="tab-btn" onclick="openTab('tab2')">🏠 2. Rete Domestica</button>
-        <button class="tab-btn" onclick="openTab('tab3')">📚 3. ISO/OSI</button>
+        <button class="tab-btn active" onclick="openTab('tab3')">📚 3. ISO/OSI</button>
         <button class="tab-btn" onclick="openTab('tab5')">🗺️ Mappa Sito</button>
         <button class="tab-btn" onclick="openTab('tab4')">🔧 5. Lab Arduino</button>
     </div>
 
-    <div id="tab1" class="tab-content active">
+    <div id="tab1" class="tab-content">
         <h2>Il Computer "Stand-Alone"</h2>
         <p>Prima di capire le reti, dobbiamo capire cosa succede quando una rete NON c'è.</p>
         <div class="card-box">
@@ -235,8 +271,8 @@
                     <h4 style="color: #d63384;">🚀 Velocità: Fibra & WiFi 6</h4>
                     <p>Le reti moderne devono essere veloci e stabili.</p>
                     <ul>
-                        <li><strong>FTTH (Fiber to the Home):</strong> La fibra ottica arriva fin dentro casa (fino a 1Gbps o più).</li>
-                        <li><strong>WiFi Mesh:</strong> Non più un solo modem, ma più "satelliti" per coprire tutta la casa senza zone morte.</li>
+                        <li><strong>FTTH (Fiber to the Home):</strong> La fibra ottica arriva fin dentro casa.</li>
+                        <li><strong>WiFi Mesh:</strong> Più "satelliti" per coprire tutta la casa.</li>
                     </ul>
                 </div>
             </div>
@@ -254,25 +290,43 @@
         </div>
     </div>
 
-    <div id="tab3" class="tab-content">
+    <div id="tab3" class="tab-content active">
         <h2>Il Modello ISO/OSI</h2>
-        <div class="card-box">
-            <h3>Riassunto dei 7 Livelli</h3>
-            <p>Qui sotto trovi una breve sintesi. Per studiare le "Matriosche" (PDU) nel dettaglio, clicca sul bottone in basso.</p>
-            <ul style="list-style-type: none; padding-left: 0;">
-                <li><strong>7. Applicazione:</strong> Interfaccia utente.</li>
-                <li><strong>6. Presentazione:</strong> Traduzione dati.</li>
-                <li><strong>5. Sessione:</strong> Gestione dialogo.</li>
-                <li><strong>4. Trasporto:</strong> Affidabilità (TCP/UDP).</li>
-                <li><strong>3. Rete:</strong> Indirizzamento IP e Routing.</li>
-                <li><strong>2. Collegamento:</strong> Indirizzamento MAC (Switch).</li>
-                <li><strong>1. Fisico:</strong> Bit e Cavi.</li>
-            </ul>
+        <p>Come fanno due computer a capirsi? Usano 7 livelli di regole. Immagina due torri:</p>
+        
+        <div class="tower-container">
+            <div class="tower">
+                <h4 class="text-center">📤 Trasmettitore</h4>
+                <p class="text-center small text-muted">Incapsulamento (Giù)</p>
+                <div class="tower-level lvl-7">7. Applicazione <span class="arrow-down">⬇️</span></div>
+                <div class="tower-level lvl-6">6. Presentazione <span class="arrow-down">⬇️</span></div>
+                <div class="tower-level lvl-5">5. Sessione <span class="arrow-down">⬇️</span></div>
+                <div class="tower-level lvl-4">4. Trasporto <span class="arrow-down">⬇️</span></div>
+                <div class="tower-level lvl-3">3. Rete <span class="arrow-down">⬇️</span></div>
+                <div class="tower-level lvl-2">2. Collegamento <span class="arrow-down">⬇️</span></div>
+                <div class="tower-level lvl-1">1. Fisico (Bit) ➡️ Cavo</div>
+            </div>
+
+            <div class="tower">
+                <h4 class="text-center">📥 Ricevitore</h4>
+                <p class="text-center small text-muted">Decapsulamento (Su)</p>
+                <div class="tower-level lvl-7">7. Applicazione <span class="arrow-up">⬆️</span></div>
+                <div class="tower-level lvl-6">6. Presentazione <span class="arrow-up">⬆️</span></div>
+                <div class="tower-level lvl-5">5. Sessione <span class="arrow-up">⬆️</span></div>
+                <div class="tower-level lvl-4">4. Trasporto <span class="arrow-up">⬆️</span></div>
+                <div class="tower-level lvl-3">3. Rete <span class="arrow-up">⬆️</span></div>
+                <div class="tower-level lvl-2">2. Collegamento <span class="arrow-up">⬆️</span></div>
+                <div class="tower-level lvl-1">Cavo ➡️ 1. Fisico (Bit)</div>
+            </div>
+        </div>
+
+        <div class="card-box mt-4">
+            <p>Questo schema mostra come i dati vengono "impacchettati" da chi spedisce e "aperti" da chi riceve.</p>
         </div>
 
         <div style="text-align: center; margin-top: 30px;">
-            <p>Vuoi capire come viaggiano i dati?</p>
-            <a href="descrizione_livelli.html" class="btn-cta">🚀 Clicca qui per il Dettaglio dei 7 Livelli (Matriosche)</a>
+            <p>Vuoi vedere cosa c'è dentro ogni pacchetto?</p>
+            <a href="descrizione_livelli.html" class="btn-cta">🚀 Clicca qui per il Dettaglio delle Matriosche</a>
         </div>
     </div>
 
@@ -285,12 +339,12 @@
                 <li><strong>🏠 Home Page</strong>
                     <ul>
                         <li class="map-link" onclick="openTab('tab1')">Concetto di Stand-Alone</li>
-                        <li class="map-link" onclick="openTab('tab2')">Componenti Rete Domestica (IoT & Fibra)</li>
+                        <li class="map-link" onclick="openTab('tab2')">Rete Domestica (IoT & Fibra)</li>
                     </ul>
                 </li>
                 <li><strong>📚 Teoria</strong>
                     <ul>
-                        <li class="map-link" onclick="openTab('tab3')">Modello ISO/OSI (Sintesi)</li>
+                        <li class="map-link" onclick="openTab('tab3')">Modello ISO/OSI (Le 2 Torri)</li>
                         <li><a href="descrizione_livelli.html" class="external-link">➡️ Descrizione Approfondita dei 7 Livelli</a></li>
                     </ul>
                 </li>
