@@ -2,38 +2,131 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <title>Descrizione dei 7 Livelli ISO/OSI</title>
-    <link rel="stylesheet" href="style.css"> </head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I 7 Livelli e le Matriosche</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container-box {
+            max-width: 900px;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            text-align: center;
+        }
+
+        h1 { 
+            color: #d63384; 
+            margin-bottom: 20px; 
+            font-weight: bold;
+        }
+        
+        p.lead {
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        /* --- STILE IMMAGINE --- */
+        .img-container {
+            margin-bottom: 30px;
+            padding: 10px;
+            border: 2px dashed #ddd;
+            border-radius: 15px;
+            display: inline-block;
+        }
+        
+        .img-matriosche {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            display: block;
+        }
+
+        /* --- GRIGLIA PULSANTI LIVELLI --- */
+        .level-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .btn-level {
+            background-color: #667eea;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .btn-level:hover {
+            background-color: #764ba2;
+            transform: translateY(-3px);
+            color: white;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
+
+        /* --- BOTTONE HOME --- */
+        .btn-home {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #343a40;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        .btn-home:hover {
+            background-color: #000;
+            color: white;
+        }
+    </style>
+</head>
 <body>
-<div class="container">
 
-    <h1>Il Viaggio del Dato: Encapsulation</h1>
-
-    <div>
-        <p>Nel modello ISO/OSI, i dati non viaggiano "nudi". Ogni livello prende le informazioni dal livello superiore e le inserisce in una "busta" protettiva aggiungendo le proprie istruzioni. Questo processo si chiama <strong>Incapsulamento</strong>.</p>
+    <div class="container-box">
+        <h1>Il Concetto delle Matriosche (Incapsulamento)</h1>
         
-       <a href="index.html" class="btn-home">🏠 Torna alla Home Page</a>
-        
-        <p>Esattamente come una <strong>Matriosca</strong>, il dato originale (Livello 7) viene racchiuso dentro contenitori sempre più grandi man mano che scende verso il cavo fisico. L'unità di informazione di ogni livello si chiama <strong>PDU</strong> (Protocol Data Unit).</p>
+        <p class="lead">
+            Nel modello ISO/OSI, ogni livello inserisce i dati del livello superiore dentro una "busta" (Header).
+            <br>È esattamente come una serie di <strong>Matriosche</strong>!
+        </p>
+
+        <div class="img-container">
+            <img src="matriosche.jpg" alt="Schema Matriosche Incapsulamento" class="img-matriosche">
+        </div>
+
+        <h3>Clicca su un livello per vedere i dettagli:</h3>
+        <br>
+
+        <div class="level-grid">
+            <a href="livello7.html" class="btn-level">7. Applicazione</a>
+            <a href="livello6.html" class="btn-level">6. Presentazione</a>
+            <a href="livello5.html" class="btn-level">5. Sessione</a>
+            <a href="livello4.html" class="btn-level">4. Trasporto</a>
+            <a href="livello3.html" class="btn-level">3. Rete</a>
+            <a href="livello2.html" class="btn-level">2. Collegamento</a>
+            <a href="livello1.html" class="btn-level">1. Fisico</a>
+        </div>
+
+        <hr>
+
+        <a href="index.html" class="btn-home">🏠 Torna alla Home Page</a>
     </div>
 
-    <h2>Esplora i 7 Livelli</h2>
-    <p>Clicca su un livello per scoprire come si chiama la sua "Matriosca" (PDU) e cosa fa:</p>
-
-    <div class="layer-menu">
-        <a href="livello7.html" class="btn-layer upper">Livello 7: Applicazione (PDU: Dati)</a>
-        <a href="livello6.html" class="btn-layer upper">Livello 6: Presentazione (PDU: Dati)</a>
-        <a href="livello5.html" class="btn-layer upper">Livello 5: Sessione (PDU: Dati)</a>
-        <a href="livello4.html" class="btn-layer middle">Livello 4: Trasporto (PDU: Segmento)</a>
-        <a href="livello3.html" class="btn-layer middle">Livello 3: Rete (PDU: Pacchetto)</a>
-        <a href="livello2.html" class="btn-layer lower">Livello 2: Data Link (PDU: Trama)</a>
-        <a href="livello1.html" class="btn-layer lower">Livello 1: Fisico (PDU: Bit)</a>
-    </div>
-
-    <div class="nav-links">
-        <a href="home.html">🏠 Torna alla Home Page</a>
-    </div>
-
-</div>
 </body>
 </html>
