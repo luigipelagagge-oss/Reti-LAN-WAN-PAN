@@ -93,10 +93,9 @@
         ul, ol { margin-left: 20px; margin-bottom: 15px; }
         li { margin-bottom: 8px; }
 
-        /* NUOVO STILE PER I LINK DELLA MAPPA */
         .map-link {
             cursor: pointer;
-            color: #0d6efd; /* Colore blu tipico dei link */
+            color: #0d6efd;
             text-decoration: underline;
             transition: color 0.2s;
         }
@@ -120,18 +119,15 @@
         .string { color: #7ec699; }
         .comment { color: #999; font-style: italic; }
 
-        .img-placeholder {
-            width: 100%;
-            height: 200px;
-            background-color: #e9ecef;
-            border: 2px dashed #adb5bd;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #6c757d;
-            font-weight: bold;
-            border-radius: 10px;
-            margin: 20px 0;
+        /* CLASSE PER LE IMMAGINI */
+        .img-fluid-custom {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin: 20px auto;
+            display: block;
         }
 
         .fab-source {
@@ -163,8 +159,8 @@
     <div class="tabs-header">
         <button class="tab-btn active" onclick="openTab('tab1')">💻 1. Stand-Alone</button>
         <button class="tab-btn" onclick="openTab('tab2')">🏠 2. Rete Domestica</button>
-        <button class="tab-btn" onclick="openTab('tab3')">📚 3. ISO/OSI (New)</button>
-        <button class="tab-btn" onclick="openTab('tab5')">🗺️ Mappa Sito (New)</button>
+        <button class="tab-btn" onclick="openTab('tab3')">📚 3. ISO/OSI</button>
+        <button class="tab-btn" onclick="openTab('tab5')">🗺️ Mappa Sito</button>
         <button class="tab-btn" onclick="openTab('tab4')">🔧 5. Lab Arduino</button>
     </div>
 
@@ -199,9 +195,9 @@
     <div id="tab3" class="tab-content">
         <h2>Il Modello ISO/OSI</h2>
         <p>I 7 livelli della comunicazione.</p>
-        <div class="img-placeholder">
-            [QUI ANDRÀ LA FIGURA DELLA PILA ISO/OSI]
-        </div>
+        
+        <img src="iso_osi_stack.png" alt="Pila ISO/OSI" class="img-fluid-custom" style="max-height: 500px;">
+
         <div class="card-box">
             <h3>I 7 Livelli</h3>
             <ul>
@@ -244,9 +240,9 @@
     <div id="tab4" class="tab-content">
         <h2>Laboratorio: Comunicazione Seriale</h2>
         <p>Simuliamo una rete tra due Arduino.</p>
-        <div class="img-placeholder">
-            [QUI ANDRÀ LO SCHEMA PYTHON COLLEGAMENTO ARDUINO]
-        </div>
+        
+        <img src="schema_serial.png" alt="Schema Arduino Seriale" class="img-fluid-custom">
+
         <div class="card-box">
             <h3>L'esperimento "PING-PONG"</h3>
             <p>Arduino 1 invia PING, Arduino 2 risponde PONG.</p>
@@ -283,32 +279,24 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-    // FUNZIONE PER CAMBIARE TAB (Usata sia dai bottoni in alto che dalla Mappa)
     function openTab(tabId) {
-        // Nascondi tutti i contenuti
         document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-        // Disattiva tutti i bottoni del menu in alto
         document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
         
-        // Attiva il contenuto richiesto
         const targetTab = document.getElementById(tabId);
         if(targetTab) {
             targetTab.classList.add('active');
         }
         
-        // Evidenzia il bottone del menu in alto corrispondente
         const buttons = document.querySelectorAll('.tab-btn');
         buttons.forEach(btn => {
             if(btn.getAttribute('onclick').includes(tabId)) {
                 btn.classList.add('active');
             }
         });
-
-        // Se siamo su mobile o schermo piccolo, scrolla all'inizio del contenuto
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // FUNZIONE MOSTRA SORGENTE
     function mostraSorgente() {
         document.getElementById('sourceCodeDisplay').textContent = document.documentElement.outerHTML;
         const myModal = new bootstrap.Modal(document.getElementById('sourceModal'));
