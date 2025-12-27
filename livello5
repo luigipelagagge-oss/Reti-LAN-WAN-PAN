@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Livello 5: Sessione</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <h1>Livello 5: Sessione</h1>
+    <div class="pdu-badge">PDU: DATI</div>
+
+    <h2>📝 Descrizione Semplice</h2>
+    <p>È il "vigile urbano" o la segretaria. Si occupa di stabilire la telefonata (sessione) tra due computer, mantenerla attiva e riagganciare alla fine.</p>
+
+    <h2>⚙️ Funzione Tecnica</h2>
+    <p>Gestisce l'apertura, la chiusura e il ripristino delle connessioni tra applicazioni locali e remote.</p>
+
+    <div class="nav-links">
+        <a href="livello6.html">⬆️ Livello 6</a> | 
+        <a href="descrizione_livelli.html">🔙 Indice</a> | 
+        <a href="livello4.html">⬇️ Livello 4</a>
+    </div>
+</div>
+</body>
+</html>
