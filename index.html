@@ -107,7 +107,7 @@
         
         /* Link ESTERNI (quelli che portano alle nuove pagine) */
         .external-link {
-            color: #d63384; /* Colore diverso per evidenziare l'uscita */
+            color: #d63384; 
             font-weight: bold;
             text-decoration: none;
             border-bottom: 2px solid #d63384;
@@ -145,23 +145,6 @@
             display: block;
         }
 
-        .fab-source {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: #212529;
-            color: white;
-            padding: 15px 25px;
-            border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            z-index: 1000;
-            font-weight: bold;
-            border: 2px solid white;
-            transition: transform 0.2s;
-        }
-        .fab-source:hover { transform: scale(1.05); background: #000; }
-        
         /* Bottone Call to Action */
         .btn-cta {
             background-color: #764ba2;
@@ -180,6 +163,23 @@
             transform: translateY(-2px);
             color: white;
         }
+        
+        .fab-source {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #212529;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            z-index: 1000;
+            font-weight: bold;
+            border: 2px solid white;
+            transition: transform 0.2s;
+        }
+        .fab-source:hover { transform: scale(1.05); background: #000; }
     </style>
 </head>
 <body>
@@ -226,12 +226,8 @@
         </div>
     </div>
 
-    <div style="text-align: center; margin-top: 30px;">
-        <p>Vuoi capire come viaggiano i dati?</p>
-        <a href="descrizione_livelli.html" class="btn-cta">🚀 Clicca qui per il Dettaglio dei 7 Livelli</a>
-    </div>
-</div>
-
+    <div id="tab3" class="tab-content">
+        <h2>Il Modello ISO/OSI</h2>
         <div class="card-box">
             <h3>Riassunto dei 7 Livelli</h3>
             <p>Qui sotto trovi una breve sintesi. Per studiare le "Matriosche" (PDU) nel dettaglio, clicca sul bottone in basso.</p>
@@ -284,8 +280,6 @@
         <h2>Laboratorio: Comunicazione Seriale</h2>
         <p>Simuliamo una rete tra due Arduino.</p>
         
-        <img src="schema_serial.png" alt="Schema Arduino Seriale" class="img-fluid-custom">
-
         <div class="card-box">
             <h3>L'esperimento "PING-PONG"</h3>
             <p>Arduino 1 invia PING, Arduino 2 risponde PONG.</p>
