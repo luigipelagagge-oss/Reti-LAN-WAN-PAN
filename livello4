@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Livello 4: Trasporto</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <h1>Livello 4: Trasporto</h1>
+    <div class="pdu-badge" style="background-color: #f39c12;">PDU: SEGMENTO (Segment)</div>
+
+    <h2>📝 Descrizione Semplice</h2>
+    <p>Garantisce che i dati arrivino interi. Decide se spedire con "raccomandata sicura" (TCP) o "posta prioritaria veloce" (UDP).</p>
+
+    <h2>⚙️ Funzione Tecnica</h2>
+    <p>Spezzetta i dati in segmenti numerati e aggiunge le <strong>Porte</strong> (es. porta 80) per indirizzare i dati all'applicazione giusta.</p>
+
+    <h2>📦 Incapsulamento</h2>
+    <p>I "Dati" vengono divisi e messi dentro il <strong>Segmento</strong>.</p>
+
+    <div class="nav-links">
+        <a href="livello5.html">⬆️ Livello 5</a> | 
+        <a href="descrizione_livelli.html">🔙 Indice</a> | 
+        <a href="livello3.html">⬇️ Livello 3</a>
+    </div>
+</div>
+</body>
+</html>
