@@ -91,13 +91,22 @@
             border-radius: 5px;
         }
 
-        /* Box specifico per la definizione PDU */
+        /* --- BOX SPECIALE PER PDU --- */
         .pdu-box {
-            background: #fff3cd;
-            border-left: 5px solid #ffc107;
-            padding: 20px;
+            background: #fff3cd; /* Giallo chiaro */
+            border: 2px solid #ffc107; /* Bordo giallo scuro */
+            padding: 25px;
             margin-top: 30px;
-            border-radius: 5px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .pdu-acronym {
+            font-size: 1.5em;
+            color: #856404;
+            font-weight: bold;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #d39e00;
+            display: inline-block;
         }
         
         ul, ol { margin-left: 20px; margin-bottom: 15px; }
@@ -181,16 +190,6 @@
         .keyword { color: #cc99cd; }
         .string { color: #7ec699; }
         .comment { color: #999; font-style: italic; }
-
-        .img-fluid-custom {
-            max-width: 100%;
-            height: auto;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            margin: 20px auto;
-            display: block;
-        }
 
         .btn-cta {
             background-color: #764ba2;
@@ -330,19 +329,24 @@
         </div>
 
         <div class="pdu-box">
-            <h3>⚠️ Ma cos'è che viaggia? La "PDU"</h3>
-            <p><strong>PDU (Protocol Data Unit)</strong> è il termine tecnico per indicare il "pacchetto" di dati. A seconda del livello in cui si trova, cambia nome:</p>
+            <span class="pdu-acronym">Cos'è una P.D.U.?</span>
+            <p>PDU è l'acronimo di:</p>
             <ul>
-                <li>Livello 4 (Trasporto): Si chiama <strong>SEGMENTO</strong>.</li>
-                <li>Livello 3 (Rete): Si chiama <strong>PACCHETTO</strong>.</li>
-                <li>Livello 2 (Collegamento): Si chiama <strong>FRAME</strong> (o Trama).</li>
-                <li>Livello 1 (Fisico): Sono semplici <strong>BIT</strong>.</li>
+                <li><strong>P</strong> = Protocol (Protocollo)</li>
+                <li><strong>D</strong> = Data (Dati)</li>
+                <li><strong>U</strong> = Unit (Unità)</li>
+            </ul>
+            <p>È il nome del "pacco" che viaggia. Quando scende nella torre, cambia nome:</p>
+            <ul style="font-weight: bold; color: #333;">
+                <li>Livello 4 (Trasporto) ➝ SEGMENTO</li>
+                <li>Livello 3 (Rete) ➝ PACCHETTO</li>
+                <li>Livello 2 (Collegamento) ➝ FRAME</li>
             </ul>
         </div>
 
         <div style="text-align: center; margin-top: 30px;">
-            <p>Vuoi vedere il dettaglio di questi pacchetti?</p>
-            <a href="descrizione_livelli.html" class="btn-cta">🚀 Clicca qui per il Dettaglio delle Matriosche</a>
+            <p>Vuoi vedere questi pacchetti nel dettaglio?</p>
+            <a href="descrizione_livelli.html" class="btn-cta">🚀 Vai alla pagina delle Matriosche</a>
         </div>
     </div>
 
