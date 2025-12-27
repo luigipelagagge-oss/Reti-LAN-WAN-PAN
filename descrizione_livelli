@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Descrizione dei 7 Livelli ISO/OSI</title>
+    <link rel="stylesheet" href="style.css"> </head>
+<body>
+<div class="container">
+
+    <h1>Il Viaggio del Dato: Encapsulation</h1>
+
+    <div>
+        <p>Nel modello ISO/OSI, i dati non viaggiano "nudi". Ogni livello prende le informazioni dal livello superiore e le inserisce in una "busta" protettiva aggiungendo le proprie istruzioni. Questo processo si chiama <strong>Incapsulamento</strong>.</p>
+        
+        <img src="image_6589ba.png" alt="Schema Matriosche ISO OSI" class="matrioska-img">
+        
+        <p>Esattamente come una <strong>Matriosca</strong>, il dato originale (Livello 7) viene racchiuso dentro contenitori sempre più grandi man mano che scende verso il cavo fisico. L'unità di informazione di ogni livello si chiama <strong>PDU</strong> (Protocol Data Unit).</p>
+    </div>
+
+    <h2>Esplora i 7 Livelli</h2>
+    <p>Clicca su un livello per scoprire come si chiama la sua "Matriosca" (PDU) e cosa fa:</p>
+
+    <div class="layer-menu">
+        <a href="livello7.html" class="btn-layer upper">Livello 7: Applicazione (PDU: Dati)</a>
+        <a href="livello6.html" class="btn-layer upper">Livello 6: Presentazione (PDU: Dati)</a>
+        <a href="livello5.html" class="btn-layer upper">Livello 5: Sessione (PDU: Dati)</a>
+        <a href="livello4.html" class="btn-layer middle">Livello 4: Trasporto (PDU: Segmento)</a>
+        <a href="livello3.html" class="btn-layer middle">Livello 3: Rete (PDU: Pacchetto)</a>
+        <a href="livello2.html" class="btn-layer lower">Livello 2: Data Link (PDU: Trama)</a>
+        <a href="livello1.html" class="btn-layer lower">Livello 1: Fisico (PDU: Bit)</a>
+    </div>
+
+    <div class="nav-links">
+        <a href="home.html">🏠 Torna alla Home Page</a>
+    </div>
+
+</div>
+</body>
+</html>
