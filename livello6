@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Livello 6: Presentazione</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <h1>Livello 6: Presentazione</h1>
+    <div class="pdu-badge">PDU: DATI (Formattati)</div>
+
+    <h2>📝 Descrizione Semplice</h2>
+    <p>È il "traduttore universale". Si assicura che il computer che riceve i dati possa leggerli, indipendentemente dal sistema operativo usato.</p>
+
+    <h2>⚙️ Funzione Tecnica</h2>
+    <p>Gestisce la <strong>Cifratura</strong> (sicurezza), la <strong>Compressione</strong> (riduzione dimensioni) e la <strong>Formattazione</strong> (es. JPEG, ASCII).</p>
+
+    <div class="nav-links">
+        <a href="livello7.html">⬆️ Livello 7</a> | 
+        <a href="descrizione_livelli.html">🔙 Indice</a> | 
+        <a href="livello5.html">⬇️ Livello 5</a>
+    </div>
+</div>
+</body>
+</html>
