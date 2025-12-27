@@ -81,6 +81,7 @@
         
         h2 { color: #764ba2; border-bottom: 2px solid #eee; padding-bottom: 10px; margin-bottom: 20px; }
         h3 { color: #444; margin: 25px 0 15px; }
+        h4 { color: #555; margin-top: 15px; }
         
         .card-box {
             background: #f8f9fa;
@@ -215,14 +216,41 @@
 
     <div id="tab2" class="tab-content">
         <h2>La Rete Domestica (SOHO)</h2>
-        <p>Il primo passo verso la connessione globale.</p>
+        <p class="lead">SOHO sta per <strong>Small Office / Home Office</strong>. Oggi una casa è molto più di semplici PC collegati.</p>
+
         <div class="card-box">
-            <h3>Componenti Fondamentali</h3>
-            <ol>
-                <li><strong>Host:</strong> PC, Smartphone, Tablet.</li>
-                <li><strong>Intermediari:</strong> Router, Switch, Access Point.</li>
-                <li><strong>Mezzi:</strong> Cavi Ethernet, WiFi.</li>
-            </ol>
+            <h3>1. Il Cuore della Casa: Il "Modem-Router"</h3>
+            <p>Spesso chiamiamo la scatola dell'operatore internet semplicemente "Modem", ma in realtà è un dispositivo <strong>4-in-1</strong>:</p>
+            <ul class="list-group list-group-flush" style="background: transparent;">
+                <li>📞 <strong>Modem:</strong> Traduce il segnale che arriva dalla strada (Fibra/Rame).</li>
+                <li>🚦 <strong>Router:</strong> Indirizza il traffico intelligente (IP) verso Internet.</li>
+                <li>🔀 <strong>Switch:</strong> Gestisce le porte fisiche (LAN) dove attacchi i cavi.</li>
+                <li>📡 <strong>Access Point:</strong> Genera le onde radio per il WiFi.</li>
+            </ul>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-6 mb-3">
+                <div class="p-3 border rounded bg-white h-100 shadow-sm">
+                    <h4 style="color: #d63384;">🚀 Velocità: Fibra & WiFi 6</h4>
+                    <p>Le reti moderne devono essere veloci e stabili.</p>
+                    <ul>
+                        <li><strong>FTTH (Fiber to the Home):</strong> La fibra ottica arriva fin dentro casa (fino a 1Gbps o più).</li>
+                        <li><strong>WiFi Mesh:</strong> Non più un solo modem, ma più "satelliti" per coprire tutta la casa senza zone morte.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <div class="p-3 border rounded bg-white h-100 shadow-sm">
+                    <h4 style="color: #d63384;">🏠 Smart Home (IoT)</h4>
+                    <p>Non colleghiamo più solo computer (Internet of Things):</p>
+                    <ul>
+                        <li>Assistenti Vocali (Alexa, Google).</li>
+                        <li>Lampadine e Prese Smart.</li>
+                        <li>Videocamere, TV e Frigoriferi connessi.</li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -257,7 +285,7 @@
                 <li><strong>🏠 Home Page</strong>
                     <ul>
                         <li class="map-link" onclick="openTab('tab1')">Concetto di Stand-Alone</li>
-                        <li class="map-link" onclick="openTab('tab2')">Componenti Rete Domestica</li>
+                        <li class="map-link" onclick="openTab('tab2')">Componenti Rete Domestica (IoT & Fibra)</li>
                     </ul>
                 </li>
                 <li><strong>📚 Teoria</strong>
