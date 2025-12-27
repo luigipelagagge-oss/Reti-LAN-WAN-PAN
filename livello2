@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Livello 2: Data Link</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <h1>Livello 2: Collegamento Dati</h1>
+    <div class="pdu-badge" style="background-color: #c0392b;">PDU: TRAMA (Frame)</div>
+
+    <h2>📝 Descrizione Semplice</h2>
+    <p>Consegna i dati al dispositivo vicino (nella stessa stanza o edificio). Usa l'indirizzo fisico della scheda di rete. Qui lavorano gli <strong>Switch</strong>.</p>
+
+    <h2>⚙️ Funzione Tecnica</h2>
+    <p>Gestisce l'accesso al mezzo fisico usando il <strong>MAC Address</strong>. Controlla anche gli errori di trasmissione.</p>
+
+    <h2>📦 Incapsulamento</h2>
+    <p>È l'unica matriosca che aggiunge dati sia davanti (Header) che dietro (Trailer/Coda) al Pacchetto.</p>
+
+    <div class="nav-links">
+        <a href="livello3.html">⬆️ Livello 3</a> | 
+        <a href="descrizione_livelli.html">🔙 Indice</a> | 
+        <a href="livello1.html">⬇️ Livello 1</a>
+    </div>
+</div>
+</body>
+</html>
