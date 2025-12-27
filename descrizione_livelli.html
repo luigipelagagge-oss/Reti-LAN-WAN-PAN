@@ -17,72 +17,102 @@
         }
 
         .container-box {
-            max-width: 900px;
+            max-width: 1100px; /* Più largo per far stare tutto affiancato */
             background: white;
             padding: 40px;
             border-radius: 20px;
             box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-            text-align: center;
         }
 
         h1 { 
             color: #d63384; 
-            margin-bottom: 20px; 
+            margin-bottom: 10px; 
             font-weight: bold;
+            text-align: center;
         }
         
         p.lead {
             color: #555;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
+            text-align: center;
         }
 
-        /* --- STILE IMMAGINE --- */
-        .img-container {
-            margin-bottom: 30px;
-            padding: 10px;
-            border: 2px dashed #ddd;
-            border-radius: 15px;
-            display: inline-block;
+        /* --- LAYOUT FLESSIBILE --- */
+        .content-wrapper {
+            display: flex;
+            flex-wrap: wrap; /* Su cellulare va a capo */
+            align-items: center; /* Centra verticalmente */
+            justify-content: center;
+            gap: 50px; /* Spazio tra immagine e bottoni */
+        }
+
+        /* Colonna Immagine */
+        .image-column {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
         }
         
         .img-matriosche {
             max-width: 100%;
             height: auto;
-            border-radius: 10px;
-            display: block;
+            border-radius: 15px;
+            border: 1px solid #ddd;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
         }
 
-        /* --- GRIGLIA PULSANTI LIVELLI --- */
-        .level-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
-            margin-bottom: 40px;
+        /* Colonna Bottoni (La Pila) */
+        .buttons-column {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            flex-direction: column; /* Li mette in colonna verticale */
+            gap: 12px; /* Spazio tra i bottoni */
         }
 
         .btn-level {
+            display: block;
             background-color: #667eea;
             color: white;
             border: none;
-            padding: 15px;
-            border-radius: 10px;
+            padding: 15px 20px;
+            border-radius: 8px; /* Meno arrotondati per sembrare blocchi */
             text-decoration: none;
             font-weight: bold;
+            font-size: 1.1em;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: left; /* Testo allineato a sinistra per ordine */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: relative;
         }
 
+        /* Effetto Hover */
         .btn-level:hover {
             background-color: #764ba2;
-            transform: translateY(-3px);
+            transform: translateX(10px); /* Si sposta a destra quando passi sopra */
             color: white;
-            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        /* Freccina decorativa nel bottone */
+        .btn-level::after {
+            content: '🔎';
+            position: absolute;
+            right: 20px;
+            opacity: 0.5;
         }
 
         /* --- BOTTONE HOME --- */
+        .footer-section {
+            margin-top: 50px;
+            text-align: center;
+            border-top: 1px solid #eee;
+            padding-top: 30px;
+        }
+
         .btn-home {
             display: inline-block;
-            padding: 12px 30px;
+            padding: 12px 40px;
             background-color: #343a40;
             color: white;
             text-decoration: none;
@@ -99,33 +129,35 @@
 <body>
 
     <div class="container-box">
-        <h1>Il Concetto delle Matriosche (Incapsulamento)</h1>
+        <h1>Il Concetto delle Matriosche</h1>
         
         <p class="lead">
-            Nel modello ISO/OSI, ogni livello inserisce i dati del livello superiore dentro una "busta" (Header).
-            <br>È esattamente come una serie di <strong>Matriosche</strong>!
+            Il modello ISO/OSI è una pila verticale. <br>
+            A sinistra vedi il concetto (Matriosche), a destra puoi cliccare sui <strong>7 Livelli</strong> reali.
         </p>
 
-        <div class="img-container">
-            <img src="matriosche.jpg" alt="Schema Matriosche Incapsulamento" class="img-matriosche">
+        <div class="content-wrapper">
+            
+            <div class="image-column">
+                <img src="matriosche.jpg" alt="Schema Matriosche Incapsulamento" class="img-matriosche">
+                <p style="margin-top: 10px; color: #888; font-size: 0.9em;">L'incapsulamento visivo</p>
+            </div>
+
+            <div class="buttons-column">
+                <a href="livello7.html" class="btn-level" style="background-color: #e83e8c;">7. Applicazione (Il più esterno)</a>
+                <a href="livello6.html" class="btn-level" style="background-color: #d63384;">6. Presentazione</a>
+                <a href="livello5.html" class="btn-level" style="background-color: #fd7e14;">5. Sessione</a>
+                <a href="livello4.html" class="btn-level" style="background-color: #ffc107; color: #333;">4. Trasporto</a>
+                <a href="livello3.html" class="btn-level" style="background-color: #198754;">3. Rete</a>
+                <a href="livello2.html" class="btn-level" style="background-color: #0d6efd;">2. Collegamento</a>
+                <a href="livello1.html" class="btn-level" style="background-color: #6c757d;">1. Fisico (Il più interno)</a>
+            </div>
+
         </div>
 
-        <h3>Clicca su un livello per vedere i dettagli:</h3>
-        <br>
-
-        <div class="level-grid">
-            <a href="livello7.html" class="btn-level">7. Applicazione</a>
-            <a href="livello6.html" class="btn-level">6. Presentazione</a>
-            <a href="livello5.html" class="btn-level">5. Sessione</a>
-            <a href="livello4.html" class="btn-level">4. Trasporto</a>
-            <a href="livello3.html" class="btn-level">3. Rete</a>
-            <a href="livello2.html" class="btn-level">2. Collegamento</a>
-            <a href="livello1.html" class="btn-level">1. Fisico</a>
+        <div class="footer-section">
+            <a href="index.html" class="btn-home">🏠 Torna alla Home Page</a>
         </div>
-
-        <hr>
-
-        <a href="index.html" class="btn-home">🏠 Torna alla Home Page</a>
     </div>
 
 </body>
