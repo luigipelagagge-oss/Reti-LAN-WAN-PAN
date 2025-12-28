@@ -91,54 +91,51 @@
             border-radius: 5px;
         }
 
+        /* STILI SPECIFICI TAB 2 */
+        .definition-card {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+        .definition-card:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .def-title { color: #d63384; font-weight: bold; text-transform: uppercase; font-size: 0.9em; }
+        
+        .component-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .component-box {
+            background: #f1f3f5;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            border-top: 4px solid #667eea;
+        }
+        .icon-large { font-size: 2em; display: block; margin-bottom: 10px; }
+
         /* --- BOX SPECIALE PER PDU --- */
         .pdu-box {
-            background: #fff3cd; /* Giallo chiaro */
-            border: 2px solid #ffc107; /* Bordo giallo scuro */
+            background: #fff3cd;
+            border: 2px solid #ffc107;
             padding: 25px;
             margin-top: 30px;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
-        .pdu-acronym {
-            font-size: 1.5em;
-            color: #856404;
-            font-weight: bold;
-            margin-bottom: 10px;
-            border-bottom: 1px solid #d39e00;
-            display: inline-block;
-        }
         
         ul, ol { margin-left: 20px; margin-bottom: 15px; }
         li { margin-bottom: 10px; }
 
-        /* STILE PER LE TORRI ISO/OSI */
-        .tower-container {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            margin-top: 30px;
-            gap: 20px;
-        }
-        .tower {
-            flex: 1;
-            min-width: 300px;
-            background: #fdfdfd;
-            padding: 15px;
-            border: 1px solid #eee;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
-        .tower-level {
-            padding: 10px;
-            margin: 5px 0;
-            text-align: center;
-            border-radius: 4px;
-            font-weight: bold;
-            font-size: 0.9em;
-            border: 1px solid rgba(0,0,0,0.1);
-        }
-        /* Colori sfumati per i livelli */
+        /* TORRI ISO/OSI */
+        .tower-container { display: flex; justify-content: space-around; flex-wrap: wrap; margin-top: 30px; gap: 20px; }
+        .tower { flex: 1; min-width: 300px; background: #fdfdfd; padding: 15px; border: 1px solid #eee; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .tower-level { padding: 10px; margin: 5px 0; text-align: center; border-radius: 4px; font-weight: bold; font-size: 0.9em; border: 1px solid rgba(0,0,0,0.1); }
         .lvl-7 { background-color: #ffe5d9; color: #d63384; }
         .lvl-6 { background-color: #ffd7e6; color: #d63384; }
         .lvl-5 { background-color: #f3ddfc; color: #6f42c1; }
@@ -147,89 +144,16 @@
         .lvl-2 { background-color: #d1e7dd; color: #198754; }
         .lvl-1 { background-color: #343a40; color: #fff; }
 
-        /* Frecce direzionali */
-        .arrow-down { color: #dc3545; font-size: 1.2em; }
-        .arrow-up { color: #198754; font-size: 1.2em; }
+        .map-link { cursor: pointer; color: #0d6efd; text-decoration: underline; }
+        .img-fluid-custom { max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .code-block { background: #2d2d2d; color: #ccc; padding: 20px; border-radius: 8px; font-family: 'Consolas', monospace; overflow-x: auto; margin: 15px 0; font-size: 0.9em; }
+        .keyword { color: #cc99cd; } .string { color: #7ec699; } .comment { color: #999; font-style: italic; }
 
-        /* Link interattivi della mappa */
-        .map-link {
-            cursor: pointer;
-            color: #0d6efd;
-            text-decoration: underline;
-            transition: color 0.2s;
-        }
-        .map-link:hover {
-            color: #0a58ca;
-            font-weight: bold;
-        }
-        
-        .external-link {
-            color: #d63384; 
-            font-weight: bold;
-            text-decoration: none;
-            border-bottom: 2px solid #d63384;
-        }
-        .external-link:hover {
-            background-color: #d63384;
-            color: white;
-            padding: 2px 5px;
-            border-radius: 4px;
-        }
-        
-        /* Immagine responsive */
-        .img-fluid-custom {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        /* STILE CODICE */
-        .code-block {
-            background: #2d2d2d;
-            color: #ccc;
-            padding: 20px;
-            border-radius: 8px;
-            font-family: 'Consolas', 'Monaco', monospace;
-            overflow-x: auto;
-            margin: 15px 0;
-            font-size: 0.9em;
-        }
-        .keyword { color: #cc99cd; }
-        .string { color: #7ec699; }
-        .comment { color: #999; font-style: italic; }
-
-        .btn-cta {
-            background-color: #764ba2;
-            color: white;
-            padding: 15px 30px;
-            text-decoration: none;
-            border-radius: 30px;
-            display: inline-block;
-            margin-top: 20px;
-            font-weight: bold;
-            box-shadow: 0 4px 10px rgba(118, 75, 162, 0.4);
-            transition: all 0.3s;
-        }
-        .btn-cta:hover {
-            background-color: #5a387e;
-            transform: translateY(-2px);
-            color: white;
-        }
-        
         .fab-source {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: #212529;
-            color: white;
-            padding: 15px 25px;
-            border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            z-index: 1000;
-            font-weight: bold;
-            border: 2px solid white;
+            position: fixed; bottom: 30px; right: 30px;
+            background: #212529; color: white; padding: 15px 25px;
+            border-radius: 50px; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            z-index: 1000; font-weight: bold; border: 2px solid white;
             transition: transform 0.2s;
         }
         .fab-source:hover { transform: scale(1.05); background: #000; }
@@ -257,40 +181,13 @@
             In informatica, lo stato di <em>Stand-Alone</em> rappresenta la forma più pura e primitiva di calcolo: 
             una macchina che opera in completa autonomia, senza alcun collegamento verso l'esterno.
         </p>
-
         <div class="row align-items-center mt-4">
             <div class="col-md-7">
                 <div class="card-box" style="border-left-color: #dc3545;">
                     <h4 style="color: #dc3545; margin-top:0;">🚫 Il Concetto di "Air Gap"</h4>
-                    <p>
-                        Tecnicamente si parla di <strong>Air Gap</strong> (divario d'aria). Tra il computer e il resto del mondo c'è letteralmente "aria". 
-                        Non essendoci cavi o segnali radio, è fisicamente impossibile per un hacker entrare da remoto.
-                    </p>
+                    <p>Tra il computer e il resto del mondo c'è letteralmente "aria". Non essendoci cavi o segnali radio, è fisicamente impossibile per un hacker entrare da remoto.</p>
                 </div>
-
-                <h3>Caratteristiche Chiave:</h3>
-                <ul class="list-group">
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <div>
-                            <strong>🔒 Sicurezza Massima</strong>
-                            <div class="small text-muted">Immune a virus provenienti da Internet.</div>
-                        </div>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <div>
-                            <strong>💾 La "Sneaker-Net"</strong>
-                            <div class="small text-muted">Per spostare i dati devi usare le gambe (sneakers) e una chiavetta USB.</div>
-                        </div>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <div>
-                            <strong>🐌 Isolamento dei Dati</strong>
-                            <div class="small text-muted">Se il PC si rompe e non hai backup su disco esterno, i dati sono persi per sempre.</div>
-                        </div>
-                    </li>
-                </ul>
             </div>
-
             <div class="col-md-5 text-center">
                 <div style="background: white; padding: 20px; border-radius: 50%; box-shadow: 0 10px 30px rgba(0,0,0,0.1); display: inline-block;">
                     <svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
@@ -299,168 +196,147 @@
                         <rect x="55" y="55" width="90" height="60" fill="#667eea" />
                         <rect x="90" y="120" width="20" height="20" fill="#343a40" />
                         <rect x="70" y="140" width="60" height="10" rx="2" fill="#343a40" />
-                        <rect x="85" y="75" width="30" height="25" rx="3" fill="#ffc107" />
-                        <path d="M 90 75 L 90 65 A 10 10 0 0 1 110 65 L 110 75" fill="none" stroke="#ffc107" stroke-width="3" />
-                        <path d="M 160 100 L 180 120" stroke="#dc3545" stroke-width="5" stroke-linecap="round" />
-                        <path d="M 180 100 L 160 120" stroke="#dc3545" stroke-width="5" stroke-linecap="round" />
                         <text x="145" y="150" font-family="Arial" font-size="12" fill="#dc3545" font-weight="bold">NO NET</text>
                     </svg>
-                    <p class="mt-3 text-muted" style="font-size: 0.9em;"><em>Rappresentazione grafica dell'isolamento</em></p>
                 </div>
             </div>
         </div>
     </div>
 
     <div id="tab2" class="tab-content">
-        <h2>La Rete Domestica e la P.A.N.</h2>
+        <h2>Dallo Stand-Alone alla Rete Domestica</h2>
         
-        <div class="card-box" style="border-left-color: #0dcaf0; background-color: #f0fbff;">
-            <h4 style="color: #0aa2c0; margin-top:0;">🏠 Cos'è "SOHO"? (Small Office / Home Office)</h4>
-            <p>
-                È un acronimo che indica i "Piccoli Uffici" o gli "Uffici in Casa". <br>
-                Oggi le reti domestiche non servono più solo per guardare film, ma sono veri ambienti di lavoro ibridi dove stampanti, PC aziendali e console convivono.
-            </p>
+        <p class="lead">
+            Quando i dispositivi cessano di essere "soli" (Stand-Alone) e vengono collegati tra loro, formano una rete. 
+            Nelle nostre case parliamo spesso di ambiente <strong>SOHO</strong>.
+        </p>
+
+        <div class="row mt-4">
+            <div class="col-md-4">
+                <div class="definition-card">
+                    <div class="def-title">Cos'è SOHO?</div>
+                    <p>Acronimo di <strong>Small Office / Home Office</strong>.<br> Indica un ambiente ibrido (casa o piccolo ufficio) dove convivono dispositivi personali e lavorativi.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="definition-card">
+                    <div class="def-title">Cos'è una LAN?</div>
+                    <p>Acronimo di <strong>Local Area Network</strong>.<br> È la rete "dentro casa tua". Tutti i tuoi dispositivi collegati al router formano la LAN.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="definition-card" style="background-color: #fff0f3; border-color: #ffccd5;">
+                    <div class="def-title">Cos'è una WAN?</div>
+                    <p>Acronimo di <strong>Wide Area Network</strong>.<br> È la "Rete Geografica", ovvero <strong>Internet</strong>. È tutto ciò che sta "fuori" dal tuo modem.</p>
+                </div>
+            </div>
         </div>
 
         <hr style="margin: 40px 0; opacity: 0.2;">
 
         <div class="row align-items-center">
-            <div class="col-md-6">
+            <div class="col-md-7">
                 <h3 style="color: #d63384;">1. La P.A.N. (Personal Area Network)</h3>
-                <p>Prima di collegare palazzi o città (LAN e WAN), la rete inizia intorno a <strong>TE</strong>.</p>
-                <p>La <strong>PAN</strong> è la rete più piccola in assoluto. Copre un raggio di pochi metri, tipicamente lo spazio di una scrivania o della persona stessa.</p>
+                <p>Prima ancora della rete di casa, esiste la rete "intorno a te".</p>
                 <ul>
-                    <li><strong>Raggio:</strong> Pochi metri (es. Bluetooth).</li>
-                    <li><strong>Dispositivi:</strong> Smartphone, Auricolari, Smartwatch, Mouse Wireless.</li>
-                    <li><strong>Scopo:</strong> Eliminare i cavi intorno all'utente.</li>
+                    <li><strong>Definizione:</strong> Rete personale che copre pochi metri.</li>
+                    <li><strong>Esempi:</strong> Mouse Bluetooth collegato al PC, Smartwatch collegato al telefono.</li>
                 </ul>
-                
-                <div style="margin-top: 20px;">
+                <div style="margin-top: 15px;">
                     <a href="https://itrelease.com/2018/07/advantages-and-disadvantages-of-personal-area-network-pan/" 
                        target="_blank" 
                        class="btn btn-outline-secondary btn-sm">
-                       🔗 Approfondimento: Vantaggi e Svantaggi PAN (in Inglese)
+                       🔗 Link Esterno: Approfondimento PAN (Inglese)
                     </a>
                 </div>
             </div>
-            
-            <div class="col-md-6 text-center">
+            <div class="col-md-5 text-center">
                 <img src="pan_network.png" alt="Schema Personal Area Network" class="img-fluid-custom">
-                <p class="text-muted small mt-2">Esempio di dispositivi connessi in una PAN</p>
             </div>
         </div>
 
         <hr style="margin: 40px 0; opacity: 0.2;">
 
-        <div class="card-box">
-            <h3>2. Il Cuore della SOHO: Il "Modem-Router"</h3>
-            <p>Per connettere la nostra PAN a Internet, usiamo un dispositivo <strong>4-in-1</strong>:</p>
-            <ul class="list-group list-group-flush" style="background: transparent;">
-                <li>📞 <strong>Modem:</strong> Traduce il segnale (Fibra/Rame).</li>
-                <li>🚦 <strong>Router:</strong> Indirizza il traffico IP.</li>
-                <li>🔀 <strong>Switch:</strong> Gestisce le porte cavo (LAN).</li>
-                <li>📡 <strong>Access Point:</strong> Genera il WiFi.</li>
-            </ul>
+        <div>
+            <h3>2. Il Cuore della Rete: Il "Modem-Router"</h3>
+            <p>Spesso chiamiamo la scatola dell'operatore internet semplicemente "Modem", ma in realtà è un dispositivo <strong>4-in-1</strong> complesso:</p>
+            
+            <div class="component-grid">
+                <div class="component-box">
+                    <span class="icon-large">📞</span>
+                    <strong>MODEM</strong>
+                    <hr>
+                    <p class="small text-muted">Acronimo di:<br><strong>MO</strong>dulatore <strong>DEM</strong>odulatore</p>
+                    <p style="font-size: 0.9em;">Traduce il segnale analogico (o ottico) che arriva dalla strada in segnale digitale per il computer.</p>
+                </div>
+                
+                <div class="component-box">
+                    <span class="icon-large">🚦</span>
+                    <strong>ROUTER</strong>
+                    <hr>
+                    <p class="small text-muted">Il "Vigile Urbano"</p>
+                    <p style="font-size: 0.9em;">Indirizza il traffico intelligente (IP) decidendo quale strada devono prendere i dati verso Internet.</p>
+                </div>
+                
+                <div class="component-box">
+                    <span class="icon-large">🔀</span>
+                    <strong>SWITCH</strong>
+                    <hr>
+                    <p class="small text-muted">La "Ciabatta Elettrica"</p>
+                    <p style="font-size: 0.9em;">Gestisce le porte fisiche (LAN) sul retro dove attacchi i cavi di rete.</p>
+                </div>
+
+                <div class="component-box">
+                    <span class="icon-large">📡</span>
+                    <strong>ACCESS POINT</strong>
+                    <hr>
+                    <p class="small text-muted">Acronimo Wi-Fi:<br><strong>Wireless Fidelity</strong></p>
+                    <p style="font-size: 0.9em;">Sostituisce i cavi generando onde radio per connettere dispositivi senza fili.</p>
+                </div>
+            </div>
         </div>
     </div>
 
     <div id="tab3" class="tab-content">
         <h2>Il Modello ISO/OSI</h2>
-        <p>Come fanno due computer a capirsi? Usano 7 livelli di regole. Immagina due torri:</p>
-        
         <div class="tower-container">
             <div class="tower">
                 <h4 class="text-center">📤 Trasmettitore</h4>
-                <p class="text-center small text-muted">Incapsulamento (Giù)</p>
-                <div class="tower-level lvl-7">7. Applicazione <span class="arrow-down">⬇️</span></div>
-                <div class="tower-level lvl-6">6. Presentazione <span class="arrow-down">⬇️</span></div>
-                <div class="tower-level lvl-5">5. Sessione <span class="arrow-down">⬇️</span></div>
-                <div class="tower-level lvl-4">4. Trasporto <span class="arrow-down">⬇️</span></div>
-                <div class="tower-level lvl-3">3. Rete <span class="arrow-down">⬇️</span></div>
-                <div class="tower-level lvl-2">2. Collegamento <span class="arrow-down">⬇️</span></div>
-                <div class="tower-level lvl-1">1. Fisico (Bit) ➡️ Cavo</div>
-            </div>
-
-            <div class="tower">
-                <h4 class="text-center">📥 Ricevitore</h4>
-                <p class="text-center small text-muted">Decapsulamento (Su)</p>
-                <div class="tower-level lvl-7">7. Applicazione <span class="arrow-up">⬆️</span></div>
-                <div class="tower-level lvl-6">6. Presentazione <span class="arrow-up">⬆️</span></div>
-                <div class="tower-level lvl-5">5. Sessione <span class="arrow-up">⬆️</span></div>
-                <div class="tower-level lvl-4">4. Trasporto <span class="arrow-up">⬆️</span></div>
-                <div class="tower-level lvl-3">3. Rete <span class="arrow-up">⬆️</span></div>
-                <div class="tower-level lvl-2">2. Collegamento <span class="arrow-up">⬆️</span></div>
-                <div class="tower-level lvl-1">Cavo ➡️ 1. Fisico (Bit)</div>
+                <div class="tower-level lvl-7">7. Applicazione</div>
+                <div class="tower-level lvl-6">6. Presentazione</div>
+                <div class="tower-level lvl-5">5. Sessione</div>
+                <div class="tower-level lvl-4">4. Trasporto</div>
+                <div class="tower-level lvl-3">3. Rete</div>
+                <div class="tower-level lvl-2">2. Collegamento</div>
+                <div class="tower-level lvl-1">1. Fisico</div>
             </div>
         </div>
-
+        
         <div class="pdu-box">
-            <span class="pdu-acronym">Cos'è una P.D.U.?</span>
-            <p>PDU è l'acronimo di:</p>
-            <ul>
-                <li><strong>P</strong> = Protocol (Protocollo)</li>
-                <li><strong>D</strong> = Data (Dati)</li>
-                <li><strong>U</strong> = Unit (Unità)</li>
-            </ul>
-            <p>È il nome del "pacco" che viaggia. Quando scende nella torre, cambia nome:</p>
-            <ul style="font-weight: bold; color: #333;">
-                <li>Livello 4 (Trasporto) ➝ SEGMENTO</li>
-                <li>Livello 3 (Rete) ➝ PACCHETTO</li>
-                <li>Livello 2 (Collegamento) ➝ FRAME</li>
-            </ul>
+            <span style="font-weight:bold; color:#856404;">P.D.U. (Protocol Data Unit)</span>: 
+            Livello 4=Segmento, Livello 3=Pacchetto, Livello 2=Frame.
         </div>
-
-        <div style="text-align: center; margin-top: 30px;">
-            <p>Vuoi vedere questi pacchetti nel dettaglio?</p>
-            <a href="descrizione_livelli.html" class="btn-cta">🚀 Vai alla pagina delle Matriosche</a>
+        
+        <div class="text-center mt-3">
+            <a href="descrizione_livelli.html" class="btn btn-primary rounded-pill px-4">🚀 Vai ai dettagli dei Livelli</a>
         </div>
     </div>
 
     <div id="tab5" class="tab-content">
-        <h2>Mappa del Sito Interattiva</h2>
-        <p>Clicca sugli argomenti per andare direttamente alla sezione.</p>
-        
-        <div class="card-box">
-            <ul>
-                <li><strong>🏠 Home Page</strong>
-                    <ul>
-                        <li class="map-link" onclick="openTab('tab1')">Concetto di Stand-Alone</li>
-                        <li class="map-link" onclick="openTab('tab2')">Rete Domestica & PAN</li>
-                    </ul>
-                </li>
-                <li><strong>📚 Teoria</strong>
-                    <ul>
-                        <li class="map-link" onclick="openTab('tab3')">Modello ISO/OSI (Le 2 Torri e PDU)</li>
-                        <li><a href="descrizione_livelli.html" class="external-link">➡️ Descrizione Approfondita dei 7 Livelli</a></li>
-                    </ul>
-                </li>
-                <li><strong>🔧 Laboratorio</strong>
-                    <ul>
-                        <li class="map-link" onclick="openTab('tab4')">Arduino: Ping-Pong Seriale</li>
-                        <li class="map-link" onclick="openTab('tab4')">Codice Sorgente Arduino</li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
+        <h2>Mappa del Sito</h2>
+        <ul>
+            <li class="map-link" onclick="openTab('tab1')">Home: Stand-Alone</li>
+            <li class="map-link" onclick="openTab('tab2')">Teoria: Rete Domestica (SOHO)</li>
+            <li class="map-link" onclick="openTab('tab3')">Teoria: Modello ISO/OSI</li>
+            <li class="map-link" onclick="openTab('tab4')">Lab: Arduino</li>
+        </ul>
     </div>
 
     <div id="tab4" class="tab-content">
-        <h2>Laboratorio: Comunicazione Seriale</h2>
-        <p>Simuliamo una rete tra due Arduino.</p>
-        
-        <div class="card-box">
-            <h3>L'esperimento "PING-PONG"</h3>
-            <p>Arduino 1 invia PING, Arduino 2 risponde PONG.</p>
-        </div>
-        <h4>Codice Arduino 1 - Trasmettitore:</h4>
+        <h2>Laboratorio Seriale</h2>
         <div class="code-block">
 <span class="keyword">void</span> setup() { Serial.begin(9600); }
 <span class="keyword">void</span> loop() { Serial.println(<span class="string">"PING"</span>); delay(1000); }
-        </div>
-        <h4>Codice Arduino 2 - Ricevitore:</h4>
-        <div class="code-block">
-<span class="keyword">void</span> setup() { Serial.begin(9600); }
-<span class="keyword">void</span> loop() { <span class="comment">// Logica di ricezione...</span> }
         </div>
     </div>
 
@@ -472,11 +348,11 @@
     <div class="modal-dialog modal-lg modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header bg-dark text-white">
-                <h5 class="modal-title">Codice Sorgente di questa Pagina</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h5 class="modal-title">Codice Sorgente</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body bg-light">
-                <pre id="sourceCodeDisplay" class="p-3 border rounded bg-white text-danger" style="font-size: 0.8em;"></pre>
+                <pre id="sourceCodeDisplay" class="p-3 border rounded bg-white text-danger small"></pre>
             </div>
         </div>
     </div>
@@ -487,43 +363,20 @@
     function openTab(tabId) {
         document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
         document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-        
-        const targetTab = document.getElementById(tabId);
-        if(targetTab) {
-            targetTab.classList.add('active');
-        }
-        
-        const buttons = document.querySelectorAll('.tab-btn');
-        buttons.forEach(btn => {
-            if(btn.getAttribute('onclick').includes(tabId)) {
-                btn.classList.add('active');
-            }
+        document.getElementById(tabId).classList.add('active');
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            if(btn.getAttribute('onclick').includes(tabId)) btn.classList.add('active');
         });
-        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     function mostraSorgente() {
-        // 1. Prendi tutto il codice della pagina
         let htmlPulito = document.documentElement.outerHTML;
-
-        // 2. RIMUOVI LA SPAZZATURA DELLE ESTENSIONI (Filtri)
-        // Toglie i tag <plasmo-csui> (quelli che vedevi prima)
         htmlPulito = htmlPulito.replace(/<plasmo-csui[\s\S]*?<\/plasmo-csui>/gi, "");
-        
-        // Toglie gli script iniettati dalle estensioni di Chrome
         htmlPulito = htmlPulito.replace(/<script[^>]*chrome-extension[\s\S]*?<\/script>/gi, "");
-        
-        // Toglie stili sporchi iniettati (es. --brisk-axd)
         htmlPulito = htmlPulito.replace(/<style[^>]*>[\s\S]*?--brisk[\s\S]*?<\/style>/gi, "");
-
-        // Toglie eventuali righe vuote lasciate dalla rimozione
         htmlPulito = htmlPulito.replace(/^\s*[\r\n]/gm, "");
-
-        // 3. Mostra il risultato pulito
         document.getElementById('sourceCodeDisplay').textContent = htmlPulito;
-        
-        const myModal = new bootstrap.Modal(document.getElementById('sourceModal'));
-        myModal.show();
+        new bootstrap.Modal(document.getElementById('sourceModal')).show();
     }
 </script>
 
