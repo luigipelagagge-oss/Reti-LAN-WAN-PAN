@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cos'è una WAN?</title>
+    <title>Approfondimento WAN</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     
     <style>
@@ -29,15 +29,15 @@
             z-index: 1;
         }
 
-        h1 { color: #d63384; font-weight: bold; margin-bottom: 20px; } /* Colore diverso per distinguere dalla LAN */
+        h1 { color: #d63384; font-weight: bold; margin-bottom: 20px; text-align: center; }
         
         .wan-definition {
-            background-color: #fff0f6; /* Sfondo rosato */
+            background-color: #fff0f6; /* Sfondo rosato per tema WAN */
             border-left: 5px solid #d63384;
             padding: 20px;
             border-radius: 8px;
             font-size: 1.1em;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
 
         .btn-home {
@@ -49,10 +49,29 @@
             display: inline-block;
             margin-bottom: 20px;
             font-weight: bold;
+            transition: 0.3s;
         }
-        .btn-home:hover { background-color: #5a6268; color: white; }
+        .btn-home:hover { background-color: #5a6268; color: white; transform: translateX(-5px); }
 
-        /* Stile per la tabella di confronto */
+        /* Effetto Hover sull'immagine link */
+        .img-link-container img {
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            border: 4px solid white;
+        }
+        .img-link-container img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 30px rgba(214, 51, 132, 0.4); /* Ombra rosa */
+            border-color: #d63384;
+        }
+        .bbc-caption {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        /* Stile Tabella */
         .table-comparison th { background-color: #3f2b96; color: white; }
         .table-comparison td { vertical-align: middle; }
 
@@ -65,12 +84,12 @@
             margin-top: 40px;
         }
 
-        /* --- STILE DEL PULSANTE SORGENTE (CORRETTO E VISIBILE) --- */
+        /* --- STILE DEL PULSANTE SORGENTE (FORZATO VISIBILE) --- */
         .fab-source {
             position: fixed !important;
             bottom: 30px !important;
             right: 30px !important;
-            z-index: 9999 !important; /* Sempre sopra */
+            z-index: 9999 !important;
             background: #212529; 
             color: white !important; 
             padding: 15px 25px;
@@ -93,17 +112,20 @@
     
     <div class="wan-definition">
         <p><strong>WAN</strong> sta per <em>Wide Area Network</em> (Rete Geografica).</p>
-        <p>È una rete che copre una vasta area geografica: collega città, nazioni o addirittura continenti diversi.</p>
+        <p>È una rete che copre una vasta area geografica: collega città, nazioni o addirittura continenti diversi, unendo tra loro tante piccole LAN.</p>
     </div>
 
-    <h3>A cosa serve?</h3>
-    <p>
-        Immagina di avere una LAN a casa tua a Livorno e un tuo amico ha una LAN a New York. 
-        Come fate a parlare? Serve un "ponte" gigante che attraversi l'oceano. 
-        Quella è la <strong>WAN</strong>.
-    </p>
+    <div class="text-center mb-5 img-link-container">
+        <h3 class="mb-3" style="color: #444;">🌍 Visualizziamo il concetto</h3>
+        <p>Clicca sull'immagine qui sotto per approfondire sul sito educativo della <strong>BBC</strong>:</p>
+        
+        <a href="https://www.bbc.co.uk/bitesize/guides/zvspfcw/revision/2" target="_blank" title="Vai all'approfondimento BBC Bitesize">
+            <img src="Wan_descriptio.png" alt="Schema WAN che collega diverse LAN" class="img-fluid rounded shadow-sm" style="max-height: 400px;">
+        </a>
+        <p class="bbc-caption">Link esterno: BBC Bitesize - Network Types</p>
+    </div>
 
-    <h4 class="mt-4 mb-3">⚔️ LAN vs WAN: Le differenze</h4>
+    <h4 class="mt-4 mb-3">⚔️ LAN vs WAN: Le differenze chiave</h4>
     <div class="table-responsive">
         <table class="table table-bordered table-striped table-comparison">
             <thead>
@@ -115,33 +137,29 @@
             </thead>
             <tbody>
                 <tr>
-                    <td><strong>Distanza</strong></td>
-                    <td>Piccola (Stanza, Edificio)</td>
-                    <td>Enorme (Mondo intero)</td>
+                    <td><strong>Estensione</strong></td>
+                    <td>Piccola (Casa, Scuola, Ufficio)</td>
+                    <td>Enorme (Città, Nazioni, Mondo)</td>
                 </tr>
                 <tr>
                     <td><strong>Velocità</strong></td>
-                    <td>Molto Alta ⚡</td>
-                    <td>Variabile (dipende dal gestore)</td>
+                    <td>Molto Alta (es. 1000 Mbps) ⚡</td>
+                    <td>Variabile (spesso più lenta della LAN)</td>
                 </tr>
                 <tr>
-                    <td><strong>Chi la possiede?</strong></td>
-                    <td>Tu (i cavi sono tuoi)</td>
-                    <td>Provider (TIM, Vodafone, etc.)</td>
+                    <td><strong>Proprietà</strong></td>
+                    <td>Privata (i cavi sono tuoi)</td>
+                    <td>Pubblica/Noleggiata (Provider Internet)</td>
                 </tr>
             </tbody>
         </table>
     </div>
 
     <div class="internet-box">
-        <h4>🌍 L'esempio perfetto: INTERNET</h4>
+        <h4>💡 L'esempio per eccellenza: INTERNET</h4>
         <p>
-            Internet non è altro che <strong>la WAN più grande del mondo</strong>.<br>
-            Collega miliardi di piccole LAN (come quella della nostra scuola) in un'unica enorme rete globale.
-        </p>
-        <hr>
-        <p class="small text-muted">
-            Curiosità: Le WAN passano spesso attraverso cavi sottomarini in fibra ottica posati sul fondo degli oceani! 🦈
+            Non ci pensiamo mai, ma <strong>Internet è la più grande WAN del mondo</strong>.<br>
+            Collega miliardi di dispositivi (smartphone, server, PC) attraverso cavi in fibra ottica sottomarini e satelliti.
         </p>
     </div>
 
@@ -167,10 +185,12 @@
 <script>
     function mostraSorgente() {
         let htmlPulito = document.documentElement.outerHTML;
-        // Pulizia codice per didattica
+        
+        // Pulizia codice per didattica (rimozione script iniettati dal browser)
         htmlPulito = htmlPulito.replace(/<plasmo-csui[\s\S]*?<\/plasmo-csui>/gi, "");
         htmlPulito = htmlPulito.replace(/<script[^>]*chrome-extension[\s\S]*?<\/script>/gi, "");
         htmlPulito = htmlPulito.replace(/<grammarly[\s\S]*?<\/grammarly>/gi, "");
+        htmlPulito = htmlPulito.replace(/<style[^>]*>[\s\S]*?--brisk[\s\S]*?<\/style>/gi, "");
         
         document.getElementById('sourceCodeDisplay').textContent = htmlPulito;
         new bootstrap.Modal(document.getElementById('sourceModal')).show();
