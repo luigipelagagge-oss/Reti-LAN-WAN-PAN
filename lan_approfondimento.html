@@ -10,135 +10,121 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #a8c0ff 0%, #3f2b96 100%);
             padding: 20px;
             color: #333;
             min-height: 100vh;
         }
         
         .container-custom {
-            max-width: 1000px;
+            max-width: 900px;
             margin: 0 auto;
             background: white;
             border-radius: 20px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.3);
             overflow: hidden;
             padding: 40px;
-            margin-top: 30px;
+            margin-bottom: 60px;
         }
 
-        h1 { color: #764ba2; border-bottom: 2px solid #eee; padding-bottom: 15px; margin-bottom: 25px; }
-        h3 { color: #555; margin-top: 20px; }
-
-        .highlight-box {
-            background-color: #f0f7ff;
+        h1 { color: #3f2b96; font-weight: bold; margin-bottom: 20px; }
+        
+        .lan-definition {
+            background-color: #f8f9fa;
             border-left: 5px solid #0d6efd;
             padding: 20px;
-            margin-bottom: 30px;
-            border-radius: 5px;
+            border-radius: 8px;
             font-size: 1.1em;
+            margin-bottom: 30px;
         }
 
-        .feature-list li { margin-bottom: 10px; font-weight: 500; }
-        
-        .img-container {
-            text-align: center;
-            margin: 30px 0;
-            padding: 20px;
-            background: #f8f9fa;
-            border-radius: 15px;
-            border: 1px solid #ddd;
-        }
-
-        .img-custom {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .btn-back {
-            background-color: #667eea;
+        .btn-home {
+            background-color: #6c757d;
             color: white;
-            padding: 10px 25px;
+            padding: 10px 20px;
             border-radius: 30px;
             text-decoration: none;
-            font-weight: bold;
             display: inline-block;
-            transition: all 0.3s;
+            margin-bottom: 20px;
+            font-weight: bold;
         }
-        .btn-back:hover { background-color: #5a387e; color: white; transform: translateX(-5px); }
+        .btn-home:hover { background-color: #5a6268; color: white; }
 
-        /* EFFETTO HOVER PER IL LINK ALLA TOPOLOGIA */
-        .topology-link-card {
-            border: 2px dashed #667eea;
-            background: #fdfdfd;
+        .next-step-box {
+            background: #e7f1ff;
+            border: 2px solid #0d6efd;
+            padding: 30px;
             border-radius: 15px;
-            padding: 20px;
             text-align: center;
-            transition: all 0.3s ease;
-            cursor: pointer;
             margin-top: 40px;
         }
-        .topology-link-card:hover {
-            background: #eef2ff;
-            transform: scale(1.02);
-            border-color: #d63384;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+
+        /* STILE DEL PULSANTE SORGENTE (Didattico) */
+        .fab-source {
+            position: fixed; bottom: 30px; right: 30px;
+            background: #212529; color: white; padding: 15px 25px;
+            border-radius: 50px; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            z-index: 1000; font-weight: bold; border: 2px solid white;
+            transition: transform 0.2s;
         }
-        .topology-img-preview {
-            max-height: 150px;
-            margin-bottom: 15px;
-            border-radius: 10px;
-        }
+        .fab-source:hover { transform: scale(1.05); background: #000; }
     </style>
 </head>
 <body>
 
 <div class="container-custom">
-    <a href="index.html" class="btn-back">⬅️ Torna alla Home</a>
+    <a href="index.html" class="btn-home">⬅️ Torna alla Home</a>
 
-    <h1 class="mt-4">Cos'è una L.A.N.?</h1>
-
-    <div class="highlight-box">
-        <p>
-            Una <strong>LAN (Local Area Network)</strong> è una rete informatica che collega dispositivi 
-            (computer, stampanti, smart TV, ecc.) in un'area geografica limitata come una casa, un ufficio o un singolo edificio.
-        </p>
+    <h1>Cos'è una L.A.N.?</h1>
+    
+    <div class="lan-definition">
+        <p><strong>LAN</strong> sta per <em>Local Area Network</em> (Rete Locale).</p>
+        <p>È un gruppo di computer e dispositivi collegati tra loro in un'area ristretta, come una casa, una scuola o un ufficio.</p>
     </div>
 
-    <div class="row">
-        <div class="col-md-6">
-            <h3>Caratteristiche Principali</h3>
-            <p>A differenza delle WAN (Wide Area Network), la LAN ha caratteristiche specifiche:</p>
-            <ul class="feature-list">
-                <li>🏠 <strong>Privata:</strong> È gestita dal proprietario (tu a casa, o l'azienda in ufficio).</li>
-                <li>🚀 <strong>Alta Velocità:</strong> Permette il trasferimento dati molto rapido tra i dispositivi interni.</li>
-                <li>🤝 <strong>Condivisione Risorse:</strong> Permette di condividere file, stampanti e scanner istantaneamente.</li>
-                <li>🔌 <strong>Tecnologie:</strong> Utilizza principalmente cavi <em>Ethernet</em> e connessioni <em>Wi-Fi</em>.</li>
-            </ul>
-        </div>
+    <h3>Come sono collegati i computer?</h3>
+    <p>
+        Non basta collegare i fili a caso. Esistono schemi geometrici precisi per garantire che i dati arrivino a destinazione senza scontrarsi.
+        Questi schemi si chiamano <strong>Topologie</strong>.
+    </p>
 
-        <div class="col-md-6">
-            <div class="img-container">
-                <img src="LAN.webp" alt="Schema di una rete LAN" class="img-custom">
-                <p class="text-muted small mt-2">Esempio di topologia LAN domestica</p>
+    <div class="next-step-box">
+        <h4>📡 Prossimo Passo: La Geometria della Rete</h4>
+        <p>Scopri come i computer vengono disposti nello spazio (Anello, Stella, Bus...).</p>
+        <a href="topologia.html" class="btn btn-primary btn-lg mt-2">Vai alle Topologie di Rete ➡️</a>
+    </div>
+</div>
+
+<button class="fab-source" onclick="mostraSorgente()">⚙️ Vedi Sorgente</button>
+
+<div class="modal fade" id="sourceModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header bg-dark text-white">
+                <h5 class="modal-title">Codice Sorgente di questa pagina</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body bg-light">
+                <pre id="sourceCodeDisplay" class="p-3 border rounded bg-white text-danger small"></pre>
             </div>
         </div>
     </div>
-
-    <a href="topologia.html" style="text-decoration: none; color: inherit;">
-        <div class="topology-link-card">
-            <h3 style="color: #d63384;">📐 Ma come sono disposti i cavi?</h3>
-            <p>Non tutte le reti hanno la stessa forma. Clicca sull'immagine qui sotto per scoprire le <strong>Topologie di Rete</strong>.</p>
-            <img src="Topologia-reti-informatiche.png" alt="Anteprima Topologie" class="topology-img-preview">
-            <br>
-            <span class="btn btn-outline-primary rounded-pill">Clicca qui per approfondire le forme della rete ➡️</span>
-        </div>
-    </a>
-
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    function mostraSorgente() {
+        let htmlPulito = document.documentElement.outerHTML;
+        
+        // Pulizia per rendere il codice leggibile agli studenti
+        htmlPulito = htmlPulito.replace(/<plasmo-csui[\s\S]*?<\/plasmo-csui>/gi, "");
+        htmlPulito = htmlPulito.replace(/<script[^>]*chrome-extension[\s\S]*?<\/script>/gi, "");
+        htmlPulito = htmlPulito.replace(/<grammarly[\s\S]*?<\/grammarly>/gi, "");
+        
+        document.getElementById('sourceCodeDisplay').textContent = htmlPulito;
+        new bootstrap.Modal(document.getElementById('sourceModal')).show();
+    }
+</script>
+
 </body>
 </html>
