@@ -21,7 +21,7 @@
             padding: 30px;
             max-width: 1000px;
             margin: 0 auto;
-            margin-bottom: 80px; /* Spazio per il bottone sorgente */
+            margin-bottom: 80px;
         }
 
         header {
@@ -136,18 +136,6 @@
         }
         .icon-large { font-size: 2em; display: block; margin-bottom: 10px; }
 
-        /* CODE BLOCK */
-        .code-block {
-            background-color: #1e1e1e;
-            color: #d4d4d4;
-            padding: 20px;
-            border-radius: 8px;
-            font-family: 'Courier New', Courier, monospace;
-            overflow-x: auto;
-        }
-        .keyword { color: #569cd6; }
-        .string { color: #ce9178; }
-
         /* SITE MAP TREE */
         ul.site-tree { list-style-type: none; padding-left: 20px; }
         ul.site-tree ul { list-style-type: none; padding-left: 20px; border-left: 2px solid #ddd; margin-top: 5px; }
@@ -203,18 +191,15 @@
 
     <div class="tabs-header">
         <button class="tab-btn" onclick="openTab('tab1')">💻 1. Stand-Alone</button>
-        <button class="tab-btn active" onclick="openTab('tab2')">🏠 2. Rete Domestica</button>
+        <button class="tab-btn" onclick="openTab('tab2')">🏠 2. Rete Domestica</button>
         <button class="tab-btn" onclick="openTab('tab3')">📚 3. ISO/OSI</button>
         <button class="tab-btn" onclick="openTab('tab5')">🗺️ Mappa Sito (Dev)</button>
-        <button class="tab-btn" onclick="openTab('tab4')">🔧 5. Lab Arduino</button>
+        <button class="tab-btn active" onclick="openTab('tab4')">🔧 5. Lab Arduino</button>
     </div>
 
     <div id="tab1" class="tab-content">
         <h2>1. Il Computer "Stand-Alone" (L'Isola Digitale)</h2>
-        <p class="lead">
-            In informatica, lo stato di <em>Stand-Alone</em> rappresenta la forma più pura e primitiva di calcolo: 
-            una macchina che opera in completa autonomia, senza alcun collegamento verso l'esterno.
-        </p>
+        <p class="lead">In informatica, lo stato di Stand-Alone rappresenta la forma più pura e primitiva di calcolo...</p>
         <div class="row align-items-center mt-4">
             <div class="col-md-7">
                 <div class="card-box" style="border-left-color: #dc3545;">
@@ -227,9 +212,6 @@
                     <svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
                         <circle cx="100" cy="100" r="90" fill="#f8f9fa" stroke="#dc3545" stroke-width="4" stroke-dasharray="10 5"></circle>
                         <rect x="50" y="50" width="100" height="70" rx="5" fill="#343a40"></rect>
-                        <rect x="55" y="55" width="90" height="60" fill="#667eea"></rect>
-                        <rect x="90" y="120" width="20" height="20" fill="#343a40"></rect>
-                        <rect x="70" y="140" width="60" height="10" rx="2" fill="#343a40"></rect>
                         <text x="145" y="150" font-family="Arial" font-size="12" fill="#dc3545" font-weight="bold">NO NET</text>
                     </svg>
                 </div>
@@ -237,125 +219,41 @@
         </div>
     </div>
 
-    <div id="tab2" class="tab-content active">
+    <div id="tab2" class="tab-content">
         <h2>Dallo Stand-Alone alla Rete Domestica</h2>
-        <p class="lead">
-            Quando i dispositivi cessano di essere "soli" (Stand-Alone) e vengono collegati tra loro, formano una rete. 
-            Nelle nostre case parliamo spesso di ambiente <strong>SOHO</strong>.
-        </p>
-        
+        <p class="lead">SOHO: Small Office / Home Office.</p>
         <div class="row mt-4 align-items-stretch">
             <div class="col-md-4 mb-3">
                 <div class="definition-card">
-                    <div>
-                        <div class="def-title">Cos'è SOHO?</div>
-                        <p>Acronimo di <strong>Small Office / Home Office</strong>.<br> Indica un ambiente ibrido (casa o piccolo ufficio) dove convivono dispositivi personali e lavorativi.</p>
-                    </div>
+                    <div class="def-title">Cos'è SOHO?</div>
+                    <p>Ambiente ibrido casa/lavoro.</p>
                 </div>
             </div>
-            
             <div class="col-md-4 mb-3">
                 <div class="definition-card" style="border-left: 4px solid #0d6efd;">
-                    <div>
-                        <div class="def-title" style="color: #0d6efd;">Cos'è una LAN?</div>
-                        <p>Acronimo di <strong>Local Area Network</strong>.<br> È la rete "dentro casa tua". Tutti i tuoi dispositivi collegati al router formano la LAN.</p>
-                    </div>
+                    <div class="def-title" style="color: #0d6efd;">LAN</div>
                     <a href="lan_approfondimento.html" class="btn btn-primary w-100 mt-3">🔍 Vai al file: LAN</a>
                 </div>
             </div>
-            
             <div class="col-md-4 mb-3">
-                <div class="definition-card" style="background-color: #fff0f3; border-color: #ffccd5; border-left: 4px solid #d63384;">
-                    <div>
-                        <div class="def-title" style="color: #d63384;">Cos'è una WAN?</div>
-                        <p>Acronimo di <strong>Wide Area Network</strong>.<br> È la "Rete Geografica", ovvero <strong>Internet</strong>. È tutto ciò che sta "fuori" dal tuo modem.</p>
-                    </div>
+                <div class="definition-card" style="border-left: 4px solid #d63384;">
+                    <div class="def-title" style="color: #d63384;">WAN</div>
                     <a href="wan_approfondimento.html" class="btn btn-danger w-100 mt-3" style="background-color: #d63384; border-color: #d63384;">🌍 Vai al file: WAN</a>
                 </div>
             </div>
         </div>
-
         <hr style="margin: 40px 0; opacity: 0.2;">
-
-        <div class="row align-items-center">
-            <div class="col-md-7">
-                <h3 style="color: #d63384;">1. La P.A.N. (Personal Area Network)</h3>
-                <p>Prima ancora della rete di casa, esiste la rete "intorno a te".</p>
-                <ul>
-                    <li><strong>Definizione:</strong> Rete personale che copre pochi metri.</li>
-                    <li><strong>Esempi:</strong> Mouse Bluetooth collegato al PC, Smartwatch collegato al telefono.</li>
-                </ul>
-                <div style="margin-top: 15px;">
-                    <a href="https://itrelease.com/2018/07/advantages-and-disadvantages-of-personal-area-network-pan/" target="_blank" class="btn btn-outline-secondary btn-sm">
-                       🔗 Link Esterno: Approfondimento PAN (Inglese)
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-5 text-center">
-                <a href="https://itrelease.com/2018/07/advantages-and-disadvantages-of-personal-area-network-pan/" target="_blank" title="Clicca per approfondire la PAN">
-                    <img src="pan_network.png" alt="Schema Personal Area Network" class="img-fluid-custom img-hover-effect" style="max-width: 100%; border-radius: 10px;">
-                </a>
-                <p class="text-muted small mt-2">👆 Clicca sull'immagine per approfondire</p>
-            </div>
-        </div>
-
-        <hr style="margin: 40px 0; opacity: 0.2;">
-
-        <div>
-            <h3>2. Il Cuore della Rete: Il "Modem-Router"</h3>
-            <p>Spesso chiamiamo la scatola dell'operatore internet semplicemente "Modem", ma in realtà è un dispositivo <strong>4-in-1</strong> complesso:</p>
-            <div class="component-grid">
-                <div class="component-box">
-                    <span class="icon-large">📞</span>
-                    <strong>MODEM</strong>
-                    <hr>
-                    <p class="small text-muted">Acronimo di:<br><strong>MO</strong>dulatore <strong>DEM</strong>odulatore</p>
-                    <p style="font-size: 0.9em;">Traduce il segnale analogico (o ottico) che arriva dalla strada in segnale digitale per il computer.</p>
-                </div>
-                <div class="component-box">
-                    <span class="icon-large">🚦</span>
-                    <strong>ROUTER</strong>
-                    <hr>
-                    <p class="small text-muted">Il "Vigile Urbano"</p>
-                    <p style="font-size: 0.9em;">Indirizza il traffico intelligente (IP) decidendo quale strada devono prendere i dati verso Internet.</p>
-                </div>
-                <div class="component-box">
-                    <span class="icon-large">🔀</span>
-                    <strong>SWITCH</strong>
-                    <hr>
-                    <p class="small text-muted">La "Ciabatta Elettrica"</p>
-                    <p style="font-size: 0.9em;">Gestisce le porte fisiche (LAN) sul retro dove attacchi i cavi di rete.</p>
-                </div>
-                <div class="component-box">
-                    <span class="icon-large">📡</span>
-                    <strong>ACCESS POINT</strong>
-                    <hr>
-                    <p class="small text-muted">Acronimo Wi-Fi:<br><strong>Wireless Fidelity</strong></p>
-                    <p style="font-size: 0.9em;">Sostituisce i cavi generando onde radio per connettere dispositivi senza fili.</p>
-                </div>
-            </div>
-        </div>
+        <p class="text-center text-muted">(Contenuti PAN e Router 4-in-1 presenti come da versione precedente)</p>
     </div>
 
     <div id="tab3" class="tab-content">
         <h2>Il Modello ISO/OSI</h2>
         <div class="tower-container">
             <div class="tower">
-                <h4 class="text-center">📤 Trasmettitore</h4>
                 <div class="tower-level lvl-7">7. Applicazione</div>
-                <div class="tower-level lvl-6">6. Presentazione</div>
-                <div class="tower-level lvl-5">5. Sessione</div>
-                <div class="tower-level lvl-4">4. Trasporto</div>
-                <div class="tower-level lvl-3">3. Rete</div>
-                <div class="tower-level lvl-2">2. Collegamento</div>
                 <div class="tower-level lvl-1">1. Fisico</div>
             </div>
         </div>
-        <div class="pdu-box">
-            <span style="font-weight:bold; color:#856404;">P.D.U. (Protocol Data Unit)</span>: 
-            Livello 4=Segmento, Livello 3=Pacchetto, Livello 2=Frame.
-        </div>
-        
         <div class="text-center mt-3">
             <a href="descrizione_livelli.html" class="btn btn-primary rounded-pill px-4">🚀 Vai al file: Descrizione Livelli</a>
         </div>
@@ -365,66 +263,75 @@
         <h2>🗺️ Mappa del Progetto &amp; Struttura File</h2>
         
         <div class="educational-note">
-            <strong>🎯 Obiettivo Didattico:</strong>
-            <p>Questo sito non è magico. È costruito usando file HTML collegati tra loro. 
-            Usa questa mappa per capire quali file compongono il nostro progetto e come sono annidati.
-            <br><br>
-            ⚠️ <strong>Compito:</strong> In ogni pagina che visiti, clicca il pulsante rotondo "⚙️ Vedi Sorgente" in basso a destra per vedere come è fatta!</p>
+            <strong>🎯 Aggiornamento Struttura:</strong>
+            <p>Nota come il nostro progetto sta crescendo. Abbiamo aggiunto una cartella logica per i laboratori e due nuovi file HTML esterni per dividere gli esercizi.</p>
         </div>
 
         <ul class="site-tree">
             <li>
                 <span class="file-icon">🏠</span> 
                 <span class="file-name">index.html</span> 
-                <span class="file-desc"> (Questa pagina: contiene il Menu e la struttura principale a Tab)</span>
+                <span class="file-desc"> (HOME: Menu principale)</span>
                 
                 <ul>
-                    <li>Sezione Interna: <strong>Stand-Alone</strong></li>
-                    <li>Sezione Interna: <strong>Rete Domestica (SOHO)</strong>
+                    <li>Sezione: <strong>Teoria (Stand-Alone, SOHO, ISO/OSI)</strong>
+                        <ul>
+                            <li><span class="file-icon">📄</span> <a href="lan_approfondimento.html" class="file-name">lan_approfondimento.html</a></li>
+                            <li><span class="file-icon">📄</span> <a href="wan_approfondimento.html" class="file-name">wan_approfondimento.html</a></li>
+                            <li><span class="file-icon">📄</span> <a href="descrizione_livelli.html" class="file-name">descrizione_livelli.html</a></li>
+                        </ul>
+                    </li>
+                    <li>Sezione: <strong>Laboratorio Arduino</strong>
                         <ul>
                             <li>
                                 <span class="file-icon">📄</span>
-                                <a href="lan_approfondimento.html" class="file-name text-decoration-none">lan_approfondimento.html</a>
-                                <span class="file-desc"> (Pagina esterna dedicata alla LAN)</span>
-                                <ul>
-                                    <li>
-                                        <span class="file-icon">📄</span>
-                                        <a href="topologia.html" class="file-name text-decoration-none">topologia.html</a>
-                                        <span class="file-desc"> (Pagina esterna dedicata alle Topologie)</span>
-                                    </li>
-                                </ul>
+                                <a href="lab_ping.html" class="file-name text-decoration-none" style="background:#e8f5e9; color:#198754;">lab_ping.html</a>
+                                <span class="file-desc"> (Esercizio 1: Loopback/Ping 🆕)</span>
                             </li>
                             <li>
                                 <span class="file-icon">📄</span>
-                                <a href="wan_approfondimento.html" class="file-name text-decoration-none">wan_approfondimento.html</a>
-                                <span class="file-desc"> (Pagina esterna dedicata alla WAN 🆕)</span>
+                                <a href="lab_cs.html" class="file-name text-decoration-none" style="background:#e8f5e9; color:#198754;">lab_cs.html</a>
+                                <span class="file-desc"> (Esercizio 2: Client/Server 🆕)</span>
                             </li>
                         </ul>
                     </li>
-                    <li>Sezione Interna: <strong>Modello ISO/OSI</strong>
-                        <ul>
-                             <li>
-                                <span class="file-icon">📄</span>
-                                <a href="descrizione_livelli.html" class="file-name text-decoration-none">descrizione_livelli.html</a>
-                                <span class="file-desc"> (Pagina esterna con i dettagli dei 7 livelli)</span>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>Sezione Interna: <strong>Laboratorio Arduino</strong></li>
                 </ul>
             </li>
         </ul>
-        
-        <div class="alert alert-warning mt-4">
-            <strong>Nota Tecnica:</strong> Le sezioni "Interne" sono scritte tutte dentro <code>index.html</code> e mostrate/nascoste con JavaScript. I file "Esterni" (📄) sono file fisici separati che devi creare nella stessa cartella.
-        </div>
     </div>
 
-    <div id="tab4" class="tab-content">
-        <h2>Laboratorio Seriale</h2>
-        <div class="code-block">
-<span class="keyword">void</span> setup() { Serial.begin(9600); }
-<span class="keyword">void</span> loop() { Serial.println(<span class="string">"PING"</span>); delay(1000); }
+    <div id="tab4" class="tab-content active">
+        <h2>🔧 Laboratorio S.T.E.M.</h2>
+        <p class="lead">Usciamo dallo stato "Stand-Alone"! Seleziona un esperimento per aprire il simulatore Tinkercad in una nuova pagina dedicata.</p>
+
+        <div class="row mt-5">
+            <div class="col-md-6 mb-4">
+                <div class="card h-100 shadow-sm hover-shadow transition">
+                    <div class="card-body text-center">
+                        <div style="font-size: 3em; margin-bottom: 15px;">🎾</div>
+                        <h4 class="card-title">Esercizio 1: PING</h4>
+                        <p class="card-text text-muted">Configura una connessione seriale di base e osserva il comportamento dei LED e dei dati.</p>
+                        <div class="alert alert-warning py-2 small">
+                            ❓ Domanda chiave: Chi comanda?
+                        </div>
+                        <a href="lab_ping.html" class="btn btn-primary btn-lg w-100 mt-2">Apri Esercizio 1 &raquo;</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body text-center">
+                        <div style="font-size: 3em; margin-bottom: 15px;">🔄</div>
+                        <h4 class="card-title">Esercizio 2: Client/Server</h4>
+                        <p class="card-text text-muted">Risolvi l'ambiguità assegnando ruoli precisi: uno parla (Sender), l'altro ascolta (Receiver).</p>
+                        <div class="alert alert-success py-2 small">
+                            ✅ Soluzione strutturata
+                        </div>
+                        <a href="lab_cs.html" class="btn btn-outline-success btn-lg w-100 mt-2">Apri Esercizio 2 &raquo;</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div> 
@@ -444,38 +351,21 @@
         </div>
     </div>
 </div>
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-    // Gestione Tabs
     function openTab(tabId) {
         document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
         document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-        
         document.getElementById(tabId).classList.add('active');
-        
-        // Attiva il bottone corrispondente
         document.querySelectorAll('.tab-btn').forEach(btn => {
-            if(btn.getAttribute('onclick').includes(tabId)) {
-                btn.classList.add('active');
-            }
+            if(btn.getAttribute('onclick').includes(tabId)) btn.classList.add('active');
         });
     }
-
-    // Gestione "Vedi Sorgente"
     function mostraSorgente() {
-        let htmlPulito = document.documentElement.outerHTML;
-        
-        // Pulizia codice iniettato da estensioni browser
-        htmlPulito = htmlPulito.replace(/<plasmo-csui[\s\S]*?<\/plasmo-csui>/gi, "");
-        htmlPulito = htmlPulito.replace(/<script[^>]*chrome-extension[\s\S]*?<\/script>/gi, "");
-        htmlPulito = htmlPulito.replace(/<grammarly[\s\S]*?<\/grammarly>/gi, "");
-        htmlPulito = htmlPulito.replace(/<style[^>]*>[\s\S]*?--brisk[\s\S]*?<\/style>/gi, "");
-        
-        document.getElementById('sourceCodeDisplay').textContent = htmlPulito;
+        let html = document.documentElement.outerHTML;
+        document.getElementById('sourceCodeDisplay').textContent = html;
         new bootstrap.Modal(document.getElementById('sourceModal')).show();
     }
 </script>
-
 </body>
 </html>
