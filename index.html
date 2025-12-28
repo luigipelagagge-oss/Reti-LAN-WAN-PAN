@@ -86,13 +86,12 @@
         .definition-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
         .def-title { font-weight: bold; font-size: 1.2em; margin-bottom: 10px; color: #495057; }
 
-        /* ISO OSI TOWER (Updated for Links) */
+        /* ISO OSI TOWER (Links) */
         .tower-container { display: flex; justify-content: center; margin: 30px 0; }
         .tower { width: 220px; }
         
-        /* Modifica chiave: ora sono link (a) */
         a.tower-level {
-            display: block; /* Occupa tutto lo spazio */
+            display: block;
             padding: 10px;
             margin: 4px 0;
             text-align: center;
@@ -101,33 +100,39 @@
             border-radius: 6px;
             font-size: 0.95em;
             transition: all 0.2s;
-            text-decoration: none; /* Toglie la sottolineatura blu */
+            text-decoration: none;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         a.tower-level:hover { 
-            transform: scale(1.05) translateX(5px); /* Effetto "estrazione" */
+            transform: scale(1.05) translateX(5px);
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            color: white; /* Mantiene il testo bianco */
+            color: white;
         }
 
         /* Colori ISO OSI */
         .lvl-7 { background-color: #e74c3c; }
         .lvl-6 { background-color: #e67e22; }
-        .lvl-5 { background-color: #f1c40f; color: #333 !important; } /* Testo scuro per il giallo */
+        .lvl-5 { background-color: #f1c40f; color: #333 !important; }
         .lvl-4 { background-color: #2ecc71; }
         .lvl-3 { background-color: #3498db; }
         .lvl-2 { background-color: #9b59b6; }
         .lvl-1 { background-color: #34495e; }
 
-        .pdu-box {
-            text-align: center;
-            background-color: #fff3cd;
-            padding: 10px;
-            border-radius: 5px;
-            border: 1px solid #ffeeba;
-            font-size: 0.9em;
-            margin-top: 15px;
+        /* PDU SECTION STYLES */
+        .pdu-card {
+            border: 2px solid #ffc107;
+            background-color: #fff9db;
+            border-radius: 10px;
+            overflow: hidden;
         }
+        .pdu-header {
+            background-color: #ffc107;
+            color: #333;
+            padding: 10px 15px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .pdu-body { padding: 15px; }
 
         /* COMPONENT GRID (Router 4-in-1) */
         .component-grid {
@@ -340,61 +345,90 @@
             👆 <strong>Interattività:</strong> Clicca su un livello della torre per leggere la sua spiegazione dettagliata.
         </div>
         
-        <div class="tower-container">
-            <div class="tower">
-                <h4 class="text-center">📤 Trasmettitore</h4>
-                
-                <a href="descrizione_livelli.html" class="tower-level lvl-7">7. Applicazione</a>
-                <a href="descrizione_livelli.html" class="tower-level lvl-6">6. Presentazione</a>
-                <a href="descrizione_livelli.html" class="tower-level lvl-5">5. Sessione</a>
-                <a href="descrizione_livelli.html" class="tower-level lvl-4">4. Trasporto</a>
-                <a href="descrizione_livelli.html" class="tower-level lvl-3">3. Rete</a>
-                <a href="descrizione_livelli.html" class="tower-level lvl-2">2. Collegamento</a>
-                <a href="descrizione_livelli.html" class="tower-level lvl-1">1. Fisico</a>
-                
-                <h4 class="text-center mt-2">📥 Ricevitore</h4>
+        <div class="row">
+            <div class="col-md-5">
+                <div class="tower-container">
+                    <div class="tower">
+                        <h4 class="text-center">📤 Trasmettitore</h4>
+                        <a href="descrizione_livelli.html" class="tower-level lvl-7">7. Applicazione</a>
+                        <a href="descrizione_livelli.html" class="tower-level lvl-6">6. Presentazione</a>
+                        <a href="descrizione_livelli.html" class="tower-level lvl-5">5. Sessione</a>
+                        <a href="descrizione_livelli.html" class="tower-level lvl-4">4. Trasporto</a>
+                        <a href="descrizione_livelli.html" class="tower-level lvl-3">3. Rete</a>
+                        <a href="descrizione_livelli.html" class="tower-level lvl-2">2. Collegamento</a>
+                        <a href="descrizione_livelli.html" class="tower-level lvl-1">1. Fisico</a>
+                        <h4 class="text-center mt-2">📥 Ricevitore</h4>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="pdu-box">
-            <span style="font-weight:bold; color:#856404;">P.D.U. (Protocol Data Unit)</span>: 
-            Livello 4=Segmento, Livello 3=Pacchetto, Livello 2=Frame.
+
+            <div class="col-md-7 mt-4 mt-md-0">
+                <div class="pdu-card">
+                    <div class="pdu-header">
+                        📦 Cos'è la P.D.U.? (Protocol Data Unit)
+                    </div>
+                    <div class="pdu-body">
+                        <p>Immagina di spedire una lettera. Prima scrivi il foglio (Dati), poi lo metti in busta (Indirizzi), poi la busta va nel sacco postale (Trasporto).<br>
+                        In rete succede lo stesso: mentre scendono, i dati vengono "inscatolati" (incapsulamento) e cambiano nome.</p>
+                        
+                        <table class="table table-sm table-bordered text-center" style="background:white; font-size:0.9em;">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Livello</th>
+                                    <th>Nome PDU</th>
+                                    <th>Cosa succede?</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="table-success"><strong>4. Trasporto</strong></td>
+                                    <td class="fw-bold text-danger">SEGMENTO</td>
+                                    <td class="text-start">I dati grandi vengono tagliati in pezzi più piccoli e numerati.</td>
+                                </tr>
+                                <tr>
+                                    <td class="table-primary"><strong>3. Rete</strong></td>
+                                    <td class="fw-bold text-danger">PACCHETTO</td>
+                                    <td class="text-start">Si aggiunge l'indirizzo <strong>IP</strong> (Mittente e Destinatario).</td>
+                                </tr>
+                                <tr>
+                                    <td style="background-color:#e0cffc"><strong>2. Colleg.</strong></td>
+                                    <td class="fw-bold text-danger">FRAME (Trama)</td>
+                                    <td class="text-start">Si aggiunge l'indirizzo <strong>MAC</strong> (Fisico) della scheda di rete.</td>
+                                </tr>
+                                <tr>
+                                    <td class="table-dark text-white"><strong>1. Fisico</strong></td>
+                                    <td class="fw-bold text-danger">BIT</td>
+                                    <td class="text-start">Tutto diventa 0 e 1 per essere inviato sul cavo.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
     <div id="tab5" class="tab-content">
         <h2>🗺️ Mappa del Progetto &amp; Struttura File</h2>
-        
         <div class="educational-note">
             <strong>🎯 Aggiornamento Struttura:</strong>
             <p>Nota come il nostro progetto sta crescendo. Abbiamo aggiunto una cartella logica per i laboratori e due nuovi file HTML esterni per dividere gli esercizi.</p>
         </div>
-
         <ul class="site-tree">
             <li>
-                <span class="file-icon">🏠</span> 
-                <span class="file-name">index.html</span> 
-                <span class="file-desc"> (HOME: Menu principale)</span>
-                
+                <span class="file-icon">🏠</span> <span class="file-name">index.html</span> <span class="file-desc"> (HOME)</span>
                 <ul>
-                    <li>Sezione: <strong>Teoria (Stand-Alone, SOHO, ISO/OSI)</strong>
+                    <li>Sezione Teoria
                         <ul>
                             <li><span class="file-icon">📄</span> <a href="lan_approfondimento.html" class="file-name">lan_approfondimento.html</a></li>
                             <li><span class="file-icon">📄</span> <a href="wan_approfondimento.html" class="file-name">wan_approfondimento.html</a></li>
                             <li><span class="file-icon">📄</span> <a href="descrizione_livelli.html" class="file-name">descrizione_livelli.html</a></li>
                         </ul>
                     </li>
-                    <li>Sezione: <strong>Laboratorio Arduino</strong>
+                    <li>Sezione Laboratorio
                         <ul>
-                            <li>
-                                <span class="file-icon">📄</span>
-                                <a href="lab_ping.html" class="file-name text-decoration-none" style="background:#e8f5e9; color:#198754;">lab_ping.html</a>
-                                <span class="file-desc"> (Esercizio 1: Loopback/Ping 🆕)</span>
-                            </li>
-                            <li>
-                                <span class="file-icon">📄</span>
-                                <a href="lab_cs.html" class="file-name text-decoration-none" style="background:#e8f5e9; color:#198754;">lab_cs.html</a>
-                                <span class="file-desc"> (Esercizio 2: Client/Server 🆕)</span>
-                            </li>
+                            <li><span class="file-icon">📄</span> <a href="lab_ping.html" class="file-name" style="color:#198754;">lab_ping.html</a></li>
+                            <li><span class="file-icon">📄</span> <a href="lab_cs.html" class="file-name" style="color:#198754;">lab_cs.html</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -405,7 +439,6 @@
     <div id="tab4" class="tab-content">
         <h2>🔧 Laboratorio S.T.E.M.</h2>
         <p class="lead">Usciamo dallo stato "Stand-Alone"! Seleziona un esperimento per aprire il simulatore Tinkercad in una nuova pagina dedicata.</p>
-
         <div class="row mt-5">
             <div class="col-md-6 mb-4">
                 <div class="card h-100 shadow-sm hover-shadow transition">
@@ -413,23 +446,16 @@
                         <div style="font-size: 3em; margin-bottom: 15px;">🎾</div>
                         <h4 class="card-title">Esercizio 1: PING</h4>
                         <p class="card-text text-muted">Configura una connessione seriale di base e osserva il comportamento dei LED e dei dati.</p>
-                        <div class="alert alert-warning py-2 small">
-                            ❓ Domanda chiave: Chi comanda?
-                        </div>
                         <a href="lab_ping.html" class="btn btn-primary btn-lg w-100 mt-2">Apri Esercizio 1 &raquo;</a>
                     </div>
                 </div>
             </div>
-
             <div class="col-md-6 mb-4">
                 <div class="card h-100 shadow-sm">
                     <div class="card-body text-center">
                         <div style="font-size: 3em; margin-bottom: 15px;">🔄</div>
                         <h4 class="card-title">Esercizio 2: Client/Server</h4>
                         <p class="card-text text-muted">Risolvi l'ambiguità assegnando ruoli precisi: uno parla (Sender), l'altro ascolta (Receiver).</p>
-                        <div class="alert alert-success py-2 small">
-                            ✅ Soluzione strutturata
-                        </div>
                         <a href="lab_cs.html" class="btn btn-outline-success btn-lg w-100 mt-2">Apri Esercizio 2 &raquo;</a>
                     </div>
                 </div>
@@ -463,8 +489,7 @@
             if(btn.getAttribute('onclick').includes(tabId)) btn.classList.add('active');
         });
     }
-    // Apre la Tab 3 di default per farti vedere subito la correzione
-    // openTab('tab3'); 
+    // openTab('tab3'); // Decommenta se vuoi testare subito la tab 3
     
     function mostraSorgente() {
         let html = document.documentElement.outerHTML;
