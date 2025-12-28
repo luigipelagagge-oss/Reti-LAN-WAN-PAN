@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab 2: Client/Server</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { padding: 40px; background-color: #f8f9fa; }
+        .lab-container { max-width: 900px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+        .code-box { background: #1e1e1e; color: #d4d4d4; padding: 15px; border-radius: 5px; font-family: monospace; font-size: 0.9em; height: 100%;}
+    </style>
+</head>
+<body>
+    <div class="lab-container">
+        <a href="index.html" class="btn btn-outline-secondary mb-3">&larr; Torna alla Home</a>
+        
+        <h1 class="text-success mb-4">Esperimento 2: Sender & Receiver</h1>
+        
+        <p class="lead">Per risolvere il caos del primo esperimento, introduciamo i <strong>Ruoli</strong>.</p>
+
+        <div class="row align-items-center mb-5">
+            <div class="col-md-6">
+                <img src="image_eee02e.png" class="img-fluid" alt="Schema Logico">
+            </div>
+            <div class="col-md-6">
+                <div class="alert alert-success">
+                    <strong>Concetto Chiave:</strong>
+                    <ul>
+                        <li><strong>Sender (Client):</strong> Invia i dati e basta.</li>
+                        <li><strong>Receiver (Server):</strong> Sta in ascolto. Agisce (accende il LED) SOLO se riceve un comando valido.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <h5 class="text-primary">Codice A: Sender</h5>
+                <div class="code-box">
+void setup() {
+  Serial.begin(9600);
+}
+
+void loop() {
+  // Invia un messaggio ogni secondo
+  Serial.println("Ciao!");
+  delay(1000);
+}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h5 class="text-success">Codice B: Receiver</h5>
+                <div class="code-box">
+void setup() {
+  Serial.begin(9600);
+  pinMode(13, OUTPUT);
+}
+
+void loop() {
+  // Ascolta: C'è posta per me?
+  if (Serial.available() > 0) {
+    // Leggi e svuota il buffer
+    String msg = Serial.readString();
+    
+    // Feedback Visivo
+    digitalWrite(13, HIGH);
+    delay(200);
+    digitalWrite(13, LOW);
+  }
+}
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-5 p-4 bg-light rounded border">
+            <h4>🧪 Cosa fare ora:</h4>
+            <ol>
+                <li>Torna su Tinkercad.</li>
+                <li>Modifica il codice dell'Arduino sinistro con il codice <strong>Sender</strong>.</li>
+                <li>Modifica il codice dell'Arduino destro con il codice <strong>Receiver</strong>.</li>
+                <li>Avvia: vedrai che il LED di destra lampeggia <em>esattamente</em> a ritmo col messaggio inviato da sinistra!</li>
+            </ol>
+        </div>
+    </div>
+</body>
+</html>
