@@ -29,18 +29,28 @@
         h1 { color: #3f2b96; text-align: center; margin-bottom: 10px; font-weight: bold; }
         p.intro { text-align: center; font-size: 1.2em; color: #666; margin-bottom: 40px; }
 
+        /* Stile delle Card come Pulsanti */
         .topology-card {
             background: #f8f9fa;
             border-left: 5px solid #3f2b96;
             border-radius: 10px;
             padding: 20px;
-            margin-bottom: 20px;
-            transition: transform 0.2s;
-            height: 100%; /* Altezza uniforme nelle colonne */
+            margin-bottom: 0; /* Gestito dal wrapper */
+            transition: all 0.3s ease;
+            height: 100%; /* Altezza uniforme */
+            position: relative;
         }
-        .topology-card:hover { transform: translateX(5px); background: #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
         
-        .topo-title { font-weight: bold; color: #d63384; font-size: 1.1em; text-transform: uppercase; }
+        /* Effetto Hover su tutto il blocco */
+        .card-link:hover .topology-card {
+            transform: translateY(-5px);
+            background: #fff;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            border-left-color: #d63384 !important; /* Cambia colore bordo al passaggio */
+        }
+
+        .topo-title { font-weight: bold; color: #555; font-size: 1.1em; text-transform: uppercase; margin-bottom: 10px; }
+        .card-link:hover .topo-title { color: #d63384 !important; } /* Il titolo si colora all'hover */
         
         .img-main {
             display: block;
@@ -60,21 +70,31 @@
             font-weight: bold;
             display: inline-block;
             margin-bottom: 20px;
+            transition: 0.3s;
         }
-        .btn-back:hover { background-color: #2a1b6e; color: white; }
+        .btn-back:hover { background-color: #2a1b6e; color: white; transform: translateX(-5px); }
 
-        /* Stile speciale per Fully Connected */
-        .special-box {
-            background-color: #fff3cd;
-            border-color: #ffc107;
-        }
-
-        /* Link intero sulla card */
+        /* Link che avvolge la card */
         .card-link {
             text-decoration: none;
             color: inherit;
             display: block;
             margin-bottom: 20px;
+            height: 100%; /* Per allineare le card nella stessa riga */
+        }
+
+        .wiki-hint {
+            font-size: 0.8em;
+            color: #999;
+            margin-top: 10px;
+            display: block;
+            font-style: italic;
+        }
+        
+        /* Stile speciale per Fully Connected */
+        .special-box {
+            background-color: #fff3cd;
+            border-color: #ffc107;
         }
     </style>
 </head>
@@ -86,71 +106,83 @@
     <h1>Topologie di Rete</h1>
     <p class="intro">
         La "Topologia" è la mappa geometrica della rete.<br>
-        Indica come i nodi sono collegati fisicamente (cavi) o logicamente (flusso dati).
+        Clicca su ogni scheda per approfondire su <strong>Wikipedia</strong> 🔗
     </p>
 
     <img src="Topologia-reti-informatiche.png" alt="Schema riassuntivo Topologie" class="img-main">
 
-    <div class="row">
+    <div class="row align-items-stretch">
         <div class="col-md-6">
             
-            <a href="https://it.wikipedia.org/wiki/Topologia_di_rete#Topologia_lineare_aperta" target="_blank" class="card-link" title="Vedi su Wikipedia">
+            <a href="https://it.wikipedia.org/wiki/Topologia_di_rete#Topologia_lineare_aperta" target="_blank" class="card-link">
                 <div class="topology-card" style="border-left-color: #0dcaf0; background: #f2fbff;">
-                    <div class="topo-title" style="color: #0dcaf0;">1. Lineare Aperta (Daisy-chain) 🔗</div>
-                    <p>Nota in inglese come <strong>Daisy-chain</strong> (catena di margherite).</p>
-                    <p>È la connessione più semplice: un filo diretto che collega i dispositivi in serie, uno dopo l'altro.</p>
-                    <small class="text-muted">➡️ Clicca per leggere su Wikipedia</small>
+                    <div class="topo-title" style="color: #0dcaf0;">1. Lineare Aperta 🔗</div>
+                    <p>Nota come <strong>Daisy-chain</strong>.</p>
+                    <p>È la connessione più semplice: un filo diretto tra dispositivi in serie.</p>
+                    <span class="wiki-hint">Leggi su Wikipedia ↗</span>
                 </div>
             </a>
 
-            <div class="topology-card">
-                <div class="topo-title">2. A Bus (Bus)</div>
-                <p>Tutti i computer sono collegati a un <strong>singolo cavo centrale</strong> (dorsale).<br>
-                <em>Pro:</em> Economica.<br>
-                <em>Contro:</em> Se si rompe il cavo principale, l'intera rete si ferma.</p>
-            </div>
+            <a href="https://it.wikipedia.org/wiki/Topologia_di_rete#Topologia_a_bus" target="_blank" class="card-link">
+                <div class="topology-card">
+                    <div class="topo-title">2. A Bus 🔗</div>
+                    <p>Tutti i computer sono collegati a un <strong>singolo cavo centrale</strong> (dorsale).</p>
+                    <p><em>Contro:</em> Se si rompe il cavo principale, tutto si ferma.</p>
+                    <span class="wiki-hint">Leggi su Wikipedia ↗</span>
+                </div>
+            </a>
 
-            <div class="topology-card">
-                <div class="topo-title">3. Ad Anello (Ring)</div>
-                <p>I computer sono collegati in un cerchio chiuso. I dati viaggiano in una sola direzione (come una staffetta) passando da un nodo all'altro finché non trovano il destinatario.</p>
-            </div>
+            <a href="https://it.wikipedia.org/wiki/Topologia_di_rete#Topologia_ad_anello" target="_blank" class="card-link">
+                <div class="topology-card">
+                    <div class="topo-title">3. Ad Anello (Ring) 🔗</div>
+                    <p>I computer sono in un cerchio chiuso. I dati passano da un nodo all'altro come una staffetta.</p>
+                    <span class="wiki-hint">Leggi su Wikipedia ↗</span>
+                </div>
+            </a>
         </div>
 
         <div class="col-md-6">
-            <div class="topology-card">
-                <div class="topo-title">4. A Stella (Star)</div>
-                <p>È la più diffusa oggi (es. il tuo Wi-Fi o l'ufficio). Tutti i dispositivi sono collegati a un <strong>centro stella</strong> (Switch o Hub). Se si rompe un cavo, si ferma solo quel PC.</p>
-            </div>
+            
+            <a href="https://it.wikipedia.org/wiki/Topologia_di_rete#Topologia_a_stella" target="_blank" class="card-link">
+                <div class="topology-card">
+                    <div class="topo-title">4. A Stella (Star) 🔗</div>
+                    <p>Tutti i dispositivi sono collegati a un <strong>centro stella</strong> (Switch). Se si rompe un cavo, si ferma solo quel PC.</p>
+                    <span class="wiki-hint">Leggi su Wikipedia ↗</span>
+                </div>
+            </a>
 
-            <div class="topology-card">
-                <div class="topo-title">5. Ad Albero (Tree)</div>
-                <p>È una struttura gerarchica, come un albero genealogico o una "Stella di Stelle". Un nodo radice si collega ad altri nodi intermedi.</p>
-            </div>
+            <a href="https://it.wikipedia.org/wiki/Topologia_di_rete#Topologia_ad_albero" target="_blank" class="card-link">
+                <div class="topology-card">
+                    <div class="topo-title">5. Ad Albero (Tree) 🔗</div>
+                    <p>Struttura gerarchica ("Stella di Stelle"). Un nodo radice controlla nodi intermedi.</p>
+                    <span class="wiki-hint">Leggi su Wikipedia ↗</span>
+                </div>
+            </a>
 
-            <div class="topology-card" style="border-left-color: #0d6efd; background-color: #f0f7ff;">
-                <div class="topo-title" style="color: #0d6efd;">6. A Maglia (Mesh)</div>
-                <p>Ogni nodo ha più strade possibili. Se un cavo si rompe, i dati prendono un percorso alternativo.</p>
-                <p><strong>L'Esempio Reale: INTERNET 🌍</strong><br>
-                Internet è la "Rete a Maglia" più grande del mondo. È stata progettata proprio per non spegnersi mai.</p>
-            </div>
+            <a href="https://it.wikipedia.org/wiki/Topologia_di_rete#Topologia_a_maglia" target="_blank" class="card-link">
+                <div class="topology-card" style="border-left-color: #0d6efd; background-color: #f0f7ff;">
+                    <div class="topo-title" style="color: #0d6efd;">6. A Maglia (Mesh) 🔗</div>
+                    <p><strong>Esempio: INTERNET 🌍</strong></p>
+                    <p>Ogni nodo ha più strade. Se un cavo si rompe, i dati ne usano un altro.</p>
+                    <span class="wiki-hint">Leggi su Wikipedia ↗</span>
+                </div>
+            </a>
         </div>
     </div>
 
-    <div class="topology-card special-box mt-4">
-        <div class="topo-title" style="color: #856404;">🏆 Il caso estremo: Fully Connected (Totalmente Connessa)</div>
-        <p>
-            È una variante della Mesh portata all'estremo: <strong>OGNI dispositivo è collegato direttamente a TUTTI gli altri</strong>.
-        </p>
-        <p>A differenza di Internet (che è una maglia parziale), qui non esiste il concetto di "instradamento": hai un cavo diretto per tutti.</p>
-        <ul>
-            <li><strong>Affidabilità:</strong> Assoluta.</li>
-            <li><strong>Costo:</strong> Insostenibile su larga scala.</li>
-        </ul>
-        <hr>
-        <p><strong>Dove si usa?</strong><br>
-            Solo in sistemi piccoli e critici come <strong>Reattori Nucleari</strong> o <strong>Centri di Comando Missilistici</strong>, dove il costo non conta ma la sicurezza è tutto.
-        </p>
-    </div>
+    <a href="https://it.wikipedia.org/wiki/Topologia_di_rete#Topologia_completamente_connessa" target="_blank" class="card-link mt-4">
+        <div class="topology-card special-box">
+            <div class="topo-title" style="color: #856404;">🏆 Fully Connected (Totale) 🔗</div>
+            <p>
+                Variante estrema della Mesh: <strong>OGNI dispositivo è collegato a TUTTI gli altri</strong>.
+            </p>
+            <ul>
+                <li><strong>Affidabilità:</strong> Massima (usata per Nucleare/Militare).</li>
+                <li><strong>Costo:</strong> Altissimo per l'enorme numero di cavi.</li>
+            </ul>
+            <span class="wiki-hint" style="color: #856404;">Approfondisci su Wikipedia ↗</span>
+        </div>
+    </a>
 
 </div>
 
