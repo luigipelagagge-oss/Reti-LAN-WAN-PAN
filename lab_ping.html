@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab 1: PING</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { padding: 40px; background-color: #f8f9fa; }
+        .lab-container { max-width: 800px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+        .code-box { background: #222; color: #fff; padding: 15px; border-radius: 5px; font-family: monospace; }
+    </style>
+</head>
+<body>
+    <div class="lab-container">
+        <a href="index.html" class="btn btn-outline-secondary mb-3">&larr; Torna alla Home</a>
+        
+        <h1 class="text-primary mb-4">Esperimento 1: Il PING</h1>
+        
+        <div class="alert alert-info">
+            <strong>Obiettivo:</strong> Collegare due Arduino e verificare se il segnale passa.
+        </div>
+
+        <h3>1. Il Cablaggio</h3>
+        <p>Collega i due Arduino su Tinkercad seguendo questo schema realistico:</p>
+        <img src="schema_serial_TINKERCAD.png" class="img-fluid border rounded mb-4" alt="Schema Tinkercad">
+
+        <h3>2. Il Codice (Uguale per entrambi)</h3>
+        <div class="code-box">
+void setup() {
+  pinMode(LED_BUILTIN, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  digitalWrite(LED_BUILTIN, HIGH);
+  delay(1000);
+  digitalWrite(LED_BUILTIN, LOW);
+  delay(1000);
+  Serial.println("PING");
+  delay(1000);
+}
+        </div>
+
+        <div class="text-center my-5">
+            <a href="https://www.tinkercad.com/things/fhMsgoH6gVy-collegamentoseriale1ping?sharecode=3rEy_wTWuBa-7ZUiuGaFoyoiQl48XJ2yLZBfansKMKw" target="_blank" class="btn btn-warning btn-lg fw-bold px-5">
+                🚀 Avvia Simulazione su Tinkercad
+            </a>
+        </div>
+
+        <div class="card bg-light border-warning">
+            <div class="card-body">
+                <h5 class="card-title">🤔 Riflessione</h5>
+                <p>Osserva bene: entrambi i LED lampeggiano e entrambi scrivono "PING".</p>
+                <p><strong>Il problema:</strong> Se tutti e due parlan contemporaneamente, chi sta ascoltando? Non c'è distinzione di ruolo. Questo crea confusione ("collisione" logica) in reti più complesse.</p>
+            </div>
+        </div>
+        
+        <div class="text-end mt-4">
+            <a href="lab_cs.html" class="btn btn-success">Vai alla Soluzione (Lab 2) &raquo;</a>
+        </div>
+    </div>
+</body>
+</html>
