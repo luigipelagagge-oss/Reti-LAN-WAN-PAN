@@ -36,6 +36,7 @@
             padding: 20px;
             margin-bottom: 20px;
             transition: transform 0.2s;
+            height: 100%; /* Altezza uniforme nelle colonne */
         }
         .topology-card:hover { transform: translateX(5px); background: #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
         
@@ -67,6 +68,14 @@
             background-color: #fff3cd;
             border-color: #ffc107;
         }
+
+        /* Link intero sulla card */
+        .card-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
@@ -84,10 +93,15 @@
 
     <div class="row">
         <div class="col-md-6">
-            <div class="topology-card">
-                <div class="topo-title">1. Lineare (Point-to-Point)</div>
-                <p>È la connessione più semplice: un filo diretto tra due dispositivi. È la base di tutte le comunicazioni.</p>
-            </div>
+            
+            <a href="https://it.wikipedia.org/wiki/Topologia_di_rete#Topologia_lineare_aperta" target="_blank" class="card-link" title="Vedi su Wikipedia">
+                <div class="topology-card" style="border-left-color: #0dcaf0; background: #f2fbff;">
+                    <div class="topo-title" style="color: #0dcaf0;">1. Lineare Aperta (Daisy-chain) 🔗</div>
+                    <p>Nota in inglese come <strong>Daisy-chain</strong> (catena di margherite).</p>
+                    <p>È la connessione più semplice: un filo diretto che collega i dispositivi in serie, uno dopo l'altro.</p>
+                    <small class="text-muted">➡️ Clicca per leggere su Wikipedia</small>
+                </div>
+            </a>
 
             <div class="topology-card">
                 <div class="topo-title">2. A Bus (Bus)</div>
@@ -117,7 +131,7 @@
                 <div class="topo-title" style="color: #0d6efd;">6. A Maglia (Mesh)</div>
                 <p>Ogni nodo ha più strade possibili. Se un cavo si rompe, i dati prendono un percorso alternativo.</p>
                 <p><strong>L'Esempio Reale: INTERNET 🌍</strong><br>
-                Internet è la "Rete a Maglia" più grande del mondo. È stata progettata proprio per non spegnersi mai, anche se intere parti della rete dovessero guastarsi.</p>
+                Internet è la "Rete a Maglia" più grande del mondo. È stata progettata proprio per non spegnersi mai.</p>
             </div>
         </div>
     </div>
