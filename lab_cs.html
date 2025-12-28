@@ -8,11 +8,25 @@
     <style>
         /* Stili locali per la lezione */
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 1200px; margin: 0 auto; padding: 20px; }
-        h1, h2, h3 { color: #2c3e50; }
+        h1, h2, h3, h4, h5 { color: #2c3e50; }
         .container { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-        .nav-btn { background: #6c757d; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px; display: inline-block; margin-bottom: 20px; }
+        .nav-btn { background: #6c757d; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px; display: inline-block; margin-bottom: 20px; transition: background 0.3s; }
         .nav-btn:hover { background: #5a6268; }
         img { max-width: 100%; height: auto; }
+        
+        /* Stile Bottone Soluzione */
+        .btn-soluzione {
+            background-color: #ffc107; color: #000; border: none; padding: 12px 24px; 
+            font-size: 1.1em; font-weight: bold; cursor: pointer; border-radius: 30px; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2); transition: transform 0.2s;
+        }
+        .btn-soluzione:hover { transform: scale(1.05); background-color: #ffca2c; }
+        
+        /* Animazione comparsa */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 <body>
@@ -50,7 +64,7 @@ void setup() {
 void loop() {
   // Invia "ciao" ogni secondo
   Serial.println("ciao");
-  delay(1000);
+  delay(1000); // 1 secondo (o 2000 per rallentare)
 }
 </pre>
                 </div>
@@ -86,9 +100,100 @@ void loop() {
                     </div>
                 </div>
             </div>
-
         </div>
-        <div style="height: 50px;"></div>
+
+        <div style="margin-top: 50px; text-align: center; padding-top: 20px; border-top: 1px dashed #ccc;">
+            
+            <button onclick="document.getElementById('soluzioneBox').style.display = (document.getElementById('soluzioneBox').style.display === 'none') ? 'block' : 'none';" 
+                    class="btn-soluzione">
+                👁️ Mostra Soluzione, Output e Simulazione
+            </button>
+
+            <div id="soluzioneBox" style="display: none; margin-top: 30px; text-align: left; animation: fadeIn 0.5s;">
+                
+                <div style="background-color: #e7f1ff; border: 2px solid #0d6efd; padding: 20px; border-radius: 10px; margin-bottom: 30px; text-align: center;">
+                    <h4 style="color: #0d6efd; margin-top: 0;">🚀 Verifica su Tinkercad</h4>
+                    <p>Hai dubbi sul circuito o sul codice? Guarda la simulazione funzionante.</p>
+                    <a href="https://www.tinkercad.com/things/363ul1V5EKu-collegamentoseriale2pingpong?sharecode=RrlQjYR765f2VDB7F_MYtOOU_XZL_Y551m5zwoAZ9rE" 
+                       target="_blank" 
+                       style="background-color: #0d6efd; color: white; text-decoration: none; padding: 10px 20px; border-radius: 5px; font-weight: bold; display: inline-block;">
+                       Apri Progetto Tinkercad
+                    </a>
+                </div>
+
+                <h4 style="border-left: 5px solid #6610f2; padding-left: 10px; color: #333;">📊 Analisi dei Monitor Seriali</h4>
+                <p>Ecco cosa succede in tempo reale. A sinistra il Sender continua a bussare ("ciao"), a destra il Receiver conta e risponde.</p>
+                
+                <div style="display: flex; flex-wrap: wrap; gap: 20px;">
+                    
+                    <div style="flex: 1; min-width: 250px;">
+                        <h5 style="background: #333; color: white; padding: 5px 10px; margin: 0; border-radius: 5px 5px 0 0;">Monitor Serial A (Sender)</h5>
+                        <div style="background: black; color: #00ff00; font-family: 'Courier New', monospace; padding: 15px; height: 350px; overflow-y: auto; border-radius: 0 0 5px 5px; font-size: 0.9em;">
+                            ciao<br>
+                            ciao<br>
+                            ciao<br>
+                            ciao<br>
+                            ciao<br>
+                            ciao<br>
+                            ciao<br>
+                            ciao<br>
+                            ciao<br>
+                            ciao<br>
+                            ciao<br>
+                            ciao<br>
+                            ciao<br>
+                            ciao<br>
+                            ciao<br>
+                            ciao<br>
+                            ciao<br>
+                            ciao<br>
+                            ciao<br>
+                            ciao<br>
+                            ciao<br>
+                            <span style="color: gray;">// Continua all'infinito...</span>
+                        </div>
+                    </div>
+
+                    <div style="flex: 1; min-width: 250px;">
+                        <h5 style="background: #333; color: white; padding: 5px 10px; margin: 0; border-radius: 5px 5px 0 0;">Monitor Serial B (Receiver)</h5>
+                        <div style="background: black; color: #00ff00; font-family: 'Courier New', monospace; padding: 15px; height: 350px; overflow-y: auto; border-radius: 0 0 5px 5px; font-size: 0.9em;">
+                            <span style="color: gray;">// In attesa...</span><br>
+                            Grazie del messaggio 1<br>
+                            Grazie del messaggio 2<br>
+                            Grazie del messaggio 3<br>
+                            Grazie del messaggio 4<br>
+                            Grazie del messaggio 5<br>
+                            Grazie del messaggio 6<br>
+                            Grazie del messaggio 7<br>
+                            Grazie del messaggio 8<br>
+                            Grazie del messaggio 9<br>
+                            <br>
+                            <strong style="color: #ff00ff; border: 1px dashed #ff00ff; padding: 4px;">HO CAPITO</strong><br>
+                            <br>
+                            <span style="color: gray;">// Il contatore supera 10.<br>// Nessuna ulteriore risposta.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 40px; text-align: center;">
+                    <p style="font-weight: bold; color: #555;">Hai collegato bene i cavi? Ricontrolla:</p>
+                    <img src="schema_serial_TINKERCAD.png" alt="Schema Seriale Ripetuto" style="max-width: 80%; height: auto; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                </div>
+
+            </div>
+        </div>
+
+        <hr style="margin: 50px 0;">
+
+        <div style="text-align: center; margin-bottom: 40px;">
+            <a href="index.html" class="nav-btn" style="margin: 0 10px; background-color: #6c757d;">
+                🏠 Torna alla Mappa
+            </a>
+            
+            <a href="#" class="nav-btn" style="margin: 0 10px; background-color: #17a2b8;">
+                ⬆️ Torna Su
+            </a>
+        </div>
 
     </div>
 
