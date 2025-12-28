@@ -149,6 +149,19 @@
         .code-block { background: #2d2d2d; color: #ccc; padding: 20px; border-radius: 8px; font-family: 'Consolas', monospace; overflow-x: auto; margin: 15px 0; font-size: 0.9em; }
         .keyword { color: #cc99cd; } .string { color: #7ec699; } .comment { color: #999; font-style: italic; }
 
+        /* --- EFFETTO HOVER SULL'IMMAGINE PAN --- */
+        .img-hover-effect {
+            transition: all 0.3s ease; /* Animazione fluida */
+            cursor: pointer; /* Cambia il mouse in manina */
+            border: 2px solid transparent; /* Bordo invisibile di base */
+        }
+        
+        .img-hover-effect:hover {
+            transform: scale(1.03); /* Ingrandisce leggermente */
+            box-shadow: 0 10px 25px rgba(118, 75, 162, 0.4); /* Ombra viola luminosa */
+            border-color: #d63384; /* Bordo colorato */
+        }
+
         .fab-source {
             position: fixed; bottom: 30px; right: 30px;
             background: #212529; color: white; padding: 15px 25px;
@@ -251,7 +264,10 @@
                 </div>
             </div>
             <div class="col-md-5 text-center">
-                <img src="pan_network.png" alt="Schema Personal Area Network" class="img-fluid-custom">
+                <a href="https://itrelease.com/2018/07/advantages-and-disadvantages-of-personal-area-network-pan/" target="_blank" title="Clicca per approfondire la PAN">
+                    <img src="pan_network.png" alt="Schema Personal Area Network" class="img-fluid-custom img-hover-effect">
+                </a>
+                <p class="text-muted small mt-2">👆 Clicca sull'immagine per approfondire</p>
             </div>
         </div>
 
