@@ -175,6 +175,14 @@
             padding: 2px 5px;
             border-radius: 4px;
         }
+        
+        /* Immagine responsive */
+        .img-fluid-custom {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
 
         /* STILE CODICE */
         .code-block {
@@ -287,15 +295,12 @@
                 <div style="background: white; padding: 20px; border-radius: 50%; box-shadow: 0 10px 30px rgba(0,0,0,0.1); display: inline-block;">
                     <svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
                         <circle cx="100" cy="100" r="90" fill="#f8f9fa" stroke="#dc3545" stroke-width="4" stroke-dasharray="10 5" />
-                        
                         <rect x="50" y="50" width="100" height="70" rx="5" fill="#343a40" />
                         <rect x="55" y="55" width="90" height="60" fill="#667eea" />
                         <rect x="90" y="120" width="20" height="20" fill="#343a40" />
                         <rect x="70" y="140" width="60" height="10" rx="2" fill="#343a40" />
-
                         <rect x="85" y="75" width="30" height="25" rx="3" fill="#ffc107" />
                         <path d="M 90 75 L 90 65 A 10 10 0 0 1 110 65 L 110 75" fill="none" stroke="#ffc107" stroke-width="3" />
-
                         <path d="M 160 100 L 180 120" stroke="#dc3545" stroke-width="5" stroke-linecap="round" />
                         <path d="M 180 100 L 160 120" stroke="#dc3545" stroke-width="5" stroke-linecap="round" />
                         <text x="145" y="150" font-family="Arial" font-size="12" fill="#dc3545" font-weight="bold">NO NET</text>
@@ -307,42 +312,55 @@
     </div>
 
     <div id="tab2" class="tab-content">
-        <h2>La Rete Domestica (SOHO)</h2>
-        <p class="lead">SOHO sta per <strong>Small Office / Home Office</strong>. Oggi una casa è molto più di semplici PC collegati.</p>
-
-        <div class="card-box">
-            <h3>1. Il Cuore della Casa: Il "Modem-Router"</h3>
-            <p>Spesso chiamiamo la scatola dell'operatore internet semplicemente "Modem", ma in realtà è un dispositivo <strong>4-in-1</strong>:</p>
-            <ul class="list-group list-group-flush" style="background: transparent;">
-                <li>📞 <strong>Modem:</strong> Traduce il segnale che arriva dalla strada (Fibra/Rame).</li>
-                <li>🚦 <strong>Router:</strong> Indirizza il traffico intelligente (IP) verso Internet.</li>
-                <li>🔀 <strong>Switch:</strong> Gestisce le porte fisiche (LAN) dove attacchi i cavi.</li>
-                <li>📡 <strong>Access Point:</strong> Genera le onde radio per il WiFi.</li>
-            </ul>
+        <h2>La Rete Domestica e la P.A.N.</h2>
+        
+        <div class="card-box" style="border-left-color: #0dcaf0; background-color: #f0fbff;">
+            <h4 style="color: #0aa2c0; margin-top:0;">🏠 Cos'è "SOHO"? (Small Office / Home Office)</h4>
+            <p>
+                È un acronimo che indica i "Piccoli Uffici" o gli "Uffici in Casa". <br>
+                Oggi le reti domestiche non servono più solo per guardare film, ma sono veri ambienti di lavoro ibridi dove stampanti, PC aziendali e console convivono.
+            </p>
         </div>
 
-        <div class="row mt-4">
-            <div class="col-md-6 mb-3">
-                <div class="p-3 border rounded bg-white h-100 shadow-sm">
-                    <h4 style="color: #d63384;">🚀 Velocità: Fibra & WiFi 6</h4>
-                    <p>Le reti moderne devono essere veloci e stabili.</p>
-                    <ul>
-                        <li><strong>FTTH (Fiber to the Home):</strong> La fibra ottica arriva fin dentro casa.</li>
-                        <li><strong>WiFi Mesh:</strong> Più "satelliti" per coprire tutta la casa.</li>
-                    </ul>
+        <hr style="margin: 40px 0; opacity: 0.2;">
+
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <h3 style="color: #d63384;">1. La P.A.N. (Personal Area Network)</h3>
+                <p>Prima di collegare palazzi o città (LAN e WAN), la rete inizia intorno a <strong>TE</strong>.</p>
+                <p>La <strong>PAN</strong> è la rete più piccola in assoluto. Copre un raggio di pochi metri, tipicamente lo spazio di una scrivania o della persona stessa.</p>
+                <ul>
+                    <li><strong>Raggio:</strong> Pochi metri (es. Bluetooth).</li>
+                    <li><strong>Dispositivi:</strong> Smartphone, Auricolari, Smartwatch, Mouse Wireless.</li>
+                    <li><strong>Scopo:</strong> Eliminare i cavi intorno all'utente.</li>
+                </ul>
+                
+                <div style="margin-top: 20px;">
+                    <a href="https://itrelease.com/2018/07/advantages-and-disadvantages-of-personal-area-network-pan/" 
+                       target="_blank" 
+                       class="btn btn-outline-secondary btn-sm">
+                       🔗 Approfondimento: Vantaggi e Svantaggi PAN (in Inglese)
+                    </a>
                 </div>
             </div>
-            <div class="col-md-6 mb-3">
-                <div class="p-3 border rounded bg-white h-100 shadow-sm">
-                    <h4 style="color: #d63384;">🏠 Smart Home (IoT)</h4>
-                    <p>Non colleghiamo più solo computer (Internet of Things):</p>
-                    <ul>
-                        <li>Assistenti Vocali (Alexa, Google).</li>
-                        <li>Lampadine e Prese Smart.</li>
-                        <li>Videocamere, TV e Frigoriferi connessi.</li>
-                    </ul>
-                </div>
+            
+            <div class="col-md-6 text-center">
+                <img src="pan_network.png" alt="Schema Personal Area Network" class="img-fluid-custom">
+                <p class="text-muted small mt-2">Esempio di dispositivi connessi in una PAN</p>
             </div>
+        </div>
+
+        <hr style="margin: 40px 0; opacity: 0.2;">
+
+        <div class="card-box">
+            <h3>2. Il Cuore della SOHO: Il "Modem-Router"</h3>
+            <p>Per connettere la nostra PAN a Internet, usiamo un dispositivo <strong>4-in-1</strong>:</p>
+            <ul class="list-group list-group-flush" style="background: transparent;">
+                <li>📞 <strong>Modem:</strong> Traduce il segnale (Fibra/Rame).</li>
+                <li>🚦 <strong>Router:</strong> Indirizza il traffico IP.</li>
+                <li>🔀 <strong>Switch:</strong> Gestisce le porte cavo (LAN).</li>
+                <li>📡 <strong>Access Point:</strong> Genera il WiFi.</li>
+            </ul>
         </div>
     </div>
 
@@ -407,7 +425,7 @@
                 <li><strong>🏠 Home Page</strong>
                     <ul>
                         <li class="map-link" onclick="openTab('tab1')">Concetto di Stand-Alone</li>
-                        <li class="map-link" onclick="openTab('tab2')">Rete Domestica (IoT & Fibra)</li>
+                        <li class="map-link" onclick="openTab('tab2')">Rete Domestica & PAN</li>
                     </ul>
                 </li>
                 <li><strong>📚 Teoria</strong>
@@ -485,7 +503,25 @@
     }
 
     function mostraSorgente() {
-        document.getElementById('sourceCodeDisplay').textContent = document.documentElement.outerHTML;
+        // 1. Prendi tutto il codice della pagina
+        let htmlPulito = document.documentElement.outerHTML;
+
+        // 2. RIMUOVI LA SPAZZATURA DELLE ESTENSIONI (Filtri)
+        // Toglie i tag <plasmo-csui> (quelli che vedevi prima)
+        htmlPulito = htmlPulito.replace(/<plasmo-csui[\s\S]*?<\/plasmo-csui>/gi, "");
+        
+        // Toglie gli script iniettati dalle estensioni di Chrome
+        htmlPulito = htmlPulito.replace(/<script[^>]*chrome-extension[\s\S]*?<\/script>/gi, "");
+        
+        // Toglie stili sporchi iniettati (es. --brisk-axd)
+        htmlPulito = htmlPulito.replace(/<style[^>]*>[\s\S]*?--brisk[\s\S]*?<\/style>/gi, "");
+
+        // Toglie eventuali righe vuote lasciate dalla rimozione
+        htmlPulito = htmlPulito.replace(/^\s*[\r\n]/gm, "");
+
+        // 3. Mostra il risultato pulito
+        document.getElementById('sourceCodeDisplay').textContent = htmlPulito;
+        
         const myModal = new bootstrap.Modal(document.getElementById('sourceModal'));
         myModal.show();
     }
