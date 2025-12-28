@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 3: Monitoraggio Climatico Remoto</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background: linear-gradient(135deg, #e0f7fa 0%, #ffffff 100%); padding: 20px; font-family: 'Segoe UI', sans-serif; }
+        .container-custom { background: white; border-radius: 15px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); max-width: 1000px; margin: 0 auto; }
+        .arduino-code { background: #272822; color: #f8f8f2; padding: 15px; border-radius: 8px; font-family: 'Consolas', monospace; overflow-x: auto; }
+        .keyword { color: #66d9ef; } .type { color: #f92672; } .function { color: #a6e22e; } .comment { color: #75715e; }
+        .lcd-display {
+            background-color: #9ea71c;
+            color: black;
+            font-family: 'Courier New', monospace;
+            padding: 10px;
+            border: 4px solid #555;
+            border-radius: 5px;
+            width: fit-content;
+            margin: 0 auto;
+            font-weight: bold;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
+        }
+        .component-icon { font-size: 2rem; margin-right: 10px; }
+        .nav-pills .nav-link.active { background-color: #17a2b8; }
+        .nav-pills .nav-link { color: #17a2b8; }
+        
+        /* Stile per l'alert finale (Cliffhanger) */
+        .alert-problem {
+            background-color: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 20px;
+            margin-top: 40px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container-custom">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <a href="index.html" class="btn btn-outline-secondary">← Torna alla Home</a>
+        <span class="badge bg-info text-dark">Settimana 2 - Lezione 3</span>
+    </div>
+
+    <header class="text-center mb-5">
+        <h1 class="text-info fw-bold">🌡️ Monitoraggio Climatico Remoto</h1>
+        <p class="lead">Dal semplice segnale alla trasmissione di dati telemetrici.</p>
+    </header>
+
+    <div class="row mb-5">
+        <div class="col-md-6">
+            <div class="card h-100 border-info">
+                <div class="card-header bg-info text-white fw-bold">Lo Scenario: "La Serra Remota"</div>
+                <div class="card-body">
+                    <p>Immagina di avere una serra delicata distante dalla Control Room.</p>
+                    <ul>
+                        <li><strong>Sender (Serra):</strong> Legge la temperatura costantemente.</li>
+                        <li><strong>Receiver (Control Room):</strong> Riceve il dato, lo mostra su un display e agisce automaticamente.</li>
+                    </ul>
+                    <hr>
+                    <strong>Logica di Automazione:</strong>
+                    <ul>
+                        <li>❄️ <strong>Freddo (< 5°C):</strong> Accendi LED BLU (Allarme gelo).</li>
+                        <li>🔥 <strong>Caldo (> 40°C):</strong> Accendi LED ROSSO e avvia VENTILATORE (Motore DC).</li>
+                        <li>✅ <strong>Normale:</strong> Tutto spento, monitoraggio attivo.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 d-flex align-items-center justify-content-center">
+            <div class="text-center">
+                <div class="lcd-display mb-2">
+                    TEMP: 42.5 C<br>
+                    ALLARME CALDO!
+                </div>
+                <p class="small text-muted">Simulazione del Visore in Control Room</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="mb-5">
+        <h3>🔌 Schema di Collegamento (Null Modem)</h3>
+        <p>Utilizziamo ancora la configurazione <strong>Null Modem</strong>: il cavo che "trasmette" (TX) da un lato deve entrare nel cavo che "riceve" (RX) dall'altro.</p>
+        
+        <div class="row text-center mt-4">
+            <div class="col-md-5 p-3 border rounded bg-light">
+                <h5>ARDUINO A (Sender/Serra)</h5>
+                <ul class="list-unstyled text-start mx-auto" style="max-width: 300px;">
+                    <li>🔌 <strong>5V & GND:</strong> Alim. breadboard</li>
+                    <li>🌡️ <strong>Sensore TMP36:</strong> Pin centrale su <strong>A0</strong></li>
+                    <li>📤 <strong>TX (Pin 1):</strong> Va al RX dell'altro Arduino</li>
+                    <li>📥 <strong>RX (Pin 1):</strong> Va al TX dell'altro Arduino</li>
+                    <li>⚖️ <strong>GND:</strong> Comune con l'altro Arduino</li>
+                </ul>
+            </div>
+            <div class="col-md-2 d-flex align-items-center justify-content-center">
+                <div class="fw-bold text-secondary" style="font-size: 2em;">↔️</div>
+            </div>
+            <div class="col-md-5 p-3 border rounded bg-light">
+                <h5>ARDUINO B (Receiver/Room)</h5>
+                <ul class="list-unstyled text-start mx-auto" style="max-width: 300px;">
+                    <li>📺 <strong>LCD (I2C o Standard):</strong> Pin 12, 11, 5, 4, 3, 2</li>
+                    <li>🔵 <strong>Led Blu:</strong> Pin 8</li>
+                    <li>🔴 <strong>Led Rosso:</strong> Pin 9</li>
+                    <li>💨 <strong>Motore DC:</strong> Pin 10 (Base Transistor)</li>
+                    <li>📥 <strong>RX (Pin 0):</strong> Riceve dal TX del Sender</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <h3>💻 Il Codice di Controllo</h3>
+    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="pills-sender-tab" data-bs-toggle="pill" data-bs-target="#pills-sender" type="button">1. Codice SENDER (Serra)</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-receiver-tab" data-bs-toggle="pill" data-bs-target="#pills-receiver" type="button">2. Codice RECEIVER (Room)</button>
+        </li>
+    </ul>
+
+    <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show active" id="pills-sender" role="tabpanel">
+            <div class="arduino-code">
+<pre>
+<span class="type">void</span> <span class="function">setup</span>() {
+  <span class="function">Serial</span>.<span class="function">begin</span>(9600); <span class="comment">// Apre la porta seriale</span>
+}
+
+<span class="type">void</span> <span class="function">loop</span>() {
+  <span class="comment">// 1. Leggi il valore grezzo dal sensore (0-1023)</span>
+  <span class="type">int</span> reading = <span class="function">analogRead</span>(A0);
+  
+  <span class="comment">// 2. Converti in Volts (Arduino lavora a 5V)</span>
+  <span class="type">float</span> voltage = reading * 5.0;
+  voltage /= 1024.0; 
+  
+  <span class="comment">// 3. Converti in Gradi Celsius (Specifico per TMP36)</span>
+  <span class="comment">// 10mV per grado, con offset di 500mV</span>
+  <span class="type">float</span> temperature = (voltage - 0.5) * 100;
+  
+  <span class="comment">// 4. Invia il dato via Seriale</span>
+  <span class="function">Serial</span>.<span class="function">println</span>(temperature);
+  
+  <span class="function">delay</span>(1000); <span class="comment">// Aspetta 1 secondo tra le letture</span>
+}
+</pre>
+            </div>
+            <p class="mt-2 text-muted small">Nota: Il Sender non prende decisioni. Si limita a leggere e trasmettere il dato grezzo.</p>
+        </div>
+
+        <div class="tab-pane fade" id="pills-receiver" role="tabpanel">
+            <div class="arduino-code">
+<pre>
+<span class="comment">#include &lt;LiquidCrystal.h&gt;</span>
+<span class="comment">// Inizializza LCD sui pin (RS, E, D4, D5, D6, D7)</span>
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
+
+<span class="type">const int</span> BLUE_LED = 8;
+<span class="type">const int</span> RED_LED = 9;
+<span class="type">const int</span> FAN_MOTOR = 10;
+
+<span class="type">void</span> <span class="function">setup</span>() {
+  <span class="function">Serial</span>.<span class="function">begin</span>(9600);
+  lcd.<span class="function">begin</span>(16, 2);
+  
+  <span class="function">pinMode</span>(BLUE_LED, OUTPUT);
+  <span class="function">pinMode</span>(RED_LED, OUTPUT);
+  <span class="function">pinMode</span>(FAN_MOTOR, OUTPUT);
+  
+  lcd.<span class="function">print</span>("In attesa...");
+}
+
+<span class="type">void</span> <span class="function">loop</span>() {
+  <span class="comment">// Verifica se ci sono dati sulla Serial</span>
+  <span class="keyword">if</span> (<span class="function">Serial</span>.<span class="function">available</span>() > 0) {
+    
+    <span class="comment">// Leggi il numero inviato (parse float)</span>
+    <span class="type">float</span> temp = <span class="function">Serial</span>.<span class="function">parseFloat</span>();
+    
+    <span class="comment">// Pulisci buffer rimanente</span>
+    <span class="keyword">while</span>(<span class="function">Serial</span>.<span class="function">available</span>()) <span class="function">Serial</span>.<span class="function">read</span>();
+
+    <span class="comment">// --- LOGICA DI CONTROLLO ---</span>
+    lcd.<span class="function">clear</span>();
+    lcd.<span class="function">setCursor</span>(0, 0);
+    lcd.<span class="function">print</span>("Temp: ");
+    lcd.<span class="function">print</span>(temp);
+    lcd.<span class="function">print</span>(" C");
+    
+    <span class="comment">// Reset uscite</span>
+    <span class="function">digitalWrite</span>(BLUE_LED, LOW);
+    <span class="function">digitalWrite</span>(RED_LED, LOW);
+    <span class="function">digitalWrite</span>(FAN_MOTOR, LOW);
+
+    <span class="keyword">if</span> (temp < 5.0) {
+      <span class="function">digitalWrite</span>(BLUE_LED, HIGH);
+      lcd.<span class="function">setCursor</span>(0, 1);
+      lcd.<span class="function">print</span>("ALLARME GELO!");
+    } 
+    <span class="keyword">else if</span> (temp > 40.0) {
+      <span class="function">digitalWrite</span>(RED_LED, HIGH);
+      <span class="function">digitalWrite</span>(FAN_MOTOR, HIGH); <span class="comment">// Avvia ventilatore</span>
+      lcd.<span class="function">setCursor</span>(0, 1);
+      lcd.<span class="function">print</span>("ALLARME CALDO!");
+    }
+    <span class="keyword">else</span> {
+      lcd.<span class="function">setCursor</span>(0, 1);
+      lcd.<span class="function">print</span>("Status: OK");
+    }
+  }
+}
+</pre>
+            </div>
+        </div>
+    </div>
+
+    <div class="alert-problem">
+        <h4 class="text-warning text-dark fw-bold">⚠️ Attenzione: Imprevisto sul campo!</h4>
+        <p>
+            Il sistema funziona perfettamente sul banco di laboratorio. <br>
+            Tuttavia, il cliente ci ha appena informato che la Serra si trova a <strong>350 metri</strong> di distanza dalla Control Room.
+        </p>
+        <p>
+            <strong>Il problema:</strong> Se proviamo a stendere 350 metri di cavo per il segnale seriale (TTL 0-5V), il segnale arriverà degradato. 
+            La resistenza del filo causerà una <em>caduta di tensione</em> e il "rumore elettrico" (interferenze) renderà i dati illeggibili.
+            Il display mostrerà caratteri strani o zero.
+        </p>
+        <p class="fw-bold">
+            Come possiamo trasportare un segnale preciso su lunghe distanze senza perdere dati?
+            Dobbiamo abbandonare la tensione e usare... la CORRENTE.
+        </p>
+        
+        <div class="text-end mt-3">
+            <a href="#" class="btn btn-dark disabled">Soluzione in arrivo...</a>
+            <a href="teoria_current_loop.html" class="btn btn-warning fw-bold shadow">🚀 Vai alla Soluzione: Il Loop di Corrente</a>
+        </div>
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
