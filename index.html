@@ -19,7 +19,7 @@
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             padding: 30px;
-            max-width: 1000px;
+            max-width: 1100px; /* Allargato un po' per far stare la tabella PDU */
             margin: 0 auto;
             margin-bottom: 80px;
         }
@@ -62,7 +62,7 @@
         .tab-content.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* CARDS */
+        /* CARDS & BOXES */
         .card-box {
             border-left: 5px solid #0d6efd;
             background: #f8f9fa;
@@ -70,7 +70,6 @@
             border-radius: 8px;
             margin-bottom: 20px;
         }
-
         .definition-card {
             background: #fff;
             border: 1px solid #e9ecef;
@@ -102,11 +101,13 @@
             transition: all 0.2s;
             text-decoration: none;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: relative;
         }
         a.tower-level:hover { 
             transform: scale(1.05) translateX(5px);
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
             color: white;
+            z-index: 10;
         }
 
         /* Colori ISO OSI */
@@ -118,23 +119,37 @@
         .lvl-2 { background-color: #9b59b6; }
         .lvl-1 { background-color: #34495e; }
 
-        /* PDU SECTION STYLES */
+        /* PDU & ENCAPSULATION STYLES */
         .pdu-card {
-            border: 2px solid #ffc107;
-            background-color: #fff9db;
+            border: 2px solid #198754; /* Verde per richiamare il flusso */
+            background-color: #f1fcf5;
             border-radius: 10px;
             overflow: hidden;
+            height: 100%;
         }
         .pdu-header {
-            background-color: #ffc107;
-            color: #333;
+            background-color: #198754;
+            color: white;
             padding: 10px 15px;
             font-weight: bold;
             text-align: center;
+            font-size: 1.1em;
         }
-        .pdu-body { padding: 15px; }
+        .pdu-body { padding: 20px; }
+        
+        .encap-step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            padding: 8px;
+            border-radius: 5px;
+            background: white;
+            border: 1px solid #ddd;
+        }
+        .arrow-down { color: #dc3545; font-weight: bold; margin-right: 10px; font-size: 1.2em; } /* Sender scende */
+        .arrow-up { color: #0d6efd; font-weight: bold; margin-right: 10px; font-size: 1.2em; }   /* Receiver sale */
 
-        /* COMPONENT GRID (Router 4-in-1) */
+        /* COMPONENT GRID */
         .component-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -166,26 +181,16 @@
         .file-name { font-family: monospace; font-weight: bold; color: #d63384; background: #f8f9fa; padding: 2px 6px; border-radius: 4px; border: 1px solid #eee; }
         .file-desc { color: #666; font-size: 0.9em; font-style: italic; }
 
-        /* Pulsante Sorgente */
+        /* FAB SOURCE */
         .fab-source {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
-            background: #212529; 
-            color: white; 
-            padding: 12px 20px;
-            border-radius: 50px; 
-            cursor: pointer; 
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            border: 2px solid white;
-            font-weight: bold;
+            bottom: 20px; right: 20px; z-index: 1000;
+            background: #212529; color: white; padding: 12px 20px;
+            border-radius: 50px; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            border: 2px solid white; font-weight: bold;
         }
         .fab-source:hover { transform: scale(1.05); background: #000; }
         
-        .img-hover-effect { transition: transform 0.3s; cursor: pointer; border-radius: 10px; border: 1px solid #ddd; }
-        .img-hover-effect:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-
         .educational-note {
             background-color: #e2e3e5;
             border-left: 5px solid #383d41;
@@ -206,7 +211,7 @@
     <div class="tabs-header">
         <button class="tab-btn" onclick="openTab('tab1')">💻 1. Stand-Alone</button>
         <button class="tab-btn" onclick="openTab('tab2')">🏠 2. Rete Domestica</button>
-        <button class="tab-btn active" onclick="openTab('tab3')">📚 3. ISO/OSI</button>
+        <button class="tab-btn active" onclick="openTab('tab3')">📚 3. ISO/OSI & PDU</button>
         <button class="tab-btn" onclick="openTab('tab5')">🗺️ Mappa Sito (Dev)</button>
         <button class="tab-btn" onclick="openTab('tab4')">🔧 5. Lab Arduino</button>
     </div>
@@ -287,11 +292,6 @@
                     <li><strong>Definizione:</strong> Rete personale che copre pochi metri.</li>
                     <li><strong>Esempi:</strong> Mouse Bluetooth collegato al PC, Smartwatch collegato al telefono.</li>
                 </ul>
-                <div style="margin-top: 15px;">
-                    <a href="https://itrelease.com/2018/07/advantages-and-disadvantages-of-personal-area-network-pan/" target="_blank" class="btn btn-outline-secondary btn-sm">
-                       🔗 Link Esterno: Approfondimento PAN (Inglese)
-                    </a>
-                </div>
             </div>
             <div class="col-md-5 text-center">
                 <a href="https://itrelease.com/2018/07/advantages-and-disadvantages-of-personal-area-network-pan/" target="_blank" title="Clicca per approfondire la PAN">
@@ -311,45 +311,48 @@
                     <span class="icon-large">📞</span>
                     <strong>MODEM</strong>
                     <hr>
-                    <p class="small text-muted">Acronimo di:<br><strong>MO</strong>dulatore <strong>DEM</strong>odulatore</p>
-                    <p style="font-size: 0.9em;">Traduce il segnale analogico (o ottico) che arriva dalla strada in segnale digitale per il computer.</p>
+                    <p class="small text-muted"><strong>MO</strong>dulatore <strong>DEM</strong>odulatore</p>
+                    <p style="font-size: 0.9em;">Traduce il segnale analogico/ottico in segnale digitale per il computer.</p>
                 </div>
                 <div class="component-box">
                     <span class="icon-large">🚦</span>
                     <strong>ROUTER</strong>
                     <hr>
                     <p class="small text-muted">Il "Vigile Urbano"</p>
-                    <p style="font-size: 0.9em;">Indirizza il traffico intelligente (IP) decidendo quale strada devono prendere i dati verso Internet.</p>
+                    <p style="font-size: 0.9em;">Indirizza i Pacchetti IP scegliendo il percorso migliore verso Internet.</p>
                 </div>
                 <div class="component-box">
                     <span class="icon-large">🔀</span>
                     <strong>SWITCH</strong>
                     <hr>
-                    <p class="small text-muted">La "Ciabatta Elettrica"</p>
-                    <p style="font-size: 0.9em;">Gestisce le porte fisiche (LAN) sul retro dove attacchi i cavi di rete.</p>
+                    <p class="small text-muted">La "Ciabatta"</p>
+                    <p style="font-size: 0.9em;">Gestisce i Frame sulla LAN cablata (porte gialle dietro il modem).</p>
                 </div>
                 <div class="component-box">
                     <span class="icon-large">📡</span>
                     <strong>ACCESS POINT</strong>
                     <hr>
-                    <p class="small text-muted">Acronimo Wi-Fi:<br><strong>Wireless Fidelity</strong></p>
-                    <p style="font-size: 0.9em;">Sostituisce i cavi generando onde radio per connettere dispositivi senza fili.</p>
+                    <p class="small text-muted"><strong>Wi-Fi</strong></p>
+                    <p style="font-size: 0.9em;">Genera onde radio per connettere dispositivi senza cavi.</p>
                 </div>
             </div>
         </div>
     </div>
 
     <div id="tab3" class="tab-content active">
-        <h2>Il Modello ISO/OSI</h2>
-        <div class="alert alert-info text-center mt-3 mb-4">
-            👆 <strong>Interattività:</strong> Clicca su un livello della torre per leggere la sua spiegazione dettagliata.
-        </div>
+        <h2>Il Modello ISO/OSI e il Flusso dei Dati</h2>
         
-        <div class="row">
-            <div class="col-md-5">
-                <div class="tower-container">
+        <div class="row mt-4">
+            <div class="col-lg-4 col-md-5">
+                <div class="tower-container sticky-top" style="top: 20px; z-index: 1;">
                     <div class="tower">
-                        <h4 class="text-center">📤 Trasmettitore</h4>
+                        <div class="alert alert-light border text-center small mb-2">
+                            Clicca sui livelli 👇
+                        </div>
+                        <div class="bg-danger text-white p-2 rounded-top text-center fw-bold">
+                            ⬇️ Sender (Trasmettitore)
+                        </div>
+
                         <a href="descrizione_livelli.html" class="tower-level lvl-7">7. Applicazione</a>
                         <a href="descrizione_livelli.html" class="tower-level lvl-6">6. Presentazione</a>
                         <a href="descrizione_livelli.html" class="tower-level lvl-5">5. Sessione</a>
@@ -357,51 +360,76 @@
                         <a href="descrizione_livelli.html" class="tower-level lvl-3">3. Rete</a>
                         <a href="descrizione_livelli.html" class="tower-level lvl-2">2. Collegamento</a>
                         <a href="descrizione_livelli.html" class="tower-level lvl-1">1. Fisico</a>
-                        <h4 class="text-center mt-2">📥 Ricevitore</h4>
+
+                        <div class="bg-primary text-white p-2 rounded-bottom text-center fw-bold mt-1">
+                            ⬆️ Receiver (Ricevitore)
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-7 mt-4 mt-md-0">
+            <div class="col-lg-8 col-md-7">
                 <div class="pdu-card">
                     <div class="pdu-header">
-                        📦 Cos'è la P.D.U.? (Protocol Data Unit)
+                        📦 Incapsulamento & PDU (Protocol Data Unit)
                     </div>
                     <div class="pdu-body">
-                        <p>Immagina di spedire una lettera. Prima scrivi il foglio (Dati), poi lo metti in busta (Indirizzi), poi la busta va nel sacco postale (Trasporto).<br>
-                        In rete succede lo stesso: mentre scendono, i dati vengono "inscatolati" (incapsulamento) e cambiano nome.</p>
-                        
-                        <table class="table table-sm table-bordered text-center" style="background:white; font-size:0.9em;">
-                            <thead class="table-light">
+                        <p class="lead" style="font-size: 1.1em;">
+                            I dati non viaggiano "nudi". Come una Matrioska, ogni livello aggiunge una "busta" (Intestazione/Header) intorno ai dati. Questo è l'<strong>Incapsulamento</strong>.
+                        </p>
+
+                        <h5 class="mt-4 mb-3 text-success">📜 Come cambiano nome i dati?</h5>
+                        <table class="table table-bordered table-striped text-center">
+                            <thead class="table-dark">
                                 <tr>
                                     <th>Livello</th>
-                                    <th>Nome PDU</th>
-                                    <th>Cosa succede?</th>
+                                    <th>Nome P.D.U.</th>
+                                    <th>Metafora</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td class="table-success"><strong>4. Trasporto</strong></td>
+                                    <td>7, 6, 5</td>
+                                    <td><strong>DATI</strong></td>
+                                    <td>Il foglio scritto (La lettera)</td>
+                                </tr>
+                                <tr>
+                                    <td class="table-success">4. Trasporto</td>
                                     <td class="fw-bold text-danger">SEGMENTO</td>
-                                    <td class="text-start">I dati grandi vengono tagliati in pezzi più piccoli e numerati.</td>
+                                    <td>La busta (controllo integrità)</td>
                                 </tr>
                                 <tr>
-                                    <td class="table-primary"><strong>3. Rete</strong></td>
+                                    <td class="table-primary">3. Rete</td>
                                     <td class="fw-bold text-danger">PACCHETTO</td>
-                                    <td class="text-start">Si aggiunge l'indirizzo <strong>IP</strong> (Mittente e Destinatario).</td>
+                                    <td>L'indirizzo sulla busta (IP)</td>
                                 </tr>
                                 <tr>
-                                    <td style="background-color:#e0cffc"><strong>2. Colleg.</strong></td>
+                                    <td style="background-color:#e0cffc">2. Colleg.</td>
                                     <td class="fw-bold text-danger">FRAME (Trama)</td>
-                                    <td class="text-start">Si aggiunge l'indirizzo <strong>MAC</strong> (Fisico) della scheda di rete.</td>
+                                    <td>Il sacco postale sigillato (MAC)</td>
                                 </tr>
                                 <tr>
-                                    <td class="table-dark text-white"><strong>1. Fisico</strong></td>
+                                    <td class="table-secondary">1. Fisico</td>
                                     <td class="fw-bold text-danger">BIT</td>
-                                    <td class="text-start">Tutto diventa 0 e 1 per essere inviato sul cavo.</td>
+                                    <td>Segnali elettrici/luce sul cavo</td>
                                 </tr>
                             </tbody>
                         </table>
+
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <h6 class="text-danger fw-bold">🔴 Trasmettitore (Sender)</h6>
+                                <div class="encap-step"><span class="arrow-down">⬇</span> Incapsulamento (Aggiunge header)</div>
+                                <div class="encap-step"><span class="arrow-down">⬇</span> Da Dati a Bit</div>
+                                <div class="alert alert-danger py-1 small">Il pacchetto diventa più grande scendendo!</div>
+                            </div>
+                            <div class="col-md-6">
+                                <h6 class="text-primary fw-bold">🔵 Ricevitore (Receiver)</h6>
+                                <div class="encap-step"><span class="arrow-up">⬆</span> Decapsulamento (Toglie header)</div>
+                                <div class="encap-step"><span class="arrow-up">⬆</span> Da Bit a Dati</div>
+                                <div class="alert alert-primary py-1 small">Legge l'indirizzo e butta la busta.</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -412,7 +440,7 @@
         <h2>🗺️ Mappa del Progetto &amp; Struttura File</h2>
         <div class="educational-note">
             <strong>🎯 Aggiornamento Struttura:</strong>
-            <p>Nota come il nostro progetto sta crescendo. Abbiamo aggiunto una cartella logica per i laboratori e due nuovi file HTML esterni per dividere gli esercizi.</p>
+            <p>Progetto diviso in Teoria (HTML statico) e Pratica (Laboratori Arduino).</p>
         </div>
         <ul class="site-tree">
             <li>
@@ -444,7 +472,7 @@
                 <div class="card h-100 shadow-sm hover-shadow transition">
                     <div class="card-body text-center">
                         <div style="font-size: 3em; margin-bottom: 15px;">🎾</div>
-                        <h4 class="card-title">Esercizio 1: PING</h4>
+                        <h4 class="card-title">Esercizio 1: PING (Loopback)</h4>
                         <p class="card-text text-muted">Configura una connessione seriale di base e osserva il comportamento dei LED e dei dati.</p>
                         <a href="lab_ping.html" class="btn btn-primary btn-lg w-100 mt-2">Apri Esercizio 1 &raquo;</a>
                     </div>
@@ -489,7 +517,8 @@
             if(btn.getAttribute('onclick').includes(tabId)) btn.classList.add('active');
         });
     }
-    // openTab('tab3'); // Decommenta se vuoi testare subito la tab 3
+    // Decommenta la riga sotto se vuoi che si apra subito sulla tab teoria ISO/OSI per testare
+    openTab('tab3'); 
     
     function mostraSorgente() {
         let html = document.documentElement.outerHTML;
