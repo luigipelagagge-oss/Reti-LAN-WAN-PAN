@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Introduzione alle Reti di Computer</title>
+    <title>Corso Reti: Dalla Teoria alla Pratica</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     
     <style>
@@ -19,7 +19,7 @@
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             padding: 30px;
-            max-width: 1100px; /* Allargato un po' per far stare la tabella PDU */
+            max-width: 1100px;
             margin: 0 auto;
             margin-bottom: 80px;
         }
@@ -33,14 +33,30 @@
         header h1 { color: #2c3e50; font-weight: bold; }
         header p { color: #7f8c8d; font-size: 1.1em; }
 
-        /* TABS */
+        /* TABS STYLING - NUOVA ORGANIZZAZIONE */
+        .tabs-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .week-label {
+            font-size: 0.8em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #6c757d;
+            margin-bottom: 5px;
+            display: block;
+            font-weight: bold;
+        }
+
         .tabs-header {
             display: flex;
             justify-content: center;
             gap: 10px;
-            margin-bottom: 30px;
             flex-wrap: wrap;
+            margin-bottom: 15px;
         }
+
         .tab-btn {
             background: #e9ecef;
             border: none;
@@ -52,10 +68,22 @@
             transition: all 0.3s ease;
         }
         .tab-btn:hover { background: #dee2e6; transform: translateY(-2px); }
+        
         .tab-btn.active {
             background: #0d6efd;
             color: white;
             box-shadow: 0 4px 15px rgba(13, 110, 253, 0.3);
+        }
+
+        /* Stile speciale per Tab Laboratorio (Settimana 2) */
+        .tab-btn.lab-btn {
+            background-color: #d1e7dd;
+            color: #0f5132;
+        }
+        .tab-btn.lab-btn.active {
+            background-color: #198754;
+            color: white;
+            box-shadow: 0 4px 15px rgba(25, 135, 84, 0.3);
         }
 
         .tab-content { display: none; animation: fadeIn 0.5s; }
@@ -121,7 +149,7 @@
 
         /* PDU & ENCAPSULATION STYLES */
         .pdu-card {
-            border: 2px solid #198754; /* Verde per richiamare il flusso */
+            border: 2px solid #198754;
             background-color: #f1fcf5;
             border-radius: 10px;
             overflow: hidden;
@@ -146,8 +174,8 @@
             background: white;
             border: 1px solid #ddd;
         }
-        .arrow-down { color: #dc3545; font-weight: bold; margin-right: 10px; font-size: 1.2em; } /* Sender scende */
-        .arrow-up { color: #0d6efd; font-weight: bold; margin-right: 10px; font-size: 1.2em; }   /* Receiver sale */
+        .arrow-down { color: #dc3545; font-weight: bold; margin-right: 10px; font-size: 1.2em; }
+        .arrow-up { color: #0d6efd; font-weight: bold; margin-right: 10px; font-size: 1.2em; }
 
         /* COMPONENT GRID */
         .component-grid {
@@ -204,16 +232,23 @@
 
 <div class="container-custom">
     <header>
-        <h1>Introduzione alle Reti di Computer</h1>
-        <p>Dal PC Stand-Alone alla Comunicazione Seriale</p>
+        <h1>Corso di Reti e Telecomunicazioni</h1>
+        <p>Un percorso guidato: dalla teoria di base alla simulazione pratica.</p>
     </header>
 
-    <div class="tabs-header">
-        <button class="tab-btn" onclick="openTab('tab1')">💻 1. Stand-Alone</button>
-        <button class="tab-btn" onclick="openTab('tab2')">🏠 2. Rete Domestica</button>
-        <button class="tab-btn active" onclick="openTab('tab3')">📚 3. ISO/OSI & PDU</button>
-        <button class="tab-btn" onclick="openTab('tab5')">🗺️ Mappa Sito (Dev)</button>
-        <button class="tab-btn" onclick="openTab('tab4')">🔧 5. Lab Arduino</button>
+    <div class="tabs-container">
+        <span class="week-label">Settimana 1: Teoria Fondamentale</span>
+        <div class="tabs-header">
+            <button class="tab-btn" onclick="openTab('tab1')">1. Stand-Alone</button>
+            <button class="tab-btn" onclick="openTab('tab2')">2. Rete Locale</button>
+            <button class="tab-btn active" onclick="openTab('tab3')">3. Modello ISO/OSI</button>
+        </div>
+        
+        <span class="week-label" style="margin-top: 15px;">Settimana 2: Laboratorio Arduino</span>
+        <div class="tabs-header">
+            <button class="tab-btn lab-btn" onclick="openTab('tab4')">⚡ Vai al Laboratorio</button>
+            <button class="tab-btn" onclick="openTab('tab5')" style="margin-left: 20px;">🗺️ Mappa Sito</button>
+        </div>
     </div>
 
     <div id="tab1" class="tab-content">
@@ -439,24 +474,24 @@
     <div id="tab5" class="tab-content">
         <h2>🗺️ Mappa del Progetto &amp; Struttura File</h2>
         <div class="educational-note">
-            <strong>🎯 Aggiornamento Struttura:</strong>
-            <p>Progetto diviso in Teoria (HTML statico) e Pratica (Laboratori Arduino).</p>
+            <strong>🎯 Obiettivo Didattico:</strong>
+            <p>Il sito è strutturato per simulare la progressione dello studio. Dalla teoria (Settimana 1) all'applicazione pratica (Settimana 2).</p>
         </div>
         <ul class="site-tree">
             <li>
                 <span class="file-icon">🏠</span> <span class="file-name">index.html</span> <span class="file-desc"> (HOME)</span>
                 <ul>
-                    <li>Sezione Teoria
+                    <li>Settimana 1 (Teoria)
                         <ul>
                             <li><span class="file-icon">📄</span> <a href="lan_approfondimento.html" class="file-name">lan_approfondimento.html</a></li>
                             <li><span class="file-icon">📄</span> <a href="wan_approfondimento.html" class="file-name">wan_approfondimento.html</a></li>
                             <li><span class="file-icon">📄</span> <a href="descrizione_livelli.html" class="file-name">descrizione_livelli.html</a></li>
                         </ul>
                     </li>
-                    <li>Sezione Laboratorio
+                    <li>Settimana 2 (Laboratorio)
                         <ul>
-                            <li><span class="file-icon">📄</span> <a href="lab_ping.html" class="file-name" style="color:#198754;">lab_ping.html</a></li>
-                            <li><span class="file-icon">📄</span> <a href="lab_cs.html" class="file-name" style="color:#198754;">lab_cs.html</a></li>
+                            <li><span class="file-icon">⚡</span> <a href="lab_ping.html" class="file-name" style="color:#198754;">lab_ping.html</a> (Ping Loopback)</li>
+                            <li><span class="file-icon">⚡</span> <a href="lab_cs.html" class="file-name" style="color:#198754; font-weight: bold;">lab_cs.html</a> (Client/Server)</li>
                         </ul>
                     </li>
                 </ul>
@@ -465,26 +500,30 @@
     </div>
 
     <div id="tab4" class="tab-content">
-        <h2>🔧 Laboratorio S.T.E.M.</h2>
-        <p class="lead">Usciamo dallo stato "Stand-Alone"! Seleziona un esperimento per aprire il simulatore Tinkercad in una nuova pagina dedicata.</p>
+        <div style="border-bottom: 2px solid #198754; margin-bottom: 20px; padding-bottom: 10px;">
+            <h2 style="color: #198754;">⚡ Settimana 2: Laboratorio Arduino</h2>
+            <p class="lead">Usciamo dallo stato "Stand-Alone"! Mettiamo in pratica la teoria ISO/OSI collegando fisicamente due dispositivi.</p>
+        </div>
+
         <div class="row mt-5">
             <div class="col-md-6 mb-4">
                 <div class="card h-100 shadow-sm hover-shadow transition">
                     <div class="card-body text-center">
                         <div style="font-size: 3em; margin-bottom: 15px;">🎾</div>
                         <h4 class="card-title">Esercizio 1: PING (Loopback)</h4>
-                        <p class="card-text text-muted">Configura una connessione seriale di base e osserva il comportamento dei LED e dei dati.</p>
+                        <p class="card-text text-muted">Configura una connessione seriale di base. Arduino parla con se stesso per verificare che il canale trasmissivo funzioni.</p>
                         <a href="lab_ping.html" class="btn btn-primary btn-lg w-100 mt-2">Apri Esercizio 1 &raquo;</a>
                     </div>
                 </div>
             </div>
+            
             <div class="col-md-6 mb-4">
-                <div class="card h-100 shadow-sm">
+                <div class="card h-100 shadow-sm" style="border: 2px solid #ffc107;">
                     <div class="card-body text-center">
                         <div style="font-size: 3em; margin-bottom: 15px;">🔄</div>
-                        <h4 class="card-title">Esercizio 2: Client/Server</h4>
-                        <p class="card-text text-muted">Risolvi l'ambiguità assegnando ruoli precisi: uno parla (Sender), l'altro ascolta (Receiver).</p>
-                        <a href="lab_cs.html" class="btn btn-outline-success btn-lg w-100 mt-2">Apri Esercizio 2 &raquo;</a>
+                        <h4 class="card-title">Esercizio 2: Sender & Receiver</h4>
+                        <p class="card-text text-muted">Architettura Client/Server. Un Arduino invia comandi ("Sender"), l'altro li interpreta ed esegue ("Receiver").</p>
+                        <a href="lab_cs.html" class="btn btn-warning btn-lg w-100 mt-2" style="font-weight:bold;">Apri Esercizio 2 &raquo;</a>
                     </div>
                 </div>
             </div>
@@ -517,7 +556,7 @@
             if(btn.getAttribute('onclick').includes(tabId)) btn.classList.add('active');
         });
     }
-    // Decommenta la riga sotto se vuoi che si apra subito sulla tab teoria ISO/OSI per testare
+    // Imposto il Tab attivo di default sulla Teoria ISO/OSI (cuore della Settimana 1)
     openTab('tab3'); 
     
     function mostraSorgente() {
