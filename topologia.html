@@ -10,7 +10,7 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            background: linear-gradient(135deg, #a8c0ff 0%, #3f2b96 100%); /* Sfondo diverso per distinguere la sezione */
+            background: linear-gradient(135deg, #a8c0ff 0%, #3f2b96 100%);
             padding: 20px;
             color: #333;
             min-height: 100vh;
@@ -105,34 +105,36 @@
         <div class="col-md-6">
             <div class="topology-card">
                 <div class="topo-title">4. A Stella (Star)</div>
-                <p>È la più diffusa oggi (es. il tuo Wi-Fi o l'ufficio). Tutti i dispositivi sono collegati a un <strong>centro stella</strong> (Switch o Hub). Se si rompe un cavo, si ferma solo quel PC, non tutta la rete.</p>
+                <p>È la più diffusa oggi (es. il tuo Wi-Fi o l'ufficio). Tutti i dispositivi sono collegati a un <strong>centro stella</strong> (Switch o Hub). Se si rompe un cavo, si ferma solo quel PC.</p>
             </div>
 
             <div class="topology-card">
                 <div class="topo-title">5. Ad Albero (Tree)</div>
-                <p>È una struttura gerarchica, come un albero genealogico o una "Stella di Stelle". Un nodo radice si collega ad altri nodi intermedi che gestiscono i loro gruppi.</p>
+                <p>È una struttura gerarchica, come un albero genealogico o una "Stella di Stelle". Un nodo radice si collega ad altri nodi intermedi.</p>
             </div>
 
-            <div class="topology-card">
-                <div class="topo-title">6. A Maglia (Mesh)</div>
-                <p>Ogni nodo è collegato a più altri nodi per garantire ridondanza. Se un cavo si rompe, i dati prendono una strada alternativa (come Internet).</p>
+            <div class="topology-card" style="border-left-color: #0d6efd; background-color: #f0f7ff;">
+                <div class="topo-title" style="color: #0d6efd;">6. A Maglia (Mesh)</div>
+                <p>Ogni nodo ha più strade possibili. Se un cavo si rompe, i dati prendono un percorso alternativo.</p>
+                <p><strong>L'Esempio Reale: INTERNET 🌍</strong><br>
+                Internet è la "Rete a Maglia" più grande del mondo. È stata progettata proprio per non spegnersi mai, anche se intere parti della rete dovessero guastarsi.</p>
             </div>
         </div>
     </div>
 
     <div class="topology-card special-box mt-4">
-        <div class="topo-title" style="color: #856404;">🏆 L'esempio estremo: Fully Connected (Totalmente Connessa)</div>
+        <div class="topo-title" style="color: #856404;">🏆 Il caso estremo: Fully Connected (Totalmente Connessa)</div>
         <p>
-            In questa variante della topologia a Maglia, <strong>OGNI dispositivo è collegato direttamente a TUTTI gli altri</strong>.
+            È una variante della Mesh portata all'estremo: <strong>OGNI dispositivo è collegato direttamente a TUTTI gli altri</strong>.
         </p>
+        <p>A differenza di Internet (che è una maglia parziale), qui non esiste il concetto di "instradamento": hai un cavo diretto per tutti.</p>
         <ul>
-            <li><strong>Affidabilità:</strong> Massima. È quasi impossibile che la rete cada.</li>
-            <li><strong>Costo:</strong> Altissimo. Il numero di cavi cresce a dismisura (Formula: N*(N-1)/2).</li>
+            <li><strong>Affidabilità:</strong> Assoluta.</li>
+            <li><strong>Costo:</strong> Insostenibile su larga scala.</li>
         </ul>
         <hr>
-        <p><strong>L'Esempio per eccellenza:</strong></p>
-        <p>
-            Questa topologia si usa solo in ambiti critici dove il fallimento non è opzionabile, come nei <strong>Sistemi di Controllo Nucleare</strong> o nelle <strong>Comunicazioni Militari Strategiche</strong>.
+        <p><strong>Dove si usa?</strong><br>
+            Solo in sistemi piccoli e critici come <strong>Reattori Nucleari</strong> o <strong>Centri di Comando Missilistici</strong>, dove il costo non conta ma la sicurezza è tutto.
         </p>
     </div>
 
