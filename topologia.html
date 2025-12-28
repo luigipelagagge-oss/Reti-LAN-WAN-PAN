@@ -29,29 +29,20 @@
         h1 { color: #3f2b96; text-align: center; margin-bottom: 10px; font-weight: bold; }
         p.intro { text-align: center; font-size: 1.2em; color: #666; margin-bottom: 40px; }
 
-        /* Stile delle Card come Pulsanti */
+        /* --- STILE DELLE CARD --- */
         .topology-card {
             background: #f8f9fa;
             border-left: 5px solid #3f2b96;
             border-radius: 10px;
             padding: 20px;
-            margin-bottom: 0; /* Gestito dal wrapper */
             transition: all 0.3s ease;
-            height: 100%; /* Altezza uniforme */
             position: relative;
+            /* Rimosso height: 100% che causava la sovrapposizione */
         }
         
-        /* Effetto Hover su tutto il blocco */
-        .card-link:hover .topology-card {
-            transform: translateY(-5px);
-            background: #fff;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-            border-left-color: #d63384 !important; /* Cambia colore bordo al passaggio */
-        }
-
         .topo-title { font-weight: bold; color: #555; font-size: 1.1em; text-transform: uppercase; margin-bottom: 10px; }
-        .card-link:hover .topo-title { color: #d63384 !important; } /* Il titolo si colora all'hover */
         
+        /* Immagine principale */
         .img-main {
             display: block;
             margin: 0 auto 40px;
@@ -74,21 +65,32 @@
         }
         .btn-back:hover { background-color: #2a1b6e; color: white; transform: translateX(-5px); }
 
-        /* Link che avvolge la card */
+        /* --- STILE DEL LINK (IL BOTTONE) --- */
         .card-link {
-            text-decoration: none;
-            color: inherit;
-            display: block;
-            margin-bottom: 20px;
-            height: 100%; /* Per allineare le card nella stessa riga */
+            text-decoration: none !important; /* Toglie la sottolineatura blu */
+            color: inherit !important;
+            display: block;      /* Importante: fa comportare il link come un blocco */
+            margin-bottom: 25px; /* Spazio verticale tra i bottoni */
+        }
+
+        /* Effetto quando passi sopra col mouse */
+        .card-link:hover .topology-card {
+            transform: translateY(-5px); /* Si alza leggermente */
+            background: #fff;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            border-left-color: #d63384 !important;
+        }
+        .card-link:hover .topo-title {
+            color: #d63384 !important;
         }
 
         .wiki-hint {
-            font-size: 0.8em;
-            color: #999;
-            margin-top: 10px;
+            font-size: 0.85em;
+            color: #888;
+            margin-top: 15px;
             display: block;
             font-style: italic;
+            text-align: right;
         }
         
         /* Stile speciale per Fully Connected */
@@ -106,12 +108,12 @@
     <h1>Topologie di Rete</h1>
     <p class="intro">
         La "Topologia" è la mappa geometrica della rete.<br>
-        Clicca su ogni scheda per approfondire su <strong>Wikipedia</strong> 🔗
+        Clicca su una scheda per leggere i dettagli su <strong>Wikipedia</strong> 🔗
     </p>
 
     <img src="Topologia-reti-informatiche.png" alt="Schema riassuntivo Topologie" class="img-main">
 
-    <div class="row align-items-stretch">
+    <div class="row">
         <div class="col-md-6">
             
             <a href="https://it.wikipedia.org/wiki/Topologia_di_rete#Topologia_lineare_aperta" target="_blank" class="card-link">
@@ -170,7 +172,7 @@
         </div>
     </div>
 
-    <a href="https://it.wikipedia.org/wiki/Topologia_di_rete#Topologia_completamente_connessa" target="_blank" class="card-link mt-4">
+    <a href="https://it.wikipedia.org/wiki/Topologia_di_rete#Topologia_completamente_connessa" target="_blank" class="card-link mt-2">
         <div class="topology-card special-box">
             <div class="topo-title" style="color: #856404;">🏆 Fully Connected (Totale) 🔗</div>
             <p>
