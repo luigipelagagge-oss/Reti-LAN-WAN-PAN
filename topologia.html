@@ -24,13 +24,15 @@
             box-shadow: 0 20px 60px rgba(0,0,0,0.3);
             overflow: hidden;
             padding: 40px;
-            margin-bottom: 80px; /* Spazio per il bottone in basso */
+            margin-bottom: 80px; 
+            position: relative;
+            z-index: 1;
         }
 
         h1 { color: #3f2b96; text-align: center; margin-bottom: 10px; font-weight: bold; }
         p.intro { text-align: center; font-size: 1.2em; color: #666; margin-bottom: 40px; }
 
-        /* --- STILE DELLE CARD --- */
+        /* --- CARD --- */
         .topology-card {
             background: #f8f9fa;
             border-left: 5px solid #3f2b96;
@@ -38,15 +40,12 @@
             padding: 25px;
             transition: all 0.3s ease;
             position: relative;
-            /* Flex column permette di spingere il footer in basso e allineare le altezze */
             display: flex;
             flex-direction: column;
             height: 100%; 
         }
-        
         .topo-title { font-weight: bold; color: #555; font-size: 1.1em; text-transform: uppercase; margin-bottom: 15px; }
         
-        /* Immagine principale */
         .img-main {
             display: block;
             margin: 0 auto 40px;
@@ -69,30 +68,24 @@
         }
         .btn-back:hover { background-color: #2a1b6e; color: white; transform: translateX(-5px); }
 
-        /* --- STILE DEL LINK --- */
         .card-link {
             text-decoration: none !important;
             color: inherit !important;
             display: block;
-            height: 100%; /* Fondamentale per l'altezza uguale */
+            height: 100%;
         }
-
-        /* Effetto Hover */
         .card-link:hover .topology-card {
             transform: translateY(-5px);
             background: #fff;
             box-shadow: 0 15px 30px rgba(0,0,0,0.15);
             border-left-color: #d63384 !important;
         }
-        .card-link:hover .topo-title {
-            color: #d63384 !important;
-        }
+        .card-link:hover .topo-title { color: #d63384 !important; }
 
-        /* Footer della card (Wikipedia) */
         .wiki-hint {
             font-size: 0.85em;
             color: #888;
-            margin-top: auto; /* SPINGE IN BASSO IL TESTO per allinearlo */
+            margin-top: auto;
             padding-top: 15px;
             display: block;
             font-style: italic;
@@ -100,21 +93,25 @@
             border-top: 1px dashed #e0e0e0;
         }
         
-        /* Stile speciale per Fully Connected */
-        .special-box {
-            background-color: #fff3cd;
-            border-color: #ffc107;
-        }
+        .special-box { background-color: #fff3cd; border-color: #ffc107; }
 
-        /* --- STILE DEL PULSANTE SORGENTE (DIDATTICO) --- */
+        /* --- BOTTONE SORGENTE (Z-Index alto per visibilità) --- */
         .fab-source {
-            position: fixed; bottom: 30px; right: 30px;
-            background: #212529; color: white; padding: 15px 25px;
-            border-radius: 50px; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            z-index: 1000; font-weight: bold; border: 2px solid white;
+            position: fixed !important;
+            bottom: 30px !important;
+            right: 30px !important;
+            z-index: 9999 !important;
+            background: #212529; 
+            color: white !important; 
+            padding: 15px 25px;
+            border-radius: 50px; 
+            cursor: pointer; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            font-weight: bold; 
+            border: 2px solid white;
             transition: transform 0.2s;
         }
-        .fab-source:hover { transform: scale(1.05); background: #000; }
+        .fab-source:hover { transform: scale(1.1); background: #000; }
     </style>
 </head>
 <body>
@@ -131,7 +128,6 @@
     <img src="Topologia-reti-informatiche.png" alt="Schema riassuntivo Topologie" class="img-main">
 
     <div class="row g-4">
-        
         <div class="col-md-6 d-flex">
             <a href="https://it.wikipedia.org/wiki/Topologia_di_rete#Topologia_lineare_aperta" target="_blank" class="card-link w-100">
                 <div class="topology-card" style="border-left-color: #0dcaf0; background: #f2fbff;">
@@ -142,7 +138,7 @@
                 </div>
             </a>
         </div>
-
+        
         <div class="col-md-6 d-flex">
             <a href="https://it.wikipedia.org/wiki/Topologia_di_rete#Topologia_a_bus" target="_blank" class="card-link w-100">
                 <div class="topology-card">
@@ -153,9 +149,9 @@
                 </div>
             </a>
         </div>
-
+        
         <div class="col-md-6 d-flex">
-            <a href="https://it.wikipedia.org/wiki/Topologia_di_rete#Topologia_ad_anello" target="_blank" class="card-link w-100">
+            <a href="https://it.wikipedia.org/wiki/Topologia_di_rete#Topologia_rete_ad_anello" target="_blank" class="card-link w-100">
                 <div class="topology-card">
                     <div class="topo-title">3. Ad Anello (Ring) 🔗</div>
                     <p>I computer sono in un cerchio chiuso. I dati passano da un nodo all'altro come una staffetta finché non trovano il destinatario.</p>
@@ -163,7 +159,7 @@
                 </div>
             </a>
         </div>
-
+        
         <div class="col-md-6 d-flex">
             <a href="https://it.wikipedia.org/wiki/Topologia_di_rete#Topologia_a_stella" target="_blank" class="card-link w-100">
                 <div class="topology-card">
@@ -173,7 +169,7 @@
                 </div>
             </a>
         </div>
-
+        
         <div class="col-md-6 d-flex">
             <a href="https://it.wikipedia.org/wiki/Topologia_di_rete#Topologia_ad_albero" target="_blank" class="card-link w-100">
                 <div class="topology-card">
@@ -183,9 +179,9 @@
                 </div>
             </a>
         </div>
-
+        
         <div class="col-md-6 d-flex">
-            <a href="https://it.wikipedia.org/wiki/Topologia_di_rete#Topologia_a_maglia" target="_blank" class="card-link w-100">
+            <a href="https://it.wikipedia.org/wiki/Topologia_di_rete#Topologie_a_maglia" target="_blank" class="card-link w-100">
                 <div class="topology-card" style="border-left-color: #0d6efd; background-color: #f0f7ff;">
                     <div class="topo-title" style="color: #0d6efd;">6. A Maglia (Mesh) 🔗</div>
                     <p><strong>Esempio: INTERNET 🌍</strong></p>
@@ -194,17 +190,13 @@
                 </div>
             </a>
         </div>
-    </div> <div class="mt-4">
-        <a href="https://it.wikipedia.org/wiki/Topologia_di_rete#Topologia_completamente_connessa" target="_blank" class="card-link">
+    </div> 
+
+    <div class="mt-4">
+        <a href="https://it.wikipedia.org/wiki/Topologia_di_rete#Topologia_completamente_magliata" target="_blank" class="card-link">
             <div class="topology-card special-box">
                 <div class="topo-title" style="color: #856404;">🏆 Fully Connected (Totale) 🔗</div>
-                <p>
-                    Variante estrema della Mesh: <strong>OGNI dispositivo è collegato a TUTTI gli altri</strong>.
-                </p>
-                <ul>
-                    <li><strong>Affidabilità:</strong> Massima (usata per Nucleare/Militare).</li>
-                    <li><strong>Costo:</strong> Altissimo per l'enorme numero di cavi.</li>
-                </ul>
+                <p>Variante estrema della Mesh: <strong>OGNI dispositivo è collegato a TUTTI gli altri</strong>.</p>
                 <span class="wiki-hint" style="color: #856404;">Vai al paragrafo su Wikipedia ↗</span>
             </div>
         </a>
@@ -232,13 +224,10 @@
 <script>
     function mostraSorgente() {
         let htmlPulito = document.documentElement.outerHTML;
-        
-        // Pulizia per didattica (rimuove codice "sporco" delle estensioni browser)
         htmlPulito = htmlPulito.replace(/<plasmo-csui[\s\S]*?<\/plasmo-csui>/gi, "");
         htmlPulito = htmlPulito.replace(/<script[^>]*chrome-extension[\s\S]*?<\/script>/gi, "");
         htmlPulito = htmlPulito.replace(/<grammarly[\s\S]*?<\/grammarly>/gi, "");
         htmlPulito = htmlPulito.replace(/<style[^>]*>[\s\S]*?--brisk[\s\S]*?<\/style>/gi, "");
-        
         document.getElementById('sourceCodeDisplay').textContent = htmlPulito;
         new bootstrap.Modal(document.getElementById('sourceModal')).show();
     }
