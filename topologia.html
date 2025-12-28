@@ -37,10 +37,10 @@
             padding: 25px;
             transition: all 0.3s ease;
             position: relative;
-            /* Flex column permette di spingere il footer in basso */
+            /* Flex column permette di spingere il footer in basso e allineare le altezze */
             display: flex;
             flex-direction: column;
-            height: 100%; /* Occupa tutta l'altezza fornita dalla colonna */
+            height: 100%; 
         }
         
         .topo-title { font-weight: bold; color: #555; font-size: 1.1em; text-transform: uppercase; margin-bottom: 15px; }
@@ -69,7 +69,6 @@
         .btn-back:hover { background-color: #2a1b6e; color: white; transform: translateX(-5px); }
 
         /* --- STILE DEL LINK --- */
-        /* Rimuoviamo stili di link standard */
         .card-link {
             text-decoration: none !important;
             color: inherit !important;
@@ -92,12 +91,12 @@
         .wiki-hint {
             font-size: 0.85em;
             color: #888;
-            margin-top: auto; /* SPINGE IN BASSO IL TESTO */
+            margin-top: auto; /* SPINGE IN BASSO IL TESTO per allinearlo */
             padding-top: 15px;
             display: block;
             font-style: italic;
             text-align: right;
-            border-top: 1px dashed #e0e0e0; /* Separatore leggero */
+            border-top: 1px dashed #e0e0e0;
         }
         
         /* Stile speciale per Fully Connected */
@@ -115,7 +114,7 @@
     <h1>Topologie di Rete</h1>
     <p class="intro">
         La "Topologia" è la mappa geometrica della rete.<br>
-        Clicca su una scheda per leggere i dettagli su <strong>Wikipedia</strong> 🔗
+        Clicca su una scheda per leggere i dettagli specifici su <strong>Wikipedia</strong> 🔗
     </p>
 
     <img src="Topologia-reti-informatiche.png" alt="Schema riassuntivo Topologie" class="img-main">
@@ -128,7 +127,7 @@
                     <div class="topo-title" style="color: #0dcaf0;">1. Lineare Aperta 🔗</div>
                     <p>Nota come <strong>Daisy-chain</strong>.</p>
                     <p>È la connessione più semplice: un filo diretto tra dispositivi in serie.</p>
-                    <span class="wiki-hint">Leggi su Wikipedia ↗</span>
+                    <span class="wiki-hint">Vai al paragrafo su Wikipedia ↗</span>
                 </div>
             </a>
         </div>
@@ -139,7 +138,7 @@
                     <div class="topo-title">2. A Bus 🔗</div>
                     <p>Tutti i computer sono collegati a un <strong>singolo cavo centrale</strong> (dorsale).</p>
                     <p><em>Contro:</em> Se si rompe il cavo principale, l'intera rete si ferma.</p>
-                    <span class="wiki-hint">Leggi su Wikipedia ↗</span>
+                    <span class="wiki-hint">Vai al paragrafo su Wikipedia ↗</span>
                 </div>
             </a>
         </div>
@@ -149,7 +148,7 @@
                 <div class="topology-card">
                     <div class="topo-title">3. Ad Anello (Ring) 🔗</div>
                     <p>I computer sono in un cerchio chiuso. I dati passano da un nodo all'altro come una staffetta finché non trovano il destinatario.</p>
-                    <span class="wiki-hint">Leggi su Wikipedia ↗</span>
+                    <span class="wiki-hint">Vai al paragrafo su Wikipedia ↗</span>
                 </div>
             </a>
         </div>
@@ -158,8 +157,8 @@
             <a href="https://it.wikipedia.org/wiki/Topologia_di_rete#Topologia_a_stella" target="_blank" class="card-link w-100">
                 <div class="topology-card">
                     <div class="topo-title">4. A Stella (Star) 🔗</div>
-                    <p>Tutti i dispositivi sono collegati a un <strong>centro stella</strong> (Switch). Se si rompe un cavo, si ferma solo quel PC, non tutta la rete.</p>
-                    <span class="wiki-hint">Leggi su Wikipedia ↗</span>
+                    <p>Tutti i dispositivi sono collegati a un <strong>centro stella</strong> (Switch). Se si rompe un cavo, si ferma solo quel PC.</p>
+                    <span class="wiki-hint">Vai al paragrafo su Wikipedia ↗</span>
                 </div>
             </a>
         </div>
@@ -169,7 +168,7 @@
                 <div class="topology-card">
                     <div class="topo-title">5. Ad Albero (Tree) 🔗</div>
                     <p>Struttura gerarchica ("Stella di Stelle"). Un nodo radice controlla nodi intermedi che gestiscono i loro gruppi.</p>
-                    <span class="wiki-hint">Leggi su Wikipedia ↗</span>
+                    <span class="wiki-hint">Vai al paragrafo su Wikipedia ↗</span>
                 </div>
             </a>
         </div>
@@ -180,7 +179,7 @@
                     <div class="topo-title" style="color: #0d6efd;">6. A Maglia (Mesh) 🔗</div>
                     <p><strong>Esempio: INTERNET 🌍</strong></p>
                     <p>Ogni nodo ha più strade. Se un cavo si rompe, i dati ne usano un altro.</p>
-                    <span class="wiki-hint">Leggi su Wikipedia ↗</span>
+                    <span class="wiki-hint">Vai al paragrafo su Wikipedia ↗</span>
                 </div>
             </a>
         </div>
@@ -195,7 +194,7 @@
                     <li><strong>Affidabilità:</strong> Massima (usata per Nucleare/Militare).</li>
                     <li><strong>Costo:</strong> Altissimo per l'enorme numero di cavi.</li>
                 </ul>
-                <span class="wiki-hint" style="color: #856404;">Approfondisci su Wikipedia ↗</span>
+                <span class="wiki-hint" style="color: #856404;">Vai al paragrafo su Wikipedia ↗</span>
             </div>
         </a>
     </div>
