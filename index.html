@@ -82,20 +82,20 @@
 
         <div id="retelocale" class="section-content active">
             <h2 class="text-primary fw-bold mb-3">Dallo Stand-Alone alla Connettività</h2>
-            <p class="mb-4">Il passaggio alla rete avviene quando i dispositivi iniziano a condividere risorse (stampanti, file, internet). In contesti domestici o di piccoli uffici, parliamo di ambiente <strong>SOHO (Small Office / Home Office)</strong>.</p>
+            <p class="mb-4">Il passaggio alla rete avviene quando i dispositivi iniziano a condividere risorse. In contesti domestici parliamo di ambiente <strong>SOHO (Small Office / Home Office)</strong>.</p>
             
             <div class="row g-4 mb-5">
                 <div class="col-md-6">
                     <div class="card-original card-lan shadow-sm">
                         <h5 class="fw-bold text-primary">Cos'è una LAN?</h5>
-                        <p class="small"><strong>Local Area Network:</strong> Un'infrastruttura di rete limitata a un'area circoscritta. Permette la comunicazione ad alta velocità tra dispositivi privati in totale sicurezza.</p>
+                        <p class="small"><strong>Local Area Network:</strong> Un'infrastruttura di rete limitata a un'area circoscritta (casa/ufficio).</p>
                         <a href="lan_approfondimento.html" class="btn btn-primary w-100 fw-bold">Approfondisci LAN</a>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="card-original card-wan shadow-sm">
                         <h5 class="fw-bold text-danger">Cos'è una WAN?</h5>
-                        <p class="small"><strong>Wide Area Network:</strong> Una rete a copertura geografica estesa (come Internet) che interconnette diverse LAN distribuite nel mondo.</p>
+                        <p class="small"><strong>Wide Area Network:</strong> La rete a copertura geografica estesa (Internet).</p>
                         <a href="wan_approfondimento.html" class="btn btn-danger w-100 fw-bold">Approfondisci WAN</a>
                     </div>
                 </div>
@@ -103,12 +103,17 @@
 
             <div class="border-top pt-4">
                 <h5 class="text-danger fw-bold"><i class="bi bi-bluetooth"></i> 1. La P.A.N. (Personal Area Network)</h5>
-                <p class="small text-muted mb-3">La scala più piccola delle reti: la comunicazione a cortissimo raggio tra dispositivi indossabili e personali.</p>
-                <div class="text-center">
+                <p class="small text-muted mb-3">La comunicazione a corto raggio tra i tuoi dispositivi personali.</p>
+                
+                <div class="d-flex flex-column align-items-center">
+                    <a href="pan_approfondimento.html" class="btn btn-outline-primary btn-lg px-5 py-3 mb-4 shadow-sm border-2 fw-bold">
+                        <i class="bi bi-broadcast"></i> Focus: Bluetooth & NFC (Near Field)
+                    </a>
+
                     <a href="https://itrelease.com/2018/07/advantages-and-disadvantages-of-personal-area-network-pan/" target="_blank">
                         <img src="pan_network.png" alt="Schema di una Personal Area Network" class="img-fluid rounded border shadow-sm" style="max-width: 450px; width: 100%;">
                     </a>
-                    <p class="mt-2 x-small text-muted italic">Clicca per visualizzare i dettagli dei nodi PAN</p>
+                    <p class="mt-2 x-small text-muted italic">Clicca sull'immagine per la teoria PAN</p>
                 </div>
             </div>
         </div>
@@ -122,7 +127,7 @@
             <div class="alert alert-warning border-0 shadow-sm mb-4">
                 <h6 class="fw-bold"><i class="bi bi-info-circle-fill"></i> Il concetto di Incapsulamento</h6>
                 <p class="small mb-0 text-dark">
-                    <strong>P.D.U. (Protocol Data Unit):</strong> Ogni livello aggiunge le proprie informazioni di controllo ai dati. Immagina una lettera inserita in una busta (Segmento), poi in un pacco (Pacchetto) e infine in un container (Frame) per il trasporto fisico.
+                    <strong>P.D.U. (Protocol Data Unit):</strong> Ogni livello aggiunge le proprie informazioni di controllo ai dati.
                 </p>
             </div>
 
@@ -153,6 +158,7 @@
                     <div class="fw-bold mb-2"><i class="bi bi-folder-fill folder-icon"></i> Settimana_01_Teoria</div>
                     <div class="tree-node"><i class="bi bi-file-earmark-code text-info"></i> <a href="lan_approfondimento.html" class="file-btn text-dark">lan_approfondimento.html</a></div>
                     <div class="tree-node"><i class="bi bi-file-earmark-code text-info"></i> <a href="wan_approfondimento.html" class="file-btn text-dark">wan_approfondimento.html</a></div>
+                    <div class="tree-node"><i class="bi bi-file-earmark-code text-info"></i> <a href="pan_approfondimento.html" class="file-btn text-dark">pan_approfondimento.html</a></div>
                 </div>
                 <div class="tree-node">
                     <div class="fw-bold mb-2"><i class="bi bi-folder-fill folder-icon"></i> Modello_OSI_Details</div>
@@ -172,8 +178,13 @@
 <div class="modal fade" id="sourceModal" tabindex="-1">
     <div class="modal-dialog modal-lg modal-dialog-scrollable">
         <div class="modal-content">
-            <div class="modal-header bg-dark text-white"><h5 class="modal-title">Codice Sorgente</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div>
-            <div class="modal-body bg-light"><pre id="sourceDisplay" class="p-3 border rounded bg-white small" style="white-space: pre-wrap;"></pre></div>
+            <div class="modal-header bg-dark text-white">
+                <h5 class="modal-title">Codice Sorgente</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body bg-light">
+                <pre id="sourceDisplay" class="p-3 border rounded bg-white small" style="white-space: pre-wrap;"></pre>
+            </div>
         </div>
     </div>
 </div>
@@ -188,7 +199,10 @@
             b.classList.remove('active', 'btn-primary'); b.classList.add('btn-outline-primary');
         });
         const btn = document.getElementById('nav-' + tabId);
-        if(btn) { btn.classList.add('active', 'btn-primary'); btn.classList.remove('btn-outline-primary'); }
+        if(btn) { 
+            btn.classList.add('active', 'btn-primary'); 
+            btn.classList.remove('btn-outline-primary'); 
+        }
     }
 
     function animateLayers(mode) {
