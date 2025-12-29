@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab 3: I2C & Temperatura</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { padding: 40px; background-color: #e9ecef; }
+        .lab-container { max-width: 950px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
+        .code-box { background: #282c34; color: #abb2bf; padding: 15px; border-radius: 5px; font-family: monospace; font-size: 0.85em; height: 350px; overflow-y: auto; border: 1px solid #ddd;}
+        .theory-box { background-color: #fff3cd; border-left: 5px solid #ffc107; padding: 20px; margin-top: 30px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <div class="lab-container">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <a href="lab_cs.html" class="btn btn-outline-secondary">&larr; Torna al Lab 2</a>
+            <span class="badge bg-info text-dark">Protocollo I2C</span>
+        </div>
+
+        <h1 class="text-primary mb-3">Esperimento 3: Controllo Remoto Temperatura</h1>
+        <p class="lead">Un Arduino legge la temperatura e comanda un motore sull'altro Arduino usando il bus <strong>I2C</strong> (Libreria <code>Wire.h</code>). Rispetto alla Serial, qui usiamo indirizzi specifici (Master/Slave).</p>
+
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="card h-100 border-danger">
+                    <div class="card-header bg-danger text-white">SENDER (Master)</div>
+                    <div class="card-body p-0">
+                        <div class="code-box">
+#include &lt;Wire.h&gt;
+
+void setup() {
+  Wire.begin(); // Avvia come Master
+  Serial.begin(9600);
+}
+
+void loop() {
+  int lettura = analogRead(A0);
+  
+  // Mappa la lettura (0-1023) in gradi (-40 a 125)
+  // per comandare il motore del Receiver
+  int segnale = map(lettura, 20, 358, -40, 125); 
+
+  // Invia al dispositivo indirizzo 0x55
+  Wire.beginTransmission(0x55); 
+  Wire.write(segnale);          
+  Wire.endTransmission();
+  
+  Serial.print("Temperatura inviata: ");
+  Serial.println(segnale);
+  delay(200);
+}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card h-100 border-success">
+                    <div class="card-header bg-success text-white">RECEIVER (Slave 0x55)</div>
+                    <div class="card-body p-0">
+                        <div class="code-box">
+#include &lt;Wire.h&gt;
+
+const int pinTransistor = 9;   
+const int ledFreddo = 12;      
+const int ledCaldo = 13;       
+
+// int8_t per gestire correttamente i segni
+volatile int8_t tempRicevuta = 0;
+volatile bool datoNuovo = false;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(pinTransistor, OUTPUT);
+  pinMode(ledFreddo, OUTPUT);
+  pinMode(ledCaldo, OUTPUT);
+  
+  // Si registra sul bus con indirizzo 0x55
+  Wire.begin(0x55);
+  // ISR: Funzione chiamata quando arrivano dati
+  Wire.onReceive(riceviDati);
+  Serial.println("RICEVITORE ALLINEATO");
+}
+
+void riceviDati(int bytes) {
+  if (Wire.available()) {
+    tempRicevuta = (int8_t)Wire.read();
+    datoNuovo = true;
+  }
+}
+
+void loop() {
+  if (datoNuovo) {
+    Serial.print("Temp: ");
+    Serial.println((int)tempRicevuta);
+
+    // 1. Logica LED
+    if (tempRicevuta > 30) {
+      digitalWrite(ledCaldo, HIGH);
+      digitalWrite(ledFreddo, LOW);
+    } else {
+      digitalWrite(ledCaldo, LOW);
+      digitalWrite(ledFreddo, HIGH);
+    }
+
+    // 2. Logica Motore
+    int pwm = map(tempRicevuta, 20, 50, 0, 255);
+    analogWrite(pinTransistor, constrain(pwm, 0, 255));
+    
+    datoNuovo = false;
+  }
+}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center my-4">
+            <a href="https://www.tinkercad.com/things/2Y67P2RlKW2-collegamentoseriale3temperaturecontrol" target="_blank" class="btn btn-warning btn-lg fw-bold px-5 shadow">
+                🌡️ Avvia Simulazione I2C
+            </a>
+        </div>
+
+        <hr class="my-5">
+
+        <div class="theory-box">
+            <h3>⚡ Teoria: Tensione vs Corrente</h3>
+            <p>Abbiamo usato Serial e I2C (Tensione). Ma nell'industria reale, su lunghe distanze, si usa la Corrente.</p>
+
+            <table class="table table-bordered bg-white">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Caratteristica</th>
+                        <th>RS232 / I2C (Tensione)</th>
+                        <th>Current Loop 4-20mA (Corrente)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Principio</strong></td>
+                        <td>Legge i Volt (0V o 5V).</td>
+                        <td>Legge gli Ampere che scorrono nel filo.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Distanza</strong></td>
+                        <td>Corta (metri). La resistenza del cavo fa calare i Volt.</td>
+                        <td>Lunga (km). La corrente rimane costante ovunque nel loop.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Diagnostica</strong></td>
+                        <td>Se leggi 0, potrebbe essere "LOW" o filo rotto.</td>
+                        <td>Se leggi 0mA, il filo è rotto (il minimo è 4mA).</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="text-center mt-5">
+            <a href="index.html" class="btn btn-primary">Torna alla Home Page</a>
+        </div>
+    </div>
+</body>
+</html>
