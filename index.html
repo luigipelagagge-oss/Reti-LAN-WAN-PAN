@@ -11,16 +11,23 @@
         .section-content { display: none; }
         .section-content.active { display: block !important; }
         
+        /* Grafica Stand-Alone */
         .offline-circle { width: 140px; height: 140px; border: 3px dashed #dc3545; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 auto; background: #fff; }
         
-        /* Torre ISO/OSI e Animazioni */
-        .osi-layer { color: white; padding: 12px; margin-bottom: 8px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; font-weight: bold; transition: all 0.3s ease; opacity: 1; }
+        /* Torre ISO/OSI */
+        .osi-layer { color: white; padding: 12px; margin-bottom: 8px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; font-weight: bold; transition: all 0.3s ease; }
         .layer-7 { background-color: #e83e8c; } .layer-6 { background-color: #a55eea; } .layer-5 { background-color: #fd9644; }
         .layer-4 { background-color: #f7b731; } .layer-3 { background-color: #20bf6b; } .layer-2 { background-color: #2d98da; }
         .layer-1 { background-color: #778ca3; }
-        
         .highlight-send { transform: scale(1.05); box-shadow: 0 0 20px #ffc107; filter: brightness(1.2); }
         .highlight-receive { transform: scale(1.05); box-shadow: 0 0 20px #0dcaf0; filter: brightness(1.2); }
+
+        /* Stile Albero Logico */
+        .tree-node { border-left: 2px solid #dee2e6; margin-left: 20px; padding-left: 20px; position: relative; padding-bottom: 10px; }
+        .tree-node::before { content: ""; position: absolute; left: 0; top: 15px; width: 15px; height: 2px; background: #dee2e6; }
+        .folder-icon { color: #ffca28; margin-right: 8px; }
+        .file-btn { text-decoration: none; font-family: monospace; font-size: 0.9rem; padding: 2px 8px; border-radius: 4px; transition: 0.2s; display: inline-block; }
+        .file-btn:hover { background: #e9ecef; color: #0d6efd; }
 
         .fab-source { position: fixed; bottom: 20px; right: 20px; background: #212529; color: white; padding: 10px 20px; border-radius: 30px; border: 2px solid white; cursor: pointer; z-index: 1000; font-weight: bold; }
     </style>
@@ -51,7 +58,7 @@
             <h2 class="text-primary fw-bold mb-4">1. Il Computer Isolato</h2>
             <div class="row align-items-center">
                 <div class="col-md-7">
-                    <p>Descrizione dello stato Stand-Alone e della sicurezza Air Gap.</p>
+                    <p>Fase di isolamento: analisi del concetto di "Air Gap" e sicurezza fisica.</p>
                 </div>
                 <div class="col-md-5 text-center">
                     <div class="offline-circle shadow-sm">
@@ -88,44 +95,68 @@
                 <h2 class="fw-bold" style="color: #d63384;">Modello ISO/OSI e PDU</h2>
                 <a href="descrizione_livelli.html" class="btn btn-warning fw-bold shadow-sm px-4"><i class="bi bi-box-seam"></i> VAI ALLE MATRIOSKE</a>
             </div>
-
             <div class="alert alert-warning border-0 shadow-sm mb-4">
-                <h6 class="fw-bold"><i class="bi bi-info-circle-fill"></i> Cos'è la P.D.U.?</h6>
-                <p class="small mb-0">PDU sta per <strong>Protocol Data Unit</strong>. È il nome che diamo ai dati mentre viaggiano tra i livelli. Immagina una <strong>Matrioska</strong>: il dato originale viene inserito in una busta (Segmento), poi in una scatola (Pacchetto), e così via. Ogni livello chiama il suo "pacchetto" con un nome diverso.</p>
+                <p class="small mb-0"><strong>P.D.U. (Protocol Data Unit):</strong> I dati cambiano nome attraversando i livelli (Matrioska).</p>
             </div>
-
             <div class="row g-4">
                 <div class="col-md-5">
-                    <table class="table table-sm table-bordered small mb-4 shadow-sm">
-                        <thead class="table-dark"><tr><th>Livello</th><th>Nome della P.D.U.</th></tr></thead>
-                        <tbody>
-                            <tr><td>7-6-5</td><td class="text-danger fw-bold">DATI (Data)</td></tr>
-                            <tr><td>4</td><td class="text-warning fw-bold">SEGMENTO (Segment)</td></tr>
-                            <tr><td>3</td><td class="text-success fw-bold">PACCHETTO (Packet)</td></tr>
-                            <tr><td>2</td><td class="text-primary fw-bold">FRAME (Trama)</td></tr>
-                            <tr><td>1</td><td class="fw-bold text-secondary">BIT (Flusso binario)</td></tr>
-                        </tbody>
-                    </table>
                     <div class="d-grid gap-2">
-                        <button onclick="animateLayers('send')" class="btn btn-outline-danger fw-bold">SIMULA INVIO (7 → 1)</button>
-                        <button onclick="animateLayers('receive')" class="btn btn-outline-primary fw-bold">SIMULA RICEZIONE (1 → 7)</button>
+                        <button onclick="animateLayers('send')" class="btn btn-outline-danger fw-bold">SIMULA INVIO</button>
+                        <button onclick="animateLayers('receive')" class="btn btn-outline-primary fw-bold">SIMULA RICEZIONE</button>
                     </div>
                 </div>
                 <div class="col-md-7">
-                    <div id="l7" class="osi-layer layer-7">7. Applicazione <i class="bi bi-search"></i></div>
-                    <div id="l6" class="osi-layer layer-6">6. Presentazione <i class="bi bi-search"></i></div>
-                    <div id="l5" class="osi-layer layer-5">5. Sessione <i class="bi bi-search"></i></div>
-                    <div id="l4" class="osi-layer layer-4">4. Trasporto <i class="bi bi-search"></i></div>
-                    <div id="l3" class="osi-layer layer-3">3. Rete <i class="bi bi-search"></i></div>
-                    <div id="l2" class="osi-layer layer-2">2. Collegamento <i class="bi bi-search"></i></div>
-                    <div id="l1" class="osi-layer layer-1">1. Fisico <i class="bi bi-search"></i></div>
+                    <div id="l7" class="osi-layer layer-7">7. Applicazione</div>
+                    <div id="l6" class="osi-layer layer-6">6. Presentazione</div>
+                    <div id="l5" class="osi-layer layer-5">5. Sessione</div>
+                    <div id="l4" class="osi-layer layer-4">4. Trasporto</div>
+                    <div id="l3" class="osi-layer layer-3">3. Rete</div>
+                    <div id="l2" class="osi-layer layer-2">2. Collegamento</div>
+                    <div id="l1" class="osi-layer layer-1">1. Fisico</div>
                 </div>
             </div>
         </div>
 
         <div id="mappa" class="section-content">
-            <h2 class="fw-bold mb-4">Mappa Sito</h2>
-            <div class="p-3 bg-light border rounded"><code>Tutti i file sono nella cartella principale.</code></div>
+            <h2 class="fw-bold mb-4"><i class="bi bi-diagram-3 text-primary"></i> Architettura Logica del Progetto</h2>
+            <div class="p-4 bg-light border rounded shadow-sm">
+                
+                <div class="fw-bold mb-2"><i class="bi bi-house-door-fill text-primary"></i> 🏠 index.html <span class="badge bg-secondary ms-2">Root</span></div>
+                
+                <div class="tree-node">
+                    <div class="fw-bold mb-2"><i class="bi bi-folder-fill folder-icon"></i> Settimana_01_Teoria</div>
+                    <div class="tree-node">
+                        <i class="bi bi-file-earmark-code text-info"></i> <a href="lan_approfondimento.html" class="file-btn text-dark">lan_approfondimento.html</a>
+                    </div>
+                    <div class="tree-node">
+                        <i class="bi bi-file-earmark-code text-info"></i> <a href="wan_approfondimento.html" class="file-btn text-dark">wan_approfondimento.html</a>
+                    </div>
+                </div>
+
+                <div class="tree-node">
+                    <div class="fw-bold mb-2"><i class="bi bi-folder-fill folder-icon"></i> Modello_OSI_Details</div>
+                    <div class="tree-node">
+                        <i class="bi bi-layers-half text-danger"></i> <a href="descrizione_livelli.html" class="file-btn text-dark">descrizione_livelli.html</a>
+                    </div>
+                    <div class="tree-node text-muted small ps-4">
+                        <i class="bi bi-info-circle"></i> Sottolivelli (livello1.html...livello7.html)
+                    </div>
+                </div>
+
+                <div class="tree-node">
+                    <div class="fw-bold mb-2"><i class="bi bi-folder-fill folder-icon"></i> Settimana_02_Lab_Arduino</div>
+                    <div class="tree-node">
+                        <i class="bi bi-cpu-fill text-success"></i> <a href="lab_ping.html" class="file-btn text-dark">lab_ping.html</a>
+                    </div>
+                    <div class="tree-node text-muted small ps-4">
+                        <i class="bi bi-cpu"></i> lab_cs.html (In sviluppo)
+                    </div>
+                </div>
+
+                <div class="mt-4 alert alert-info py-2 small border-0">
+                    <i class="bi bi-info-square-fill"></i> <strong>Nota per gli studenti:</strong> I file sono fisicamente tutti nella stessa cartella, ma qui sono organizzati per moduli didattici.
+                </div>
+            </div>
         </div>
     </main>
 </div>
@@ -145,7 +176,8 @@
 <script>
     function switchTab(tabId) {
         document.querySelectorAll('.section-content').forEach(s => s.classList.remove('active'));
-        document.getElementById(tabId).classList.add('active');
+        const target = document.getElementById(tabId);
+        if(target) target.classList.add('active');
         document.querySelectorAll('nav .btn').forEach(b => {
             b.classList.remove('active', 'btn-primary'); b.classList.add('btn-outline-primary');
         });
@@ -153,12 +185,10 @@
         if(btn) { btn.classList.add('active', 'btn-primary'); btn.classList.remove('btn-outline-primary'); }
     }
 
-    // LOGICA ANIMAZIONE LIVELLI
     function animateLayers(mode) {
         const layers = [7, 6, 5, 4, 3, 2, 1];
         const sequence = (mode === 'send') ? layers : layers.reverse();
         const cssClass = (mode === 'send') ? 'highlight-send' : 'highlight-receive';
-
         sequence.forEach((num, index) => {
             setTimeout(() => {
                 const el = document.getElementById('l' + num);
@@ -174,4 +204,4 @@
     }
 </script>
 </body>
-</html>
+</html> 
