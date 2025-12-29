@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Approfondimento P.A.N. & NFC</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        body { background-color: #f8f9fa; font-family: 'Segoe UI', sans-serif; color: #333; }
+        .hero-pan { background: linear-gradient(135deg, #6610f2, #0d6efd); color: white; padding: 40px 0; border-bottom: 5px solid #ffc107; }
+        .feature-icon { font-size: 2.5rem; margin-bottom: 1rem; color: #6610f2; }
+        .card-nfc { border: none; border-radius: 15px; background: #fff; transition: 0.3s; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .tech-box { border-left: 4px solid #6610f2; background: #f0ebff; padding: 15px; border-radius: 0 10px 10px 0; }
+        .btn-back { position: fixed; top: 20px; left: 20px; z-index: 1000; }
+    </style>
+</head>
+<body>
+
+<a href="index.html" class="btn btn-dark rounded-pill btn-back shadow-sm">
+    <i class="bi bi-arrow-left"></i> Torna alla Dashboard
+</a>
+
+<header class="hero-pan text-center">
+    <div class="container">
+        <h1 class="display-4 fw-bold">Personal Area Network</h1>
+        <p class="lead">La rete che vive intorno a te</p>
+    </div>
+</header>
+
+<div class="container py-5">
+    <div class="row g-4 justify-content-center">
+        <div class="col-md-5">
+            <div class="card card-nfc p-4 h-100">
+                <i class="bi bi-bluetooth feature-icon text-primary"></i>
+                <h3 class="fw-bold">Bluetooth</h3>
+                <p>La tecnologia standard per collegare cuffie, smartwatch e periferiche. Copre un raggio di circa <strong>10 metri</strong> e richiede l'accoppiamento (pairing).</p>
+                <div class="tech-box mt-auto">
+                    <strong>Uso tipico:</strong> Streaming audio, trasferimento file lenti, domotica.
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-5">
+            <div class="card card-nfc p-4 h-100 border-start border-warning border-4">
+                <i class="bi bi-broadcast feature-icon text-warning"></i>
+                <h3 class="fw-bold">NFC (Near Field Communication)</h3>
+                <p>A differenza del Bluetooth, l'NFC funziona solo a distanza brevissima: <strong>meno di 4 centimetri</strong>. È ultra-veloce da collegare e molto sicuro.</p>
+                <div class="tech-box mt-3">
+                    <strong>Come funziona:</strong> Sfrutta l'induzione elettromagnetica. Spesso un dispositivo è "passivo" (come una carta di credito) e riceve energia dal "lettore" (lo smartphone).
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-lg-8 mx-auto">
+            <div class="p-4 bg-white rounded-4 shadow-sm">
+                <h4 class="fw-bold mb-4 text-center"><i class="bi bi-shield-check text-success"></i> Perché usare NFC se esiste il Bluetooth?</h4>
+                <div class="row align-items-center">
+                    <div class="col-md-12">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Caratteristica</th>
+                                    <th>Bluetooth</th>
+                                    <th>NFC</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Raggio d'azione</td>
+                                    <td>Fino a 10m</td>
+                                    <td>< 4cm</td>
+                                </tr>
+                                <tr>
+                                    <td>Velocità Connessione</td>
+                                    <td>Lenta (6 sec)</td>
+                                    <td>Istantanea (< 0.1s)</td>
+                                </tr>
+                                <tr>
+                                    <td>Sicurezza</td>
+                                    <td>Media (Intercettabile)</td>
+                                    <td>Altissima (Serve contatto)</td>
+                                </tr>
+                                <tr>
+                                    <td>Esempio Reale</td>
+                                    <td>Auricolari Wireless</td>
+                                    <td>Pagamenti (Apple/Google Pay)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
