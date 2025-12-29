@@ -40,3 +40,48 @@ L'organizzazione dei file riflette il percorso didattico. Di seguito la struttur
 └── 📂 Settimana_02_Lab_Arduino/  # (Laboratorio Pratico)
     ├── ⚡ lab_ping.html          # (Esercizio 1: Loopback)
     └── ⚡ lab_cs.html            # (Esercizio 2: Client/Server)
+######################
+## 3. Funzionalità Tecniche Chiave
+
+### 🔹 Navigazione a Schede (Tab System)
+Il file `index.html` utilizza un sistema JavaScript nativo per gestire la visibilità del DOM senza ricaricare la pagina (SPA-like behavior).
+* **Tab Teoria:** Concetti astratti.
+* **Tab Mappa Sito:** Albero gerarchico del progetto.
+* **Tab Laboratorio:** Accesso alle esercitazioni.
+
+### 🔹 Ispezione Didattica (Source View)
+Ogni pagina include una funzionalità **"Vedi Sorgente"** (spesso tramite un *Floating Action Button*).
+* **Funzionamento:** Estrae `document.documentElement.outerHTML` e lo mostra in una modale.
+* **Obiettivo:** Permettere agli studenti di imparare l'HTML analizzando la pagina stessa che stanno studiando.
+
+### 🔹 Drill-Down Navigation
+Navigazione verticale gerarchica: dalla "Torre ISO/OSI" generale ai singoli livelli specifici, con sistema di breadcrumb ("Torna alle Matriosche") per l'orientamento.
+
+---
+
+## 4. Guida all'Uso (User Journey)
+
+Il manuale suggerisce il seguente flusso di fruizione per massimizzare l'apprendimento:
+
+1.  **Fase di Isolamento (Tab 1):** Comprendere il concetto di "Air Gap" e sicurezza fisica.
+2.  **Fase di Connessione (Tab 2):** Capire la differenza tra LAN (SOHO) e WAN.
+3.  **Fase di Astrazione (Tab 3):** Visualizzare la Pila ISO/OSI interattiva ed esplorare l'incapsulamento (da Livello 7 a 1).
+4.  **Fase di Implementazione (Tab 4):** Sbloccare il laboratorio per configurare fisicamente la comunicazione seriale.
+
+---
+
+## 5. Manutenzione e Sviluppo Futuro
+
+Per l'aggiornamento del sito, si raccomanda di mantenere la coerenza visiva:
+* Utilizzare le classi **Bootstrap 5** standard per il layout.
+* Rispettare la **palette colori ISO/OSI** definita nei file CSS interni.
+* Aggiornare la *Master Dashboard* nel file `index.html` ogni qualvolta viene aggiunto un nuovo modulo didattico.
+
+### ⚙️ Installazione
+Essendo un sito statico, non richiede server backend (Node.js, PHP, ecc.).
+1.  Scaricare l'intera cartella del progetto.
+2.  Aprire il file **`index.html`** con un qualsiasi browser moderno (Chrome, Edge, Firefox).
+
+---
+
+> *Documentazione generata automaticamente il: 29/12/2025*
