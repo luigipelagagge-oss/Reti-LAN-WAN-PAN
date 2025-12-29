@@ -63,46 +63,52 @@
             <h2 class="text-primary fw-bold mb-4">1. Il Computer Isolato</h2>
             <div class="row align-items-center">
                 <div class="col-md-7">
-                    <p>Fase di isolamento: analisi del concetto di "Air Gap" e sicurezza fisica.</p>
+                    <h5 class="fw-bold text-dark">Sicurezza e Isolamento Totale</h5>
+                    <p>In informatica, uno stato <strong>Stand-Alone</strong> identifica un sistema che opera senza alcuna connessione verso l'esterno. Analizziamo la massima protezione possibile: l'<strong>Air Gap</strong>.</p>
+                    <ul class="small text-muted">
+                        <li><strong>Sicurezza Fisica:</strong> Assenza di interfacce di rete attive.</li>
+                        <li><strong>Integrità:</strong> Impossibilità di subire attacchi remoti via web.</li>
+                        <li><strong>Limiti:</strong> Difficoltà nell'aggiornamento e nello scambio dati rapido.</li>
+                    </ul>
                 </div>
                 <div class="col-md-5 text-center">
                     <div class="offline-circle shadow-sm">
                         <i class="bi bi-pc-display text-primary" style="font-size: 3rem;"></i>
-                        <span class="badge bg-danger mt-2">OFFLINE</span>
+                        <span class="badge bg-danger mt-2">AIR-GAPPED</span>
                     </div>
                 </div>
             </div>
         </div>
 
         <div id="retelocale" class="section-content active">
-            <h2 class="text-primary fw-bold mb-3">Dallo Stand-Alone alla LAN</h2>
-            <p class="mb-4">Quando i dispositivi cessano di essere "soli" e vengono collegati tra loro, formano una rete. Nelle nostre case parliamo spesso di ambiente <strong>SOHO (Small Office / Home Office)</strong>.</p>
+            <h2 class="text-primary fw-bold mb-3">Dallo Stand-Alone alla Connettività</h2>
+            <p class="mb-4">Il passaggio alla rete avviene quando i dispositivi iniziano a condividere risorse (stampanti, file, internet). In contesti domestici o di piccoli uffici, parliamo di ambiente <strong>SOHO (Small Office / Home Office)</strong>.</p>
             
             <div class="row g-4 mb-5">
                 <div class="col-md-6">
                     <div class="card-original card-lan shadow-sm">
                         <h5 class="fw-bold text-primary">Cos'è una LAN?</h5>
-                        <p class="small"><strong>Local Area Network:</strong> La "Rete dentro casa tua" che collega i tuoi dispositivi.</p>
-                        <a href="lan_approfondimento.html" class="btn btn-primary w-100 fw-bold">Vai al file: LAN</a>
+                        <p class="small"><strong>Local Area Network:</strong> Un'infrastruttura di rete limitata a un'area circoscritta. Permette la comunicazione ad alta velocità tra dispositivi privati in totale sicurezza.</p>
+                        <a href="lan_approfondimento.html" class="btn btn-primary w-100 fw-bold">Approfondisci LAN</a>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="card-original card-wan shadow-sm">
                         <h5 class="fw-bold text-danger">Cos'è una WAN?</h5>
-                        <p class="small"><strong>Wide Area Network:</strong> La rete esterna geografica (Internet).</p>
-                        <a href="wan_approfondimento.html" class="btn btn-danger w-100 fw-bold">Vai al file: WAN</a>
+                        <p class="small"><strong>Wide Area Network:</strong> Una rete a copertura geografica estesa (come Internet) che interconnette diverse LAN distribuite nel mondo.</p>
+                        <a href="wan_approfondimento.html" class="btn btn-danger w-100 fw-bold">Approfondisci WAN</a>
                     </div>
                 </div>
             </div>
 
             <div class="border-top pt-4">
                 <h5 class="text-danger fw-bold"><i class="bi bi-bluetooth"></i> 1. La P.A.N. (Personal Area Network)</h5>
-                <p class="small text-muted mb-3">Prima ancora della rete di casa, esiste la rete "intorno a te" (Bluetooth, Smartwatch, ecc.).</p>
+                <p class="small text-muted mb-3">La scala più piccola delle reti: la comunicazione a cortissimo raggio tra dispositivi indossabili e personali.</p>
                 <div class="text-center">
                     <a href="https://itrelease.com/2018/07/advantages-and-disadvantages-of-personal-area-network-pan/" target="_blank">
-                        <img src="pan_network.png" class="img-fluid rounded border shadow-sm" style="max-width: 450px; width: 100%;">
+                        <img src="pan_network.png" alt="Schema di una Personal Area Network" class="img-fluid rounded border shadow-sm" style="max-width: 450px; width: 100%;">
                     </a>
-                    <p class="mt-2 x-small text-muted italic">Clicca sull'immagine per approfondire</p>
+                    <p class="mt-2 x-small text-muted italic">Clicca per visualizzare i dettagli dei nodi PAN</p>
                 </div>
             </div>
         </div>
@@ -114,17 +120,17 @@
             </div>
             
             <div class="alert alert-warning border-0 shadow-sm mb-4">
-                <h6 class="fw-bold"><i class="bi bi-info-circle-fill"></i> Definizione di P.D.U.</h6>
+                <h6 class="fw-bold"><i class="bi bi-info-circle-fill"></i> Il concetto di Incapsulamento</h6>
                 <p class="small mb-0 text-dark">
-                    <strong>P.D.U. significa Protocol Data Unit.</strong> Immagina una lettera che viene inserita in una busta (Segmento), poi in un pacco postale (Pacchetto) e infine caricata su un container (Frame). Ogni livello non solo "contiene" il precedente, ma vi aggiunge un'etichetta con l'indirizzo necessario per quel tratto di viaggio.
+                    <strong>P.D.U. (Protocol Data Unit):</strong> Ogni livello aggiunge le proprie informazioni di controllo ai dati. Immagina una lettera inserita in una busta (Segmento), poi in un pacco (Pacchetto) e infine in un container (Frame) per il trasporto fisico.
                 </p>
             </div>
 
             <div class="row g-4">
                 <div class="col-md-5">
                     <div class="d-grid gap-2">
-                        <button onclick="animateLayers('send')" class="btn btn-outline-danger fw-bold">SIMULA INVIO</button>
-                        <button onclick="animateLayers('receive')" class="btn btn-outline-primary fw-bold">SIMULA RICEZIONE</button>
+                        <button onclick="animateLayers('send')" class="btn btn-outline-danger fw-bold">SIMULA INVIO (Liv. 7 -> 1)</button>
+                        <button onclick="animateLayers('receive')" class="btn btn-outline-primary fw-bold">SIMULA RICEZIONE (Liv. 1 -> 7)</button>
                     </div>
                 </div>
                 <div class="col-md-7">
@@ -140,7 +146,7 @@
         </div>
 
         <div id="mappa" class="section-content">
-            <h2 class="fw-bold mb-4"><i class="bi bi-diagram-3 text-primary"></i> Architettura Logica del Progetto</h2>
+            <h2 class="fw-bold mb-4"><i class="bi bi-diagram-3 text-primary"></i> Architettura del Progetto</h2>
             <div class="p-4 bg-light border rounded shadow-sm">
                 <div class="fw-bold mb-2"><i class="bi bi-house-door-fill text-primary"></i> 🏠 index.html <span class="badge bg-secondary ms-2">Root</span></div>
                 <div class="tree-node">
