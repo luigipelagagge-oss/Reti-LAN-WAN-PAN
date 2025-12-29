@@ -64,7 +64,6 @@
         .btn-home { background-color: #343a40; color: white; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 600; transition: 0.3s; }
         .btn-home:hover { background-color: #000; }
 
-        /* NUOVO BOTTONE CONFRONTO */
         .btn-tcp {
             background-color: #fd7e14; /* Arancione */
             color: white; padding: 12px 30px; border-radius: 50px;
@@ -75,7 +74,7 @@
         .btn-source {
             background-color: #fff; color: #343a40; border: 2px solid #343a40;
             padding: 12px 30px; border-radius: 50px; text-decoration: none;
-            font-weight: 600; font-family: monospace; transition: 0.3s;
+            font-weight: 600; font-family: monospace; transition: 0.3s; cursor: pointer;
         }
         .btn-source:hover { background-color: #343a40; color: white; }
     </style>
@@ -106,8 +105,23 @@
         <div class="footer-section">
             <a href="index.html" class="btn-home">🏠 Torna alla Home</a>
             <a href="confronto_tcp.html" class="btn-tcp">🆚 Confronto TCP/IP</a>
-            <a href="view-source:descrizione_livelli.html" class="btn-source">&lt;/&gt; Vedi Sorgente</a>
+            
+            <a onclick="mostraCodice()" class="btn-source">&lt;/&gt; Vedi Sorgente HTML</a>
         </div>
     </div>
+
+    <script>
+        function mostraCodice() {
+            var htmlCode = document.documentElement.outerHTML;
+            var newWindow = window.open("", "Codice Sorgente", "width=800,height=600,scrollbars=yes");
+            newWindow.document.write('<html><head><title>Sorgente Pagina</title></head><body>');
+            newWindow.document.write('<h3>Codice Sorgente della Pagina:</h3>');
+            newWindow.document.write('<pre style="background:#f4f4f4; padding:15px; border:1px solid #ccc; white-space: pre-wrap;">');
+            newWindow.document.write(htmlCode.replace(/</g, "&lt;").replace(/>/g, "&gt;"));
+            newWindow.document.write('</pre></body></html>');
+            newWindow.document.close();
+        }
+    </script>
+
 </body>
 </html>
