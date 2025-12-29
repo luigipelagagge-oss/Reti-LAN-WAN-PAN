@@ -5,74 +5,265 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Corso di Reti e Telecomunicazioni</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <style>
-        body { background-color: #f8f9fa; font-family: 'Segoe UI', sans-serif; padding: 40px 0; }
-        .main-container { max-width: 900px; margin: auto; background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-        .header-title { color: #2c3e50; font-weight: 800; text-align: center; }
-        .sub-text { text-align: center; color: #7f8c8d; margin-bottom: 40px; }
-
-        /* Gruppi Bottoni Settimane */
-        .section-label { text-align: center; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; color: #6c757d; margin-bottom: 10px; }
-        .nav-group { display: flex; justify-content: center; gap: 10px; margin-bottom: 30px; flex-wrap: wrap; }
-        
-        /* Bottoni Tondi Stile Screenshot */
-        .btn-round { border-radius: 50px; padding: 10px 25px; font-weight: bold; border: none; transition: 0.3s; font-size: 0.9rem; text-decoration: none; display: inline-block; }
-        .btn-active { background-color: #0d6efd; color: white; box-shadow: 0 4px 12px rgba(13,110,253,0.3); }
-        .btn-inactive { background-color: #e9ecef; color: #6c757d; }
-        .btn-inactive:hover { background-color: #dee2e6; }
-        
-        /* Bottoni Settimana 2 */
-        .btn-lab { background-color: #d1e7dd; color: #0f5132; }
-        .btn-mappa { background-color: #cfe2ff; color: #084298; }
-
-        .content-box { margin-top: 40px; text-align: left; }
-        .air-gap-box { background-color: #fff5f5; border-left: 5px solid #dc3545; padding: 20px; border-radius: 8px; margin-top: 30px; }
+        /* Stili rapidi per replicare gli screenshot se style.css è vuoto */
+        .nav-pills .nav-link.active { background-color: #0d6efd; }
+        .section-content { display: none; animation: fadeIn 0.5s; }
+        .section-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .air-gap-box { border-left: 5px solid #dc3545; background-color: #fff5f5; }
+        .dashed-circle { border: 3px dashed #dc3545; border-radius: 50%; padding: 20px; display: inline-block; }
     </style>
 </head>
-<body>
+<body class="bg-light">
 
-<div class="main-container">
-    <h1 class="header-title">Corso di Reti e Telecomunicazioni</h1>
-    <p class="sub-text">Un percorso guidato: dalla teoria di base alla simulazione pratica.</p>
+    <div class="container py-5">
+        <header class="text-center mb-5">
+            <h1 class="fw-bold text-dark">Corso di Reti e Telecomunicazioni</h1>
+            <p class="text-muted">Un percorso guidato: dalla teoria di base alla simulazione pratica.</p>
+            <hr class="my-4">
+        </header>
 
-    <div class="section-label">Settimana 1: Teoria Fondamentale</div>
-    <div class="nav-group">
-        <a href="index.html" class="btn-round btn-active">1. Stand-Alone</a>
-        <a href="lan_approfondimento.html" class="btn-round btn-inactive">2. Rete Locale</a>
-        <a href="descrizione_livelli.html" class="btn-round btn-inactive">3. Modello ISO/OSI</a>
-    </div>
+        <div class="row justify-content-center mb-4">
+            <div class="col-md-8 text-center">
+                <small class="text-uppercase text-muted fw-bold">Settimana 1: Teoria Fondamentale</small>
+                <ul class="nav nav-pills justify-content-center mt-2 gap-2" id="mainNav">
+                    <li class="nav-item">
+                        <button class="nav-link active rounded-pill px-4" onclick="switchTab('standalone')">1. Stand-Alone</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link rounded-pill px-4" onclick="switchTab('retelocale')">2. Rete Locale</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link rounded-pill px-4" onclick="switchTab('isoosi')">3. Modello ISO/OSI</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
 
-    <div class="section-label">Settimana 2: Laboratorio Arduino</div>
-    <div class="nav-group">
-        <a href="#" class="btn-round btn-lab"><i class="fas fa-bolt me-2"></i>Vai al Laboratorio</a>
-        <a href="#" class="btn-round btn-mappa"><i class="fas fa-map me-2"></i>Mappa Sito</a>
-    </div>
-
-    <hr>
-
-    <div class="content-box">
-        <h2 class="fw-bold">1. Il Computer "Stand-Alone" <span class="text-muted">(L'Isola Digitale)</span></h2>
-        <p>In informatica, lo stato di <i>Stand-Alone</i> rappresenta la forma più pura e primitiva di calcolo: una macchina che opera in completa autonomia, senza alcun collegamento verso l'esterno.</p>
-
-        <div class="row align-items-center">
-            <div class="col-md-7">
-                <div class="air-gap-box">
-                    <h5 class="text-danger fw-bold"><i class="fas fa-ban me-2"></i>Il Concetto di "Air Gap"</h5>
-                    <p class="mb-0 small text-dark">Tra il computer e il resto del mondo c'è letteralmente "aria". Non essendoci cavi o segnali radio, è fisicamente impossibile per un hacker entrare da remoto.</p>
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-8 text-center">
+                <small class="text-uppercase text-muted fw-bold">Settimana 2: Laboratorio Arduino</small>
+                <div class="mt-2">
+                    <a href="lab_ping.html" class="btn btn-success bg-opacity-75 rounded-pill px-4"><i class="bi bi-lightning-fill"></i> Vai al Laboratorio</a>
+                    <button class="btn btn-secondary bg-opacity-25 text-dark border-0 rounded-pill px-4" onclick="switchTab('mappa')"><i class="bi bi-map-fill"></i> Mappa Sito</button>
                 </div>
             </div>
-            <div class="col-md-5 text-center mt-4 mt-md-0">
-                <div style="position: relative; display: inline-block;">
-                    <i class="fas fa-desktop fa-5x text-primary"></i>
-                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; border: 4px dashed red; border-radius: 50%; transform: scale(1.3);"></div>
-                    <div class="badge bg-danger" style="position: absolute; bottom: -10px; right: -10px;">NO NET</div>
+        </div>
+
+        <main>
+            <div id="standalone" class="section-content active">
+                <h2 class="mb-3">1. Il Computer "Stand-Alone" (L'Isola Digitale)</h2>
+                <p class="lead text-muted">In informatica, lo stato di <em>Stand-Alone</em> rappresenta la forma più pura e primitiva di calcolo: una macchina che opera in completa autonomia, senza alcun collegamento verso l'esterno.</p>
+                
+                <div class="row align-items-center mt-5">
+                    <div class="col-md-7">
+                        <div class="card border-0 shadow-sm air-gap-box p-4">
+                            <h4 class="text-danger"><i class="bi bi-slash-circle"></i> Il Concetto di "Air Gap"</h4>
+                            <p class="mb-0">Tra il computer e il resto del mondo c'è letteralmente "aria". Non essendoci cavi o segnali radio, è fisicamente impossibile per un hacker entrare da remoto.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-5 text-center">
+                        <div class="dashed-circle">
+                            <i class="bi bi-pc-display text-primary" style="font-size: 5rem;"></i>
+                            <div class="fw-bold text-danger mt-2">NO NET</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="retelocale" class="section-content">
+                <h2 class="mb-3">Dallo Stand-Alone alla Rete Domestica</h2>
+                <p class="text-muted">Quando i dispositivi cessano di essere "soli" e vengono collegati tra loro, formano una rete. Nelle nostre case parliamo spesso di ambiente SOHO.</p>
+
+                <div class="row g-4 mt-3">
+                    <div class="col-md-4">
+                        <div class="card h-100 shadow-sm border-0">
+                            <div class="card-body">
+                                <h5 class="card-title fw-bold">Cos'è SOHO?</h5>
+                                <p class="card-text small text-muted">Acronimo di <strong>Small Office / Home Office</strong>. Indica un ambiente ibrido dove convivono dispositivi personali e lavorativi.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 shadow-sm border-primary border-2">
+                            <div class="card-body">
+                                <h5 class="card-title fw-bold text-primary">Cos'è una LAN?</h5>
+                                <p class="card-text small text-muted">Acronimo di <strong>Local Area Network</strong>. È la "Rete dentro casa tua". Tutti i tuoi dispositivi collegati al router.</p>
+                                <a href="lan_approfondimento.html" class="btn btn-primary w-100 mt-2">Vai al file: LAN</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 shadow-sm border-danger border-2" style="background-color: #fff5f5;">
+                            <div class="card-body">
+                                <h5 class="card-title fw-bold text-danger">Cos'è una WAN?</h5>
+                                <p class="card-text small text-muted">Acronimo di <strong>Wide Area Network</strong>. È la "Rete Geografica", ovvero <strong>Internet</strong>. È tutto ciò che sta "fuori".</p>
+                                <a href="wan_approfondimento.html" class="btn btn-danger w-100 mt-2">Vai al file: WAN</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-5">
+                    <h4 class="text-danger">1. La P.A.N. (Personal Area Network)</h4>
+                    <p>Prima ancora della rete di casa, esiste la rete "intorno a te".</p>
+                    <ul>
+                        <li><strong>Definizione:</strong> Rete personale che copre pochi metri.</li>
+                        <li><strong>Esempi:</strong> Mouse Bluetooth collegato al PC, Smartwatch collegato al telefono.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="isoosi" class="section-content">
+                <h2 class="mb-4">Il Modello ISO/OSI e il Flusso dei Dati</h2>
+                <div class="row">
+                    <div class="col-md-3 d-grid gap-2">
+                        <div class="alert alert-light text-center border">Clicca sui livelli 👇</div>
+                        <a href="livello7.html" class="btn btn-danger text-white">7. Applicazione</a>
+                        <a href="livello6.html" class="btn btn-warning text-white" style="background-color: #fd7e14;">6. Presentazione</a>
+                        <a href="livello5.html" class="btn btn-warning">5. Sessione</a>
+                        <a href="livello4.html" class="btn btn-success">4. Trasporto</a>
+                        <a href="livello3.html" class="btn btn-info text-white">3. Rete</a>
+                        <a href="livello2.html" class="btn btn-primary" style="background-color: #6f42c1;">2. Collegamento</a>
+                        <a href="livello1.html" class="btn btn-secondary">1. Fisico</a>
+                    </div>
+                    
+                    <div class="col-md-9">
+                        <div class="card border-success mb-3">
+                            <div class="card-header bg-success text-white">
+                                <i class="bi bi-box-seam"></i> Incapsulamento & PDU (Protocol Data Unit)
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">I dati non viaggiano "nudi". Come una Matrioska, ogni livello aggiunge una "busta" (Intestazione/Header) intorno ai dati.</p>
+                                
+                                <table class="table table-bordered text-center align-middle mt-3">
+                                    <thead class="table-dark">
+                                        <tr>
+                                            <th>Livello</th>
+                                            <th>Nome P.D.U.</th>
+                                            <th>Metafora</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>7, 6, 5</td>
+                                            <td class="fw-bold">DATI</td>
+                                            <td>Il foglio scritto (La lettera)</td>
+                                        </tr>
+                                        <tr class="table-success bg-opacity-25">
+                                            <td>4. Trasporto</td>
+                                            <td class="fw-bold text-danger">SEGMENTO</td>
+                                            <td>La busta (controllo integrità)</td>
+                                        </tr>
+                                        <tr class="table-info bg-opacity-25">
+                                            <td>3. Rete</td>
+                                            <td class="fw-bold text-danger">PACCHETTO</td>
+                                            <td>L'indirizzo sulla busta (IP)</td>
+                                        </tr>
+                                        <tr class="table-primary bg-opacity-25">
+                                            <td>2. Colleg.</td>
+                                            <td class="fw-bold text-danger">FRAME (Trama)</td>
+                                            <td>Il sacco postale sigillato (MAC)</td>
+                                        </tr>
+                                        <tr class="table-secondary bg-opacity-25">
+                                            <td>1. Fisico</td>
+                                            <td class="fw-bold text-danger">BIT</td>
+                                            <td>Segnali elettrici/luce sul cavo</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                
+                                <div class="row text-center mt-3">
+                                    <div class="col-6 text-danger border-end">
+                                        <strong>Trasmettitore (Sender)</strong><br>
+                                        ⬇ Incapsulamento (Aggiunge header)
+                                    </div>
+                                    <div class="col-6 text-primary">
+                                        <strong>Ricevitore (Receiver)</strong><br>
+                                        ⬆ Decapsulamento (Toglie header)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="mappa" class="section-content">
+                <h2 class="mb-4">Mappa del Progetto - Master Dashboard</h2>
+                <div class="alert alert-secondary">
+                    <strong>Struttura File Aggiornata:</strong> Qui puoi vedere l'architettura completa del sito web.
+                </div>
+                <div class="card p-4">
+                    <ul class="list-unstyled font-monospace">
+                        <li class="text-warning fw-bold">📁 Corso_Reti_Tlc/</li>
+                        <li class="ms-4">🏠 index.html <span class="badge bg-dark">HOME</span></li>
+                        <li class="ms-4 mt-2 text-warning fw-bold">📂 Settimana 01 Teoria/</li>
+                        <li class="ms-5">📄 <a href="lan_approfondimento.html">lan_approfondimento.html</a></li>
+                        <li class="ms-5">📄 <a href="wan_approfondimento.html">wan_approfondimento.html</a></li>
+                        <li class="ms-4 mt-2 text-warning fw-bold">📂 Modello OSI Details/</li>
+                        <li class="ms-5">📄 <a href="descrizione_livelli.html">descrizione_livelli.html</a></li>
+                        <li class="ms-5">📄 <a href="livello7.html">livello7.html</a> ... (fino a livello1)</li>
+                        <li class="ms-4 mt-2 text-warning fw-bold">📂 Settimana 02 Lab_Arduino/</li>
+                        <li class="ms-5">⚡ <a href="lab_ping.html">lab_ping.html</a></li>
+                        <li class="ms-5">⚡ <a href="lab_cs.html">lab_cs.html</a></li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+        <button class="btn btn-dark rounded-pill shadow" onclick="showSource()">
+            <i class="bi bi-code-slash"></i> Vedi Sorgente
+        </button>
+    </div>
+
+    <div class="modal fade" id="sourceModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header bg-dark text-white">
+                    <h5 class="modal-title">Sorgente della Pagina</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body bg-light">
+                    <pre><code id="sourceCode" class="language-html"></code></pre>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script> 
+    <script>
+        // LOGICA DI NAVIGAZIONE A TAB (SPA SIMULATA)
+        function switchTab(tabId) {
+            // Nascondi tutte le sezioni
+            document.querySelectorAll('.section-content').forEach(el => el.classList.remove('active'));
+            // Togli stato attivo dai bottoni
+            document.querySelectorAll('.nav-link').forEach(el => el.classList.remove('active'));
+            
+            // Mostra la sezione richiesta
+            document.getElementById(tabId).classList.add('active');
+            
+            // Evidenzia il bottone corretto (logica semplice basata sull'ordine)
+            const btnMap = { 'standalone': 0, 'retelocale': 1, 'isoosi': 2 };
+            if (btnMap[tabId] !== undefined) {
+                document.querySelectorAll('#mainNav .nav-link')[btnMap[tabId]].classList.add('active');
+            }
+        }
+
+        // LOGICA VEDI SORGENTE
+        function showSource() {
+            const html = document.documentElement.outerHTML;
+            // Escaping basilare dei caratteri HTML per visualizzazione
+            const escapedHtml = html.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+            document.getElementById('sourceCode').innerHTML = escapedHtml;
+            new bootstrap.Modal(document.getElementById('sourceModal')).show();
+        }
+    </script>
 </body>
 </html>
