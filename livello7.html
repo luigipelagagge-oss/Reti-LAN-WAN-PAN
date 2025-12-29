@@ -2,27 +2,82 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <title>Livello 7: Applicazione</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Livello 7 - Applicazione</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #fce4ec; /* Rosa chiarissimo */
+            padding: 40px;
+            font-family: 'Segoe UI', sans-serif;
+            text-align: center;
+        }
+        .card-level {
+            background: white;
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .header-level {
+            background-color: #e83e8c; /* Colore Identificativo Livello */
+            color: white;
+            padding: 30px;
+        }
+        .content-level { padding: 40px; text-align: left; }
+        
+        /* Stile Bottoni Footer */
+        .footer-nav {
+            margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee;
+            display: flex; gap: 15px; justify-content: center;
+        }
+        .btn-back { background-color: #6c757d; color: white; padding: 10px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; }
+        .btn-source { border: 2px solid #333; color: #333; padding: 10px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; font-family: monospace; cursor: pointer; }
+        .btn-source:hover { background: #333; color: white; }
+    </style>
 </head>
 <body>
-<div class="container">
-    <h1>Livello 7: Applicazione</h1>
-    <div class="pdu-badge">PDU (La Matriosca): DATI</div>
 
-    <h2>📝 Descrizione Semplice</h2>
-    <p>È il livello più vicino all'utente. Non è il software stesso (come Chrome o Outlook), ma lo "sportello" che permette a questi programmi di interagire con la rete. Qui nasce il messaggio originale.</p>
+    <div class="card-level">
+        <div class="header-level">
+            <h1>Livello 7: Applicazione</h1>
+            <p>L'interfaccia con l'essere umano</p>
+        </div>
+        
+        <div class="content-level">
+            <h3>Cosa succede qui?</h3>
+            <p>È il livello più "alto", quello più vicino a te. Qui girano i programmi che usi ogni giorno.</p>
+            
+            <div class="alert alert-danger">
+                <strong>La Matrioska più esterna:</strong> È l'unica che si vede da fuori. Contiene tutte le altre.
+            </div>
 
-    <h2>⚙️ Funzione Tecnica</h2>
-    <p>Fornisce servizi di rete alle applicazioni utente (email, trasferimento file, web). Identifica i partner della comunicazione.</p>
+            <ul>
+                <li><strong>Protocolli famosi:</strong> HTTP (Web), SMTP (Email), FTP (File).</li>
+                <li><strong>Cosa fa:</strong> Permette all'utente di interagire con la rete.</li>
+                <li><strong>Esempio pratico:</strong> Quando clicchi "Invia" su WhatsApp o scrivi un URL su Chrome.</li>
+            </ul>
 
-    <h2>📦 Incapsulamento</h2>
-    <p>È la matriosca più interna, il cuore del messaggio.</p>
-
-    <div class="nav-links">
-        <a href="descrizione_livelli.html">🔙 Indice</a> | 
-        <a href="livello6.html">⬇️ Vai al Livello 6</a>
+            <div class="footer-nav">
+                <a href="descrizione_livelli.html" class="btn-back">⬅ Torna alle Matriosche</a>
+                <a onclick="mostraCodice()" class="btn-source">&lt;/&gt; Vedi Sorgente</a>
+            </div>
+        </div>
     </div>
-</div>
+
+    <script>
+        function mostraCodice() {
+            var htmlCode = document.documentElement.outerHTML;
+            var newWindow = window.open("", "Codice Sorgente", "width=800,height=600,scrollbars=yes");
+            newWindow.document.write('<html><head><title>Sorgente Pagina</title></head><body>');
+            newWindow.document.write('<h3>Codice Sorgente della Pagina:</h3>');
+            newWindow.document.write('<pre style="background:#f4f4f4; padding:15px; border:1px solid #ccc; white-space: pre-wrap;">');
+            newWindow.document.write(htmlCode.replace(/</g, "&lt;").replace(/>/g, "&gt;"));
+            newWindow.document.write('</pre></body></html>');
+            newWindow.document.close();
+        }
+    </script>
+
 </body>
 </html>
