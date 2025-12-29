@@ -1,50 +1,51 @@
 <style>
-    /* 1. RESET FILOSOFIA "ZERO TO HERO" */
-    body { 
-        background-color: #f4f7f6; 
-        font-family: 'Segoe UI', Roboto, sans-serif; 
-        color: #212529; 
-    }
-
-    /* Gestione SPA (Single Page Application) simulata */
+    /* 1. LAYOUT BASE - RIPRISTINO ORIGINALE */
+    body { background-color: #f4f7f6; font-family: 'Segoe UI', sans-serif; }
+    
+    /* Gestione Visibilità Sezioni: Forza la comparsa della classe .active */
     .section-content { display: none !important; }
     .section-content.active { display: block !important; }
 
-    /* 2. NAVIGAZIONE A SCHEDE (TAB SYSTEM) - FIX LEGGIBILITÀ */
-    /* Assicura che i bottoni siano sempre leggibili come richiesto */
+    /* 2. FIX LEGGIBILITÀ BOTTONI (La tua richiesta principale) */
+    /* Forza il colore del testo e lo sfondo bianco quando il bottone non è attivo */
     .btn-outline-primary {
         background-color: #ffffff !important;
         color: #0d6efd !important;
         border: 2px solid #0d6efd !important;
         font-weight: bold !important;
     }
+    /* Stile per il bottone quando è attivo (selezionato) */
     .btn-primary.active {
         background-color: #0d6efd !important;
         color: #ffffff !important;
         font-weight: bold !important;
     }
 
-    /* 3. ARCHITETTURA ISO/OSI (COLOR CODING DA DOCUMENTAZIONE) */
-    .osi-layer { color: white; padding: 12px; margin-bottom: 8px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; font-weight: bold; }
-    .layer-7 { background-color: #e83e8c; } /* Applicazione - Rosso/Rosa */
-    .layer-6 { background-color: #a55eea; } /* Presentazione - Viola */
-    .layer-5 { background-color: #fd9644; } /* Sessione - Arancio */
-    .layer-4 { background-color: #f7b731; } /* Trasporto - Giallo */
-    .layer-3 { background-color: #20bf6b; } /* Rete - Verde */
-    .layer-2 { background-color: #2d98da; } /* Collegamento - Blu */
-    .layer-1 { background-color: #778ca3; } /* Fisico - Grigio */
+    /* 3. ELEMENTI GRAFICI (ISO/OSI, CARDS, TREE) - NON TOCCARE */
+    .offline-circle { width: 140px; height: 140px; border: 3px dashed #dc3545; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 auto; background: #fff; }
+    
+    .osi-layer { color: white; padding: 12px; margin-bottom: 8px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; font-weight: bold; transition: all 0.3s ease; }
+    .layer-7 { background-color: #e83e8c; } .layer-6 { background-color: #a55eea; } .layer-5 { background-color: #fd9644; }
+    .layer-4 { background-color: #f7b731; } .layer-3 { background-color: #20bf6b; } .layer-2 { background-color: #2d98da; }
+    .layer-1 { background-color: #778ca3; }
+    
+    .highlight-send { transform: scale(1.05); box-shadow: 0 0 20px #ffc107; filter: brightness(1.2); }
+    .highlight-receive { transform: scale(1.05); box-shadow: 0 0 20px #0dcaf0; filter: brightness(1.2); }
 
-    /* 4. MAPPA GERARCHICA (TREE VIEW) */
     .tree-node { border-left: 2px solid #dee2e6; margin-left: 20px; padding-left: 20px; position: relative; padding-bottom: 10px; }
     .tree-node::before { content: ""; position: absolute; left: 0; top: 15px; width: 15px; height: 2px; background: #dee2e6; }
-    .file-btn { text-decoration: none; color: #0d6efd; font-family: monospace; font-size: 0.9rem; }
+    .folder-icon { color: #ffca28; margin-right: 8px; }
+    .file-btn { text-decoration: none; font-family: monospace; font-size: 0.9rem; padding: 2px 8px; border-radius: 4px; transition: 0.2s; display: inline-block; }
 
-    /* 5. FIX PER CELLULARE (RESPONSIVE) */
-    @media (max-width: 768px) {
-        .btn-group { display: flex !important; flex-direction: column !important; width: 100%; }
-        .btn-group .btn { margin-bottom: 5px !important; border-radius: 10px !important; }
-    }
-
-    /* Floating Action Button (Source View) */
     .fab-source { position: fixed; bottom: 20px; right: 20px; background: #212529; color: white; padding: 10px 20px; border-radius: 30px; border: 2px solid white; cursor: pointer; z-index: 1000; font-weight: bold; }
+    
+    .card-original { border: 2px solid; border-radius: 10px; padding: 15px; text-align: center; transition: 0.3s; height: 100%; }
+    .card-lan { border-color: #0d6efd; background-color: #f0f7ff; }
+    .card-wan { border-color: #dc3545; background-color: #fff5f5; }
+
+    /* Fix per evitare che i bottoni si schiaccino su schermi piccoli */
+    @media (max-width: 768px) {
+        .btn-group { display: flex !important; flex-direction: column !important; }
+        .btn-group .btn { border-radius: 10px !important; margin-bottom: 5px; }
+    }
 </style>
