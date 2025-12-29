@@ -13,7 +13,7 @@
         .section-content.active { display: block !important; animation: fadeIn 0.4s ease; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Pulsante Giallo Matrioske */
+        /* Tasto Matrioske (Giallo) */
         .btn-yellow-custom {
             background-color: #ffc107 !important;
             color: #000 !important;
@@ -25,16 +25,27 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            transition: all 0.2s;
         }
-        .btn-yellow-custom:hover { transform: scale(1.05); filter: brightness(1.1); color: #000; }
+        .btn-yellow-custom:hover { transform: scale(1.02); color: #000; }
 
-        /* Mappa Stile Premium */
-        .map-container { background: white; border-radius: 15px; padding: 25px; border: 1px solid #ddd; }
-        .tree-branch { border-left: 2px dashed #ccc; margin-left: 15px; padding-left: 20px; }
-        .file-link { text-decoration: none; color: #0d6efd; font-weight: 500; }
-        .file-link:hover { text-decoration: underline; }
-        .folder-name { color: #f39c12; font-weight: bold; margin-top: 10px; display: block; }
+        /* Tasto Laboratorio (Verde) */
+        .btn-lab-nav {
+            background-color: #198754 !important;
+            color: white !important;
+            border-radius: 50px;
+            font-weight: bold;
+            padding: 8px 25px;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .btn-lab-nav:hover { background-color: #146c43 !important; color: white; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+
+        /* Mappa Strutturale Logica */
+        .map-box { background: #fff; border-radius: 15px; padding: 25px; border: 1px solid #ddd; }
+        .tree-line { border-left: 2px dashed #bbb; margin-left: 10px; padding-left: 20px; margin-bottom: 10px; }
+        .folder-label { color: #f39c12; font-weight: bold; font-size: 0.9rem; display: block; margin-top: 12px; }
+        .file-link { text-decoration: none; color: #0d6efd; transition: color 0.2s; }
+        .file-link:hover { text-decoration: underline; color: #0a58ca; }
     </style>
 </head>
 <body>
@@ -42,117 +53,120 @@
 <div class="container py-4">
     <header class="text-center mb-5">
         <h1 class="fw-bold">Corso di Reti e Telecomunicazioni</h1>
-        <p class="text-muted small">Navigazione Didattica Interattiva</p>
+        <p class="text-muted">Insegnamento Esperienziale "Zero to Hero"</p>
     </header>
 
     <nav class="text-center mb-5">
         <div class="btn-group shadow-sm mb-3">
-            <button class="btn btn-outline-primary px-4" id="nav-standalone" onclick="switchTab('standalone')">1. Stand-Alone</button>
-            <button class="btn btn-primary px-4 active" id="nav-retelocale" onclick="switchTab('retelocale')">2. Rete Locale</button>
-            <button class="btn btn-outline-primary px-4" id="nav-isoosi" onclick="switchTab('isoosi')">3. Modello ISO/OSI</button>
+            <button class="btn btn-outline-primary px-4" onclick="switchTab('standalone')">1. Stand-Alone</button>
+            <button class="btn btn-primary active px-4" id="nav-retelocale" onclick="switchTab('retelocale')">2. Rete Locale</button>
+            <button class="btn btn-outline-primary px-4" onclick="switchTab('isoosi')">3. Modello ISO/OSI</button>
         </div>
         <div class="d-flex justify-content-center gap-2 mt-2">
-            <a href="Settimana_02_Lab_Arduino/lab_ping.html" class="btn btn-success btn-sm rounded-pill px-4 shadow-sm">
-                <i class="bi bi-lightning-fill"></i> Vai al Laboratorio
+            <a href="lab_ping.html" class="btn-lab-nav shadow-sm">
+                <i class="bi bi-lightning-charge-fill"></i> LABORATORIO PRATICO
             </a>
-            <button class="btn btn-dark btn-sm rounded-pill px-4 shadow-sm" onclick="switchTab('mappa')">
-                <i class="bi bi-diagram-3"></i> Mappa del Progetto
+            <button class="btn btn-dark btn-sm rounded-pill px-4" onclick="switchTab('mappa')">
+                <i class="bi bi-diagram-3"></i> MAPPA SITO
             </button>
         </div>
     </nav>
 
     <main class="bg-white p-4 p-md-5 shadow-sm rounded-4 border">
         
-        <div id="standalone" class="section-content">
-            <h2 class="fw-bold mb-4 text-primary">1. Il Computer "Stand-Alone"</h2>
-            <p>Una macchina isolata che rappresenta la massima sicurezza tramite <strong>Air Gap</strong>.</p>
-        </div>
-
         <div id="retelocale" class="section-content active">
-            <h2 class="fw-bold mb-4 text-primary">2. Dallo Stand-Alone alla LAN (SOHO)</h2>
-            <p>Ambiente Small Office / Home Office dove i dispositivi iniziano a dialogare.</p>
-            <div class="row g-3 mt-3">
-                <div class="col-md-6 border-end">
-                    <h6>LAN (Local Area Network)</h6>
-                    <a href="Settimana_01_Teoria/lan_approfondimento.html" class="btn btn-outline-primary btn-sm">Apri Dettaglio LAN</a>
+            <h2 class="text-primary fw-bold mb-4">Dallo Stand-Alone alla LAN</h2>
+            <div class="row g-4 mb-4">
+                <div class="col-md-6 border-end pe-md-4">
+                    <h5 class="fw-bold">Ambiente SOHO & LAN</h5>
+                    <p class="small text-muted">La rete locale collega i dispositivi al router. È la tua "bolla" di comunicazione privata.</p>
+                    <a href="lan_approfondimento.html" class="btn btn-sm btn-outline-primary">Approfondisci LAN</a>
+                    <a href="wan_approfondimento.html" class="btn btn-sm btn-outline-danger ms-2">Approfondisci WAN</a>
                 </div>
-                <div class="col-md-6">
-                    <h6>WAN (Wide Area Network)</h6>
-                    <a href="Settimana_01_Teoria/wan_approfondimento.html" class="btn btn-outline-danger btn-sm">Apri Dettaglio WAN</a>
+                <div class="col-md-6 ps-md-4">
+                    <h5 style="color: #dc3545;" class="fw-bold">P.A.N. (Personal Area Network)</h5>
+                    <p class="small text-muted">Bluetooth e dispositivi indossabili. Raggio d'azione: ~10 metri intorno all'utente.</p>
+                    <img src="pan_network.png" class="img-fluid rounded border p-1 bg-light" style="max-height: 120px;" onerror="this.style.display='none'">
                 </div>
             </div>
         </div>
 
         <div id="isoosi" class="section-content">
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <h2 class="fw-bold" style="color: #d63384;">3. Modello ISO/OSI e PDU</h2>
-                <a href="Modello_OSI_Details/descrizione_livelli.html" class="btn-yellow-custom shadow-sm">
+                <h2 class="fw-bold" style="color: #d63384;">Modello ISO/OSI e PDU</h2>
+                <a href="descrizione_livelli.html" class="btn-yellow-custom shadow-sm">
                     <i class="bi bi-box-seam"></i> VAI ALLE MATRIOSKE
                 </a>
             </div>
-            <div class="alert alert-warning small">
-                <strong>PDU:</strong> Ogni livello incapsula il dato come una Matrioska.
+            <div class="alert alert-warning border-0 shadow-sm py-2">
+                <strong>Protocol Data Unit (PDU):</strong> I dati cambiano nome ad ogni "scatola" (Segmento, Pacchetto, Frame, Bit).
             </div>
         </div>
 
         <div id="mappa" class="section-content">
-            <h2 class="fw-bold mb-4 text-dark"><i class="bi bi-diagram-3-fill text-primary"></i> Mappa Strutturale Completa</h2>
-            <div class="map-container shadow-sm">
-                <div>📂 <strong>Root_Project/</strong></div>
-                
-                <div class="tree-branch">
-                    <div class="mb-2">🏠 <a href="#" onclick="switchTab('retelocale')" class="file-link">index.html</a> <small class="text-muted">(Dashboard)</small></div>
+            <h2 class="fw-bold mb-4"><i class="bi bi-diagram-3-fill text-primary"></i> Organizzazione Logica del Progetto</h2>
+            <div class="map-box shadow-sm">
+                <strong>📂 Corso_Reti_Tlc/ <small class="text-muted">(Cartella Piatta)</small></strong>
+                <div class="tree-line">
+                    <div>🏠 <a href="index.html" class="file-link fw-bold">index.html</a></div>
                     
-                    <span class="folder-name">📂 Settimana_01_Teoria/</span>
-                    <div class="tree-branch">
-                        <div class="mb-1">📄 <a href="Settimana_01_Teoria/lan_approfondimento.html" class="file-link">lan_approfondimento.html</a></div>
-                        <div class="mb-1">📄 <a href="Settimana_01_Teoria/wan_approfondimento.html" class="file-link">wan_approfondimento.html</a></div>
+                    <span class="folder-label">📂 Settimana_01 (Concettuale)</span>
+                    <div class="tree-line">
+                        <div>📄 <a href="lan_approfondimento.html" class="file-link">lan_approfondimento.html</a></div>
+                        <div>📄 <a href="wan_approfondimento.html" class="file-link">wan_approfondimento.html</a></div>
                     </div>
 
-                    <span class="folder-name">📂 Modello_OSI_Details/</span>
-                    <div class="tree-branch">
-                        <div class="mb-1">📄 <a href="Modello_OSI_Details/descrizione_livelli.html" class="file-link fw-bold">descrizione_livelli.html</a></div>
+                    <span class="folder-label">📂 Modello_OSI_Details (Architettura)</span>
+                    <div class="tree-line">
+                        <div>📄 <a href="descrizione_livelli.html" class="file-link fw-bold">descrizione_livelli.html</a></div>
                         <div class="ms-3 border-start ps-3 py-1">
-                            <div class="small">7️⃣ <a href="Modello_OSI_Details/livello7.html" class="file-link text-danger">livello7.html</a></div>
-                            <div class="small">4️⃣ <a href="Modello_OSI_Details/livello4.html" class="file-link text-warning">livello4.html</a></div>
-                            <div class="small">1️⃣ <a href="Modello_OSI_Details/livello1.html" class="file-link text-secondary">livello1.html</a></div>
+                            <div>7️⃣ <a href="livello7.html" class="file-link">livello7.html</a></div>
+                            <div>4️⃣ <a href="livello4.html" class="file-link">livello4.html</a></div>
+                            <div>1️⃣ <a href="livello1.html" class="file-link">livello1.html</a></div>
                         </div>
-                        <div class="mb-1">📄 <a href="Modello_OSI_Details/confronto_tcp.html" class="file-link">confronto_tcp.html</a></div>
+                        <div class="mt-2">📄 <a href="confronto_tcp.html" class="file-link">confronto_tcp.html</a></div>
                     </div>
 
-                    <span class="folder-name text-success">📂 Settimana_02_Lab_Arduino/</span>
-                    <div class="tree-branch">
-                        <div class="mb-1">⚡ <a href="Settimana_02_Lab_Arduino/lab_ping.html" class="file-link text-success">lab_ping.html</a></div>
-                        <div class="mb-1">⚡ <a href="Settimana_02_Lab_Arduino/lab_cs.html" class="file-link text-success">lab_cs.html</a></div>
+                    <span class="folder-label text-success">📂 Settimana_02 (Pratica)</span>
+                    <div class="tree-branch tree-line" style="border-color: #198754;">
+                        <div>⚡ <a href="lab_ping.html" class="file-link text-success fw-bold">lab_ping.html</a></div>
+                        <div>⚡ <a href="lab_cs.html" class="file-link text-success">lab_cs.html</a></div>
                     </div>
                 </div>
+                <div class="mt-3 small text-muted">
+                    <i class="bi bi-info-circle"></i> Nota: Sebbene i file siano tutti nella root, l'albero mostra la gerarchia didattica del README.
+                </div>
             </div>
+        </div>
+
+        <div id="standalone" class="section-content">
+            <h2 class="text-primary fw-bold">1. Stand-Alone</h2>
+            <p>Sicurezza tramite isolamento fisico (Air Gap).</p>
         </div>
     </main>
 </div>
 
 <script>
     function switchTab(tabId) {
-        // Nascondi tutto
+        // Nascondi sezioni
         document.querySelectorAll('.section-content').forEach(s => s.classList.remove('active'));
         
-        // Mostra la sezione scelta
+        // Mostra attiva
         const target = document.getElementById(tabId);
         if(target) target.classList.add('active');
 
-        // Aggiorna i bottoni
+        // Bottoni
         document.querySelectorAll('nav .btn').forEach(b => {
             b.classList.remove('active', 'btn-primary');
             b.classList.add('btn-outline-primary');
         });
         
-        // Evidenzia il bottone corretto (se esiste nel menu principale)
-        const btn = document.getElementById('nav-' + tabId);
-        if(btn) {
-            btn.classList.remove('btn-outline-primary');
-            btn.classList.add('btn-primary', 'active');
+        if (event && event.currentTarget.tagName === 'BUTTON') {
+            event.currentTarget.classList.add('active', 'btn-primary');
+            event.currentTarget.classList.remove('btn-outline-primary');
         }
     }
 </script>
+
 </body>
 </html>
