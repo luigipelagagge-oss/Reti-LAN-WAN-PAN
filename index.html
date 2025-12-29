@@ -9,7 +9,7 @@
     
     <style>
         /* --- STILI GENERALI --- */
-        body { background-color: #f0f2f5; font-family: 'Segoe UI', sans-serif; padding-bottom: 50px; }
+        body { background-color: #f0f2f5; font-family: 'Segoe UI', sans-serif; padding-bottom: 80px; } /* Padding extra per il bottone fisso */
         .main-header { background: white; padding: 30px; text-align: center; border-bottom: 1px solid #ccc; margin-bottom: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
         
         /* --- NAVIGAZIONE --- */
@@ -20,61 +20,56 @@
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
         /* --- CARDS & BOX --- */
-        .card-custom { background: white; border-radius: 10px; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 20px; border-left: 5px solid #ccc; height: 100%; }
+        .card-custom { 
+            background: white; 
+            border-radius: 10px; 
+            padding: 20px; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05); 
+            margin-bottom: 20px; 
+            height: 100%; 
+            display: flex; 
+            flex-direction: column;
+        }
         .tree-box { background: white; padding: 20px; border-radius: 8px; font-family: 'Consolas', monospace; border: 1px solid #ccc; }
 
-        /* --- SPECIFICO TAB 1 (STAND ALONE - STILE SCREENSHOT) --- */
+        /* --- STILE TAB 1: STAND ALONE --- */
         .air-gap-box {
-            background-color: #fff5f5; /* Sfondo leggermente rosato */
-            border-left: 5px solid #dc3546; /* Bordo Rosso a sinistra */
+            background-color: #fdf2f2; 
+            border-left: 5px solid #dc3546; 
             padding: 20px;
             border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
-        
-        /* Cerchio tratteggiato attorno al PC */
-        .icon-circle-dashed {
-            width: 180px; height: 180px;
-            border: 4px dashed #dc3546; /* Tratteggio rosso */
+        .stand-alone-circle {
+            width: 160px; height: 160px;
+            border: 3px dashed #dc3546;
             border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             margin: 0 auto;
             position: relative;
             background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
-        .no-net-text {
-            position: absolute; 
-            bottom: 25px; 
-            right: 25px;
-            font-weight: bold; 
-            color: #dc3546;
-            font-size: 0.9rem;
+        .no-net-label {
+            position: absolute; bottom: 20px; right: 25px;
+            color: #dc3546; font-weight: bold; font-size: 0.8rem;
         }
 
-        /* --- SPECIFICO TAB 2 (PAN & HARDWARE) --- */
-        .hardware-icon-box {
-            border: 1px solid #dee2e6;
-            background: white;
-            border-radius: 8px;
-            padding: 15px;
-            text-align: center;
-            font-weight: bold;
-            font-size: 0.8rem;
-            color: #495057;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-        .pan-img-container img {
-            transition: transform 0.3s, box-shadow 0.3s;
-            cursor: pointer;
+        /* --- STILE TAB 2: RETE LOCALE (SOHO/LAN/WAN) --- */
+        .card-soho { border-left: 5px solid #e9ecef; } /* Grigio neutro */
+        .card-lan { border-left: 5px solid #0d6efd; } /* Blu */
+        .card-wan { border-left: 5px solid #d63384; } /* Rosa/Fucsia */
+
+        .pan-img-link img {
+            transition: transform 0.3s;
             border: 2px solid transparent;
         }
-        .pan-img-container img:hover {
+        .pan-img-link img:hover {
             transform: scale(1.02);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-            border-color: #0d6efd;
+            border-color: #ffc107; /* Alone giallo al passaggio */
+            cursor: pointer;
         }
 
-        /* --- SPECIFICO TAB 3 (ISO/OSI) --- */
+        /* --- STILE TAB 3: ISO/OSI --- */
         .osi-layer-btn { display: block; width: 100%; margin-bottom: 5px; text-align: center; font-weight: bold; padding: 10px; border-radius: 5px; text-decoration: none; color: white; transition: transform 0.2s; }
         .osi-layer-btn:hover { transform: translateX(5px); filter: brightness(110%); color: white; }
         .bg-osi-7 { background-color: #e63946; } 
@@ -86,6 +81,30 @@
         .bg-osi-1 { background-color: #6c757d; }
         .pdu-table th { background-color: #212529; color: white; }
         .pdu-card { border: 2px solid #198754; background-color: #f8fff9; }
+
+        /* --- BOTTONE VEDI SORGENTE (FISSO) --- */
+        .btn-source-fixed {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #212529;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            text-decoration: none;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            transition: background-color 0.3s;
+        }
+        .btn-source-fixed:hover {
+            background-color: #000;
+            color: #fff;
+        }
 
     </style>
 </head>
@@ -114,24 +133,24 @@
 
         <div id="tab1" class="tab-content active">
             <h2 class="mb-3">1. Il Computer "Stand-Alone" (L'Isola Digitale)</h2>
-            <p class="mb-4 text-secondary">
+            <p class="lead text-secondary mb-5">
                 In informatica, lo stato di <em>Stand-Alone</em> rappresenta la forma più pura e primitiva di calcolo: una macchina che opera in completa autonomia, senza alcun collegamento verso l'esterno.
             </p>
 
             <div class="row align-items-center">
                 <div class="col-md-7">
                     <div class="air-gap-box">
-                        <h4 class="text-danger mb-3"><i class="fas fa-ban"></i> Il Concetto di "Air Gap"</h4>
-                        <p class="mb-0">
+                        <h4 class="text-danger"><i class="fas fa-ban"></i> Il Concetto di "Air Gap"</h4>
+                        <p class="mt-3 text-dark">
                             Tra il computer e il resto del mondo c'è letteralmente "aria". Non essendoci cavi o segnali radio, è fisicamente impossibile per un hacker entrare da remoto.
                         </p>
                     </div>
                 </div>
 
                 <div class="col-md-5 text-center mt-4 mt-md-0">
-                    <div class="icon-circle-dashed">
+                    <div class="stand-alone-circle">
                         <i class="fas fa-desktop fa-5x" style="color: #5a7dff;"></i>
-                        <span class="no-net-text">NO NET</span>
+                        <span class="no-net-label">NO NET</span>
                     </div>
                 </div>
             </div>
@@ -144,58 +163,55 @@
             
             <div class="row">
                 <div class="col-md-4">
-                    <div class="card-custom border-start border-5 border-warning">
+                    <div class="card-custom card-soho">
                         <h5 class="fw-bold text-dark">Cos'è SOHO?</h5>
-                        <p class="small text-muted mb-3">Acronimo di <strong>Small Office / Home Office</strong>.<br>Indica un ambiente ibrido (casa o piccolo ufficio) dove convivono dispositivi personali e lavorativi.</p>
-                        <div class="mt-auto"></div>
+                        <p class="small text-muted mt-2">
+                            Acronimo di <strong>Small Office / Home Office</strong>.<br><br>
+                            Indica un ambiente ibrido (casa o piccolo ufficio) dove convivono dispositivi personali e lavorativi.
+                        </p>
                     </div>
-                    <a href="soho_approfondimento.html" class="btn btn-warning text-white w-100 mt-2 mb-3">Vai al file: SOHO</a>
                 </div>
+
                 <div class="col-md-4">
-                    <div class="card-custom border-start border-5 border-primary">
+                    <div class="card-custom card-lan">
                         <h5 class="fw-bold text-primary">Cos'è una LAN?</h5>
-                        <p class="small text-muted mb-3">Acronimo di <strong>Local Area Network</strong>.<br>È la rete "dentro casa tua". Tutti i tuoi dispositivi collegati al router formano la LAN.</p>
-                         <a href="lan_approfondimento.html" class="btn btn-primary w-100 mt-auto">🔍 Vai al file: LAN</a>
+                        <p class="small text-muted mt-2">
+                            Acronimo di <strong>Local Area Network</strong>.<br>
+                            È la rete "dentro casa tua". Tutti i tuoi dispositivi collegati al router formano la LAN.
+                        </p>
+                        <a href="lan_approfondimento.html" class="btn btn-primary w-100 mt-auto rounded-pill"><i class="fas fa-search"></i> Vai al file: LAN</a>
                     </div>
                 </div>
+
                 <div class="col-md-4">
-                    <div class="card-custom border-start border-5 border-danger">
+                    <div class="card-custom card-wan">
                         <h5 class="fw-bold" style="color: #d63384;">Cos'è una WAN?</h5>
-                        <p class="small text-muted mb-3">Acronimo di <strong>Wide Area Network</strong>.<br>È la "Rete Geografica", ovvero <strong>Internet</strong>. È tutto ciò che sta "fuori" dal tuo modem.</p>
-                        <a href="wan_approfondimento.html" class="btn btn-danger w-100 mt-auto" style="background-color: #d63384; border:none;">🌍 Vai al file: WAN</a>
+                        <p class="small text-muted mt-2">
+                            Acronimo di <strong>Wide Area Network</strong>.<br>
+                            È la "Rete Geografica", ovvero <strong>Internet</strong>.<br>
+                            È tutto ciò che sta "fuori" dal tuo modem.
+                        </p>
+                        <a href="wan_approfondimento.html" class="btn text-white w-100 mt-auto rounded-pill" style="background-color: #d63384; border:none;"><i class="fas fa-globe"></i> Vai al file: WAN</a>
                     </div>
                 </div>
             </div>
 
-            <div class="row mt-2 mb-5 gx-2">
-                <div class="col-3">
-                    <div class="hardware-icon-box"><i class="fas fa-phone-alt text-danger"></i> MODEM</div>
-                </div>
-                <div class="col-3">
-                    <div class="hardware-icon-box"><i class="fas fa-traffic-light text-success"></i> ROUTER</div>
-                </div>
-                <div class="col-3">
-                    <div class="hardware-icon-box"><i class="fas fa-network-wired text-primary"></i> SWITCH</div>
-                </div>
-                <div class="col-3">
-                    <div class="hardware-icon-box"><i class="fas fa-wifi text-warning"></i> WIFI</div>
-                </div>
-            </div>
+            <hr class="my-5">
 
-            <hr>
-
-            <div class="row mt-4">
+            <div class="row align-items-center">
                 <div class="col-md-6">
                     <h3 style="color: #d63384;">1. La P.A.N. (Personal Area Network)</h3>
                     <p class="text-muted small">Prima ancora della rete di casa, esiste la rete "intorno a te".</p>
-                    <ul class="small">
-                        <li><strong>Definizione:</strong> Rete personale che copre pochi metri.</li>
+                    
+                    <ul class="small mt-3">
+                        <li class="mb-2"><strong>Definizione:</strong> Rete personale che copre pochi metri.</li>
                         <li><strong>Esempi:</strong> Mouse Bluetooth collegato al PC, Smartwatch collegato al telefono.</li>
                     </ul>
                 </div>
-                <div class="col-md-6 text-center pan-img-container">
-                    <a href="https://itrelease.com/2018/07/advantages-and-disadvantages-of-personal-area-network-pan/" target="_blank" title="Clicca per approfondire la PAN su itrelease.com">
-                        <img src="pan_network.png" alt="Schema PAN" class="img-fluid rounded shadow" style="max-height: 250px;">
+                
+                <div class="col-md-6 text-center">
+                    <a href="https://itrelease.com/2018/07/advantages-and-disadvantages-of-personal-area-network-pan/" target="_blank" class="pan-img-link" title="Approfondimento su itrelease.com">
+                        <img src="pan_network.png" alt="Schema PAN" class="img-fluid" style="max-height: 250px;">
                     </a>
                     <p class="small text-warning mt-2"><i class="fas fa-hand-pointer"></i> Clicca sull'immagine per approfondire</p>
                 </div>
@@ -270,12 +286,14 @@
                 <div class="col-md-6">
                     <div class="card-custom border-success">
                         <h5>Lab 1: Ping Loopback</h5>
+                        <p class="small text-muted">Testa la scheda di rete locale.</p>
                         <a href="lab_ping.html" class="btn btn-success">Avvia Lab 1</a>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="card-custom border-success">
                         <h5>Lab 2: Client/Server</h5>
+                        <p class="small text-muted">Simula una connessione web.</p>
                         <a href="lab_cs.html" class="btn btn-outline-success">Avvia Lab 2</a>
                     </div>
                 </div>
@@ -288,9 +306,9 @@
                 <div class="text-warning fw-bold">📂 Root</div>
                 <div class="tree-line">
                     <div>📄 index.html</div>
+                    <div>📄 soho_approfondimento.html</div>
                     <div>📄 lan_approfondimento.html</div>
                     <div>📄 wan_approfondimento.html</div>
-                    <div>📄 soho_approfondimento.html</div>
                     <div>🖼️ pan_network.png</div>
                     <div>📄 livelli... / laboratori...</div>
                 </div>
@@ -299,27 +317,27 @@
 
     </div>
 
+    <a href="#" class="btn-source-fixed" onclick="alert('Qui si aprirebbe il codice sorgente della pagina!'); return false;">
+        <i class="fas fa-cog"></i> Vedi Sorgente
+    </a>
+
     <script>
         function showTab(tabId) {
-            // 1. Nascondi tutti i tab
+            // Nascondi tutto
             document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
             
-            // 2. Reset stile bottoni (tutti grigi)
+            // Resetta bottoni
             document.querySelectorAll('.btn-nav').forEach(btn => {
                 btn.classList.remove('btn-primary', 'text-white');
                 btn.classList.add('btn-light', 'border');
             });
 
-            // 3. Mostra tab target
-            var target = document.getElementById(tabId);
-            if(target) target.classList.add('active');
-
-            // 4. Colora bottone attivo (logica semplificata basata su ID)
-            var activeBtnId = 'btn-' + tabId;
-            var activeBtn = document.getElementById(activeBtnId);
-            if (activeBtn) {
-                activeBtn.classList.remove('btn-light', 'border');
-                activeBtn.classList.add('btn-primary', 'text-white');
+            // Attiva Tab e Bottone
+            document.getElementById(tabId).classList.add('active');
+            var btn = document.getElementById('btn-' + tabId);
+            if(btn) {
+                btn.classList.remove('btn-light', 'border');
+                btn.classList.add('btn-primary', 'text-white');
             }
         }
     </script>
