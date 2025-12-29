@@ -2,28 +2,85 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <title>Livello 4: Trasporto</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Livello 4 - Trasporto</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #fff8e1; /* Giallo pallido */
+            padding: 40px;
+            font-family: 'Segoe UI', sans-serif;
+            text-align: center;
+        }
+        .card-level {
+            background: white;
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .header-level {
+            background-color: #ffc107; /* Giallo Trasporto */
+            color: #333; /* Testo scuro per contrasto sul giallo */
+            padding: 30px;
+        }
+        .content-level { padding: 40px; text-align: left; }
+        
+        /* Stile Bottoni Footer */
+        .footer-nav {
+            margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee;
+            display: flex; gap: 15px; justify-content: center;
+        }
+        .btn-back { background-color: #6c757d; color: white; padding: 10px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; }
+        .btn-source { border: 2px solid #333; color: #333; padding: 10px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; font-family: monospace; cursor: pointer; }
+        .btn-source:hover { background: #333; color: white; }
+    </style>
 </head>
 <body>
-<div class="container">
-    <h1>Livello 4: Trasporto</h1>
-    <div class="pdu-badge" style="background-color: #f39c12;">PDU: SEGMENTO (Segment)</div>
 
-    <h2>📝 Descrizione Semplice</h2>
-    <p>Garantisce che i dati arrivino interi. Decide se spedire con "raccomandata sicura" (TCP) o "posta prioritaria veloce" (UDP).</p>
+    <div class="card-level">
+        <div class="header-level">
+            <h1>Livello 4: Trasporto</h1>
+            <p>Il Corriere Espresso (Affidabile o Veloce?)</p>
+        </div>
+        
+        <div class="content-level">
+            <h3>Cosa succede qui?</h3>
+            <p>Qui avviene la magia della consegna. Il Livello 4 prende i dati enormi dal livello superiore e li "taglia" in pezzi più piccoli chiamati <strong>Segmenti</strong> per poterli spedire.</p>
+            
+            <div class="alert alert-warning" style="background-color: #fff3cd; border-color: #ffecb5; color: #664d03;">
+                <strong>TCP vs UDP:</strong><br>
+                Qui devi fare una scelta fondamentale:<br>
+                1. <strong>TCP (Affidabile):</strong> Come una Raccomandata con ricevuta di ritorno. Se un pacchetto si perde, viene rispedito. (Web, Email)<br>
+                2. <strong>UDP (Veloce):</strong> Come lo streaming video in diretta. Se perdi un fotogramma, pazienza, non ci si ferma.
+            </div>
 
-    <h2>⚙️ Funzione Tecnica</h2>
-    <p>Spezzetta i dati in segmenti numerati e aggiunge le <strong>Porte</strong> (es. porta 80) per indirizzare i dati all'applicazione giusta.</p>
+            <ul>
+                <li><strong>Segmentazione:</strong> Divide i dati grossi in "pacchetti" gestibili.</li>
+                <li><strong>Controllo di Flusso:</strong> Evita di "inondare" il ricevitore se è troppo lento a leggere.</li>
+                <li><strong>Porte:</strong> Indirizza i dati all'applicazione giusta (es. porta 80 per il Web, 25 per la posta).</li>
+            </ul>
 
-    <h2>📦 Incapsulamento</h2>
-    <p>I "Dati" vengono divisi e messi dentro il <strong>Segmento</strong>.</p>
-
-    <div class="nav-links">
-        <a href="livello5.html">⬆️ Livello 5</a> | 
-        <a href="descrizione_livelli.html">🔙 Indice</a> | 
-        <a href="livello3.html">⬇️ Livello 3</a>
+            <div class="footer-nav">
+                <a href="descrizione_livelli.html" class="btn-back">⬅ Torna alle Matriosche</a>
+                <a onclick="mostraCodice()" class="btn-source">&lt;/&gt; Vedi Sorgente</a>
+            </div>
+        </div>
     </div>
-</div>
+
+    <script>
+        function mostraCodice() {
+            var htmlCode = document.documentElement.outerHTML;
+            var newWindow = window.open("", "Codice Sorgente", "width=800,height=600,scrollbars=yes");
+            newWindow.document.write('<html><head><title>Sorgente Pagina</title></head><body>');
+            newWindow.document.write('<h3>Codice Sorgente della Pagina:</h3>');
+            newWindow.document.write('<pre style="background:#f4f4f4; padding:15px; border:1px solid #ccc; white-space: pre-wrap;">');
+            newWindow.document.write(htmlCode.replace(/</g, "&lt;").replace(/>/g, "&gt;"));
+            newWindow.document.write('</pre></body></html>');
+            newWindow.document.close();
+        }
+    </script>
+
 </body>
 </html>
