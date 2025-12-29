@@ -2,25 +2,83 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <title>Livello 6: Presentazione</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Livello 6 - Presentazione</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8e1eb; /* Sfondo rosa molto pallido */
+            padding: 40px;
+            font-family: 'Segoe UI', sans-serif;
+            text-align: center;
+        }
+        .card-level {
+            background: white;
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .header-level {
+            background-color: #d63384; /* Colore Identificativo Livello 6 */
+            color: white;
+            padding: 30px;
+        }
+        .content-level { padding: 40px; text-align: left; }
+        
+        /* Stile Bottoni Footer */
+        .footer-nav {
+            margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee;
+            display: flex; gap: 15px; justify-content: center;
+        }
+        .btn-back { background-color: #6c757d; color: white; padding: 10px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; }
+        .btn-source { border: 2px solid #333; color: #333; padding: 10px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; font-family: monospace; cursor: pointer; }
+        .btn-source:hover { background: #333; color: white; }
+    </style>
 </head>
 <body>
-<div class="container">
-    <h1>Livello 6: Presentazione</h1>
-    <div class="pdu-badge">PDU: DATI (Formattati)</div>
 
-    <h2>📝 Descrizione Semplice</h2>
-    <p>È il "traduttore universale". Si assicura che il computer che riceve i dati possa leggerli, indipendentemente dal sistema operativo usato.</p>
+    <div class="card-level">
+        <div class="header-level">
+            <h1>Livello 6: Presentazione</h1>
+            <p>Il Traduttore Universale</p>
+        </div>
+        
+        <div class="content-level">
+            <h3>Cosa succede qui?</h3>
+            <p>Questo livello si occupa della "forma" dei dati, non del loro significato. Assicura che il messaggio inviato da un computer sia leggibile dall'altro.</p>
+            
+            <div class="alert alert-danger" style="background-color: #fadbd8; border-color: #f5b7b1; color: #761b18;">
+                <strong>La Metafora del Traduttore:</strong> 
+                Se il livello 7 dice "Ciao", il livello 6 decide se scriverlo in ASCII, Unicode, o se criptarlo in un codice segreto.
+            </div>
 
-    <h2>⚙️ Funzione Tecnica</h2>
-    <p>Gestisce la <strong>Cifratura</strong> (sicurezza), la <strong>Compressione</strong> (riduzione dimensioni) e la <strong>Formattazione</strong> (es. JPEG, ASCII).</p>
+            <ul>
+                <li><strong>Traduzione:</strong> Converte i dati in formati standard (es. da EBCDIC a ASCII).</li>
+                <li><strong>Crittografia:</strong> Qui avviene la cifratura dei dati (es. HTTPS/SSL) per renderli sicuri durante il viaggio.</li>
+                <li><strong>Compressione:</strong> Riduce la dimensione dei file (es. lo ZIP o il JPEG per le immagini).</li>
+            </ul>
 
-    <div class="nav-links">
-        <a href="livello7.html">⬆️ Livello 7</a> | 
-        <a href="descrizione_livelli.html">🔙 Indice</a> | 
-        <a href="livello5.html">⬇️ Livello 5</a>
+            <div class="footer-nav">
+                <a href="descrizione_livelli.html" class="btn-back">⬅ Torna alle Matriosche</a>
+                <a onclick="mostraCodice()" class="btn-source">&lt;/&gt; Vedi Sorgente</a>
+            </div>
+        </div>
     </div>
-</div>
+
+    <script>
+        function mostraCodice() {
+            var htmlCode = document.documentElement.outerHTML;
+            var newWindow = window.open("", "Codice Sorgente", "width=800,height=600,scrollbars=yes");
+            newWindow.document.write('<html><head><title>Sorgente Pagina</title></head><body>');
+            newWindow.document.write('<h3>Codice Sorgente della Pagina:</h3>');
+            newWindow.document.write('<pre style="background:#f4f4f4; padding:15px; border:1px solid #ccc; white-space: pre-wrap;">');
+            newWindow.document.write(htmlCode.replace(/</g, "&lt;").replace(/>/g, "&gt;"));
+            newWindow.document.write('</pre></body></html>');
+            newWindow.document.close();
+        }
+    </script>
+
 </body>
-</html>
+</html> 
