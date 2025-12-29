@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confronto ISO/OSI vs TCP/IP</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f0f2f5;
+            font-family: 'Segoe UI', sans-serif;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .main-card {
+            background: white;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        h1 { color: #2c3e50; font-weight: 800; margin-bottom: 30px; }
+        
+        /* Stile della Tabella "Torre" */
+        .tower-table {
+            width: 100%;
+            border-collapse: separate; 
+            border-spacing: 5px; /* Spazio bianco tra i blocchi */
+            margin-top: 20px;
+        }
+
+        .tower-table th {
+            font-size: 1.2rem;
+            padding: 15px;
+            color: #555;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .tower-table td {
+            color: white;
+            font-weight: bold;
+            padding: 20px;
+            border-radius: 8px; /* Blocchi arrotondati */
+            vertical-align: middle;
+            transition: transform 0.2s;
+            position: relative;
+        }
+
+        .tower-table td:hover { transform: scale(1.02); z-index: 10; }
+
+        /* --- COLORI ISO/OSI (Sinistra) --- */
+        .iso-7 { background-color: #e83e8c; }
+        .iso-6 { background-color: #d63384; }
+        .iso-5 { background-color: #fd7e14; }
+        .iso-4 { background-color: #ffc107; color: #333 !important; }
+        .iso-3 { background-color: #198754; }
+        .iso-2 { background-color: #0d6efd; }
+        .iso-1 { background-color: #6c757d; }
+
+        /* --- COLORI TCP/IP (Destra) --- */
+        /* Colori simili ma più tenui per indicare il raggruppamento */
+        .tcp-app { background-color: #f06292; border: 3px solid #e83e8c; } /* Rosa unico */
+        .tcp-trans { background-color: #ffe082; color: #333 !important; border: 3px solid #ffc107; }
+        .tcp-net { background-color: #a5d6a7; border: 3px solid #198754; }
+        .tcp-access { background-color: #90caf9; border: 3px solid #0d6efd; }
+
+        /* Frecce centrali (fatte con CSS nel mezzo) */
+        .arrow-cell {
+            background: transparent !important;
+            color: #333 !important;
+            font-size: 2rem;
+            width: 50px;
+            padding: 0;
+        }
+
+        .note-box {
+            background-color: #e3f2fd;
+            border-left: 5px solid #2196f3;
+            text-align: left;
+            padding: 15px;
+            margin: 30px 0;
+            border-radius: 5px;
+        }
+
+        /* Navigazione Footer */
+        .nav-footer { margin-top: 40px; display: flex; justify-content: center; gap: 20px; }
+        .btn-nav { padding: 10px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; }
+        .btn-back { background-color: #6c757d; color: white; }
+        .btn-source { border: 2px solid #333; color: #333; font-family: monospace; }
+        
+    </style>
+</head>
+<body>
+
+    <div class="main-card">
+        <h1>Le Due Torri a Confronto</h1>
+        <p>A sinistra il modello teorico (ISO/OSI), a destra Internet reale (TCP/IP).<br>Guarda come i blocchi si fondono!</p>
+
+        <table class="tower-table">
+            <thead>
+                <tr>
+                    <th width="40%">Torre ISO/OSI (7 Piani)</th>
+                    <th width="10%"></th> <th width="40%">Torre TCP/IP (4 Piani)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="iso-7">7. Applicazione</td>
+                    <td rowspan="3" class="arrow-cell">➡</td> <td rowspan="3" class="tcp-app">
+                        APPLICAZIONE<br>
+                        <small style="font-weight: normal;">(HTTP, FTP, SMTP)</small>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="iso-6">6. Presentazione</td>
+                    </tr>
+                <tr>
+                    <td class="iso-5">5. Sessione</td>
+                    </tr>
+
+                <tr>
+                    <td class="iso-4">4. Trasporto</td>
+                    <td class="arrow-cell">➡</td>
+                    <td class="tcp-trans">
+                        TRASPORTO<br>
+                        <small style="font-weight: normal;">(TCP, UDP)</small>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="iso-3">3. Rete</td>
+                    <td class="arrow-cell">➡</td>
+                    <td class="tcp-net">
+                        INTERNET<br>
+                        <small style="font-weight: normal;">(IP)</small>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="iso-2">2. Collegamento</td>
+                    <td rowspan="2" class="arrow-cell">➡</td>
+                    <td rowspan="2" class="tcp-access">
+                        ACCESSO ALLA RETE<br>
+                        <small style="font-weight: normal;">(Ethernet, Wi-Fi)</small>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="iso-1">1. Fisico</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="note-box">
+            <strong>💡 Cosa impariamo dal codice di questa pagina?</strong>
+            <p style="margin: 5px 0 0 0;">
+                Se clicchi su "Vedi Sorgente", noterai che per creare il blocco gigante "Applicazione" a destra, abbiamo usato l'attributo HTML <code>&lt;td rowspan="3"&gt;</code>. 
+                Questo comando dice al browser: "Questa cella deve essere alta quanto tre celle normali". È l'equivalente informatico della fusione dei livelli!
+            </p>
+        </div>
+
+        <div class="nav-footer">
+            <a href="descrizione_livelli.html" class="btn-nav btn-back">⬅ Torna alle Matriosche</a>
+            <a href="view-source:confronto_tcp.html" class="btn-nav btn-source">&lt;/&gt; Vedi Sorgente HTML</a>
+        </div>
+
+    </div>
+
+</body>
+</html>
