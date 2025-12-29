@@ -1,35 +1,39 @@
 <style>
-    /* RESET DI EMERGENZA */
-    body { 
-        background-color: #f8f9fa !important; 
-        display: block !important; 
-    }
-
-    /* FORZA LA VISIBILITÀ DELLA SEZIONE ATTIVA */
+    /* 1. REGOLE DI VISIBILITÀ (BLINDATE) */
+    /* Evita che la pagina sparisca al refresh o al cambio tab */
+    body { background-color: #f4f7f6; font-family: 'Segoe UI', sans-serif; color: #212529; }
+    
     .section-content { display: none; }
     .section-content.active { display: block !important; }
 
-    /* BOTTONI NAVIGAZIONE - SEMPRE VISIBILI */
+    /* 2. FIX LEGGIBILITÀ BOTTONI (SOLO TESTATA) */
+    /* Impedisce che il testo diventi bianco su bianco */
     .btn-outline-primary {
         background-color: #ffffff !important;
         color: #0d6efd !important;
         border: 2px solid #0d6efd !important;
+        font-weight: bold !important;
     }
     .btn-primary.active {
         background-color: #0d6efd !important;
         color: #ffffff !important;
+        font-weight: bold !important;
     }
 
-    /* REGOLE BASE PER GLI ELEMENTI CHE AVEVI */
-    .osi-layer { color: white; padding: 10px; margin-bottom: 5px; border-radius: 5px; display: flex; justify-content: space-between; }
+    /* 3. RIPRISTINO TUTTI GLI ELEMENTI ORIGINALI */
+    /* ISO/OSI */
+    .osi-layer { color: white !important; padding: 12px; margin-bottom: 8px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; font-weight: bold; }
     .layer-7 { background-color: #e83e8c; } .layer-6 { background-color: #a55eea; } .layer-5 { background-color: #fd9644; }
     .layer-4 { background-color: #f7b731; } .layer-3 { background-color: #20bf6b; } .layer-2 { background-color: #2d98da; }
     .layer-1 { background-color: #778ca3; }
 
-    .card-original { border: 1px solid #ccc; padding: 15px; border-radius: 8px; background: white; }
-    
-    /* FIX MOBILE RAPIDO */
-    @media (max-width: 600px) {
-        .btn-group { display: flex; flex-direction: column; width: 100%; }
-    }
+    /* Stand-Alone e Reti */
+    .offline-circle { width: 140px; height: 140px; border: 3px dashed #dc3545; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 auto; background: #fff; }
+    .card-original { border: 2px solid; border-radius: 10px; padding: 15px; text-align: center; height: 100%; background-color: #fff; }
+    .card-lan { border-color: #0d6efd; background-color: #f0f7ff; }
+    .card-wan { border-color: #dc3545; background-color: #fff5f5; }
+
+    /* Mappa del sito */
+    .tree-node { border-left: 2px solid #dee2e6; margin-left: 20px; padding-left: 20px; position: relative; padding-bottom: 10px; }
+    .tree-node::before { content: ""; position: absolute; left: 0; top: 15px; width: 15px; height: 2px; background: #dee2e6; }
 </style>
