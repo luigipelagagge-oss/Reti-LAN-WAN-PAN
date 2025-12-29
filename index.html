@@ -3,70 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Corso di Reti e Telecomunicazioni</title>
+    <title>Master Dashboard - Corso di Reti</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     
     <style>
-        body { background: #f8f9fa; font-family: 'Segoe UI', sans-serif; }
+        body { background-color: #f4f7f6; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         .section-content { display: none; }
-        .section-content.active { display: block; animation: fadeIn 0.4s; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .section-content.active { display: block; animation: fadeIn 0.4s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Stile Bottoni Livelli (ispirato a descrizione_livelli.html) */
+        /* Bottoni Livelli OSI (Effetto Hoover e Stile Matrioske) */
         .btn-level-stack {
             display: block; color: white !important; border: none;
-            padding: 12px 20px; border-radius: 8px; text-decoration: none;
+            padding: 14px 20px; border-radius: 10px; text-decoration: none;
             font-weight: bold; transition: all 0.3s ease;
-            text-align: left; position: relative; width: 100%; margin-bottom: 8px;
+            text-align: left; position: relative; width: 100%; margin-bottom: 10px;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
         }
-        .btn-level-stack:hover { transform: translateX(10px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+        .btn-level-stack:hover { 
+            transform: translateX(12px) scale(1.02); 
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+            filter: brightness(1.1);
+        }
         .btn-level-stack::after { content: '🔎'; position: absolute; right: 20px; opacity: 0.6; }
-        
-        /* Animazione Illuminazione */
-        .highlight-flow { transform: scale(1.05) translateX(15px); box-shadow: 0 0 20px rgba(0,0,0,0.2); z-index: 10; filter: brightness(1.2); }
 
-        /* Container Immagini */
-        .img-box { border: 1px solid #ddd; border-radius: 15px; padding: 10px; background: white; box-shadow: 0 4px 8px rgba(0,0,0,0.05); }
-        .img-box img { max-width: 100%; height: auto; border-radius: 10px; }
+        /* Animazione Flusso Sender/Receiver */
+        .highlight-flow { 
+            transform: scale(1.06) translateX(20px); 
+            box-shadow: 0 0 25px rgba(0,0,0,0.25); 
+            z-index: 10; 
+            filter: brightness(1.3);
+        }
+
+        /* Contenitore Immagine PAN (Fix scala) */
+        .pan-wrapper {
+            max-width: 100%;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid #dee2e6;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        .pan-wrapper img { max-width: 100%; height: auto; border-radius: 8px; }
+
+        /* Stand-Alone Graphics */
+        .sa-circle {
+            width: 150px; height: 150px; border: 3px dashed #dc3545;
+            border-radius: 50%; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; background: white;
+        }
     </style>
 </head>
 <body>
 
-    <div class="container py-5">
+    <div class="container py-4">
         <header class="text-center mb-5">
             <h1 class="fw-bold text-dark">Corso di Reti e Telecomunicazioni</h1>
-            <p class="text-muted">Dalla teoria di base alla simulazione pratica.</p>
+            <p class="text-muted">Architettura, Protocolli e Laboratorio</p>
+            <hr class="w-25 mx-auto">
         </header>
 
         <nav class="text-center mb-5">
             <div class="btn-group shadow-sm mb-3">
-                <button class="btn btn-outline-primary" onclick="switchTab('standalone')">1. Stand-Alone</button>
-                <button class="btn btn-primary active" id="btn-rete" onclick="switchTab('retelocale')">2. Rete Locale</button>
-                <button class="btn btn-outline-primary" onclick="switchTab('isoosi')">3. Modello ISO/OSI</button>
+                <button class="btn btn-outline-primary px-4" onclick="switchTab('standalone')">1. Stand-Alone</button>
+                <button class="btn btn-primary px-4 active" id="nav-rete" onclick="switchTab('retelocale')">2. Rete Locale</button>
+                <button class="btn btn-outline-primary px-4" onclick="switchTab('isoosi')">3. Modello ISO/OSI</button>
             </div>
-            <div class="mt-2">
-                <a href="lab_ping.html" class="btn btn-success rounded-pill px-4 btn-sm mx-1">Vai al Laboratorio</a>
-                <button class="btn btn-dark rounded-pill px-4 btn-sm mx-1" onclick="switchTab('mappa')">Mappa Sito</button>
+            <div class="d-flex justify-content-center gap-2 mt-2">
+                <a href="lab_ping.html" class="btn btn-success rounded-pill px-4"><i class="bi bi-cpu"></i> Laboratorio</a>
+                <button class="btn btn-dark rounded-pill px-4" onclick="switchTab('mappa')"><i class="bi bi-diagram-3"></i> Mappa Sito</button>
             </div>
         </nav>
 
-        <main class="bg-white p-4 p-md-5 shadow rounded-4">
+        <main class="bg-white p-4 p-md-5 shadow-sm rounded-4 border">
             
             <div id="standalone" class="section-content">
-                <h2 class="fw-bold mb-4">1. Stand-Alone (L'Isola Digitale)</h2>
+                <h2 class="fw-bold mb-4">1. Il Computer "Stand-Alone"</h2>
                 <div class="row align-items-center">
                     <div class="col-md-7">
-                        <p class="lead">Macchina isolata, massima sicurezza fisica.</p>
-                        <div class="p-3 border-start border-danger border-4 bg-light">
-                            <h6 class="text-danger fw-bold"><i class="bi bi-shield-lock"></i> Air Gap</h6>
-                            <p class="small mb-0">Impossibile subire attacchi remoti senza connessione fisica.</p>
+                        <p class="lead">Un'isola digitale completamente isolata dal resto del mondo.</p>
+                        <div class="alert alert-danger border-start border-4 bg-light shadow-sm">
+                            <h6 class="fw-bold"><i class="bi bi-shield-lock"></i> Sicurezza Air Gap</h6>
+                            <p class="small mb-0">Nessun cavo, nessun Wi-Fi, nessun Bluetooth. L'unico modo per scambiare dati è il movimento fisico di supporti (es. chiavette USB).</p>
                         </div>
                     </div>
-                    <div class="col-md-5 text-center">
-                        <div class="img-box d-inline-block border-danger border-dashed">
-                            <i class="bi bi-pc-display text-primary" style="font-size: 4rem;"></i>
-                            <div class="badge bg-danger d-block">NO NET</div>
+                    <div class="col-md-5 text-center d-flex justify-content-center">
+                        <div class="sa-circle shadow">
+                            <i class="bi bi-pc-display text-primary fs-1"></i>
+                            <span class="badge bg-danger mt-2">OFFLINE</span>
                         </div>
                     </div>
                 </div>
@@ -74,54 +99,87 @@
 
             <div id="retelocale" class="section-content active">
                 <h2 class="fw-bold mb-4 text-primary">Dallo Stand-Alone alla LAN</h2>
-                <div class="row g-3 text-center mb-5">
-                    <div class="col-md-4"><div class="card p-3 bg-light border-0"><h6>SOHO</h6><p class="small text-muted">Small Office/Home Office</p></div></div>
-                    <div class="col-md-4"><div class="card p-3 border-primary shadow-sm"><h6>LAN</h6><a href="lan_approfondimento.html" class="btn btn-primary btn-sm mt-2">Vai al file: LAN</a></div></div>
-                    <div class="col-md-4"><div class="card p-3 border-danger shadow-sm"><h6>WAN</h6><a href="wan_approfondimento.html" class="btn btn-danger btn-sm mt-2">Vai al file: WAN</a></div></div>
+                <div class="row g-4 mb-5 text-center">
+                    <div class="col-md-4">
+                        <div class="card h-100 p-3 bg-light border-0">
+                            <h6 class="fw-bold">SOHO</h6>
+                            <p class="small text-muted">Small Office / Home Office: la rete domestica moderna.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 p-3 border-primary shadow-sm">
+                            <h6 class="text-primary fw-bold">LAN</h6>
+                            <a href="lan_approfondimento.html" class="btn btn-primary btn-sm mt-auto">Apri: LAN</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 p-3 border-danger shadow-sm">
+                            <h6 class="text-danger fw-bold">WAN</h6>
+                            <a href="wan_approfondimento.html" class="btn btn-danger btn-sm mt-auto">Apri: WAN</a>
+                        </div>
+                    </div>
                 </div>
-                <h4 class="text-danger fw-bold">1. La P.A.N.</h4>
-                <div class="row align-items-center">
-                    <div class="col-md-5 small text-muted">Rete personale di brevissimo raggio (Bluetooth).</div>
-                    <div class="col-md-7 text-center">
-                        <div class="img-box">
-                            <a href="https://itrelease.com/2018/07/advantages-and-disadvantages-of-personal-area-network-pan/" target="_blank">
-                                <img src="pan_network.png" alt="Schema PAN">
-                            </a>
+
+                <div class="border-top pt-4">
+                    <h4 class="text-danger fw-bold"><i class="bi bi-bluetooth"></i> 1. La P.A.N. (Personal Area Network)</h4>
+                    <div class="row align-items-center mt-3 g-4">
+                        <div class="col-md-5">
+                            <p>Rete a cortissimo raggio dedicata ai propri dispositivi.</p>
+                            <ul class="small text-muted">
+                                <li><strong>Esempio:</strong> Cuffie wireless, Smartwatch, Mouse.</li>
+                                <li><strong>Tecnologia:</strong> Prevalentemente Bluetooth.</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="pan-wrapper text-center">
+                                <a href="https://itrelease.com/2018/07/advantages-and-disadvantages-of-personal-area-network-pan/" target="_blank">
+                                    <img src="pan_network.png" alt="Immagine PAN">
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div id="isoosi" class="section-content">
-                <div class="text-center mb-4">
-                    <h2 class="fw-bold text-pink" style="color: #d63384;">Il Concetto delle Matrioske</h2>
-                    <p class="text-muted">ISO/OSI è una pila. Usa i bottoni <b>Sender/Receiver</b> per il flusso o clicca sui singoli livelli.</p>
+                <div class="row mb-4">
+                    <div class="col-md-8">
+                        <h2 class="fw-bold" style="color: #d63384;">Modello ISO/OSI</h2>
+                        <p class="text-muted">Visualizza il flusso dei dati o approfondisci il concetto delle matrioske.</p>
+                    </div>
+                    <div class="col-md-4 text-end">
+                        <a href="descrizione_livelli.html" class="btn btn-warning fw-bold shadow-sm py-2 px-4">
+                            <i class="bi bi-box-seam"></i> VAI ALLE MATRIOSKE
+                        </a>
+                    </div>
                 </div>
                 
-                <div class="row g-5">
-                    <div class="col-lg-5 text-center">
-                        <div class="img-box mb-4">
-                            <img src="matrioske.jpg" alt="Incapsulamento">
-                            <p class="small text-muted mt-2 italic">L'incapsulamento visivo</p>
+                <div class="row g-4">
+                    <div class="col-lg-5">
+                        <div class="card border-0 bg-light p-3 mb-4 shadow-sm">
+                            <h6 class="fw-bold text-success mb-3">Simulatore di Flusso</h6>
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-outline-danger btn-sm" onclick="animateOSI('send')"><i class="bi bi-arrow-down"></i> SENDER (Invio)</button>
+                                <button class="btn btn-outline-primary btn-sm" onclick="animateOSI('receive')"><i class="bi bi-arrow-up"></i> RECEIVER (Ricezione)</button>
+                            </div>
                         </div>
                         <div class="card border-success shadow-sm">
-                            <div class="card-header bg-success text-white py-1 small">Protocol Data Unit (PDU)</div>
-                            <table class="table table-sm small mb-0">
-                                <tr class="table-danger"><td>7-5</td><td><b>DATI</b> (La lettera)</td></tr>
-                                <tr class="table-warning"><td>4</td><td><b>SEGMENTO</b> (La busta)</td></tr>
-                                <tr class="table-info"><td>3</td><td><b>PACCHETTO</b> (Indirizzo)</td></tr>
-                                <tr class="table-primary"><td>2</td><td><b>FRAME</b> (Sacco postale)</td></tr>
-                                <tr class="table-dark text-white"><td>1</td><td><b>BIT</b> (Segnale)</td></tr>
+                            <table class="table table-sm small mb-0 text-center">
+                                <thead class="table-success text-uppercase" style="font-size: 0.7rem;">
+                                    <tr><th>Livelli</th><th>Nomi P.D.U.</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>7-6-5</td><td><strong>DATI</strong></td></tr>
+                                    <tr><td>4</td><td><strong>SEGMENTO</strong></td></tr>
+                                    <tr><td>3</td><td><strong>PACCHETTO</strong></td></tr>
+                                    <tr><td>2</td><td><strong>FRAME</strong></td></tr>
+                                    <tr><td>1</td><td><strong>BIT</strong></td></tr>
+                                </tbody>
                             </table>
                         </div>
                     </div>
 
                     <div class="col-lg-7">
-                        <div class="d-flex gap-2 mb-4">
-                            <button class="btn btn-danger btn-sm w-100" onclick="animateOSI('send')"><i class="bi bi-arrow-down"></i> SENDER (1 &rarr; 7)</button>
-                            <button class="btn btn-primary btn-sm w-100" onclick="animateOSI('receive')"><i class="bi bi-arrow-up"></i> RECEIVER (7 &rarr; 1)</button>
-                        </div>
-                        
                         <div id="osi-stack">
                             <a href="livello7.html" class="btn-level-stack osi-item" style="background-color: #e83e8c;">7. Applicazione</a>
                             <a href="livello6.html" class="btn-level-stack osi-item" style="background-color: #d63384;">6. Presentazione</a>
@@ -131,27 +189,22 @@
                             <a href="livello2.html" class="btn-level-stack osi-item" style="background-color: #0d6efd;">2. Collegamento</a>
                             <a href="livello1.html" class="btn-level-stack osi-item" style="background-color: #6c757d;">1. Fisico</a>
                         </div>
-                        <div class="mt-4 text-center">
-                            <a href="confronto_tcp.html" class="btn btn-warning rounded-pill btn-sm">🆚 Confronto TCP/IP</a>
-                        </div>
                     </div>
                 </div>
             </div>
 
             <div id="mappa" class="section-content">
-                <h2 class="fw-bold mb-4">Master Dashboard - Mappa Sito</h2>
-                <div class="p-4 bg-light rounded shadow-sm font-monospace small">
-                    <div class="text-primary fw-bold">📁 Corso_Reti_Tlc/</div>
-                    <div class="ms-4 border-start ps-3 py-1">
-                        <div>📄 index.html</div>
-                        <div class="text-muted">📂 Settimana 01 Teoria/</div>
-                        <div class="ms-4 border-start ps-3">
-                            <div>📄 lan_approfondimento.html</div>
-                            <div class="fw-bold text-danger">📂 Modello OSI Details/</div>
-                            <div class="ms-4">
-                                <div class="text-danger">📄 descrizione_livelli.html (Corrente)</div>
-                                <div class="opacity-50">📄 livello1.html...7.html</div>
-                            </div>
+                <h2 class="fw-bold mb-4">Mappa del Sito</h2>
+                <div class="p-4 bg-dark text-white rounded shadow-lg font-monospace small">
+                    <div class="text-info">📁 Root/</div>
+                    <div class="ms-3 border-start ps-3">
+                        📄 index.html (Dashboard)<br>
+                        <div class="text-info mt-2">📁 Settimana 01/</div>
+                        <div class="ms-3 border-start ps-3">
+                            📄 lan_approfondimento.html<br>
+                            📄 wan_approfondimento.html<br>
+                            <span class="text-warning fw-bold">📄 descrizione_livelli.html (Matrioske)</span><br>
+                            📄 livello1.html...7.html
                         </div>
                     </div>
                 </div>
@@ -160,8 +213,8 @@
     </div>
 
     <div class="position-fixed bottom-0 end-0 p-3">
-        <button class="btn btn-dark shadow-lg rounded-pill px-4" onclick="showSource()">
-            <i class="bi bi-code-slash"></i> Vedi Sorgente
+        <button class="btn btn-dark rounded-pill shadow-lg px-4" onclick="showSource()">
+            <i class="bi bi-code-slash"></i> Sorgente
         </button>
     </div>
 
@@ -203,7 +256,7 @@
 
         function showSource() {
             const html = document.documentElement.outerHTML;
-            const win = window.open("", "Sorgente", "width=800,height=600");
+            const win = window.open("", "Source", "width=800,height=600");
             win.document.write("<pre>" + html.replace(/</g, "&lt;") + "</pre>");
         }
     </script>
