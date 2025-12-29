@@ -13,7 +13,7 @@
         .section-content.active { display: block; animation: fadeIn 0.4s ease; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Bottoni Pila OSI con effetto Hoover (come richiesto) */
+        /* Bottoni Livelli OSI con effetto Hoover */
         .btn-level-stack {
             display: block; color: white !important; border: none;
             padding: 14px 20px; border-radius: 10px; text-decoration: none;
@@ -28,19 +28,18 @@
         }
         .btn-level-stack::after { content: '🔎'; position: absolute; right: 20px; opacity: 0.6; }
 
-        /* Animazione Illuminazione Flusso */
-        .highlight-flow { 
-            transform: scale(1.05) translateX(15px); 
-            box-shadow: 0 0 20px rgba(0,0,0,0.2); 
-            z-index: 10; 
-            filter: brightness(1.2);
+        /* Highlight Animazione */
+        .highlight-flow { transform: scale(1.05) translateX(15px); filter: brightness(1.2); z-index: 10; }
+
+        /* Box Spiegazione PDU */
+        .pdu-explanation {
+            background-color: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 0 10px 10px 0;
         }
-
-        /* PAN Image Fix */
-        .pan-wrapper { max-width: 100%; background: white; padding: 15px; border-radius: 15px; border: 1px solid #ddd; }
-        .pan-wrapper img { max-width: 100%; height: auto; border-radius: 8px; }
-
-        /* Icona Stand-Alone */
+        
         .sa-box {
             width: 140px; height: 140px; border: 3px dashed #dc3545;
             border-radius: 50%; display: flex; flex-direction: column;
@@ -53,7 +52,7 @@
     <div class="container py-4">
         <header class="text-center mb-5">
             <h1 class="fw-bold">Corso di Reti e Telecomunicazioni</h1>
-            <p class="text-muted small">Dashboard di navigazione principale</p>
+            <p class="text-muted small">Navigazione Didattica Interattiva</p>
         </header>
 
         <nav class="text-center mb-5">
@@ -74,16 +73,15 @@
                 <h2 class="fw-bold mb-4">1. Il Computer "Stand-Alone"</h2>
                 <div class="row align-items-center">
                     <div class="col-md-7">
-                        <p>Una macchina isolata che non comunica con l'esterno. Rappresenta il massimo livello di sicurezza fisica.</p>
-                        <div class="p-3 border-start border-danger border-4 bg-light mt-3">
-                            <h6 class="text-danger fw-bold"><i class="bi bi-shield-lock"></i> Concetto di Air Gap</h6>
-                            <p class="small mb-0">Nessuna connessione di rete = nessuna via d'accesso per attacchi informatici remoti.</p>
+                        <p>Il punto di partenza: un computer isolato (Air Gap) che non scambia bit con l'esterno.</p>
+                        <div class="alert alert-danger small shadow-sm">
+                            <strong>Sicurezza:</strong> Non essendoci rete, non esiste hacking remoto.
                         </div>
                     </div>
                     <div class="col-md-5 text-center">
-                        <div class="sa-box shadow-sm bg-white">
+                        <div class="sa-box bg-light shadow-sm">
                             <i class="bi bi-pc-display text-primary fs-1"></i>
-                            <span class="badge bg-danger mt-1">NO NET</span>
+                            <span class="badge bg-danger mt-1">OFFLINE</span>
                         </div>
                     </div>
                 </div>
@@ -91,58 +89,61 @@
 
             <div id="retelocale" class="section-content active">
                 <h2 class="fw-bold mb-4 text-primary">Dallo Stand-Alone alla LAN</h2>
-                <div class="row g-4 mb-5 text-center">
-                    <div class="col-md-4"><div class="card h-100 p-3 bg-light border-0"><h6>SOHO</h6><p class="small text-muted mb-0">Small Office / Home Office</p></div></div>
+                <div class="row g-4 mb-4 text-center">
+                    <div class="col-md-4"><div class="card h-100 p-3 bg-light border-0"><h6>SOHO</h6><p class="small text-muted mb-0">Home/Office Network</p></div></div>
                     <div class="col-md-4"><div class="card h-100 p-3 border-primary shadow-sm"><h6>LAN</h6><a href="lan_approfondimento.html" class="btn btn-primary btn-sm mt-auto">Apri LAN</a></div></div>
                     <div class="col-md-4"><div class="card h-100 p-3 border-danger shadow-sm"><h6>WAN</h6><a href="wan_approfondimento.html" class="btn btn-danger btn-sm mt-auto">Apri WAN</a></div></div>
                 </div>
-
                 <div class="border-top pt-4">
-                    <h4 class="text-danger fw-bold">1. La P.A.N. (Personal Area Network)</h4>
-                    <div class="row align-items-center mt-3 g-4">
-                        <div class="col-md-5">
-                            <p class="small">Rete per dispositivi personali (Bluetooth, cuffie, smartwatch) con raggio di pochi metri.</p>
-                        </div>
-                        <div class="col-md-7">
-                            <div class="pan-wrapper text-center shadow-sm">
-                                <a href="https://itrelease.com/2018/07/advantages-and-disadvantages-of-personal-area-network-pan/" target="_blank">
-                                    <img src="pan_network.png" alt="Schema PAN">
-                                </a>
-                            </div>
+                    <h4 class="text-danger fw-bold">La P.A.N. (Personal Area Network)</h4>
+                    <div class="row mt-3">
+                        <div class="col-md-12 text-center">
+                            <a href="https://itrelease.com/2018/07/advantages-and-disadvantages-of-personal-area-network-pan/" target="_blank">
+                                <img src="pan_network.png" alt="Schema PAN" class="img-fluid rounded border shadow-sm p-2" style="max-height: 250px;">
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div id="isoosi" class="section-content">
-                <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h2 class="fw-bold" style="color: #d63384;">Modello ISO/OSI e PDU</h2>
-                    <a href="descrizione_livelli.html" class="btn btn-warning fw-bold shadow-sm">
-                        <i class="bi bi-box-seam"></i> ESPLORA LE MATRIOSKE
-                    </a>
+                <div class="row align-items-center mb-4">
+                    <div class="col-md-7">
+                        <h2 class="fw-bold" style="color: #d63384;">Modello ISO/OSI e PDU</h2>
+                    </div>
+                    <div class="col-md-5 text-end">
+                        <a href="descrizione_livelli.html" class="btn btn-warning fw-bold shadow-sm">
+                            <i class="bi bi-box-seam"></i> VAI ALLE MATRIOSKE
+                        </a>
+                    </div>
+                </div>
+
+                <div class="pdu-explanation shadow-sm">
+                    <h5 class="fw-bold text-dark"><i class="bi bi-info-square-fill text-warning"></i> Cos'è la P.D.U.?</h5>
+                    <p class="mb-0 small">
+                        PDU sta per <strong>Protocol Data Unit</strong>. È il nome che diamo ai dati mentre viaggiano tra i livelli. 
+                        Immagina una <strong>Matrioska</strong>: il dato originale viene inserito in una busta (Segmento), poi in una scatola (Pacchetto), e così via. 
+                        Ogni livello chiama il suo "pacchetto" con un nome diverso:
+                    </p>
                 </div>
 
                 <div class="row g-4">
                     <div class="col-lg-5">
-                        <div class="card border-0 bg-light p-3 shadow-sm">
-                            <h6 class="fw-bold text-success"><i class="bi bi-info-circle"></i> Che cos'è la PDU?</h6>
-                            <p class="small text-muted">La <strong>Protocol Data Unit</strong> è l'unità d'informazione scambiata tra livelli paritetici. Ad ogni passaggio, il dato viene "impacchettato".</p>
-                            <table class="table table-sm small mb-0 table-hover bg-white rounded">
-                                <thead class="table-dark">
-                                    <tr><th>Livello</th><th>Nome PDU</th></tr>
-                                </thead>
-                                <tbody>
-                                    <tr><td>7-6-5</td><td>Dati</td></tr>
-                                    <tr><td>4. Trasporto</td><td>Segmento</td></tr>
-                                    <tr><td>3. Rete</td><td>Pacchetto</td></tr>
-                                    <tr><td>2. Collegamento</td><td>Frame (Trama)</td></tr>
-                                    <tr><td>1. Fisico</td><td>Bit</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="mt-3 d-grid gap-2">
-                            <button class="btn btn-outline-danger btn-sm" onclick="animateOSI('send')">SENDER (7 &rarr; 1)</button>
-                            <button class="btn btn-outline-primary btn-sm" onclick="animateOSI('receive')">RECEIVER (1 &rarr; 7)</button>
+                        <table class="table table-sm small table-bordered text-center shadow-sm">
+                            <thead class="table-dark">
+                                <tr><th>Livello</th><th>Nome della P.D.U.</th></tr>
+                            </thead>
+                            <tbody class="bg-white">
+                                <tr><td>7-6-5</td><td class="fw-bold text-danger">DATI (Data)</td></tr>
+                                <tr><td>4</td><td class="fw-bold text-warning">SEGMENTO (Segment)</td></tr>
+                                <tr><td>3</td><td class="fw-bold text-success">PACCHETTO (Packet)</td></tr>
+                                <tr><td>2</td><td class="fw-bold text-primary">FRAME (Trama)</td></tr>
+                                <tr><td>1</td><td class="fw-bold text-secondary">BIT (Flusso binario)</td></tr>
+                            </tbody>
+                        </table>
+                        <div class="d-grid gap-2 mt-3">
+                            <button class="btn btn-outline-danger btn-sm" onclick="animateOSI('send')">SIMULA INVIO (7 &rarr; 1)</button>
+                            <button class="btn btn-outline-primary btn-sm" onclick="animateOSI('receive')">SIMULA RICEZIONE (1 &rarr; 7)</button>
                         </div>
                     </div>
 
@@ -161,18 +162,14 @@
             </div>
 
             <div id="mappa" class="section-content">
-                <h2 class="fw-bold mb-4">Mappa Strutturale</h2>
-                <div class="card p-4 bg-dark text-info font-monospace small shadow-lg">
-                    <div>📁 Root/</div>
+                <h2 class="fw-bold mb-4">Mappa del Progetto</h2>
+                <div class="card p-4 bg-dark text-info font-monospace small">
+                    <div>📂 Corso_Reti_Tlc/</div>
                     <div class="ms-3 border-start ps-3">
-                        📄 index.html (Dashboard Principale)<br>
-                        📄 descrizione_livelli.html (Le Matrioske)<br>
-                        📄 confronto_tcp.html (Le Due Torri)<br>
-                        📄 lab_ping.html (Simulatore)<br>
-                        <div class="text-white opacity-50 mt-2">📂 Modello OSI Details/</div>
-                        <div class="ms-3 border-start ps-3 text-white opacity-50">
-                            📄 livello1.html ... livello7.html
-                        </div>
+                        📄 index.html (Dashboard)<br>
+                        📄 descrizione_livelli.html (Matrioske)<br>
+                        📄 confronto_tcp.html (Confronto Torri)<br>
+                        <div class="mt-2 text-secondary opacity-50">📂 Livelli_Detail/ (livello1.html...7.html)</div>
                     </div>
                 </div>
             </div>
@@ -180,8 +177,8 @@
     </div>
 
     <div class="position-fixed bottom-0 end-0 p-3">
-        <button class="btn btn-dark shadow rounded-pill px-4" onclick="showSource()">
-            <i class="bi bi-code-slash"></i> Sorgente HTML
+        <button class="btn btn-dark rounded-pill shadow px-4" onclick="showSource()">
+            <i class="bi bi-code-slash"></i> Sorgente
         </button>
     </div>
 
