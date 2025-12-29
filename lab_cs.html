@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lab 2: Ping-Pong Seriale</title>
+    <title>Lab 3: Sistema di Raffreddamento I2C</title>
     <link rel="stylesheet" href="style.css">
     <style>
         /* --- STILI GENERALI --- */
@@ -32,28 +32,23 @@
         .schema-wrapper:hover .schema-overlay { opacity: 1; }
         .schema-wrapper:hover .play-icon { transform: scale(1.2); }
 
-        /* --- MONITOR SERIALE STYLE --- */
-        .monitor-box {
-            background: #000; border-radius: 6px; height: 250px;
-            overflow: hidden; position: relative; border: 2px solid #333;
-        }
-        .monitor-content {
-            padding: 15px; font-family: 'Courier New', monospace; font-size: 0.9em; color: #00ff00;
-            position: absolute; top: 0; left: 0; width: 100%;
-            animation: scrollLog 15s linear infinite; animation-play-state: paused;
-        }
-        .monitor-box:hover .monitor-content { animation-play-state: running; }
-        @keyframes scrollLog { 0% { transform: translateY(0); } 100% { transform: translateY(-70%); } }
-        
         /* --- BOTTONE SOLUZIONE --- */
         .btn-soluzione {
-            background: linear-gradient(135deg, #ffc107 0%, #ffdb4d 100%);
-            color: #000; border: none; padding: 15px 30px; 
-            font-size: 1.1em; font-weight: bold; cursor: pointer; border-radius: 50px; 
-            box-shadow: 0 4px 15px rgba(255, 193, 7, 0.4); transition: all 0.3s;
+            background: #ffc107; color: #000; border: none; padding: 12px 25px; 
+            font-size: 1em; font-weight: bold; cursor: pointer; border-radius: 50px; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15); transition: all 0.2s;
         }
-        .btn-soluzione:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255, 193, 7, 0.6); }
-        @keyframes slideDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        .btn-soluzione:hover { transform: translateY(-2px); box-shadow: 0 6px 15px rgba(0,0,0,0.2); }
+
+        /* --- BOX REGOLE --- */
+        .rules-box {
+            background-color: #fff3e0; border-left: 6px solid #ff9800;
+            padding: 20px; margin: 25px 0; border-radius: 4px;
+        }
+        .info-box {
+            background: #e3f2fd; border-left: 5px solid #2196f3;
+            padding: 15px; margin-top: 15px; border-radius: 4px;
+        }
     </style>
 </head>
 <body>
@@ -61,98 +56,154 @@
     <a href="index.html" class="nav-btn">⬅ Torna alla Mappa</a>
 
     <div class="container">
-        <h1>Esercizio 2: Sender & Receiver (Ping-Pong)</h1>
-        <p>In questo esperimento facciamo dialogare due schede. Il <strong>Sender</strong> è insistente e saluta ogni 2 secondi. Il <strong>Receiver</strong> è paziente: conta i saluti e risponde "Grazie", ma alla decima volta chiude la conversazione con un "Ho capito".</p>
+        <h1>Laboratorio 3: Controllo Remoto I2C</h1>
+        <p>
+            In questo scenario simuliamo un sistema di climatizzazione per una sala server. 
+            Abbiamo due Arduino collegati via I2C: un <strong>Master</strong> (che legge la temperatura) e uno <strong>Slave</strong> (che comanda luci e motore).
+        </p>
+
+        <div class="rules-box">
+            <h3 style="margin-top: 0; color: #e65100;">📋 Le Specifiche del Progetto</h3>
+            <p>Il sistema deve comportarsi seguendo esattamente queste due regole:</p>
+            <ul>
+                <li><strong>1. Allarme Visivo (Soglia a 30°C):</strong><br>
+                    Serve a indicare se la situazione è critica.
+                    <ul>
+                        <li>Se T &le; 30°C: Accendi <strong>LED Verde</strong>.</li>
+                        <li>Se T > 30°C: Accendi <strong>LED Rosso</strong>.</li>
+                    </ul>
+                </li>
+                <br>
+                <li><strong>2. Ventilazione (Range 20°C - 50°C):</strong><br>
+                    La ventola non è on/off, ma graduale.
+                    <ul>
+                        <li>Sotto i <strong>20°C</strong>: Ventola spenta (0%).</li>
+                        <li>Sopra i <strong>50°C</strong>: Ventola al massimo (100%).</li>
+                        <li>Nel mezzo: La velocità aumenta progressivamente.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
 
         <div style="text-align: center; margin: 30px 0;">
-            <h3>Schema Seriale (UART)</h3>
-            <p>Ricorda: TX va su RX, RX va su TX. GND in comune.</p>
+            <h3>Schema di Collegamento</h3>
+            <p>Master e Slave comunicano tramite i pin A4 (SDA) e A5 (SCL).</p>
             
-            <a href="https://www.tinkercad.com/things/363ul1V5EKu-collegamentoseriale2pingpong" target="_blank" style="text-decoration: none;">
+            <a href="https://www.tinkercad.com/things/2Y67P2RlKW2-collegamentoseriale3temperaturecontrol" target="_blank" style="text-decoration: none;">
                 <div class="schema-wrapper">
-                    <img src="CollegamentoSeriale_2_PING_PONG.png" alt="Schema Ping Pong" style="max-width: 100%; width: 600px;">
+                    <img src="CollegamentoSeriale_3_TemperatureControl.png" alt="Schema Circuito" style="max-width: 100%; width: 600px;">
                     <div class="schema-overlay">
                         <div class="play-icon">▶ APRI SIMULATORE</div>
                     </div>
                 </div>
             </a>
-            <p style="font-size: 0.8em; color: #777;">(Clicca per aprire Tinkercad)</p>
+            <p style="font-size: 0.8em; color: #666;">(Clicca sull'immagine per aprire Tinkercad)</p>
         </div>
 
         <hr>
+
+        <h2>Il Codice Completo</h2>
         
         <div style="display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px;">
 
             <div style="flex: 1; min-width: 300px;">
-                <h3 style="color: #0056b3; border-bottom: 2px solid #0056b3; padding-bottom: 5px;">
-                    1. Codice Sender (A)
-                </h3>
-                <p>Saluta ogni 2 secondi.</p>
-                <div style="background-color: #1e1e1e; color: #d4d4d4; padding: 15px; border-radius: 8px; font-family: 'Courier New', monospace; height: 420px; overflow-y: auto;">
+                <h3 style="color: #0d6efd; border-bottom: 2px solid #0d6efd;">1. MASTER (Sensore)</h3>
+                <p>Legge la temperatura e invia un byte grezzo.</p>
+                <div style="background-color: #1e1e1e; color: #d4d4d4; padding: 15px; border-radius: 8px; font-family: 'Courier New', monospace; height: 500px; overflow-y: auto;">
 <pre style="margin: 0;">
-// CODICE SENDER (Arduino A)
+#include &lt;Wire.h&gt;
+
+const int pinSensore = A0;
+float temperatura = 0.0;
+
+// Usiamo int8_t: un numero piccolo (-128 a +127)
+// Ideale per temperature umane.
+int8_t segnale = 0; 
 
 void setup() {
   Serial.begin(9600);
+  Wire.begin(); // Avvio come Master
 }
 
 void loop() {
-  // Invia il messaggio con accapo
-  Serial.println("ciao"); 
+  // 1. Lettura Sensore TMP36
+  int lettura = analogRead(pinSensore);
+  float volt = (lettura / 1024.0) * 5.0;
+  temperatura = (volt - 0.5) * 100.0;
   
-  // Aspetta 2 secondi tra un invio e l'altro
-  delay(2000); 
+  // 2. Converto float -> byte (taglio i decimali)
+  segnale = (int8_t)temperatura;
+  
+  // 3. Invio al ricevitore (Indirizzo 85 = 0x55)
+  Wire.beginTransmission(0x55);
+  Wire.write(segnale);
+  Wire.endTransmission();
+  
+  Serial.print("Ho inviato: ");
+  Serial.println(segnale);
+  delay(100);
 }
 </pre>
                 </div>
             </div>
 
             <div style="flex: 1; min-width: 300px;">
-                <h3 style="color: #28a745; border-bottom: 2px solid #28a745; padding-bottom: 5px;">
-                    2. Codice Receiver (B)
-                </h3>
-                <p>Conta i messaggi e reagisce.</p>
+                <h3 style="color: #198754; border-bottom: 2px solid #198754;">2. SLAVE (Attuatore)</h3>
+                <p>Riceve il dato e applica le due logiche (LED e Motore).</p>
 
-                <div style="background-color: #1e1e1e; color: #a5d6a7; padding: 15px; border-radius: 8px; font-family: 'Courier New', monospace; height: 420px; overflow-y: auto;">
+                <div style="background-color: #1e1e1e; color: #a5d6a7; padding: 15px; border-radius: 8px; font-family: 'Courier New', monospace; height: 500px; overflow-y: auto;">
 <pre style="margin: 0;">
-// CODICE RECEIVER (Arduino B)
+#include &lt;Wire.h&gt;
 
-int contatore = 0; // Conta i messaggi
+const int pinTransistor = 9;   
+const int ledFreddo = 12; // Verde
+const int ledCaldo = 13;  // Rosso
+
+// 'volatile' è obbligatorio qui
+volatile int8_t tempRicevuta = 0;
+volatile bool datoNuovo = false;
 
 void setup() {
   Serial.begin(9600);
-  pinMode(13, OUTPUT);
+  pinMode(pinTransistor, OUTPUT);
+  pinMode(ledFreddo, OUTPUT);
+  pinMode(ledCaldo, OUTPUT);
+  
+  Wire.begin(0x55); // Indirizzo Slave 85
+  Wire.onReceive(riceviDati);
+}
+
+// Funzione automatica chiamata dall'evento I2C
+void riceviDati(int bytes) {
+  if (Wire.available()) {
+    tempRicevuta = (int8_t)Wire.read();
+    datoNuovo = true;
+  }
 }
 
 void loop() {
-  // C'è posta?
-  if (Serial.available() > 0) {
-    
-    // Leggi e pulisci il messaggio
-    String msg = Serial.readStringUntil('\n');
-    msg.trim(); 
+  if (datoNuovo) {
+    Serial.print("Ricevuto: ");
+    Serial.println((int)tempRicevuta);
 
-    // Se il messaggio è "ciao"
-    if (msg == "ciao") {
-       contatore = contatore + 1; 
-
-       // Feedback Visivo (Blink)
-       digitalWrite(13, HIGH); 
-       delay(100); 
-       digitalWrite(13, LOW);
-
-       // LOGICA DELLA RISPOSTA
-       if (contatore < 10) {
-           // Risposta standard (da 1 a 9)
-           Serial.print("Grazie del messaggio ");
-           Serial.println(contatore);
-       } 
-       else if (contatore == 10) {
-           // Risposta finale (al 10)
-           Serial.println("Ho capito");
-       }
-       // Se > 10 non fa più nulla
+    // --- LOGICA 1: LED (Soglia 30 gradi) ---
+    if (tempRicevuta > 30) {
+      digitalWrite(ledCaldo, HIGH);
+      digitalWrite(ledFreddo, LOW);
+    } else {
+      digitalWrite(ledCaldo, LOW);
+      digitalWrite(ledFreddo, HIGH);
     }
+
+    // --- LOGICA 2: MOTORE (Range 20-50 gradi) ---
+    // Mappa la temperatura su velocità (0-255)
+    int pwm = map(tempRicevuta, 20, 50, 0, 255);
+    
+    // 'constrain' assicura che pwm resti tra 0 e 255
+    // Se T < 20, pwm sarebbe negativo -> diventa 0
+    analogWrite(pinTransistor, constrain(pwm, 0, 255));
+    
+    datoNuovo = false;
   }
 }
 </pre>
@@ -160,54 +211,35 @@ void loop() {
             </div>
         </div>
 
-        <div style="margin-top: 60px; text-align: center;">
-            
+        <div style="margin-top: 50px; text-align: center;">
             <button onclick="document.getElementById('soluzioneBox').style.display = (document.getElementById('soluzioneBox').style.display === 'none') ? 'block' : 'none';" 
                     class="btn-soluzione">
-                👁️ Verifica Output Seriale
+                💡 Perché questo codice funziona?
             </button>
 
-            <div id="soluzioneBox" style="display: none; margin-top: 40px; text-align: left; animation: slideDown 0.5s;">
+            <div id="soluzioneBox" style="display: none; margin-top: 30px; text-align: left;">
                 
-                <h4 style="border-left: 5px solid #6610f2; padding-left: 10px; color: #333;">📊 Cosa succede nel Monitor?</h4>
-                <p>Noterai che la risposta cambia man mano che i messaggi arrivano.</p>
-                
-                <div style="display: flex; flex-wrap: wrap; gap: 20px;">
-                    
-                    <div style="flex: 1; min-width: 250px;">
-                        <h5 style="background: #333; color: white; padding: 8px 15px; margin: 0; border-radius: 5px 5px 0 0;">Monitor Receiver</h5>
-                        <div class="monitor-box">
-                            <div class="monitor-content">
-                                <span style="color: gray;">// Arriva primo ciao...</span><br>
-                                Grazie del messaggio 1<br>
-                                <br>
-                                <span style="color: gray;">// Arriva secondo ciao...</span><br>
-                                Grazie del messaggio 2<br>
-                                <br>
-                                ...<br>
-                                <br>
-                                <span style="color: gray;">// Arriva decimo ciao...</span><br>
-                                <strong style="color: #ff00ff;">Ho capito</strong><br>
-                                <span style="color: gray;">// (Ora smette di rispondere)</span>
-                            </div>
-                        </div>
-                    </div>
+                <div class="info-box">
+                    <h4>1. La gestione delle due soglie (20 vs 30)</h4>
+                    <p>Hai notato che usiamo due logiche separate? 
+                    L'istruzione <code>if (t > 30)</code> gestisce solo le luci (On/Off). 
+                    L'istruzione <code>map(t, 20, 50...)</code> gestisce solo il motore. 
+                    Arduino è abbastanza veloce da eseguire entrambe le istruzioni quasi istantaneamente.</p>
                 </div>
+
+                <div class="info-box" style="border-left-color: #ff9800;">
+                    <h4>2. La funzione constrain()</h4>
+                    <p>La funzione <code>map</code> è "stupida": se la temperatura è 10°C, calcolerebbe una velocità negativa! 
+                    Il comando <code>constrain(pwm, 0, 255)</code> è il nostro filtro di sicurezza: taglia via i numeri negativi e quelli sopra 255, evitando comportamenti strani del motore.</p>
+                </div>
+
             </div>
         </div>
 
-        <hr>
-        
-        <div style="background-color: #e8f5e9; padding: 30px; border-radius: 10px; margin: 40px 0; text-align: center; border: 1px solid #c3e6cb;">
-            <p style="font-size: 1.2em; color: #2c3e50; margin-bottom: 20px;">
-                Tutto chiaro? <br>
-                Ora che sai inviare e ricevere messaggi di testo, proviamo a inviare <strong>dati reali da un sensore</strong>.
-            </p>
-            <a href="lab_temp.html" style="background: linear-gradient(135deg, #28a745 0%, #218838 100%); color: white; padding: 15px 30px; text-decoration: none; border-radius: 50px; font-weight: bold; font-size: 1.1em; box-shadow: 0 4px 15px rgba(40, 167, 69, 0.4); display: inline-block; transition: transform 0.2s;">
-                ➡️ VAI AL LAB 3: Controllo Temperatura
-            </a>
+        <div style="margin-top: 40px; text-align: center;">
+             <a href="index.html" class="nav-btn" style="background-color: #6c757d;">🏠 Torna alla Home</a>
         </div>
-        
+
     </div>
 
 </body>
