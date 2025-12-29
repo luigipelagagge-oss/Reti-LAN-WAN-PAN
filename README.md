@@ -40,7 +40,7 @@ L'organizzazione dei file riflette il percorso didattico. Di seguito la struttur
 └── 📂 Settimana_02_Lab_Arduino/  # (Laboratorio Pratico)
     ├── ⚡ lab_ping.html          # (Esercizio 1: Loopback)
     └── ⚡ lab_cs.html            # (Esercizio 2: Client/Server)
-######################
+ 
 ## 3. Funzionalità Tecniche Chiave
 
 ### 🔹 Navigazione a Schede (Tab System)
