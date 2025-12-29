@@ -1,31 +1,116 @@
  <style>
-    /* REGOLE MINIME DI SOPRAVVIVENZA */
+    /* 1. IMPOSTAZIONI GENERALI E LAYOUT */
     body { 
-        background-color: #f4f7f6 !important; 
-        color: #212529 !important; 
-        display: block !important; 
+        background-color: #f8f9fa; 
+        font-family: 'Segoe UI', Roboto, sans-serif; 
+        color: #333;
+        line-height: 1.6;
     }
 
-    /* Forza la visibilità dei tab: questo impedisce lo schermo bianco */
     .section-content { display: none; }
-    .section-content.active { display: block !important; visibility: visible !important; }
-
-    /* Fix Bottoni: Testo blu su bianco (riposo) / Bianco su blu (attivo) */
-    .btn-outline-primary {
-        background-color: #ffffff !important;
-        color: #0d6efd !important;
-        border: 2px solid #0d6efd !important;
+    .section-content.active { 
+        display: block; 
+        animation: fadeIn 0.5s ease-out; 
     }
-    .btn-primary.active {
-        background-color: #0d6efd !important;
-        color: #ffffff !important;
+    @keyframes fadeIn { 
+        from { opacity: 0; transform: translateY(10px); } 
+        to { opacity: 1; transform: translateY(0); } 
     }
 
-    /* Colori ISO/OSI (essenziali per le descrizioni PDU) */
-    .osi-layer { color: white; padding: 10px; margin-bottom: 5px; border-radius: 5px; display: flex; justify-content: space-between; }
-    .layer-7 { background-color: #e83e8c; } 
-    .layer-1 { background-color: #778ca3; }
-    
-    /* Box LAN/WAN */
-    .card-original { border: 2px solid #ddd; padding: 15px; border-radius: 10px; background: white; }
+    /* 2. NAVIGAZIONE E BOTTONI SUPERIORI */
+    .nav-custom .btn {
+        border-radius: 50px;
+        padding: 8px 20px;
+        font-weight: 600;
+        transition: all 0.3s;
+    }
+
+    /* 3. CORREZIONE BOTTONE GIALLO (MATRIOSKE) */
+    .btn-warning {
+        color: #000 !important; /* Testo nero per leggibilità */
+        font-weight: 700 !important;
+        border: 2px solid #eec107 !important;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .btn-warning:hover {
+        background-color: #ffca2c !important;
+        transform: translateY(-2px);
+    }
+
+    /* 4. SPECIFICO PER PAN (Personal Area Network) */
+    .pan-title {
+        color: #dc3545; /* Rosso come da screenshot */
+        font-weight: bold;
+        margin-top: 30px;
+    }
+    .pan-description {
+        font-size: 0.95rem;
+        margin-bottom: 20px;
+    }
+    .pan-image-container {
+        text-align: center;
+        padding: 15px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    .pan-image-container img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: transform 0.3s;
+    }
+    .pan-image-container img:hover {
+        transform: scale(1.02);
+    }
+
+    /* 5. PILA ISO/OSI E PDU */
+    .btn-level-stack {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: white !important;
+        padding: 12px 20px;
+        border-radius: 8px;
+        margin-bottom: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s;
+    }
+    .btn-level-stack:hover { 
+        transform: translateX(10px); 
+        filter: brightness(1.1);
+    }
+
+    /* Tabella PDU */
+    .pdu-table-style {
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        overflow: hidden;
+        font-size: 0.9rem;
+    }
+    .pdu-table-style thead { background-color: #212529; color: white; }
+
+    /* 6. CARD RETI (SOHO, LAN, WAN) */
+    .card-net {
+        border-radius: 10px;
+        transition: transform 0.3s;
+        height: 100%;
+        border: 1px solid #eee;
+    }
+    .card-net:hover { transform: translateY(-5px); }
+    .card-net-title { font-weight: bold; color: #0d6efd; }
+
+    /* 7. FOOTER SORGENTE */
+    .btn-source-fixed {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #212529;
+        color: white;
+        border-radius: 50px;
+        padding: 10px 20px;
+        z-index: 1000;
+    }
 </style>
