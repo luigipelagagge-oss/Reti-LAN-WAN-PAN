@@ -3,86 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Corso Reti</title>
+    <title>Corso di Reti - Master Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <style>
-        body { background-color: #f4f7f6; padding: 20px; font-family: sans-serif; }
-        .nav-pills .nav-link { background: white; margin: 0 5px; border: 1px solid #ddd; color: #555; }
-        .nav-pills .nav-link.active { background-color: #0d6efd; color: white; }
-        .tab-content { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); margin-top: 20px; }
+        body { background-color: #f8f9fa; font-family: 'Segoe UI', sans-serif; }
+        .main-header { text-align: center; padding: 50px 0; background: white; border-bottom: 1px solid #dee2e6; margin-bottom: 30px; }
+        .nav-pills .nav-link.active { background-color: #0d6efd; box-shadow: 0 4px 10px rgba(13,110,253,0.3); }
+        .tab-container { background: white; border-radius: 15px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
         
-        /* Mappa Interattiva */
-        .map-row { display: flex; justify-content: space-between; align-items: center; padding: 10px; border-bottom: 1px solid #eee; transition: 0.2s; }
-        .map-row:hover { background: #f0f7ff; }
-        .btn-debug { font-size: 0.75rem; font-weight: bold; padding: 4px 12px; border-radius: 4px; text-decoration: none; border: 1px solid #0d6efd; color: #0d6efd; }
-        .btn-debug:hover { background: #0d6efd; color: white; }
-
-        /* Torre OSI */
-        .osi-stack { max-width: 400px; margin: 0 auto; }
-        .osi-btn { display: block; width: 100%; padding: 12px; margin: 4px 0; color: white; text-decoration: none; text-align: center; border-radius: 5px; font-weight: bold; }
+        /* Mappa Progetto (Stile Screenshot) */
+        .map-box { background: #f1f3f5; border-radius: 10px; padding: 20px; font-family: monospace; }
+        .file-row { display: flex; align-items: center; justify-content: space-between; padding: 8px; border-bottom: 1px solid #dee2e6; }
+        .indent-1 { margin-left: 20px; }
+        .indent-2 { margin-left: 40px; }
+        .badge-output { background-color: #d1e7dd; color: #0f5132; border: 1px solid #badbcc; padding: 5px 10px; border-radius: 5px; font-size: 0.7rem; }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <div class="text-center mb-4">
-            <h1><i class="fas fa-network-wired"></i> Progetto Reti TLC</h1>
-            <p class="text-muted">Tutti i file sono nella cartella principale (Struttura Piatta)</p>
-        </div>
-
-        <ul class="nav nav-pills justify-content-center" id="mainTab" role="tablist">
-            <li class="nav-item"><button class="nav-link active" data-bs-toggle="pill" data-bs-target="#tab-teoria">Teoria</button></li>
-            <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab-osi">Torre OSI</button></li>
-            <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab-mappa">Mappa Debug</button></li>
+<div class="main-header shadow-sm">
+    <h1 class="fw-bold">Corso di Reti e Telecomunicazioni</h1>
+    <p class="text-muted">Un percorso guidato: dalla teoria di base alla simulazione pratica.</p>
+    
+    <div class="container mt-4">
+        <ul class="nav nav-pills justify-content-center" id="pills-tab" role="tablist">
+            <li class="nav-item"><button class="nav-link active" data-bs-toggle="pill" data-bs-target="#teoria">1. Teoria</button></li>
+            <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#mappa">2. Mappa Sito</button></li>
+            <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#lab">3. Laboratorio</button></li>
         </ul>
+    </div>
+</div>
 
-        <div class="tab-content">
-            <div class="tab-pane fade show active" id="tab-teoria">
-                <h3>Approfondimenti</h3>
-                <div class="row mt-3">
-                    <div class="col-md-6">
-                        <div class="card p-3 shadow-sm">
-                            <h5>Rete Locale</h5>
-                            <a href="lan_approfondimento.html" class="btn btn-primary mt-2">Apri LAN</a>
-                        </div>
+<div class="container">
+    <div class="tab-content tab-container" id="pills-tabContent">
+        
+        <div class="tab-pane fade show active" id="teoria">
+            <h3 class="mb-4">Settimana 1: Fondamenti</h3>
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <div class="card p-3 border-primary">
+                        <h5>Rete Locale</h5>
+                        <p class="small text-muted">PAN, LAN e ambiente SOHO.</p>
+                        <a href="lan_approfondimento.html" class="btn btn-primary btn-sm">Vai al file: LAN</a>
                     </div>
                 </div>
-            </div>
-
-            <div class="tab-pane fade" id="tab-osi">
-                <div class="osi-stack">
-                    <a href="livello7.html" class="osi-btn" style="background:#dc3545;">L7 - Applicazione</a>
-                    <a href="livello6.html" class="osi-btn" style="background:#fd7e14;">L6 - Presentazione</a>
-                    <a href="livello5.html" class="osi-btn" style="background:#ffc107; color:black;">L5 - Sessione</a>
-                    <a href="livello4.html" class="osi-btn" style="background:#198754;">L4 - Trasporto</a>
-                    <a href="livello3.html" class="osi-btn" style="background:#0d6efd;">L3 - Rete</a>
-                    <a href="livello2.html" class="osi-btn" style="background:#6f42c1;">L2 - Collegamento</a>
-                    <a href="livello1.html" class="osi-btn" style="background:#343a40;">L1 - Fisico</a>
+                <div class="col-md-4">
+                    <div class="card p-3 border-danger">
+                        <h5>Rete Geografica</h5>
+                        <p class="small text-muted">WAN e la struttura di Internet.</p>
+                        <a href="wan_approfondimento.html" class="btn btn-danger btn-sm">Vai al file: WAN</a>
+                    </div>
                 </div>
-            </div>
-
-            <div class="tab-pane fade" id="tab-mappa">
-                <h4><i class="fas fa-sitemap me-2"></i>Mappa Interattiva (Verifica File)</h4>
-                <div class="mt-3">
-                    <div class="map-row">
-                        <span><i class="fas fa-file-code text-primary me-2"></i>index.html</span>
-                        <span class="badge bg-success">MAIN</span>
+                <div class="col-md-4">
+                    <div class="card p-3 border-success">
+                        <h5>Modello OSI</h5>
+                        <p class="small text-muted">Incapsulamento e le "Matrioske".</p>
+                        <a href="confronto_tcp.html" class="btn btn-success btn-sm">Confronto Torri</a>
                     </div>
-                    <div class="map-row">
-                        <span><i class="fas fa-file-alt me-2"></i>lan_approfondimento.html</span>
-                        <a href="lan_approfondimento.html" class="btn-debug">TEST LINK</a>
-                    </div>
-                    <div class="map-row">
-                        <span><i class="fas fa-layer-group text-danger me-2"></i>livello7.html</span>
-                        <a href="livello7.html" class="btn-debug">TEST LINK</a>
-                    </div>
-                    </div>
+                </div>
             </div>
         </div>
-    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <div class="tab-pane fade" id="mappa">
+            <h3 class="mb-3">Mappa del Progetto - Master Dashboard</h3>
+            <div class="map-box">
+                <div class="file-row">
+                    <span><i class="fas fa-folder-open text-warning me-2"></i>Corso_Reti_Tlc/</span>
+                </div>
+                <div class="file-row indent-1">
+                    <span><i class="fas fa-file-code text-primary me-2"></i>index.html</span>
+                    <span class="badge-output">DASHBOARD</span>
+                </div>
+                <div class="file-row indent-1">
+                    <span><i class="fas fa-file-alt text-muted me-2"></i>lan_approfondimento.html</span>
+                    <a href="lan_approfondimento.html" class="badge-output text-decoration-none">OUTPUT</a>
+                </div>
+                <div class="file-row indent-1">
+                    <span><i class="fas fa-file-alt text-muted me-2"></i>wan_approfondimento.html</span>
+                    <a href="wan_approfondimento.html" class="badge-output text-decoration-none">OUTPUT</a>
+                </div>
+                <div class="file-row indent-1">
+                    <span><i class="fas fa-file-alt text-muted me-2"></i>confronto_tcp.html</span>
+                    <a href="confronto_tcp.html" class="badge-output text-decoration-none">OUTPUT</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane fade text-center" id="lab">
+            <h3 class="mb-3">Laboratorio Arduino</h3>
+            <p class="text-muted">In arrivo nella Settimana 2.</p>
+            <i class="fas fa-microchip fa-4x text-secondary opacity-25"></i>
+        </div>
+        
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
