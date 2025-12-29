@@ -95,9 +95,14 @@
                 <h2 class="fw-bold" style="color: #d63384;">Modello ISO/OSI e PDU</h2>
                 <a href="descrizione_livelli.html" class="btn btn-warning fw-bold shadow-sm px-4"><i class="bi bi-box-seam"></i> VAI ALLE MATRIOSKE</a>
             </div>
+            
             <div class="alert alert-warning border-0 shadow-sm mb-4">
-                <p class="small mb-0"><strong>P.D.U. (Protocol Data Unit):</strong> I dati cambiano nome attraversando i livelli (Matrioska).</p>
+                <h6 class="fw-bold"><i class="bi bi-info-circle-fill"></i> Definizione di P.D.U.</h6>
+                <p class="small mb-0 text-dark">
+                    <strong>P.D.U. significa Protocol Data Unit.</strong> Immagina una lettera che viene inserita in una busta (Segmento), poi in un pacco postale (Pacchetto) e infine caricata su un container (Frame). Ogni livello non solo "contiene" il precedente, ma vi aggiunge un'etichetta con l'indirizzo necessario per quel tratto di viaggio.
+                </p>
             </div>
+
             <div class="row g-4">
                 <div class="col-md-5">
                     <div class="d-grid gap-2">
@@ -120,41 +125,22 @@
         <div id="mappa" class="section-content">
             <h2 class="fw-bold mb-4"><i class="bi bi-diagram-3 text-primary"></i> Architettura Logica del Progetto</h2>
             <div class="p-4 bg-light border rounded shadow-sm">
-                
                 <div class="fw-bold mb-2"><i class="bi bi-house-door-fill text-primary"></i> 🏠 index.html <span class="badge bg-secondary ms-2">Root</span></div>
                 
                 <div class="tree-node">
                     <div class="fw-bold mb-2"><i class="bi bi-folder-fill folder-icon"></i> Settimana_01_Teoria</div>
-                    <div class="tree-node">
-                        <i class="bi bi-file-earmark-code text-info"></i> <a href="lan_approfondimento.html" class="file-btn text-dark">lan_approfondimento.html</a>
-                    </div>
-                    <div class="tree-node">
-                        <i class="bi bi-file-earmark-code text-info"></i> <a href="wan_approfondimento.html" class="file-btn text-dark">wan_approfondimento.html</a>
-                    </div>
+                    <div class="tree-node"><i class="bi bi-file-earmark-code text-info"></i> <a href="lan_approfondimento.html" class="file-btn text-dark">lan_approfondimento.html</a></div>
+                    <div class="tree-node"><i class="bi bi-file-earmark-code text-info"></i> <a href="wan_approfondimento.html" class="file-btn text-dark">wan_approfondimento.html</a></div>
                 </div>
 
                 <div class="tree-node">
                     <div class="fw-bold mb-2"><i class="bi bi-folder-fill folder-icon"></i> Modello_OSI_Details</div>
-                    <div class="tree-node">
-                        <i class="bi bi-layers-half text-danger"></i> <a href="descrizione_livelli.html" class="file-btn text-dark">descrizione_livelli.html</a>
-                    </div>
-                    <div class="tree-node text-muted small ps-4">
-                        <i class="bi bi-info-circle"></i> Sottolivelli (livello1.html...livello7.html)
-                    </div>
+                    <div class="tree-node"><i class="bi bi-layers-half text-danger"></i> <a href="descrizione_livelli.html" class="file-btn text-dark">descrizione_livelli.html</a></div>
                 </div>
 
                 <div class="tree-node">
                     <div class="fw-bold mb-2"><i class="bi bi-folder-fill folder-icon"></i> Settimana_02_Lab_Arduino</div>
-                    <div class="tree-node">
-                        <i class="bi bi-cpu-fill text-success"></i> <a href="lab_ping.html" class="file-btn text-dark">lab_ping.html</a>
-                    </div>
-                    <div class="tree-node text-muted small ps-4">
-                        <i class="bi bi-cpu"></i> lab_cs.html (In sviluppo)
-                    </div>
-                </div>
-
-                <div class="mt-4 alert alert-info py-2 small border-0">
-                    <i class="bi bi-info-square-fill"></i> <strong>Nota per gli studenti:</strong> I file sono fisicamente tutti nella stessa cartella, ma qui sono organizzati per moduli didattici.
+                    <div class="tree-node"><i class="bi bi-cpu-fill text-success"></i> <a href="lab_ping.html" class="file-btn text-dark">lab_ping.html</a></div>
                 </div>
             </div>
         </div>
@@ -171,6 +157,8 @@
         </div>
     </div>
 </div>
+
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
@@ -204,4 +192,4 @@
     }
 </script>
 </body>
-</html> 
+</html>
