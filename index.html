@@ -7,19 +7,44 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* Transizioni fluide tra le sezioni */
+        .section-content { display: none; animation: fadeIn 0.4s ease-in-out; }
+        .section-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* Stile per l'immagine PAN interattiva e scalabile */
+        .pan-img-container {
+            max-width: 500px; /* Limita la grandezza massima per non occupare troppo spazio */
+            margin: 0 auto;
+        }
+        .pan-img-button {
+            width: 100%; /* Si adatta alla colonna di Bootstrap */
+            height: auto;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #dee2e6;
+        }
+        .pan-img-button:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+    </style>
 </head>
 <body class="bg-light">
 
-    <div class="container my-5">
+    <div class="container py-5">
         <header class="text-center mb-5">
-            <h1 class="fw-bold">Corso di Reti e Telecomunicazioni</h1>
-            <p class="text-muted">Un percorso guidato: dalla teoria di base alla simulazione pratica.</p>
+            <h1 class="fw-bold text-dark">Corso di Reti e Telecomunicazioni</h1>
+            <p class="text-muted small">Dalla teoria di base alla simulazione pratica.</p>
             <hr class="my-4">
         </header>
 
-        <div class="row justify-content-center mb-4">
-            <div class="col-md-10 text-center">
-                <small class="text-uppercase text-muted fw-bold">Settimana 1: Teoria Fondamentale</small>
+        <div class="row justify-content-center mb-4 text-center">
+            <div class="col-md-10">
+                <small class="text-uppercase text-muted fw-bold small">Settimana 1: Teoria</small>
                 <ul class="nav nav-pills justify-content-center mt-2 gap-2" id="mainNav">
                     <li class="nav-item">
                         <button class="nav-link active rounded-pill px-4" onclick="switchTab('standalone')">1. Stand-Alone</button>
@@ -31,141 +56,103 @@
                         <button class="nav-link rounded-pill px-4" onclick="switchTab('isoosi')">3. Modello ISO/OSI</button>
                     </li>
                 </ul>
-                
                 <div class="mt-4">
-                    <small class="text-uppercase text-muted fw-bold">Settimana 2: Laboratorio Arduino</small>
+                    <small class="text-uppercase text-muted fw-bold small">Settimana 2: Laboratorio</small>
                     <div class="mt-2">
-                        <a href="lab_ping.html" class="btn btn-success bg-opacity-75 rounded-pill px-4 mx-2">
-                            <i class="bi bi-lightning-fill"></i> Vai al Laboratorio
-                        </a>
-                        <button class="btn btn-secondary bg-opacity-25 text-dark border-0 rounded-pill px-4" onclick="switchTab('mappa')">
-                            <i class="bi bi-map-fill"></i> Mappa Sito
-                        </button>
+                        <a href="lab_ping.html" class="btn btn-success bg-opacity-75 rounded-pill px-4 mx-1">Laboratorio</a>
+                        <button class="btn btn-secondary bg-opacity-25 text-dark border-0 rounded-pill px-4 mx-1" onclick="switchTab('mappa')">Mappa Sito</button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <main>
+        <main class="mt-5">
             <div id="standalone" class="section-content active">
-                <h2 class="mb-3">1. Il Computer "Stand-Alone" (L'Isola Digitale)</h2>
-                <p class="lead text-muted">In informatica, lo stato di <em>Stand-Alone</em> rappresenta la forma più pura e primitiva di calcolo: una macchina che opera in completa autonomia, senza alcun collegamento verso l'esterno.</p>
-                
-                <div class="row align-items-center mt-5">
+                <h2 class="mb-3">1. Il Computer "Stand-Alone"</h2>
+                <p class="text-muted">Una macchina che opera in completa autonomia, senza collegamento verso l'esterno.</p>
+                <div class="row align-items-center mt-4">
                     <div class="col-md-7">
-                        <div class="air-gap-box">
-                            <h4 class="text-danger"><i class="bi bi-slash-circle"></i> Il Concetto di "Air Gap"</h4>
-                            <p class="mb-0">Tra il computer e il resto del mondo c'è letteralmente "aria". Non essendoci cavi o segnali radio, è fisicamente impossibile per un hacker entrare da remoto.</p>
+                        <div class="p-4 border-start border-danger border-5 bg-white shadow-sm">
+                            <h5 class="text-danger fw-bold">Il Concetto di "Air Gap"</h5>
+                            <p class="mb-0 small">Fisicamente isolato dal mondo esterno per garantire la massima sicurezza.</p>
                         </div>
                     </div>
                     <div class="col-md-5 text-center">
-                        <div class="dashed-circle">
-                            <i class="bi bi-pc-display text-primary" style="font-size: 4rem;"></i>
-                            <div class="fw-bold text-danger mt-1">NO NET</div>
-                        </div>
+                        <i class="bi bi-pc-display text-primary" style="font-size: 4rem;"></i>
                     </div>
                 </div>
             </div>
 
             <div id="retelocale" class="section-content">
                 <h2 class="mb-3">Dallo Stand-Alone alla Rete Domestica</h2>
-                <p class="text-muted">Quando i dispositivi cessano di essere "soli" e vengono collegati tra loro, formano una rete. Nelle nostre case parliamo spesso di ambiente SOHO.</p>
-
-                <div class="row g-4 mt-3 text-center">
+                <div class="row g-4 mb-5">
                     <div class="col-md-4">
-                        <div class="card h-100 border-0 shadow-sm p-3">
-                            <h5 class="fw-bold">Cos'è SOHO?</h5>
-                            <p class="small text-muted">Acronimo di <strong>Small Office / Home Office</strong>. Indica un ambiente ibrido casa/ufficio.</p>
+                        <div class="card h-100 border-0 shadow-sm p-3 text-center">
+                            <h6 class="fw-bold">Cos'è SOHO?</h6>
+                            <p class="small text-muted">Small Office / Home Office.</p>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="card h-100 border-primary border-2 shadow-sm p-3">
-                            <h5 class="fw-bold text-primary">Cos'è una LAN?</h5>
-                            <p class="small text-muted"><strong>Local Area Network</strong>. La "Rete dentro casa tua" che collega i tuoi dispositivi.</p>
-                            <a href="lan_approfondimento.html" class="btn btn-primary btn-sm mt-auto">Vai al file: LAN</a>
+                        <div class="card h-100 border-primary border-2 shadow-sm p-3 text-center">
+                            <h6 class="fw-bold text-primary">LAN</h6>
+                            <a href="lan_approfondimento.html" class="btn btn-primary btn-sm mt-auto">Apri LAN</a>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="card h-100 border-danger border-2 shadow-sm p-3" style="background-color: #fff5f5;">
-                            <h5 class="fw-bold text-danger">Cos'è una WAN?</h5>
-                            <p class="small text-muted"><strong>Wide Area Network</strong>. La rete esterna geografica (Internet).</p>
-                            <a href="wan_approfondimento.html" class="btn btn-danger btn-sm mt-auto">Vai al file: WAN</a>
+                        <div class="card h-100 border-danger border-2 shadow-sm p-3 text-center">
+                            <h6 class="fw-bold text-danger">WAN</h6>
+                            <a href="wan_approfondimento.html" class="btn btn-danger btn-sm mt-auto">Apri WAN</a>
                         </div>
                     </div>
                 </div>
 
-                <div class="mt-5 border-top pt-4">
-                    <h4 class="text-danger fw-bold">1. La P.A.N. (Personal Area Network)</h4>
+                <div class="pt-4 border-top">
+                    <h4 class="text-danger fw-bold mb-3">1. La P.A.N. (Personal Area Network)</h4>
                     <div class="row align-items-center">
-                        <div class="col-md-6">
-                            <p>Prima ancora della rete di casa, esiste la rete "intorno a te".</p>
-                            <ul>
-                                <li><strong>Definizione:</strong> Rete personale che copre pochi metri.</li>
-                                <li><strong>Esempi:</strong> Mouse Bluetooth collegato al PC, Smartwatch.</li>
+                        <div class="col-md-5">
+                            <p class="small">Rete personale che copre pochi metri (es. Bluetooth).</p>
+                            <ul class="small text-muted">
+                                <li>Mouse e Tastiere wireless</li>
+                                <li>Smartwatch e fitness band</li>
                             </ul>
                         </div>
-                        <div class="col-md-6 text-center">
-                            <a href="https://itrelease.com/2018/07/advantages-and-disadvantages-of-personal-area-network-pan/" target="_blank">
-                                <img src="pan_network.png" alt="Schema PAN" class="pan-img-button">
-                            </a>
-                            <p class="small text-muted mt-2">👆 Clicca sull'immagine per approfondire.</p>
+                        <div class="col-md-7 text-center">
+                            <div class="pan-img-container">
+                                <a href="https://itrelease.com/2018/07/advantages-and-disadvantages-of-personal-area-network-pan/" target="_blank">
+                                    <img src="pan_network.png" alt="Schema PAN" class="pan-img-button shadow-sm">
+                                </a>
+                                <p class="small text-muted mt-2"><i class="bi bi-hand-index-thumb"></i> Clicca per approfondire</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div id="isoosi" class="section-content">
-                <h2 class="mb-4">Il Modello ISO/OSI e il Flusso dei Dati</h2>
+                <h2 class="mb-4">Il Modello ISO/OSI</h2>
                 <div class="row">
                     <div class="col-md-4">
-                        <div class="alert alert-light border text-center small py-2 mb-3">Clicca sui livelli 👇</div>
-                        <div class="d-grid gap-2">
-                            <a href="livello7.html" class="btn btn-danger text-white">7. Applicazione</a>
-                            <a href="livello6.html" class="btn text-white" style="background-color: #fd7e14;">6. Presentazione</a>
-                            <a href="livello5.html" class="btn btn-warning">5. Sessione</a>
-                            <a href="livello4.html" class="btn btn-success">4. Trasporto</a>
-                            <a href="livello3.html" class="btn btn-info text-white">3. Rete</a>
-                            <a href="livello2.html" class="btn text-white" style="background-color: #6f42c1;">2. Collegamento</a>
-                            <a href="livello1.html" class="btn btn-secondary">1. Fisico</a>
+                        <div class="list-group shadow-sm">
+                            <a href="livello7.html" class="list-group-item list-group-item-action list-group-item-danger small">7. Applicazione</a>
+                            <a href="livello4.html" class="list-group-item list-group-item-action list-group-item-success small">4. Trasporto</a>
+                            <a href="livello3.html" class="list-group-item list-group-item-action list-group-item-info small">3. Rete</a>
+                            <a href="livello2.html" class="list-group-item list-group-item-action list-group-item-primary small">2. Collegamento</a>
                         </div>
                     </div>
                     <div class="col-md-8">
-                        <div class="card border-success border-2 shadow-sm">
-                            <div class="card-header bg-success text-white py-2">
-                                <i class="bi bi-box-seam"></i> Incapsulamento & PDU (Protocol Data Unit)
-                            </div>
-                            <div class="card-body">
-                                <p class="card-text small">I dati non viaggiano "nudi". Ogni livello aggiunge un'intestazione (Header) come una Matrioska.</p>
-                                <table class="table table-sm table-bordered text-center align-middle mt-2">
-                                    <thead class="table-dark small">
-                                        <tr><th>Livello</th><th>Nome P.D.U.</th><th>Metafora</th></tr>
-                                    </thead>
-                                    <tbody class="small">
-                                        <tr><td>7, 6, 5</td><td>DATI</td><td>La lettera</td></tr>
-                                        <tr class="table-success"><td>4. Trasp.</td><td class="fw-bold">SEGMENTO</td><td>La busta</td></tr>
-                                        <tr class="table-info"><td>3. Rete</td><td class="fw-bold">PACCHETTO</td><td>Indirizzo IP</td></tr>
-                                        <tr class="table-primary"><td>2. Coll.</td><td class="fw-bold">FRAME</td><td>Sacco sigillato</td></tr>
-                                        <tr class="table-secondary"><td>1. Fisico</td><td class="fw-bold">BIT</td><td>Segnale elettrico</td></tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                        <div class="alert alert-success border-2 small">Ogni livello aggiunge un Header ai dati (Incapsulamento).</div>
                     </div>
                 </div>
             </div>
 
             <div id="mappa" class="section-content">
-                <h2 class="mb-4 text-center">Mappa del Progetto - Master Dashboard</h2>
-                <div class="card p-4 shadow-sm border-0 bg-white">
-                    <ul class="list-unstyled font-monospace small">
+                <h2 class="mb-4">Mappa del Progetto</h2>
+                <div class="card p-4 font-monospace small border-0 shadow-sm bg-white">
+                    <ul class="list-unstyled mb-0">
                         <li class="text-primary fw-bold">📁 Corso_Reti_Tlc/</li>
-                        <li class="ms-4 border-start ps-3">🏠 index.html <span class="badge bg-dark">HOME</span></li>
-                        <li class="ms-4 border-start ps-3 mt-2 text-muted fw-bold">📂 Settimana 01 Teoria/</li>
-                        <li class="ms-5 border-start ps-3">📄 lan_approfondimento.html</li>
-                        <li class="ms-5 border-start ps-3">📄 wan_approfondimento.html</li>
-                        <li class="ms-4 border-start ps-3 mt-2 text-muted fw-bold">📂 Modello OSI Details/</li>
-                        <li class="ms-5 border-start ps-3">📄 descrizione_livelli.html</li>
-                        <li class="ms-5 border-start ps-3">📄 livello[1-7].html</li>
+                        <li class="ms-4">🏠 index.html <span class="badge bg-dark">Home</span></li>
+                        <li class="ms-4 mt-2">📂 Settimana 01/</li>
+                        <li class="ms-5 text-muted">📄 lan_approfondimento.html</li>
                     </ul>
                 </div>
             </div>
@@ -181,12 +168,12 @@
     <div class="modal fade" id="sourceModal" tabindex="-1">
         <div class="modal-dialog modal-xl modal-dialog-scrollable">
             <div class="modal-content">
-                <div class="modal-header bg-dark text-white">
-                    <h5 class="modal-title font-monospace">view-source: index.html</h5>
+                <div class="modal-header bg-dark text-white py-2">
+                    <h6 class="modal-title font-monospace">Sorgente della Pagina</h6>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body bg-light">
-                    <pre><code id="sourceCode"></code></pre>
+                    <pre class="small" style="background: #272822; color: #f8f8f2; padding: 15px; border-radius: 8px;"><code id="sourceCode"></code></pre>
                 </div>
             </div>
         </div>
@@ -194,20 +181,20 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Gestione Tab (SPA)
+        // Navigazione tra le schede
         function switchTab(tabId) {
             document.querySelectorAll('.section-content').forEach(el => el.classList.remove('active'));
             document.querySelectorAll('.nav-link').forEach(el => el.classList.remove('active'));
             document.getElementById(tabId).classList.add('active');
             
-            // Trova il bottone corrispondente per evidenziarlo
+            // Trova e attiva il bottone del menu
             const activeBtn = Array.from(document.querySelectorAll('.nav-link')).find(btn => 
-                btn.getAttribute('onclick') && btn.getAttribute('onclick').includes(tabId)
+                btn.getAttribute('onclick').includes(tabId)
             );
-            if (activeBtn) activeBtn.classList.add('active');
+            if(activeBtn) activeBtn.classList.add('active');
         }
 
-        // Funzione Vedi Sorgente
+        // Funzione sorgente
         function showSource() {
             const html = document.documentElement.outerHTML;
             const escaped = html.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
