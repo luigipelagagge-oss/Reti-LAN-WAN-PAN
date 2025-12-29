@@ -1,54 +1,35 @@
 <style>
-    /* 1. BASE E REGOLE DI VISIBILITÀ (BLINDATE) */
-    body { background-color: #f4f7f6; font-family: 'Segoe UI', sans-serif; color: #212529; }
-
-    /* Forza la sparizione di ciò che è spento e la comparsa di ciò che è attivo */
-    .section-content { display: none !important; }
-    .section-content.active { 
+    /* RESET DI EMERGENZA */
+    body { 
+        background-color: #f8f9fa !important; 
         display: block !important; 
-        visibility: visible !important;
-        opacity: 1 !important;
     }
 
-    /* 2. FIX LEGGIBILITÀ BOTTONI TESTATA (MAI PIÙ BIANCO SU BIANCO) */
+    /* FORZA LA VISIBILITÀ DELLA SEZIONE ATTIVA */
+    .section-content { display: none; }
+    .section-content.active { display: block !important; }
+
+    /* BOTTONI NAVIGAZIONE - SEMPRE VISIBILI */
     .btn-outline-primary {
         background-color: #ffffff !important;
         color: #0d6efd !important;
         border: 2px solid #0d6efd !important;
-        font-weight: bold !important;
     }
     .btn-primary.active {
         background-color: #0d6efd !important;
         color: #ffffff !important;
-        font-weight: bold !important;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.2) !important;
     }
 
-    /* 3. RIPRISTINO CLASSI ORIGINALI (LAN, WAN, STAND-ALONE) */
-    .offline-circle { width: 140px; height: 140px; border: 3px dashed #dc3545; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 auto; background: #fff; }
-    
-    .card-original { border: 2px solid; border-radius: 10px; padding: 15px; text-align: center; transition: 0.3s; height: 100%; background-color: #fff; }
-    .card-lan { border-color: #0d6efd; background-color: #f0f7ff; }
-    .card-wan { border-color: #dc3545; background-color: #fff5f5; }
-
-    /* 4. ISO/OSI E PDU (FORZA IL COLORE DEL TESTO) */
-    .osi-layer { color: #ffffff !important; padding: 12px; margin-bottom: 8px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; font-weight: bold; }
+    /* REGOLE BASE PER GLI ELEMENTI CHE AVEVI */
+    .osi-layer { color: white; padding: 10px; margin-bottom: 5px; border-radius: 5px; display: flex; justify-content: space-between; }
     .layer-7 { background-color: #e83e8c; } .layer-6 { background-color: #a55eea; } .layer-5 { background-color: #fd9644; }
     .layer-4 { background-color: #f7b731; } .layer-3 { background-color: #20bf6b; } .layer-2 { background-color: #2d98da; }
     .layer-1 { background-color: #778ca3; }
 
-    /* 5. MAPPA SITO E ALBERO LOGICO */
-    .tree-node { border-left: 2px solid #dee2e6; margin-left: 20px; padding-left: 20px; position: relative; padding-bottom: 10px; }
-    .tree-node::before { content: ""; position: absolute; left: 0; top: 15px; width: 15px; height: 2px; background: #dee2e6; }
-    .file-btn { text-decoration: none; color: #212529; font-family: monospace; }
-
-    /* 6. BOTTONI SPECIALI E MOBILE */
-    .btn-warning { color: #000 !important; font-weight: bold !important; border: 2px solid #ce9b00 !important; }
+    .card-original { border: 1px solid #ccc; padding: 15px; border-radius: 8px; background: white; }
     
-    @media (max-width: 768px) {
-        .btn-group { display: flex !important; flex-direction: column !important; width: 100%; }
-        .btn-group .btn { margin-bottom: 5px !important; border-radius: 10px !important; }
+    /* FIX MOBILE RAPIDO */
+    @media (max-width: 600px) {
+        .btn-group { display: flex; flex-direction: column; width: 100%; }
     }
-
-    .fab-source { position: fixed; bottom: 20px; right: 20px; background: #212529; color: white; padding: 10px 20px; border-radius: 30px; border: 2px solid white; cursor: pointer; z-index: 1000; font-weight: bold; }
 </style>
