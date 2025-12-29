@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="it">
 <head>
     <meta charset="UTF-8">
@@ -24,20 +24,27 @@
         
         /* 4. PILA ISO/OSI */
         .btn-level-stack {
-            display: block; color: white !important; border: none;
-            padding: 12px 20px; border-radius: 8px; text-decoration: none;
-            font-weight: bold; transition: all 0.3s ease;
-            text-align: left; position: relative; width: 100%; margin-bottom: 8px;
+            display: flex; align-items: center; justify-content: space-between;
+            color: white !important; border: none; padding: 12px 20px; border-radius: 8px; 
+            text-decoration: none; font-weight: bold; transition: all 0.3s ease;
+            width: 100%; margin-bottom: 8px;
         }
         .btn-level-stack:hover { transform: translateX(10px); filter: brightness(1.1); }
+        .btn-level-stack::after { content: '🔎'; opacity: 0.6; }
         .highlight-flow { transform: scale(1.05) translateX(15px); box-shadow: 0 0 20px rgba(0,0,0,0.2); z-index: 10; filter: brightness(1.2); }
 
         /* 5. IMMAGINI E CONTENITORI */
         .img-box { border: 1px solid #ddd; border-radius: 15px; padding: 15px; background: white; box-shadow: 0 4px 8px rgba(0,0,0,0.05); }
         .img-box img { max-width: 100%; height: auto; border-radius: 10px; transition: transform 0.3s; }
-        .img-box img:hover { transform: scale(1.02); }
-
+        
         .pan-title { color: #dc3545; font-weight: bold; margin-top: 30px; }
+        
+        /* Bottone VAI (Giallo) */
+        .btn-warning-custom {
+            background-color: #ffc107 !important; color: #000 !important;
+            font-weight: 700 !important; border: 2px solid #eec107 !important;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
     </style>
 </head>
 <body>
@@ -67,15 +74,15 @@
                 <div class="row align-items-center">
                     <div class="col-md-7">
                         <p class="lead text-secondary">Una macchina isolata garantisce la massima sicurezza fisica.</p>
-                        <div class="p-3 border-start border-danger border-4 bg-light rounded">
+                        <div class="p-3 border-start border-danger border-4 bg-light rounded text-dark">
                             <h6 class="text-danger fw-bold"><i class="bi bi-shield-lock"></i> Concetto di Air Gap</h6>
-                            <p class="small mb-0 text-dark">In informatica, l'Air Gap è una misura di sicurezza che prevede l'assenza totale di interfacce di rete (fisiche o wireless), rendendo impossibile l'accesso remoto non autorizzato.</p>
+                            <p class="small mb-0">L'Air Gap è una misura di sicurezza che prevede l'assenza totale di interfacce di rete. È lo stato "zero" da cui parte lo studio delle reti.</p>
                         </div>
                     </div>
                     <div class="col-md-5 text-center">
                         <div class="img-box d-inline-block border-danger border-dashed">
                             <i class="bi bi-pc-display text-primary" style="font-size: 4rem;"></i>
-                            <div class="badge bg-danger d-block mt-2">OFFLINE / AIR-GAPPED</div>
+                            <div class="badge bg-danger d-block mt-2">OFFLINE</div>
                         </div>
                     </div>
                 </div>
@@ -86,27 +93,26 @@
                 <div class="row g-4 mb-5">
                     <div class="col-md-4">
                         <div class="card p-3 bg-light border-0 card-net text-start">
-                            <h6 class="fw-bold text-center text-dark">SOHO</h6>
-                            <p class="text-center x-small text-muted">Small Office / Home Office</p>
-                            <hr class="my-2">
-                            <ul class="x-small list-unstyled ps-1 mb-0">
-                                <li><i class="bi bi-cpu text-primary me-2"></i><b>Gateway:</b> Un solo router per LAN/WAN.</li>
-                                <li><i class="bi bi-share text-primary me-2"></i><b>Risorse:</b> Stampanti e file comuni.</li>
-                                <li><i class="bi bi-wifi text-primary me-2"></i><b>Wi-Fi:</b> Access Point integrato.</li>
+                            <h6 class="fw-bold text-center">SOHO (Small Office)</h6>
+                            <hr class="my-1">
+                            <ul class="x-small list-unstyled ps-0 mb-0">
+                                <li><i class="bi bi-cpu text-primary me-1"></i> <b>Gateway:</b> Router unico LAN/WAN.</li>
+                                <li><i class="bi bi-share text-primary me-1"></i> <b>Risorse:</b> Stampanti condivise.</li>
+                                <li><i class="bi bi-shield-check text-primary me-1"></i> <b>Sicurezza:</b> Firewall integrato.</li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="card p-3 border-primary shadow-sm card-net">
-                            <h6 class="fw-bold text-primary">LAN</h6>
-                            <p class="small text-muted">Local Area Network: connessione veloce in uffici o case.</p>
+                            <h6 class="fw-bold text-primary">LAN (Local Area)</h6>
+                            <p class="small text-muted">Rete privata ad alta velocità entro edifici limitati.</p>
                             <a href="lan_approfondimento.html" class="btn btn-primary btn-sm mt-auto fw-bold">Dettagli LAN</a>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="card p-3 border-danger shadow-sm card-net">
-                            <h6 class="fw-bold text-danger">WAN</h6>
-                            <p class="small text-muted">Wide Area Network: interconnessione su scala globale.</p>
+                            <h6 class="fw-bold text-danger">WAN (Wide Area)</h6>
+                            <p class="small text-muted">Interconnessione globale (Internet).</p>
                             <a href="wan_approfondimento.html" class="btn btn-danger btn-sm mt-auto fw-bold">Dettagli WAN</a>
                         </div>
                     </div>
@@ -115,22 +121,20 @@
                 <h4 class="pan-title">1. La P.A.N. (Personal Area Network)</h4>
                 <div class="row align-items-center">
                     <div class="col-md-5">
-                        <p class="text-secondary small">Rete personale di brevissimo raggio, solitamente centrata sull'individuo entro i 10 metri.</p>
-                        <div class="bg-light p-3 rounded border-start border-danger border-4 mb-3">
-                            <ul class="small mb-0 ps-3 text-dark">
-                                <li><b>WPAN:</b> Wireless PAN (Bluetooth, ZigBee).</li>
-                                <li><b>Dispositivi:</b> Smartwatch, cuffie, sensori medici.</li>
-                                <li><b>NFC:</b> Scambio dati a contatto (pagamenti rapiti).</li>
+                        <p class="text-secondary small">Rete centrata sulla persona (raggio ~10m).</p>
+                        <div class="bg-light p-3 rounded border-start border-danger border-4 mb-3 text-dark">
+                            <ul class="small mb-0 ps-3">
+                                <li><b>WPAN:</b> Bluetooth, ZigBee.</li>
+                                <li><b>Uso:</b> Smartwatch, cuffie wireless.</li>
+                                <li><b>NFC:</b> Pagamenti e domotica a contatto.</li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-md-7 text-center">
                         <div class="img-box">
-                            
                             <a href="https://itrelease.com/2018/07/advantages-and-disadvantages-of-personal-area-network-pan/" target="_blank">
                                 <img src="pan_network.png" alt="Schema PAN">
                             </a>
-                            <p class="x-small text-muted mt-2"><i>Esempio di interconnessione tra dispositivi personali</i></p>
                         </div>
                     </div>
                 </div>
@@ -139,31 +143,44 @@
             <div id="isoosi" class="section-content">
                 <div class="text-center mb-4">
                     <h2 class="fw-bold" style="color: #d63384;">Il Concetto delle Matrioske</h2>
-                    <p class="text-muted small">L'incapsulamento dei dati attraverso la pila ISO/OSI.</p>
+                    <p class="text-muted small">ISO/OSI è una pila. A sinistra il concetto, a destra i livelli cliccabili.</p>
+                    
+                    <a href="descrizione_livelli.html" class="btn btn-warning-custom px-5 py-2 mt-2 shadow-sm">
+                        <i class="bi bi-box-arrow-in-right"></i> VAI ALLA SPIEGAZIONE DEI LIVELLI
+                    </a>
                 </div>
                 
                 <div class="row g-5">
-                    <div class="col-lg-5 text-center">
-                        <div class="img-box mb-4">
-                            
-                            <img src="matrioske.jpg" alt="Incapsulamento">
+                    <div class="col-lg-5">
+                        <div class="alert alert-info border-0 shadow-sm mb-4">
+                            <h6 class="fw-bold"><i class="bi bi-info-circle"></i> Cos'è la PDU?</h6>
+                            <p class="x-small mb-0">
+                                La <b>PDU (Protocol Data Unit)</b> è il nome che i dati assumono a ogni livello. 
+                                Attraverso l'<b>incapsulamento</b>, ogni strato "impacchetta" le informazioni del livello superiore aggiungendo i propri controlli.
+                            </p>
                         </div>
+
+                        <div class="img-box mb-4 text-center">
+                            <img src="matrioske.jpg" alt="Incapsulamento">
+                            <p class="x-small text-muted mt-2 italic">L'incapsulamento visivo</p>
+                        </div>
+
                         <div class="card border-success shadow-sm overflow-hidden">
-                            <div class="card-header bg-success text-white py-1 small fw-bold">Protocol Data Unit (PDU)</div>
-                            <table class="table table-sm small mb-0 table-hover">
-                                <tr class="table-danger"><td>7-5</td><td><b>DATI</b> (Applicazione)</td></tr>
-                                <tr class="table-warning"><td>4</td><td><b>SEGMENTO</b> (Trasporto)</td></tr>
-                                <tr class="table-info"><td>3</td><td><b>PACCHETTO</b> (Rete)</td></tr>
-                                <tr class="table-primary"><td>2</td><td><b>FRAME</b> (Collegamento)</td></tr>
-                                <tr class="table-dark text-white"><td>1</td><td><b>BIT</b> (Fisico)</td></tr>
+                            <div class="card-header bg-success text-white py-1 small fw-bold">Tabella PDU</div>
+                            <table class="table table-sm small mb-0">
+                                <tr class="table-danger"><td>7-5</td><td><b>DATI</b></td></tr>
+                                <tr class="table-warning"><td>4</td><td><b>SEGMENTO</b></td></tr>
+                                <tr class="table-info"><td>3</td><td><b>PACCHETTO</b></td></tr>
+                                <tr class="table-primary"><td>2</td><td><b>FRAME</b></td></tr>
+                                <tr class="table-dark text-white"><td>1</td><td><b>BIT</b></td></tr>
                             </table>
                         </div>
                     </div>
 
                     <div class="col-lg-7">
                         <div class="d-flex gap-2 mb-4">
-                            <button class="btn btn-danger btn-sm w-100 fw-bold" onclick="animateOSI('send')"><i class="bi bi-arrow-down"></i> SENDER (7 &rarr; 1)</button>
-                            <button class="btn btn-primary btn-sm w-100 fw-bold" onclick="animateOSI('receive')"><i class="bi bi-arrow-up"></i> RECEIVER (1 &rarr; 7)</button>
+                            <button class="btn btn-danger btn-sm w-100 fw-bold" onclick="animateOSI('send')">SENDER (7 &rarr; 1)</button>
+                            <button class="btn btn-primary btn-sm w-100 fw-bold" onclick="animateOSI('receive')">RECEIVER (1 &rarr; 7)</button>
                         </div>
                         <div id="osi-stack">
                             <a href="livello7.html" class="btn-level-stack osi-item" style="background-color: #e83e8c;">7. Applicazione</a>
@@ -179,20 +196,20 @@
             </div>
 
             <div id="mappa" class="section-content">
-                <h2 class="fw-bold mb-4">Master Dashboard - Mappa Sito</h2>
-                <div class="p-4 bg-light rounded shadow-sm font-monospace small">
+                <h2 class="fw-bold mb-4">Mappa del Progetto</h2>
+                <div class="p-4 bg-light rounded shadow-sm font-monospace small text-dark">
                     <div class="text-primary fw-bold">📁 Corso_Reti_Tlc/</div>
                     <div class="ms-4 border-start ps-3 py-1">
-                        <div class="fw-bold text-dark">📄 index.html</div>
-                        <div class="text-muted mt-2">📂 Settimana 01 Teoria/</div>
+                        <div>📄 index.html</div>
+                        <div class="text-muted">📂 Settimana 01 Teoria/</div>
                         <div class="ms-4 border-start ps-3">
                             <div>📄 lan_approfondimento.html</div>
                             <div>📄 wan_approfondimento.html</div>
                         </div>
-                        <div class="text-danger mt-2">📂 Modello OSI Details/</div>
+                        <div class="text-danger">📂 Modello OSI Details/</div>
                         <div class="ms-4 border-start ps-3">
-                            <div>📄 descrizione_livelli.html</div>
-                            <div class="opacity-50">📄 livello1.html ... livello7.html</div>
+                            <div class="fw-bold">📄 descrizione_livelli.html</div>
+                            <div class="opacity-50">📄 livello1.html ... 7.html</div>
                         </div>
                     </div>
                 </div>
@@ -200,40 +217,28 @@
         </main>
     </div>
 
-    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 2000;">
+    <div class="position-fixed bottom-0 end-0 p-3">
         <button class="btn btn-dark shadow-lg rounded-pill px-4" onclick="showSource()">
             <i class="bi bi-code-slash"></i> Vedi Sorgente
         </button>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         function switchTab(tabId) {
-            // Nasconde tutte le sezioni
             document.querySelectorAll('.section-content').forEach(s => s.classList.remove('active'));
-            // Disattiva tutti i bottoni del menu principale
-            document.querySelectorAll('nav .btn-group .btn').forEach(b => {
+            document.querySelectorAll('nav .btn').forEach(b => {
                 b.classList.remove('active', 'btn-primary');
                 b.classList.add('btn-outline-primary');
             });
-
-            // Mostra la sezione selezionata
             document.getElementById(tabId).classList.add('active');
-            
-            // Attiva il bottone corretto nel menu
             const btn = document.getElementById('nav-' + tabId);
-            if(btn) {
-                btn.classList.remove('btn-outline-primary');
-                btn.classList.add('btn-primary', 'active');
-            }
+            if(btn) { btn.classList.remove('btn-outline-primary'); btn.classList.add('btn-primary', 'active'); }
         }
 
         function animateOSI(mode) {
             const items = Array.from(document.querySelectorAll('.osi-item'));
             items.forEach(i => i.classList.remove('highlight-flow'));
-
             const sequence = (mode === 'send') ? items : items.reverse();
-            
             sequence.forEach((item, i) => {
                 setTimeout(() => {
                     sequence.forEach(el => el.classList.remove('highlight-flow'));
@@ -245,7 +250,7 @@
         function showSource() {
             const html = document.documentElement.outerHTML;
             const win = window.open("", "Sorgente", "width=900,height=700");
-            win.document.write("<title>Source View</title><body style='background:#222;color:#fff;padding:20px;'><pre>" + html.replace(/</g, "&lt;") + "</pre></body>");
+            win.document.write("<title>Source</title><body style='background:#222;color:#fff;'><pre>" + html.replace(/</g, "&lt;") + "</pre></body>");
         }
     </script>
 </body>
