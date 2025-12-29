@@ -11,47 +11,30 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             padding: 20px;
             min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: flex; align-items: center; justify-content: center;
         }
-
         .container-box {
-            max-width: 1100px;
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-            width: 100%;
+            max-width: 1100px; background: white; padding: 40px;
+            border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.15); width: 100%;
         }
-
         h1 { color: #d63384; margin-bottom: 10px; font-weight: bold; text-align: center; }
         p.lead { color: #555; margin-bottom: 40px; text-align: center; }
-
         .content-wrapper {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: center;
-            gap: 50px;
-            margin-bottom: 40px;
+            display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+            gap: 50px; margin-bottom: 40px;
         }
-
         .image-column, .buttons-column { flex: 1; min-width: 300px; text-align: center; }
         .buttons-column { display: flex; flex-direction: column; gap: 12px; }
-
         .img-matriosche {
             max-width: 100%; height: auto; border-radius: 15px;
             border: 1px solid #ddd; box-shadow: 0 8px 16px rgba(0,0,0,0.1);
         }
-
         .btn-level {
             display: block; background-color: #667eea; color: white; border: none;
             padding: 15px 20px; border-radius: 8px; text-decoration: none;
             font-weight: bold; font-size: 1.1em; transition: all 0.3s ease;
             text-align: left; box-shadow: 0 2px 4px rgba(0,0,0,0.1); position: relative;
         }
-
         .btn-level:hover { transform: translateX(10px); color: white; box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
         .btn-level::after { content: '🔎'; position: absolute; right: 20px; opacity: 0.5; }
 
@@ -60,17 +43,13 @@
             margin-top: 40px; text-align: center; border-top: 1px solid #eee;
             padding-top: 30px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;
         }
-
         .btn-home { background-color: #343a40; color: white; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 600; transition: 0.3s; }
         .btn-home:hover { background-color: #000; }
-
         .btn-tcp {
-            background-color: #fd7e14; /* Arancione */
-            color: white; padding: 12px 30px; border-radius: 50px;
+            background-color: #fd7e14; color: white; padding: 12px 30px; border-radius: 50px;
             text-decoration: none; font-weight: 600; transition: 0.3s;
         }
         .btn-tcp:hover { background-color: #e65100; color: white; transform: scale(1.05); }
-
         .btn-source {
             background-color: #fff; color: #343a40; border: 2px solid #343a40;
             padding: 12px 30px; border-radius: 50px; text-decoration: none;
@@ -80,17 +59,14 @@
     </style>
 </head>
 <body>
-
     <div class="container-box">
         <h1>Il Concetto delle Matriosche</h1>
         <p class="lead">ISO/OSI è una pila. A sinistra il concetto, a destra i livelli cliccabili.</p>
-
         <div class="content-wrapper">
             <div class="image-column">
                 <img src="matriosche.jpg" alt="Schema Matriosche" class="img-matriosche">
                 <p style="margin-top: 10px; color: #888;">L'incapsulamento visivo</p>
             </div>
-
             <div class="buttons-column">
                 <a href="livello7.html" class="btn-level" style="background-color: #e83e8c;">7. Applicazione</a>
                 <a href="livello6.html" class="btn-level" style="background-color: #d63384;">6. Presentazione</a>
@@ -101,11 +77,9 @@
                 <a href="livello1.html" class="btn-level" style="background-color: #6c757d;">1. Fisico</a>
             </div>
         </div>
-
         <div class="footer-section">
             <a href="index.html" class="btn-home">🏠 Torna alla Home</a>
             <a href="confronto_tcp.html" class="btn-tcp">🆚 Confronto TCP/IP</a>
-            
             <a onclick="mostraCodice()" class="btn-source">&lt;/&gt; Vedi Sorgente HTML</a>
         </div>
     </div>
@@ -122,6 +96,5 @@
             newWindow.document.close();
         }
     </script>
-
 </body>
 </html>
