@@ -8,41 +8,55 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
-        /* STILI BASE */
+        /* --- STILI GENERALI --- */
         body { background-color: #f0f2f5; font-family: 'Segoe UI', sans-serif; padding-bottom: 50px; }
         .main-header { background: white; padding: 30px; text-align: center; border-bottom: 1px solid #ccc; margin-bottom: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
         
-        /* BOTTONI NAVIGAZIONE */
+        /* --- NAVIGAZIONE --- */
         .btn-nav { margin: 5px; border-radius: 20px; padding: 8px 20px; font-weight: 500; transition: all 0.2s; }
         .btn-nav:hover { transform: scale(1.05); }
-        
-        /* SISTEMA A SCHEDE (TAB) */
         .tab-content { display: none; animation: fadeIn 0.4s; }
         .tab-content.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* CARDS */
+        /* --- CARDS & BOX --- */
         .card-custom { background: white; border-radius: 10px; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 20px; border-left: 5px solid #ccc; height: 100%; }
-        
-        /* ALBERO DASHBOARD */
         .tree-box { background: white; padding: 20px; border-radius: 8px; font-family: 'Consolas', monospace; border: 1px solid #ccc; }
-        .tree-line { margin-left: 20px; border-left: 1px dashed #999; padding-left: 10px; }
 
-        /* --- STILI ISO/OSI --- */
+        /* --- SPECIFICO TAB 1 (STAND ALONE) --- */
+        .air-gap-box {
+            background-color: #fff5f5;
+            border-left: 5px solid #dc3546; /* Rosso Air Gap */
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .icon-circle-dashed {
+            width: 150px; height: 150px;
+            border: 3px dashed #dc3546;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto;
+            position: relative;
+            background: white;
+        }
+        .no-net-text {
+            position: absolute; bottom: -25px; 
+            font-weight: bold; color: #dc3546;
+        }
+
+        /* --- SPECIFICO TAB 3 (ISO/OSI) --- */
         .osi-layer-btn { display: block; width: 100%; margin-bottom: 5px; text-align: center; font-weight: bold; padding: 10px; border-radius: 5px; text-decoration: none; color: white; transition: transform 0.2s; }
-        .osi-layer-btn:hover { transform: translateX(5px); color: white; filter: brightness(110%); }
-        
-        /* Colori Livelli */
-        .bg-osi-7 { background-color: #e63946; } /* App */
-        .bg-osi-6 { background-color: #f72585; } /* Pres */
-        .bg-osi-5 { background-color: #ff9f1c; } /* Sess */
-        .bg-osi-4 { background-color: #ffcc00; color: black !important; } /* Trans */
-        .bg-osi-3 { background-color: #2ec4b6; } /* Net */
-        .bg-osi-2 { background-color: #4361ee; } /* Data */
-        .bg-osi-1 { background-color: #6c757d; } /* Phys */
-        
+        .osi-layer-btn:hover { transform: translateX(5px); filter: brightness(110%); color: white; }
+        .bg-osi-7 { background-color: #e63946; } 
+        .bg-osi-6 { background-color: #f72585; } 
+        .bg-osi-5 { background-color: #ff9f1c; } 
+        .bg-osi-4 { background-color: #ffcc00; color: black !important; } 
+        .bg-osi-3 { background-color: #2ec4b6; } 
+        .bg-osi-2 { background-color: #4361ee; } 
+        .bg-osi-1 { background-color: #6c757d; }
         .pdu-table th { background-color: #212529; color: white; }
         .pdu-card { border: 2px solid #198754; background-color: #f8fff9; }
+
     </style>
 </head>
 <body>
@@ -55,8 +69,8 @@
     <div class="container">
         <div class="text-center mb-2 small text-muted">SETTIMANA 1: TEORIA FONDAMENTALE</div>
         <div class="d-flex justify-content-center flex-wrap mb-3">
-            <button onclick="showTab('tab1')" class="btn btn-light btn-nav border">1. Stand-Alone</button>
-            <button onclick="showTab('tab2')" class="btn btn-primary btn-nav text-white">2. Rete Locale</button>
+            <button onclick="showTab('tab1')" class="btn btn-primary btn-nav text-white">1. Stand-Alone</button>
+            <button onclick="showTab('tab2')" class="btn btn-light btn-nav border">2. Rete Locale</button>
             <button onclick="showTab('tab3')" class="btn btn-light btn-nav border">3. Modello ISO/OSI</button>
         </div>
         
@@ -68,14 +82,33 @@
 
         <hr class="mb-5">
 
-        <div id="tab1" class="tab-content">
-            <h2 class="mb-3">🛡️ Il Computer Isolato</h2>
-            <div class="alert alert-secondary">
-                <i class="fas fa-desktop"></i> Un computer non connesso (Air Gap) è sicuro, ma non può comunicare.
+        <div id="tab1" class="tab-content active">
+            <h2 class="mb-3">1. Il Computer "Stand-Alone" (L'Isola Digitale)</h2>
+            <p class="lead mb-4">
+                In informatica, lo stato di <em>Stand-Alone</em> rappresenta la forma più pura e primitiva di calcolo: una macchina che opera in completa autonomia, senza alcun collegamento verso l'esterno.
+            </p>
+
+            <div class="row align-items-center">
+                <div class="col-md-7">
+                    <div class="air-gap-box shadow-sm">
+                        <h4 class="text-danger"><i class="fas fa-ban"></i> Il Concetto di "Air Gap"</h4>
+                        <p class="mt-3">
+                            Tra il computer e il resto del mondo c'è letteralmente "aria". Non essendoci cavi o segnali radio, è fisicamente impossibile per un hacker entrare da remoto.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-5 text-center mt-4 mt-md-0">
+                    <div class="icon-circle-dashed shadow-sm">
+                        <i class="fas fa-desktop fa-4x" style="color: #4a90e2;"></i>
+                        <div class="no-net-text">NO NET</div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div id="tab2" class="tab-content active">
+
+        <div id="tab2" class="tab-content">
             <h2 class="mb-2">Dallo Stand-Alone alla Rete Domestica</h2>
             <p class="text-muted mb-4">Quando i dispositivi cessano di essere "soli" e vengono collegati tra loro, formano una rete.</p>
             
@@ -83,29 +116,36 @@
                 <div class="col-md-4">
                     <div class="card-custom border-start border-5 border-warning">
                         <h5 class="text-warning fw-bold">Cos'è SOHO?</h5>
-                        <p class="small">Acronimo di <strong>Small Office / Home Office</strong>. Indica un ambiente ibrido casa/lavoro.</p>
-                        <a href="soho_approfondimento.html" class="btn btn-outline-warning text-dark w-100 mt-auto">🏠 Vai al file: SOHO</a>
+                        <p class="small"><strong>Small Office / Home Office</strong>.<br>Indica un ambiente ibrido (casa o piccolo ufficio) dove convivono dispositivi personali e lavorativi.</p>
+                        <a href="soho_approfondimento.html" class="btn btn-outline-warning text-dark w-100 mt-auto">Vai al file: SOHO</a>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="card-custom border-start border-5 border-primary">
                         <h5 class="text-primary fw-bold">Cos'è una LAN?</h5>
-                        <p class="small">Acronimo di <strong>Local Area Network</strong>. È la rete "dentro casa tua".</p>
-                        <a href="lan_approfondimento.html" class="btn btn-primary w-100 mt-auto">🔍 Vai al file: LAN</a>
+                        <p class="small"><strong>Local Area Network</strong>.<br>È la rete "dentro casa tua". Tutti i tuoi dispositivi collegati al router formano la LAN.</p>
+                        <a href="lan_approfondimento.html" class="btn btn-primary w-100 mt-auto">Vai al file: LAN</a>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="card-custom border-start border-5 border-danger">
                         <h5 class="text-danger fw-bold">Cos'è una WAN?</h5>
-                        <p class="small">Acronimo di <strong>Wide Area Network</strong>. È Internet, tutto ciò che sta "fuori".</p>
-                        <a href="wan_approfondimento.html" class="btn btn-danger w-100 mt-auto">🌍 Vai al file: WAN</a>
+                        <p class="small"><strong>Wide Area Network</strong>.<br>È la "Rete Geografica", ovvero <strong>Internet</strong>. È tutto ciò che sta "fuori" dal tuo modem.</p>
+                        <a href="wan_approfondimento.html" class="btn btn-danger w-100 mt-auto">Vai al file: WAN</a>
                     </div>
                 </div>
             </div>
 
-            <hr class="my-5">
+            <div class="d-flex justify-content-between mt-3 mb-5 gap-2 text-uppercase small fw-bold text-muted text-center">
+                <div class="border rounded p-2 w-100"><i class="fas fa-phone-alt text-danger"></i> Modem</div>
+                <div class="border rounded p-2 w-100"><i class="fas fa-traffic-light text-success"></i> Router</div>
+                <div class="border rounded p-2 w-100"><i class="fas fa-network-wired text-primary"></i> Switch</div>
+                <div class="border rounded p-2 w-100"><i class="fas fa-wifi text-warning"></i> WiFi</div>
+            </div>
 
-            <div class="row align-items-center">
+            <hr>
+
+            <div class="row align-items-center mt-4">
                 <div class="col-md-6">
                     <h3 class="text-danger">1. La P.A.N. (Personal Area Network)</h3>
                     <p>Prima ancora della rete di casa, esiste la rete "intorno a te".</p>
@@ -116,10 +156,11 @@
                 </div>
                 <div class="col-md-6 text-center">
                     <img src="pan_network.png" alt="Schema PAN" class="img-fluid rounded shadow" style="max-height: 250px;">
-                    <p class="small text-muted mt-2">👆 Esempio di connessioni PAN</p>
+                    <p class="small text-muted mt-2">👆 Clicca sull'immagine per approfondire</p>
                 </div>
             </div>
         </div>
+
 
         <div id="tab3" class="tab-content">
             <h2 class="mb-4">Il Modello ISO/OSI e il Flusso dei Dati</h2>
@@ -130,7 +171,6 @@
                         <small class="text-muted">Clicca sui livelli 👇</small>
                         <hr>
                         <div class="badge bg-danger mb-2 p-2 w-100">Sender (Trasmettitore) ⬇️</div>
-                        
                         <a href="livello7.html" class="osi-layer-btn bg-osi-7">7. Applicazione</a>
                         <a href="livello6.html" class="osi-layer-btn bg-osi-6">6. Presentazione</a>
                         <a href="livello5.html" class="osi-layer-btn bg-osi-5">5. Sessione</a>
@@ -138,7 +178,6 @@
                         <a href="livello3.html" class="osi-layer-btn bg-osi-3">3. Rete</a>
                         <a href="livello2.html" class="osi-layer-btn bg-osi-2">2. Collegamento</a>
                         <a href="livello1.html" class="osi-layer-btn bg-osi-1">1. Fisico</a>
-
                         <div class="badge bg-primary mt-2 p-2 w-100">Receiver (Ricevitore) ⬆️</div>
                     </div>
                 </div>
@@ -149,7 +188,7 @@
                             📦 Incapsulamento & PDU (Protocol Data Unit)
                         </div>
                         <div class="card-body">
-                            <p>I dati non viaggiano "nudi". Ogni livello aggiunge una "busta" (Header).</p>
+                            <p>I dati non viaggiano "nudi". Come una Matrioska, ogni livello aggiunge una "busta" (Intestazione/Header) intorno ai dati. Questo è l'Incapsulamento.</p>
                             
                             <h5 class="mt-4">📜 Come cambiano nome i dati?</h5>
                             <table class="table table-bordered pdu-table text-center mt-2 small">
@@ -161,17 +200,19 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr><td>7, 6, 5</td><td><strong>DATI</strong></td><td>Il foglio scritto</td></tr>
-                                    <tr><td class="bg-osi-4">4. Trasporto</td><td class="text-danger fw-bold">SEGMENTO</td><td>La busta</td></tr>
-                                    <tr><td class="bg-osi-3 text-white">3. Rete</td><td class="text-danger fw-bold">PACCHETTO</td><td>L'indirizzo IP</td></tr>
-                                    <tr><td class="bg-osi-2 text-white">2. Colleg.</td><td class="text-danger fw-bold">FRAME</td><td>Il sacco postale</td></tr>
-                                    <tr><td class="bg-osi-1 text-white">1. Fisico</td><td class="text-danger fw-bold">BIT</td><td>Segnali elettrici</td></tr>
+                                    <tr><td>7, 6, 5</td><td><strong>DATI</strong></td><td>Il foglio scritto (La lettera)</td></tr>
+                                    <tr><td class="bg-osi-4">4. Trasporto</td><td class="text-danger fw-bold">SEGMENTO</td><td>La busta (controllo integrità)</td></tr>
+                                    <tr><td class="bg-osi-3 text-white">3. Rete</td><td class="text-danger fw-bold">PACCHETTO</td><td>L'indirizzo sulla busta (IP)</td></tr>
+                                    <tr><td class="bg-osi-2 text-white">2. Colleg.</td><td class="text-danger fw-bold">FRAME (Trama)</td><td>Il sacco postale sigillato (MAC)</td></tr>
+                                    <tr><td class="bg-osi-1 text-white">1. Fisico</td><td class="text-danger fw-bold">BIT</td><td>Segnali elettrici/luce sul cavo</td></tr>
                                 </tbody>
                             </table>
                             
-                             <div class="alert alert-danger p-2 mt-3 text-center small">
-                                Il pacchetto diventa più grande scendendo! ⬇️
+                            <div class="row mt-3 text-center small">
+                                <div class="col-6"><strong class="text-danger">Trasmettitore</strong><br>⬇️ Incapsulamento<br>⬇️ Da Dati a Bit</div>
+                                <div class="col-6"><strong class="text-primary">Ricevitore</strong><br>⬆️ Decapsulamento<br>⬆️ Da Bit a Dati</div>
                             </div>
+                            <div class="alert alert-danger p-1 mt-2 text-center small">Il pacchetto diventa più grande scendendo!</div>
                         </div>
                     </div>
                 </div>
@@ -219,9 +260,21 @@
 
     <script>
         function showTab(tabId) {
+            // Rimuovi classe 'active' da tutti i contenuti
             document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            // Rimuovi stile bottone attivo
+            document.querySelectorAll('.btn-nav').forEach(btn => {
+                btn.classList.remove('btn-primary', 'text-white');
+                btn.classList.add('btn-light', 'border');
+            });
+            
+            // Attiva contenuto
             var target = document.getElementById(tabId);
             if(target) target.classList.add('active');
+
+            // Trova il bottone che è stato cliccato (o simula) e attivalo
+            // Nota: per semplicità, questo script base gestisce solo il cambio scheda.
+            // Per evidenziare il bottone cliccato servirebbe passare 'this' alla funzione.
         }
     </script>
     
