@@ -1,45 +1,72 @@
 <style>
     /* 1. IMPOSTAZIONI GENERALI E LAYOUT */
     body { 
-        background-color: #f8f9fa; 
-        font-family: 'Segoe UI', Roboto, sans-serif; 
-        color: #333;
+        background-color: #f4f7f6; 
+        font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+        color: #212529; /* Nero più profondo per leggibilità */
         line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
     }
 
     .section-content { display: none; }
     .section-content.active { 
-        display: block; 
-        animation: fadeIn 0.5s ease-out; 
+        display: block !important; 
+        animation: fadeIn 0.4s ease-out; 
     }
     @keyframes fadeIn { 
-        from { opacity: 0; transform: translateY(10px); } 
+        from { opacity: 0; transform: translateY(5px); } 
         to { opacity: 1; transform: translateY(0); } 
     }
 
-    /* 2. NAVIGAZIONE E BOTTONI SUPERIORI */
-    .nav-custom .btn {
-        border-radius: 50px;
-        padding: 8px 20px;
-        font-weight: 600;
-        transition: all 0.3s;
+    /* 2. NAVIGAZIONE SUPERIORE - CORREZIONE LEGGIBILITÀ */
+    /* Forziamo i bottoni a non essere mai trasparenti */
+    .btn-group .btn {
+        font-weight: 700 !important;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        border: 2px solid #0d6efd !important;
+        min-width: 140px;
+        transition: all 0.2s ease-in-out;
+    }
+
+    /* Stato NON attivo: Sfondo bianco, testo blu (sempre leggibile) */
+    .btn-outline-primary {
+        background-color: #ffffff !important;
+        color: #0d6efd !important;
+    }
+
+    /* Stato ATTIVO: Sfondo blu pieno, testo bianco */
+    .btn-primary.active, .btn-primary:active {
+        background-color: #0d6efd !important;
+        color: #ffffff !important;
+    }
+
+    /* OTTIMIZZAZIONE CELLULARE: I bottoni si impilano se lo schermo è piccolo */
+    @media (max-width: 768px) {
+        .btn-group {
+            display: flex !important;
+            flex-direction: column !important;
+            width: 100%;
+        }
+        .btn-group .btn {
+            border-radius: 10px !important;
+            margin-bottom: 8px !important;
+            width: 100%;
+        }
     }
 
     /* 3. CORREZIONE BOTTONE GIALLO (MATRIOSKE) */
     .btn-warning {
-        color: #000 !important; /* Testo nero per leggibilità */
+        color: #000 !important; 
         font-weight: 700 !important;
-        border: 2px solid #eec107 !important;
+        border: 2px solid #ce9b00 !important; /* Bordo più scuro per contrasto */
+        background-color: #ffc107 !important;
         box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    }
-    .btn-warning:hover {
-        background-color: #ffca2c !important;
-        transform: translateY(-2px);
     }
 
     /* 4. SPECIFICO PER PAN (Personal Area Network) */
     .pan-title {
-        color: #dc3545; /* Rosso come da screenshot */
+        color: #dc3545; 
         font-weight: bold;
         margin-top: 30px;
     }
@@ -51,6 +78,7 @@
         text-align: center;
         padding: 15px;
         background: white;
+        border: 1px solid #dee2e6;
         border-radius: 10px;
         box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     }
@@ -61,12 +89,9 @@
         cursor: pointer;
         transition: transform 0.3s;
     }
-    .pan-image-container img:hover {
-        transform: scale(1.02);
-    }
 
     /* 5. PILA ISO/OSI E PDU */
-    .btn-level-stack {
+    .osi-layer { /* Classe unificata per la torre */
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -74,35 +99,29 @@
         padding: 12px 20px;
         border-radius: 8px;
         margin-bottom: 8px;
-        text-decoration: none;
-        font-weight: 600;
+        font-weight: bold;
         transition: all 0.3s;
     }
-    .btn-level-stack:hover { 
-        transform: translateX(10px); 
-        filter: brightness(1.1);
-    }
+    .osi-layer:hover { transform: scale(1.02); filter: brightness(1.1); }
+    
+    .layer-7 { background-color: #e83e8c; } .layer-6 { background-color: #a55eea; } 
+    .layer-5 { background-color: #fd9644; } .layer-4 { background-color: #f7b731; } 
+    .layer-3 { background-color: #20bf6b; } .layer-2 { background-color: #2d98da; } 
+    .layer-1 { background-color: #778ca3; }
 
-    /* Tabella PDU */
-    .pdu-table-style {
-        border: 1px solid #dee2e6;
-        border-radius: 8px;
-        overflow: hidden;
-        font-size: 0.9rem;
-    }
-    .pdu-table-style thead { background-color: #212529; color: white; }
-
-    /* 6. CARD RETI (SOHO, LAN, WAN) */
+    /* 6. CARD RETI (LAN, WAN) - ALTO CONTRASTO */
     .card-net {
-        border-radius: 10px;
-        transition: transform 0.3s;
+        border-radius: 12px;
+        background: #ffffff !important;
+        border: 2px solid #dee2e6 !important;
+        transition: all 0.3s;
         height: 100%;
-        border: 1px solid #eee;
+        padding: 20px;
     }
-    .card-net:hover { transform: translateY(-5px); }
-    .card-net-title { font-weight: bold; color: #0d6efd; }
+    .card-net:hover { border-color: #0d6efd !important; box-shadow: 0 8px 15px rgba(0,0,0,0.1); }
+    .card-net-title { font-weight: 800; color: #0d6efd; text-transform: uppercase; }
 
-    /* 7. FOOTER SORGENTE */
+    /* 7. FOOTER SORGENTE E UTILITY */
     .btn-source-fixed {
         position: fixed;
         bottom: 20px;
@@ -112,5 +131,7 @@
         border-radius: 50px;
         padding: 10px 20px;
         z-index: 1000;
+        font-weight: bold;
+        border: 2px solid #fff;
     }
 </style>
