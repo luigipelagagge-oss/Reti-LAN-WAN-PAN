@@ -12,7 +12,7 @@
         .section-content.active { display: block !important; animation: fadeIn 0.3s ease; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Icona Stand-Alone Circolare */
+        /* Icona Stand-Alone */
         .offline-circle {
             width: 140px; height: 140px;
             border: 3px dashed #dc3545;
@@ -22,12 +22,23 @@
             margin: 0 auto; background: #fff;
         }
 
-        /* Card SOHO/LAN/WAN */
+        /* Card Grafiche */
         .card-custom { border-radius: 15px; border: 1px solid #eee; transition: 0.3s; height: 100%; }
         .card-custom:hover { box-shadow: 0 10px 20px rgba(0,0,0,0.1); transform: translateY(-5px); }
         
-        /* Bottoni */
-        .btn-lab { background-color: #198754; color: white; border-radius: 50px; font-weight: bold; padding: 10px 25px; text-decoration: none; }
+        /* Immagine Link Esterno */
+        .img-external-link { 
+            transition: all 0.3s; 
+            cursor: pointer; 
+            border: 3px solid transparent;
+        }
+        .img-external-link:hover { 
+            transform: scale(1.03); 
+            border-color: #dc3545;
+            box-shadow: 0 8px 25px rgba(220, 53, 69, 0.2);
+        }
+
+        .btn-green-lab { background-color: #198754 !important; color: white !important; border-radius: 50px; font-weight: bold; padding: 10px 25px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; }
     </style>
 </head>
 <body>
@@ -40,26 +51,23 @@
 
     <nav class="text-center mb-5">
         <div class="btn-group shadow-sm mb-3">
-            <button class="btn btn-outline-primary px-4" onclick="switchTab('standalone')">1. Stand-Alone</button>
-            <button class="btn btn-primary active px-4" id="nav-2" onclick="switchTab('retelocale')">2. Rete Locale</button>
-            <button class="btn btn-outline-primary px-4" onclick="switchTab('isoosi')">3. Modello ISO/OSI</button>
+            <button class="btn btn-outline-primary px-4" id="nav-standalone" onclick="switchTab('standalone')">1. Stand-Alone</button>
+            <button class="btn btn-primary active px-4" id="nav-retelocale" onclick="switchTab('retelocale')">2. Rete Locale</button>
+            <button class="btn btn-outline-primary px-4" id="nav-isoosi" onclick="switchTab('isoosi')">3. Modello ISO/OSI</button>
         </div>
         <div class="d-flex justify-content-center gap-2 mt-2">
-            <a href="lab_ping.html" class="btn-lab shadow-sm"><i class="bi bi-lightning-fill"></i> LABORATORIO (PING)</a>
+            <a href="lab_ping.html" class="btn-green-lab shadow-sm"><i class="bi bi-lightning-charge-fill"></i> LABORATORIO (PING)</a>
             <button class="btn btn-dark btn-sm rounded-pill px-4" onclick="switchTab('mappa')">MAPPA SITO</button>
         </div>
     </nav>
 
-    <main class="bg-white p-5 shadow-sm rounded-4 border">
+    <main class="bg-white p-4 p-md-5 shadow-sm rounded-4 border">
         
         <div id="standalone" class="section-content">
             <div class="row align-items-center">
                 <div class="col-md-7">
                     <h2 class="text-primary fw-bold mb-4">1. Il Computer Isolato</h2>
-                    <p class="lead">Descrizione dello stato Stand-Alone e della sicurezza <strong>Air Gap</strong>.</p>
-                    <div class="alert alert-warning border-0 shadow-sm">
-                        <i class="bi bi-shield-lock-fill"></i> <strong>Sicurezza:</strong> Senza cavi o Wi-Fi, il rischio di hacking remoto è zero.
-                    </div>
+                    <p class="lead">Concetto di <strong>Air Gap</strong>: isolamento totale per la massima sicurezza.</p>
                 </div>
                 <div class="col-md-5 text-center">
                     <div class="offline-circle shadow-sm">
@@ -75,32 +83,37 @@
             <div class="row g-4 mb-5">
                 <div class="col-md-4">
                     <div class="card card-custom p-3 border-start border-4 border-info">
-                        <h6>Cos'è SOHO?</h6>
-                        <p class="small text-muted">Small Office / Home Office. L'ambiente dove vivono i nostri router domestici.</p>
+                        <h6>Ambiente SOHO</h6>
+                        <p class="small text-muted">Small Office / Home Office.</p>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="card card-custom p-3 border-start border-4 border-primary text-center">
-                        <h6>LAN (Local)</h6>
-                        <a href="lan_approfondimento.html" class="btn btn-primary btn-sm mt-2">APRI LAN</a>
+                <div class="col-md-4 text-center">
+                    <div class="card card-custom p-3 border-start border-4 border-primary">
+                        <h6>L.A.N.</h6>
+                        <a href="lan_approfondimento.html" class="btn btn-primary btn-sm mt-auto">APRI LAN</a>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="card card-custom p-3 border-start border-4 border-danger text-center">
-                        <h6>WAN (Wide)</h6>
-                        <a href="wan_approfondimento.html" class="btn btn-danger btn-sm mt-2">APRI WAN</a>
+                <div class="col-md-4 text-center">
+                    <div class="card card-custom p-3 border-start border-4 border-danger">
+                        <h6>W.A.N.</h6>
+                        <a href="wan_approfondimento.html" class="btn btn-danger btn-sm mt-auto">APRI WAN</a>
                     </div>
                 </div>
             </div>
 
-            <div class="p-4 bg-light rounded-4 border">
-                <h5 class="fw-bold text-danger">La P.A.N. (Personal Area Network)</h5>
+            <div class="p-4 bg-light rounded-4 border shadow-sm">
+                <h5 class="fw-bold text-danger"><i class="bi bi-link-45deg"></i> Approfondimento P.A.N.</h5>
                 <div class="row align-items-center">
-                    <div class="col-md-6">
-                        <p class="small">Rete personale che copre pochi metri (Bluetooth). Esempi: Smartwatch, mouse wireless.</p>
+                    <div class="col-md-7">
+                        <p>La <em>Personal Area Network</em> ha vantaggi e svantaggi specifici nel raggio d'azione dell'utente.</p>
+                        <p class="small text-muted"><strong>👉 Clicca sull'immagine</strong> per consultare la guida esterna sui vantaggi della PAN.</p>
                     </div>
-                    <div class="col-md-6 text-center">
-                        <img src="pan_network.png" class="img-fluid rounded shadow-sm border" style="max-height: 150px;" onerror="this.src='https://via.placeholder.com/300x150?text=Schema+Rete+PAN'">
+                    <div class="col-md-5 text-center">
+                        <a href="https://itrelease.com/2018/07/advantages-and-disadvantages-of-personal-area-network-pan/" target="_blank">
+                            <img src="pan_network.png" class="img-fluid rounded shadow img-external-link" 
+                                 style="max-height: 160px;" 
+                                 onerror="this.src='https://via.placeholder.com/300x150?text=Link+Esterno+PAN'">
+                        </a>
                     </div>
                 </div>
             </div>
@@ -108,20 +121,17 @@
 
         <div id="isoosi" class="section-content">
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <h2 class="fw-bold" style="color: #d63384;">Modello ISO/OSI e PDU</h2>
-                <a href="descrizione_livelli.html" class="btn btn-warning fw-bold"><i class="bi bi-box-seam"></i> VAI ALLE MATRIOSKE</a>
+                <h2 class="fw-bold" style="color: #d63384;">Modello ISO/OSI</h2>
+                <a href="descrizione_livelli.html" class="btn btn-warning fw-bold shadow-sm">
+                    <i class="bi bi-box-seam"></i> VAI ALLE MATRIOSKE
+                </a>
             </div>
-            <p>Studio dell'incapsulamento tramite la metafora delle Matrioske.</p>
         </div>
 
         <div id="mappa" class="section-content">
-            <h2 class="fw-bold mb-4">Mappa Strutturale</h2>
-            <div class="p-4 border rounded bg-white shadow-sm">
-                <pre class="mb-0">📂 Corso_Reti_Tlc (Flat)
-├── 🏠 index.html
-├── 📄 lan_approfondimento.html
-├── 📄 wan_approfondimento.html
-└── 📄 descrizione_livelli.html</pre>
+            <h2 class="fw-bold mb-4">Mappa del Sito</h2>
+            <div class="p-3 bg-dark text-white rounded">
+                <code>Root/index.html + File correlati</code>
             </div>
         </div>
     </main>
@@ -139,8 +149,11 @@
             b.classList.remove('active', 'btn-primary');
             b.classList.add('btn-outline-primary');
         });
-        if(event && event.currentTarget.tagName === 'BUTTON') {
-            event.currentTarget.classList.add('active', 'btn-primary');
+        
+        const activeBtn = document.getElementById('nav-' + tabId);
+        if(activeBtn) {
+            activeBtn.classList.add('active', 'btn-primary');
+            activeBtn.classList.remove('btn-outline-primary');
         }
     }
 </script>
