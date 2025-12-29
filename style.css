@@ -1,137 +1,54 @@
 <style>
-    /* 1. IMPOSTAZIONI GENERALI E LAYOUT */
-    body { 
-        background-color: #f4f7f6; 
-        font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
-        color: #212529; /* Nero più profondo per leggibilità */
-        line-height: 1.6;
-        -webkit-font-smoothing: antialiased;
-    }
+    /* 1. BASE E REGOLE DI VISIBILITÀ (BLINDATE) */
+    body { background-color: #f4f7f6; font-family: 'Segoe UI', sans-serif; color: #212529; }
 
-    .section-content { display: none; }
+    /* Forza la sparizione di ciò che è spento e la comparsa di ciò che è attivo */
+    .section-content { display: none !important; }
     .section-content.active { 
         display: block !important; 
-        animation: fadeIn 0.4s ease-out; 
-    }
-    @keyframes fadeIn { 
-        from { opacity: 0; transform: translateY(5px); } 
-        to { opacity: 1; transform: translateY(0); } 
+        visibility: visible !important;
+        opacity: 1 !important;
     }
 
-    /* 2. NAVIGAZIONE SUPERIORE - CORREZIONE LEGGIBILITÀ */
-    /* Forziamo i bottoni a non essere mai trasparenti */
-    .btn-group .btn {
-        font-weight: 700 !important;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        border: 2px solid #0d6efd !important;
-        min-width: 140px;
-        transition: all 0.2s ease-in-out;
-    }
-
-    /* Stato NON attivo: Sfondo bianco, testo blu (sempre leggibile) */
+    /* 2. FIX LEGGIBILITÀ BOTTONI TESTATA (MAI PIÙ BIANCO SU BIANCO) */
     .btn-outline-primary {
         background-color: #ffffff !important;
         color: #0d6efd !important;
+        border: 2px solid #0d6efd !important;
+        font-weight: bold !important;
     }
-
-    /* Stato ATTIVO: Sfondo blu pieno, testo bianco */
-    .btn-primary.active, .btn-primary:active {
+    .btn-primary.active {
         background-color: #0d6efd !important;
         color: #ffffff !important;
+        font-weight: bold !important;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2) !important;
     }
 
-    /* OTTIMIZZAZIONE CELLULARE: I bottoni si impilano se lo schermo è piccolo */
-    @media (max-width: 768px) {
-        .btn-group {
-            display: flex !important;
-            flex-direction: column !important;
-            width: 100%;
-        }
-        .btn-group .btn {
-            border-radius: 10px !important;
-            margin-bottom: 8px !important;
-            width: 100%;
-        }
-    }
-
-    /* 3. CORREZIONE BOTTONE GIALLO (MATRIOSKE) */
-    .btn-warning {
-        color: #000 !important; 
-        font-weight: 700 !important;
-        border: 2px solid #ce9b00 !important; /* Bordo più scuro per contrasto */
-        background-color: #ffc107 !important;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    }
-
-    /* 4. SPECIFICO PER PAN (Personal Area Network) */
-    .pan-title {
-        color: #dc3545; 
-        font-weight: bold;
-        margin-top: 30px;
-    }
-    .pan-description {
-        font-size: 0.95rem;
-        margin-bottom: 20px;
-    }
-    .pan-image-container {
-        text-align: center;
-        padding: 15px;
-        background: white;
-        border: 1px solid #dee2e6;
-        border-radius: 10px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    }
-    .pan-image-container img {
-        max-width: 100%;
-        height: auto;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: transform 0.3s;
-    }
-
-    /* 5. PILA ISO/OSI E PDU */
-    .osi-layer { /* Classe unificata per la torre */
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        color: white !important;
-        padding: 12px 20px;
-        border-radius: 8px;
-        margin-bottom: 8px;
-        font-weight: bold;
-        transition: all 0.3s;
-    }
-    .osi-layer:hover { transform: scale(1.02); filter: brightness(1.1); }
+    /* 3. RIPRISTINO CLASSI ORIGINALI (LAN, WAN, STAND-ALONE) */
+    .offline-circle { width: 140px; height: 140px; border: 3px dashed #dc3545; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 auto; background: #fff; }
     
-    .layer-7 { background-color: #e83e8c; } .layer-6 { background-color: #a55eea; } 
-    .layer-5 { background-color: #fd9644; } .layer-4 { background-color: #f7b731; } 
-    .layer-3 { background-color: #20bf6b; } .layer-2 { background-color: #2d98da; } 
+    .card-original { border: 2px solid; border-radius: 10px; padding: 15px; text-align: center; transition: 0.3s; height: 100%; background-color: #fff; }
+    .card-lan { border-color: #0d6efd; background-color: #f0f7ff; }
+    .card-wan { border-color: #dc3545; background-color: #fff5f5; }
+
+    /* 4. ISO/OSI E PDU (FORZA IL COLORE DEL TESTO) */
+    .osi-layer { color: #ffffff !important; padding: 12px; margin-bottom: 8px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; font-weight: bold; }
+    .layer-7 { background-color: #e83e8c; } .layer-6 { background-color: #a55eea; } .layer-5 { background-color: #fd9644; }
+    .layer-4 { background-color: #f7b731; } .layer-3 { background-color: #20bf6b; } .layer-2 { background-color: #2d98da; }
     .layer-1 { background-color: #778ca3; }
 
-    /* 6. CARD RETI (LAN, WAN) - ALTO CONTRASTO */
-    .card-net {
-        border-radius: 12px;
-        background: #ffffff !important;
-        border: 2px solid #dee2e6 !important;
-        transition: all 0.3s;
-        height: 100%;
-        padding: 20px;
-    }
-    .card-net:hover { border-color: #0d6efd !important; box-shadow: 0 8px 15px rgba(0,0,0,0.1); }
-    .card-net-title { font-weight: 800; color: #0d6efd; text-transform: uppercase; }
+    /* 5. MAPPA SITO E ALBERO LOGICO */
+    .tree-node { border-left: 2px solid #dee2e6; margin-left: 20px; padding-left: 20px; position: relative; padding-bottom: 10px; }
+    .tree-node::before { content: ""; position: absolute; left: 0; top: 15px; width: 15px; height: 2px; background: #dee2e6; }
+    .file-btn { text-decoration: none; color: #212529; font-family: monospace; }
 
-    /* 7. FOOTER SORGENTE E UTILITY */
-    .btn-source-fixed {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        background: #212529;
-        color: white;
-        border-radius: 50px;
-        padding: 10px 20px;
-        z-index: 1000;
-        font-weight: bold;
-        border: 2px solid #fff;
+    /* 6. BOTTONI SPECIALI E MOBILE */
+    .btn-warning { color: #000 !important; font-weight: bold !important; border: 2px solid #ce9b00 !important; }
+    
+    @media (max-width: 768px) {
+        .btn-group { display: flex !important; flex-direction: column !important; width: 100%; }
+        .btn-group .btn { margin-bottom: 5px !important; border-radius: 10px !important; }
     }
+
+    .fab-source { position: fixed; bottom: 20px; right: 20px; background: #212529; color: white; padding: 10px 20px; border-radius: 30px; border: 2px solid white; cursor: pointer; z-index: 1000; font-weight: bold; }
 </style>
