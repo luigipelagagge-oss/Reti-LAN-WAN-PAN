@@ -24,11 +24,10 @@
 
         h1 { color: #2c3e50; font-weight: 800; margin-bottom: 30px; }
         
-        /* Stile della Tabella "Torre" */
         .tower-table {
             width: 100%;
             border-collapse: separate; 
-            border-spacing: 5px; /* Spazio bianco tra i blocchi */
+            border-spacing: 5px; 
             margin-top: 20px;
         }
 
@@ -43,7 +42,7 @@
             color: white;
             font-weight: bold;
             padding: 20px;
-            border-radius: 8px; /* Blocchi arrotondati */
+            border-radius: 8px; 
             vertical-align: middle;
             transition: transform 0.2s;
             position: relative;
@@ -51,7 +50,6 @@
 
         .tower-table td:hover { transform: scale(1.02); z-index: 10; }
 
-        /* --- COLORI ISO/OSI (Sinistra) --- */
         .iso-7 { background-color: #e83e8c; }
         .iso-6 { background-color: #d63384; }
         .iso-5 { background-color: #fd7e14; }
@@ -60,14 +58,11 @@
         .iso-2 { background-color: #0d6efd; }
         .iso-1 { background-color: #6c757d; }
 
-        /* --- COLORI TCP/IP (Destra) --- */
-        /* Colori simili ma più tenui per indicare il raggruppamento */
-        .tcp-app { background-color: #f06292; border: 3px solid #e83e8c; } /* Rosa unico */
+        .tcp-app { background-color: #f06292; border: 3px solid #e83e8c; } 
         .tcp-trans { background-color: #ffe082; color: #333 !important; border: 3px solid #ffc107; }
         .tcp-net { background-color: #a5d6a7; border: 3px solid #198754; }
         .tcp-access { background-color: #90caf9; border: 3px solid #0d6efd; }
 
-        /* Frecce centrali (fatte con CSS nel mezzo) */
         .arrow-cell {
             background: transparent !important;
             color: #333 !important;
@@ -85,11 +80,11 @@
             border-radius: 5px;
         }
 
-        /* Navigazione Footer */
         .nav-footer { margin-top: 40px; display: flex; justify-content: center; gap: 20px; }
-        .btn-nav { padding: 10px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; }
+        .btn-nav { padding: 10px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; cursor: pointer;}
         .btn-back { background-color: #6c757d; color: white; }
         .btn-source { border: 2px solid #333; color: #333; font-family: monospace; }
+        .btn-source:hover { background-color: #333; color: white; }
         
     </style>
 </head>
@@ -103,23 +98,25 @@
             <thead>
                 <tr>
                     <th width="40%">Torre ISO/OSI (7 Piani)</th>
-                    <th width="10%"></th> <th width="40%">Torre TCP/IP (4 Piani)</th>
+                    <th width="10%"></th> 
+                    <th width="40%">Torre TCP/IP (4 Piani)</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td class="iso-7">7. Applicazione</td>
-                    <td rowspan="3" class="arrow-cell">➡</td> <td rowspan="3" class="tcp-app">
+                    <td rowspan="3" class="arrow-cell">➡</td> 
+                    <td rowspan="3" class="tcp-app">
                         APPLICAZIONE<br>
                         <small style="font-weight: normal;">(HTTP, FTP, SMTP)</small>
                     </td>
                 </tr>
                 <tr>
                     <td class="iso-6">6. Presentazione</td>
-                    </tr>
+                </tr>
                 <tr>
                     <td class="iso-5">5. Sessione</td>
-                    </tr>
+                </tr>
 
                 <tr>
                     <td class="iso-4">4. Trasporto</td>
@@ -163,10 +160,32 @@
 
         <div class="nav-footer">
             <a href="descrizione_livelli.html" class="btn-nav btn-back">⬅ Torna alle Matriosche</a>
-            <a href="view-source:confronto_tcp.html" class="btn-nav btn-source">&lt;/&gt; Vedi Sorgente HTML</a>
+            
+            <a onclick="mostraCodice()" class="btn-nav btn-source">&lt;/&gt; Vedi Sorgente HTML</a>
         </div>
 
     </div>
+
+    <script>
+        function mostraCodice() {
+            // Prende tutto l'HTML della pagina attuale
+            var htmlCode = document.documentElement.outerHTML;
+            
+            // Crea una nuova finestra
+            var newWindow = window.open("", "Codice Sorgente", "width=800,height=600,scrollbars=yes");
+            
+            // Scrive il codice nella nuova finestra dentro un tag <pre> per mantenerne la formattazione
+            newWindow.document.write('<html><head><title>Sorgente Pagina</title></head><body>');
+            newWindow.document.write('<h3>Codice Sorgente della Pagina:</h3>');
+            newWindow.document.write('<pre style="background:#f4f4f4; padding:15px; border:1px solid #ccc; white-space: pre-wrap;">');
+            
+            // Sostituisce i caratteri < e > per mostrarli a video invece di eseguirli
+            newWindow.document.write(htmlCode.replace(/</g, "&lt;").replace(/>/g, "&gt;"));
+            
+            newWindow.document.write('</pre></body></html>');
+            newWindow.document.close();
+        }
+    </script>
 
 </body>
 </html>
