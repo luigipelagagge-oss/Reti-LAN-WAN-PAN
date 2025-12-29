@@ -8,27 +8,27 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     
     <style>
-        /* 1. STILI GENERALI E COLORI */
+        /* 1. LAYOUT BASE */
         body { background-color: #f4f7f6; font-family: 'Segoe UI', sans-serif; color: #333; }
         .section-content { display: none; }
-        .section-content.active { display: block; animation: fadeIn 0.4s ease; }
+        .section-content.active { display: block !important; animation: fadeIn 0.4s ease; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* 2. BOTTONI DI NAVIGAZIONE E AZIONE */
+        /* 2. BOTTONI E NAVBAR */
         .btn-lab-custom {
-            background-color: #198754 !important; /* Verde scuro costante per Laboratorio */
+            background-color: #198754 !important;
             color: #ffffff !important;
             font-weight: bold;
             border-radius: 50px;
             padding: 8px 25px;
-            transition: all 0.3s;
             border: none;
+            transition: all 0.3s;
         }
         .btn-lab-custom:hover { background-color: #146c43 !important; transform: scale(1.05); }
 
         .btn-yellow-custom {
             background-color: #ffc107 !important;
-            color: #000 !important; /* Testo nero per leggibilità */
+            color: #000 !important;
             font-weight: 700;
             border: 2px solid #eec107;
             padding: 10px 20px;
@@ -39,57 +39,48 @@
             gap: 8px;
         }
 
-        /* 3. PILA ISO/OSI INTERATTIVA */
-        .btn-level-stack {
-            display: flex; align-items: center; justify-content: space-between;
-            color: white !important; border: none; padding: 14px 20px;
-            border-radius: 10px; text-decoration: none; font-weight: bold;
-            margin-bottom: 10px; transition: all 0.3s ease; width: 100%;
-        }
-        .btn-level-stack:hover { transform: translateX(10px); filter: brightness(1.1); }
-        .highlight-flow { transform: scale(1.05) translateX(15px); z-index: 10; filter: brightness(1.2); }
-
-        /* 4. SEZIONI RETI (SOHO, PAN, LAN) */
-        .pan-title { color: #dc3545; font-weight: bold; margin-top: 20px; }
-        .info-text { font-size: 0.95rem; color: #444; text-align: left; }
-        .card-custom { border-radius: 12px; height: 100%; transition: transform 0.3s; border: 1px solid #eee; }
-        .card-custom:hover { transform: translateY(-5px); box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-
-        /* 5. BOX DIDATTICO PDU */
-        .pdu-explanation {
-            background-color: #fff3cd; border-left: 5px solid #ffc107;
-            padding: 15px; margin-bottom: 20px; border-radius: 0 10px 10px 0;
-        }
-
-        /* 6. MAPPA STRUTTURALE (STILE TERMINALE) */
+        /* 3. MAPPA DEL PROGETTO (STILE PREMIUM) */
         .map-container {
-            background-color: #1e1e1e; color: #d4d4d4; padding: 25px;
-            border-radius: 15px; font-family: 'Consolas', monospace; font-size: 0.9rem;
+            background-color: #ffffff;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid #e0e0e0;
         }
-        .map-link { color: #4fc1ff; text-decoration: none; transition: color 0.2s; }
-        .map-link:hover { color: #569cd6; text-decoration: underline; }
+        .map-tree-line {
+            border-left: 2px dashed #dee2e6;
+            margin-left: 1.2rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        .badge-output { font-size: 0.65rem; padding: 3px 8px; border: 1px solid #0d6efd; color: #0d6efd; font-weight: bold; border-radius: 4px; }
+        .badge-apri { font-size: 0.65rem; padding: 3px 8px; border: 1px solid #6c757d; color: #6c757d; font-weight: bold; border-radius: 4px; }
+        
+        .folder-icon { color: #ffca2c; margin-right: 8px; }
+        .file-link { text-decoration: none; color: #444; font-weight: 500; transition: color 0.2s; }
+        .file-link:hover { color: #0d6efd; }
     </style>
 </head>
 <body>
 
     <div class="container py-4">
         <header class="text-center mb-5">
-            <h1 class="fw-bold text-dark">Corso di Reti e Telecomunicazioni</h1>
-            <p class="text-muted small">Navigazione Didattica Interattiva</p>
+            <h1 class="fw-bold">Corso di Reti e Telecomunicazioni</h1>
+            <p class="text-muted">Un percorso guidato: dalla teoria di base alla simulazione pratica.</p>
         </header>
 
         <nav class="text-center mb-5">
             <div class="btn-group shadow-sm mb-3">
-                <button class="btn btn-outline-primary px-4" onclick="switchTab('standalone')">1. Stand-Alone</button>
-                <button class="btn btn-primary px-4 active" id="nav-rete" onclick="switchTab('retelocale')">2. Rete Locale</button>
-                <button class="btn btn-outline-primary px-4" onclick="switchTab('isoosi')">3. Modello ISO/OSI</button>
+                <button class="btn btn-outline-primary px-4" id="btn-standalone" onclick="switchTab('standalone')">1. Stand-Alone</button>
+                <button class="btn btn-primary px-4 active" id="btn-retelocale" onclick="switchTab('retelocale')">2. Rete Locale</button>
+                <button class="btn btn-outline-primary px-4" id="btn-isoosi" onclick="switchTab('isoosi')">3. Modello ISO/OSI</button>
             </div>
             <div class="d-flex justify-content-center gap-2 mt-2">
                 <a href="Settimana_02_Lab_Arduino/lab_ping.html" class="btn btn-lab-custom shadow-sm">
-                    <i class="bi bi-lightning-charge-fill"></i> Laboratorio
+                    <i class="bi bi-lightning-fill"></i> Vai al Laboratorio
                 </a>
-                <button class="btn btn-dark btn-sm rounded-pill px-4" onclick="switchTab('mappa')">
-                    <i class="bi bi-diagram-2"></i> Mappa Sito
+                <button class="btn btn-secondary btn-sm rounded-pill px-4 shadow-sm" id="btn-mappa" onclick="switchTab('mappa')">
+                    <i class="bi bi-diagram-3"></i> Mappa Sito
                 </button>
             </div>
         </nav>
@@ -97,63 +88,38 @@
         <main class="bg-white p-4 p-md-5 shadow-sm rounded-4 border">
             
             <div id="standalone" class="section-content">
-                <h2 class="fw-bold mb-4 text-primary">1. Il Computer "Stand-Alone"</h2>
-                <div class="row align-items-center">
-                    <div class="col-md-8">
-                        <p>Il punto di partenza: un computer isolato (Air Gap) che non scambia bit con l'esterno.</p>
-                        <div class="alert alert-danger border-danger py-2 px-3">
-                            <strong>Sicurezza:</strong> Non essendoci rete, non esiste hacking remoto.
-                        </div>
-                    </div>
-                    <div class="col-md-4 text-center">
-                        <div style="width:120px; height:120px; border:2px dashed #dc3545; border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto;">
-                            <i class="bi bi-pc-display text-primary fs-1"></i>
-                        </div>
-                        <span class="badge bg-danger mt-2">OFFLINE</span>
-                    </div>
+                <h2 class="fw-bold mb-4 text-primary">1. Il Computer "Stand-Alone" (L'Isola Digitale)</h2>
+                <p>Una macchina che opera in completa autonomia, senza alcun collegamento verso l'esterno.</p>
+                <div class="alert alert-light border-danger border-start border-4 py-3 shadow-sm">
+                    <h6 class="fw-bold text-danger"><i class="bi bi-shield-lock"></i> Il Concetto di "Air Gap"</h6>
+                    <p class="small mb-0">Tra il computer e il resto del mondo c'è letteralmente "aria". Sicurezza fisica assoluta.</p>
                 </div>
             </div>
 
             <div id="retelocale" class="section-content active">
-                <h2 class="fw-bold mb-4 text-primary">Dallo Stand-Alone alla LAN</h2>
-                <p class="mb-4">Quando i dispositivi vengono collegati tra loro, formano una rete. Nelle nostre case parliamo spesso di ambiente <strong>SOHO</strong>.</p>
-
-                <div class="row g-4 mb-5">
+                <h2 class="fw-bold mb-4 text-primary">Dallo Stand-Alone alla Rete Domestica</h2>
+                <p class="mb-4">Quando i dispositivi vengono collegati tra loro formano una rete. In casa parliamo di ambiente <strong>SOHO</strong>.</p>
+                
+                <div class="row g-3">
                     <div class="col-md-4">
-                        <div class="card card-custom bg-light p-3">
+                        <div class="card p-3 border-0 bg-light shadow-sm">
                             <h6 class="fw-bold">Cos'è SOHO?</h6>
-                            <p class="info-text"><strong>Small Office / Home Office</strong>. Indica un ambiente casa/ufficio dove convivono dispositivi personali e lavorativi.</p>
+                            <p class="small mb-0 text-muted">Small Office / Home Office. Dove convivono dispositivi personali e lavorativi.</p>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="card card-custom border-primary p-3">
-                            <h6 class="fw-bold text-primary">Cos'è una LAN?</h6>
-                            <p class="info-text"><strong>Local Area Network</strong>. La "Rete dentro casa tua" che collega i tuoi dispositivi al router locale.</p>
-                            <a href="Settimana_01_Teoria/lan_approfondimento.html" class="btn btn-primary btn-sm mt-auto">Apri LAN</a>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card card-custom border-danger p-3">
-                            <h6 class="fw-bold text-danger">Cos'è una WAN?</h6>
-                            <p class="info-text"><strong>Wide Area Network</strong>. La rete esterna geografica (Internet). Tutto ciò che sta "fuori" dal tuo modem.</p>
-                            <a href="Settimana_01_Teoria/wan_approfondimento.html" class="btn btn-danger btn-sm mt-auto">Apri WAN</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="pan-section border-top pt-4">
-                    <h4 class="pan-title">1. La P.A.N. (Personal Area Network)</h4>
-                    <div class="row mt-3 align-items-center">
-                        <div class="col-md-6">
-                            <p class="text-muted">Prima della rete di casa, esiste la rete "intorno a te".</p>
-                            <ul class="info-text list-unstyled">
-                                <li><strong>• Definizione:</strong> Rete personale che copre pochi metri (raggio d'azione dell'utente).</li>
-                                <li><strong>• Esempi:</strong> Mouse Bluetooth, Smartwatch, cuffie wireless.</li>
-                            </ul>
-                        </div>
-                        <div class="col-md-6 text-center">
-                            <img src="pan_network.png" alt="Schema PAN" class="img-fluid rounded border shadow-sm p-2" style="max-height: 250px;">
-                            <p class="small text-muted mt-2">👇 Clicca sull'immagine per approfondire.</p>
+                    <div class="col-12 mt-4 pt-3 border-top">
+                        <h4 style="color: #dc3545;" class="fw-bold">La P.A.N. (Personal Area Network)</h4>
+                        <div class="row align-items-center">
+                            <div class="col-md-7">
+                                <p class="small mb-2 text-muted">La rete "intorno a te".</p>
+                                <ul class="small">
+                                    <li><strong>Definizione:</strong> Copre pochissimi metri (il raggio d'azione dell'utente).</li>
+                                    <li><strong>Esempi:</strong> Mouse BT, Smartwatch, Cuffie.</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-5 text-center">
+                                <img src="pan_network.png" class="img-fluid rounded border shadow-sm" style="max-height: 200px;">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -166,75 +132,69 @@
                         <i class="bi bi-box-seam"></i> VAI ALLE MATRIOSKE
                     </a>
                 </div>
-
-                <div class="pdu-explanation shadow-sm">
-                    <h5 class="fw-bold"><i class="bi bi-info-circle-fill text-warning"></i> Cos'è la P.D.U.?</h5>
-                    <p class="mb-0 small">
-                        PDU sta per <strong>Protocol Data Unit</strong>. È il nome del "pacchetto" in ogni livello. Immagina una <strong>Matrioska</strong>: il dato originale viene inserito in contenitori diversi man mano che scende la pila.
-                    </p>
+                <div class="alert alert-warning border-0 shadow-sm small py-2">
+                    <strong>P.D.U. (Protocol Data Unit):</strong> Il nome del dato in ogni livello (Dati, Segmento, Pacchetto, Frame, Bit).
                 </div>
-
-                <div class="row g-4">
-                    <div class="col-lg-5">
-                        <table class="table table-sm table-bordered bg-white text-center shadow-sm" style="font-size: 0.85rem;">
-                            <thead class="table-dark">
-                                <tr><th>LIVELLI</th><th>NOMI P.D.U.</th></tr>
-                            </thead>
-                            <tbody>
-                                <tr><td>7-6-5</td><td class="fw-bold text-danger">DATI (Data)</td></tr>
-                                <tr><td>4</td><td class="fw-bold" style="color: #ffc107;">SEGMENTO (Segment)</td></tr>
-                                <tr><td>3</td><td class="fw-bold text-success">PACCHETTO (Packet)</td></tr>
-                                <tr><td>2</td><td class="fw-bold text-primary">FRAME (Trama)</td></tr>
-                                <tr><td>1</td><td class="fw-bold text-secondary">BIT (Flusso binario)</td></tr>
-                            </tbody>
-                        </table>
-                        <div class="d-grid gap-2 mt-3">
-                            <button class="btn btn-outline-danger btn-sm" onclick="animateOSI('send')">SIMULA INVIO (7 &rarr; 1)</button>
-                            <button class="btn btn-outline-primary btn-sm" onclick="animateOSI('receive')">SIMULA RICEZIONE (1 &rarr; 7)</button>
-                        </div>
-                    </div>
-                    <div class="col-lg-7">
-                        <div id="osi-stack">
-                            <a href="Modello_OSI_Details/livello7.html" class="btn-level-stack osi-item" style="background-color: #e83e8c;">7. Applicazione</a>
-                            <a href="Modello_OSI_Details/livello6.html" class="btn-level-stack osi-item" style="background-color: #d63384;">6. Presentazione</a>
-                            <a href="Modello_OSI_Details/livello5.html" class="btn-level-stack osi-item" style="background-color: #fd7e14;">5. Sessione</a>
-                            <a href="Modello_OSI_Details/livello4.html" class="btn-level-stack osi-item" style="background-color: #ffc107; color: #000 !important;">4. Trasporto</a>
-                            <a href="Modello_OSI_Details/livello3.html" class="btn-level-stack osi-item" style="background-color: #198754;">3. Rete</a>
-                            <a href="Modello_OSI_Details/livello2.html" class="btn-level-stack osi-item" style="background-color: #0d6efd;">2. Collegamento</a>
-                            <a href="Modello_OSI_Details/livello1.html" class="btn-level-stack osi-item" style="background-color: #6c757d;">1. Fisico</a>
-                        </div>
-                    </div>
+                <div id="osi-stack" class="mt-3">
+                    <div class="btn-level-stack" style="background-color: #e83e8c;">7. Applicazione</div>
+                    <div class="btn-level-stack" style="background-color: #ffc107; color: #000 !important;">4. Trasporto</div>
+                    <div class="btn-level-stack" style="background-color: #198754;">3. Rete</div>
                 </div>
             </div>
 
             <div id="mappa" class="section-content">
-                <h2 class="fw-bold mb-4"><i class="bi bi-diagram-3"></i> Mappa Strutturale del Progetto</h2>
-                <div class="map-container shadow-lg">
-                    <div class="mb-2 text-warning">📂 Corso_Reti_Tlc/</div>
-                    <div class="ms-4 border-start ps-3 border-secondary">
-                        <div class="mb-2">🏠 <a href="#" class="map-link" onclick="switchTab('retelocale')">index.html</a> <span class="text-muted small ms-2">// Dashboard Principale</span></div>
-                        
-                        <div class="mb-2">📂 Settimana_01_Teoria/</div>
-                        <div class="ms-4 border-start ps-3 border-secondary border-opacity-25">
-                            <div class="mb-1">📄 <a href="Settimana_01_Teoria/lan_approfondimento.html" class="map-link">lan_approfondimento.html</a></div>
-                            <div class="mb-1">📄 <a href="Settimana_01_Teoria/wan_approfondimento.html" class="map-link">wan_approfondimento.html</a></div>
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2 class="fw-bold"><i class="bi bi-diagram-3-fill text-primary"></i> Mappa del Progetto - Master Dashboard</h2>
+                    <span class="badge bg-dark px-3 py-2">v1.0 Fully Interactive</span>
+                </div>
+                
+                <div class="map-container">
+                    <div class="mb-3">
+                        <i class="bi bi-folder-fill folder-icon"></i><span class="fw-bold">Corso_Reti_Tlc/</span>
+                    </div>
+
+                    <div class="map-tree-line">
+                        <div class="d-flex align-items-center justify-content-between mb-2">
+                            <span>🏠 <a href="#" onclick="switchTab('retelocale')" class="file-link">index.html</a> <span class="text-muted small ms-2">// Home Page</span></span>
+                            <button class="btn btn-dark btn-xs py-0 px-2 shadow-sm" style="font-size: 0.65rem;" onclick="showSource()">VEDI CODICE</button>
                         </div>
 
-                        <div class="mb-2 mt-2">📂 Modello_OSI_Details/</div>
-                        <div class="ms-4 border-start ps-3 border-secondary border-opacity-25">
-                            <div class="mb-1">📄 <a href="Modello_OSI_Details/descrizione_livelli.html" class="map-link text-warning">descrizione_livelli.html</a></div>
-                            <div class="ms-3 border-start ps-3 border-secondary border-opacity-25 py-1">
-                                <div class="small">7️⃣ <a href="Modello_OSI_Details/livello7.html" class="map-link" style="color:#e83e8c;">livello7.html</a></div>
-                                <div class="small">4️⃣ <a href="Modello_OSI_Details/livello4.html" class="map-link text-warning">livello4.html</a></div>
-                                <div class="small">1️⃣ <a href="Modello_OSI_Details/livello1.html" class="map-link text-secondary">livello1.html</a></div>
+                        <div class="mt-4 mb-2"><i class="bi bi-folder-fill folder-icon"></i><span class="fw-bold">Settimana_01_Teoria/</span></div>
+                        <div class="map-tree-line">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>📄 <a href="Settimana_01_Teoria/lan_approfondimento.html" class="file-link">lan_approfondimento.html</a></span>
+                                <span class="badge-output">OUTPUT</span>
                             </div>
-                            <div class="mb-1">📄 <a href="Modello_OSI_Details/confronto_tcp.html" class="map-link text-info">confronto_tcp.html</a></div>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>📄 <a href="Settimana_01_Teoria/wan_approfondimento.html" class="file-link">wan_approfondimento.html</a></span>
+                                <span class="badge-output">OUTPUT</span>
+                            </div>
                         </div>
 
-                        <div class="mb-2 mt-2 text-success">📂 Settimana_02_Lab_Arduino/</div>
-                        <div class="ms-4 border-start ps-3 border-success border-opacity-25">
-                            <div class="mb-1">⚡ <a href="Settimana_02_Lab_Arduino/lab_ping.html" class="map-link text-success">lab_ping.html</a></div>
-                            <div class="mb-1">⚡ <a href="Settimana_02_Lab_Arduino/lab_cs.html" class="map-link text-success">lab_cs.html</a></div>
+                        <div class="mt-4 mb-2"><i class="bi bi-folder-fill folder-icon"></i><span class="fw-bold">Modello_OSI_Details/</span></div>
+                        <div class="map-tree-line">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>📄 <a href="Modello_OSI_Details/descrizione_livelli.html" class="file-link">descrizione_livelli.html</a></span>
+                                <span class="badge-output">OUTPUT</span>
+                            </div>
+                            <div class="ms-3 border-start border-2 ps-3 my-2 border-light">
+                                <div class="d-flex justify-content-between mb-1">
+                                    <span class="small">7️⃣ <a href="Modello_OSI_Details/livello7.html" class="file-link text-danger">livello7.html</a></span>
+                                    <span class="badge-apri">APRI</span>
+                                </div>
+                                <div class="d-flex justify-content-between mb-1">
+                                    <span class="small">4️⃣ <a href="Modello_OSI_Details/livello4.html" class="file-link text-warning">livello4.html</a></span>
+                                    <span class="badge-apri">APRI</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 mb-2"><i class="bi bi-folder-fill folder-icon text-success"></i><span class="fw-bold">Settimana_02_Lab_Arduino/</span></div>
+                        <div class="map-tree-line">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="text-success">⚡ <a href="Settimana_02_Lab_Arduino/lab_ping.html" class="file-link text-success">lab_ping.html</a></span>
+                                <span class="badge-output border-success text-success">OUTPUT</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -242,49 +202,33 @@
         </main>
     </div>
 
-    <div class="position-fixed bottom-0 end-0 p-3">
-        <button class="btn btn-dark rounded-pill px-4 shadow" onclick="showSource()">
-            <i class="bi bi-code-slash"></i> Vedi Sorgente
-        </button>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         function switchTab(tabId) {
+            // Rimuove classe active da tutte le sezioni
             document.querySelectorAll('.section-content').forEach(s => s.classList.remove('active'));
+            
+            // Gestione estetica dei bottoni
             document.querySelectorAll('nav .btn').forEach(b => {
-                b.classList.remove('active', 'btn-primary');
+                b.classList.remove('active', 'btn-primary', 'btn-secondary');
                 b.classList.add('btn-outline-primary');
             });
-            
-            const target = document.getElementById(tabId);
-            if(target) target.classList.add('active');
-            
-            // Aggiorna stile bottone attivo
-            const activeBtn = Array.from(document.querySelectorAll('nav button')).find(b => b.textContent.toLowerCase().includes(tabId.replace('locale','')));
-            if(activeBtn) {
-                activeBtn.classList.remove('btn-outline-primary');
-                activeBtn.classList.add('btn-primary', 'active');
+
+            // Attiva la sezione e il bottone corrispondente
+            const section = document.getElementById(tabId);
+            if(section) section.classList.add('active');
+
+            const btn = document.getElementById('btn-' + tabId);
+            if(btn) {
+                btn.classList.remove('btn-outline-primary');
+                btn.classList.add(tabId === 'mappa' ? 'btn-secondary' : 'btn-primary', 'active');
             }
         }
 
-        function animateOSI(mode) {
-            const items = Array.from(document.querySelectorAll('.osi-item'));
-            items.forEach(i => i.classList.remove('highlight-flow'));
-            const sequence = mode === 'send' ? items : items.reverse();
-            sequence.forEach((item, i) => {
-                setTimeout(() => {
-                    items.forEach(el => el.classList.remove('highlight-flow'));
-                    item.classList.add('highlight-flow');
-                }, i * 350);
-            });
-        }
-
         function showSource() {
-            const html = document.documentElement.outerHTML;
-            const win = window.open("", "SourceCode", "width=900,height=700");
-            win.document.write("<html><head><title>Sorgente Dashboard</title></head><body style='background:#2d2d2d; color:#ccc;'><pre>" + 
-                html.replace(/</g, "&lt;").replace(/>/g, "&gt;") + "</pre></body></html>");
+            const win = window.open("", "CodeView", "width=800,height=600");
+            win.document.write("<html><body style='background:#1e1e1e; color:#d4d4d4;'><pre>" + 
+                document.documentElement.outerHTML.replace(/</g, "&lt;").replace(/>/g, "&gt;") + 
+                "</pre></body></html>");
         }
     </script>
 </body>
