@@ -3,125 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Corso di Reti e Telecomunicazioni</title>
+    <title>Master Dashboard - Corso di Reti</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="style.css">
     
     <style>
-        /* Transizioni fluide tra le sezioni */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         .section-content { display: none; animation: fadeIn 0.4s ease-in-out; }
         .section-content.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* Stile per l'immagine PAN interattiva e scalabile */
-        .pan-img-container {
-            max-width: 500px; /* Limita la grandezza massima per non occupare troppo spazio */
-            margin: 0 auto;
+        /* Fix per immagine PAN */
+        .pan-container {
+            max-width: 100%;
+            overflow: hidden;
+            border-radius: 12px;
+            border: 1px solid #eee;
+            background: white;
+            padding: 15px;
         }
-        .pan-img-button {
-            width: 100%; /* Si adatta alla colonna di Bootstrap */
+        .pan-img {
+            max-width: 100%;
             height: auto;
-            border-radius: 8px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
-            border: 1px solid #dee2e6;
+            display: block;
+            margin: 0 auto;
+            transition: transform 0.3s;
         }
-        .pan-img-button:hover {
-            transform: scale(1.02);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        .pan-img:hover { transform: scale(1.02); }
+
+        /* Stili ISO/OSI */
+        .osi-stack .badge {
+            font-size: 0.85rem;
+            padding: 10px;
+            display: flex;
+            justify-content:间;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 4px;
         }
+        .flow-label { font-size: 0.7rem; font-weight: bold; text-transform: uppercase; }
     </style>
 </head>
 <body class="bg-light">
 
-    <div class="container py-5">
+    <div class="container py-4">
         <header class="text-center mb-5">
             <h1 class="fw-bold text-dark">Corso di Reti e Telecomunicazioni</h1>
-            <p class="text-muted small">Dalla teoria di base alla simulazione pratica.</p>
-            <hr class="my-4">
+            <p class="text-muted">Un percorso guidato: dalla teoria di base alla simulazione pratica.</p>
+            <hr>
         </header>
 
-        <div class="row justify-content-center mb-4 text-center">
-            <div class="col-md-10">
-                <small class="text-uppercase text-muted fw-bold small">Settimana 1: Teoria</small>
-                <ul class="nav nav-pills justify-content-center mt-2 gap-2" id="mainNav">
-                    <li class="nav-item">
-                        <button class="nav-link active rounded-pill px-4" onclick="switchTab('standalone')">1. Stand-Alone</button>
-                    </li>
-                    <li class="nav-item">
-                        <button class="nav-link rounded-pill px-4" onclick="switchTab('retelocale')">2. Rete Locale</button>
-                    </li>
-                    <li class="nav-item">
-                        <button class="nav-link rounded-pill px-4" onclick="switchTab('isoosi')">3. Modello ISO/OSI</button>
-                    </li>
-                </ul>
-                <div class="mt-4">
-                    <small class="text-uppercase text-muted fw-bold small">Settimana 2: Laboratorio</small>
-                    <div class="mt-2">
-                        <a href="lab_ping.html" class="btn btn-success bg-opacity-75 rounded-pill px-4 mx-1">Laboratorio</a>
-                        <button class="btn btn-secondary bg-opacity-25 text-dark border-0 rounded-pill px-4 mx-1" onclick="switchTab('mappa')">Mappa Sito</button>
-                    </div>
+        <nav class="text-center mb-5">
+            <div class="mb-3">
+                <small class="text-muted text-uppercase fw-bold" style="letter-spacing: 1px;">Settimana 1: Teoria Fondamentale</small>
+                <div class="d-flex justify-content-center gap-2 mt-2">
+                    <button class="btn btn-outline-primary rounded-pill px-4" onclick="switchTab('standalone')">1. Stand-Alone</button>
+                    <button class="btn btn-outline-primary rounded-pill px-4 active" id="btn-retelocale" onclick="switchTab('retelocale')">2. Rete Locale</button>
+                    <button class="btn btn-outline-primary rounded-pill px-4" onclick="switchTab('isoosi')">3. Modello ISO/OSI</button>
                 </div>
             </div>
-        </div>
+            <div>
+                <small class="text-muted text-uppercase fw-bold" style="letter-spacing: 1px;">Settimana 2: Laboratorio Arduino</small>
+                <div class="d-flex justify-content-center gap-2 mt-2">
+                    <a href="lab_ping.html" class="btn btn-success rounded-pill px-4"><i class="bi bi-lightning-charge"></i> Vai al Laboratorio</a>
+                    <button class="btn btn-secondary rounded-pill px-4" onclick="switchTab('mappa')"><i class="bi bi-map"></i> Mappa Sito</button>
+                </div>
+            </div>
+        </nav>
 
-        <main class="mt-5">
-            <div id="standalone" class="section-content active">
-                <h2 class="mb-3">1. Il Computer "Stand-Alone"</h2>
-                <p class="text-muted">Una macchina che opera in completa autonomia, senza collegamento verso l'esterno.</p>
-                <div class="row align-items-center mt-4">
-                    <div class="col-md-7">
-                        <div class="p-4 border-start border-danger border-5 bg-white shadow-sm">
-                            <h5 class="text-danger fw-bold">Il Concetto di "Air Gap"</h5>
-                            <p class="mb-0 small">Fisicamente isolato dal mondo esterno per garantire la massima sicurezza.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-5 text-center">
-                        <i class="bi bi-pc-display text-primary" style="font-size: 4rem;"></i>
-                    </div>
+        <main class="bg-white p-4 p-md-5 shadow-sm rounded-4">
+            
+            <div id="standalone" class="section-content">
+                <h2 class="text-primary mb-4">1. Il Computer "Stand-Alone" (L'Isola Digitale)</h2>
+                <p>Una macchina che opera in completa autonomia, senza alcun collegamento verso l'esterno. Rappresenta la forma più pura di sicurezza informatica tramite l'<strong>Air Gap</strong>.</p>
+                <div class="alert alert-light border-start border-danger border-4 mt-4">
+                    <h5 class="text-danger"><i class="bi bi-shield-lock"></i> Il Concetto di "Air Gap"</h5>
+                    <p class="small mb-0">Tra il computer e il resto del mondo c'è letteralmente "aria". Non essendoci cavi o segnali radio, è fisicamente impossibile per un hacker entrare da remoto.</p>
                 </div>
             </div>
 
-            <div id="retelocale" class="section-content">
-                <h2 class="mb-3">Dallo Stand-Alone alla Rete Domestica</h2>
-                <div class="row g-4 mb-5">
+            <div id="retelocale" class="section-content active">
+                <h2 class="text-primary mb-3">Dallo Stand-Alone alla Rete Domestica</h2>
+                <p class="text-muted small mb-4">Quando i dispositivi cessano di essere "soli" e vengono collegati tra loro, formano una rete SOHO (Small Office / Home Office).</p>
+                
+                <div class="row g-3 mb-5">
                     <div class="col-md-4">
-                        <div class="card h-100 border-0 shadow-sm p-3 text-center">
-                            <h6 class="fw-bold">Cos'è SOHO?</h6>
-                            <p class="small text-muted">Small Office / Home Office.</p>
+                        <div class="card h-100 border-0 bg-light p-3">
+                            <h6><strong>Cos'è SOHO?</strong></h6>
+                            <p class="small">Ambiente ibrido (casa o piccolo ufficio) dove convivono dispositivi personali e lavorativi.</p>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="card h-100 border-primary border-2 shadow-sm p-3 text-center">
-                            <h6 class="fw-bold text-primary">LAN</h6>
-                            <a href="lan_approfondimento.html" class="btn btn-primary btn-sm mt-auto">Apri LAN</a>
+                        <div class="card h-100 border-primary p-3">
+                            <h6 class="text-primary fw-bold">Cos'è una LAN?</h6>
+                            <p class="small">Local Area Network. La rete "dentro casa tua".</p>
+                            <a href="lan_approfondimento.html" class="btn btn-primary btn-sm mt-auto">Vai al file: LAN</a>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="card h-100 border-danger border-2 shadow-sm p-3 text-center">
-                            <h6 class="fw-bold text-danger">WAN</h6>
-                            <a href="wan_approfondimento.html" class="btn btn-danger btn-sm mt-auto">Apri WAN</a>
+                        <div class="card h-100 border-danger p-3">
+                            <h6 class="text-danger fw-bold">Cos'è una WAN?</h6>
+                            <p class="small">Wide Area Network. La rete esterna geografica (Internet).</p>
+                            <a href="wan_approfondimento.html" class="btn btn-danger btn-sm mt-auto">Vai al file: WAN</a>
                         </div>
                     </div>
                 </div>
 
-                <div class="pt-4 border-top">
+                <div class="border-top pt-4">
                     <h4 class="text-danger fw-bold mb-3">1. La P.A.N. (Personal Area Network)</h4>
                     <div class="row align-items-center">
-                        <div class="col-md-5">
-                            <p class="small">Rete personale che copre pochi metri (es. Bluetooth).</p>
-                            <ul class="small text-muted">
-                                <li>Mouse e Tastiere wireless</li>
-                                <li>Smartwatch e fitness band</li>
+                        <div class="col-lg-5">
+                            <p>Rete personale che copre pochi metri "intorno a te".</p>
+                            <ul class="small">
+                                <li><strong>Definizione:</strong> Rete per dispositivi a brevissimo raggio.</li>
+                                <li><strong>Esempi:</strong> Mouse Bluetooth, Smartwatch collegato al telefono.</li>
                             </ul>
                         </div>
-                        <div class="col-md-7 text-center">
-                            <div class="pan-img-container">
+                        <div class="col-lg-7">
+                            <div class="pan-container text-center">
                                 <a href="https://itrelease.com/2018/07/advantages-and-disadvantages-of-personal-area-network-pan/" target="_blank">
-                                    <img src="pan_network.png" alt="Schema PAN" class="pan-img-button shadow-sm">
+                                    <img src="pan_network.png" alt="Schema PAN" class="pan-img">
                                 </a>
-                                <p class="small text-muted mt-2"><i class="bi bi-hand-index-thumb"></i> Clicca per approfondire</p>
+                                <div class="mt-2 small text-muted"><i class="bi bi-hand-index"></i> Clicca sull'immagine per approfondire</div>
                             </div>
                         </div>
                     </div>
@@ -129,51 +132,95 @@
             </div>
 
             <div id="isoosi" class="section-content">
-                <h2 class="mb-4">Il Modello ISO/OSI</h2>
-                <div class="row">
+                <h2 class="text-primary mb-4 text-center">Il Modello ISO/OSI e il Flusso dei Dati</h2>
+                
+                <div class="row g-4">
                     <div class="col-md-4">
-                        <div class="list-group shadow-sm">
-                            <a href="livello7.html" class="list-group-item list-group-item-action list-group-item-danger small">7. Applicazione</a>
-                            <a href="livello4.html" class="list-group-item list-group-item-action list-group-item-success small">4. Trasporto</a>
-                            <a href="livello3.html" class="list-group-item list-group-item-action list-group-item-info small">3. Rete</a>
-                            <a href="livello2.html" class="list-group-item list-group-item-action list-group-item-primary small">2. Collegamento</a>
+                        <div class="card border-0 shadow-sm osi-stack">
+                            <div class="card-header bg-danger text-white text-center py-1 small">SENDER (Trasmettitore)</div>
+                            <div class="card-body p-2 bg-light">
+                                <div class="badge bg-danger">7. Applicazione <i class="bi bi-plus-circle ms-auto"></i></div>
+                                <div class="badge bg-danger">6. Presentazione <i class="bi bi-plus-circle ms-auto"></i></div>
+                                <div class="badge bg-danger">5. Sessione <i class="bi bi-plus-circle ms-auto"></i></div>
+                                <div class="badge bg-success">4. Trasporto <i class="bi bi-plus-circle ms-auto"></i></div>
+                                <div class="badge bg-info">3. Rete <i class="bi bi-plus-circle ms-auto"></i></div>
+                                <div class="badge bg-primary">2. Collegamento <i class="bi bi-plus-circle ms-auto"></i></div>
+                                <div class="badge bg-dark">1. Fisico <i class="bi bi-broadcast ms-auto"></i></div>
+                                <div class="text-center mt-2 text-danger flow-label">
+                                    INCAPSULAMENTO <i class="bi bi-arrow-down"></i>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-8">
-                        <div class="alert alert-success border-2 small">Ogni livello aggiunge un Header ai dati (Incapsulamento).</div>
+
+                    <div class="col-md-4">
+                        <div class="card border-success shadow-sm">
+                            <div class="card-header bg-success text-white py-1 text-center small">P.D.U. (Protocol Data Unit)</div>
+                            <table class="table table-sm text-center mb-0 small">
+                                <thead class="table-light"><tr><th>Livello</th><th>Nome Dato</th></tr></thead>
+                                <tbody>
+                                    <tr class="table-danger"><td>7-5</td><td><strong>DATI</strong></td></tr>
+                                    <tr class="table-success"><td>4</td><td><strong>SEGMENTO</strong></td></tr>
+                                    <tr class="table-info"><td>3</td><td><strong>PACCHETTO</strong></td></tr>
+                                    <tr class="table-primary"><td>2</td><td><strong>FRAME</strong></td></tr>
+                                    <tr class="table-dark text-white"><td>1</td><td><strong>BIT</strong></td></tr>
+                                </tbody>
+                            </table>
+                            <div class="card-footer bg-white p-2 text-center" style="font-size: 0.7rem;">
+                                <em>I dati vengono "impacchettati" come matrioske.</em>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card border-0 shadow-sm osi-stack">
+                            <div class="card-header bg-primary text-white text-center py-1 small">RECEIVER (Ricevitore)</div>
+                            <div class="card-body p-2 bg-light d-flex flex-column-reverse">
+                                <div class="badge bg-danger opacity-75">7. Applicazione <i class="bi bi-dash-circle ms-auto"></i></div>
+                                <div class="badge bg-danger opacity-75">6. Presentazione <i class="bi bi-dash-circle ms-auto"></i></div>
+                                <div class="badge bg-danger opacity-75">5. Sessione <i class="bi bi-dash-circle ms-auto"></i></div>
+                                <div class="badge bg-success opacity-75">4. Trasporto <i class="bi bi-dash-circle ms-auto"></i></div>
+                                <div class="badge bg-info opacity-75">3. Rete <i class="bi bi-dash-circle ms-auto"></i></div>
+                                <div class="badge bg-primary opacity-75">2. Collegamento <i class="bi bi-dash-circle ms-auto"></i></div>
+                                <div class="badge bg-dark opacity-75">1. Fisico <i class="bi bi-reception-4 ms-auto"></i></div>
+                                <div class="text-center mb-2 text-primary flow-label">
+                                    DECAPSULAMENTO <i class="bi bi-arrow-up"></i>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <div id="mappa" class="section-content">
-                <h2 class="mb-4">Mappa del Progetto</h2>
-                <div class="card p-4 font-monospace small border-0 shadow-sm bg-white">
-                    <ul class="list-unstyled mb-0">
-                        <li class="text-primary fw-bold">📁 Corso_Reti_Tlc/</li>
-                        <li class="ms-4">🏠 index.html <span class="badge bg-dark">Home</span></li>
-                        <li class="ms-4 mt-2">📂 Settimana 01/</li>
-                        <li class="ms-5 text-muted">📄 lan_approfondimento.html</li>
-                    </ul>
+                <h2 class="text-primary mb-4">Mappa del Progetto</h2>
+                <div class="p-3 bg-dark text-white rounded font-monospace small">
+                    <div class="text-warning">📁 Corso_Reti_Tlc/</div>
+                    <div class="ps-3 border-start ms-2">🏠 index.html</div>
+                    <div class="ps-3 border-start ms-2 text-warning">📂 Settimana 01 Teoria/</div>
+                    <div class="ps-5 border-start ms-2">📄 lan_approfondimento.html</div>
+                    <div class="ps-5 border-start ms-2">📄 wan_approfondimento.html</div>
                 </div>
             </div>
+
         </main>
     </div>
 
-    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1050">
-        <button class="btn btn-dark rounded-pill shadow-lg px-4" onclick="showSource()">
-            <i class="bi bi-code-slash me-2"></i> Vedi Sorgente
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 2000;">
+        <button class="btn btn-dark shadow-lg rounded-pill px-4" onclick="showSource()">
+            <i class="bi bi-code-slash"></i> Vedi Sorgente
         </button>
     </div>
 
     <div class="modal fade" id="sourceModal" tabindex="-1">
         <div class="modal-dialog modal-xl modal-dialog-scrollable">
-            <div class="modal-content">
+            <div class="modal-content border-0">
                 <div class="modal-header bg-dark text-white py-2">
-                    <h6 class="modal-title font-monospace">Sorgente della Pagina</h6>
+                    <h6 class="modal-title small">Sorgente: index.html</h6>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
-                <div class="modal-body bg-light">
-                    <pre class="small" style="background: #272822; color: #f8f8f2; padding: 15px; border-radius: 8px;"><code id="sourceCode"></code></pre>
+                <div class="modal-body p-0">
+                    <pre class="m-0" style="background: #282a36; color: #f8f8f2; padding: 20px; font-size: 0.8rem;"><code id="sourceCode"></code></pre>
                 </div>
             </div>
         </div>
@@ -181,23 +228,19 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Navigazione tra le schede
         function switchTab(tabId) {
-            document.querySelectorAll('.section-content').forEach(el => el.classList.remove('active'));
-            document.querySelectorAll('.nav-link').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.section-content').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('nav .btn').forEach(b => b.classList.remove('active'));
             document.getElementById(tabId).classList.add('active');
             
-            // Trova e attiva il bottone del menu
-            const activeBtn = Array.from(document.querySelectorAll('.nav-link')).find(btn => 
-                btn.getAttribute('onclick').includes(tabId)
-            );
-            if(activeBtn) activeBtn.classList.add('active');
+            // Trova il bottone cliccato e aggiungi active (logica semplificata)
+            const eventBtn = event ? event.currentTarget : null;
+            if(eventBtn) eventBtn.classList.add('active');
         }
 
-        // Funzione sorgente
         function showSource() {
-            const html = document.documentElement.outerHTML;
-            const escaped = html.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+            const code = document.documentElement.outerHTML;
+            const escaped = code.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
             document.getElementById('sourceCode').innerHTML = escaped;
             new bootstrap.Modal(document.getElementById('sourceModal')).show();
         }
