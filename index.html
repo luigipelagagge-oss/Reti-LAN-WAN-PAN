@@ -1,669 +1,258 @@
-<!DOCTYPE html>
-<html lang="it">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Master Dashboard - Corso di Reti</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="style.css">
+<!-- Sostituisci l'intera sezione <div id="mappa" class="section-content"> con questo: -->
+<div id="mappa" class="section-content">
+    <h2 class="fw-bold mb-4 text-center map-title">🧭 Mappa Completa del Progetto</h2>
+    <p class="text-center text-muted mb-4">Architettura completa del corso - 21 pagine HTML organizzate</p>
     
-    <style>
-        /* STILI SPECIFICI PER QUESTA PAGINA - non vanno in style.css */
-        
-        /* 1. IMPOSTAZIONI GENERALI */
-        body { 
-            background: #f8f9fa; 
-            font-family: 'Segoe UI', Roboto, sans-serif; 
-            color: #333; 
-            line-height: 1.6;
-        }
-        
-        .section-content { display: none; }
-        .section-content.active { 
-            display: block; 
-            animation: fadeIn 0.5s ease-out; 
-        }
-        
-        @keyframes fadeIn { 
-            from { opacity: 0; transform: translateY(10px); } 
-            to { opacity: 1; transform: translateY(0); } 
-        }
-
-        /* 2. BOTTONI NAVIGAZIONE */
-        .btn-outline-primary { 
-            background-color: #fff !important; 
-            color: #0d6efd !important; 
-            border: 2px solid #0d6efd !important; 
-            font-weight: 600; 
-        }
-        
-        .btn-primary.active { 
-            background-color: #0d6efd !important; 
-            color: #fff !important; 
-            border: 2px solid #0d6efd !important; 
-            font-weight: 600; 
-        }
-
-        /* 3. CARD RETI (SOHO, LAN, WAN) */
-        .card-net { 
-            border-radius: 12px; 
-            transition: transform 0.3s, box-shadow 0.3s; 
-            height: 100%; 
-            border: 1px solid #dee2e6; 
-        }
-        
-        .card-net:hover { 
-            transform: translateY(-5px); 
-            box-shadow: 0 8px 15px rgba(0,0,0,0.1); 
-        }
-        
-        /* 4. PILA ISO/OSI */
-        .btn-level-stack {
-            display: flex; 
-            align-items: center; 
-            justify-content: space-between;
-            color: white !important; 
-            border: none; 
-            padding: 12px 20px; 
-            border-radius: 8px; 
-            text-decoration: none; 
-            font-weight: bold; 
-            transition: all 0.3s ease;
-            width: 100%; 
-            margin-bottom: 8px;
-        }
-        
-        .btn-level-stack:hover { 
-            transform: translateX(10px); 
-            filter: brightness(1.1); 
-        }
-        
-        .btn-level-stack::after { 
-            content: '🔎'; 
-            opacity: 0.6; 
-        }
-        
-        .highlight-flow { 
-            transform: scale(1.05) translateX(15px); 
-            box-shadow: 0 0 20px rgba(0,0,0,0.2); 
-            z-index: 10; 
-            filter: brightness(1.2); 
-        }
-
-        /* 5. IMMAGINI E CONTENITORI */
-        .img-box { 
-            border: 1px solid #ddd; 
-            border-radius: 15px; 
-            padding: 15px; 
-            background: white; 
-            box-shadow: 0 4px 8px rgba(0,0,0,0.05); 
-        }
-        
-        .img-box img { 
-            max-width: 100%; 
-            height: auto; 
-            border-radius: 10px; 
-            transition: transform 0.3s; 
-        }
-        
-        .pan-title { 
-            color: #dc3545; 
-            font-weight: bold; 
-            margin-top: 30px; 
-        }
-        
-        /* 6. Bottone VAI (Giallo) */
-        .btn-warning-custom {
-            background-color: #ffc107 !important; 
-            color: #000 !important;
-            font-weight: 700 !important; 
-            border: 2px solid #eec107 !important;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        
-        .btn-warning-custom:hover {
-            background-color: #ffca2c !important;
-            transform: translateY(-2px);
-        }
-        
-        /* 7. Footer sorgente */
-        .btn-source-fixed {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #212529;
-            color: white;
-            border-radius: 50px;
-            padding: 10px 20px;
-            z-index: 1000;
-            transition: all 0.3s;
-        }
-        
-        .btn-source-fixed:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
-        }
-    </style>
-</head>
-<body>
-
-    <div class="container py-5">
-        <header class="text-center mb-5">
-            <h1 class="fw-bold text-dark">Corso di Reti e Telecomunicazioni</h1>
-            <p class="text-muted">Navigazione Didattica: Dalla teoria di base alla simulazione pratica.</p>
-        </header>
-
-        <nav class="text-center mb-5">
-            <div class="btn-group shadow-sm mb-3">
-                <button class="btn btn-outline-primary px-4" id="nav-standalone" onclick="switchTab('standalone')">1. Stand-Alone</button>
-                <button class="btn px-4 btn-outline-primary" id="nav-retelocale" onclick="switchTab('retelocale')">2. Rete Locale</button>
-                <button class="btn btn-outline-primary px-4" id="nav-isoosi" onclick="switchTab('isoosi')">3. Modello ISO/OSI</button>
-                <button class="btn btn-outline-primary px-4" id="nav-mappa" onclick="switchTab('mappa')">4. Mappa Sito</button>
+    <div class="row">
+        <!-- Legenda -->
+        <div class="col-lg-3 mb-4">
+            <div class="card shadow-sm border-0 h-100 card-hover-effect">
+                <div class="card-header bg-dark text-white">
+                    <h6 class="mb-0"><i class="bi bi-info-circle"></i> Legenda & Statistiche</h6>
+                </div>
+                <div class="card-body p-3">
+                    <div class="legend-item">
+                        <div class="legend-color bg-primary"></div>
+                        <div class="legend-text">Dashboard principale</div>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color bg-success"></div>
+                        <div class="legend-text">Teoria delle reti</div>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color bg-info"></div>
+                        <div class="legend-text">Modelli di rete</div>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color bg-warning"></div>
+                        <div class="legend-text">Laboratori pratici</div>
+                    </div>
+                    
+                    <hr>
+                    
+                    <div class="text-center mt-3">
+                        <h4 class="stats-number text-primary">21</h4>
+                        <p class="small mb-1">Pagine HTML</p>
+                        
+                        <div class="row mt-3">
+                            <div class="col-6">
+                                <h5 class="text-success">5</h5>
+                                <small>Teoria</small>
+                            </div>
+                            <div class="col-6">
+                                <h5 class="text-info">11</h5>
+                                <small>ISO/OSI</small>
+                            </div>
+                            <div class="col-6 mt-3">
+                                <h5 class="text-warning">4</h5>
+                                <small>Laboratori</small>
+                            </div>
+                            <div class="col-6 mt-3">
+                                <h5 class="text-danger">1</h5>
+                                <small>Dashboard</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="mt-2 text-center">
-                <a href="Settimana_02_Lab_Arduino/lab_ping.html" class="btn btn-success rounded-pill px-4 btn-sm mx-1 shadow-sm btn-outline-primary">Vai al Laboratorio</a>
+        </div>
+        
+        <!-- Mappa dettagliata -->
+        <div class="col-lg-9">
+            <!-- Dashboard principale -->
+            <div class="text-center mb-5">
+                <a href="index.html" class="text-decoration-none d-inline-block">
+                    <div class="p-4 bg-primary text-white rounded shadow-sm border-0 card-hover-effect highlight-node" style="width: 220px;">
+                        <i class="bi bi-house-door-fill fs-1 d-block mb-2"></i>
+                        <h5 class="fw-bold mb-1">🏠 Dashboard</h5>
+                        <small class="opacity-75">Controller principale</small>
+                    </div>
+                </a>
+                <div class="mt-3">
+                    <i class="bi bi-arrow-down fs-4 text-primary path-arrow"></i>
+                </div>
             </div>
-        </nav>
-
-        <main class="bg-white p-4 p-md-5 shadow rounded-4 border">
             
-            <!-- SEZIONE 1: STAND-ALONE -->
-            <div id="standalone" class="section-content active">
-                <h2 class="fw-bold mb-4 text-danger">1. Stand-Alone (L'Isola Digitale)</h2>
-                <div class="row align-items-center">
-                    <div class="col-md-7">
-                        <p class="lead text-secondary">Una macchina isolata garantisce la massima sicurezza fisica.</p>
-                        <div class="p-3 border-start border-danger border-4 bg-light rounded text-dark">
-                            <h6 class="text-danger fw-bold"><i class="bi bi-shield-lock"></i> Concetto di Air Gap</h6>
-                            <p class="small mb-0">L'Air Gap è una misura di sicurezza che prevede l'assenza totale di interfacce di rete. È lo stato "zero" da cui parte lo studio delle reti.</p>
+            <!-- Tre colonne principali -->
+            <div class="row g-4">
+                <!-- Colonna 1: Teoria -->
+                <div class="col-md-4">
+                    <div class="card h-100 phase-card phase-2 card-hover-effect">
+                        <div class="card-header bg-success text-white">
+                            <h6 class="mb-0"><i class="bi bi-book"></i> Settimana 1 - Teoria</h6>
                         </div>
-                    </div>
-                    <div class="col-md-5 text-center">
-                        <div class="img-box d-inline-block border-danger border-dashed">
-                            <i class="bi bi-pc-display text-primary" style="font-size: 4rem;"></i>
-                            <div class="badge bg-danger d-block mt-2">OFFLINE</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- SEZIONE 2: RETE LOCALE -->
-            <div id="retelocale" class="section-content">
-                <h2 class="fw-bold mb-4 text-primary">Evoluzione: Dallo Stand-Alone alla LAN</h2>
-                <div class="row g-4 mb-5">
-                    <div class="col-md-4">
-                        <div class="card p-3 bg-light border-0 card-net text-start">
-                            <h6 class="fw-bold text-center">SOHO (Small Office)</h6>
-                            <hr class="my-1">
-                            <ul class="x-small list-unstyled ps-0 mb-0">
-                                <li><i class="bi bi-cpu text-primary me-1"></i> <b>Gateway:</b> Router unico LAN/WAN.</li>
-                                <li><i class="bi bi-share text-primary me-1"></i> <b>Risorse:</b> Stampanti condivise.</li>
-                                <li><i class="bi bi-shield-check text-primary me-1"></i> <b>Sicurezza:</b> Firewall integrato.</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card p-3 border-primary shadow-sm card-net">
-                            <h6 class="fw-bold text-primary">LAN (Local Area)</h6>
-                            <p class="small text-muted">Rete privata ad alta velocità entro edifici limitati.</p>
-                            <a href="Settimana_01_Teoria/lan_approfondimento.html" class="btn btn-primary btn-sm mt-auto fw-bold">Dettagli LAN</a>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card p-3 border-danger shadow-sm card-net">
-                            <h6 class="fw-bold text-danger">WAN (Wide Area)</h6>
-                            <p class="small text-muted">Interconnessione globale (Internet).</p>
-                            <a href="Settimana_01_Teoria/wan_approfondimento.html" class="btn btn-danger btn-sm mt-auto fw-bold">Dettagli WAN</a>
-                        </div>
-                    </div>
-                </div>
-
-                <h4 class="pan-title">1. La P.A.N. (Personal Area Network)</h4>
-                <div class="row align-items-center">
-                    <div class="col-md-5">
-                        <p class="text-secondary small">Rete centrata sulla persona (raggio ~10m).</p>
-                        <div class="bg-light p-3 rounded border-start border-danger border-4 mb-3 text-dark">
-                            <ul class="small mb-0 ps-3">
-                                <li><b>WPAN:</b> Bluetooth, ZigBee.</li>
-                                <li><b>Uso:</b> Smartwatch, cuffie wireless.</li>
-                                <li><b>NFC:</b> Pagamenti e domotica a contatto.</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-7 text-center">
-                        <div class="img-box">
-                            <a href="https://itrelease.com/2018/07/advantages-and-disadvantages-of-personal-area-network-pan/" target="_blank">
-                                <img src="pan_network.png" alt="Schema PAN">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- SEZIONE 3: MODELLO ISO/OSI -->
-            <div id="isoosi" class="section-content">
-                <div class="text-center mb-4">
-                    <h2 class="fw-bold" style="color: #d63384;">Il Concetto delle Matrioske</h2>
-                    <p class="text-muted small">ISO/OSI è una pila. A sinistra il concetto, a destra i livelli cliccabili.</p>
-                    
-                    <a href="Modello_OSI_Details/descrizione_livelli.html" class="btn btn-warning-custom px-5 py-2 mt-2 shadow-sm">
-                        <i class="bi bi-box-arrow-in-right"></i> VAI ALLA SPIEGAZIONE DEI LIVELLI
-                    </a>
-                </div>
-                
-                <div class="row g-5">
-                    <div class="col-lg-5">
-                        <div class="alert alert-info border-0 shadow-sm mb-4">
-                            <h6 class="fw-bold"><i class="bi bi-info-circle"></i> Cos'è la PDU?</h6>
-                            <p class="x-small mb-0">
-                                La <b>PDU (Protocol Data Unit)</b> è il nome che i dati assumono a ogni livello. 
-                                Attraverso l'<b>incapsulamento</b>, ogni strato "impacchetta" le informazioni del livello superiore aggiungendo i propri controlli.
-                            </p>
-                        </div>
-
-                        <div class="img-box mb-4 text-center">
-                            <img src="matrioske.jpg" alt="Incapsulamento">
-                            <p class="x-small text-muted mt-2 italic">L'incapsulamento visivo</p>
-                        </div>
-
-                        <div class="card border-success shadow-sm overflow-hidden">
-                            <div class="card-header bg-success text-white py-1 small fw-bold">Tabella PDU</div>
-                            <table class="table table-sm small mb-0">
-                                <tbody>
-                                    <tr class="table-danger"><td>7-5</td><td><b>DATI</b></td></tr>
-                                    <tr class="table-warning"><td>4</td><td><b>SEGMENTO</b></td></tr>
-                                    <tr class="table-info"><td>3</td><td><b>PACCHETTO</b></td></tr>
-                                    <tr class="table-primary"><td>2</td><td><b>FRAME</b></td></tr>
-                                    <tr class="table-dark text-white"><td>1</td><td><b>BIT</b></td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-7">
-                        <div class="d-flex gap-2 mb-4">
-                            <button class="btn btn-danger btn-sm w-100 fw-bold" onclick="animateOSI('send')">SENDER (7 → 1)</button>
-                            <button class="btn btn-primary btn-sm w-100 fw-bold" onclick="animateOSI('receive')">RECEIVER (1 → 7)</button>
-                        </div>
-                        <div id="osi-stack">
-                            <a href="Modello_OSI_Details/livello7.html" class="btn-level-stack osi-item" style="background-color: #e83e8c;">7. Applicazione</a>
-                            <a href="Modello_OSI_Details/livello6.html" class="btn-level-stack osi-item" style="background-color: #d63384;">6. Presentazione</a>
-                            <a href="Modello_OSI_Details/livello5.html" class="btn-level-stack osi-item" style="background-color: #fd7e14;">5. Sessione</a>
-                            <a href="Modello_OSI_Details/livello4.html" class="btn-level-stack osi-item" style="background-color: #ffc107; color: #333 !important;">4. Trasporto</a>
-                            <a href="Modello_OSI_Details/livello3.html" class="btn-level-stack osi-item" style="background-color: #198754;">3. Rete</a>
-                            <a href="Modello_OSI_Details/livello2.html" class="btn-level-stack osi-item" style="background-color: #0d6efd;">2. Collegamento</a>
-                            <a href="Modello_OSI_Details/livello1.html" class="btn-level-stack osi-item" style="background-color: #6c757d;">1. Fisico</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- SEZIONE 4: MAPPA INTERATTIVA -->
-            <div id="mappa" class="section-content">
-                <h2 class="fw-bold mb-4 text-center map-title">🧭 Mappa Completa del Progetto</h2>
-                <p class="text-center text-muted mb-4">Naviga visivamente attraverso l'intera architettura del corso</p>
-                
-                <div class="row">
-                    <!-- Colonna sinistra: Legenda -->
-                    <div class="col-lg-3 mb-4">
-                        <div class="card shadow-sm border-0 h-100 card-hover-effect">
-                            <div class="card-header bg-dark text-white">
-                                <h6 class="mb-0"><i class="bi bi-info-circle"></i> Legenda</h6>
-                            </div>
-                            <div class="card-body p-3">
-                                <div class="legend-item">
-                                    <div class="legend-color bg-primary"></div>
-                                    <div class="legend-text">Percorso didattico principale</div>
-                                </div>
-                                <div class="legend-item">
-                                    <div class="legend-color bg-success"></div>
-                                    <div class="legend-text">Contenuto teorico</div>
-                                </div>
-                                <div class="legend-item">
-                                    <div class="legend-color bg-warning"></div>
-                                    <div class="legend-text">Laboratorio pratico</div>
-                                </div>
-                                <div class="legend-item">
-                                    <div class="legend-color bg-info"></div>
-                                    <div class="legend-text">Approfondimento</div>
-                                </div>
-                                <hr>
-                                <div class="small">
-                                    <p class="mb-1"><i class="bi bi-arrow-right text-primary"></i> Flusso didattico</p>
-                                    <p class="mb-1"><i class="bi bi-link-45deg text-success"></i> Collegamento diretto</p>
-                                    <p class="mb-0"><strong>Click su qualsiasi elemento per aprire</strong></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Colonna centrale: Mappa interattiva -->
-                    <div class="col-lg-9">
-                        <div class="bg-light p-4 rounded shadow-sm">
-                            <!-- Radice del progetto -->
-                            <div class="text-center mb-4">
-                                <div class="d-inline-block p-3 bg-white rounded shadow-sm border highlight-node">
-                                    <i class="bi bi-diagram-3-fill text-dark fs-1 d-block"></i>
-                                    <h5 class="fw-bold mt-2 mb-0">Corso di Reti</h5>
-                                    <small class="text-muted">Repository principale</small>
-                                </div>
-                                <div class="mt-2">
-                                    <i class="bi bi-arrow-down fs-4 text-primary path-arrow"></i>
-                                </div>
-                            </div>
-                            
-                            <!-- Dashboard principale -->
-                            <div class="text-center mb-4">
-                                <a href="index.html" class="text-decoration-none d-inline-block">
-                                    <div class="p-3 bg-primary text-white rounded shadow-sm border-0 card-hover-effect" style="width: 200px;">
-                                        <i class="bi bi-house-door-fill fs-2 d-block"></i>
-                                        <h6 class="fw-bold mt-2 mb-0">🏠 Dashboard</h6>
-                                        <small>Controller principale</small>
-                                    </div>
+                        <div class="card-body">
+                            <p class="small text-muted">Concetti base delle reti di computer</p>
+                            <div class="d-grid gap-2 mt-3">
+                                <a href="Settimana_01_Teoria/pan_approfondimento.html" class="btn btn-outline-success btn-sm text-start">
+                                    <i class="bi bi-person-badge"></i> PAN - Personal Area Network
                                 </a>
-                                <div class="mt-2">
-                                    <i class="bi bi-arrow-down fs-4 text-primary path-arrow"></i>
+                                <a href="Settimana_01_Teoria/soho_approfondimento.html" class="btn btn-outline-success btn-sm text-start">
+                                    <i class="bi bi-house"></i> SOHO - Small Office/Home Office
+                                </a>
+                                <a href="Settimana_01_Teoria/lan_approfondimento.html" class="btn btn-outline-success btn-sm text-start">
+                                    <i class="bi bi-router"></i> LAN - Local Area Network
+                                </a>
+                                <a href="Settimana_01_Teoria/wan_approfondimento.html" class="btn btn-outline-success btn-sm text-start">
+                                    <i class="bi bi-globe"></i> WAN - Wide Area Network
+                                </a>
+                                <a href="Settimana_01_Teoria/topologia.html" class="btn btn-outline-success btn-sm text-start">
+                                    <i class="bi bi-diagram-3"></i> Topologie di rete
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Colonna 2: ISO/OSI -->
+                <div class="col-md-4">
+                    <div class="card h-100 phase-card phase-3 card-hover-effect">
+                        <div class="card-header bg-info text-white">
+                            <h6 class="mb-0"><i class="bi bi-layers"></i> Modello ISO/OSI</h6>
+                        </div>
+                        <div class="card-body">
+                            <p class="small text-muted">Il modello a 7 livelli</p>
+                            
+                            <!-- Torre ISO/OSI -->
+                            <div class="mb-3">
+                                <h6 class="fw-bold small">Torre dei 7 livelli:</h6>
+                                <div class="d-grid gap-1">
+                                    <a href="Modello_OSI_Details/livello7.html" class="btn btn-sm text-white" style="background-color: #e83e8c; font-size: 0.8rem;">7. Applicazione</a>
+                                    <a href="Modello_OSI_Details/livello6.html" class="btn btn-sm text-white" style="background-color: #d63384; font-size: 0.8rem;">6. Presentazione</a>
+                                    <a href="Modello_OSI_Details/livello5.html" class="btn btn-sm text-white" style="background-color: #fd7e14; font-size: 0.8rem;">5. Sessione</a>
+                                    <a href="Modello_OSI_Details/livello4.html" class="btn btn-sm" style="background-color: #ffc107; color: #000; font-size: 0.8rem;">4. Trasporto</a>
+                                    <a href="Modello_OSI_Details/livello3.html" class="btn btn-sm text-white" style="background-color: #198754; font-size: 0.8rem;">3. Rete</a>
+                                    <a href="Modello_OSI_Details/livello2.html" class="btn btn-sm text-white" style="background-color: #0d6efd; font-size: 0.8rem;">2. Collegamento</a>
+                                    <a href="Modello_OSI_Details/livello1.html" class="btn btn-sm text-white" style="background-color: #6c757d; font-size: 0.8rem;">1. Fisico</a>
                                 </div>
                             </div>
                             
-                            <!-- Percorso principale in 4 fasi -->
-                            <div class="row g-4 mb-5">
-                                <!-- Fase 1 -->
-                                <div class="col-md-3">
-                                    <div class="card h-100 phase-card phase-1 card-hover-effect">
-                                        <div class="card-body text-center">
-                                            <div class="bg-danger bg-opacity-10 p-3 rounded-circle d-inline-block mb-3">
-                                                <i class="bi bi-shield-lock text-danger fs-3"></i>
-                                            </div>
-                                            <h6 class="card-title fw-bold">Fase 1: Isolamento</h6>
-                                            <p class="card-text small text-muted">Air Gap e sicurezza fisica</p>
-                                            <div class="mt-3">
-                                                <a href="#" onclick="switchTab('standalone')" class="btn btn-outline-danger btn-sm">
-                                                    Vai alla sezione
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <!-- Fase 2 -->
-                                <div class="col-md-3">
-                                    <div class="card h-100 phase-card phase-2 card-hover-effect">
-                                        <div class="card-body text-center">
-                                            <div class="bg-primary bg-opacity-10 p-3 rounded-circle d-inline-block mb-3">
-                                                <i class="bi bi-router text-primary fs-3"></i>
-                                            </div>
-                                            <h6 class="card-title fw-bold">Fase 2: Connessione</h6>
-                                            <p class="card-text small text-muted">LAN, SOHO, WAN</p>
-                                            <div class="mt-3">
-                                                <a href="#" onclick="switchTab('retelocale')" class="btn btn-outline-primary btn-sm">
-                                                    Vai alla sezione
-                                                </a>
-                                                <div class="mt-2">
-                                                    <small class="text-muted d-block">Approfondimenti:</small>
-                                                    <a href="Settimana_01_Teoria/lan_approfondimento.html" class="badge bg-primary badge-pill-custom text-decoration-none">LAN</a>
-                                                    <a href="Settimana_01_Teoria/wan_approfondimento.html" class="badge bg-danger badge-pill-custom text-decoration-none ms-1">WAN</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <!-- Fase 3 -->
-                                <div class="col-md-3">
-                                    <div class="card h-100 phase-card phase-3 card-hover-effect">
-                                        <div class="card-body text-center">
-                                            <div class="bg-success bg-opacity-10 p-3 rounded-circle d-inline-block mb-3">
-                                                <i class="bi bi-layers text-success fs-3"></i>
-                                            </div>
-                                            <h6 class="card-title fw-bold">Fase 3: Astrazione</h6>
-                                            <p class="card-text small text-muted">Modello ISO/OSI</p>
-                                            <div class="mt-3">
-                                                <a href="#" onclick="switchTab('isoosi')" class="btn btn-outline-success btn-sm">
-                                                    Vai alla sezione
-                                                </a>
-                                                <div class="mt-2">
-                                                    <small class="text-muted d-block">Struttura completa:</small>
-                                                    <div class="btn-group btn-group-sm" role="group">
-                                                        <a href="Modello_OSI_Details/descrizione_livelli.html" class="btn btn-outline-success">Matriosche</a>
-                                                        <a href="Modello_OSI_Details/confronto_tcp.html" class="btn btn-outline-info">Confronto</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <!-- Fase 4 -->
-                                <div class="col-md-3">
-                                    <div class="card h-100 phase-card phase-4 card-hover-effect">
-                                        <div class="card-body text-center">
-                                            <div class="bg-warning bg-opacity-10 p-3 rounded-circle d-inline-block mb-3">
-                                                <i class="bi bi-cpu text-warning fs-3"></i>
-                                            </div>
-                                            <h6 class="card-title fw-bold">Fase 4: Implementazione</h6>
-                                            <p class="card-text small text-muted">Laboratorio Arduino</p>
-                                            <div class="mt-3">
-                                                <a href="Settimana_02_Lab_Arduino/lab_ping.html" class="btn btn-outline-warning btn-sm">
-                                                    <i class="bi bi-lightning-charge"></i> Lab Ping
-                                                </a>
-                                                <a href="Settimana_02_Lab_Arduino/lab_cs.html" class="btn btn-outline-warning btn-sm mt-2">
-                                                    <i class="bi bi-hdd-network"></i> Lab Client/Server
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
+                            <!-- Spiegazioni -->
+                            <div class="mt-3">
+                                <h6 class="fw-bold small">Approfondimenti:</h6>
+                                <div class="d-grid gap-2">
+                                    <a href="Modello_OSI_Details/descrizione_livelli.html" class="btn btn-outline-info btn-sm">
+                                        <i class="bi bi-puzzle"></i> Descrizione Livelli
+                                    </a>
+                                    <a href="Modello_OSI_Details/confronto_tcp.html" class="btn btn-outline-info btn-sm">
+                                        <i class="bi bi-columns"></i> Confronto TCP/IP
+                                    </a>
+                                    <a href="Modello_OSI_Details/iso_osi_spiegazione.html" class="btn btn-outline-info btn-sm">
+                                        <i class="bi bi-book"></i> Spiegazione ISO/OSI
+                                    </a>
+                                    <a href="Modello_OSI_Details/tcp_ip_spiegazione.html" class="btn btn-outline-info btn-sm">
+                                        <i class="bi bi-globe"></i> Spiegazione TCP/IP
+                                    </a>
                                 </div>
                             </div>
-                            
-                            <!-- Struttura dettagliata del modello ISO/OSI -->
-                            <div class="card mb-4 border-0 shadow-sm card-hover-effect">
-                                <div class="card-header bg-success text-white">
-                                    <h6 class="mb-0"><i class="bi bi-diagram-3"></i> Modello ISO/OSI - Struttura Completa</h6>
-                                </div>
-                                <div class="card-body p-3">
-                                    <div class="row g-2">
-                                        <!-- Torre ISO/OSI -->
-                                        <div class="col-md-5">
-                                            <div class="bg-light p-3 rounded">
-                                                <h6 class="fw-bold text-success">📚 Torre ISO/OSI (7 Livelli)</h6>
-                                                <div class="d-grid gap-1 mt-3">
-                                                    <a href="Modello_OSI_Details/livello7.html" class="btn btn-sm text-white" style="background-color: #e83e8c;">7. Applicazione</a>
-                                                    <a href="Modello_OSI_Details/livello6.html" class="btn btn-sm text-white" style="background-color: #d63384;">6. Presentazione</a>
-                                                    <a href="Modello_OSI_Details/livello5.html" class="btn btn-sm text-white" style="background-color: #fd7e14;">5. Sessione</a>
-                                                    <a href="Modello_OSI_Details/livello4.html" class="btn btn-sm" style="background-color: #ffc107; color: #000;">4. Trasporto</a>
-                                                    <a href="Modello_OSI_Details/livello3.html" class="btn btn-sm text-white" style="background-color: #198754;">3. Rete</a>
-                                                    <a href="Modello_OSI_Details/livello2.html" class="btn btn-sm text-white" style="background-color: #0d6efd;">2. Collegamento</a>
-                                                    <a href="Modello_OSI_Details/livello1.html" class="btn btn-sm text-white" style="background-color: #6c757d;">1. Fisico</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                        <!-- Centro: Confronto e approfondimenti -->
-                                        <div class="col-md-2 text-center d-flex flex-column justify-content-center">
-                                            <div class="mb-3">
-                                                <i class="bi bi-arrow-left-right fs-3 text-primary path-arrow"></i>
-                                            </div>
-                                            <div class="mt-3">
-                                                <a href="Modello_OSI_Details/confronto_tcp.html" class="btn btn-info btn-sm">
-                                                    <i class="bi bi-columns"></i> Confronto
-                                                </a>
-                                            </div>
-                                        </div>
-                                        
-                                        <!-- Spiegazioni dettagliate -->
-                                        <div class="col-md-5">
-                                            <div class="bg-light p-3 rounded">
-                                                <h6 class="fw-bold text-info">📖 Spiegazioni Dettagliate</h6>
-                                                <div class="d-grid gap-2 mt-3">
-                                                    <a href="Modello_OSI_Details/iso_osi_spiegazione.html" class="btn btn-success btn-sm">
-                                                        <i class="bi bi-book"></i> ISO/OSI Completo
-                                                    </a>
-                                                    <a href="Modello_OSI_Details/tcp_ip_spiegazione.html" class="btn btn-primary btn-sm">
-                                                        <i class="bi bi-globe"></i> TCP/IP Completo
-                                                    </a>
-                                                </div>
-                                                <div class="mt-3 small text-muted">
-                                                    <p class="mb-1"><strong>Nuovi contenuti:</strong></p>
-                                                    <ul class="ps-3 mb-0">
-                                                        <li>Spiegazione approfondita di ogni livello</li>
-                                                        <li>Confronto visivo tra i modelli</li>
-                                                        <li>Esempi pratici e protocolli</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Colonna 3: Laboratori -->
+                <div class="col-md-4">
+                    <div class="card h-100 phase-card phase-4 card-hover-effect">
+                        <div class="card-header bg-warning text-white">
+                            <h6 class="mb-0"><i class="bi bi-cpu"></i> Settimana 2 - Laboratori</h6>
+                        </div>
+                        <div class="card-body">
+                            <p class="small text-muted">Esercitazioni pratiche con Arduino</p>
+                            <div class="d-grid gap-2 mt-3">
+                                <a href="Settimana_02_Lab_Arduino/lab_ping.html" class="btn btn-outline-warning btn-sm text-start">
+                                    <i class="bi bi-lightning-charge"></i> Lab 1: Ping Pong (Serial)
+                                </a>
+                                <a href="Settimana_02_Lab_Arduino/lab_cs.html" class="btn btn-outline-warning btn-sm text-start">
+                                    <i class="bi bi-hdd-network"></i> Lab 2: Client/Server
+                                </a>
+                                <a href="Settimana_02_Lab_Arduino/lab_i2c.html" class="btn btn-outline-warning btn-sm text-start">
+                                    <i class="bi bi-motherboard"></i> Lab 3: Comunicazione I2C
+                                </a>
+                                <a href="Settimana_02_Lab_Arduino/lab_temp.html" class="btn btn-outline-warning btn-sm text-start">
+                                    <i class="bi bi-thermometer"></i> Lab 4: Controllo Temperatura
+                                </a>
                             </div>
-                            
-                            <!-- Struttura file system -->
-                            <div class="card border-0 shadow-sm card-hover-effect">
-                                <div class="card-header bg-dark text-white">
-                                    <h6 class="mb-0"><i class="bi bi-folder-fill"></i> Struttura del Progetto (File System)</h6>
-                                </div>
-                                <div class="card-body p-3">
-                                    <div class="tree-view small">
-                                        <div class="mb-2">
-                                            <i class="bi bi-folder-fill text-warning"></i> <strong>Corso_Reti_Tlc/</strong>
-                                        </div>
-                                        <div class="ms-4">
-                                            <div class="mb-1">
-                                                <i class="bi bi-file-earmark-code text-primary"></i> <a href="index.html" class="text-decoration-none fw-bold">index.html</a>
-                                                <span class="badge bg-primary badge-pill-custom ms-2">Dashboard</span>
-                                            </div>
-                                            
-                                            <div class="mb-1">
-                                                <i class="bi bi-folder text-warning"></i> <strong>Settimana_01_Teoria/</strong>
-                                                <div class="ms-4">
-                                                    <div><i class="bi bi-file-earmark-text text-info"></i> <a href="Settimana_01_Teoria/lan_approfondimento.html" class="text-decoration-none">lan_approfondimento.html</a></div>
-                                                    <div><i class="bi bi-file-earmark-text text-info"></i> <a href="Settimana_01_Teoria/wan_approfondimento.html" class="text-decoration-none">wan_approfondimento.html</a></div>
-                                                </div>
-                                            </div>
-                                            
-                                            <div class="mb-1">
-                                                <i class="bi bi-folder text-warning"></i> <strong>Modello_OSI_Details/</strong>
-                                                <div class="ms-4">
-                                                    <div><i class="bi bi-file-earmark-text text-info"></i> <a href="Modello_OSI_Details/descrizione_livelli.html" class="text-decoration-none">descrizione_livelli.html</a></div>
-                                                    <div><i class="bi bi-file-earmark-text text-success"></i> <a href="Modello_OSI_Details/confronto_tcp.html" class="text-decoration-none">confronto_tcp.html</a></div>
-                                                    <div><i class="bi bi-file-earmark-text text-success"></i> <a href="Modello_OSI_Details/iso_osi_spiegazione.html" class="text-decoration-none">iso_osi_spiegazione.html</a></div>
-                                                    <div><i class="bi bi-file-earmark-text text-success"></i> <a href="Modello_OSI_Details/tcp_ip_spiegazione.html" class="text-decoration-none">tcp_ip_spiegazione.html</a></div>
-                                                    <div class="text-muted">
-                                                        <i class="bi bi-file-earmark-text"></i> livello7.html • livello6.html • livello5.html • livello4.html • livello3.html • livello2.html • livello1.html
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            
-                                            <div class="mb-1">
-                                                <i class="bi bi-folder text-warning"></i> <strong>Settimana_02_Lab_Arduino/</strong>
-                                                <div class="ms-4">
-                                                    <div><i class="bi bi-file-earmark-code text-warning"></i> <a href="Settimana_02_Lab_Arduino/lab_ping.html" class="text-decoration-none">lab_ping.html</a></div>
-                                                    <div><i class="bi bi-file-earmark-code text-warning"></i> <a href="Settimana_02_Lab_Arduino/lab_cs.html" class="text-decoration-none">lab_cs.html</a></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="mt-4 p-3 bg-light rounded border">
-                                        <h6 class="fw-bold mb-2"><i class="bi bi-graph-up"></i> Flusso Didattico</h6>
-                                        <div class="progress progress-custom mb-2">
-                                            <div class="progress-bar bg-danger" role="progressbar" style="width: 25%">Isolamento</div>
-                                            <div class="progress-bar bg-primary" role="progressbar" style="width: 25%">Connessione</div>
-                                            <div class="progress-bar bg-success" role="progressbar" style="width: 25%">Astrazione</div>
-                                            <div class="progress-bar bg-warning" role="progressbar" style="width: 25%">Implementazione</div>
-                                        </div>
-                                        <p class="small mb-0">Il corso segue un percorso lineare che parte dall'isolamento per arrivare all'implementazione pratica, passando attraverso la comprensione teorica dei modelli di rete.</p>
-                                    </div>
-                                </div>
-                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Struttura file system completa -->
+            <div class="card mt-4 border-0 shadow-sm card-hover-effect">
+                <div class="card-header bg-dark text-white">
+                    <h6 class="mb-0"><i class="bi bi-folder-fill"></i> Struttura Completa del Progetto</h6>
+                </div>
+                <div class="card-body p-3">
+                    <div class="tree-view small">
+                        <div class="mb-2">
+                            <i class="bi bi-folder-fill text-warning"></i> <strong>Corso_Reti_Tlc/</strong>
+                            <span class="badge bg-secondary badge-pill-custom ms-2">Radice</span>
                         </div>
                         
-                        <!-- Statistiche -->
-                        <div class="row mt-4">
-                            <div class="col-md-3">
-                                <div class="card border-0 shadow-sm text-center stats-card">
-                                    <div class="card-body">
-                                        <h3 class="text-primary stats-number">12</h3>
-                                        <p class="mb-0 small">File HTML</p>
+                        <div class="ms-4">
+                            <!-- File radice -->
+                            <div class="mb-1">
+                                <i class="bi bi-file-earmark-code text-primary"></i> <a href="index.html" class="text-decoration-none fw-bold">index.html</a>
+                                <span class="badge bg-primary badge-pill-custom ms-2">Dashboard</span>
+                            </div>
+                            
+                            <!-- Cartella Assets -->
+                            <div class="mb-1">
+                                <i class="bi bi-folder text-warning"></i> <strong>assets/</strong>
+                                <div class="ms-4">
+                                    <div><i class="bi bi-file-earmark-code text-info"></i> <a href="assets/style.css" class="text-decoration-none">style.css</a></div>
+                                    <div><i class="bi bi-file-earmark-code text-info"></i> <a href="assets/script.js" class="text-decoration-none">script.js</a></div>
+                                    <div class="text-muted">
+                                        <i class="bi bi-folder"></i> images/ (12 file immagine)
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3">
-                                <div class="card border-0 shadow-sm text-center stats-card">
-                                    <div class="card-body">
-                                        <h3 class="text-success stats-number">4</h3>
-                                        <p class="mb-0 small">Fasi Didattiche</p>
+                            
+                            <!-- Cartella Teoria -->
+                            <div class="mb-1">
+                                <i class="bi bi-folder text-warning"></i> <strong>Settimana_01_Teoria/</strong>
+                                <div class="ms-4">
+                                    <div><i class="bi bi-file-earmark-text text-success"></i> <a href="Settimana_01_Teoria/pan_approfondimento.html" class="text-decoration-none">pan_approfondimento.html</a></div>
+                                    <div><i class="bi bi-file-earmark-text text-success"></i> <a href="Settimana_01_Teoria/soho_approfondimento.html" class="text-decoration-none">soho_approfondimento.html</a></div>
+                                    <div><i class="bi bi-file-earmark-text text-success"></i> <a href="Settimana_01_Teoria/lan_approfondimento.html" class="text-decoration-none">lan_approfondimento.html</a></div>
+                                    <div><i class="bi bi-file-earmark-text text-success"></i> <a href="Settimana_01_Teoria/wan_approfondimento.html" class="text-decoration-none">wan_approfondimento.html</a></div>
+                                    <div><i class="bi bi-file-earmark-text text-success"></i> <a href="Settimana_01_Teoria/topologia.html" class="text-decoration-none">topologia.html</a></div>
+                                </div>
+                            </div>
+                            
+                            <!-- Cartella ISO/OSI -->
+                            <div class="mb-1">
+                                <i class="bi bi-folder text-warning"></i> <strong>Modello_OSI_Details/</strong>
+                                <div class="ms-4">
+                                    <div><i class="bi bi-file-earmark-text text-info"></i> <a href="Modello_OSI_Details/descrizione_livelli.html" class="text-decoration-none">descrizione_livelli.html</a></div>
+                                    <div><i class="bi bi-file-earmark-text text-info"></i> <a href="Modello_OSI_Details/confronto_tcp.html" class="text-decoration-none">confronto_tcp.html</a></div>
+                                    <div><i class="bi bi-file-earmark-text text-info"></i> <a href="Modello_OSI_Details/iso_osi_spiegazione.html" class="text-decoration-none">iso_osi_spiegazione.html</a></div>
+                                    <div><i class="bi bi-file-earmark-text text-info"></i> <a href="Modello_OSI_Details/tcp_ip_spiegazione.html" class="text-decoration-none">tcp_ip_spiegazione.html</a></div>
+                                    <div class="text-muted">
+                                        <i class="bi bi-file-earmark-text"></i> livello1.html • livello2.html • livello3.html • livello4.html • livello5.html • livello6.html • livello7.html
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3">
-                                <div class="card border-0 shadow-sm text-center stats-card">
-                                    <div class="card-body">
-                                        <h3 class="text-warning stats-number">3</h3>
-                                        <p class="mb-0 small">Cartelle</p>
-                                    </div>
+                            
+                            <!-- Cartella Laboratori -->
+                            <div class="mb-1">
+                                <i class="bi bi-folder text-warning"></i> <strong>Settimana_02_Lab_Arduino/</strong>
+                                <div class="ms-4">
+                                    <div><i class="bi bi-file-earmark-code text-warning"></i> <a href="Settimana_02_Lab_Arduino/lab_ping.html" class="text-decoration-none">lab_ping.html</a></div>
+                                    <div><i class="bi bi-file-earmark-code text-warning"></i> <a href="Settimana_02_Lab_Arduino/lab_cs.html" class="text-decoration-none">lab_cs.html</a></div>
+                                    <div><i class="bi bi-file-earmark-code text-warning"></i> <a href="Settimana_02_Lab_Arduino/lab_i2c.html" class="text-decoration-none">lab_i2c.html</a></div>
+                                    <div><i class="bi bi-file-earmark-code text-warning"></i> <a href="Settimana_02_Lab_Arduino/lab_temp.html" class="text-decoration-none">lab_temp.html</a></div>
                                 </div>
                             </div>
-                            <div class="col-md-3">
-                                <div class="card border-0 shadow-sm text-center stats-card">
-                                    <div class="card-body">
-                                        <h3 class="text-info stats-number">2</h3>
-                                        <p class="mb-0 small">Laboratori</p>
-                                    </div>
-                                </div>
+                            
+                            <!-- Documentazione -->
+                            <div class="mb-1">
+                                <i class="bi bi-file-earmark-text text-secondary"></i> <a href="README.md" class="text-decoration-none">README.md</a>
+                                <span class="badge bg-secondary badge-pill-custom ms-2">Documentazione</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </main>
+        </div>
     </div>
-
-    <div class="position-fixed bottom-0 end-0 p-3">
-        <button class="btn btn-dark shadow-lg rounded-pill px-4" onclick="showSource()">
-            <i class="bi bi-code-slash"></i> Vedi Sorgente
-        </button>
-    </div>
-
-    <script>
-        // Inizializza la prima tab come attiva
-        document.addEventListener('DOMContentLoaded', function() {
-            switchTab('standalone');
-        });
-
-        function switchTab(tabId) {
-            document.querySelectorAll('.section-content').forEach(s => s.classList.remove('active'));
-            document.querySelectorAll('nav .btn').forEach(b => {
-                b.classList.remove('active', 'btn-primary');
-                b.classList.add('btn-outline-primary');
-            });
-            document.getElementById(tabId).classList.add('active');
-            const btn = document.getElementById('nav-' + tabId);
-            if(btn) { 
-                btn.classList.remove('btn-outline-primary'); 
-                btn.classList.add('btn-primary', 'active'); 
-            }
-        }
-
-        function animateOSI(mode) {
-            const items = Array.from(document.querySelectorAll('.osi-item'));
-            items.forEach(i => i.classList.remove('highlight-flow'));
-            const sequence = (mode === 'send') ? items : items.reverse();
-            sequence.forEach((item, i) => {
-                setTimeout(() => {
-                    sequence.forEach(el => el.classList.remove('highlight-flow'));
-                    item.classList.add('highlight-flow');
-                }, i * 350);
-            });
-        }
-
-        function showSource() {
-            const html = document.documentElement.outerHTML;
-            const win = window.open("", "Sorgente", "width=900,height=700");
-            win.document.write("<title>Source</title><body style='background:#222;color:#fff;'><pre>" + html.replace(/</g, "&lt;") + "</pre></body>");
-        }
-    </script>
-
-</body>
-</html>
+</div>
