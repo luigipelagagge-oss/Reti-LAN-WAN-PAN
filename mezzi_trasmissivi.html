@@ -679,7 +679,7 @@
         </div>
     </div>
 
-    <!-- UTP Section - CON IMMAGINI AGGIUNTE -->
+    <!-- UTP Section - AGGIORNATA CON IMMAGINE RJ45 CORRETTA -->
     <div id="utp" class="content-section">
         <div class="section-header">
             <div class="section-icon" style="color: var(--utp-color);">🔌</div>
@@ -718,18 +718,19 @@
                 </div>
             </div>
             
+            <!-- IMMAGINE RJ45 AGGIORNATA CON LINK CORRETTO -->
             <div class="gallery-item">
-                <img src="https://www.fiberoptics4sale.com/cdn/shop/articles/rj45_connector_1024x1024.jpg?v=1571439703" 
-                     alt="RJ45 Connector Pinout" 
+                <img src="RJ45-pinout-diagram-T568B-1.jpg" 
+                     alt="RJ45 Pinout Diagram T568B" 
                      class="gallery-img utp"
-                     onerror="this.src='https://via.placeholder.com/300x200/FF9800/FFFFFF?text=RJ45+Pinout'">
+                     onerror="this.src='https://via.placeholder.com/300x200/FF9800/FFFFFF?text=RJ45+Pinout+T568B'">
                 <div class="gallery-caption">
-                    <h5>Connettore RJ45</h5>
-                    <p>Pinout T568A e T568B per cablaggio</p>
-                    <a href="https://www.fiberoptics4sale.com/blogs/archive-posts/95046919-how-to-wire-an-rj45-connector" 
+                    <h5>Pinout RJ45 - T568B</h5>
+                    <p>Standard di cablaggio per connettori RJ45</p>
+                    <a href="https://www.thetechmentor.com/posts/easy-rj45-wiring-with-rj45-pinout-pic/" 
                        target="_blank" 
                        class="source-link">
-                        🔗 Guida cablaggio RJ45
+                        🔗 Guida cablaggio RJ45 su TheTechMentor.com
                     </a>
                 </div>
             </div>
@@ -743,17 +744,55 @@
                 <a href="https://www.fiberoptics4sale.com/blogs/archive-posts/95046918-what-is-unshielded-twisted-pair-utp-cable" 
                    target="_blank" 
                    class="external-badge">
-                    🌐 Leggi su FiberOptics4Sale.com
+                    🌐 UTP su FiberOptics4Sale.com
                 </a>
                 <a href="CategorieUTP.png" 
                    target="_blank" 
                    class="external-badge" style="background: #ff9800;">
-                    📊 Vedi immagine Categorie UTP
+                    📊 Categorie UTP
+                </a>
+                <a href="https://www.thetechmentor.com/posts/easy-rj45-wiring-with-rj45-pinout-pic/" 
+                   target="_blank" 
+                   class="external-badge" style="background: #20c997;">
+                    🔌 RJ45 su TheTechMentor.com
                 </a>
             </div>
         </div>
         
-        <!-- Aggiungo un diagramma per le categorie UTP -->
+        <!-- Diagramma Pinout RJ45 -->
+        <div class="diagram">
+            <h5>🔌 Pinout RJ45 - Standard T568B</h5>
+            <img src="RJ45-pinout-diagram-T568B-1.jpg" 
+                 alt="RJ45 Pinout Diagram - Standard T568B"
+                 style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);"
+                 onerror="this.src='https://via.placeholder.com/800x400/FF9800/FFFFFF?text=RJ45+Pinout+T568B+Non+Trovato'">
+            <div style="margin-top: 15px; padding: 15px; background: #e8f5e9; border-radius: 8px;">
+                <h6>📋 Sequenza T568B (da sinistra a destra):</h6>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p><strong>Pin 1:</strong> Bianco-Arancio (TX+)</p>
+                        <p><strong>Pin 2:</strong> Arancione (TX-)</p>
+                        <p><strong>Pin 3:</strong> Bianco-Verde (RX+)</p>
+                        <p><strong>Pin 4:</strong> Blu</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><strong>Pin 5:</strong> Bianco-Blu</p>
+                        <p><strong>Pin 6:</strong> Verde (RX-)</p>
+                        <p><strong>Pin 7:</strong> Bianco-Marrone</p>
+                        <p><strong>Pin 8:</strong> Marrone</p>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 10px;">
+                    <a href="https://www.thetechmentor.com/posts/easy-rj45-wiring-with-rj45-pinout-pic/" 
+                       target="_blank" 
+                       style="display: inline-flex; align-items: center; gap: 8px; color: #0d6efd; text-decoration: none; font-weight: bold;">
+                        🔗 Leggi la guida completa su TheTechMentor.com
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Diagramma Categorie UTP -->
         <div class="diagram">
             <h5>📊 Categorie UTP - Riepilogo Visivo</h5>
             <img src="CategorieUTP.png" 
@@ -859,18 +898,19 @@
         <div class="row" style="margin: 30px 0;">
             <div class="col-md-6">
                 <div class="info-card utp">
-                    <h4>🔌 Connettore RJ45</h4>
+                    <h4>🔌 Connettore RJ45 - T568A vs T568B</h4>
                     <p>L'<strong>RJ45</strong> (Registered Jack 45) è il connettore standard per Ethernet.</p>
-                    <h5>Pinout T568A vs T568B:</h5>
+                    <h5>Differenze principali:</h5>
                     <ul>
-                        <li><strong>T568A:</strong> Standard governativo/generale</li>
-                        <li><strong>T568B:</strong> Standard AT&T/commerciale (più comune)</li>
+                        <li><strong>T568A:</strong> Standard governativo/generale (verde/bianco-verde su pin 1-2)</li>
+                        <li><strong>T568B:</strong> Standard AT&T/commerciale (arancione/bianco-arancione su pin 1-2)</li>
                         <li><strong>Importante:</strong> Scegliere uno standard e mantenerlo in tutta l'installazione!</li>
                     </ul>
                     
                     <div style="margin-top: 15px; padding: 10px; background: #fff8e1; border-radius: 5px;">
                         <strong>🔧 Cablaggio consigliato per TPSEE:</strong>
                         <p>Usare sempre <strong>T568B</strong> per coerenza con le installazioni commerciali.</p>
+                        <p><strong>Attenzione:</strong> Per cavi crossover (ormai rari) invertire le coppie 2-3 e 1-6.</p>
                     </div>
                 </div>
             </div>
@@ -886,6 +926,7 @@
                     <div style="margin-top: 20px; padding: 10px; background: #bbdefb; border-radius: 5px;">
                         <strong>💡 Per TPSEE - Laboratorio:</strong>
                         <p>Esercitarsi con <strong>switch managed</strong> per configurare VLAN e gestione avanzata.</p>
+                        <p>Testare cavi con <strong>certificatori di rete</strong> per misure di attenuazione e NEXT.</p>
                     </div>
                 </div>
             </div>
@@ -906,6 +947,7 @@
                 <span class="badge bg-warning text-dark">Laboratorio Pratico</span>
                 <span class="badge bg-info">Test Strumentazione</span>
                 <span class="badge bg-success">Sicurezza Elettrica</span>
+                <span class="badge bg-primary">Cablaggio RJ45</span>
             </div>
         </div>
     </div>
