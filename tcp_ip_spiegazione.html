@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html><!DOCTYPE html>
 <html lang="it">
 <head>
     <meta charset="UTF-8">
@@ -596,7 +596,7 @@
                     </div>
                 `
             },
-            // Livello Internet
+            // Livello Internet - PROTOCCOLLO IP AGGIORNATO CON IMMAGINE E LINK
             ip: {
                 title: "📍 IP - Protocollo Internet",
                 content: `
@@ -619,6 +619,116 @@
                                 <li>La posta (pacchetti) viaggia da un indirizzo all'altro</li>
                                 <li>Il postino (router) decide la strada migliore</li>
                             </ul>
+                        </div>
+                        
+                        <!-- Nuova sezione con immagine e link -->
+                        <div style="margin: 25px 0; text-align: center;">
+                            <h5>🌐 Confronto visivo: IPv4 vs IPv6</h5>
+                            
+                            <!-- Immagine cliccabile che porta al link esterno -->
+                            <a href="https://www.avg.com/en/signal/ipv4-vs-ipv6" target="_blank" style="display: inline-block; text-decoration: none;">
+                                <div style="position: relative;">
+                                    <img src="IPv4-vs-IPv6-EN.webp" 
+                                         alt="Confronto tra IPv4 e IPv6 - Grafico comparativo" 
+                                         style="max-width: 100%; 
+                                                height: auto; 
+                                                border-radius: 10px; 
+                                                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                                                border: 2px solid #e9ecef;
+                                                transition: transform 0.3s, box-shadow 0.3s;">
+                                    <div style="position: absolute; 
+                                               bottom: 10px; 
+                                               right: 10px; 
+                                               background: rgba(0,0,0,0.7); 
+                                               color: white; 
+                                               padding: 5px 10px; 
+                                               border-radius: 5px; 
+                                               font-size: 0.8em;">
+                                        🔗 Clicca per approfondire
+                                    </div>
+                                </div>
+                            </a>
+                            
+                            <!-- Didascalia e link -->
+                            <div style="margin-top: 15px; padding: 15px; background: #f8f9fa; border-radius: 8px;">
+                                <p style="margin-bottom: 10px; color: #555;">
+                                    <strong>📊 Cosa vedi nell'immagine:</strong>
+                                </p>
+                                <ul style="text-align: left; margin-bottom: 15px;">
+                                    <li><strong>IPv4</strong> (sinistra): 32 bit, notazione decimale (es: 192.168.1.1)</li>
+                                    <li><strong>IPv6</strong> (destra): 128 bit, notazione esadecimale (es: 2001:0db8:85a3:0000:0000:8a2e:0370:7334)</li>
+                                    <li><strong>Spazio indirizzi:</strong> IPv6 ha 340 sestilioni di indirizzi vs 4,3 miliardi di IPv4</li>
+                                </ul>
+                                
+                                <div style="text-align: center;">
+                                    <a href="https://www.avg.com/en/signal/ipv4-vs-ipv6" 
+                                       target="_blank" 
+                                       style="display: inline-block; 
+                                              padding: 10px 20px; 
+                                              background: #0d6efd; 
+                                              color: white; 
+                                              text-decoration: none; 
+                                              border-radius: 5px; 
+                                              font-weight: bold;
+                                              transition: background 0.3s;">
+                                        📖 Leggi l'articolo completo su AVG.com
+                                    </a>
+                                    <p style="margin-top: 8px; font-size: 0.9em; color: #666;">
+                                        (Articolo in inglese - approfondimento tecnico)
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Sezione aggiuntiva sulle differenze -->
+                        <div style="margin-top: 20px; padding: 15px; background: #e7f1ff; border-radius: 8px;">
+                            <h5>⚡ Perché passare a IPv6?</h5>
+                            <table class="table table-bordered" style="margin-top: 10px;">
+                                <thead>
+                                    <tr>
+                                        <th>Caratteristica</th>
+                                        <th>IPv4</th>
+                                        <th>IPv6</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Spazio indirizzi</strong></td>
+                                        <td>Limitato (esaurito)</td>
+                                        <td>Praticamente infinito</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Sicurezza</strong></td>
+                                        <td>Opzionale (IPSec)</td>
+                                        <td>Integrata (IPSec obbligatoria)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Configurazione</strong></td>
+                                        <td>DHCP o manuale</td>
+                                        <td>Auto-configurazione (SLAAC)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Header</strong></td>
+                                        <td>Complesso (20+ byte)</td>
+                                        <td>Semplificato (40 byte fissi)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>NAT</strong></td>
+                                        <td>Necessario</td>
+                                        <td>Non necessario</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div style="margin-top: 20px; padding: 15px; background: #fff3cd; border-radius: 8px;">
+                            <h5>📱 Lo sapevi che...</h5>
+                            <p>Il tuo telefono probabilmente usa <strong>entrambi</strong> gli standard:</p>
+                            <ul>
+                                <li><strong>IPv4</strong> per compatibilità con siti/web più vecchi</li>
+                                <li><strong>IPv6</strong> per prestazioni migliori e connessioni dirette</li>
+                            </ul>
+                            <p>Per verificare: visita <a href="https://test-ipv6.com" target="_blank">test-ipv6.com</a> dal tuo dispositivo!</p>
                         </div>
                     </div>
                 `
@@ -863,7 +973,7 @@
                         
                         <div class="protocol-purpose">
                             <h5>🎯 A cosa serve?</h5>
-                            <p>Wi-Fi fornisce <strong>connessione wireless</strong> in ambienti locali (casa, ufficio, aeroporto, università). Gestisce:</p>
+                            <p>Wi-Fi fornisce <strong>connessione wireless</strong> in ambienti locales (casa, ufficio, aeroporto, università). Gestisce:</p>
                             <ul>
                                 <li><strong>Accesso al mezzo radio</strong> (CSMA/CA invece di CSMA/CD)</li>
                                 <li><strong>Sicurezza</strong> (WPA2, WPA3)</li>
