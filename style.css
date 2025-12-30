@@ -1,119 +1,217 @@
- <style>
-    /* 1. IMPOSTAZIONI GENERALI E LAYOUT */
-    body { 
-        background-color: #f8f9fa; 
-        font-family: 'Segoe UI', Roboto, sans-serif; 
-        color: #333;
-        line-height: 1.6;
-    }
+/* ============ STILI PER LA MAPPA INTERATTIVA ============ */
 
-    .section-content { display: none; }
-    .section-content.active { 
-        display: block; 
-        animation: fadeIn 0.5s ease-out; 
-    }
-    @keyframes fadeIn { 
-        from { opacity: 0; transform: translateY(10px); } 
-        to { opacity: 1; transform: translateY(0); } 
-    }
+/* 1. Struttura generale della mappa */
+.tree-view {
+    font-family: 'Consolas', 'Monaco', monospace;
+    line-height: 1.8;
+}
 
-    /* 2. NAVIGAZIONE E BOTTONI SUPERIORI */
-    .nav-custom .btn {
-        border-radius: 50px;
-        padding: 8px 20px;
-        font-weight: 600;
-        transition: all 0.3s;
-    }
+.tree-view .bi-folder-fill {
+    color: #ffc107;
+}
 
-    /* 3. CORREZIONE BOTTONE GIALLO (MATRIOSKE) */
-    .btn-warning {
-        color: #000 !important; /* Testo nero per leggibilità */
-        font-weight: 700 !important;
-        border: 2px solid #eec107 !important;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    }
-    .btn-warning:hover {
-        background-color: #ffca2c !important;
-        transform: translateY(-2px);
-    }
+.tree-view .bi-file-earmark-code {
+    color: #0d6efd;
+}
 
-    /* 4. SPECIFICO PER PAN (Personal Area Network) */
-    .pan-title {
-        color: #dc3545; /* Rosso come da screenshot */
-        font-weight: bold;
-        margin-top: 30px;
-    }
-    .pan-description {
-        font-size: 0.95rem;
-        margin-bottom: 20px;
-    }
-    .pan-image-container {
-        text-align: center;
-        padding: 15px;
-        background: white;
-        border-radius: 10px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    }
-    .pan-image-container img {
-        max-width: 100%;
-        height: auto;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: transform 0.3s;
-    }
-    .pan-image-container img:hover {
-        transform: scale(1.02);
-    }
+.tree-view .bi-file-earmark-text {
+    color: #198754;
+}
 
-    /* 5. PILA ISO/OSI E PDU */
-    .btn-level-stack {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        color: white !important;
-        padding: 12px 20px;
-        border-radius: 8px;
-        margin-bottom: 8px;
-        text-decoration: none;
-        font-weight: 600;
-        transition: all 0.3s;
+.tree-view a {
+    text-decoration: none;
+    color: #212529;
+    transition: color 0.2s;
+}
+
+.tree-view a:hover {
+    color: #0d6efd;
+    text-decoration: underline;
+}
+
+/* 2. Card con effetto hover */
+.card-hover-effect {
+    transition: all 0.3s ease;
+    border: 1px solid #dee2e6;
+}
+
+.card-hover-effect:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    border-color: #adb5bd;
+}
+
+/* 3. Badge personalizzati */
+.badge-pill-custom {
+    border-radius: 50px;
+    padding: 4px 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+/* 4. Progress bar personalizzata per il flusso */
+.progress-custom {
+    height: 28px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.progress-custom .progress-bar {
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 5. Legenda della mappa */
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.legend-color {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    margin-right: 10px;
+    border: 1px solid #dee2e6;
+}
+
+.legend-text {
+    font-size: 0.85rem;
+    color: #495057;
+}
+
+/* 6. Sezione statistiche */
+.stats-card {
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    transition: transform 0.3s;
+}
+
+.stats-card:hover {
+    transform: translateY(-5px);
+}
+
+.stats-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+}
+
+/* 7. Responsive adjustments */
+@media (max-width: 768px) {
+    .tree-view {
+        font-size: 0.85rem;
     }
-    .btn-level-stack:hover { 
-        transform: translateX(10px); 
-        filter: brightness(1.1);
+    
+    .stats-number {
+        font-size: 2rem;
     }
-
-    /* Tabella PDU */
-    .pdu-table-style {
-        border: 1px solid #dee2e6;
-        border-radius: 8px;
-        overflow: hidden;
-        font-size: 0.9rem;
+    
+    .card-body {
+        padding: 1rem !important;
     }
-    .pdu-table-style thead { background-color: #212529; color: white; }
-
-    /* 6. CARD RETI (SOHO, LAN, WAN) */
-    .card-net {
-        border-radius: 10px;
-        transition: transform 0.3s;
-        height: 100%;
-        border: 1px solid #eee;
+    
+    .btn-group {
+        flex-wrap: wrap;
     }
-    .card-net:hover { transform: translateY(-5px); }
-    .card-net-title { font-weight: bold; color: #0d6efd; }
+}
 
-    /* 7. FOOTER SORGENTE */
-    .btn-source-fixed {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        background: #212529;
-        color: white;
-        border-radius: 50px;
-        padding: 10px 20px;
-        z-index: 1000;
-    }
+/* 8. Animazioni per la mappa */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
 
+.highlight-node {
+    animation: pulse 2s infinite;
+    position: relative;
+}
 
+.highlight-node::after {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border: 2px solid rgba(13, 110, 253, 0.3);
+    border-radius: 8px;
+    animation: pulse 2s infinite;
+}
 
-</style>
+/* 9. Stili per i percorsi */
+.path-arrow {
+    font-size: 1.5rem;
+    color: #6c757d;
+    opacity: 0.7;
+}
+
+.path-line {
+    height: 2px;
+    background: linear-gradient(90deg, #0d6efd, #6c757d);
+    margin: 10px auto;
+    width: 80%;
+    opacity: 0.3;
+}
+
+/* 10. Tooltip per la mappa */
+.map-tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.map-tooltip .tooltip-text {
+    visibility: hidden;
+    width: 200px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -100px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 0.8rem;
+}
+
+.map-tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* 11. Colori specifici per le fasi */
+.phase-1 { border-left-color: #dc3545 !important; }
+.phase-2 { border-left-color: #0d6efd !important; }
+.phase-3 { border-left-color: #198754 !important; }
+.phase-4 { border-left-color: #ffc107 !important; }
+
+/* 12. Gradiente per le card delle fasi */
+.phase-card {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    border: 1px solid #dee2e6;
+}
+
+/* 13. Stile per il titolo della mappa */
+.map-title {
+    background: linear-gradient(90deg, #0d6efd, #198754);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 800;
+}
+
+/* 14. Effetto per i link attivi nella mappa */
+.map-link-active {
+    background-color: rgba(13, 110, 253, 0.1) !important;
+    border-left: 4px solid #0d6efd !important;
+    padding-left: 16px !important;
+}
