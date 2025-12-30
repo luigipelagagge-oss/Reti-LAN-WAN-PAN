@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="it">
+ <html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -80,11 +79,73 @@
             border-radius: 5px;
         }
 
-        .nav-footer { margin-top: 40px; display: flex; justify-content: center; gap: 20px; }
-        .btn-nav { padding: 10px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; cursor: pointer;}
-        .btn-back { background-color: #6c757d; color: white; }
-        .btn-source { border: 2px solid #333; color: #333; font-family: monospace; }
-        .btn-source:hover { background-color: #333; color: white; }
+        .nav-footer { 
+            margin-top: 40px; 
+            display: flex; 
+            justify-content: center; 
+            flex-wrap: wrap;
+            gap: 15px; 
+        }
+        
+        .btn-nav { 
+            padding: 10px 20px; 
+            border-radius: 50px; 
+            text-decoration: none; 
+            font-weight: bold; 
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+        
+        .btn-back { 
+            background-color: #6c757d; 
+            color: white; 
+        }
+        
+        .btn-back:hover {
+            background-color: #5a6268;
+            transform: translateY(-2px);
+        }
+        
+        .btn-iso {
+            background-color: #198754;
+            color: white;
+        }
+        
+        .btn-iso:hover {
+            background-color: #157347;
+            transform: translateY(-2px);
+        }
+        
+        .btn-tcp {
+            background-color: #0d6efd;
+            color: white;
+        }
+        
+        .btn-tcp:hover {
+            background-color: #0b5ed7;
+            transform: translateY(-2px);
+        }
+        
+        .btn-source { 
+            border: 2px solid #333; 
+            color: #333; 
+            font-family: monospace; 
+        }
+        
+        .btn-source:hover { 
+            background-color: #333; 
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .btn-icon {
+            margin-right: 8px;
+            font-size: 1.1em;
+        }
         
     </style>
 </head>
@@ -159,9 +220,21 @@
         </div>
 
         <div class="nav-footer">
-            <a href="descrizione_livelli.html" class="btn-nav btn-back">⬅ Torna alle Matriosche</a>
+            <a href="descrizione_livelli.html" class="btn-nav btn-back">
+                <span class="btn-icon">⬅</span> Torna alle Matriosche
+            </a>
             
-            <a onclick="mostraCodice()" class="btn-nav btn-source">&lt;/&gt; Vedi Sorgente HTML</a>
+            <a href="iso_osi_spiegazione.html" class="btn-nav btn-iso">
+                <span class="btn-icon">📘</span> ISO/OSI Spiegazione
+            </a>
+            
+            <a href="tcp_ip_spiegazione.html" class="btn-nav btn-tcp">
+                <span class="btn-icon">🌐</span> TCP/IP Spiegazione
+            </a>
+            
+            <a onclick="mostraCodice()" class="btn-nav btn-source">
+                <span class="btn-icon">< /></span> Vedi Sorgente HTML
+            </a>
         </div>
 
     </div>
