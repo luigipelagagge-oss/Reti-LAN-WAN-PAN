@@ -423,7 +423,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Dati dei protocolli (organizzati per Livello Applicazione)
+        // Dati dei protocolli
         const protocols = {
             // Livello Applicazione
             http: {
@@ -464,10 +464,6 @@
                                 <li>Il browser interpreta l'HTML e mostra la pagina</li>
                             </ol>
                         </div>
-                        
-                        <div style="background: #d4edda; padding: 10px; border-radius: 5px; margin-top: 15px;">
-                            <strong>🔒 Importanza della sicurezza:</strong> Oggi <strong>HTTPS è obbligatorio</strong> per tutti i siti web seri. Guarda l'icona 🔒 nella barra degli indirizzi!
-                        </div>
                     </div>
                 `
             },
@@ -486,27 +482,6 @@
                             <p><strong>POP</strong>: Scarica le email dal server al tuo computer, poi le cancella dal server.</p>
                             <p><strong>IMAP</strong>: Sincronizza le email tra dispositivo e server, mantenendo tutto sul server.</p>
                         </div>
-                        
-                        <div class="analogy-box">
-                            <h5>💡 Analogia per capire:</h5>
-                            <p><strong>SMTP è il postino che consegna</strong> → Porta la tua lettera alla cassetta postale del destinatario.</p>
-                            <p><strong>POP è come ritirare la posta dall'ufficio postale</strong> → Prendi tutta la posta e la porti a casa.</p>
-                            <p><strong>IMAP è come avere una cassetta di sicurezza in banca</strong> → Puoi accedere alla tua posta da qualsiasi sportello.</p>
-                        </div>
-                        
-                        <div class="protocol-example">
-                            <h5>📝 Esempio pratico:</h5>
-                            <p>Quando invii un'email da Gmail a un amico con Outlook:</p>
-                            <ol>
-                                <li>Gmail usa <strong>SMTP</strong> per inviare l'email al server Gmail</li>
-                                <li>I server Gmail e Microsoft comunicano via <strong>SMTP</strong></li>
-                                <li>Outlook usa <strong>IMAP</strong> per mostrare l'email al tuo amico</li>
-                            </ol>
-                        </div>
-                        
-                        <div style="background: #d1ecf1; padding: 10px; border-radius: 5px; margin-top: 15px;">
-                            <strong>🤔 Quale usare oggi?</strong> <strong>IMAP</strong> è il più moderno: ti permette di vedere le email su telefono, tablet e PC simultaneamente!
-                        </div>
                     </div>
                 `
             },
@@ -521,29 +496,6 @@
                         <div class="protocol-purpose">
                             <h5>🎯 A cosa servono?</h5>
                             <p>Permettono di trasferire file tra computer su una rete. FTP è il nonno dei protocolli di trasferimento (nata nel 1971!), SFTP è la versione moderna e sicura.</p>
-                            <p><strong>FTP</strong>: Trasferisce file in chiaro (pericoloso per dati sensibili).</p>
-                            <p><strong>SFTP</strong>: Crittografa tutto il trasferimento, molto più sicuro.</p>
-                        </div>
-                        
-                        <div class="analogy-box">
-                            <h5>💡 Analogia per capire:</h5>
-                            <p><strong>FTP è come spedire un pacco con il contenuto visibile</strong> → Chiunque può vedere cosa c'è dentro durante il viaggio.</p>
-                            <p><strong>SFTP è come una valigia diplomatica chiusa con lucchetto</strong> → Solo mittente e destinatario hanno le chiavi.</p>
-                        </div>
-                        
-                        <div class="protocol-example">
-                            <h5>📝 Esempio pratico:</h5>
-                            <p>Un webmaster che carica file sul server del sito:</p>
-                            <ol>
-                                <li>Si collega al server via <strong>SFTP</strong> (oggi obbligatorio)</li>
-                                <li>Trasferisce i file HTML, CSS, immagini</li>
-                                <li>Il server ora ha i file del sito web</li>
-                            </ol>
-                            <p><strong>Attenzione:</strong> FTP standard usa due porte: 21 per i comandi, 20 per i dati. SFTP usa solo la porta 22 (stessa di SSH).</p>
-                        </div>
-                        
-                        <div style="background: #fff3cd; padding: 10px; border-radius: 5px; margin-top: 15px;">
-                            <strong>⚠️ Avviso di sicurezza:</strong> <strong>Non usare mai FTP normale</strong> per dati importanti! Usa sempre <strong>SFTP</strong> o <strong>FTPS</strong> (FTP su SSL).
                         </div>
                     </div>
                 `
@@ -558,36 +510,6 @@
                         <div class="protocol-purpose">
                             <h5>🎯 A cosa serve?</h5>
                             <p>Il DNS è <strong>l'elenco telefonico di Internet</strong>. Traduce nomi facili da ricordare (come google.com) in indirizzi IP numerici (come 142.250.190.78) che i computer usano per comunicare.</p>
-                            <p>Senza DNS, dovresti ricordare numeri come 142.250.190.78 invece di google.com!</p>
-                        </div>
-                        
-                        <div class="analogy-box">
-                            <h5>💡 Analogia per capire:</h5>
-                            <p><strong>Il DNS è come un enorme elenco telefonico mondiale</strong>:</p>
-                            <ul>
-                                <li>Tu cerchi "Mario Rossi" (google.com)</li>
-                                <li>L'elenco ti dice "Chiama il numero 142.250.190.78"</li>
-                                <li>Tu componi quel numero e parli con Google</li>
-                            </ul>
-                            <p>Oppure: <strong>È come il GPS del tuo telefono</strong> che traduce "Casa della nonna" in coordinate GPS precise.</p>
-                        </div>
-                        
-                        <div class="protocol-example">
-                            <h5>📝 Esempio pratico:</h5>
-                            <p>Quando digiti www.università.it nel browser:</p>
-                            <ol>
-                                <li>Il tuo computer chiede al <strong>DNS resolver</strong> (di solito del tuo ISP): "Dov'è università.it?"</li>
-                                <li>Il resolver interroga i <strong>root server</strong> (13 nel mondo)</li>
-                                <li>Poi i <strong>server TLD</strong> (.it)</li>
-                                <li>Infine il <strong>server autoritativo</strong> di università.it</li>
-                                <li>Torna l'indirizzo IP (es. 93.184.216.34)</li>
-                                <li>Il browser può ora contattare il server</li>
-                            </ol>
-                            <p>Tutto questo in <strong>meno di un secondo!</strong></p>
-                        </div>
-                        
-                        <div style="background: #cce5ff; padding: 10px; border-radius: 5px; margin-top: 15px;">
-                            <strong>🌐 Curiosità:</strong> Ci sono 13 <strong>root server DNS</strong> nel mondo (da A.root-servers.net a M.root-servers.net). Ognuno ha centinaia di copie per ridondanza.
                         </div>
                     </div>
                 `
@@ -602,34 +524,6 @@
                         <div class="protocol-purpose">
                             <h5>🎯 A cosa serve?</h5>
                             <p>SSH permette di <strong>controllare computer remoti in modo sicuro</strong>, crittografando tutto il traffico. È lo strumento preferito da sistemisti, sviluppatori e amministratori.</p>
-                            <p>Sostituisce protocolli insicuri come <strong>Telnet</strong> (che invia password in chiaro!).</p>
-                        </div>
-                        
-                        <div class="analogy-box">
-                            <h5>💡 Analogia per capire:</h5>
-                            <p><strong>SSH è come avere un tunnel segreto sotterraneo tra due edifici</strong>:</p>
-                            <ul>
-                                <li>Nessuno all'esterno può vedere chi passa nel tunnel</li>
-                                <li>Tutto è protetto da pesanti porte blindate</li>
-                                <li>Puoi controllare il computer remoto come se fossi seduto di fronte</li>
-                            </ul>
-                            <p>Mentre <strong>Telnet</strong> sarebbe come parlare da un balcone al balcone di fronte, con tutto il quartiere che ascolta!</p>
-                        </div>
-                        
-                        <div class="protocol-example">
-                            <h5>📝 Esempio pratico:</h5>
-                            <p>Un sistemista che gestisce un server Linux:</p>
-                            <ol>
-                                <li>Aprite il terminale e digitate: <code>ssh mario@server-azienda.com</code></li>
-                                <li>SSH chiede la password (o usa una chiave crittografica)</li>
-                                <li>Una volta connessi, potete digitare comandi come se foste davanti al server</li>
-                                <li>Potete installare software, riavviare servizi, controllare log</li>
-                            </ol>
-                            <p><strong>Porta standard:</strong> SSH usa la porta 22.</p>
-                        </div>
-                        
-                        <div style="background: #d4edda; padding: 10px; border-radius: 5px; margin-top: 15px;">
-                            <strong>🔐 Autenticazione avanzata:</strong> Oltre alle password, SSH supporta <strong>chiavi crittografiche</strong> (una coppia: chiave pubblica sul server, chiave privata sul client). Molto più sicuro!
                         </div>
                     </div>
                 `
@@ -643,41 +537,7 @@
                         
                         <div class="protocol-purpose">
                             <h5>🎯 A cosa serve?</h5>
-                            <p>DHCP è il <strong>fattorino automatico degli indirizzi IP</strong>. Quando un dispositivo si connette a una rete, DHCP gli assegna automaticamente:</p>
-                            <ul>
-                                <li><strong>Indirizzo IP</strong> (unico per quel dispositivo)</li>
-                                <li><strong>Subnet mask</strong> (definisce la rete)</li>
-                                <li><strong>Gateway predefinito</strong> (il router per uscire in Internet)</li>
-                                <li><strong>Server DNS</strong> (per tradurre nomi in IP)</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="analogy-box">
-                            <h5>💡 Analogia per capire:</h5>
-                            <p><strong>DHCP è come l'hostess all'ingresso di un evento</strong>:</p>
-                            <ul>
-                                <li>Arrivi all'evento (ti colleghi al Wi-Fi)</li>
-                                <li>L'hostess (DHCP server) ti dà un badge con il tuo nome (IP)</li>
-                                <li>Ti dice dove sono i servizi (gateway, DNS)</li>
-                                <li>Quando te ne vai, il badge torna disponibile per altri</li>
-                            </ul>
-                            <p>Senza DHCP, dovresti configurare manualmente tutto, come nei primi anni '90!</p>
-                        </div>
-                        
-                        <div class="protocol-example">
-                            <h5>📝 Esempio pratico:</h5>
-                            <p>Quando accendi il telefono e ti colleghi al Wi-Fi di casa:</p>
-                            <ol>
-                                <li>Il telefono manda un messaggio: "C'è un DHCP server?" (DHCP DISCOVER)</li>
-                                <li>Il router risponde: "Sì, eccomi!" (DHCP OFFER)</li>
-                                <li>Il telefono: "Ok, dammi un IP!" (DHCP REQUEST)</li>
-                                <li>Il router: "Prendi 192.168.1.15, valido per 24 ore" (DHCP ACK)</li>
-                            </ol>
-                            <p>Questo processo si chiama <strong>DORA</strong> (Discover, Offer, Request, Acknowledge).</p>
-                        </div>
-                        
-                        <div style="background: #d1ecf1; padding: 10px; border-radius: 5px; margin-top: 15px;">
-                            <strong>🏠 DHCP in casa:</strong> Il vostro router casalingo <strong>è anche un server DHCP</strong>! Assegna IP a telefoni, computer, TV smart, ecc.
+                            <p>DHCP è il <strong>fattorino automatico degli indirizzi IP</strong>. Quando un dispositivo si connette a una rete, DHCP gli assegna automaticamente indirizzo IP, subnet mask, gateway e server DNS.</p>
                         </div>
                     </div>
                 `
@@ -695,6 +555,17 @@
                             <p>TCP garantisce una comunicazione <strong>affidabile, ordinata e senza errori</strong> tra due dispositivi. È "orientato alla connessione": prima di inviare dati, stabilisce un canale sicuro.</p>
                             <p>Come un corriere espresso con ricevuta di ritorno: sa se il pacco è arrivato e in che condizioni.</p>
                         </div>
+                        
+                        <div class="analogy-box">
+                            <h5>💡 Analogia per capire:</h5>
+                            <p><strong>TCP è come una telefonata importante:</strong></p>
+                            <ul>
+                                <li>Prima saluti e ti presenti (handshake)</li>
+                                <li>Parli con calma, assicurandoti che l'altro abbia capito</li>
+                                <li>Se non capisce, ripeti (ritrasmissione)</li>
+                                <li>Alla fine dici "arrivederci" (chiusura connessione)</li>
+                            </ul>
+                        </div>
                     </div>
                 `
             },
@@ -711,6 +582,17 @@
                             <p>Come una cartolina: la butti nella cassetta e speri arrivi. Non sai se è arrivata, né in che ordine.</p>
                             <p>Perfetto per streaming video, giochi online, VoIP dove la velocità è più importante della precisione.</p>
                         </div>
+                        
+                        <div class="analogy-box">
+                            <h5>💡 Analogia per capire:</h5>
+                            <p><strong>UDP è come lanciare un biglietto da una finestra a un amico:</strong></p>
+                            <ul>
+                                <li>Non c'è "ciao, come stai?"</li>
+                                <li>Lanci e speri che lo prenda</li>
+                                <li>Se cade per terra o si perde, pazienza!</li>
+                                <li>Ma è velocissimo!</li>
+                            </ul>
+                        </div>
                     </div>
                 `
             },
@@ -725,15 +607,409 @@
                         <div class="protocol-purpose">
                             <h5>🎯 A cosa serve?</h5>
                             <p>IP è il <strong>cuore di Internet</strong>. Assegna un indirizzo univoco a ogni dispositivo (indirizzo IP) e instrada i pacchetti attraverso le reti.</p>
-                            <p>IPv4: 4 numeri da 0 a 255 (es. 192.168.1.1) - 4,3 miliardi di indirizzi</p>
-                            <p>IPv6: 8 gruppi di 4 cifre esadecimali - 340 sestilioni di indirizzi (praticamente infiniti)</p>
+                            <p><strong>IPv4:</strong> 4 numeri da 0 a 255 (es. 192.168.1.1) - 4,3 miliardi di indirizzi</p>
+                            <p><strong>IPv6:</strong> 8 gruppi di 4 cifre esadecimali - 340 sestilioni di indirizzi (praticamente infiniti)</p>
+                        </div>
+                        
+                        <div class="analogy-box">
+                            <h5>💡 Analogia per capire:</h5>
+                            <p><strong>IP è come il sistema di indirizzi postali:</strong></p>
+                            <ul>
+                                <li>Ogni casa ha un indirizzo unico (IP address)</li>
+                                <li>La posta (pacchetti) viaggia da un indirizzo all'altro</li>
+                                <li>Il postino (router) decide la strada migliore</li>
+                            </ul>
+                        </div>
+                    </div>
+                `
+            },
+            icmp: {
+                title: "🔄 ICMP - Protocollo Messaggi di Controllo",
+                content: `
+                    <div class="protocol-details">
+                        <h4>🔤 Significato dell'acronimo:</h4>
+                        <p><strong>ICMP</strong> = Internet Control Message Protocol (Protocollo Messaggi di Controllo Internet)</p>
+                        
+                        <div class="protocol-purpose">
+                            <h5>🎯 A cosa serve?</h5>
+                            <p>ICMP è il <strong>"sistema di allarme" di Internet</strong>. Non trasporta dati utente, ma invia messaggi di errore e di controllo per diagnosticare problemi di rete.</p>
+                            <p>Il famoso comando <strong>ping</strong> usa ICMP per verificare se un host è raggiungibile!</p>
+                        </div>
+                        
+                        <div class="analogy-box">
+                            <h5>💡 Analogia per capire:</h5>
+                            <p><strong>ICMP è come il clacson e le spie di un'auto:</strong></p>
+                            <ul>
+                                <li>Non ti porta a destinazione (non trasporta dati)</li>
+                                <li>Ma ti avvisa se c'è un problema: "Strada chiusa!" (Destination Unreachable)</li>
+                                <li>Oppure: "Ci sei ancora?" (Echo Request/Reply - il ping)</li>
+                                <li>"Vai troppo veloce, rallenta!" (Source Quench)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="protocol-example">
+                            <h5>📝 Esempio pratico: Il comando PING</h5>
+                            <p>Quando digiti <code>ping google.com</code> nel terminale:</p>
+                            <ol>
+                                <li>Il tuo PC invia un <strong>ICMP Echo Request</strong> a Google</li>
+                                <li>Se Google è raggiungibile, risponde con <strong>ICMP Echo Reply</strong></li>
+                                <li>Il comando mostra il tempo di risposta (es. 15ms)</li>
+                            </ol>
+                            <p><strong>Attenzione:</strong> Alcuni firewall bloccano ICMP per sicurezza, quindi "Request Timed Out" non sempre significa che il server è down.</p>
+                        </div>
+                        
+                        <div class="protocol-purpose">
+                            <h5>📊 Tipici messaggi ICMP:</h5>
+                            <ul>
+                                <li><strong>Echo Request/Reply</strong> (Ping): "Ci sei? - Sì, ci sono!"</li>
+                                <li><strong>Destination Unreachable</strong>: "Non riesco a raggiungerti!"</li>
+                                <li><strong>Time Exceeded</strong>: "Il pacchetto è scaduto!" (usato da traceroute)</li>
+                                <li><strong>Redirect</strong>: "C'è una strada migliore!"</li>
+                            </ul>
+                        </div>
+                    </div>
+                `
+            },
+            ospf: {
+                title: "🗺️ OSPF/BGP - Protocolli di Routing",
+                content: `
+                    <div class="protocol-details">
+                        <h4>🔤 Significato degli acronimi:</h4>
+                        <p><strong>OSPF</strong> = Open Shortest Path First (Prima il Percorso più Breve Aperto)</p>
+                        <p><strong>BGP</strong> = Border Gateway Protocol (Protocollo Gateway di Confine)</p>
+                        
+                        <div class="protocol-purpose">
+                            <h5>🎯 A cosa servono?</h5>
+                            <p><strong>OSPF</strong>: Usato <strong>all'interno di una singola organizzazione</strong> (es. università, azienda). Trova il percorso più breve tra router usando un algoritmo matematico (Dijkstra).</p>
+                            <p><strong>BGP</strong>: Usato <strong>tra provider Internet diversi</strong> (es. Telecom → Google). È il "protocollo di routing di Internet" - tiene insieme tutta la rete globale.</p>
+                        </div>
+                        
+                        <div class="analogy-box">
+                            <h5>💡 Analogia per capire:</h5>
+                            <p><strong>OSPF è come il GPS del tuo quartiere:</strong></p>
+                            <ul>
+                                <li>Conosce tutte le strade interne</li>
+                                <li>Trova il percorso più veloce per andare dal bar alla scuola</li>
+                                <li>Funziona bene in spazi limitati (una città, un campus)</li>
+                            </ul>
+                            <p><strong>BGP è come le autostrade che collegano le nazioni:</strong></p>
+                            <ul>
+                                <li>Decide se andare da Italia a USA via Francia o via Germania</li>
+                                <li>Gestisce accordi commerciali tra compagnie (peering)</li>
+                                <li>Un errore BGP può "spegnere" Internet in una regione!</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="protocol-example">
+                            <h5>📝 Esempi pratici:</h5>
+                            <p><strong>OSPF nell'università:</strong> Tutti i router del campus universitario parlano OSPF. Se un cavo si rompe, OSPF trova immediatamente un percorso alternativo.</p>
+                            <p><strong>BGP tra provider:</strong> Quando Telecom e Google si mettono d'accordo per scambiarsi traffico, configurano BGP. Questo permette a un utente Telecom di raggiungere i server Google.</p>
+                        </div>
+                        
+                        <div class="protocol-purpose" style="background-color: #d4edda;">
+                            <h5>🌐 Curiosità su BGP:</h5>
+                            <p>BGP è stato protagonista di <strong>incidenti famosi</strong>:</p>
+                            <ul>
+                                <li><strong>2008:</strong> Pakistan "hijacka" YouTube, rendendolo irraggiungibile in tutto il mondo per 2 ore</li>
+                                <li><strong>2021:</strong> Errore di configurazione Facebook rende Instagram e WhatsApp offline per 6 ore</li>
+                            </ul>
+                            <p>Questo dimostra quanto BGP sia <strong>critico per Internet</strong>!</p>
+                        </div>
+                    </div>
+                `
+            },
+            ipsec: {
+                title: "🔀 IPSec - Sicurezza a Livello IP",
+                content: `
+                    <div class="protocol-details">
+                        <h4>🔤 Significato dell'acronimo:</h4>
+                        <p><strong>IPSec</strong> = Internet Protocol Security (Sicurezza del Protocollo Internet)</p>
+                        
+                        <div class="protocol-purpose">
+                            <h5>🎯 A cosa serve?</h5>
+                            <p>IPSec <strong>crittografa il traffico IP</strong> a livello di rete. A differenza di HTTPS (che protegge solo il web) o SSH (che protegge solo le shell), IPSec può proteggere <strong>qualsiasi tipo di traffico</strong>!</p>
+                            <p>È usato principalmente per creare <strong>VPN (Virtual Private Network)</strong> sicure tra sedi aziendali.</p>
+                        </div>
+                        
+                        <div class="analogy-box">
+                            <h5>💡 Analogia per capire:</h5>
+                            <p><strong>IPSec è come un tunnel blindato sotto l'oceano:</strong></p>
+                            <ul>
+                                <li>Due sedi aziendali (Roma e New York) vogliono comunicare</li>
+                                <li>Invece di mandare dati via Internet "in chiaro"...</li>
+                                <li>Costruiscono un tunnel crittografato tra loro</li>
+                                <li>I dati viaggiano nel tunnel, al sicuro da occhi indiscreti</li>
+                            </ul>
+                            <p><strong>Senza IPSec</strong> sarebbe come spedire documenti segreti su cartoline postali!</p>
+                        </div>
+                        
+                        <div class="protocol-example">
+                            <h5>📝 Esempi pratici:</h5>
+                            <p><strong>VPN Aziendale:</strong> Un dipendente da casa si collega alla rete aziendale via IPSec VPN. Il suo traffico è crittografato come se fosse in ufficio.</p>
+                            <p><strong>Connessione tra filiali:</strong> La sede di Milano e quella di Torino hanno un tunnel IPSec permanente. Tutto il traffico tra loro è automaticamente crittografato.</p>
+                        </div>
+                        
+                        <div class="protocol-purpose">
+                            <h5>🔐 Come funziona IPSec?</h5>
+                            <p>IPSec opera in due modalità:</p>
+                            <ol>
+                                <li><strong>Transport Mode:</strong> Crittografa solo il payload (i dati), non l'intestazione IP. Per host-to-host.</li>
+                                <li><strong>Tunnel Mode:</strong> Crittografa TUTTO il pacchetto IP (intestazione e dati). Per gateway-to-gateway (VPN).</li>
+                            </ol>
+                            <p>Usa algoritmi come <strong>AES</strong> per la crittografia e <strong>SHA</strong> per l'integrità.</p>
+                        </div>
+                        
+                        <div style="background-color: #fff3cd; padding: 15px; border-radius: 8px; margin-top: 15px;">
+                            <h5>⚖️ Confronto con altri protocolli di sicurezza:</h5>
+                            <p><strong>IPSec vs HTTPS:</strong> IPSec protegge TUTTO il traffico, HTTPS solo il web.</p>
+                            <p><strong>IPSec vs SSH:</strong> SSH protegge sessioni remote, IPSec crea reti virtuali private.</p>
+                            <p><strong>Vantaggio di IPSec:</strong> È trasparente alle applicazioni! Le app non devono sapere che c'è IPSec sotto.</p>
                         </div>
                     </div>
                 `
             },
             // Livello Accesso Rete
+            ethernet: {
+                title: "🔌 Ethernet - Reti Cablate",
+                content: `
+                    <div class="protocol-details">
+                        <h4>🔤 Cos'è Ethernet?</h4>
+                        <p><strong>Ethernet</strong> è lo standard più diffuso per le <strong>reti locali cablate (LAN)</strong>. Definisce come i computer comunicano attraverso cavi di rete (solitamente cavi twisted pair con connettori RJ-45).</p>
+                        
+                        <div class="protocol-purpose">
+                            <h5>🎯 A cosa serve?</h5>
+                            <p>Ethernet gestisce il <strong>livello 2 del modello OSI</strong> (Collegamento Dati). Si occupa di:</p>
+                            <ul>
+                                <li><strong>Indirizzamento fisico</strong> (indirizzi MAC)</li>
+                                <li><strong>Controllo di accesso al mezzo</strong> (CSMA/CD)</li>
+                                <li><strong>Formato dei frame</strong> (pacchetti di livello 2)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="analogy-box">
+                            <h5>💡 Analogia per capire:</h5>
+                            <p><strong>Ethernet è come il sistema stradale di una città:</strong></p>
+                            <ul>
+                                <li>Le strade sono i cavi Ethernet</li>
+                                <li>Le auto sono i pacchetti di dati</li>
+                                <li>I numeri civici sono gli indirizzi MAC</li>
+                                <li>I semafori sono lo switch che dirige il traffico</li>
+                            </ul>
+                            <p>Prima dello switch (hub), era come un incrocio senza semafori: le auto si scontravano!</p>
+                        </div>
+                        
+                        <div class="protocol-example">
+                            <h5>📝 Evoluzione di Ethernet:</h5>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Tipo</th>
+                                        <th>Velocità</th>
+                                        <th>Anno</th>
+                                        <th>Cavo</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Ethernet</td>
+                                        <td>10 Mbps</td>
+                                        <td>1983</td>
+                                        <td>Coassiale</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Fast Ethernet</td>
+                                        <td>100 Mbps</td>
+                                        <td>1995</td>
+                                        <td>Cat 5</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Gigabit Ethernet</td>
+                                        <td>1 Gbps</td>
+                                        <td>1999</td>
+                                        <td>Cat 5e/6</td>
+                                    </tr>
+                                    <tr>
+                                        <td>10 Gigabit Ethernet</td>
+                                        <td>10 Gbps</td>
+                                        <td>2002</td>
+                                        <td>Cat 6a/7</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Terabit Ethernet</td>
+                                        <td>400 Gbps+</td>
+                                        <td>2017+</td>
+                                        <td>Fibra ottica</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="protocol-purpose" style="background-color: #e7f1ff;">
+                            <h5>🔧 Componenti di una rete Ethernet:</h5>
+                            <p><strong>Cavo:</strong> Di solito UTP (Unshielded Twisted Pair) con 8 fili intrecciati a coppie.</p>
+                            <p><strong>Connettore:</strong> RJ-45 (simile al RJ-11 del telefono, ma più grande).</p>
+                            <p><strong>Scheda di rete:</strong> Ogni dispositivo ha una NIC (Network Interface Card) con un MAC address unico.</p>
+                            <p><strong>Switch:</strong> Il "cervello" della rete che smista i pacchetti alla destinazione corretta.</p>
+                        </div>
+                    </div>
+                `
+            },
+            wifi: {
+                title: "📶 Wi-Fi (802.11) - Reti Wireless",
+                content: `
+                    <div class="protocol-details">
+                        <h4>🔤 Cos'è il Wi-Fi?</h4>
+                        <p><strong>Wi-Fi</strong> è la tecnologia che permette a dispositivi di connettersi a una rete <strong>senza cavi</strong>, usando onde radio. Il nome tecnico è <strong>IEEE 802.11</strong>.</p>
+                        
+                        <div class="protocol-purpose">
+                            <h5>🎯 A cosa serve?</h5>
+                            <p>Wi-Fi fornisce <strong>connessione wireless</strong> in ambienti locali (casa, ufficio, aeroporto, università). Gestisce:</p>
+                            <ul>
+                                <li><strong>Accesso al mezzo radio</strong> (CSMA/CA invece di CSMA/CD)</li>
+                                <li><strong>Sicurezza</strong> (WPA2, WPA3)</li>
+                                <li><strong>Gestione delle interferenze</strong></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="analogy-box">
+                            <h5>💡 Analogia per capire:</h5>
+                            <p><strong>Wi-Fi è come una conversazione in una stanza affollata:</strong></p>
+                            <ul>
+                                <li>Ogni persona è un dispositivo Wi-Fi</li>
+                                <li>Prima di parlare, ascolti se qualcuno sta già parlando</li>
+                                <li>Se due parlano insieme, non si capisce nulla (collisione)</li>
+                                <li>Il volume della voce è la potenza del segnale</li>
+                                <li>L'acustica della stanza è la qualità del segnale</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="protocol-example">
+                            <h5>📝 Standard Wi-Fi (Generazioni):</h5>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Standard</th>
+                                        <th>Anno</th>
+                                        <th>Velocità Max</th>
+                                        <th>Frequenza</th>
+                                        <th>Nome Comune</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>802.11b</td>
+                                        <td>1999</td>
+                                        <td>11 Mbps</td>
+                                        <td>2.4 GHz</td>
+                                        <td>Wi-Fi 1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>802.11a</td>
+                                        <td>1999</td>
+                                        <td>54 Mbps</td>
+                                        <td>5 GHz</td>
+                                        <td>Wi-Fi 2</td>
+                                    </tr>
+                                    <tr>
+                                        <td>802.11g</td>
+                                        <td>2003</td>
+                                        <td>54 Mbps</td>
+                                        <td>2.4 GHz</td>
+                                        <td>Wi-Fi 3</td>
+                                    </tr>
+                                    <tr>
+                                        <td>802.11n</td>
+                                        <td>2009</td>
+                                        <td>600 Mbps</td>
+                                        <td>2.4/5 GHz</td>
+                                        <td>Wi-Fi 4</td>
+                                    </tr>
+                                    <tr>
+                                        <td>802.11ac</td>
+                                        <td>2013</td>
+                                        <td>3.5 Gbps</td>
+                                        <td>5 GHz</td>
+                                        <td>Wi-Fi 5</td>
+                                    </tr>
+                                    <tr>
+                                        <td>802.11ax</td>
+                                        <td>2019</td>
+                                        <td>10 Gbps</td>
+                                        <td>2.4/5/6 GHz</td>
+                                        <td>Wi-Fi 6/6E</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="protocol-purpose" style="background-color: #d4edda;">
+                            <h5>🔒 Sicurezza Wi-Fi:</h5>
+                            <p><strong>WEP (1997):</strong> Facilmente crackabile in pochi minuti. <span style="color: red;">ASSOLUTAMENTE DA EVITARE!</span></p>
+                            <p><strong>WPA (2003):</strong> Migliore ma ancora vulnerabile.</p>
+                            <p><strong>WPA2 (2004):</strong> Standard attuale per anni, molto sicuro se usato con password forte.</p>
+                            <p><strong>WPA3 (2018):</strong> Nuovo standard, protegge anche con password deboli.</p>
+                            <p><strong>Consiglio:</strong> Usate sempre <strong>WPA2 o WPA3</strong> con password complessa (minimo 12 caratteri, maiuscole, minuscole, numeri, simboli).</p>
+                        </div>
+                    </div>
+                `
+            },
+            ppp: {
+                title: "📞 PPP - Protocollo Punto-a-Punto",
+                content: `
+                    <div class="protocol-details">
+                        <h4>🔤 Significato dell'acronimo:</h4>
+                        <p><strong>PPP</strong> = Point-to-Point Protocol (Protocollo Punto-a-Punto)</p>
+                        
+                        <div class="protocol-purpose">
+                            <h5>🎯 A cosa serve?</h5>
+                            <p>PPP crea una <strong>connessione diretta tra due dispositivi</strong>, solitamente su linee seriali. È stato fondamentale per le connessioni dial-up (Internet via modem telefonico) e oggi è usato per:</p>
+                            <ul>
+                                <li><strong>Connessioni DSL</strong> (ADSL, VDSL)</li>
+                                <li><strong>VPN</strong> (soprattutto PPPoE - PPP over Ethernet)</li>
+                                <li><strong>Collegamenti punto-a-punto dedicati</strong></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="analogy-box">
+                            <h5>💡 Analogia per capire:</h5>
+                            <p><strong>PPP è come una linea telefonica diretta tra due uffici:</strong></p>
+                            <ul>
+                                <li>Solo due dispositivi possono parlare (punto-a-punto)</li>
+                                <li>Prima di parlare, si stabilisce la chiamata (handshake)</li>
+                                <li>Si autenticano a vicenda (username/password)</li>
+                                <li>Alla fine, chiudono la chiamata</li>
+                            </ul>
+                            <p>È l'opposto di Ethernet dove molti dispositivi condividono lo stesso cavo.</p>
+                        </div>
+                        
+                        <div class="protocol-example">
+                            <h5>📝 Esempi pratici:</h5>
+                            <p><strong>Internet via ADSL:</strong> Il tuo modem a casa usa <strong>PPPoE</strong> (PPP over Ethernet) per connettersi al provider. Quando configuri il modem, inserisci username e password PPPoE.</p>
+                            <p><strong>Connessioni dial-up (anni '90):</strong> Il modem faceva "bip bip" e stabiliva una connessione PPP via linea telefonica.</p>
+                            <p><strong>Collegamenti dedicati:</strong> Due sedi aziendali connesse via fibra ottica usano PPP per il collegamento diretto.</p>
+                        </div>
+                        
+                        <div class="protocol-purpose">
+                            <h5>🔧 Funzionalità di PPP:</h5>
+                            <ul>
+                                <li><strong>Autenticazione:</strong> PAP, CHAP, EAP (chi sei?)</li>
+                                <li><strong>Compressione:</strong> Riduce dimensione dati</li>
+                                <li><strong>Rilevazione errori:</strong> Controlla che i dati arrivino integri</li>
+                                <li><strong>Negoziazione parametri:</strong> IP address, DNS, ecc.</li>
+                            </ul>
+                        </div>
+                        
+                        <div style="background-color: #fff3cd; padding: 15px; border-radius: 8px; margin-top: 15px;">
+                            <h5>📡 PPPoE - La versione moderna:</h5>
+                            <p><strong>PPPoE</strong> = PPP over Ethernet. Incapsula PPP dentro frame Ethernet.</p>
+                            <p><strong>Perché?</strong> Per portare le funzionalità PPP (autenticazione, controllo) sulle reti Ethernet moderne.</p>
+                            <p><strong>Dove lo usi?</strong> Ogni volta che configuri un router ADSL/Fibra, inserisci username e password PPPoE!</p>
+                        </div>
+                    </div>
+                `
+            },
             arp: {
-                title: "🔄 ARP - Protocollo di Risoluzione Indirizzi",
+                title: "🔄 ARP - Risoluzione Indirizzi",
                 content: `
                     <div class="protocol-details">
                         <h4>🔤 Significato dell'acronimo:</h4>
@@ -741,9 +1017,52 @@
                         
                         <div class="protocol-purpose">
                             <h5>🎯 A cosa serve?</h5>
-                            <p>ARP traduce <strong>indirizzi IP in indirizzi MAC</strong> (indirizzi fisici delle schede di rete).</p>
-                            <p>Come chiedere a tutti in una stanza: "Chi ha l'IP 192.168.1.1?" e quello risponde: "Sono io, il mio MAC è 00:1A:2B:3C:4D:5E".</p>
-                            <p>Fondamentale per la comunicazione nella stessa rete locale (LAN).</p>
+                            <p>ARP è il <strong>traduttore tra IP e MAC</strong>. Converte indirizzi IP (logici, livello 3) in indirizzi MAC (fisici, livello 2).</p>
+                            <p>Senza ARP, i computer nella stessa rete non potrebbero comunicare anche se conoscono gli IP!</p>
+                        </div>
+                        
+                        <div class="analogy-box">
+                            <h5>💡 Analogia per capire:</h5>
+                            <p><strong>ARP è come cercare qualcuno in un ufficio:</strong></p>
+                            <ul>
+                                <li>Tu: "Dov'è Mario Rossi?" (IP: 192.168.1.10)</li>
+                                <li>Gridi a tutti in ufficio: "MARIO ROSSI, DOVE SEI?" (ARP Request broadcast)</li>
+                                <li>Mario sente e risponde: "SONO QUI, AL POSTO 5!" (MAC: 00:1A:2B...)</li>
+                                <li>Ora sai dove trovarlo per consegnargli documenti</li>
+                            </ul>
+                            <p>L'ufficio è la rete locale, i posti sono i MAC address.</p>
+                        </div>
+                        
+                        <div class="protocol-example">
+                            <h5>📝 Esempio pratico:</h5>
+                            <p>Il tuo computer (192.168.1.5) vuole comunicare con la stampante (192.168.1.10):</p>
+                            <ol>
+                                <li>Il PC guarda la sua <strong>ARP cache</strong> (una tabella di traduzioni)</li>
+                                <li>Se non trova 192.168.1.10, invia un <strong>ARP Request</strong> a TUTTA la rete: "Chi ha 192.168.1.10?"</li>
+                                <li>Tutti ignorano tranne la stampante che risponde: "IO! Il mio MAC è 00:1A:2B:3C:4D:5E"</li>
+                                <li>Il PC salva questa associazione nella cache ARP</li>
+                                <li>Ora può inviare pacchetti direttamente al MAC della stampante</li>
+                            </ol>
+                        </div>
+                        
+                        <div class="protocol-purpose">
+                            <h5>🗂️ La cache ARP:</h5>
+                            <p>Ogni dispositivo mantiene una <strong>tabella ARP</strong> (cache) con le traduzioni IP→MAC.</p>
+                            <p><strong>Visualizzare la cache ARP (Windows):</strong> <code>arp -a</code> nel prompt dei comandi</p>
+                            <p><strong>Visualizzare la cache ARP (Linux/Mac):</strong> <code>arp -a</code> o <code>ip neigh show</code></p>
+                            <p><strong>La cache ha una scadenza</strong> (di solito 2-20 minuti) perché i MAC potrebbero cambiare (dispositivo sostituito).</p>
+                        </div>
+                        
+                        <div style="background-color: #f8d7da; padding: 15px; border-radius: 8px; margin-top: 15px;">
+                            <h5>⚠️ ARP Spoofing/Poisoning (Attacco):</h5>
+                            <p><strong>Come funziona:</strong> Un attaccante invia risposte ARP false: "Io sono 192.168.1.1 (il router)" ma con il suo MAC.</p>
+                            <p><strong>Risultato:</strong> Tutto il traffico passa per l'attaccante che può:</p>
+                            <ul>
+                                <li>Intercettare dati (password, email)</li>
+                                <li>Modificare traffico (man-in-the-middle)</li>
+                                <li>Bloccare Internet (Denial of Service)</li>
+                            </ul>
+                            <p><strong>Difesa:</strong> ARP statico, DHCP snooping, detection tools.</p>
                         </div>
                     </div>
                 `
