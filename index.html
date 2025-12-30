@@ -1,7 +1,7 @@
-<!-- Sostituisci l'intera sezione <div id="mappa" class="section-content"> con questo: -->
+<!-- Sostituisci l'intera sezione mappa nel tuo index.html con questo: -->
 <div id="mappa" class="section-content">
     <h2 class="fw-bold mb-4 text-center map-title">🧭 Mappa Completa del Progetto</h2>
-    <p class="text-center text-muted mb-4">Architettura completa del corso - 21 pagine HTML organizzate</p>
+    <p class="text-center text-muted mb-4">Architettura completa del corso - 21 pagine HTML</p>
     
     <div class="row">
         <!-- Legenda -->
@@ -31,25 +31,25 @@
                     <hr>
                     
                     <div class="text-center mt-3">
-                        <h4 class="stats-number text-primary">21</h4>
-                        <p class="small mb-1">Pagine HTML</p>
+                        <div class="stats-number text-primary mb-2">21</div>
+                        <p class="small mb-1">Pagine HTML Totali</p>
                         
-                        <div class="row mt-3">
-                            <div class="col-6">
-                                <h5 class="text-success">5</h5>
-                                <small>Teoria</small>
+                        <div class="row text-center mt-3">
+                            <div class="col-6 mb-3">
+                                <div class="text-success fw-bold">5</div>
+                                <small class="text-muted">Teoria</small>
+                            </div>
+                            <div class="col-6 mb-3">
+                                <div class="text-info fw-bold">11</div>
+                                <small class="text-muted">ISO/OSI</small>
                             </div>
                             <div class="col-6">
-                                <h5 class="text-info">11</h5>
-                                <small>ISO/OSI</small>
+                                <div class="text-warning fw-bold">4</div>
+                                <small class="text-muted">Laboratori</small>
                             </div>
-                            <div class="col-6 mt-3">
-                                <h5 class="text-warning">4</h5>
-                                <small>Laboratori</small>
-                            </div>
-                            <div class="col-6 mt-3">
-                                <h5 class="text-danger">1</h5>
-                                <small>Dashboard</small>
+                            <div class="col-6">
+                                <div class="text-danger fw-bold">1</div>
+                                <small class="text-muted">Dashboard</small>
                             </div>
                         </div>
                     </div>
@@ -60,44 +60,45 @@
         <!-- Mappa dettagliata -->
         <div class="col-lg-9">
             <!-- Dashboard principale -->
-            <div class="text-center mb-5">
+            <div class="text-center mb-4">
                 <a href="index.html" class="text-decoration-none d-inline-block">
-                    <div class="p-4 bg-primary text-white rounded shadow-sm border-0 card-hover-effect highlight-node" style="width: 220px;">
+                    <div class="p-4 bg-primary text-white rounded shadow-sm border-0 card-hover-effect highlight-node">
                         <i class="bi bi-house-door-fill fs-1 d-block mb-2"></i>
-                        <h5 class="fw-bold mb-1">🏠 Dashboard</h5>
-                        <small class="opacity-75">Controller principale</small>
+                        <h5 class="fw-bold mb-1">🏠 Dashboard Principale</h5>
+                        <small class="opacity-75">index.html - Controller del corso</small>
                     </div>
                 </a>
-                <div class="mt-3">
-                    <i class="bi bi-arrow-down fs-4 text-primary path-arrow"></i>
-                </div>
             </div>
             
             <!-- Tre colonne principali -->
-            <div class="row g-4">
+            <div class="row g-3 mb-4">
                 <!-- Colonna 1: Teoria -->
                 <div class="col-md-4">
-                    <div class="card h-100 phase-card phase-2 card-hover-effect">
-                        <div class="card-header bg-success text-white">
-                            <h6 class="mb-0"><i class="bi bi-book"></i> Settimana 1 - Teoria</h6>
-                        </div>
-                        <div class="card-body">
-                            <p class="small text-muted">Concetti base delle reti di computer</p>
-                            <div class="d-grid gap-2 mt-3">
-                                <a href="Settimana_01_Teoria/pan_approfondimento.html" class="btn btn-outline-success btn-sm text-start">
-                                    <i class="bi bi-person-badge"></i> PAN - Personal Area Network
+                    <div class="card h-100 border-start border-4 border-success card-hover-effect">
+                        <div class="card-body p-3">
+                            <h6 class="card-title fw-bold text-success mb-3">
+                                <i class="bi bi-book me-2"></i>Settimana 1 - Teoria
+                            </h6>
+                            <div class="list-group list-group-flush small">
+                                <a href="pan_approfondimento.html" class="list-group-item list-group-item-action d-flex align-items-center">
+                                    <i class="bi bi-person-badge text-success me-2"></i>
+                                    <span>PAN - Personal Area Network</span>
                                 </a>
-                                <a href="Settimana_01_Teoria/soho_approfondimento.html" class="btn btn-outline-success btn-sm text-start">
-                                    <i class="bi bi-house"></i> SOHO - Small Office/Home Office
+                                <a href="soho_approfondimento.html" class="list-group-item list-group-item-action d-flex align-items-center">
+                                    <i class="bi bi-house text-success me-2"></i>
+                                    <span>SOHO - Small Office</span>
                                 </a>
-                                <a href="Settimana_01_Teoria/lan_approfondimento.html" class="btn btn-outline-success btn-sm text-start">
-                                    <i class="bi bi-router"></i> LAN - Local Area Network
+                                <a href="lan_approfondimento.html" class="list-group-item list-group-item-action d-flex align-items-center">
+                                    <i class="bi bi-router text-success me-2"></i>
+                                    <span>LAN - Local Area Network</span>
                                 </a>
-                                <a href="Settimana_01_Teoria/wan_approfondimento.html" class="btn btn-outline-success btn-sm text-start">
-                                    <i class="bi bi-globe"></i> WAN - Wide Area Network
+                                <a href="wan_approfondimento.html" class="list-group-item list-group-item-action d-flex align-items-center">
+                                    <i class="bi bi-globe text-success me-2"></i>
+                                    <span>WAN - Wide Area Network</span>
                                 </a>
-                                <a href="Settimana_01_Teoria/topologia.html" class="btn btn-outline-success btn-sm text-start">
-                                    <i class="bi bi-diagram-3"></i> Topologie di rete
+                                <a href="topologia.html" class="list-group-item list-group-item-action d-flex align-items-center">
+                                    <i class="bi bi-diagram-3 text-success me-2"></i>
+                                    <span>Topologie di rete</span>
                                 </a>
                             </div>
                         </div>
@@ -106,42 +107,35 @@
                 
                 <!-- Colonna 2: ISO/OSI -->
                 <div class="col-md-4">
-                    <div class="card h-100 phase-card phase-3 card-hover-effect">
-                        <div class="card-header bg-info text-white">
-                            <h6 class="mb-0"><i class="bi bi-layers"></i> Modello ISO/OSI</h6>
-                        </div>
-                        <div class="card-body">
-                            <p class="small text-muted">Il modello a 7 livelli</p>
+                    <div class="card h-100 border-start border-4 border-info card-hover-effect">
+                        <div class="card-body p-3">
+                            <h6 class="card-title fw-bold text-info mb-3">
+                                <i class="bi bi-layers me-2"></i>Modello ISO/OSI
+                            </h6>
                             
                             <!-- Torre ISO/OSI -->
                             <div class="mb-3">
-                                <h6 class="fw-bold small">Torre dei 7 livelli:</h6>
+                                <h6 class="fw-bold small text-info mb-2">Torre dei 7 livelli:</h6>
                                 <div class="d-grid gap-1">
-                                    <a href="Modello_OSI_Details/livello7.html" class="btn btn-sm text-white" style="background-color: #e83e8c; font-size: 0.8rem;">7. Applicazione</a>
-                                    <a href="Modello_OSI_Details/livello6.html" class="btn btn-sm text-white" style="background-color: #d63384; font-size: 0.8rem;">6. Presentazione</a>
-                                    <a href="Modello_OSI_Details/livello5.html" class="btn btn-sm text-white" style="background-color: #fd7e14; font-size: 0.8rem;">5. Sessione</a>
-                                    <a href="Modello_OSI_Details/livello4.html" class="btn btn-sm" style="background-color: #ffc107; color: #000; font-size: 0.8rem;">4. Trasporto</a>
-                                    <a href="Modello_OSI_Details/livello3.html" class="btn btn-sm text-white" style="background-color: #198754; font-size: 0.8rem;">3. Rete</a>
-                                    <a href="Modello_OSI_Details/livello2.html" class="btn btn-sm text-white" style="background-color: #0d6efd; font-size: 0.8rem;">2. Collegamento</a>
-                                    <a href="Modello_OSI_Details/livello1.html" class="btn btn-sm text-white" style="background-color: #6c757d; font-size: 0.8rem;">1. Fisico</a>
+                                    <a href="livello7.html" class="btn btn-sm text-white" style="background-color: #e83e8c;">7. Applicazione</a>
+                                    <a href="livello6.html" class="btn btn-sm text-white" style="background-color: #d63384;">6. Presentazione</a>
+                                    <a href="livello5.html" class="btn btn-sm text-white" style="background-color: #fd7e14;">5. Sessione</a>
+                                    <a href="livello4.html" class="btn btn-sm" style="background-color: #ffc107; color: #000;">4. Trasporto</a>
+                                    <a href="livello3.html" class="btn btn-sm text-white" style="background-color: #198754;">3. Rete</a>
+                                    <a href="livello2.html" class="btn btn-sm text-white" style="background-color: #0d6efd;">2. Collegamento</a>
+                                    <a href="livello1.html" class="btn btn-sm text-white" style="background-color: #6c757d;">1. Fisico</a>
                                 </div>
                             </div>
                             
-                            <!-- Spiegazioni -->
+                            <!-- Approfondimenti -->
                             <div class="mt-3">
-                                <h6 class="fw-bold small">Approfondimenti:</h6>
+                                <h6 class="fw-bold small text-info mb-2">Approfondimenti:</h6>
                                 <div class="d-grid gap-2">
-                                    <a href="Modello_OSI_Details/descrizione_livelli.html" class="btn btn-outline-info btn-sm">
+                                    <a href="descrizione_livelli.html" class="btn btn-outline-info btn-sm">
                                         <i class="bi bi-puzzle"></i> Descrizione Livelli
                                     </a>
-                                    <a href="Modello_OSI_Details/confronto_tcp.html" class="btn btn-outline-info btn-sm">
+                                    <a href="confronto_tcp.html" class="btn btn-outline-info btn-sm">
                                         <i class="bi bi-columns"></i> Confronto TCP/IP
-                                    </a>
-                                    <a href="Modello_OSI_Details/iso_osi_spiegazione.html" class="btn btn-outline-info btn-sm">
-                                        <i class="bi bi-book"></i> Spiegazione ISO/OSI
-                                    </a>
-                                    <a href="Modello_OSI_Details/tcp_ip_spiegazione.html" class="btn btn-outline-info btn-sm">
-                                        <i class="bi bi-globe"></i> Spiegazione TCP/IP
                                     </a>
                                 </div>
                             </div>
@@ -151,24 +145,27 @@
                 
                 <!-- Colonna 3: Laboratori -->
                 <div class="col-md-4">
-                    <div class="card h-100 phase-card phase-4 card-hover-effect">
-                        <div class="card-header bg-warning text-white">
-                            <h6 class="mb-0"><i class="bi bi-cpu"></i> Settimana 2 - Laboratori</h6>
-                        </div>
-                        <div class="card-body">
-                            <p class="small text-muted">Esercitazioni pratiche con Arduino</p>
-                            <div class="d-grid gap-2 mt-3">
-                                <a href="Settimana_02_Lab_Arduino/lab_ping.html" class="btn btn-outline-warning btn-sm text-start">
-                                    <i class="bi bi-lightning-charge"></i> Lab 1: Ping Pong (Serial)
+                    <div class="card h-100 border-start border-4 border-warning card-hover-effect">
+                        <div class="card-body p-3">
+                            <h6 class="card-title fw-bold text-warning mb-3">
+                                <i class="bi bi-cpu me-2"></i>Settimana 2 - Laboratori
+                            </h6>
+                            <div class="list-group list-group-flush small">
+                                <a href="lab_ping.html" class="list-group-item list-group-item-action d-flex align-items-center">
+                                    <i class="bi bi-lightning-charge text-warning me-2"></i>
+                                    <span>Lab 1: Ping Pong (Serial)</span>
                                 </a>
-                                <a href="Settimana_02_Lab_Arduino/lab_cs.html" class="btn btn-outline-warning btn-sm text-start">
-                                    <i class="bi bi-hdd-network"></i> Lab 2: Client/Server
+                                <a href="lab_cs.html" class="list-group-item list-group-item-action d-flex align-items-center">
+                                    <i class="bi bi-hdd-network text-warning me-2"></i>
+                                    <span>Lab 2: Client/Server</span>
                                 </a>
-                                <a href="Settimana_02_Lab_Arduino/lab_i2c.html" class="btn btn-outline-warning btn-sm text-start">
-                                    <i class="bi bi-motherboard"></i> Lab 3: Comunicazione I2C
+                                <a href="lab_i2c.html" class="list-group-item list-group-item-action d-flex align-items-center">
+                                    <i class="bi bi-motherboard text-warning me-2"></i>
+                                    <span>Lab 3: Comunicazione I2C</span>
                                 </a>
-                                <a href="Settimana_02_Lab_Arduino/lab_temp.html" class="btn btn-outline-warning btn-sm text-start">
-                                    <i class="bi bi-thermometer"></i> Lab 4: Controllo Temperatura
+                                <a href="lab_temp.html" class="list-group-item list-group-item-action d-flex align-items-center">
+                                    <i class="bi bi-thermometer text-warning me-2"></i>
+                                    <span>Lab 4: Controllo Temperatura</span>
                                 </a>
                             </div>
                         </div>
@@ -176,82 +173,116 @@
                 </div>
             </div>
             
-            <!-- Struttura file system completa -->
-            <div class="card mt-4 border-0 shadow-sm card-hover-effect">
+            <!-- File system semplificato -->
+            <div class="card border-0 shadow-sm mt-4">
                 <div class="card-header bg-dark text-white">
-                    <h6 class="mb-0"><i class="bi bi-folder-fill"></i> Struttura Completa del Progetto</h6>
+                    <h6 class="mb-0"><i class="bi bi-files"></i> Elenco Completo dei File</h6>
                 </div>
                 <div class="card-body p-3">
-                    <div class="tree-view small">
-                        <div class="mb-2">
-                            <i class="bi bi-folder-fill text-warning"></i> <strong>Corso_Reti_Tlc/</strong>
-                            <span class="badge bg-secondary badge-pill-custom ms-2">Radice</span>
+                    <div class="row">
+                        <!-- Colonna 1 -->
+                        <div class="col-md-4">
+                            <h6 class="fw-bold text-success mb-3">📚 Teoria (5 file)</h6>
+                            <ul class="list-unstyled small">
+                                <li class="mb-2">
+                                    <i class="bi bi-file-text text-success me-2"></i>
+                                    <a href="pan_approfondimento.html" class="text-decoration-none">pan_approfondimento.html</a>
+                                </li>
+                                <li class="mb-2">
+                                    <i class="bi bi-file-text text-success me-2"></i>
+                                    <a href="soho_approfondimento.html" class="text-decoration-none">soho_approfondimento.html</a>
+                                </li>
+                                <li class="mb-2">
+                                    <i class="bi bi-file-text text-success me-2"></i>
+                                    <a href="lan_approfondimento.html" class="text-decoration-none">lan_approfondimento.html</a>
+                                </li>
+                                <li class="mb-2">
+                                    <i class="bi bi-file-text text-success me-2"></i>
+                                    <a href="wan_approfondimento.html" class="text-decoration-none">wan_approfondimento.html</a>
+                                </li>
+                                <li class="mb-2">
+                                    <i class="bi bi-file-text text-success me-2"></i>
+                                    <a href="topologia.html" class="text-decoration-none">topologia.html</a>
+                                </li>
+                            </ul>
                         </div>
                         
-                        <div class="ms-4">
-                            <!-- File radice -->
-                            <div class="mb-1">
-                                <i class="bi bi-file-earmark-code text-primary"></i> <a href="index.html" class="text-decoration-none fw-bold">index.html</a>
-                                <span class="badge bg-primary badge-pill-custom ms-2">Dashboard</span>
-                            </div>
+                        <!-- Colonna 2 -->
+                        <div class="col-md-4">
+                            <h6 class="fw-bold text-info mb-3">🏗️ ISO/OSI (11 file)</h6>
+                            <ul class="list-unstyled small">
+                                <li class="mb-2">
+                                    <i class="bi bi-file-text text-info me-2"></i>
+                                    <a href="descrizione_livelli.html" class="text-decoration-none">descrizione_livelli.html</a>
+                                </li>
+                                <li class="mb-2">
+                                    <i class="bi bi-file-text text-info me-2"></i>
+                                    <a href="confronto_tcp.html" class="text-decoration-none">confronto_tcp.html</a>
+                                </li>
+                                <li class="mb-2">
+                                    <i class="bi bi-file-text text-info me-2"></i>
+                                    <a href="iso_osi_spiegazione.html" class="text-decoration-none">iso_osi_spiegazione.html</a>
+                                </li>
+                                <li class="mb-2">
+                                    <i class="bi bi-file-text text-info me-2"></i>
+                                    <a href="tcp_ip_spiegazione.html" class="text-decoration-none">tcp_ip_spiegazione.html</a>
+                                </li>
+                                <li class="mb-2">
+                                    <i class="bi bi-file-text text-secondary me-2"></i>
+                                    <span class="text-muted">+7 file livello1-7.html</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Colonna 3 -->
+                        <div class="col-md-4">
+                            <h6 class="fw-bold text-warning mb-3">⚡ Laboratori (4 file)</h6>
+                            <ul class="list-unstyled small">
+                                <li class="mb-2">
+                                    <i class="bi bi-file-code text-warning me-2"></i>
+                                    <a href="lab_ping.html" class="text-decoration-none">lab_ping.html</a>
+                                </li>
+                                <li class="mb-2">
+                                    <i class="bi bi-file-code text-warning me-2"></i>
+                                    <a href="lab_cs.html" class="text-decoration-none">lab_cs.html</a>
+                                </li>
+                                <li class="mb-2">
+                                    <i class="bi bi-file-code text-warning me-2"></i>
+                                    <a href="lab_i2c.html" class="text-decoration-none">lab_i2c.html</a>
+                                </li>
+                                <li class="mb-2">
+                                    <i class="bi bi-file-code text-warning me-2"></i>
+                                    <a href="lab_temp.html" class="text-decoration-none">lab_temp.html</a>
+                                </li>
+                            </ul>
                             
-                            <!-- Cartella Assets -->
-                            <div class="mb-1">
-                                <i class="bi bi-folder text-warning"></i> <strong>assets/</strong>
-                                <div class="ms-4">
-                                    <div><i class="bi bi-file-earmark-code text-info"></i> <a href="assets/style.css" class="text-decoration-none">style.css</a></div>
-                                    <div><i class="bi bi-file-earmark-code text-info"></i> <a href="assets/script.js" class="text-decoration-none">script.js</a></div>
-                                    <div class="text-muted">
-                                        <i class="bi bi-folder"></i> images/ (12 file immagine)
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Cartella Teoria -->
-                            <div class="mb-1">
-                                <i class="bi bi-folder text-warning"></i> <strong>Settimana_01_Teoria/</strong>
-                                <div class="ms-4">
-                                    <div><i class="bi bi-file-earmark-text text-success"></i> <a href="Settimana_01_Teoria/pan_approfondimento.html" class="text-decoration-none">pan_approfondimento.html</a></div>
-                                    <div><i class="bi bi-file-earmark-text text-success"></i> <a href="Settimana_01_Teoria/soho_approfondimento.html" class="text-decoration-none">soho_approfondimento.html</a></div>
-                                    <div><i class="bi bi-file-earmark-text text-success"></i> <a href="Settimana_01_Teoria/lan_approfondimento.html" class="text-decoration-none">lan_approfondimento.html</a></div>
-                                    <div><i class="bi bi-file-earmark-text text-success"></i> <a href="Settimana_01_Teoria/wan_approfondimento.html" class="text-decoration-none">wan_approfondimento.html</a></div>
-                                    <div><i class="bi bi-file-earmark-text text-success"></i> <a href="Settimana_01_Teoria/topologia.html" class="text-decoration-none">topologia.html</a></div>
-                                </div>
-                            </div>
-                            
-                            <!-- Cartella ISO/OSI -->
-                            <div class="mb-1">
-                                <i class="bi bi-folder text-warning"></i> <strong>Modello_OSI_Details/</strong>
-                                <div class="ms-4">
-                                    <div><i class="bi bi-file-earmark-text text-info"></i> <a href="Modello_OSI_Details/descrizione_livelli.html" class="text-decoration-none">descrizione_livelli.html</a></div>
-                                    <div><i class="bi bi-file-earmark-text text-info"></i> <a href="Modello_OSI_Details/confronto_tcp.html" class="text-decoration-none">confronto_tcp.html</a></div>
-                                    <div><i class="bi bi-file-earmark-text text-info"></i> <a href="Modello_OSI_Details/iso_osi_spiegazione.html" class="text-decoration-none">iso_osi_spiegazione.html</a></div>
-                                    <div><i class="bi bi-file-earmark-text text-info"></i> <a href="Modello_OSI_Details/tcp_ip_spiegazione.html" class="text-decoration-none">tcp_ip_spiegazione.html</a></div>
-                                    <div class="text-muted">
-                                        <i class="bi bi-file-earmark-text"></i> livello1.html • livello2.html • livello3.html • livello4.html • livello5.html • livello6.html • livello7.html
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Cartella Laboratori -->
-                            <div class="mb-1">
-                                <i class="bi bi-folder text-warning"></i> <strong>Settimana_02_Lab_Arduino/</strong>
-                                <div class="ms-4">
-                                    <div><i class="bi bi-file-earmark-code text-warning"></i> <a href="Settimana_02_Lab_Arduino/lab_ping.html" class="text-decoration-none">lab_ping.html</a></div>
-                                    <div><i class="bi bi-file-earmark-code text-warning"></i> <a href="Settimana_02_Lab_Arduino/lab_cs.html" class="text-decoration-none">lab_cs.html</a></div>
-                                    <div><i class="bi bi-file-earmark-code text-warning"></i> <a href="Settimana_02_Lab_Arduino/lab_i2c.html" class="text-decoration-none">lab_i2c.html</a></div>
-                                    <div><i class="bi bi-file-earmark-code text-warning"></i> <a href="Settimana_02_Lab_Arduino/lab_temp.html" class="text-decoration-none">lab_temp.html</a></div>
-                                </div>
-                            </div>
-                            
-                            <!-- Documentazione -->
-                            <div class="mb-1">
-                                <i class="bi bi-file-earmark-text text-secondary"></i> <a href="README.md" class="text-decoration-none">README.md</a>
-                                <span class="badge bg-secondary badge-pill-custom ms-2">Documentazione</span>
-                            </div>
+                            <h6 class="fw-bold text-secondary mt-4 mb-3">🛠️ Asset (14 file)</h6>
+                            <ul class="list-unstyled small">
+                                <li class="mb-1">
+                                    <i class="bi bi-filetype-css text-primary me-2"></i>
+                                    <a href="style.css" class="text-decoration-none">style.css</a>
+                                </li>
+                                <li class="mb-1">
+                                    <i class="bi bi-filetype-js text-warning me-2"></i>
+                                    <a href="script.js" class="text-decoration-none">script.js</a>
+                                </li>
+                                <li class="mb-1">
+                                    <i class="bi bi-image text-success me-2"></i>
+                                    <span class="text-muted">12 immagini (.png, .jpg, .webp)</span>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
+            </div>
+            
+            <!-- Note -->
+            <div class="alert alert-info mt-4">
+                <h6 class="fw-bold"><i class="bi bi-info-circle me-2"></i>Organizzazione del Progetto</h6>
+                <p class="small mb-0">
+                    Tutti i file sono nella radice del repository per semplicità di gestione su GitHub. 
+                    La struttura logica è mantenuta attraverso la navigazione tematica nella dashboard.
+                </p>
             </div>
         </div>
     </div>
