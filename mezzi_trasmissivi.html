@@ -394,6 +394,14 @@
             transform: translateY(-2px);
         }
         
+        /* Badges */
+        .badge {
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        
         /* Responsive */
         @media (max-width: 768px) {
             .media-nav {
@@ -697,18 +705,16 @@
             </div>
             
             <div class="gallery-item">
-                <img src="https://www.fiberoptics4sale.com/cdn/shop/articles/utp_categories_1024x1024.jpg?v=1571439703" 
-                     alt="UTP Cable Categories" 
+                <img src="CategorieUTP.png" 
+                     alt="UTP Cable Categories Comparison" 
                      class="gallery-img utp"
-                     onerror="this.src='https://via.placeholder.com/300x200/FF9800/FFFFFF?text=Categorie+UTP'">
+                     onerror="this.src='https://via.placeholder.com/300x200/FF9800/FFFFFF?text=Categorie+UTP+Non+Trovata'">
                 <div class="gallery-caption">
-                    <h5>Categorie UTP</h5>
-                    <p>Da Cat 3 a Cat 8: differenze e applicazioni</p>
-                    <a href="https://www.fiberoptics4sale.com/blogs/archive-posts/95046918-what-is-unshielded-twisted-pair-utp-cable" 
-                       target="_blank" 
-                       class="source-link">
-                        🔗 Vedi tutte le categorie
-                    </a>
+                    <h5>Categorie UTP - Confronto</h5>
+                    <p>Da Cat 3 a Cat 8: specifiche e differenze</p>
+                    <div style="margin-top: 10px; font-size: 0.85rem; color: #666;">
+                        <strong>📍 Immagine locale:</strong> CategorieUTP.png
+                    </div>
                 </div>
             </div>
             
@@ -733,83 +739,117 @@
             <h4>🎯 Cos'è il Doppino Intrecciato?</h4>
             <p>Il <strong>doppino intrecciato non schermato (UTP)</strong> è il cavo più comune nelle reti LAN. Consiste di 4 coppie di fili di rame intrecciati per ridurre le interferenze elettromagnetiche.</p>
             
-            <a href="https://www.fiberoptics4sale.com/blogs/archive-posts/95046918-what-is-unshielded-twisted-pair-utp-cable" 
-               target="_blank" 
-               class="external-badge">
-                🌐 Leggi su FiberOptics4Sale.com
-            </a>
-        </div>
-        
-        <div class="diagram">
-            <h5>🔧 Cablaggio Incrociato vs Diritto</h5>
-            <img src="https://www.fiberoptics4sale.com/cdn/shop/articles/straight_vs_crossover_1024x1024.jpg?v=1571439703" 
-                 alt="Straight-through vs Crossover Cable"
-                 onerror="this.src='https://via.placeholder.com/800x400/FF9800/FFFFFF?text=Straight-vs-Crossover'">
-            <div style="margin-top: 15px; padding: 15px; background: #fff3e0; border-radius: 8px;">
-                <p><strong>Straight-through:</strong> Collegamento tra dispositivi diversi (PC ↔ Switch, Router ↔ Switch)</p>
-                <p><strong>Crossover:</strong> Collegamento tra dispositivi simili (PC ↔ PC, Switch ↔ Switch)</p>
-                <p><strong>Auto-MDIX:</strong> La moderna tecnologia che elimina il bisogno di cavi crossover.</p>
+            <div style="display: flex; gap: 15px; margin-top: 15px; flex-wrap: wrap;">
+                <a href="https://www.fiberoptics4sale.com/blogs/archive-posts/95046918-what-is-unshielded-twisted-pair-utp-cable" 
+                   target="_blank" 
+                   class="external-badge">
+                    🌐 Leggi su FiberOptics4Sale.com
+                </a>
+                <a href="CategorieUTP.png" 
+                   target="_blank" 
+                   class="external-badge" style="background: #ff9800;">
+                    📊 Vedi immagine Categorie UTP
+                </a>
             </div>
         </div>
         
-        <h3>📊 Categorie UTP</h3>
+        <!-- Aggiungo un diagramma per le categorie UTP -->
+        <div class="diagram">
+            <h5>📊 Categorie UTP - Riepilogo Visivo</h5>
+            <img src="CategorieUTP.png" 
+                 alt="Confronto Categorie UTP da Cat 3 a Cat 8"
+                 style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);"
+                 onerror="this.src='https://via.placeholder.com/800x400/FF9800/FFFFFF?text=Categorie+UTP+Non+Trovata'">
+            <div style="margin-top: 15px; padding: 15px; background: #fff3e0; border-radius: 8px;">
+                <h6>🔍 Legenda Immagine Categorie UTP:</h6>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p><strong>Cat 5e:</strong> Standard per Gigabit Ethernet (1 Gbps)</p>
+                        <p><strong>Cat 6:</strong> 10 Gbps fino a 55 metri</p>
+                        <p><strong>Cat 6A:</strong> 10 Gbps fino a 100 metri</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><strong>Cat 7:</strong> Schermato, 10 Gbps, 600 MHz</p>
+                        <p><strong>Cat 8:</strong> 40 Gbps fino a 30 metri</p>
+                        <p><strong>Bandwidth:</strong> Frequenza massima supportata</p>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 10px;">
+                    <a href="CategorieUTP.png" 
+                       target="_blank" 
+                       style="display: inline-flex; align-items: center; gap: 8px; color: #ff9800; text-decoration: none; font-weight: bold;">
+                        🔍 Clicca per ingrandire l'immagine
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <h3>📊 Tabella Dettagliata Categorie UTP</h3>
         <table class="tech-table">
             <thead>
                 <tr>
                     <th>Categoria</th>
                     <th>Banda</th>
                     <th>Velocità Max</th>
+                    <th>Distanza Max</th>
                     <th>Uso Tipico</th>
                     <th>Anno</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>Cat 3</td>
+                    <td><strong>Cat 3</strong></td>
                     <td>16 MHz</td>
                     <td>10 Mbps</td>
+                    <td>100 m</td>
                     <td>Telefonia/Voce</td>
                     <td>1991</td>
                 </tr>
                 <tr>
-                    <td>Cat 5</td>
+                    <td><strong>Cat 5</strong></td>
                     <td>100 MHz</td>
                     <td>100 Mbps</td>
+                    <td>100 m</td>
                     <td>Fast Ethernet</td>
                     <td>1995</td>
                 </tr>
                 <tr>
-                    <td>Cat 5e</td>
+                    <td><strong>Cat 5e</strong></td>
                     <td>100 MHz</td>
                     <td>1 Gbps</td>
+                    <td>100 m</td>
                     <td>Gigabit Ethernet</td>
                     <td>2001</td>
                 </tr>
                 <tr>
-                    <td>Cat 6</td>
+                    <td><strong>Cat 6</strong></td>
                     <td>250 MHz</td>
-                    <td>10 Gbps (55m)</td>
+                    <td>10 Gbps</td>
+                    <td>55 m</td>
                     <td>10GbE limitato</td>
                     <td>2002</td>
                 </tr>
                 <tr>
-                    <td>Cat 6A</td>
+                    <td><strong>Cat 6A</strong></td>
                     <td>500 MHz</td>
-                    <td>10 Gbps (100m)</td>
+                    <td>10 Gbps</td>
+                    <td>100 m</td>
                     <td>10GbE full</td>
                     <td>2008</td>
                 </tr>
                 <tr>
-                    <td>Cat 7</td>
+                    <td><strong>Cat 7</strong></td>
                     <td>600 MHz</td>
                     <td>10 Gbps</td>
+                    <td>100 m</td>
                     <td>Datacenter</td>
                     <td>2010</td>
                 </tr>
                 <tr>
-                    <td>Cat 8</td>
+                    <td><strong>Cat 8</strong></td>
                     <td>2000 MHz</td>
-                    <td>40 Gbps (30m)</td>
+                    <td>40 Gbps</td>
+                    <td>30 m</td>
                     <td>Datacenter 40GbE</td>
                     <td>2016</td>
                 </tr>
@@ -827,6 +867,11 @@
                         <li><strong>T568B:</strong> Standard AT&T/commerciale (più comune)</li>
                         <li><strong>Importante:</strong> Scegliere uno standard e mantenerlo in tutta l'installazione!</li>
                     </ul>
+                    
+                    <div style="margin-top: 15px; padding: 10px; background: #fff8e1; border-radius: 5px;">
+                        <strong>🔧 Cablaggio consigliato per TPSEE:</strong>
+                        <p>Usare sempre <strong>T568B</strong> per coerenza con le installazioni commerciali.</p>
+                    </div>
                 </div>
             </div>
             <div class="col-md-6">
@@ -837,7 +882,30 @@
                         <p><strong>🔘 SWITCH (livello 2):</strong> Impara MAC address - switching intelligente</p>
                         <p><strong>🔘 ROUTER (livello 3):</strong> Instrada tra reti diverse - usa indirizzi IP</p>
                     </div>
+                    
+                    <div style="margin-top: 20px; padding: 10px; background: #bbdefb; border-radius: 5px;">
+                        <strong>💡 Per TPSEE - Laboratorio:</strong>
+                        <p>Esercitarsi con <strong>switch managed</strong> per configurare VLAN e gestione avanzata.</p>
+                    </div>
                 </div>
+            </div>
+        </div>
+        
+        <!-- Sezione per test di laboratorio TPSEE -->
+        <div class="info-card" style="background: #fff3cd; border-left-color: #ffc107;">
+            <h4>🧪 Esercitazioni Pratiche TPSEE - UTP</h4>
+            <ol>
+                <li><strong>Test Continuity:</strong> Verifica cavi con tester di continuità</li>
+                <li><strong>Crimpatura RJ45:</strong> Creazione cavi patch personalizzati</li>
+                <li><strong>Test Performance:</strong> Misurazione attenuazione con certificatori</li>
+                <li><strong>Identificazione Categorie:</strong> Riconoscere Cat 5e vs Cat 6 vs Cat 6A</li>
+                <li><strong>Risoluzione Problemi:</strong> Diagnosi crosstalk e interferenze</li>
+            </ol>
+            
+            <div style="margin-top: 15px; display: flex; gap: 10px; flex-wrap: wrap;">
+                <span class="badge bg-warning text-dark">Laboratorio Pratico</span>
+                <span class="badge bg-info">Test Strumentazione</span>
+                <span class="badge bg-success">Sicurezza Elettrica</span>
             </div>
         </div>
     </div>
