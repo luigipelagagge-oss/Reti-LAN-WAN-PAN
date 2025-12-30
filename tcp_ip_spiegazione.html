@@ -97,6 +97,15 @@
             font-size: 0.9rem;
             display: flex;
             align-items: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .protocol-item:hover {
+            background-color: #e9ecef;
+            border-color: #0d6efd;
+            transform: translateY(-3px);
         }
 
         .protocol-icon {
@@ -186,6 +195,52 @@
             margin: 20px 0;
         }
         
+        .protocol-modal-content {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 15px;
+        }
+        
+        .protocol-modal-header {
+            background: linear-gradient(135deg, #0d6efd 0%, #0b5ed7 100%);
+            color: white;
+            border-radius: 15px 15px 0 0;
+            padding: 20px;
+        }
+        
+        .protocol-details {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .protocol-purpose {
+            background-color: #e7f1ff;
+            border-left: 4px solid #0d6efd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .protocol-example {
+            background-color: #f8f9fa;
+            border-left: 4px solid #6c757d;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-family: monospace;
+        }
+        
+        .analogy-box {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-style: italic;
+        }
+        
     </style>
 </head>
 <body>
@@ -219,24 +274,25 @@
             </div>
             <div class="layer-description">
                 <p>Combina le funzioni dei livelli 5, 6 e 7 del modello OSI. Fornisce servizi di rete direttamente alle applicazioni dell'utente. I protocolli a questo livello definiscono come le applicazioni scambiano dati.</p>
+                <p><strong>🔍 Clicca su ciascun protocollo per scoprirne il significato e la funzione:</strong></p>
                 
                 <div class="protocol-list">
-                    <div class="protocol-item">
+                    <div class="protocol-item" onclick="showProtocol('http')">
                         <span class="protocol-icon">🌍</span> HTTP/HTTPS - Web
                     </div>
-                    <div class="protocol-item">
+                    <div class="protocol-item" onclick="showProtocol('smtp')">
                         <span class="protocol-icon">📧</span> SMTP/POP/IMAP - Email
                     </div>
-                    <div class="protocol-item">
+                    <div class="protocol-item" onclick="showProtocol('ftp')">
                         <span class="protocol-icon">📁</span> FTP/SFTP - File Transfer
                     </div>
-                    <div class="protocol-item">
+                    <div class="protocol-item" onclick="showProtocol('dns')">
                         <span class="protocol-icon">🔍</span> DNS - Domain Names
                     </div>
-                    <div class="protocol-item">
+                    <div class="protocol-item" onclick="showProtocol('ssh')">
                         <span class="protocol-icon">💬</span> SSH - Secure Shell
                     </div>
-                    <div class="protocol-item">
+                    <div class="protocol-item" onclick="showProtocol('dhcp')">
                         <span class="protocol-icon">🎥</span> DHCP - IP Configuration
                     </div>
                 </div>
@@ -253,10 +309,10 @@
                 <p>Corrisponde al livello 4 del modello OSI. Garantisce la comunicazione end-to-end tra host. Gestisce la segmentazione dei dati, il controllo di flusso e l'affidabilità della comunicazione.</p>
                 
                 <div class="protocol-list">
-                    <div class="protocol-item">
+                    <div class="protocol-item" onclick="showProtocol('tcp')">
                         <span class="protocol-icon">🔒</span> TCP - Connessione affidabile
                     </div>
-                    <div class="protocol-item">
+                    <div class="protocol-item" onclick="showProtocol('udp')">
                         <span class="protocol-icon">⚡</span> UDP - Connessione veloce
                     </div>
                 </div>
@@ -279,16 +335,16 @@
                 <p>Corrisponde al livello 3 del modello OSI. Si occupa dell'indirizzamento logico, del routing e del frammentamento dei pacchetti attraverso reti multiple. È il "cuore" di Internet.</p>
                 
                 <div class="protocol-list">
-                    <div class="protocol-item">
+                    <div class="protocol-item" onclick="showProtocol('ip')">
                         <span class="protocol-icon">📍</span> IPv4/IPv6 - Indirizzamento
                     </div>
-                    <div class="protocol-item">
+                    <div class="protocol-item" onclick="showProtocol('icmp')">
                         <span class="protocol-icon">🔄</span> ICMP - Messaggi di controllo
                     </div>
-                    <div class="protocol-item">
+                    <div class="protocol-item" onclick="showProtocol('ospf')">
                         <span class="protocol-icon">🗺️</span> OSPF/BGP - Routing
                     </div>
-                    <div class="protocol-item">
+                    <div class="protocol-item" onclick="showProtocol('ipsec')">
                         <span class="protocol-icon">🔀</span> IPSec - Sicurezza
                     </div>
                 </div>
@@ -309,16 +365,16 @@
                 <p>Combina le funzioni dei livelli 1 e 2 del modello OSI. Definisce come i dati sono fisicamente trasmessi attraverso il mezzo di rete. Gestisce l'accesso al mezzo e l'indirizzamento fisico (MAC).</p>
                 
                 <div class="protocol-list">
-                    <div class="protocol-item">
+                    <div class="protocol-item" onclick="showProtocol('ethernet')">
                         <span class="protocol-icon">🔌</span> Ethernet - Reti cablate
                     </div>
-                    <div class="protocol-item">
+                    <div class="protocol-item" onclick="showProtocol('wifi')">
                         <span class="protocol-icon">📶</span> Wi-Fi (802.11) - Reti wireless
                     </div>
-                    <div class="protocol-item">
+                    <div class="protocol-item" onclick="showProtocol('ppp')">
                         <span class="protocol-icon">📞</span> PPP - Connessioni punto-punto
                     </div>
-                    <div class="protocol-item">
+                    <div class="protocol-item" onclick="showProtocol('arp')">
                         <span class="protocol-icon">🔄</span> ARP - Risoluzione indirizzi
                     </div>
                 </div>
@@ -345,22 +401,374 @@
 
     </div>
 
+    <!-- Modal per i dettagli del protocollo -->
+    <div class="modal fade" id="protocolModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content protocol-modal-content">
+                <div class="modal-header protocol-modal-header">
+                    <h2 class="modal-title" id="protocolModalTitle">Nome Protocollo</h2>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="protocolModalBody">
+                        <!-- Il contenuto verrà inserito dinamicamente qui -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+        // Dati dei protocolli (organizzati per Livello Applicazione)
+        const protocols = {
+            // Livello Applicazione
+            http: {
+                title: "🌍 HTTP/HTTPS - Protocollo Web",
+                content: `
+                    <div class="protocol-details">
+                        <h4>🔤 Significato dell'acronimo:</h4>
+                        <p><strong>HTTP</strong> = HyperText Transfer Protocol (Protocollo di Trasferimento Ipertestuale)</p>
+                        <p><strong>HTTPS</strong> = HTTP Secure (HTTP Sicuro)</p>
+                        
+                        <div class="protocol-purpose">
+                            <h5>🎯 A cosa serve?</h5>
+                            <p>HTTP è il <strong>fondamento del Web</strong>. Permette al tuo browser (Chrome, Firefox) di comunicare con i server web per caricare pagine, immagini, video.</p>
+                            <p>HTTPS è la versione <strong>crittografata</strong> di HTTP, che protegge i tuoi dati da occhi indiscreti.</p>
+                        </div>
+                        
+                        <div class="analogy-box">
+                            <h5>💡 Analogia per capire:</h5>
+                            <p><strong>Pensa a HTTP come a una cartolina postale:</strong></p>
+                            <ul>
+                                <li>Chiunque la maneggia può leggerla (non sicura)</li>
+                                <li>Scrivi: "Voglio la pagina Facebook"</li>
+                                <li>Il server risponde: "Ecco la pagina Facebook"</li>
+                            </ul>
+                            <p><strong>HTTPS invece è come una lettera raccomandata in busta chiusa:</strong></p>
+                            <ul>
+                                <li>Solo mittente e destinatario possono leggerne il contenuto</li>
+                                <li>Perfetta per password, dati bancari, informazioni personali</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="protocol-example">
+                            <h5>📝 Esempio pratico:</h5>
+                            <p>Quando digiti <code>https://www.google.com</code> nel browser:</p>
+                            <ol>
+                                <li>Il tuo browser invia una richiesta <strong>HTTP GET</strong> al server Google</li>
+                                <li>Google risponde con il codice HTML della homepage</li>
+                                <li>Il browser interpreta l'HTML e mostra la pagina</li>
+                            </ol>
+                        </div>
+                        
+                        <div style="background: #d4edda; padding: 10px; border-radius: 5px; margin-top: 15px;">
+                            <strong>🔒 Importanza della sicurezza:</strong> Oggi <strong>HTTPS è obbligatorio</strong> per tutti i siti web seri. Guarda l'icona 🔒 nella barra degli indirizzi!
+                        </div>
+                    </div>
+                `
+            },
+            smtp: {
+                title: "📧 SMTP/POP/IMAP - Protocolli Email",
+                content: `
+                    <div class="protocol-details">
+                        <h4>🔤 Significato degli acronimi:</h4>
+                        <p><strong>SMTP</strong> = Simple Mail Transfer Protocol (Protocollo Semplice di Trasferimento Email)</p>
+                        <p><strong>POP</strong> = Post Office Protocol (Protocollo Ufficio Postale)</p>
+                        <p><strong>IMAP</strong> = Internet Message Access Protocol (Protocollo di Accesso ai Messaggi Internet)</p>
+                        
+                        <div class="protocol-purpose">
+                            <h5>🎯 A cosa servono?</h5>
+                            <p><strong>SMTP</strong>: Invia le email dal tuo client (Outlook, Gmail) al server, e tra server diversi.</p>
+                            <p><strong>POP</strong>: Scarica le email dal server al tuo computer, poi le cancella dal server.</p>
+                            <p><strong>IMAP</strong>: Sincronizza le email tra dispositivo e server, mantenendo tutto sul server.</p>
+                        </div>
+                        
+                        <div class="analogy-box">
+                            <h5>💡 Analogia per capire:</h5>
+                            <p><strong>SMTP è il postino che consegna</strong> → Porta la tua lettera alla cassetta postale del destinatario.</p>
+                            <p><strong>POP è come ritirare la posta dall'ufficio postale</strong> → Prendi tutta la posta e la porti a casa.</p>
+                            <p><strong>IMAP è come avere una cassetta di sicurezza in banca</strong> → Puoi accedere alla tua posta da qualsiasi sportello.</p>
+                        </div>
+                        
+                        <div class="protocol-example">
+                            <h5>📝 Esempio pratico:</h5>
+                            <p>Quando invii un'email da Gmail a un amico con Outlook:</p>
+                            <ol>
+                                <li>Gmail usa <strong>SMTP</strong> per inviare l'email al server Gmail</li>
+                                <li>I server Gmail e Microsoft comunicano via <strong>SMTP</strong></li>
+                                <li>Outlook usa <strong>IMAP</strong> per mostrare l'email al tuo amico</li>
+                            </ol>
+                        </div>
+                        
+                        <div style="background: #d1ecf1; padding: 10px; border-radius: 5px; margin-top: 15px;">
+                            <strong>🤔 Quale usare oggi?</strong> <strong>IMAP</strong> è il più moderno: ti permette di vedere le email su telefono, tablet e PC simultaneamente!
+                        </div>
+                    </div>
+                `
+            },
+            ftp: {
+                title: "📁 FTP/SFTP - Trasferimento File",
+                content: `
+                    <div class="protocol-details">
+                        <h4>🔤 Significato degli acronimi:</h4>
+                        <p><strong>FTP</strong> = File Transfer Protocol (Protocollo di Trasferimento File)</p>
+                        <p><strong>SFTP</strong> = SSH File Transfer Protocol (FTP su SSH Sicuro)</p>
+                        
+                        <div class="protocol-purpose">
+                            <h5>🎯 A cosa servono?</h5>
+                            <p>Permettono di trasferire file tra computer su una rete. FTP è il nonno dei protocolli di trasferimento (nata nel 1971!), SFTP è la versione moderna e sicura.</p>
+                            <p><strong>FTP</strong>: Trasferisce file in chiaro (pericoloso per dati sensibili).</p>
+                            <p><strong>SFTP</strong>: Crittografa tutto il trasferimento, molto più sicuro.</p>
+                        </div>
+                        
+                        <div class="analogy-box">
+                            <h5>💡 Analogia per capire:</h5>
+                            <p><strong>FTP è come spedire un pacco con il contenuto visibile</strong> → Chiunque può vedere cosa c'è dentro durante il viaggio.</p>
+                            <p><strong>SFTP è come una valigia diplomatica chiusa con lucchetto</strong> → Solo mittente e destinatario hanno le chiavi.</p>
+                        </div>
+                        
+                        <div class="protocol-example">
+                            <h5>📝 Esempio pratico:</h5>
+                            <p>Un webmaster che carica file sul server del sito:</p>
+                            <ol>
+                                <li>Si collega al server via <strong>SFTP</strong> (oggi obbligatorio)</li>
+                                <li>Trasferisce i file HTML, CSS, immagini</li>
+                                <li>Il server ora ha i file del sito web</li>
+                            </ol>
+                            <p><strong>Attenzione:</strong> FTP standard usa due porte: 21 per i comandi, 20 per i dati. SFTP usa solo la porta 22 (stessa di SSH).</p>
+                        </div>
+                        
+                        <div style="background: #fff3cd; padding: 10px; border-radius: 5px; margin-top: 15px;">
+                            <strong>⚠️ Avviso di sicurezza:</strong> <strong>Non usare mai FTP normale</strong> per dati importanti! Usa sempre <strong>SFTP</strong> o <strong>FTPS</strong> (FTP su SSL).
+                        </div>
+                    </div>
+                `
+            },
+            dns: {
+                title: "🔍 DNS - Sistema dei Nomi di Dominio",
+                content: `
+                    <div class="protocol-details">
+                        <h4>🔤 Significato dell'acronimo:</h4>
+                        <p><strong>DNS</strong> = Domain Name System (Sistema dei Nomi di Dominio)</p>
+                        
+                        <div class="protocol-purpose">
+                            <h5>🎯 A cosa serve?</h5>
+                            <p>Il DNS è <strong>l'elenco telefonico di Internet</strong>. Traduce nomi facili da ricordare (come google.com) in indirizzi IP numerici (come 142.250.190.78) che i computer usano per comunicare.</p>
+                            <p>Senza DNS, dovresti ricordare numeri come 142.250.190.78 invece di google.com!</p>
+                        </div>
+                        
+                        <div class="analogy-box">
+                            <h5>💡 Analogia per capire:</h5>
+                            <p><strong>Il DNS è come un enorme elenco telefonico mondiale</strong>:</p>
+                            <ul>
+                                <li>Tu cerchi "Mario Rossi" (google.com)</li>
+                                <li>L'elenco ti dice "Chiama il numero 142.250.190.78"</li>
+                                <li>Tu componi quel numero e parli con Google</li>
+                            </ul>
+                            <p>Oppure: <strong>È come il GPS del tuo telefono</strong> che traduce "Casa della nonna" in coordinate GPS precise.</p>
+                        </div>
+                        
+                        <div class="protocol-example">
+                            <h5>📝 Esempio pratico:</h5>
+                            <p>Quando digiti www.università.it nel browser:</p>
+                            <ol>
+                                <li>Il tuo computer chiede al <strong>DNS resolver</strong> (di solito del tuo ISP): "Dov'è università.it?"</li>
+                                <li>Il resolver interroga i <strong>root server</strong> (13 nel mondo)</li>
+                                <li>Poi i <strong>server TLD</strong> (.it)</li>
+                                <li>Infine il <strong>server autoritativo</strong> di università.it</li>
+                                <li>Torna l'indirizzo IP (es. 93.184.216.34)</li>
+                                <li>Il browser può ora contattare il server</li>
+                            </ol>
+                            <p>Tutto questo in <strong>meno di un secondo!</strong></p>
+                        </div>
+                        
+                        <div style="background: #cce5ff; padding: 10px; border-radius: 5px; margin-top: 15px;">
+                            <strong>🌐 Curiosità:</strong> Ci sono 13 <strong>root server DNS</strong> nel mondo (da A.root-servers.net a M.root-servers.net). Ognuno ha centinaia di copie per ridondanza.
+                        </div>
+                    </div>
+                `
+            },
+            ssh: {
+                title: "💬 SSH - Shell Sicura",
+                content: `
+                    <div class="protocol-details">
+                        <h4>🔤 Significato dell'acronimo:</h4>
+                        <p><strong>SSH</strong> = Secure Shell (Shell Sicura)</p>
+                        
+                        <div class="protocol-purpose">
+                            <h5>🎯 A cosa serve?</h5>
+                            <p>SSH permette di <strong>controllare computer remoti in modo sicuro</strong>, crittografando tutto il traffico. È lo strumento preferito da sistemisti, sviluppatori e amministratori.</p>
+                            <p>Sostituisce protocolli insicuri come <strong>Telnet</strong> (che invia password in chiaro!).</p>
+                        </div>
+                        
+                        <div class="analogy-box">
+                            <h5>💡 Analogia per capire:</h5>
+                            <p><strong>SSH è come avere un tunnel segreto sotterraneo tra due edifici</strong>:</p>
+                            <ul>
+                                <li>Nessuno all'esterno può vedere chi passa nel tunnel</li>
+                                <li>Tutto è protetto da pesanti porte blindate</li>
+                                <li>Puoi controllare il computer remoto come se fossi seduto di fronte</li>
+                            </ul>
+                            <p>Mentre <strong>Telnet</strong> sarebbe come parlare da un balcone al balcone di fronte, con tutto il quartiere che ascolta!</p>
+                        </div>
+                        
+                        <div class="protocol-example">
+                            <h5>📝 Esempio pratico:</h5>
+                            <p>Un sistemista che gestisce un server Linux:</p>
+                            <ol>
+                                <li>Aprite il terminale e digitate: <code>ssh mario@server-azienda.com</code></li>
+                                <li>SSH chiede la password (o usa una chiave crittografica)</li>
+                                <li>Una volta connessi, potete digitare comandi come se foste davanti al server</li>
+                                <li>Potete installare software, riavviare servizi, controllare log</li>
+                            </ol>
+                            <p><strong>Porta standard:</strong> SSH usa la porta 22.</p>
+                        </div>
+                        
+                        <div style="background: #d4edda; padding: 10px; border-radius: 5px; margin-top: 15px;">
+                            <strong>🔐 Autenticazione avanzata:</strong> Oltre alle password, SSH supporta <strong>chiavi crittografiche</strong> (una coppia: chiave pubblica sul server, chiave privata sul client). Molto più sicuro!
+                        </div>
+                    </div>
+                `
+            },
+            dhcp: {
+                title: "🎥 DHCP - Configurazione IP Automatica",
+                content: `
+                    <div class="protocol-details">
+                        <h4>🔤 Significato dell'acronimo:</h4>
+                        <p><strong>DHCP</strong> = Dynamic Host Configuration Protocol (Protocollo di Configurazione Dinamica degli Host)</p>
+                        
+                        <div class="protocol-purpose">
+                            <h5>🎯 A cosa serve?</h5>
+                            <p>DHCP è il <strong>fattorino automatico degli indirizzi IP</strong>. Quando un dispositivo si connette a una rete, DHCP gli assegna automaticamente:</p>
+                            <ul>
+                                <li><strong>Indirizzo IP</strong> (unico per quel dispositivo)</li>
+                                <li><strong>Subnet mask</strong> (definisce la rete)</li>
+                                <li><strong>Gateway predefinito</strong> (il router per uscire in Internet)</li>
+                                <li><strong>Server DNS</strong> (per tradurre nomi in IP)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="analogy-box">
+                            <h5>💡 Analogia per capire:</h5>
+                            <p><strong>DHCP è come l'hostess all'ingresso di un evento</strong>:</p>
+                            <ul>
+                                <li>Arrivi all'evento (ti colleghi al Wi-Fi)</li>
+                                <li>L'hostess (DHCP server) ti dà un badge con il tuo nome (IP)</li>
+                                <li>Ti dice dove sono i servizi (gateway, DNS)</li>
+                                <li>Quando te ne vai, il badge torna disponibile per altri</li>
+                            </ul>
+                            <p>Senza DHCP, dovresti configurare manualmente tutto, come nei primi anni '90!</p>
+                        </div>
+                        
+                        <div class="protocol-example">
+                            <h5>📝 Esempio pratico:</h5>
+                            <p>Quando accendi il telefono e ti colleghi al Wi-Fi di casa:</p>
+                            <ol>
+                                <li>Il telefono manda un messaggio: "C'è un DHCP server?" (DHCP DISCOVER)</li>
+                                <li>Il router risponde: "Sì, eccomi!" (DHCP OFFER)</li>
+                                <li>Il telefono: "Ok, dammi un IP!" (DHCP REQUEST)</li>
+                                <li>Il router: "Prendi 192.168.1.15, valido per 24 ore" (DHCP ACK)</li>
+                            </ol>
+                            <p>Questo processo si chiama <strong>DORA</strong> (Discover, Offer, Request, Acknowledge).</p>
+                        </div>
+                        
+                        <div style="background: #d1ecf1; padding: 10px; border-radius: 5px; margin-top: 15px;">
+                            <strong>🏠 DHCP in casa:</strong> Il vostro router casalingo <strong>è anche un server DHCP</strong>! Assegna IP a telefoni, computer, TV smart, ecc.
+                        </div>
+                    </div>
+                `
+            },
+            // Livello Trasporto
+            tcp: {
+                title: "🔒 TCP - Protocollo di Controllo della Trasmissione",
+                content: `
+                    <div class="protocol-details">
+                        <h4>🔤 Significato dell'acronimo:</h4>
+                        <p><strong>TCP</strong> = Transmission Control Protocol (Protocollo di Controllo della Trasmissione)</p>
+                        
+                        <div class="protocol-purpose">
+                            <h5>🎯 A cosa serve?</h5>
+                            <p>TCP garantisce una comunicazione <strong>affidabile, ordinata e senza errori</strong> tra due dispositivi. È "orientato alla connessione": prima di inviare dati, stabilisce un canale sicuro.</p>
+                            <p>Come un corriere espresso con ricevuta di ritorno: sa se il pacco è arrivato e in che condizioni.</p>
+                        </div>
+                    </div>
+                `
+            },
+            udp: {
+                title: "⚡ UDP - Protocollo Datagramma Utente",
+                content: `
+                    <div class="protocol-details">
+                        <h4>🔤 Significato dell'acronimo:</h4>
+                        <p><strong>UDP</strong> = User Datagram Protocol (Protocollo Datagramma Utente)</p>
+                        
+                        <div class="protocol-purpose">
+                            <h5>🎯 A cosa serve?</h5>
+                            <p>UDP è <strong>veloce e leggero</strong> ma non garantisce affidabilità. È "senza connessione": lancia i dati e spera arrivino.</p>
+                            <p>Come una cartolina: la butti nella cassetta e speri arrivi. Non sai se è arrivata, né in che ordine.</p>
+                            <p>Perfetto per streaming video, giochi online, VoIP dove la velocità è più importante della precisione.</p>
+                        </div>
+                    </div>
+                `
+            },
+            // Livello Internet
+            ip: {
+                title: "📍 IP - Protocollo Internet",
+                content: `
+                    <div class="protocol-details">
+                        <h4>🔤 Significato dell'acronimo:</h4>
+                        <p><strong>IP</strong> = Internet Protocol (Protocollo Internet)</p>
+                        
+                        <div class="protocol-purpose">
+                            <h5>🎯 A cosa serve?</h5>
+                            <p>IP è il <strong>cuore di Internet</strong>. Assegna un indirizzo univoco a ogni dispositivo (indirizzo IP) e instrada i pacchetti attraverso le reti.</p>
+                            <p>IPv4: 4 numeri da 0 a 255 (es. 192.168.1.1) - 4,3 miliardi di indirizzi</p>
+                            <p>IPv6: 8 gruppi di 4 cifre esadecimali - 340 sestilioni di indirizzi (praticamente infiniti)</p>
+                        </div>
+                    </div>
+                `
+            },
+            // Livello Accesso Rete
+            arp: {
+                title: "🔄 ARP - Protocollo di Risoluzione Indirizzi",
+                content: `
+                    <div class="protocol-details">
+                        <h4>🔤 Significato dell'acronimo:</h4>
+                        <p><strong>ARP</strong> = Address Resolution Protocol (Protocollo di Risoluzione Indirizzi)</p>
+                        
+                        <div class="protocol-purpose">
+                            <h5>🎯 A cosa serve?</h5>
+                            <p>ARP traduce <strong>indirizzi IP in indirizzi MAC</strong> (indirizzi fisici delle schede di rete).</p>
+                            <p>Come chiedere a tutti in una stanza: "Chi ha l'IP 192.168.1.1?" e quello risponde: "Sono io, il mio MAC è 00:1A:2B:3C:4D:5E".</p>
+                            <p>Fondamentale per la comunicazione nella stessa rete locale (LAN).</p>
+                        </div>
+                    </div>
+                `
+            }
+        };
+
+        function showProtocol(protocolId) {
+            const protocol = protocols[protocolId];
+            if (protocol) {
+                document.getElementById('protocolModalTitle').innerHTML = protocol.title;
+                document.getElementById('protocolModalBody').innerHTML = protocol.content;
+                
+                // Mostra la modale
+                const modal = new bootstrap.Modal(document.getElementById('protocolModal'));
+                modal.show();
+            }
+        }
+
         function mostraCodice() {
-            // Prende tutto l'HTML della pagina attuale
             var htmlCode = document.documentElement.outerHTML;
-            
-            // Crea una nuova finestra
             var newWindow = window.open("", "Codice Sorgente", "width=800,height=600,scrollbars=yes");
-            
-            // Scrive il codice nella nuova finestra dentro un tag <pre> per mantenerne la formattazione
             newWindow.document.write('<html><head><title>Sorgente Pagina</title></head><body>');
             newWindow.document.write('<h3>Codice Sorgente della Pagina:</h3>');
             newWindow.document.write('<pre style="background:#f4f4f4; padding:15px; border:1px solid #ccc; white-space: pre-wrap;">');
-            
-            // Sostituisce i caratteri < e > per mostrarli a video invece di eseguirli
             newWindow.document.write(htmlCode.replace(/</g, "&lt;").replace(/>/g, "&gt;"));
-            
             newWindow.document.write('</pre></body></html>');
             newWindow.document.close();
         }
