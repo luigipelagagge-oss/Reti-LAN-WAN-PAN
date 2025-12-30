@@ -1,4 +1,4 @@
-<!DOCTYPE html><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="it">
 <head>
     <meta charset="UTF-8">
@@ -100,6 +100,7 @@
             cursor: pointer;
             transition: all 0.3s;
             border: 2px solid transparent;
+            position: relative;
         }
 
         .protocol-item:hover {
@@ -111,6 +112,17 @@
         .protocol-icon {
             margin-right: 10px;
             font-size: 1.2rem;
+        }
+
+        .protocol-badge {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            font-size: 0.7rem;
+            background: #6c757d;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 10px;
         }
 
         .nav-footer { 
@@ -163,6 +175,16 @@
         .btn-source:hover { 
             background-color: #333; 
             color: white;
+            transform: translateY(-2px);
+        }
+        
+        .btn-media {
+            background-color: #20c997;
+            color: white;
+        }
+        
+        .btn-media:hover {
+            background-color: #1aa179;
             transform: translateY(-2px);
         }
         
@@ -240,6 +262,19 @@
             margin: 15px 0;
             font-style: italic;
         }
+
+        .media-link {
+            color: #20c997;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+            border-bottom: 1px dashed #20c997;
+        }
+        
+        .media-link:hover {
+            color: #1aa179;
+            text-decoration: none;
+        }
         
     </style>
 </head>
@@ -279,21 +314,27 @@
                 <div class="protocol-list">
                     <div class="protocol-item" onclick="showProtocol('http')">
                         <span class="protocol-icon">🌍</span> HTTP/HTTPS - Web
+                        <span class="protocol-badge">web</span>
                     </div>
                     <div class="protocol-item" onclick="showProtocol('smtp')">
                         <span class="protocol-icon">📧</span> SMTP/POP/IMAP - Email
+                        <span class="protocol-badge">email</span>
                     </div>
                     <div class="protocol-item" onclick="showProtocol('ftp')">
                         <span class="protocol-icon">📁</span> FTP/SFTP - File Transfer
+                        <span class="protocol-badge">file</span>
                     </div>
                     <div class="protocol-item" onclick="showProtocol('dns')">
                         <span class="protocol-icon">🔍</span> DNS - Domain Names
+                        <span class="protocol-badge">nomi</span>
                     </div>
                     <div class="protocol-item" onclick="showProtocol('ssh')">
                         <span class="protocol-icon">💬</span> SSH - Secure Shell
+                        <span class="protocol-badge">sicurezza</span>
                     </div>
                     <div class="protocol-item" onclick="showProtocol('dhcp')">
                         <span class="protocol-icon">🎥</span> DHCP - IP Configuration
+                        <span class="protocol-badge">config</span>
                     </div>
                 </div>
             </div>
@@ -311,9 +352,11 @@
                 <div class="protocol-list">
                     <div class="protocol-item" onclick="showProtocol('tcp')">
                         <span class="protocol-icon">🔒</span> TCP - Connessione affidabile
+                        <span class="protocol-badge">affidabile</span>
                     </div>
                     <div class="protocol-item" onclick="showProtocol('udp')">
                         <span class="protocol-icon">⚡</span> UDP - Connessione veloce
+                        <span class="protocol-badge">veloce</span>
                     </div>
                 </div>
                 
@@ -337,15 +380,19 @@
                 <div class="protocol-list">
                     <div class="protocol-item" onclick="showProtocol('ip')">
                         <span class="protocol-icon">📍</span> IPv4/IPv6 - Indirizzamento
+                        <span class="protocol-badge">indirizzi</span>
                     </div>
                     <div class="protocol-item" onclick="showProtocol('icmp')">
                         <span class="protocol-icon">🔄</span> ICMP - Messaggi di controllo
+                        <span class="protocol-badge">controllo</span>
                     </div>
                     <div class="protocol-item" onclick="showProtocol('ospf')">
                         <span class="protocol-icon">🗺️</span> OSPF/BGP - Routing
+                        <span class="protocol-badge">routing</span>
                     </div>
                     <div class="protocol-item" onclick="showProtocol('ipsec')">
                         <span class="protocol-icon">🔀</span> IPSec - Sicurezza
+                        <span class="protocol-badge">VPN</span>
                     </div>
                 </div>
                 
@@ -363,24 +410,45 @@
             </div>
             <div class="layer-description">
                 <p>Combina le funzioni dei livelli 1 e 2 del modello OSI. Definisce come i dati sono fisicamente trasmessi attraverso il mezzo di rete. Gestisce l'accesso al mezzo e l'indirizzamento fisico (MAC).</p>
+                <p><strong>📚 Argomenti approfonditi:</strong> Per maggiori dettagli sui mezzi trasmissivi (UTP, Coassiale, Fibre Ottiche, Onde Radio), visita la pagina dedicata <a href="mezzi_trasmissivi.html" class="media-link">Mezzi Trasmissivi</a>.</p>
                 
                 <div class="protocol-list">
                     <div class="protocol-item" onclick="showProtocol('ethernet')">
                         <span class="protocol-icon">🔌</span> Ethernet - Reti cablate
+                        <span class="protocol-badge">UTP/Coax/Fibra</span>
                     </div>
                     <div class="protocol-item" onclick="showProtocol('wifi')">
                         <span class="protocol-icon">📶</span> Wi-Fi (802.11) - Reti wireless
+                        <span class="protocol-badge">onde radio</span>
                     </div>
                     <div class="protocol-item" onclick="showProtocol('ppp')">
                         <span class="protocol-icon">📞</span> PPP - Connessioni punto-punto
+                        <span class="protocol-badge">seriale</span>
                     </div>
                     <div class="protocol-item" onclick="showProtocol('arp')">
                         <span class="protocol-icon">🔄</span> ARP - Risoluzione indirizzi
+                        <span class="protocol-badge">IP→MAC</span>
                     </div>
                 </div>
                 
                 <div style="margin-top: 15px; padding: 10px; background: #e7f1ff; border-radius: 8px;">
-                    <strong>Indirizzi MAC:</strong> Ogni scheda di rete ha un indirizzo fisico univoco di 48-bit (es. 00:1A:2B:3C:4D:5E). A differenza degli IP, gli indirizzi MAC sono "bruciati" nell'hardware.
+                    <strong>🔧 Hardware di rete (vedi anche pagina Mezzi Trasmissivi):</strong><br>
+                    <strong>HUB (livello 1):</strong> Ripete tutto a tutti - collisioni - OBSOLETO<br>
+                    <strong>SWITCH (livello 2):</strong> Impara MAC address - switching intelligente<br>
+                    <strong>ROUTER (livello 3):</strong> Instrada tra reti diverse - usa indirizzi IP
+                </div>
+                
+                <div style="margin-top: 15px; padding: 10px; background: #f8f9fa; border-radius: 8px; border-left: 4px solid #20c997;">
+                    <strong>📡 Mezzi Fisici:</strong>
+                    <ul style="margin-bottom: 0;">
+                        <li><strong>UTP (Unshielded Twisted Pair):</strong> Doppino intrecciato, RJ45</li>
+                        <li><strong>Coassiale:</strong> Cavo schermato, connettori BNC/RG</li>
+                        <li><strong>Fibra Ottica:</strong> Monomodale/Multimodale, connettori LC/SC/ST</li>
+                        <li><strong>Wireless:</strong> Onde radio (2.4GHz, 5GHz, 6GHz)</li>
+                    </ul>
+                    <p style="margin-top: 10px; margin-bottom: 0;">
+                        <a href="mezzi_trasmissivi.html" class="media-link">→ Approfondisci nella pagina dedicata</a>
+                    </p>
                 </div>
             </div>
         </div>
@@ -392,6 +460,10 @@
             
             <a href="iso_osi_spiegazione.html" class="btn-nav btn-compare">
                 <span class="btn-icon">📘</span> Vedi ISO/OSI
+            </a>
+            
+            <a href="mezzi_trasmissivi.html" class="btn-nav btn-media">
+                <span class="btn-icon">📡</span> Mezzi Trasmissivi
             </a>
             
             <a onclick="mostraCodice()" class="btn-nav btn-source">
@@ -878,13 +950,13 @@
                     </div>
                 `
             },
-            // Livello Accesso Rete
+            // Livello Accesso Rete - CON COLLEGAMENTI ALLA NUOVA PAGINA
             ethernet: {
                 title: "🔌 Ethernet - Reti Cablate",
                 content: `
                     <div class="protocol-details">
                         <h4>🔤 Cos'è Ethernet?</h4>
-                        <p><strong>Ethernet</strong> è lo standard più diffuso per le <strong>reti locali cablate (LAN)</strong>. Definisce come i computer comunicano attraverso cavi di rete (solitamente cavi twisted pair con connettori RJ-45).</p>
+                        <p><strong>Ethernet</strong> è lo standard più diffuso per le <strong>reti locali cablate (LAN)</strong>. Definisce come i computer comunicano attraverso diversi mezzi fisici.</p>
                         
                         <div class="protocol-purpose">
                             <h5>🎯 A cosa serve?</h5>
@@ -909,57 +981,82 @@
                         </div>
                         
                         <div class="protocol-example">
-                            <h5>📝 Evoluzione di Ethernet:</h5>
+                            <h5>📝 Mezzi Fisici per Ethernet:</h5>
+                            <p>Ethernet può utilizzare diversi mezzi trasmissivi:</p>
+                            <ul>
+                                <li><strong><a href="mezzi_trasmissivi.html#utp" class="media-link">UTP</a> (Unshielded Twisted Pair):</strong> Doppino intrecciato, categorie Cat 5e/6/6A</li>
+                                <li><strong><a href="mezzi_trasmissivi.html#coax" class="media-link">Coassiale:</a></strong> Usato nelle prime Ethernet (10BASE2, 10BASE5)</li>
+                                <li><strong><a href="mezzi_trasmissivi.html#fiber" class="media-link">Fibra Ottica:</a></strong> Per alte velocità e lunghe distanze</li>
+                            </ul>
+                            <p><strong>🔗 Per approfondimenti dettagliati sui mezzi trasmissivi, visita la pagina dedicata:</strong></p>
+                            <a href="mezzi_trasmissivi.html" class="btn-nav" style="background: #20c997; color: white; margin: 10px 0;">
+                                <span class="btn-icon">📡</span> Vai a Mezzi Trasmissivi
+                            </a>
+                        </div>
+                        
+                        <div class="protocol-example">
+                            <h5>📊 Evoluzione delle velocità Ethernet:</h5>
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>Tipo</th>
+                                        <th>Standard</th>
                                         <th>Velocità</th>
                                         <th>Anno</th>
-                                        <th>Cavo</th>
+                                        <th>Mezzo Fisico</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>Ethernet</td>
+                                        <td>10BASE5</td>
                                         <td>10 Mbps</td>
                                         <td>1983</td>
-                                        <td>Coassiale</td>
+                                        <td><a href="mezzi_trasmissivi.html#coax" class="media-link">Coassiale spesso</a></td>
                                     </tr>
                                     <tr>
-                                        <td>Fast Ethernet</td>
+                                        <td>10BASE2</td>
+                                        <td>10 Mbps</td>
+                                        <td>1985</td>
+                                        <td><a href="mezzi_trasmissivi.html#coax" class="media-link">Coassiale sottile</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>10BASE-T</td>
+                                        <td>10 Mbps</td>
+                                        <td>1990</td>
+                                        <td><a href="mezzi_trasmissivi.html#utp" class="media-link">UTP Cat 3</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>100BASE-TX</td>
                                         <td>100 Mbps</td>
                                         <td>1995</td>
-                                        <td>Cat 5</td>
+                                        <td><a href="mezzi_trasmissivi.html#utp" class="media-link">UTP Cat 5</a></td>
                                     </tr>
                                     <tr>
-                                        <td>Gigabit Ethernet</td>
+                                        <td>1000BASE-T</td>
                                         <td>1 Gbps</td>
                                         <td>1999</td>
-                                        <td>Cat 5e/6</td>
+                                        <td><a href="mezzi_trasmissivi.html#utp" class="media-link">UTP Cat 5e/6</a></td>
                                     </tr>
                                     <tr>
-                                        <td>10 Gigabit Ethernet</td>
+                                        <td>10GBASE-T</td>
                                         <td>10 Gbps</td>
-                                        <td>2002</td>
-                                        <td>Cat 6a/7</td>
+                                        <td>2006</td>
+                                        <td><a href="mezzi_trasmissivi.html#utp" class="media-link">UTP Cat 6A/7</a></td>
                                     </tr>
                                     <tr>
-                                        <td>Terabit Ethernet</td>
-                                        <td>400 Gbps+</td>
-                                        <td>2017+</td>
-                                        <td>Fibra ottica</td>
+                                        <td>40GBASE-SR4</td>
+                                        <td>40 Gbps</td>
+                                        <td>2010</td>
+                                        <td><a href="mezzi_trasmissivi.html#fiber" class="media-link">Fibra Multimodale</a></td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                         
                         <div class="protocol-purpose" style="background-color: #e7f1ff;">
-                            <h5>🔧 Componenti di una rete Ethernet:</h5>
-                            <p><strong>Cavo:</strong> Di solito UTP (Unshielded Twisted Pair) con 8 fili intrecciati a coppie.</p>
-                            <p><strong>Connettore:</strong> RJ-45 (simile al RJ-11 del telefono, ma più grande).</p>
-                            <p><strong>Scheda di rete:</strong> Ogni dispositivo ha una NIC (Network Interface Card) con un MAC address unico.</p>
-                            <p><strong>Switch:</strong> Il "cervello" della rete che smista i pacchetti alla destinazione corretta.</p>
+                            <h5>🔧 HUB vs SWITCH vs ROUTER</h5>
+                            <p><strong>🔘 HUB (livello 1):</strong> Ripete tutto a tutti - collisioni - OBSOLETO</p>
+                            <p><strong>🔘 SWITCH (livello 2):</strong> Impara MAC address - switching intelligente</p>
+                            <p><strong>🔘 ROUTER (livello 3):</strong> Instrada tra reti diverse - usa indirizzi IP</p>
                         </div>
                     </div>
                 `
@@ -991,6 +1088,20 @@
                                 <li>Il volume della voce è la potenza del segnale</li>
                                 <li>L'acustica della stanza è la qualità del segnale</li>
                             </ul>
+                        </div>
+                        
+                        <div class="protocol-example">
+                            <h5>📡 Onde Radio e Frequenze:</h5>
+                            <p>Il Wi-Fi opera principalmente su due bande:</p>
+                            <ul>
+                                <li><strong>2.4 GHz:</strong> Maggiore portata, più congestione (altri dispositivi usano questa banda)</li>
+                                <li><strong>5 GHz:</strong> Maggiore velocità, meno portata, meno interferenze</li>
+                                <li><strong>6 GHz:</strong> Nuova banda per Wi-Fi 6E (2021), molto spazio, poca interferenza</li>
+                            </ul>
+                            <p><strong>🔗 Per approfondimenti sulle onde radio e lo spettro elettromagnetico:</strong></p>
+                            <a href="mezzi_trasmissivi.html#wireless" class="btn-nav" style="background: #20c997; color: white; margin: 10px 0;">
+                                <span class="btn-icon">📡</span> Vai a Onde Radio
+                            </a>
                         </div>
                         
                         <div class="protocol-example">
@@ -1051,15 +1162,6 @@
                                 </tbody>
                             </table>
                         </div>
-                        
-                        <div class="protocol-purpose" style="background-color: #d4edda;">
-                            <h5>🔒 Sicurezza Wi-Fi:</h5>
-                            <p><strong>WEP (1997):</strong> Facilmente crackabile in pochi minuti. <span style="color: red;">ASSOLUTAMENTE DA EVITARE!</span></p>
-                            <p><strong>WPA (2003):</strong> Migliore ma ancora vulnerabile.</p>
-                            <p><strong>WPA2 (2004):</strong> Standard attuale per anni, molto sicuro se usato con password forte.</p>
-                            <p><strong>WPA3 (2018):</strong> Nuovo standard, protegge anche con password deboli.</p>
-                            <p><strong>Consiglio:</strong> Usate sempre <strong>WPA2 o WPA3</strong> con password complessa (minimo 12 caratteri, maiuscole, minuscole, numeri, simboli).</p>
-                        </div>
                     </div>
                 `
             },
@@ -1079,42 +1181,6 @@
                                 <li><strong>Collegamenti punto-a-punto dedicati</strong></li>
                             </ul>
                         </div>
-                        
-                        <div class="analogy-box">
-                            <h5>💡 Analogia per capire:</h5>
-                            <p><strong>PPP è come una linea telefonica diretta tra due uffici:</strong></p>
-                            <ul>
-                                <li>Solo due dispositivi possono parlare (punto-a-punto)</li>
-                                <li>Prima di parlare, si stabilisce la chiamata (handshake)</li>
-                                <li>Si autenticano a vicenda (username/password)</li>
-                                <li>Alla fine, chiudono la chiamata</li>
-                            </ul>
-                            <p>È l'opposto di Ethernet dove molti dispositivi condividono lo stesso cavo.</p>
-                        </div>
-                        
-                        <div class="protocol-example">
-                            <h5>📝 Esempi pratici:</h5>
-                            <p><strong>Internet via ADSL:</strong> Il tuo modem a casa usa <strong>PPPoE</strong> (PPP over Ethernet) per connettersi al provider. Quando configuri il modem, inserisci username e password PPPoE.</p>
-                            <p><strong>Connessioni dial-up (anni '90):</strong> Il modem faceva "bip bip" e stabiliva una connessione PPP via linea telefonica.</p>
-                            <p><strong>Collegamenti dedicati:</strong> Due sedi aziendali connesse via fibra ottica usano PPP per il collegamento diretto.</p>
-                        </div>
-                        
-                        <div class="protocol-purpose">
-                            <h5>🔧 Funzionalità di PPP:</h5>
-                            <ul>
-                                <li><strong>Autenticazione:</strong> PAP, CHAP, EAP (chi sei?)</li>
-                                <li><strong>Compressione:</strong> Riduce dimensione dati</li>
-                                <li><strong>Rilevazione errori:</strong> Controlla che i dati arrivino integri</li>
-                                <li><strong>Negoziazione parametri:</strong> IP address, DNS, ecc.</li>
-                            </ul>
-                        </div>
-                        
-                        <div style="background-color: #fff3cd; padding: 15px; border-radius: 8px; margin-top: 15px;">
-                            <h5>📡 PPPoE - La versione moderna:</h5>
-                            <p><strong>PPPoE</strong> = PPP over Ethernet. Incapsula PPP dentro frame Ethernet.</p>
-                            <p><strong>Perché?</strong> Per portare le funzionalità PPP (autenticazione, controllo) sulle reti Ethernet moderne.</p>
-                            <p><strong>Dove lo usi?</strong> Ogni volta che configuri un router ADSL/Fibra, inserisci username e password PPPoE!</p>
-                        </div>
                     </div>
                 `
             },
@@ -1129,50 +1195,6 @@
                             <h5>🎯 A cosa serve?</h5>
                             <p>ARP è il <strong>traduttore tra IP e MAC</strong>. Converte indirizzi IP (logici, livello 3) in indirizzi MAC (fisici, livello 2).</p>
                             <p>Senza ARP, i computer nella stessa rete non potrebbero comunicare anche se conoscono gli IP!</p>
-                        </div>
-                        
-                        <div class="analogy-box">
-                            <h5>💡 Analogia per capire:</h5>
-                            <p><strong>ARP è come cercare qualcuno in un ufficio:</strong></p>
-                            <ul>
-                                <li>Tu: "Dov'è Mario Rossi?" (IP: 192.168.1.10)</li>
-                                <li>Gridi a tutti in ufficio: "MARIO ROSSI, DOVE SEI?" (ARP Request broadcast)</li>
-                                <li>Mario sente e risponde: "SONO QUI, AL POSTO 5!" (MAC: 00:1A:2B...)</li>
-                                <li>Ora sai dove trovarlo per consegnargli documenti</li>
-                            </ul>
-                            <p>L'ufficio è la rete locale, i posti sono i MAC address.</p>
-                        </div>
-                        
-                        <div class="protocol-example">
-                            <h5>📝 Esempio pratico:</h5>
-                            <p>Il tuo computer (192.168.1.5) vuole comunicare con la stampante (192.168.1.10):</p>
-                            <ol>
-                                <li>Il PC guarda la sua <strong>ARP cache</strong> (una tabella di traduzioni)</li>
-                                <li>Se non trova 192.168.1.10, invia un <strong>ARP Request</strong> a TUTTA la rete: "Chi ha 192.168.1.10?"</li>
-                                <li>Tutti ignorano tranne la stampante che risponde: "IO! Il mio MAC è 00:1A:2B:3C:4D:5E"</li>
-                                <li>Il PC salva questa associazione nella cache ARP</li>
-                                <li>Ora può inviare pacchetti direttamente al MAC della stampante</li>
-                            </ol>
-                        </div>
-                        
-                        <div class="protocol-purpose">
-                            <h5>🗂️ La cache ARP:</h5>
-                            <p>Ogni dispositivo mantiene una <strong>tabella ARP</strong> (cache) con le traduzioni IP→MAC.</p>
-                            <p><strong>Visualizzare la cache ARP (Windows):</strong> <code>arp -a</code> nel prompt dei comandi</p>
-                            <p><strong>Visualizzare la cache ARP (Linux/Mac):</strong> <code>arp -a</code> o <code>ip neigh show</code></p>
-                            <p><strong>La cache ha una scadenza</strong> (di solito 2-20 minuti) perché i MAC potrebbero cambiare (dispositivo sostituito).</p>
-                        </div>
-                        
-                        <div style="background-color: #f8d7da; padding: 15px; border-radius: 8px; margin-top: 15px;">
-                            <h5>⚠️ ARP Spoofing/Poisoning (Attacco):</h5>
-                            <p><strong>Come funziona:</strong> Un attaccante invia risposte ARP false: "Io sono 192.168.1.1 (il router)" ma con il suo MAC.</p>
-                            <p><strong>Risultato:</strong> Tutto il traffico passa per l'attaccante che può:</p>
-                            <ul>
-                                <li>Intercettare dati (password, email)</li>
-                                <li>Modificare traffico (man-in-the-middle)</li>
-                                <li>Bloccare Internet (Denial of Service)</li>
-                            </ul>
-                            <p><strong>Difesa:</strong> ARP statico, DHCP snooping, detection tools.</p>
                         </div>
                     </div>
                 `
