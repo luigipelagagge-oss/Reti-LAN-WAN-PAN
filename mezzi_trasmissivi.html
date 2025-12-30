@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mezzi Trasmissivi - Corso Reti e Telecomunicazioni</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0d6efd;
+            --fiber-color: #e91e63;
+            --utp-color: #ff9800;
+            --coax-color: #4caf50;
+            --wireless-color: #9c27b0;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .main-header {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin: 30px auto;
+            max-width: 1200px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .main-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: linear-gradient(90deg, var(--fiber-color), var(--utp-color), var(--coax-color), var(--wireless-color));
+        }
+        
+        h1 {
+            color: #333;
+            font-weight: 800;
+            margin-bottom: 20px;
+            font-size: 2.8rem;
+        }
+        
+        .subtitle {
+            color: #666;
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+        }
+        
+        /* Nav Tabs */
+        .media-nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 40px 0;
+            padding: 0 20px;
+        }
+        
+        .media-tab {
+            padding: 15px 30px;
+            background: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .media-tab:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+        
+        .media-tab.active {
+            color: white;
+        }
+        
+        .tab-fiber { border-left: 5px solid var(--fiber-color); }
+        .tab-fiber.active { background: var(--fiber-color); }
+        
+        .tab-utp { border-left: 5px solid var(--utp-color); }
+        .tab-utp.active { background: var(--utp-color); }
+        
+        .tab-coax { border-left: 5px solid var(--coax-color); }
+        .tab-coax.active { background: var(--coax-color); }
+        
+        .tab-wireless { border-left: 5px solid var(--wireless-color); }
+        .tab-wireless.active { background: var(--wireless-color); }
+        
+        /* Content Sections */
+        .content-section {
+            display: none;
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 40px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .content-section.active {
+            display: block;
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #eee;
+        }
+        
+        .section-icon {
+            font-size: 3rem;
+            margin-right: 20px;
+        }
+        
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin: 0;
+        }
+        
+        /* Info Cards */
+        .info-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            border-left: 5px solid;
+        }
+        
+        .info-card.fiber { border-left-color: var(--fiber-color); }
+        .info-card.utp { border-left-color: var(--utp-color); }
+        .info-card.coax { border-left-color: var(--coax-color); }
+        .info-card.wireless { border-left-color: var(--wireless-color); }
+        
+        .info-card h4 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        /* Table Styles */
+        .tech-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .tech-table th {
+            background: #2c3e50;
+            color: white;
+            text-align: left;
+            padding: 15px;
+            font-weight: 600;
+        }
+        
+        .tech-table td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .tech-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        
+        .tech-table tr:hover {
+            background: #e3f2fd;
+        }
+        
+        /* Comparison Box */
+        .comparison-box {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+        
+        .comparison-item {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+        
+        .comparison-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        /* Timeline */
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 40px auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background: #0d6efd;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 3px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+        
+        /* Navigation Footer */
+        .nav-footer {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 50px 0;
+            padding: 0 20px;
+        }
+        
+        .btn-nav {
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-back {
+            background: #6c757d;
+            color: white;
+        }
+        
+        .btn-tcp {
+            background: #0d6efd;
+            color: white;
+        }
+        
+        .btn-lab {
+            background: #20c997;
+            color: white;
+        }
+        
+        .btn-nav:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .media-nav {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .media-tab {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+            
+            .comparison-box {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+        }
+        
+        /* Diagram Styles */
+        .diagram {
+            text-align: center;
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        
+        .diagram img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-header">
+        <h1>📡 Mezzi Trasmissivi</h1>
+        <p class="subtitle">Dai cavi in rame alle fibre ottiche: il viaggio fisico dei dati</p>
+        
+        <div class="alert alert-info" style="max-width: 800px; margin: 20px auto;">
+            <h5>🔗 Collegamenti con il corso:</h5>
+            <p>Questa pagina è fondamentale per <strong>TPSEE (10 ore su fibre ottiche)</strong> e completa la comprensione del <strong>Livello Fisico (ISO/OSI)</strong> e <strong>Livello Accesso Rete (TCP/IP)</strong>.</p>
+        </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <div class="media-nav">
+        <button class="media-tab tab-fiber active" onclick="showSection('fiber')">
+            <span>🔦</span> Fibre Ottiche
+        </button>
+        <button class="media-tab tab-utp" onclick="showSection('utp')">
+            <span>🔌</span> UTP / Doppino
+        </button>
+        <button class="media-tab tab-coax" onclick="showSection('coax')">
+            <span>📺</span> Coassiale
+        </button>
+        <button class="media-tab tab-wireless" onclick="showSection('wireless')">
+            <span>📡</span> Wireless / Onde Radio
+        </button>
+    </div>
+
+    <!-- Fibre Ottiche Section -->
+    <div id="fiber" class="content-section active">
+        <div class="section-header">
+            <div class="section-icon" style="color: var(--fiber-color);">🔦</div>
+            <h2 class="section-title">Fibre Ottiche</h2>
+        </div>
+        
+        <div class="alert alert-primary">
+            <h5>📚 Parte Fondamentale per TPSEE</h5>
+            <p>Questa sezione copre circa <strong>10 ore di lezione</strong> nel corso TPSEE. Dalla teoria base alla progettazione di reti in fibra.</p>
+        </div>
+        
+        <div class="info-card fiber">
+            <h4>🎯 Cos'è una Fibra Ottica?</h4>
+            <p>Una fibra ottica è un <strong>mezzo trasmissivo in vetro o plastica</strong> che utilizza la <strong>riflessione totale interna</strong> per guidare la luce (e quindi i dati) per lunghe distanze con perdite minime.</p>
+        </div>
+        
+        <div class="diagram">
+            <h5>📊 Struttura di una Fibra Ottica</h5>
+            <div style="background: #e3f2fd; padding: 20px; border-radius: 10px; text-align: left;">
+                <p><strong>1. Core (Nucleo):</strong> Vetro ultra-puro (diametro: 8-62.5µm) - qui viaggia la luce</p>
+                <p><strong>2. Cladding (Mantello):</strong> Vetro con indice di rifrazione inferiore - riflette la luce nel core</p>
+                <p><strong>3. Coating (Rivestimento):</strong> Protezione in plastica (250-900µm)</p>
+                <p><strong>4. Strengthening Fibers:</strong> Fibre di rinforzo in kevlar</p>
+                <p><strong>5. Outer Jacket (Guaina):</strong> Protezione meccanica esterna</p>
+            </div>
+        </div>
+        
+        <div class="row" style="margin: 30px 0;">
+            <div class="col-md-6">
+                <div class="info-card" style="background: #fce4ec;">
+                    <h4>🔵 Fibre Monomodali (SMF)</h4>
+                    <ul>
+                        <li><strong>Core sottile:</strong> 8-10 µm</li>
+                        <li><strong>Una sola modalità:</strong> Meno dispersione</li>
+                        <li><strong>Distanze lunghe:</strong> Fino a 100+ km</li>
+                        <li><strong>Laser source:</strong> Costo maggiore</li>
+                        <li><strong>Uso:</strong> Telecomunicazioni, backbone</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="info-card" style="background: #e8f5e9;">
+                    <h4>🟢 Fibre Multimodali (MMF)</h4>
+                    <ul>
+                        <li><strong>Core largo:</strong> 50-62.5 µm</li>
+                        <li><strong>Multiple modalità:</strong> Maggiore dispersione</li>
+                        <li><strong>Distanze corte:</strong> Fino a 2 km</li>
+                        <li><strong>LED source:</strong> Costo minore</li>
+                        <li><strong>Uso:</strong> Reti LAN, datacenter</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <h3 style="margin-top: 40px;">📈 Standard e Tecnologie</h3>
+        <table class="tech-table">
+            <thead>
+                <tr>
+                    <th>Standard</th>
+                    <th>Velocità</th>
+                    <th>Distanza</th>
+                    <th>Applicazione</th>
+                    <th>Anno</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>10BASE-FL</td>
+                    <td>10 Mbps</td>
+                    <td>2 km</td>
+                    <td>Ethernet base</td>
+                    <td>1993</td>
+                </tr>
+                <tr>
+                    <td>100BASE-FX</td>
+                    <td>100 Mbps</td>
+                    <td>2 km</td>
+                    <td>Fast Ethernet</td>
+                    <td>1995</td>
+                </tr>
+                <tr>
+                    <td>1000BASE-SX</td>
+                    <td>1 Gbps</td>
+                    <td>550 m</td>
+                    <td>Gigabit (MMF)</td>
+                    <td>1998</td>
+                </tr>
+                <tr>
+                    <td>1000BASE-LX</td>
+                    <td>1 Gbps</td>
+                    <td>5 km</td>
+                    <td>Gigabit (SMF)</td>
+                    <td>1998</td>
+                </tr>
+                <tr>
+                    <td>10GBASE-SR</td>
+                    <td>10 Gbps</td>
+                    <td>400 m</td>
+                    <td>10GbE (MMF)</td>
+                    <td>2002</td>
+                </tr>
+                <tr>
+                    <td>100GBASE-LR4</td>
+                    <td>100 Gbps</td>
+                    <td>10 km</td>
+                    <td>Backbone</td>
+                    <td>2010</td>
+                </tr>
+                <tr>
+                    <td>400GBASE-DR4</td>
+                    <td>400 Gbps</td>
+                    <td>500 m</td>
+                    <td>Datacenter</td>
+                    <td>2017</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="info-card fiber">
+            <h4>🔧 Connessioni e Connettori</h4>
+            <div class="comparison-box">
+                <div class="comparison-item">
+                    <h5>🔘 ST (Straight Tip)</h5>
+                    <p>Inserimento e rotazione, meccanismo a baionetta. Usato in impianti datacom.</p>
+                </div>
+                <div class="comparison-item">
+                    <h5>🔘 SC (Subscriber Connector)</h5>
+                    <p>Push-pull, duplex per Tx/Rx. Standard per reti enterprise.</p>
+                </div>
+                <div class="comparison-item">
+                    <h5>🔘 LC (Lucent Connector)</h5>
+                    <p>Piccolo formato, latch. Standard attuale per alte densità.</p>
+                </div>
+                <div class="comparison-item">
+                    <h5>🔘 FC (Ferrule Connector)</h5>
+                    <p>Filettato, alta precisione. Usato in strumentazione e laboratori.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div style="background: #fff3cd; padding: 25px; border-radius: 15px; margin-top: 30px;">
+            <h4>⚠️ Considerazioni TPSEE (Sicurezza)</h4>
+            <ul>
+                <li><strong>Non guardare MAI in una fibra attiva!</strong> Il laser può danneggiare permanentemente la retina</li>
+                <li>Usare sempre power meter prima della connessione</li>
+                <li>Smaltimento corretto delle fibre tagliate (vetro affilato)</li>
+                <li>Test di continuity e attenuazione con OTDR</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- UTP Section -->
+    <div id="utp" class="content-section">
+        <div class="section-header">
+            <div class="section-icon" style="color: var(--utp-color);">🔌</div>
+            <h2 class="section-title">UTP / Doppino Intrecciato</h2>
+        </div>
+        
+        <div class="info-card utp">
+            <h4>🎯 Cos'è il Doppino Intrecciato?</h4>
+            <p>Il <strong>doppino intrecciato non schermato (UTP)</strong> è il cavo più comune nelle reti LAN. Consiste di 4 coppie di fili di rame intrecciati per ridurre le interferenze elettromagnetiche.</p>
+        </div>
+        
+        <h3>📊 Categorie UTP</h3>
+        <table class="tech-table">
+            <thead>
+                <tr>
+                    <th>Categoria</th>
+                    <th>Banda</th>
+                    <th>Velocità Max</th>
+                    <th>Uso Tipico</th>
+                    <th>Anno</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Cat 3</td>
+                    <td>16 MHz</td>
+                    <td>10 Mbps</td>
+                    <td>Telefonia/Voce</td>
+                    <td>1991</td>
+                </tr>
+                <tr>
+                    <td>Cat 5</td>
+                    <td>100 MHz</td>
+                    <td>100 Mbps</td>
+                    <td>Fast Ethernet</td>
+                    <td>1995</td>
+                </tr>
+                <tr>
+                    <td>Cat 5e</td>
+                    <td>100 MHz</td>
+                    <td>1 Gbps</td>
+                    <td>Gigabit Ethernet</td>
+                    <td>2001</td>
+                </tr>
+                <tr>
+                    <td>Cat 6</td>
+                    <td>250 MHz</td>
+                    <td>10 Gbps (55m)</td>
+                    <td>10GbE limitato</td>
+                    <td>2002</td>
+                </tr>
+                <tr>
+                    <td>Cat 6A</td>
+                    <td>500 MHz</td>
+                    <td>10 Gbps (100m)</td>
+                    <td>10GbE full</td>
+                    <td>2008</td>
+                </tr>
+                <tr>
+                    <td>Cat 7</td>
+                    <td>600 MHz</td>
+                    <td>10 Gbps</td>
+                    <td>Datacenter</td>
+                    <td>2010</td>
+                </tr>
+                <tr>
+                    <td>Cat 8</td>
+                    <td>2000 MHz</td>
+                    <td>40 Gbps (30m)</td>
+                    <td>Datacenter 40GbE</td>
+                    <td>2016</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="row" style="margin: 30px 0;">
+            <div class="col-md-6">
+                <div class="info-card utp">
+                    <h4>🔌 Connettore RJ45</h4>
+                    <p>L'<strong>RJ45</strong> (Registered Jack 45) è il connettore standard per Ethernet.</p>
+                    <h5>Pinout T568A vs T568B:</h5>
+                    <ul>
+                        <li><strong>T568A:</strong> Standard governativo/generale</li>
+                        <li><strong>T568B:</strong> Standard AT&T/commerciale (più comune)</li>
+                        <li><strong>Importante:</strong> Scegliere uno standard e mantenerlo in tutta l'installazione!</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="info-card" style="background: #e3f2fd;">
+                    <h4>🎯 HUB vs SWITCH vs ROUTER</h4>
+                    <div style="margin-top: 15px;">
+                        <p><strong>🔘 HUB (livello 1):</strong> Ripete tutto a tutti - collisioni - OBSOLETO</p>
+                        <p><strong>🔘 SWITCH (livello 2):</strong> Impara MAC address - switching intelligente</p>
+                        <p><strong>🔘 ROUTER (livello 3):</strong> Instrada tra reti diverse - usa indirizzi IP</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="diagram">
+            <h5>🔧 Cablaggio Incrociato (Crossover) vs Diritto (Straight-through)</h5>
+            <div style="background: #f8f9fa; padding: 20px; border-radius: 10px;">
+                <p><strong>Straight-through:</strong> Collegamento tra dispositivi diversi (PC ↔ Switch, Router ↔ Switch)</p>
+                <p><strong>Crossover:</strong> Collegamento tra dispositivi simili (PC ↔ PC, Switch ↔ Switch)</p>
+                <p><strong>Auto-MDIX:</strong> La moderna tecnologia che elimina il bisogno di cavi crossover.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Coassiale Section -->
+    <div id="coax" class="content-section">
+        <div class="section-header">
+            <div class="section-icon" style="color: var(--coax-color);">📺</div>
+            <h2 class="section-title">Cavo Coassiale</h2>
+        </div>
+        
+        <div class="info-card coax">
+            <h4>🎯 Cos'è il Cavo Coassiale?</h4>
+            <p>Il cavo coassiale è un tipo di cavo con un conduttore interno circondato da uno schermo, separati da un dielettrico. Famoso per le reti Ethernet originali (10BASE2, 10BASE5) e ancora usato per TV via cavo.</p>
+        </div>
+        
+        <div class="row" style="margin: 30px 0;">
+            <div class="col-md-4">
+                <div class="info-card">
+                    <h5>🔘 RG-58</h5>
+                    <p><strong>Impedenza:</strong> 50Ω</p>
+                    <p><strong>Uso:</strong> 10BASE2 Ethernet</p>
+                    <p><strong>Nickname:</strong> "Thinnet"</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="info-card">
+                    <h5>🔘 RG-59</h5>
+                    <p><strong>Impedenza:</strong> 75Ω</p>
+                    <p><strong>Uso:</strong> Video/CATV</p>
+                    <p><strong>Nota:</strong> Il più comune per TV</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="info-card">
+                    <h5>🔘 RG-6</h5>
+                    <p><strong>Impedenza:</strong> 75Ω</p>
+                    <p><strong>Uso:</strong> TV satellitare/HDTV</p>
+                    <p><strong>Vantaggio:</strong> Meno perdite a frequenze alte</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="info-card">
+                    <h5>🎮 1970: Ethernet Coassiale</h5>
+                    <p>Robert Metcalfe sviluppa Ethernet usando cavo coassiale spesso (10BASE5).</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="info-card">
+                    <h5>🔌 1985: 10BASE2 (Thinnet)</h5>
+                    <p>Versione più sottile, connettori BNC, topologia a bus.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="info-card">
+                    <h5>📺 1990: Boom del CATV</h5>
+                    <p>Il coassiale diventa standard per televisione via cavo.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="info-card">
+                    <h5>🔄 2000: DOCSIS</h5>
+                    <p>Standard per Internet via cavo (Modem Cable).</p>
+                </div>
+            </div>
+        </div>
+        
+        <div style="background: #fff3cd; padding: 25px; border-radius: 15px; margin-top: 30px;">
+            <h4>⚖️ Vantaggi vs Svantaggi</h4>
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>✅ Vantaggi</h5>
+                    <ul>
+                        <li>Buona schermatura (meno interferenze)</li>
+                        <li>Distanze maggiori senza ripetitori</li>
+                        <li>Affidabilità meccanica</li>
+                        <li>Standard consolidato per TV</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <h5>❌ Svantaggi</h5>
+                    <ul>
+                        <li>Costo maggiore dell'UTP</li>
+                        <li>Installazione più complessa</li>
+                        <li>Topologia a bus (single point of failure)</li>
+                        <li>Poco flessibile</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Wireless Section -->
+    <div id="wireless" class="content-section">
+        <div class="section-header">
+            <div class="section-icon" style="color: var(--wireless-color);">📡</div>
+            <h2 class="section-title">Wireless / Onde Radio</h2>
+        </div>
+        
+        <div class="info-card wireless">
+            <h4>🌊 Lo Spettro Elettromagnetico</h4>
+            <p>Le comunicazioni wireless utilizzano diverse frequenze dello spettro EM, ognuna con caratteristiche diverse.</p>
+        </div>
+        
+        <div style="margin: 30px 0; overflow-x: auto;">
+            <table class="tech-table">
+                <thead>
+                    <tr>
+                        <th>Tipo Onda</th>
+                        <th>Frequenza</th>
+                        <th>Lunghezza</th>
+                        <th>Applicazioni</th>
+                        <th>Caratteristiche</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>ELF - Extremely Low</strong></td>
+                        <td>3-30 Hz</td>
+                        <td>100,000-10,000 km</td>
+                        <td>Comunicazioni sottomarine</td>
+                        <td>Penetra acqua/terra</td>
+                    </tr>
+                    <tr>
+                        <td><strong>VLF - Very Low</strong></td>
+                        <td>3-30 kHz</td>
+                        <td>100-10 km</td>
+                        <td>Navigazione, time signals</td>
+                        <td>Portata mondiale</td>
+                    </tr>
+                    <tr>
+                        <td><strong>LF - Low</strong></td>
+                        <td>30-300 kHz</td>
+                        <td>10-1 km</td>
+                        <td>Radio AM lunga, RFID</td>
+                        <td>Onde di terra</td>
+                    </tr>
+                    <tr>
+                        <td><strong>MF - Medium</strong></td>
+                        <td>300 kHz-3 MHz</td>
+                        <td>1 km-100 m</td>
+                        <td>Radio AM, navigazione marittima</td>
+                        <td>Di notte viaggia lontano</td>
+                    </tr>
+                    <tr>
+                        <td><strong>HF - High</strong></td>
+                        <td>3-30 MHz</td>
+                        <td>100-10 m</td>
+                        <td>Radio amatore, shortwave</td>
+                        <td>Riflessione ionosfera</td>
+                    </tr>
+                    <tr>
+                        <td><strong>VHF - Very High</strong></td>
+                        <td>30-300 MHz</td>
+                        <td>10-1 m</td>
+                        <td>FM radio, TV VHF, aeronautica</td>
+                        <td>Line-of-sight</td>
+                    </tr>
+                    <tr>
+                        <td><strong>UHF - Ultra High</strong></td>
+                        <td>300 MHz-3 GHz</td>
+                        <td>1 m-10 cm</td>
+                        <td>TV UHF, cellulari, GPS</td>
+                        <td>Penetra edifici</td>
+                    </tr>
+                    <tr>
+                        <td><strong>SHF - Super High</strong></td>
+                        <td>3-30 GHz</td>
+                        <td>10-1 cm</td>
+                        <td>Wi-Fi, satellite, radar</td>
+                        <td>Alta banda</td>
+                    </tr>
+                    <tr>
+                        <td><strong>EHF - Extremely High</strong></td>
+                        <td>30-300 GHz</td>
+                        <td>10-1 mm</td>
+                        <td>5G mmWave, ricerca</td>
+                        <td>Molto direzionale</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="row" style="margin: 30px 0;">
+            <div class="col-md-6">
+                <div class="info-card" style="background: #f3e5f5;">
+                    <h4>📶 Wi-Fi (802.11)</h4>
+                    <p>La tecnologia per reti locali wireless.</p>
+                    <h5>Bande Principali:</h5>
+                    <ul>
+                        <li><strong>2.4 GHz:</strong> Maggiore portata, più congestione</li>
+                        <li><strong>5 GHz:</strong> Maggiore velocità, meno portata</li>
+                        <li><strong>6 GHz:</strong> Nuova per Wi-Fi 6E (2021)</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="info-card" style="background: #e1f5fe;">
+                    <h4>📱 Tecnologie Cellulari</h4>
+                    <div class="timeline" style="margin: 10px 0; padding-left: 20px;">
+                        <p><strong>1G:</strong> 1980 - Solo voce analogica</p>
+                        <p><strong>2G:</strong> 1991 - GSM, SMS</p>
+                        <p><strong>3G:</strong> 2001 - Internet mobile base</p>
+                        <p><strong>4G/LTE:</strong> 2009 - Internet veloce</p>
+                        <p><strong>5G:</strong> 2019 - IoT, latenza ultra-bassa</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="info-card wireless">
+            <h4>📡 Propagazione delle Onde</h4>
+            <div class="row">
+                <div class="col-md-4 text-center">
+                    <h5>🌊 Onda di Terra</h5>
+                    <p>Segue la curvatura terrestre<br>VLF/LF/MF</p>
+                </div>
+                <div class="col-md-4 text-center">
+                    <h5>☁️ Onda Ionosferica</h5>
+                    <p>Riflessa dall'ionosfera<br>HF</p>
+                </div>
+                <div class="col-md-4 text-center">
+                    <h5>👁️ Line-of-Sight</h5>
+                    <p>Visibile direttamente<br>VHF/UHF/SHF</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Footer -->
+    <div class="nav-footer">
+        <a href="tcp_ip_spiegazione.html" class="btn-nav btn-back">
+            <span>⬅</span> Torna a TCP/IP
+        </a>
+        
+        <a href="confronto_tcp.html" class="btn-nav btn-tcp">
+            <span>📊</span> Confronto ISO/OSI vs TCP/IP
+        </a>
+        
+        <a href="iso_osi_spiegazione.html" class="btn-nav btn-tcp">
+            <span>📘</span> Vedi ISO/OSI
+        </a>
+        
+        <a href="#" onclick="mostraCodice()" class="btn-nav" style="background: #333; color: white;">
+            <span>< /></span> Vedi Sorgente HTML
+        </a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function showSection(sectionId) {
+            // Nascondi tutte le sezioni
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Rimuovi active da tutti i tab
+            document.querySelectorAll('.media-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Mostra la sezione selezionata
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Attiva il tab corrispondente
+            document.querySelector(`.tab-${sectionId}`).classList.add('active');
+        }
+        
+        function mostraCodice() {
+            var htmlCode = document.documentElement.outerHTML;
+            var newWindow = window.open("", "Codice Sorgente", "width=800,height=600,scrollbars=yes");
+            newWindow.document.write('<html><head><title>Sorgente Pagina</title></head><body>');
+            newWindow.document.write('<h3>Codice Sorgente della Pagina:</h3>');
+            newWindow.document.write('<pre style="background:#f4f4f4; padding:15px; border:1px solid #ccc; white-space: pre-wrap;">');
+            newWindow.document.write(htmlCode.replace(/</g, "&lt;").replace(/>/g, "&gt;"));
+            newWindow.document.write('</pre></body></html>');
+            newWindow.document.close();
+        }
+        
+        // Attiva la prima sezione di default
+        document.addEventListener('DOMContentLoaded', function() {
+            showSection('fiber');
+        });
+    </script>
+
+</body>
+</html>
