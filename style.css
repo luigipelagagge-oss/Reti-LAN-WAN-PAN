@@ -113,4 +113,21 @@
         padding: 10px 20px;
         z-index: 1000;
     }
+/* 8. STILE DARPA
+.link-darpa {
+    color: #0d6efd;
+    text-decoration: none;
+    font-weight: bold;
+    border-bottom: 2px dotted #0d6efd;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.link-darpa:hover {
+    color: #0b5ed7;
+    border-bottom: 2px solid #0b5ed7;
+    background-color: #e7f1ff;
+    padding: 2px 4px;
+    border-radius: 4px;
+}
 </style>
