@@ -1,235 +1,116 @@
-  <style>
-    /* 1. IMPOSTAZIONI GENERALI E LAYOUT */
-    body { 
-        background-color: #f8f9fa; 
-        font-family: 'Segoe UI', Roboto, sans-serif; 
-        color: #333;
-        line-height: 1.6;
-    }
+/* ===================================================== */
+/* STYLE.CSS UNIFICATO - CORSO DI RETI E TELECOMUNICAZIONI */
+/* ===================================================== */
 
-    .section-content { display: none; }
-    .section-content.active { 
-        display: block; 
-        animation: fadeIn 0.5s ease-out; 
-    }
-    @keyframes fadeIn { 
-        from { opacity: 0; transform: translateY(10px); } 
-        to { opacity: 1; transform: translateY(0); } 
-    }
+/* 1. IMPOSTAZIONI GENERALI E LAYOUT */
+body { 
+    background-color: #f8f9fa; 
+    font-family: 'Segoe UI', Roboto, sans-serif; 
+    color: #333;
+    line-height: 1.6;
+}
 
-    /* 2. NAVIGAZIONE E BOTTONI SUPERIORI */
-    .nav-custom .btn {
-        border-radius: 50px;
-        padding: 8px 20px;
-        font-weight: 600;
-        transition: all 0.3s;
-    }
+/* 2. NAVIGAZIONE E BOTTONI SUPERIORI */
+.nav-custom .btn {
+    border-radius: 50px;
+    padding: 8px 20px;
+    font-weight: 600;
+    transition: all 0.3s;
+}
 
-    /* 3. CORREZIONE BOTTONE GIALLO (MATRIOSKE) */
-    .btn-warning {
-        color: #000 !important; /* Testo nero per leggibilità */
-        font-weight: 700 !important;
-        border: 2px solid #eec107 !important;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    }
-    .btn-warning:hover {
-        background-color: #ffca2c !important;
-        transform: translateY(-2px);
-    }
+/* 3. SPECIFICO PER PAN (Personal Area Network) */
+.pan-title {
+    color: #dc3545;
+    font-weight: bold;
+    margin-top: 30px;
+}
+.pan-description {
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+}
+.pan-image-container {
+    text-align: center;
+    padding: 15px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+.pan-image-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+.pan-image-container img:hover {
+    transform: scale(1.02);
+}
 
-    /* 4. SPECIFICO PER PAN (Personal Area Network) */
-    .pan-title {
-        color: #dc3545; /* Rosso come da screenshot */
-        font-weight: bold;
-        margin-top: 30px;
-    }
-    .pan-description {
-        font-size: 0.95rem;
-        margin-bottom: 20px;
-    }
-    .pan-image-container {
-        text-align: center;
-        padding: 15px;
-        background: white;
-        border-radius: 10px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    }
-    .pan-image-container img {
-        max-width: 100%;
-        height: auto;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: transform 0.3s;
-    }
-    .pan-image-container img:hover {
-        transform: scale(1.02);
-    }
+/* 4. PILA ISO/OSI E PDU */
+.btn-level-stack {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: white !important;
+    padding: 12px 20px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+.btn-level-stack:hover { 
+    transform: translateX(10px); 
+    filter: brightness(1.1);
+}
 
-    /* 5. PILA ISO/OSI E PDU */
-    .btn-level-stack {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        color: white !important;
-        padding: 12px 20px;
-        border-radius: 8px;
-        margin-bottom: 8px;
-        text-decoration: none;
-        font-weight: 600;
-        transition: all 0.3s;
-    }
-    .btn-level-stack:hover { 
-        transform: translateX(10px); 
-        filter: brightness(1.1);
-    }
+/* Tabella PDU */
+.pdu-table-style {
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    overflow: hidden;
+    font-size: 0.9rem;
+}
+.pdu-table-style thead { 
+    background-color: #212529; 
+    color: white; 
+}
 
-    /* Tabella PDU */
-    .pdu-table-style {
-        border: 1px solid #dee2e6;
-        border-radius: 8px;
-        overflow: hidden;
-        font-size: 0.9rem;
-    }
-    .pdu-table-style thead { background-color: #212529; color: white; }
+/* 5. CARD RETI (SOHO, LAN, WAN) */
+.card-net {
+    border-radius: 10px;
+    transition: transform 0.3s;
+    height: 100%;
+    border: 1px solid #eee;
+}
+.card-net:hover { 
+    transform: translateY(-5px); 
+}
+.card-net-title { 
+    font-weight: bold; 
+    color: #0d6efd; 
+}
 
-    /* 6. CARD RETI (SOHO, LAN, WAN) */
-    .card-net {
-        border-radius: 10px;
-        transition: transform 0.3s;
-        height: 100%;
-        border: 1px solid #eee;
-    }
-    .card-net:hover { transform: translateY(-5px); }
-    .card-net-title { font-weight: bold; color: #0d6efd; }
+/* 6. FOOTER SORGENTE */
+.btn-source-fixed {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #212529;
+    color: white;
+    border-radius: 50px;
+    padding: 10px 20px;
+    z-index: 1000;
+    transition: all 0.3s;
+}
+.btn-source-fixed:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
 
-    /* 7. FOOTER SORGENTE */
-    .btn-source-fixed {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        background: #212529;
-        color: white;
-        border-radius: 50px;
-        padding: 10px 20px;
-        z-index: 1000;
-    }
- <style>
-    /* 1. IMPOSTAZIONI GENERALI E LAYOUT */
-    body { 
-        background-color: #f8f9fa; 
-        font-family: 'Segoe UI', Roboto, sans-serif; 
-        color: #333;
-        line-height: 1.6;
-    }
-
-    .section-content { display: none; }
-    .section-content.active { 
-        display: block; 
-        animation: fadeIn 0.5s ease-out; 
-    }
-    @keyframes fadeIn { 
-        from { opacity: 0; transform: translateY(10px); } 
-        to { opacity: 1; transform: translateY(0); } 
-    }
-
-    /* 2. NAVIGAZIONE E BOTTONI SUPERIORI */
-    .nav-custom .btn {
-        border-radius: 50px;
-        padding: 8px 20px;
-        font-weight: 600;
-        transition: all 0.3s;
-    }
-
-    /* 3. CORREZIONE BOTTONE GIALLO (MATRIOSKE) */
-    .btn-warning {
-        color: #000 !important; /* Testo nero per leggibilità */
-        font-weight: 700 !important;
-        border: 2px solid #eec107 !important;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    }
-    .btn-warning:hover {
-        background-color: #ffca2c !important;
-        transform: translateY(-2px);
-    }
-
-    /* 4. SPECIFICO PER PAN (Personal Area Network) */
-    .pan-title {
-        color: #dc3545; /* Rosso come da screenshot */
-        font-weight: bold;
-        margin-top: 30px;
-    }
-    .pan-description {
-        font-size: 0.95rem;
-        margin-bottom: 20px;
-    }
-    .pan-image-container {
-        text-align: center;
-        padding: 15px;
-        background: white;
-        border-radius: 10px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    }
-    .pan-image-container img {
-        max-width: 100%;
-        height: auto;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: transform 0.3s;
-    }
-    .pan-image-container img:hover {
-        transform: scale(1.02);
-    }
-
-    /* 5. PILA ISO/OSI E PDU */
-    .btn-level-stack {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        color: white !important;
-        padding: 12px 20px;
-        border-radius: 8px;
-        margin-bottom: 8px;
-        text-decoration: none;
-        font-weight: 600;
-        transition: all 0.3s;
-    }
-    .btn-level-stack:hover { 
-        transform: translateX(10px); 
-        filter: brightness(1.1);
-    }
-
-    /* Tabella PDU */
-    .pdu-table-style {
-        border: 1px solid #dee2e6;
-        border-radius: 8px;
-        overflow: hidden;
-        font-size: 0.9rem;
-    }
-    .pdu-table-style thead { background-color: #212529; color: white; }
-
-    /* 6. CARD RETI (SOHO, LAN, WAN) */
-    .card-net {
-        border-radius: 10px;
-        transition: transform 0.3s;
-        height: 100%;
-        border: 1px solid #eee;
-    }
-    .card-net:hover { transform: translateY(-5px); }
-    .card-net-title { font-weight: bold; color: #0d6efd; }
-
-    /* 7. FOOTER SORGENTE */
-    .btn-source-fixed {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        background: #212529;
-        color: white;
-        border-radius: 50px;
-        padding: 10px 20px;
-        z-index: 1000;
-    }
-
-/* ============ STILI PER LA MAPPA INTERATTIVA 30 Dicembre 25 ============ */
+/* ===================================================== */
+/* STILI PER LA MAPPA INTERATTIVA (NUOVA SEZIONE) */
+/* ===================================================== */
 
 /* 1. Struttura generale della mappa */
 .tree-view {
@@ -332,26 +213,7 @@
     margin-bottom: 0.5rem;
 }
 
-/* 7. Responsive adjustments */
-@media (max-width: 768px) {
-    .tree-view {
-        font-size: 0.85rem;
-    }
-    
-    .stats-number {
-        font-size: 2rem;
-    }
-    
-    .card-body {
-        padding: 1rem !important;
-    }
-    
-    .btn-group {
-        flex-wrap: wrap;
-    }
-}
-
-/* 8. Animazioni per la mappa */
+/* 7. Animazioni per la mappa */
 @keyframes pulse {
     0% { transform: scale(1); }
     50% { transform: scale(1.05); }
@@ -375,7 +237,7 @@
     animation: pulse 2s infinite;
 }
 
-/* 9. Stili per i percorsi */
+/* 8. Stili per i percorsi */
 .path-arrow {
     font-size: 1.5rem;
     color: #6c757d;
@@ -390,48 +252,27 @@
     opacity: 0.3;
 }
 
-/* 10. Tooltip per la mappa */
-.map-tooltip {
-    position: relative;
-    display: inline-block;
+/* 9. Colori specifici per le fasi */
+.phase-1 { 
+    border-left-color: #dc3545 !important; 
+}
+.phase-2 { 
+    border-left-color: #0d6efd !important; 
+}
+.phase-3 { 
+    border-left-color: #198754 !important; 
+}
+.phase-4 { 
+    border-left-color: #ffc107 !important; 
 }
 
-.map-tooltip .tooltip-text {
-    visibility: hidden;
-    width: 200px;
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px;
-    position: absolute;
-    z-index: 1;
-    bottom: 125%;
-    left: 50%;
-    margin-left: -100px;
-    opacity: 0;
-    transition: opacity 0.3s;
-    font-size: 0.8rem;
-}
-
-.map-tooltip:hover .tooltip-text {
-    visibility: visible;
-    opacity: 1;
-}
-
-/* 11. Colori specifici per le fasi */
-.phase-1 { border-left-color: #dc3545 !important; }
-.phase-2 { border-left-color: #0d6efd !important; }
-.phase-3 { border-left-color: #198754 !important; }
-.phase-4 { border-left-color: #ffc107 !important; }
-
-/* 12. Gradiente per le card delle fasi */
+/* 10. Gradiente per le card delle fasi */
 .phase-card {
     background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
     border: 1px solid #dee2e6;
 }
 
-/* 13. Stile per il titolo della mappa */
+/* 11. Stile per il titolo della mappa */
 .map-title {
     background: linear-gradient(90deg, #0d6efd, #198754);
     -webkit-background-clip: text;
@@ -440,14 +281,173 @@
     font-weight: 800;
 }
 
-/* 14. Effetto per i link attivi nella mappa */
+/* 12. Effetto per i link attivi nella mappa */
 .map-link-active {
     background-color: rgba(13, 110, 253, 0.1) !important;
     border-left: 4px solid #0d6efd !important;
     padding-left: 16px !important;
 }
 
-</style>
+/* ===================================================== */
+/* MEDIA QUERIES (Responsive Design) */
+/* ===================================================== */
 
+@media (max-width: 768px) {
+    .tree-view {
+        font-size: 0.85rem;
+    }
+    
+    .stats-number {
+        font-size: 2rem;
+    }
+    
+    .card-body {
+        padding: 1rem !important;
+    }
+    
+    .btn-group {
+        flex-wrap: wrap;
+    }
+    
+    .nav-custom .btn {
+        padding: 6px 12px;
+        font-size: 0.9rem;
+    }
+}
 
-</style>
+@media (max-width: 576px) {
+    .container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    
+    .stats-card {
+        margin-bottom: 15px;
+    }
+    
+    .btn-level-stack {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+    }
+}
+
+/* ===================================================== */
+/* UTILITIES PERSONALIZZATE */
+/* ===================================================== */
+
+.text-gradient {
+    background: linear-gradient(90deg, #0d6efd, #198754);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.shadow-soft {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+.shadow-medium {
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1) !important;
+}
+
+.shadow-strong {
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15) !important;
+}
+
+.border-dashed {
+    border-style: dashed !important;
+}
+
+/* ===================================================== */
+/* ANIMAZIONI */
+/* ===================================================== */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.5s ease-out;
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.slide-in-right {
+    animation: slideInRight 0.5s ease-out;
+}
+
+/* ===================================================== */
+/* STILI PER COMPONENTI SPECIFICI */
+/* ===================================================== */
+
+/* Stile per le immagini responsive */
+.img-fluid-custom {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.img-fluid-custom:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* Stile per i blocchi di codice */
+.code-block {
+    background-color: #f8f9fa;
+    border-left: 4px solid #0d6efd;
+    padding: 15px;
+    border-radius: 5px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    overflow-x: auto;
+}
+
+/* Stile per gli alert personalizzati */
+.alert-custom {
+    border-radius: 10px;
+    border-left: 5px solid;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.alert-info-custom {
+    background-color: #e3f2fd;
+    border-left-color: #0d6efd;
+    color: #0c5460;
+}
+
+.alert-success-custom {
+    background-color: #e8f5e9;
+    border-left-color: #198754;
+    color: #155724;
+}
+
+.alert-warning-custom {
+    background-color: #fff3cd;
+    border-left-color: #ffc107;
+    color: #856404;
+}
+
+.alert-danger-custom {
+    background-color: #f8d7da;
+    border-left-color: #dc3545;
+    color: #721c24;
+}
