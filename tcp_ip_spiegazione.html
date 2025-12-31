@@ -8,174 +8,312 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <style>
         body { background: #f8f9fa; font-family: 'Segoe UI', sans-serif; }
-        .nav-tcp { background: #0d6efd; }
-        .btn-tcp { border: 2px solid #0d6efd; }
-        .level-card { transition: all 0.3s; }
-        .level-card:hover { transform: translateY(-5px); }
+        .protocol-btn { 
+            width: 100%; 
+            margin-bottom: 8px;
+            transition: all 0.3s;
+            border-width: 2px;
+            font-weight: 500;
+        }
+        .protocol-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .level-card {
+            transition: all 0.3s;
+            height: 100%;
+        }
+        .level-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+        .result-card {
+            min-height: 200px;
+        }
     </style>
 </head>
 <body>
     <div class="container py-5">
-        <h1 class="text-center mb-4">🌐 Modello TCP/IP</h1>
-        <p class="text-center text-muted">Il modello a 4 livelli che ha dato vita a Internet</p>
+        <div class="text-center mb-5">
+            <h1 class="fw-bold text-primary">🌐 Modello TCP/IP</h1>
+            <p class="lead text-muted">Il modello a 4 livelli che ha dato vita a Internet</p>
+        </div>
         
         <!-- Livelli TCP/IP -->
-        <div class="row g-4">
+        <div class="row g-4 mb-5">
             <!-- Livello 1: Applicazione -->
-            <div class="col-md-3">
-                <div class="card level-card h-100 border-top border-5 border-danger">
-                    <div class="card-header bg-danger text-white">
-                        <h5 class="mb-0">1. Applicazione</h5>
+            <div class="col-lg-3 col-md-6">
+                <div class="card level-card border-top border-5 border-danger">
+                    <div class="card-header bg-danger text-white py-3">
+                        <h5 class="mb-0 fw-bold"><i class="bi bi-window"></i> 1. Applicazione</h5>
                     </div>
                     <div class="card-body">
-                        <button class="btn btn-outline-danger btn-sm w-100 mb-2" onclick="mostraProtocollo('http')">HTTP</button>
-                        <button class="btn btn-outline-danger btn-sm w-100 mb-2" onclick="mostraProtocollo('ftp')">FTP</button>
-                        <button class="btn btn-outline-danger btn-sm w-100 mb-2" onclick="mostraProtocollo('smtp')">SMTP</button>
-                        <button class="btn btn-outline-danger btn-sm w-100" onclick="mostraProtocollo('dns')">DNS</button>
+                        <button class="btn btn-outline-danger protocol-btn" onclick="showProtocol('http')">
+                            <i class="bi bi-globe"></i> HTTP
+                        </button>
+                        <button class="btn btn-outline-danger protocol-btn" onclick="showProtocol('ftp')">
+                            <i class="bi bi-file-earmark-arrow-down"></i> FTP
+                        </button>
+                        <button class="btn btn-outline-danger protocol-btn" onclick="showProtocol('smtp')">
+                            <i class="bi bi-envelope"></i> SMTP
+                        </button>
+                        <button class="btn btn-outline-danger protocol-btn" onclick="showProtocol('dns')">
+                            <i class="bi bi-search"></i> DNS
+                        </button>
                     </div>
                 </div>
             </div>
             
             <!-- Livello 2: Trasporto -->
-            <div class="col-md-3">
-                <div class="card level-card h-100 border-top border-5 border-warning">
-                    <div class="card-header bg-warning text-dark">
-                        <h5 class="mb-0">2. Trasporto</h5>
+            <div class="col-lg-3 col-md-6">
+                <div class="card level-card border-top border-5 border-warning">
+                    <div class="card-header bg-warning text-dark py-3">
+                        <h5 class="mb-0 fw-bold"><i class="bi bi-arrow-left-right"></i> 2. Trasporto</h5>
                     </div>
                     <div class="card-body">
-                        <button class="btn btn-outline-warning btn-sm w-100 mb-2" onclick="mostraProtocollo('tcp')">TCP</button>
-                        <button class="btn btn-outline-warning btn-sm w-100 mb-2" onclick="mostraProtocollo('udp')">UDP</button>
-                        <button class="btn btn-outline-warning btn-sm w-100" onclick="mostraProtocollo('sctp')">SCTP</button>
+                        <button class="btn btn-outline-warning protocol-btn" onclick="showProtocol('tcp')">
+                            <i class="bi bi-shield-check"></i> TCP
+                        </button>
+                        <button class="btn btn-outline-warning protocol-btn" onclick="showProtocol('udp')">
+                            <i class="bi bi-lightning"></i> UDP
+                        </button>
+                        <button class="btn btn-outline-warning protocol-btn" onclick="showProtocol('sctp')">
+                            <i class="bi bi-diagram-3"></i> SCTP
+                        </button>
                     </div>
                 </div>
             </div>
             
             <!-- Livello 3: Internet -->
-            <div class="col-md-3">
-                <div class="card level-card h-100 border-top border-5 border-success">
-                    <div class="card-header bg-success text-white">
-                        <h5 class="mb-0">3. Internet</h5>
+            <div class="col-lg-3 col-md-6">
+                <div class="card level-card border-top border-5 border-success">
+                    <div class="card-header bg-success text-white py-3">
+                        <h5 class="mb-0 fw-bold"><i class="bi bi-router"></i> 3. Internet</h5>
                     </div>
                     <div class="card-body">
-                        <button class="btn btn-outline-success btn-sm w-100 mb-2" onclick="mostraProtocollo('ip')">IP</button>
-                        <button class="btn btn-outline-success btn-sm w-100 mb-2" onclick="mostraProtocollo('icmp')">ICMP</button>
-                        <button class="btn btn-outline-success btn-sm w-100 mb-2" onclick="mostraProtocollo('arp')">ARP</button>
-                        <button class="btn btn-outline-success btn-sm w-100" onclick="mostraProtocollo('igmp')">IGMP</button>
+                        <button class="btn btn-outline-success protocol-btn" onclick="showProtocol('ip')">
+                            <i class="bi bi-signpost"></i> IP
+                        </button>
+                        <button class="btn btn-outline-success protocol-btn" onclick="showProtocol('icmp')">
+                            <i class="bi bi-exclamation-triangle"></i> ICMP
+                        </button>
+                        <button class="btn btn-outline-success protocol-btn" onclick="showProtocol('arp')">
+                            <i class="bi bi-hash"></i> ARP
+                        </button>
+                        <button class="btn btn-outline-success protocol-btn" onclick="showProtocol('igmp')">
+                            <i class="bi bi-megaphone"></i> IGMP
+                        </button>
                     </div>
                 </div>
             </div>
             
             <!-- Livello 4: Accesso Rete -->
-            <div class="col-md-3">
-                <div class="card level-card h-100 border-top border-5 border-primary">
-                    <div class="card-header bg-primary text-white">
-                        <h5 class="mb-0">4. Accesso Rete</h5>
+            <div class="col-lg-3 col-md-6">
+                <div class="card level-card border-top border-5 border-primary">
+                    <div class="card-header bg-primary text-white py-3">
+                        <h5 class="mb-0 fw-bold"><i class="bi bi-ethernet"></i> 4. Accesso Rete</h5>
                     </div>
                     <div class="card-body">
-                        <button class="btn btn-outline-primary btn-sm w-100 mb-2" onclick="mostraProtocollo('ethernet')">Ethernet</button>
-                        <button class="btn btn-outline-primary btn-sm w-100 mb-2" onclick="mostraProtocollo('wifi')">Wi-Fi</button>
-                        <button class="btn btn-outline-primary btn-sm w-100 mb-2" onclick="mostraProtocollo('ppp')">PPP</button>
-                        <button class="btn btn-outline-primary btn-sm w-100" onclick="mostraProtocollo('tokenring')">Token Ring</button>
+                        <button class="btn btn-outline-primary protocol-btn" onclick="showProtocol('ethernet')">
+                            <i class="bi bi-plug"></i> Ethernet
+                        </button>
+                        <button class="btn btn-outline-primary protocol-btn" onclick="showProtocol('wifi')">
+                            <i class="bi bi-wifi"></i> Wi-Fi
+                        </button>
+                        <button class="btn btn-outline-primary protocol-btn" onclick="showProtocol('ppp')">
+                            <i class="bi bi-link-45deg"></i> PPP
+                        </button>
+                        <button class="btn btn-outline-primary protocol-btn" onclick="showProtocol('tokenring')">
+                            <i class="bi bi-circle"></i> Token Ring
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
         
-        <!-- Area di visualizzazione -->
-        <div class="card mt-5" id="risultato">
-            <div class="card-header bg-dark text-white">
-                <h5 class="mb-0" id="protocollo-titolo">Seleziona un protocollo</h5>
+        <!-- Area Risultati -->
+        <div class="card result-card border-0 shadow-lg mb-5">
+            <div class="card-header bg-gradient-primary text-white py-3">
+                <h4 class="mb-0 fw-bold" id="protocol-title">
+                    <i class="bi bi-info-circle"></i> Seleziona un protocollo
+                </h4>
             </div>
-            <div class="card-body">
-                <div id="protocollo-contenuto">
-                    <p class="text-muted">Clicca su uno dei 16 bottoni sopra per vedere la spiegazione del protocollo.</p>
+            <div class="card-body p-4">
+                <div id="protocol-content">
+                    <div class="text-center py-5">
+                        <i class="bi bi-mouse text-muted" style="font-size: 3rem;"></i>
+                        <h5 class="text-muted mt-3">Clicca su uno dei 16 protocolli qui sopra</h5>
+                        <p class="text-muted">Ogni protocollo appartiene a un livello specifico del modello TCP/IP</p>
+                    </div>
                 </div>
             </div>
         </div>
         
         <!-- Navigazione -->
-        <div class="text-center mt-5">
-            <a href="index.html" class="btn btn-primary">
-                <i class="bi bi-arrow-left"></i> Torna alla Dashboard
-            </a>
-            <a href="confronto_tcp.html" class="btn btn-outline-primary ms-2">
-                Confronto con ISO/OSI
-            </a>
+        <div class="text-center">
+            <div class="btn-group" role="group">
+                <a href="index.html" class="btn btn-primary px-4">
+                    <i class="bi bi-arrow-left"></i> Dashboard
+                </a>
+                <a href="confronto_tcp.html" class="btn btn-outline-primary px-4">
+                    <i class="bi bi-columns-gap"></i> Confronto OSI/TCP
+                </a>
+                <a href="fonti_bibliografia.html" class="btn btn-outline-secondary px-4">
+                    <i class="bi bi-book"></i> Fonti
+                </a>
+            </div>
         </div>
     </div>
-    
-    <!-- JavaScript funzionante -->
+
+    <!-- JavaScript CORRETTO -->
     <script>
-        function mostraProtocollo(proto) {
-            const protocolli = {
+        // Funzione principale
+        function showProtocol(protocolId) {
+            // Dati dei protocolli
+            const protocols = {
                 'http': {
-                    titolo: '🌐 HTTP (HyperText Transfer Protocol)',
-                    contenuto: 'Protocollo di livello applicazione per trasferire ipertesti. Usa la porta 80.'
+                    title: '🌐 HTTP - HyperText Transfer Protocol',
+                    content: `<p><strong>Livello:</strong> Applicazione</p>
+                             <p><strong>Porta:</strong> 80 (HTTP), 443 (HTTPS)</p>
+                             <p><strong>Funzione:</strong> Protocollo per il trasferimento di ipertesti su Web</p>
+                             <p><strong>Caratteristiche:</strong> Stateless, request-response</p>`
                 },
                 'ftp': {
-                    titolo: '📁 FTP (File Transfer Protocol)',
-                    contenuto: 'Protocollo per trasferire file tra client e server. Porte 20 e 21.'
+                    title: '📁 FTP - File Transfer Protocol',
+                    content: `<p><strong>Livello:</strong> Applicazione</p>
+                             <p><strong>Porta:</strong> 20 (dati), 21 (controllo)</p>
+                             <p><strong>Funzione:</strong> Trasferimento file tra client e server</p>
+                             <p><strong>Caratteristiche:</strong> Due connessioni separate</p>`
                 },
                 'smtp': {
-                    titolo: '✉️ SMTP (Simple Mail Transfer Protocol)',
-                    contenuto: 'Protocollo per inviare email. Porta 25.'
+                    title: '✉️ SMTP - Simple Mail Transfer Protocol',
+                    content: `<p><strong>Livello:</strong> Applicazione</p>
+                             <p><strong>Porta:</strong> 25</p>
+                             <p><strong>Funzione:</strong> Invio di email</p>
+                             <p><strong>Caratteristiche:</strong> Text-based, store-and-forward</p>`
                 },
                 'dns': {
-                    titolo: '🔗 DNS (Domain Name System)',
-                    contenuto: 'Traduce nomi di dominio in indirizzi IP. Porta 53.'
+                    title: '🔗 DNS - Domain Name System',
+                    content: `<p><strong>Livello:</strong> Applicazione</p>
+                             <p><strong>Porta:</strong> 53</p>
+                             <p><strong>Funzione:</strong> Risoluzione nomi di dominio in IP</p>
+                             <p><strong>Caratteristiche:</strong> Database distribuito</p>`
                 },
                 'tcp': {
-                    titolo: '🔄 TCP (Transmission Control Protocol)',
-                    contenuto: 'Protocollo connection-oriented con conferma di ricezione.'
+                    title: '🔄 TCP - Transmission Control Protocol',
+                    content: `<p><strong>Livello:</strong> Trasporto</p>
+                             <p><strong>Caratteristiche:</strong> Connection-oriented, affidabile</p>
+                             <p><strong>Funzione:</strong> Connessione end-to-end con conferma</p>
+                             <p><strong>Esempi:</strong> HTTP, FTP, SMTP</p>`
                 },
                 'udp': {
-                    titolo: '⚡ UDP (User Datagram Protocol)',
-                    contenuto: 'Protocollo connectionless, più veloce ma meno affidabile.'
+                    title: '⚡ UDP - User Datagram Protocol',
+                    content: `<p><strong>Livello:</strong> Trasporto</p>
+                             <p><strong>Caratteristiche:</strong> Connectionless, veloce, non affidabile</p>
+                             <p><strong>Funzione:</strong> Trasmissione senza connessione</p>
+                             <p><strong>Esempi:</strong> DNS, VoIP, videogiochi online</p>`
                 },
                 'sctp': {
-                    titolo: '🔀 SCTP (Stream Control Transmission Protocol)',
-                    contenuto: 'Protocollo per trasmissione multimodale.'
+                    title: '🔀 SCTP - Stream Control Transmission Protocol',
+                    content: `<p><strong>Livello:</strong> Trasporto</p>
+                             <p><strong>Caratteristiche:</strong> Multistreaming, multihoming</p>
+                             <p><strong>Funzione:</strong> Telefonia su IP, signaling</p>`
                 },
                 'ip': {
-                    titolo: '📍 IP (Internet Protocol)',
-                    contenuto: 'Protocollo di instradamento dei pacchetti. IPv4 e IPv6.'
+                    title: '📍 IP - Internet Protocol',
+                    content: `<p><strong>Livello:</strong> Internet</p>
+                             <p><strong>Versioni:</strong> IPv4 (32-bit), IPv6 (128-bit)</p>
+                             <p><strong>Funzione:</strong> Indirizzamento e instradamento pacchetti</p>
+                             <p><strong>Caratteristiche:</strong> Best-effort delivery</p>`
                 },
                 'icmp': {
-                    titolo: '📶 ICMP (Internet Control Message Protocol)',
-                    contenuto: 'Per diagnosticare e segnalare errori di rete.'
+                    title: '📶 ICMP - Internet Control Message Protocol',
+                    content: `<p><strong>Livello:</strong> Internet</p>
+                             <p><strong>Funzione:</strong> Diagnostica e segnalazione errori</p>
+                             <p><strong>Strumenti:</strong> ping, traceroute</p>
+                             <p><strong>Messaggi:</strong> Echo Request/Reply, Destination Unreachable</p>`
                 },
                 'arp': {
-                    titolo: '🔍 ARP (Address Resolution Protocol)',
-                    contenuto: 'Mappa indirizzi IP a indirizzi MAC.'
+                    title: '🔍 ARP - Address Resolution Protocol',
+                    content: `<p><strong>Livello:</strong> Internet</p>
+                             <p><strong>Funzione:</strong> Mappatura IP → MAC address</p>
+                             <p><strong>Operazione:</strong> Richiesta/risposta broadcast</p>
+                             <p><strong>Cache:</strong> ARP table temporanea</p>`
                 },
                 'igmp': {
-                    titolo: '📢 IGMP (Internet Group Management Protocol)',
-                    contenuto: 'Gestisce l\'appartenenza ai gruppi multicast.'
+                    title: '📢 IGMP - Internet Group Management Protocol',
+                    content: `<p><strong>Livello:</strong> Internet</p>
+                             <p><strong>Funzione:</strong> Gestione gruppi multicast</p>
+                             <p><strong>Utilizzo:</strong> Video streaming, videoconferenze</p>`
                 },
                 'ethernet': {
-                    titolo: '🔌 Ethernet',
-                    contenuto: 'Standard per reti LAN cablate (IEEE 802.3).'
+                    title: '🔌 Ethernet (IEEE 802.3)',
+                    content: `<p><strong>Livello:</strong> Accesso Rete</p>
+                             <p><strong>Velocità:</strong> 10 Mbps - 100 Gbps</p>
+                             <p><strong>Topologia:</strong> Stella (switch-based)</p>
+                             <p><strong>Mezzo:</strong> Cavo UTP, fibra ottica</p>`
                 },
                 'wifi': {
-                    titolo: '📶 Wi-Fi (IEEE 802.11)',
-                    contenuto: 'Standard per reti LAN wireless.'
+                    title: '📶 Wi-Fi (IEEE 802.11)',
+                    content: `<p><strong>Livello:</strong> Accesso Rete</p>
+                             <p><strong>Standard:</strong> 802.11a/b/g/n/ac/ax</p>
+                             <p><strong>Frequenza:</strong> 2.4 GHz, 5 GHz, 6 GHz</p>
+                             <p><strong>Topologia:</strong> Infrastruttura (AP) o ad-hoc</p>`
                 },
                 'ppp': {
-                    titolo: '🌉 PPP (Point-to-Point Protocol)',
-                    contenuto: 'Protocollo per connessioni dirette tra due nodi.'
+                    title: '🌉 PPP - Point-to-Point Protocol',
+                    content: `<p><strong>Livello:</strong> Accesso Rete</p>
+                             <p><strong>Utilizzo:</strong> Connessioni dial-up, DSL</p>
+                             <p><strong>Funzione:</strong> Connessione diretta tra due nodi</p>
+                             <p><strong>Caratteristiche:</strong> Autenticazione (PAP/CHAP)</p>`
                 },
                 'tokenring': {
-                    titolo: '🔄 Token Ring (IEEE 802.5)',
-                    contenuto: 'Tecnologia di rete LAN obsoleta.'
+                    title: '🔄 Token Ring (IEEE 802.5)',
+                    content: `<p><strong>Livello:</strong> Accesso Rete</p>
+                             <p><strong>Velocità:</strong> 4-16 Mbps</p>
+                             <p><strong>Topologia:</strong> Anello logico, stella fisica</p>
+                             <p><strong>Stato:</strong> Tecnologia obsoleta</p>`
                 }
             };
+
+            // Recupera i dati del protocollo
+            const protocol = protocols[protocolId];
             
-            const protocollo = protocolli[proto];
-            if (protocollo) {
-                document.getElementById('protocollo-titolo').textContent = protocollo.titolo;
-                document.getElementById('protocollo-contenuto').innerHTML = 
-                    `<p class="lead">${protocollo.contenuto}</p>`;
+            if (protocol) {
+                // Aggiorna il titolo
+                document.getElementById('protocol-title').innerHTML = protocol.title;
+                
+                // Aggiorna il contenuto
+                document.getElementById('protocol-content').innerHTML = `
+                    <div class="alert alert-info">
+                        <h5>Informazioni del protocollo:</h5>
+                        ${protocol.content}
+                    </div>
+                    <div class="mt-3">
+                        <button class="btn btn-sm btn-outline-secondary" onclick="resetView()">
+                            <i class="bi bi-arrow-counterclockwise"></i> Reset
+                        </button>
+                    </div>
+                `;
+                
+                // Aggiungi effetto visivo
+                const card = document.querySelector('.result-card');
+                card.classList.add('border-primary');
+                setTimeout(() => card.classList.remove('border-primary'), 1000);
             }
+        }
+        
+        // Funzione reset
+        function resetView() {
+            document.getElementById('protocol-title').innerHTML = 
+                '<i class="bi bi-info-circle"></i> Seleziona un protocollo';
+            document.getElementById('protocol-content').innerHTML = `
+                <div class="text-center py-5">
+                    <i class="bi bi-mouse text-muted" style="font-size: 3rem;"></i>
+                    <h5 class="text-muted mt-3">Clicca su uno dei 16 protocolli qui sopra</h5>
+                    <p class="text-muted">Ogni protocollo appartiene a un livello specifico del modello TCP/IP</p>
+                </div>
+            `;
         }
     </script>
 </body>
