@@ -197,13 +197,23 @@
             background: #f39c12;
         }
         
-        .image-placeholder {
+        .image-container {
             text-align: center;
-            margin: 20px 0;
-            padding: 30px;
-            background: #f8f9fa;
+            margin: 25px 0;
+        }
+        
+        .image-container img {
+            max-width: 100%;
             border-radius: 8px;
-            border: 2px dashed #dee2e6;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border: 1px solid #ddd;
+        }
+        
+        .image-caption {
+            font-style: italic;
+            color: #666;
+            margin-top: 8px;
+            font-size: 0.9em;
         }
         
         footer {
@@ -220,6 +230,48 @@
             margin: 25px 0;
             border-left: 5px solid #2980b9;
         }
+        
+        .link-esterno {
+            background: #e8f4fc;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .link-esterno a {
+            background: #27ae60;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px;
+            transition: all 0.3s;
+        }
+        
+        .link-esterno a:hover {
+            background: #229954;
+            transform: translateY(-2px);
+        }
+        
+        .colore-pino {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+            border-radius: 3px;
+            vertical-align: middle;
+        }
+        
+        .verde-scuro { background: #27ae60; }
+        .verde-chiaro { background: #2ecc71; }
+        .arancione-scuro { background: #d35400; }
+        .arancione-chiaro { background: #e67e22; }
+        .blu-scuro { background: #2980b9; }
+        .blu-chiaro { background: #3498db; }
+        .marrone-scuro { background: #784212; }
+        .marrone-chiaro { background: #8b4513; }
     </style>
 </head>
 <body>
@@ -304,14 +356,16 @@
         </div>
     </section>
 
-    <!-- SEZIONE UTP - MANTENIAMO TUTTI I CONTENUTI ORIGINALI -->
+    <!-- SEZIONE UTP - VERSIONE CORRETTA -->
     <section id="utp">
         <div class="mezzo-section utp-section">
             <h2>1. Cavo UTP - Doppino Intrecciato</h2>
             
-            <div class="image-placeholder">
-                <p>📷 <strong>IMMAGINE DA INSERIRE:</strong> Cavo UTP con connettore RJ-45</p>
-                <p><em>Un cavo UTP CAT 6 con connettore RJ-45, il più comune nelle reti LAN</em></p>
+            <!-- IMMAGINE DEL CAVO UTP CON 4 DOPPINI -->
+            <div class="image-container">
+                <img src="198-Physical-layer-UTP.jpg" 
+                     alt="Struttura del cavo UTP con 4 doppini intrecciati">
+                <p class="image-caption">Figura 1: Struttura di un cavo UTP - 4 coppie di fili intrecciati</p>
             </div>
             
             <h3>Cos'è e come funziona</h3>
@@ -326,34 +380,7 @@
                 <p>L'intreccio serve a ridurre le interferenze elettromagnetiche (EMI) e la diafonia (crosstalk) tra le coppie. Ogni giro del twist cancella il rumore elettromagnetico catturato.</p>
             </div>
             
-            <h3>Specifiche Tecniche</h3>
-            <table>
-                <tr>
-                    <th>Caratteristica</th>
-                    <th>Descrizione</th>
-                </tr>
-                <tr>
-                    <td><strong>Numero di fili</strong></td>
-                    <td>8 fili (4 coppie intrecciate)</td>
-                </tr>
-                <tr>
-                    <td><strong>Impedenza caratteristica</strong></td>
-                    <td>100 Ohm (±15%)</td>
-                </tr>
-                <tr>
-                    <td><strong>Diametro dei conduttori</strong></td>
-                    <td>0.4 - 0.6 mm (AWG 24-26)</td>
-                </tr>
-                <tr>
-                    <td><strong>Distanza massima</strong></td>
-                    <td>100 metri per segmento</td>
-                </tr>
-                <tr>
-                    <td><strong>Connettore</strong></td>
-                    <td>RJ-45 (8P8C)</td>
-                </tr>
-            </table>
-            
+            <!-- TABELLA CATEGORIE -->
             <h3>Categorie di Cavi UTP</h3>
             <table>
                 <tr>
@@ -361,49 +388,95 @@
                     <th>Banda</th>
                     <th>Velocità Max</th>
                     <th>Uso Principale</th>
+                    <th>Note</th>
+                </tr>
+                <tr>
+                    <td>CAT 3</td>
+                    <td>16 MHz</td>
+                    <td>10 Mbps</td>
+                    <td>Telefonia, Ethernet 10BASE-T</td>
+                    <td>Ormai obsoleto</td>
                 </tr>
                 <tr>
                     <td>CAT 5</td>
                     <td>100 MHz</td>
                     <td>100 Mbps</td>
-                    <td>Fast Ethernet (obsoleto)</td>
+                    <td>Fast Ethernet 100BASE-TX</td>
+                    <td>Ancora in uso ma datato</td>
                 </tr>
                 <tr>
                     <td><strong>CAT 5e</strong></td>
                     <td>100 MHz</td>
                     <td>1 Gbps</td>
-                    <td>Gigabit Ethernet (più comune)</td>
+                    <td>Gigabit Ethernet 1000BASE-T</td>
+                    <td>✅ Più comune e utilizzato</td>
                 </tr>
                 <tr>
-                    <td>CAT 6</td>
+                    <td><strong>CAT 6</strong></td>
                     <td>250 MHz</td>
-                    <td>10 Gbps (fino a 55m)</td>
+                    <td>10 Gbps (fino a 55m)<br>1 Gbps (fino a 100m)</td>
                     <td>Gigabit/10G Ethernet</td>
+                    <td>✅ Raccomandato per nuove installazioni</td>
                 </tr>
                 <tr>
                     <td>CAT 6A</td>
                     <td>500 MHz</td>
                     <td>10 Gbps (fino a 100m)</td>
-                    <td>10G Ethernet</td>
+                    <td>10GBASE-T</td>
+                    <td>🔼 Per alte prestazioni</td>
                 </tr>
                 <tr>
                     <td>CAT 7</td>
                     <td>600 MHz</td>
-                    <td>10 Gbps</td>
-                    <td>Ambienti con forti interferenze</td>
+                    <td>10 Gbps (fino a 100m)<br>40 Gbps (fino a 50m)</td>
+                    <td>Data center, ambienti rumorosi</td>
+                    <td>🛡️ Schermato (STP)</td>
                 </tr>
             </table>
             
-            <h3>Standard di Cablaggio</h3>
+            <!-- STANDARD DI CABLAGGIO CON IMMAGINE RJ45 -->
+            <h3>Standard di Cablaggio T568A e T568B</h3>
             <div class="approfondimento-box">
-                <p>Esistono due standard per crimpare i connettori RJ-45:</p>
-                <ul>
-                    <li><strong>T568A</strong>: Utilizzato principalmente in ambito residenziale</li>
-                    <li><strong>T568B</strong>: Più comune in ambito commerciale e in Italia</li>
-                </ul>
-                <p><strong>IMPORTANTE:</strong> In una rete, tutti i cavi devono usare lo <strong>stesso standard</strong> su entrambe le estremità!</p>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center;">
+                    <div>
+                        <p>Esistono due standard per crimpare i connettori RJ-45:</p>
+                        <ul>
+                            <li><strong>T568A</strong>: Utilizzato principalmente in ambito residenziale</li>
+                            <li><strong>T568B</strong>: Più comune in ambito commerciale e in Italia</li>
+                        </ul>
+                        <p><strong>IMPORTANTE:</strong> In una rete, tutti i cavi devono usare lo <strong>stesso standard</strong> su entrambe le estremità!</p>
+                        
+                        <h4>Pinout T568B (il più comune):</h4>
+                        <p>1. <span class="colore-pino arancione-scuro"></span>Arancione-Bianco</p>
+                        <p>2. <span class="colore-pino arancione-chiaro"></span>Arancione</p>
+                        <p>3. <span class="colore-pino verde-scuro"></span>Verde-Bianco</p>
+                        <p>4. <span class="colore-pino blu-scuro"></span>Blu</p>
+                        <p>5. <span class="colore-pino blu-chiaro"></span>Blu-Bianco</p>
+                        <p>6. <span class="colore-pino verde-chiaro"></span>Verde</p>
+                        <p>7. <span class="colore-pino marrone-scuro"></span>Marrone-Bianco</p>
+                        <p>8. <span class="colore-pino marrone-chiaro"></span>Marrone</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <img src="RJ45-pinout-diagram-T568B-1.jpg" 
+                             alt="Pinout del connettore RJ-45 standard T568B" 
+                             style="max-width: 100%; border-radius: 8px; border: 1px solid #ddd; padding: 10px; background: white;">
+                        <p class="image-caption">Figura 2: Pinout RJ-45 - Standard T568B</p>
+                    </div>
+                </div>
             </div>
             
+            <!-- LINK ESTERNO DI APPROFONDIMENTO -->
+            <div class="link-esterno">
+                <h4>📚 Approfondimenti Tecnici</h4>
+                <p>Per maggiori dettagli su standard, cablaggio e specifiche:</p>
+                <a href="https://www.tuttoinerba.com/reti-cablaggio-utp/" 
+                   target="_blank">
+                    🔗 Guida Completa al Cablaggio UTP
+                </a>
+                <p><small>(Link esterno - Si aprirà in una nuova finestra)</small></p>
+            </div>
+            
+            <!-- VANTAGGI E SVANTAGGI -->
             <h3>Vantaggi e Svantaggi</h3>
             <div class="vantaggi-svantaggi">
                 <div class="vantaggi">
@@ -429,6 +502,7 @@
                 </div>
             </div>
             
+            <!-- ESEMPI PRATICI -->
             <h3>Esempi Pratici di Utilizzo</h3>
             <div class="esempio-pratico">
                 <p><strong>🏫 A SCUOLA:</strong> Collegamento dei computer del laboratorio al switch, connessione delle LIM, stampanti di rete.</p>
@@ -436,12 +510,17 @@
                 <p><strong>🏢 IN UFFICIO:</strong> Prese di rete a muro, telefoni VoIP, postazioni di lavoro.</p>
             </div>
             
+            <!-- UTP vs STP -->
             <h3>UTP vs STP</h3>
             <p>Oltre all'UTP esiste anche lo <strong>STP</strong> (Shielded Twisted Pair) che aggiunge una schermatura metallica per migliorare l'immunità ai disturbi, ma costa di più ed è meno flessibile.</p>
             
+            <!-- BOTTONI DI NAVIGAZIONE -->
             <div style="text-align: center; margin: 30px 0;">
                 <a href="utp_dettaglio.html" class="nav-button utp-button">
-                    📚 Approfondisci UTP (categorie, cablaggio, esercizi)
+                    📖 Pagina Dedicata UTP (Approfondimento)
+                </a>
+                <a href="#coassiale" class="nav-button" style="background: #e74c3c;">
+                    ⬇️ Prosegui con Cavo Coassiale
                 </a>
             </div>
         </div>
@@ -452,9 +531,9 @@
         <div class="mezzo-section coax-section">
             <h2>2. Cavo Coassiale</h2>
             
-            <div class="image-placeholder">
-                <p>📷 <strong>IMMAGINE DA INSERIRE:</strong> Cavo coassiale con connettori</p>
-                <p><em>Cavo coassiale RG-6 con connettore F-type, usato per TV via cavo</em></p>
+            <div class="image-container">
+                <img src="coassiale_structure.jpg" alt="Struttura del cavo coassiale" onerror="this.style.display='none'">
+                <p class="image-caption">Figura 3: Struttura di un cavo coassiale</p>
             </div>
             
             <p>Il cavo coassiale è stato il primo mezzo utilizzato per le reti Ethernet (10BASE2, 10BASE5). Oggi è principalmente usato per:</p>
@@ -491,6 +570,9 @@
                 <a href="coassiale_dettaglio.html" class="nav-button coax-button">
                     📺 Approfondisci Cavo Coassiale
                 </a>
+                <a href="#fibra" class="nav-button" style="background: #9b59b6;">
+                    ⬇️ Prosegui con Fibra Ottica
+                </a>
             </div>
         </div>
     </section>
@@ -500,9 +582,11 @@
         <div class="mezzo-section fibra-section">
             <h2>3. Fibra Ottica – L'autostrada della luce</h2>
             
-            <div class="image-placeholder">
-                <p>📷 <strong>IMMAGINE DA INSERIRE:</strong> La tua figura "struttura_fibra_ottica_base.png"</p>
-                <p><em>Struttura di una fibra ottica: core, cladding, coating primario</em></p>
+            <!-- IMMAGINE DELLA STRUTTURA DELLA FIBRA -->
+            <div class="image-container">
+                <img src="struttura_fibra_ottica_base.png" 
+                     alt="Struttura di una fibra ottica: core, cladding, coating primario">
+                <p class="image-caption">Figura 4: Struttura di una fibra ottica - core, cladding, rivestimento primario</p>
             </div>
             
             <p>La fibra ottica utilizza impulsi di luce (fotoni) invece di segnali elettrici per trasmettere dati, raggiungendo prestazioni elevatissime.</p>
@@ -514,6 +598,11 @@
                 <li><strong>Coating primario</strong>: Protezione meccanica</li>
                 <li><strong>Guaine esterne</strong>: Protezione aggiuntiva</li>
             </ol>
+            
+            <div class="esempio-pratico">
+                <strong>💡 Principio fisico: Riflessione interna totale</strong>
+                <p>La luce rimane intrappolata nel core perché il cladding ha un indice di rifrazione minore. Questo permette alla luce di viaggiare per chilometri senza dispersione.</p>
+            </div>
             
             <div class="vantaggi-svantaggi">
                 <div class="vantaggi">
@@ -547,6 +636,9 @@
                 </a>
                 <a href="fibra_monomodale.html" class="nav-button" style="background: #3498db;">
                     🚀 Fibra Monomodale
+                </a>
+                <a href="#wireless" class="nav-button" style="background: #f39c12;">
+                    ⬇️ Prosegui con Wireless
                 </a>
             </div>
         </div>
@@ -686,9 +778,22 @@
         </div>
     </section>
 
+    <!-- MENU DI NAVIGAZIONE RAPIDA -->
+    <section>
+        <h2>Navigazione Rapida</h2>
+        <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin: 20px 0;">
+            <a href="#utp" class="nav-button utp-button">🔗 UTP</a>
+            <a href="#coassiale" class="nav-button coax-button">📺 Coassiale</a>
+            <a href="#fibra" class="nav-button fibra-button">🔬 Fibra Ottica</a>
+            <a href="#wireless" class="nav-button wireless-button">📡 Wireless</a>
+            <a href="index.html" class="nav-button" style="background: #7f8c8d;">🏠 Home</a>
+        </div>
+    </section>
+
     <footer>
         <p>Materiale didattico per la scuola secondaria - Reti LAN, WAN, PAN</p>
         <p>© 2023 - Allineato alle linee guida ministeriali per Tecnologia e Informatica</p>
+        <p>Le immagini sono utilizzate a scopo didattico e illustrative.</p>
     </footer>
 </body>
 </html>
