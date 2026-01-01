@@ -49,7 +49,7 @@
             <h3>Cosa succede qui?</h3>
             <p>È il livello più "alto", quello più vicino a te. Qui girano i programmi che usi ogni giorno.</p>
             
-            <div class="alert alert-danger">
+            <div class="alert alert-danger" style="background-color: #fadbd8; border-color: #f5b7b1; color: #761b18;">
                 <strong>La Matrioska più esterna:</strong> È l'unica che si vede da fuori. Contiene tutte le altre.
             </div>
 
@@ -68,30 +68,54 @@
 
     <script>
         function mostraCodice() {
-            var htmlCode = document.documentElement.outerHTML;
-            var newWindow = window.open("", "Codice Sorgente", "width=800,height=600,scrollbars=yes");
-            newWindow.document.write('<html><head><title>Sorgente Pagina</title></head><body>');
-            newWindow.document.write('<h3>Codice Sorgente della Pagina:</h3>');
-            newWindow.document.write('<pre style="background:#f4f4f4; padding:15px; border:1px solid #ccc; white-space: pre-wrap;">');
-            newWindow.document.write(htmlCode.replace(/</g, "&lt;").replace(/>/g, "&gt;"));
-            newWindow.document.write('</pre>
-<!-- ========== FOOTER CON FONTI ========== -->
-<div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-top: 3px solid #0d6efd; text-align: center;">
-    <a href="fonti_bibliografia.html" style="padding: 10px 25px; background: #0d6efd; color: white; text-decoration: none; border-radius: 20px; font-weight: bold; display: inline-block; margin-bottom: 10px;">
-        📚 Consulta tutte le fonti
-    </a>
-    <p style="color: #666; font-size: 0.9em; margin: 5px 0;">
-        <strong>Uso didattico</strong> - Corso di Reti e Telecomunicazioni<br>
-        Luigi Pelagagge - Art. 70 L. 633/1941
-    </p>
-</div>
-<!-- ========== FINE FOOTER ========== -->
-
-</body></html>');
-            newWindow.document.close();
+            const html = document.documentElement.outerHTML;
+            const win = window.open("", "Sorgente", "width=900,height=700");
+            
+            win.document.write(`
+                <html>
+                <head>
+                    <title>Sorgente Pagina - Livello 7 Applicazione</title>
+                    <style>
+                        body { font-family: 'Segoe UI', sans-serif; padding: 20px; background: #f8f9fa; }
+                        h3 { color: #343a40; margin-bottom: 20px; }
+                        pre { 
+                            background: white; 
+                            padding: 20px; 
+                            border-radius: 10px; 
+                            border: 1px solid #ddd;
+                            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+                            overflow: auto; 
+                            max-height: 500px;
+                            font-family: 'Courier New', monospace;
+                            font-size: 14px;
+                            line-height: 1.5;
+                        }
+                        .btn-close {
+                            background: #e83e8c;
+                            color: white;
+                            border: none;
+                            padding: 10px 25px;
+                            border-radius: 25px;
+                            cursor: pointer;
+                            font-weight: bold;
+                            margin-top: 20px;
+                        }
+                        .btn-close:hover { background: #d81b60; }
+                    </style>
+                </head>
+                <body>
+                    <h3>📄 Codice Sorgente - Livello 7: Applicazione</h3>
+                    <pre>${html.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</pre>
+                    <div style="text-align: center;">
+                        <button class="btn-close" onclick="window.close()">Chiudi Finestra</button>
+                    </div>
+                </body>
+                </html>
+            `);
+            
+            win.document.close();
         }
     </script>
-
 
 <!-- ========== FOOTER CON FONTI ========== -->
 <div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-top: 3px solid #0d6efd; text-align: center;">
