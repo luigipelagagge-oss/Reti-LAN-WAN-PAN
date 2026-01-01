@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="it">
 <head>
     <meta charset="UTF-8">
@@ -13,6 +13,28 @@
             padding: 20px;
             background-color: #f5f5f5;
             color: #333;
+        }
+        
+        /* BOTTONE SORGENTE HTML */
+        .source-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #e74c3c;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.9em;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+        }
+        
+        .source-button:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
         }
         
         header {
@@ -231,30 +253,6 @@
             border-left: 5px solid #2980b9;
         }
         
-        .link-esterno {
-            background: #e8f4fc;
-            padding: 20px;
-            border-radius: 8px;
-            margin: 20px 0;
-            text-align: center;
-        }
-        
-        .link-esterno a {
-            background: #27ae60;
-            color: white;
-            padding: 12px 25px;
-            border-radius: 5px;
-            text-decoration: none;
-            display: inline-block;
-            margin: 10px;
-            transition: all 0.3s;
-        }
-        
-        .link-esterno a:hover {
-            background: #229954;
-            transform: translateY(-2px);
-        }
-        
         .colore-pino {
             display: inline-block;
             width: 20px;
@@ -272,9 +270,24 @@
         .blu-chiaro { background: #3498db; }
         .marrone-scuro { background: #784212; }
         .marrone-chiaro { background: #8b4513; }
+        
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
     </style>
 </head>
 <body>
+    <!-- BOTTONE SORGENTE HTML -->
+    <a href="https://github.com/luigipelagagge-oss/Reti-LAN-WAN-PAN/blob/main/mezzi_trasmissivi.html" 
+       target="_blank" 
+       class="source-button">
+        📄 Vedi sorgente HTML
+    </a>
+
     <header>
         <h1>Mezzi Trasmissivi nelle Reti di Computer</h1>
         <p>Guida didattica per la scuola secondaria - Allineato alle linee guida ministeriali</p>
@@ -356,12 +369,11 @@
         </div>
     </section>
 
-    <!-- SEZIONE UTP - VERSIONE CORRETTA -->
+    <!-- SEZIONE UTP -->
     <section id="utp">
         <div class="mezzo-section utp-section">
             <h2>1. Cavo UTP - Doppino Intrecciato</h2>
             
-            <!-- IMMAGINE DEL CAVO UTP CON 4 DOPPINI -->
             <div class="image-container">
                 <img src="198-Physical-layer-UTP.jpg" 
                      alt="Struttura del cavo UTP con 4 doppini intrecciati">
@@ -380,7 +392,6 @@
                 <p>L'intreccio serve a ridurre le interferenze elettromagnetiche (EMI) e la diafonia (crosstalk) tra le coppie. Ogni giro del twist cancella il rumore elettromagnetico catturato.</p>
             </div>
             
-            <!-- TABELLA CATEGORIE -->
             <h3>Categorie di Cavi UTP</h3>
             <table>
                 <tr>
@@ -434,7 +445,6 @@
                 </tr>
             </table>
             
-            <!-- STANDARD DI CABLAGGIO CON IMMAGINE RJ45 -->
             <h3>Standard di Cablaggio T568A e T568B</h3>
             <div class="approfondimento-box">
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center;">
@@ -465,18 +475,6 @@
                 </div>
             </div>
             
-            <!-- LINK ESTERNO DI APPROFONDIMENTO -->
-            <div class="link-esterno">
-                <h4>📚 Approfondimenti Tecnici</h4>
-                <p>Per maggiori dettagli su standard, cablaggio e specifiche:</p>
-                <a href="https://www.tuttoinerba.com/reti-cablaggio-utp/" 
-                   target="_blank">
-                    🔗 Guida Completa al Cablaggio UTP
-                </a>
-                <p><small>(Link esterno - Si aprirà in una nuova finestra)</small></p>
-            </div>
-            
-            <!-- VANTAGGI E SVANTAGGI -->
             <h3>Vantaggi e Svantaggi</h3>
             <div class="vantaggi-svantaggi">
                 <div class="vantaggi">
@@ -502,19 +500,6 @@
                 </div>
             </div>
             
-            <!-- ESEMPI PRATICI -->
-            <h3>Esempi Pratici di Utilizzo</h3>
-            <div class="esempio-pratico">
-                <p><strong>🏫 A SCUOLA:</strong> Collegamento dei computer del laboratorio al switch, connessione delle LIM, stampanti di rete.</p>
-                <p><strong>🏠 IN CASA:</strong> Collegamento router-PC fisso, TV Smart alla rete, console di gioco.</p>
-                <p><strong>🏢 IN UFFICIO:</strong> Prese di rete a muro, telefoni VoIP, postazioni di lavoro.</p>
-            </div>
-            
-            <!-- UTP vs STP -->
-            <h3>UTP vs STP</h3>
-            <p>Oltre all'UTP esiste anche lo <strong>STP</strong> (Shielded Twisted Pair) che aggiunge una schermatura metallica per migliorare l'immunità ai disturbi, ma costa di più ed è meno flessibile.</p>
-            
-            <!-- BOTTONI DI NAVIGAZIONE -->
             <div style="text-align: center; margin: 30px 0;">
                 <a href="utp_dettaglio.html" class="nav-button utp-button">
                     📖 Pagina Dedicata UTP (Approfondimento)
@@ -530,11 +515,6 @@
     <section id="coassiale">
         <div class="mezzo-section coax-section">
             <h2>2. Cavo Coassiale</h2>
-            
-            <div class="image-container">
-                <img src="coassiale_structure.jpg" alt="Struttura del cavo coassiale" onerror="this.style.display='none'">
-                <p class="image-caption">Figura 3: Struttura di un cavo coassiale</p>
-            </div>
             
             <p>Il cavo coassiale è stato il primo mezzo utilizzato per le reti Ethernet (10BASE2, 10BASE5). Oggi è principalmente usato per:</p>
             <ul>
@@ -582,11 +562,10 @@
         <div class="mezzo-section fibra-section">
             <h2>3. Fibra Ottica – L'autostrada della luce</h2>
             
-            <!-- IMMAGINE DELLA STRUTTURA DELLA FIBRA -->
             <div class="image-container">
                 <img src="struttura_fibra_ottica_base.png" 
                      alt="Struttura di una fibra ottica: core, cladding, coating primario">
-                <p class="image-caption">Figura 4: Struttura di una fibra ottica - core, cladding, rivestimento primario</p>
+                <p class="image-caption">Figura 3: Struttura di una fibra ottica - core, cladding, rivestimento primario</p>
             </div>
             
             <p>La fibra ottica utilizza impulsi di luce (fotoni) invece di segnali elettrici per trasmettere dati, raggiungendo prestazioni elevatissime.</p>
@@ -778,22 +757,18 @@
         </div>
     </section>
 
-    <!-- MENU DI NAVIGAZIONE RAPIDA -->
-    <section>
-        <h2>Navigazione Rapida</h2>
-        <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin: 20px 0;">
-            <a href="#utp" class="nav-button utp-button">🔗 UTP</a>
-            <a href="#coassiale" class="nav-button coax-button">📺 Coassiale</a>
-            <a href="#fibra" class="nav-button fibra-button">🔬 Fibra Ottica</a>
-            <a href="#wireless" class="nav-button wireless-button">📡 Wireless</a>
-            <a href="index.html" class="nav-button" style="background: #7f8c8d;">🏠 Home</a>
-        </div>
-    </section>
+    <!-- MENU DI NAVIGAZIONE -->
+    <div class="nav-menu">
+        <a href="#utp" class="nav-button utp-button">🔗 UTP</a>
+        <a href="#coassiale" class="nav-button coax-button">📺 Coassiale</a>
+        <a href="#fibra" class="nav-button fibra-button">🔬 Fibra</a>
+        <a href="#wireless" class="nav-button wireless-button">📡 Wireless</a>
+        <a href="index.html" class="nav-button" style="background: #7f8c8d;">🏠 Home</a>
+    </div>
 
     <footer>
         <p>Materiale didattico per la scuola secondaria - Reti LAN, WAN, PAN</p>
         <p>© 2023 - Allineato alle linee guida ministeriali per Tecnologia e Informatica</p>
-        <p>Le immagini sono utilizzate a scopo didattico e illustrative.</p>
     </footer>
 </body>
 </html>
