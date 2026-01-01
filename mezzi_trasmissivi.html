@@ -150,45 +150,24 @@
             border-left: 4px solid #3498db;
         }
         
-        .percorso {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            margin: 30px 0;
-            gap: 10px;
-        }
-        
-        .tappa {
-            background: white;
-            padding: 15px;
-            border-radius: 8px;
-            text-align: center;
-            flex: 1;
-            min-width: 200px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        
-        .numero {
-            display: inline-block;
-            width: 30px;
-            height: 30px;
-            line-height: 30px;
-            background: #3498db;
-            color: white;
-            border-radius: 50%;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-        
         footer {
             margin-top: 40px;
             text-align: center;
             color: #6c757d;
             font-size: 0.9em;
+            padding-top: 20px;
+            border-top: 1px solid #dee2e6;
         }
     </style>
 </head>
 <body>
+
+    <!-- BOTTONE SORGENTE SICURO - SI APRE IN PAGINA -->
+    <a href="javascript:void(0)" 
+       onclick="mostraSorgente()" 
+       style="position: fixed; top: 20px; right: 20px; background: #6c757d; color: white; padding: 8px 15px; border-radius: 4px; text-decoration: none; font-size: 0.9em; z-index: 1000; border: none; cursor: pointer;">
+        📄 Vedi sorgente
+    </a>
 
     <header>
         <h1>Mezzi Trasmissivi nelle Reti</h1>
@@ -198,12 +177,11 @@
     <section>
         <h2>Introduzione</h2>
         <div class="intro-box">
-            <p>I <strong>mezzi trasmissivi</strong> sono i "canali" fisici attraverso i quali i dati viaggiano in una rete. Si dividono in:</p>
+            <p>I <strong>mezzi trasmissivi</strong> sono i "canali" fisici attraverso i quali i dati viaggiano in una rete.</p>
             
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0;">
                 <div style="background: #d4edda; padding: 15px; border-radius: 5px;">
                     <h3 style="color: #28a745; margin-top: 0;">🔗 Mezzi Guidati</h3>
-                    <p>Segnale confinato in un cavo:</p>
                     <ul>
                         <li>Doppino intrecciato (UTP)</li>
                         <li>Cavo coassiale</li>
@@ -213,59 +191,24 @@
                 
                 <div style="background: #e3f2fd; padding: 15px; border-radius: 5px;">
                     <h3 style="color: #0d6efd; margin-top: 0;">📡 Mezzi Non Guidati</h3>
-                    <p>Segnale viaggia nell'aria:</p>
                     <ul>
                         <li>Wi-Fi</li>
                         <li>Bluetooth</li>
                         <li>Infrarossi</li>
-                        <li>Satellite</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <section>
-        <h2>Percorso di Apprendimento</h2>
-        <div class="percorso">
-            <div class="tappa">
-                <div class="numero">1</div>
-                <h3>UTP</h3>
-                <p>Il più comune</p>
-                <p>Reti locali</p>
-            </div>
-            
-            <div class="tappa">
-                <div class="numero">2</div>
-                <h3>Coassiale</h3>
-                <p>Storico</p>
-                <p>TV via cavo</p>
-            </div>
-            
-            <div class="tappa">
-                <div class="numero">3</div>
-                <h3>Fibra Ottica</h3>
-                <p>Alte prestazioni</p>
-                <p>Backbone</p>
-            </div>
-            
-            <div class="tappa">
-                <div class="numero">4</div>
-                <h3>Wireless</h3>
-                <p>Senza fili</p>
-                <p>Mobilità</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- SEZIONE UTP - COLLEGAMENTO ALLA PAGINA FIGLIA -->
+    <!-- UTP -->
     <section id="utp">
         <div class="mezzo-card utp-card">
             <h2>1. Cavo UTP - Doppino Intrecciato</h2>
-            <p>Il cavo più diffuso nelle reti locali (LAN), uffici e abitazioni.</p>
+            <p>Il cavo più diffuso nelle reti locali (LAN).</p>
             
             <div class="esempio">
-                <strong>Esempio:</strong> Il cavo che collega il PC al router di casa è un UTP.
+                <strong>Esempio:</strong> Il cavo che collega il PC al router di casa.
             </div>
             
             <div class="vantaggi-svantaggi">
@@ -282,27 +225,26 @@
                     <ul>
                         <li>Sensibile alle interferenze</li>
                         <li>Distanza limitata (100m)</li>
-                        <li>Velocità inferiore alla fibra</li>
                     </ul>
                 </div>
             </div>
             
             <div style="text-align: center; margin: 20px 0;">
                 <a href="utp_dettaglio.html" class="nav-button utp-btn">
-                    📚 Approfondisci UTP (categorie, cablaggio, esercizi)
+                    📚 Approfondisci UTP
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- SEZIONE COASSIALE - COLLEGAMENTO ALLA PAGINA FIGLIA -->
+    <!-- COASSIALE -->
     <section id="coassiale">
         <div class="mezzo-card coax-card">
             <h2>2. Cavo Coassiale</h2>
-            <p>Un tempo usato per le reti Ethernet, oggi per TV via cavo e segnali video.</p>
+            <p>Per TV via cavo e segnali video.</p>
             
             <div class="esempio">
-                <strong>Esempio:</strong> Il cavo che collega l'antenna satellitare al televisore.
+                <strong>Esempio:</strong> Il cavo dell'antenna satellitare.
             </div>
             
             <div class="vantaggi-svantaggi">
@@ -311,14 +253,12 @@
                     <ul>
                         <li>Maggiore immunità ai disturbi</li>
                         <li>Distanze maggiori (fino a 500m)</li>
-                        <li>Ottimo per video</li>
                     </ul>
                 </div>
                 <div class="svantaggi">
                     <h4>❌ Svantaggi</h4>
                     <ul>
-                        <li>Più costoso dell'UTP</li>
-                        <li>Ingombrante</li>
+                        <li>Più costoso</li>
                         <li>Installazione complessa</li>
                     </ul>
                 </div>
@@ -326,28 +266,28 @@
             
             <div style="text-align: center; margin: 20px 0;">
                 <a href="coassiale_dettaglio.html" class="nav-button coax-btn">
-                    📺 Approfondisci Cavo Coassiale
+                    📺 Approfondisci Coassiale
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- SEZIONE FIBRA OTTICA - COLLEGAMENTO ALLE 3 PAGINE FIGLIE -->
+    <!-- FIBRA OTTICA -->
     <section id="fibra">
         <div class="mezzo-card fibra-card">
             <h2>3. Fibra Ottica</h2>
-            <p>Utilizza la luce per trasmettere dati, con prestazioni elevatissime.</p>
+            <p>Utilizza la luce per trasmettere dati.</p>
             
             <div class="esempio">
-                <strong>Esempio:</strong> La connessione Internet a 1 Giga, i cavi sottomarini.
+                <strong>Esempio:</strong> Connessione Internet a 1 Giga.
             </div>
             
             <div class="vantaggi-svantaggi">
                 <div class="vantaggi">
                     <h4>✅ Vantaggi</h4>
                     <ul>
-                        <li>Velocità elevatissime (100+ Gbps)</li>
-                        <li>Distanze lunghissime (100+ km)</li>
+                        <li>Velocità elevatissime</li>
+                        <li>Distanze lunghissime</li>
                         <li>Immunità totale ai disturbi</li>
                     </ul>
                 </div>
@@ -356,30 +296,29 @@
                     <ul>
                         <li>Costo elevato</li>
                         <li>Installazione complessa</li>
-                        <li>Fragilità delle fibre</li>
                     </ul>
                 </div>
             </div>
             
             <div style="text-align: center; margin: 20px 0;">
                 <a href="fibra_generale.html" class="nav-button fibra-btn">
-                    🔬 Principi Generali della Fibra
+                    🔬 Principi Generali
                 </a>
                 <a href="fibra_multimodale.html" class="nav-button" style="background: #20c997;">
-                    📊 Fibra Multimodale
+                    📊 Multimodale
                 </a>
                 <a href="fibra_monomodale.html" class="nav-button" style="background: #0d6efd;">
-                    🚀 Fibra Monomodale
+                    🚀 Monomodale
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- SEZIONE WIRELESS -->
+    <!-- WIRELESS -->
     <section id="wireless">
         <div class="mezzo-card wireless-card">
             <h2>4. Mezzi Non Guidati (Wireless)</h2>
-            <p>Comunicazione senza fili attraverso onde elettromagnetiche.</p>
+            <p>Comunicazione senza fili.</p>
             
             <div class="vantaggi-svantaggi">
                 <div class="vantaggi">
@@ -387,7 +326,6 @@
                     <ul>
                         <li>Mobilità totale</li>
                         <li>Installazione rapida</li>
-                        <li>Ideale per dispositivi mobili</li>
                     </ul>
                 </div>
                 <div class="svantaggi">
@@ -395,7 +333,6 @@
                     <ul>
                         <li>Soggetto a interferenze</li>
                         <li>Sicurezza inferiore</li>
-                        <li>Velocità inferiori al cablato</li>
                     </ul>
                 </div>
             </div>
@@ -418,7 +355,7 @@
                     <th>Caratteristica</th>
                     <th>UTP</th>
                     <th>Coassiale</th>
-                    <th>Fibra Ottica</th>
+                    <th>Fibra</th>
                 </tr>
             </thead>
             <tbody>
@@ -435,14 +372,8 @@
                     <td>100+ km</td>
                 </tr>
                 <tr>
-                    <td><strong>Immunità disturbi</strong></td>
-                    <td>Bassa</td>
-                    <td>Media</td>
-                    <td>Altissima</td>
-                </tr>
-                <tr>
                     <td><strong>Costo</strong></td>
-                    <td>Molto basso</td>
+                    <td>Basso</td>
                     <td>Medio</td>
                     <td>Alto</td>
                 </tr>
@@ -450,21 +381,81 @@
         </table>
     </section>
 
-    <!-- NAVIGAZIONE RAPIDA -->
-    <section>
-        <h2>Navigazione Rapida</h2>
-        <div style="text-align: center; margin: 20px 0;">
-            <a href="#utp" class="nav-button utp-btn">🔗 UTP</a>
-            <a href="#coassiale" class="nav-button coax-btn">📺 Coassiale</a>
-            <a href="#fibra" class="nav-button fibra-btn">🔬 Fibra</a>
-            <a href="#wireless" class="nav-button wireless-btn">📡 Wireless</a>
-        </div>
+    <!-- NAVIGAZIONE -->
+    <section style="text-align: center; margin: 30px 0;">
+        <a href="#utp" class="nav-button utp-btn">🔗 UTP</a>
+        <a href="#coassiale" class="nav-button coax-btn">📺 Coassiale</a>
+        <a href="#fibra" class="nav-button fibra-btn">🔬 Fibra</a>
+        <a href="#wireless" class="nav-button wireless-btn">📡 Wireless</a>
     </section>
 
     <footer>
         <p>Materiale didattico per la scuola secondaria - Reti LAN, WAN, PAN</p>
-        <p>© Allineato alle linee guida ministeriali</p>
+        <p>© Uso educativo - Linee guida ministeriali</p>
     </footer>
+
+    <script>
+    // Funzione per mostrare il sorgente IN SICUREZZA
+    function mostraSorgente() {
+        // Crea una finestra/modale semplice
+        const modal = document.createElement('div');
+        modal.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 2000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        `;
+        
+        const content = document.createElement('div');
+        content.style.cssText = `
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 90%;
+            max-height: 80%;
+            overflow: auto;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        `;
+        
+        // Prendi il codice HTML della pagina corrente
+        const htmlContent = document.documentElement.outerHTML;
+        // "Pulisci" il codice per visualizzazione
+        const cleanHTML = htmlContent
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/\n/g, '<br>')
+            .replace(/  /g, ' &nbsp;');
+        
+        content.innerHTML = `
+            <h3 style="margin-top: 0; color: #333;">📄 Codice Sorgente - mezzi_trasmissivi.html</h3>
+            <div style="background: #f8f9fa; padding: 15px; border-radius: 5px; font-family: monospace; font-size: 14px; max-height: 400px; overflow: auto;">
+                ${cleanHTML}
+            </div>
+            <div style="text-align: center; margin-top: 20px;">
+                <button onclick="this.parentElement.parentElement.parentElement.remove()" 
+                        style="background: #dc3545; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">
+                    Chiudi
+                </button>
+            </div>
+        `;
+        
+        modal.appendChild(content);
+        document.body.appendChild(modal);
+        
+        // Chiudi cliccando sullo sfondo
+        modal.onclick = function(e) {
+            if (e.target === modal) {
+                modal.remove();
+            }
+        };
+    }
+    </script>
 
 </body>
 </html>
