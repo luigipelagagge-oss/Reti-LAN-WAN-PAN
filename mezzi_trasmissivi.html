@@ -39,49 +39,6 @@
             margin-bottom: 30px;
         }
 
-        /* MINIATURA UTP INTERATTIVA */
-        .utp-thumbnail-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 30px auto;
-            max-width: 400px;
-        }
-
-        .utp-thumbnail {
-            width: 200px;
-            height: 150px;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            border: 3px solid transparent;
-            object-fit: cover;
-        }
-
-        .utp-thumbnail:hover {
-            transform: scale(1.8);
-            z-index: 1000;
-            position: relative;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-            border-color: #0d6efd;
-        }
-
-        .thumbnail-caption {
-            text-align: center;
-            margin-top: 10px;
-            font-size: 0.9rem;
-            color: #666;
-            font-style: italic;
-        }
-
-        .thumbnail-caption .instruction {
-            color: #0d6efd;
-            font-weight: 600;
-            margin-top: 5px;
-            font-size: 0.8rem;
-        }
-
         .category-card {
             background: white;
             border-radius: 15px;
@@ -107,6 +64,24 @@
             gap: 10px;
         }
 
+        /* Stile per titolo cliccabile */
+        .clickable-title {
+            cursor: pointer;
+            color: #20c997;
+            transition: all 0.3s;
+            padding: 10px 15px;
+            border-radius: 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .clickable-title:hover {
+            background-color: #f8f9fa;
+            color: #198754;
+            transform: translateX(5px);
+        }
+
         .image-gallery {
             display: flex;
             flex-wrap: wrap;
@@ -127,6 +102,7 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             margin-bottom: 10px;
             transition: transform 0.3s;
+            cursor: pointer;
         }
 
         .image-item img:hover {
@@ -137,6 +113,98 @@
             color: #666;
             font-size: 0.9rem;
             font-style: italic;
+        }
+
+        /* Modal a schermo intero per UTP */
+        .fullscreen-modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content-full {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-image-full {
+            max-width: 90%;
+            max-height: 80%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .modal-actions {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 15px;
+            z-index: 10001;
+        }
+
+        .modal-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .modal-btn.close-btn {
+            background: rgba(220, 53, 69, 0.8);
+        }
+
+        .modal-btn.close-btn:hover {
+            background: rgba(220, 53, 69, 1);
+        }
+
+        .modal-btn.external-btn {
+            background: rgba(32, 201, 151, 0.8);
+        }
+
+        .modal-btn.external-btn:hover {
+            background: rgba(32, 201, 151, 1);
+        }
+
+        .modal-caption {
+            color: white;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.2rem;
+            max-width: 80%;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
         }
 
         .table-comparison {
@@ -268,59 +336,6 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
-        /* Modal per immagine ingrandita */
-        .image-modal {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.9);
-            justify-content: center;
-            align-items: center;
-            animation: fadeIn 0.3s;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .modal-image {
-            max-width: 90%;
-            max-height: 80%;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            color: white;
-            font-size: 40px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-
-        .close-modal:hover {
-            color: #0d6efd;
-        }
-
-        .modal-caption {
-            position: absolute;
-            bottom: 20px;
-            left: 0;
-            width: 100%;
-            text-align: center;
-            color: white;
-            padding: 10px;
-            background: rgba(0,0,0,0.7);
-        }
-
         @media (max-width: 768px) {
             .btn-source-fixed {
                 bottom: 70px;
@@ -337,8 +352,20 @@
                 max-width: 300px;
             }
             
-            .utp-thumbnail:hover {
-                transform: scale(1.3);
+            .modal-image-full {
+                max-width: 95%;
+                max-height: 70%;
+            }
+            
+            .modal-actions {
+                flex-direction: column;
+                top: 10px;
+                right: 10px;
+            }
+            
+            .modal-btn {
+                padding: 10px 15px;
+                font-size: 0.9rem;
             }
         }
 
@@ -357,23 +384,6 @@
             <h1><i class="bi bi-ethernet"></i> Mezzi Trasmissivi nelle Reti</h1>
             <p class="subtitle">Dai cavi in rame alla fibra ottica, passando per le onde radio</p>
             
-            <!-- MINIATURA UTP INTERATTIVA -->
-            <div class="utp-thumbnail-container">
-                <img src="98-Physical-layer-UTP.jpg" 
-                     alt="Struttura fisica del cavo UTP - Doppio click per approfondimenti" 
-                     class="utp-thumbnail"
-                     id="utpThumbnail"
-                     onerror="this.src='https://via.placeholder.com/300x200?text=UTP+Physical+Layer'">
-                <div class="thumbnail-caption">
-                    <div>Struttura fisica del cavo UTP</div>
-                    <div class="instruction">
-                        <i class="bi bi-hand-index"></i> Passa il mouse per ingrandire
-                        <br>
-                        <i class="bi bi-mouse2"></i> Doppio click per approfondimenti
-                    </div>
-                </div>
-            </div>
-            
             <div class="info-box">
                 <p>I <strong>mezzi trasmissivi</strong> sono i canali fisici attraverso cui viaggiano i dati nelle reti di telecomunicazioni. La scelta del mezzo adeguato dipende da diversi fattori: distanza, banda richiesta, costo, immunità ai disturbi e flessibilità di installazione.</p>
                 <p class="mb-0"><strong>Livello 1 del modello ISO/OSI</strong> e parte del livello <strong>Accesso alla Rete</strong> in TCP/IP.</p>
@@ -390,9 +400,14 @@
             
             <!-- Cavo UTP -->
             <div style="margin-bottom: 30px;">
-                <h4 style="color: #20c997; display: flex; align-items: center; gap: 10px;">
+                <!-- TITOLO CLICCABILE -->
+                <h4 class="clickable-title" onclick="openUTPFullscreen()">
                     <i class="bi bi-lightning-charge"></i> Cavo UTP (Unshielded Twisted Pair)
+                    <small style="font-size: 0.8rem; color: #666; margin-left: 10px;">
+                        <i class="bi bi-arrows-fullscreen"></i> Clicca per visualizzare
+                    </small>
                 </h4>
+                
                 <div class="technical-details">
                     <span class="badge-category" style="background: #d1e7dd; color: #0f5132;">Categoria 5e</span>
                     <span class="badge-category" style="background: #cfe2ff; color: #084298;">Categoria 6</span>
@@ -403,8 +418,8 @@
                 
                 <div class="image-gallery">
                     <div class="image-item">
-                        <img src="98-Physical-layer-UTP.jpg" alt="Cavo UTP - Livello Fisico" onclick="openImageModal('98-Physical-layer-UTP.jpg', 'Struttura fisica del cavo UTP')" onerror="this.src='https://via.placeholder.com/300x200?text=Cavo+UTP'">
-                        <p class="image-caption">Cavo UTP - Livello Fisico</p>
+                        <img src="98-Physical-layer-UTP.jpg" alt="Cavo UTP - Livello Fisico" onclick="openUTPFullscreen()" onerror="this.src='https://via.placeholder.com/300x200?text=Cavo+UTP'">
+                        <p class="image-caption">Clicca per visualizzare a schermo intero</p>
                     </div>
                     <div class="image-item">
                         <img src="CategorieUTP.png" alt="Categorie UTP a confronto" onclick="openImageModal('CategorieUTP.png', 'Categorie UTP a confronto')" onerror="this.src='https://via.placeholder.com/300x200?text=Categorie+UTP'">
@@ -560,11 +575,26 @@
 
     </div>
 
-    <!-- MODAL PER IMMAGINE INGRANDITA -->
-    <div id="imageModal" class="image-modal">
-        <span class="close-modal" onclick="closeImageModal()">&times;</span>
-        <img class="modal-image" id="modalImage">
-        <div class="modal-caption" id="modalCaption"></div>
+    <!-- MODAL A SCHERMO INTERO PER UTP -->
+    <div id="utpFullscreenModal" class="fullscreen-modal">
+        <div class="modal-content-full">
+            <div class="modal-actions">
+                <button class="modal-btn external-btn" onclick="openUTPExternal()">
+                    <i class="bi bi-box-arrow-up-right"></i> Approfondimento UTP
+                </button>
+                <button class="modal-btn close-btn" onclick="closeUTPFullscreen()">
+                    <i class="bi bi-x-lg"></i> Chiudi
+                </button>
+            </div>
+            <img id="utpFullscreenImage" class="modal-image-full" 
+                 src="98-Physical-layer-UTP.jpg" 
+                 alt="Struttura fisica del cavo UTP - Unshielded Twisted Pair"
+                 onerror="this.src='https://via.placeholder.com/800x600?text=Immagine+UTP+non+disponibile'">
+            <div class="modal-caption">
+                <strong>Cavo UTP (Unshielded Twisted Pair)</strong> - Struttura fisica a livello 1
+                <br><small>Utilizza il bottone "Approfondimento UTP" per maggiori informazioni tecniche</small>
+            </div>
+        </div>
     </div>
 
     <!-- Bottone Vedi Sorgente Fisso (mobile friendly) -->
@@ -597,64 +627,43 @@
     <!-- ========== FINE FOOTER ========== -->
 
     <script>
-        // Variabili per gestire il doppio click
-        let lastClickTime = 0;
-        const doubleClickDelay = 300; // ms per considerarlo doppio click
-
-        // Miniatura UTP interattiva
-        const utpThumbnail = document.getElementById('utpThumbnail');
-        
-        if (utpThumbnail) {
-            // Gestione click sulla miniatura
-            utpThumbnail.addEventListener('click', function(e) {
-                const currentTime = new Date().getTime();
-                const timeSinceLastClick = currentTime - lastClickTime;
-                
-                if (timeSinceLastClick < doubleClickDelay) {
-                    // Doppio click - apri sito UTP
-                    e.preventDefault();
-                    e.stopPropagation();
-                    window.open('https://www.fiberoptics4sale.com/blogs/archive-posts/95046918-what-is-unshielded-twisted-pair-utp-cable', '_blank', 'noopener,noreferrer');
-                } else {
-                    // Singolo click - mostra modal ingrandita
-                    openImageModal(this.src, 'Struttura fisica del cavo UTP');
-                }
-                
-                lastClickTime = currentTime;
-            });
-            
-            // Aggiungi stile cursor pointer
-            utpThumbnail.style.cursor = 'pointer';
+        // Funzioni per la modal UTP a schermo intero
+        function openUTPFullscreen() {
+            const modal = document.getElementById('utpFullscreenModal');
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Disabilita scroll
         }
 
-        // Funzione per aprire modal immagine ingrandita
-        function openImageModal(src, caption) {
-            const modal = document.getElementById('imageModal');
-            const modalImage = document.getElementById('modalImage');
-            const modalCaption = document.getElementById('modalCaption');
-            
-            modalImage.src = src;
-            modalCaption.textContent = caption || 'Immagine';
-            modal.style.display = 'flex';
-            
-            // Previene lo scroll dello sfondo
-            document.body.style.overflow = 'hidden';
-        }
-
-        // Funzione per chiudere modal
-        function closeImageModal() {
-            const modal = document.getElementById('imageModal');
+        function closeUTPFullscreen() {
+            const modal = document.getElementById('utpFullscreenModal');
             modal.style.display = 'none';
-            document.body.style.overflow = 'auto';
+            document.body.style.overflow = 'auto'; // Riabilita scroll
         }
 
-        // Chiudi modal cliccando fuori
-        window.addEventListener('click', function(e) {
-            const modal = document.getElementById('imageModal');
-            if (e.target === modal) {
-                closeImageModal();
+        function openUTPExternal() {
+            window.open('https://www.fiberoptics4sale.com/blogs/archive-posts/95046918-what-is-unshielded-twisted-pair-utp-cable', '_blank', 'noopener,noreferrer');
+        }
+
+        // Chiudi modal con ESC
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeUTPFullscreen();
             }
         });
+
+        // Chiudi modal cliccando sullo sfondo
+        document.getElementById('utpFullscreenModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeUTPFullscreen();
+            }
+        });
+
+        // Funzione per aprire immagini normali in modal (per le altre immagini)
+        function openImageModal(src, caption) {
+            // Qui puoi implementare una modal semplice per le altre immagini se vuoi
+            // Per ora apro semplicemente l'immagine in una nuova scheda
+            window.open(src, '_blank');
+        }
 
         // Funzione per mostrare il codice sorgente
         function mostraCodice() {
@@ -714,14 +723,6 @@
                     const alt = this.alt || 'Immagine';
                     this.src = `https://via.placeholder.com/300x200?text=${encodeURIComponent(alt)}`;
                 };
-                
-                // Aggiungi click per aprire modal a tutte le immagini (tranne quelle già con link)
-                if (!img.closest('a')) {
-                    img.addEventListener('click', function() {
-                        openImageModal(this.src, this.alt);
-                    });
-                    img.style.cursor = 'pointer';
-                }
             });
         });
     </script>
