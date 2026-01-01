@@ -3,272 +3,220 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modello TCP/IP - Spiegazione Completa</title>
+    <title>Spiegazione Modello TCP/IP</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <style>
-        body { 
-            background: #f8f9fa; 
-            font-family: 'Segoe UI', sans-serif; 
-        }
-        
-        .section-content { display: none; }
-        .section-content.active { 
-            display: block; 
-            animation: fadeIn 0.4s; 
-        }
-        
-        @keyframes fadeIn { 
-            from { opacity: 0; transform: translateY(10px); } 
-            to { opacity: 1; transform: translateY(0); } 
+        body {
+            background-color: #f0f2f5;
+            font-family: 'Segoe UI', sans-serif;
+            padding: 20px;
         }
 
-        .btn-outline-primary { 
-            background-color: #fff !important; 
-            color: #0d6efd !important; 
-            border: 2px solid #0d6efd !important; 
-            font-weight: 600; 
-        }
-        
-        .btn-primary.active { 
-            background-color: #0d6efd !important; 
-            color: #fff !important; 
-            border: 2px solid #0d6efd !important; 
-            font-weight: 600; 
+        .main-container {
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
-        .card-net { 
-            border-radius: 12px; 
-            transition: transform 0.3s, box-shadow 0.3s; 
-            height: 100%; 
-            border: 1px solid #dee2e6; 
+        .header-card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        h1 { 
+            color: #0d6efd; 
+            font-weight: 800; 
+            margin-bottom: 20px;
         }
         
-        .card-net:hover { 
-            transform: translateY(-5px); 
-            box-shadow: 0 8px 15px rgba(0,0,0,0.1); 
+        .subtitle {
+            color: #6c757d;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
         }
-        
-        /* TORRE TCP/IP - Stile simile a ISO/OSI ma con 4 livelli */
-        .tcp-tower {
+
+        /* TORRE TCP/IP con stile simile a ISO/OSI */
+        .tcp-tower-card {
             background: white;
             border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            overflow: hidden;
-            margin: 30px 0;
-        }
-        
-        .tcp-level {
             padding: 25px;
-            color: white;
-            border-bottom: 2px solid rgba(255,255,255,0.3);
-            position: relative;
-            transition: all 0.3s;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        .tcp-level-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 5px solid;
+            transition: transform 0.3s;
             cursor: pointer;
+            position: relative;
+        }
+
+        .tcp-level-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .level-header {
             display: flex;
             align-items: center;
+            margin-bottom: 15px;
+            justify-content: space-between;
         }
-        
-        .tcp-level:hover {
-            padding-left: 35px;
-            transform: scale(1.02);
-        }
-        
-        .tcp-level.active {
-            box-shadow: inset 5px 0 0 rgba(255,255,255,0.8);
-        }
-        
+
         .level-number {
-            background: rgba(255,255,255,0.2);
+            display: inline-block;
             width: 40px;
             height: 40px;
+            line-height: 40px;
+            border-radius: 50%;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            margin-right: 15px;
+            font-size: 1.2rem;
+        }
+
+        .level-title {
+            font-weight: 700;
+            font-size: 1.4rem;
+            margin: 0;
+            flex-grow: 1;
+        }
+
+        .level-info-btn {
+            background: none;
+            border: 2px solid #ddd;
+            color: #666;
+            width: 35px;
+            height: 35px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: bold;
-            font-size: 1.2em;
-            margin-right: 20px;
-            flex-shrink: 0;
+            cursor: pointer;
+            transition: all 0.3s;
         }
-        
-        .level-content {
-            flex-grow: 1;
+
+        .level-info-btn:hover {
+            background: #f8f9fa;
+            border-color: #0d6efd;
+            color: #0d6efd;
         }
-        
-        .level-title {
-            font-size: 1.3em;
-            font-weight: bold;
+
+        .level-description {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .level-examples {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            border-left: 3px solid;
+        }
+
+        .level-examples strong {
+            color: #333;
+            display: block;
             margin-bottom: 5px;
         }
-        
-        .level-subtitle {
-            font-size: 0.9em;
-            opacity: 0.9;
+
+        .nav-footer { 
+            margin-top: 40px; 
+            display: flex; 
+            justify-content: center; 
+            flex-wrap: wrap;
+            gap: 15px; 
         }
         
-        /* Colori livelli TCP/IP */
-        .tcp-level-4 { 
-            background: linear-gradient(135deg, #e74c3c, #c0392b); /* Rosso - Applicazione */
-        }
-        
-        .tcp-level-3 { 
-            background: linear-gradient(135deg, #e67e22, #d35400); /* Arancione - Trasporto */
-        }
-        
-        .tcp-level-2 { 
-            background: linear-gradient(135deg, #27ae60, #229954); /* Verde - Internet */
-        }
-        
-        .tcp-level-1 { 
-            background: linear-gradient(135deg, #3498db, #2980b9); /* Blu - Accesso Rete */
-        }
-        
-        /* Bottoni protocolli con stile ISO/OSI */
-        .protocols-container {
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            margin: 20px 0;
-        }
-        
-        .protocol-btn {
-            display: flex;
-            align-items: center;
-            padding: 15px 20px;
-            margin-bottom: 10px;
-            border-radius: 10px;
-            border: 2px solid #e9ecef;
-            background: #f8f9fa;
-            transition: all 0.3s;
+        .btn-nav { 
+            padding: 10px 20px; 
+            border-radius: 50px; 
+            text-decoration: none; 
+            font-weight: bold; 
             cursor: pointer;
-            width: 100%;
-            text-align: left;
-            color: #333;
-        }
-        
-        .protocol-btn:hover {
-            transform: translateX(10px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            text-decoration: none;
-            color: #333;
-        }
-        
-        .protocol-btn.active {
-            border-color: #0d6efd;
-            background: #e7f1ff;
-        }
-        
-        .protocol-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
-            display: flex;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            margin-right: 15px;
-            font-size: 1.2em;
-            color: white;
-            flex-shrink: 0;
+            transition: all 0.3s;
+            border: 2px solid transparent;
         }
         
-        .protocol-name {
-            font-weight: bold;
+        .btn-back { 
+            background-color: #6c757d; 
+            color: white; 
+        }
+        
+        .btn-back:hover {
+            background-color: #5a6268;
+            transform: translateY(-2px);
+        }
+        
+        .btn-compare {
+            background-color: #198754;
+            color: white;
+        }
+        
+        .btn-compare:hover {
+            background-color: #157347;
+            transform: translateY(-2px);
+        }
+
+        .btn-osi {
+            background-color: #0d6efd;
+            color: white;
+        }
+        
+        .btn-osi:hover {
+            background-color: #0b5ed7;
+            transform: translateY(-2px);
+        }
+        
+        .btn-source { 
+            border: 2px solid #333; 
+            color: #333; 
+            font-family: monospace; 
+        }
+        
+        .btn-source:hover { 
+            background-color: #333; 
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .btn-icon {
+            margin-right: 8px;
             font-size: 1.1em;
         }
-        
-        .protocol-desc {
-            font-size: 0.9em;
-            color: #666;
-            margin-top: 3px;
-        }
-        
-        /* Area dettagli */
-        .details-container {
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+
+        .info-box {
+            background-color: #e3f2fd;
+            border-left: 5px solid #0d6efd;
+            padding: 20px;
+            border-radius: 10px;
             margin: 30px 0;
-            min-height: 400px;
         }
-        
-        .details-header {
-            border-bottom: 2px solid #e9ecef;
-            padding-bottom: 20px;
-            margin-bottom: 25px;
-        }
-        
-        .detail-item {
-            margin-bottom: 20px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #f1f1f1;
-        }
-        
-        .detail-label {
-            font-weight: bold;
-            color: #495057;
-            margin-bottom: 8px;
-            font-size: 0.95em;
-        }
-        
-        .detail-value {
-            color: #212529;
-            line-height: 1.6;
-        }
-        
-        /* Stili specifici per colori dei protocolli */
-        .applicazione .protocol-icon { background: #e74c3c; }
-        .trasporto .protocol-icon { background: #e67e22; }
-        .internet .protocol-icon { background: #27ae60; }
-        .accesso .protocol-icon { background: #3498db; }
-        
-        /* Footer */
-        .footer-didattico {
-            margin-top: 60px;
-            padding: 25px;
-            background: #f8f9fa;
-            border-top: 3px solid #0d6efd;
-            text-align: center;
-            border-radius: 15px 15px 0 0;
-        }
-        
-        .btn-fonti {
-            padding: 12px 30px;
-            background: linear-gradient(135deg, #0d6efd 0%, #0b5ed7 100%);
-            color: white;
-            text-decoration: none;
-            border-radius: 25px;
-            font-weight: 600;
-            display: inline-block;
-            margin-bottom: 15px;
-            transition: all 0.3s;
-        }
-        
-        .btn-fonti:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(13, 110, 253, 0.3);
-            color: white;
-        }
-        
-        /* Bottone sorgente fisso */
-        .btn-source {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
-            border-radius: 50px;
-            padding: 10px 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-        
+
         /* Tabella comparativa */
         .comparison-table {
             background: white;
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            margin: 30px 0;
         }
         
         .comparison-table th {
@@ -282,644 +230,507 @@
             padding: 15px;
             border-bottom: 1px solid #e9ecef;
         }
-        
-        /* Animazioni */
-        .fade-in {
-            animation: fadeIn 0.5s ease-out;
+
+        .comparison-table tr:hover {
+            background-color: #f8f9fa;
         }
-        
-        /* Responsive */
+
+        /* Modal per approfondimenti - STESSO STILE di ISO/OSI */
+        .modal-custom {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+            animation: modalFade 0.3s;
+        }
+
+        @keyframes modalFade {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f2f5;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #0d6efd;
+            margin: 0;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #666;
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover {
+            color: #333;
+        }
+
+        .modal-body {
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .modal-highlight {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #0d6efd;
+        }
+
+        .level-detail-item {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #eee;
+        }
+
+        .level-detail-item:last-child {
+            border-bottom: none;
+        }
+
+        /* Bottone sorgente fisso */
+        .btn-source-fixed {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            border-radius: 50px;
+            padding: 10px 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
         @media (max-width: 768px) {
-            .tcp-level {
-                padding: 20px 15px;
-            }
-            
-            .protocol-btn {
-                padding: 12px 15px;
-            }
-            
-            .protocol-icon {
-                width: 35px;
-                height: 35px;
-                font-size: 1em;
-            }
-            
-            .details-container {
-                padding: 20px;
+            .btn-source-fixed {
+                bottom: 70px;
+                right: 15px;
             }
         }
+        
     </style>
 </head>
 <body>
 
-    <div class="container py-4">
-        <!-- Header -->
-        <header class="text-center mb-4">
-            <h1 class="fw-bold text-primary">🌐 Modello TCP/IP - Spiegazione Completa</h1>
-            <p class="text-muted">Il modello a 4 livelli che ha dato vita a Internet</p>
-        </header>
-
-        <!-- Navigazione principale -->
-        <nav class="text-center mb-4">
-            <div class="btn-group shadow-sm" role="group">
-                <a href="index.html" class="btn btn-outline-primary">
-                    <i class="bi bi-house"></i> Dashboard
-                </a>
-                <a href="confronto_tcp.html" class="btn btn-outline-primary">
-                    <i class="bi bi-columns"></i> Confronto OSI/TCP
-                </a>
-                <a href="iso_osi_spiegazione.html" class="btn btn-outline-primary">
-                    <i class="bi bi-layers"></i> Vedi ISO/OSI
-                </a>
-                <a href="fonti_bibliografia.html" class="btn btn-outline-primary">
-                    <i class="bi bi-book"></i> Fonti
-                </a>
-                <a href="mezzi_trasmissivi.html" class="btn btn-outline-success">
-                    <i class="bi bi-router"></i> Mezzi Trasmissivi
-                </a>
-            </div>
-        </nav>
-
-        <!-- Contenuto principale -->
-        <main class="bg-white p-4 p-md-5 shadow rounded-4 border">
+    <div class="main-container">
+        <div class="header-card">
+            <h1><i class="bi bi-globe"></i> Modello TCP/IP - Spiegazione Completa</h1>
+            <p class="subtitle">Il modello a 4 livelli che ha dato vita a Internet</p>
             
-            <!-- Introduzione -->
-            <div class="row mb-5">
-                <div class="col-12">
-                    <div class="alert alert-info">
-                        <h5><i class="bi bi-info-circle"></i> Cos'è il modello TCP/IP?</h5>
-                        <p class="mb-2">
-                            Il modello TCP/IP (Transmission Control Protocol/Internet Protocol) è un modello di rete sviluppato dal 
-                            <strong>DARPA</strong> (Defense Advanced Research Projects Agency) negli anni '70. A differenza del modello 
-                            ISO/OSI teorico, TCP/IP è nato dalla pratica ed è diventato lo standard de facto per Internet.
-                        </p>
-                        <p class="mb-0">
-                            Il modello TCP/IP semplifica i 7 livelli del modello OSI in soli 4 livelli, mantenendo tutte le funzionalità 
-                            necessarie per le comunicazioni reali su Internet.
-                        </p>
-                    </div>
-                </div>
+            <div class="info-box">
+                <p><strong>TCP/IP</strong> (Transmission Control Protocol/Internet Protocol) è un modello di rete sviluppato dal <strong>DARPA</strong> (Defense Advanced Research Projects Agency) negli anni '70. A differenza del modello ISO/OSI teorico, TCP/IP è nato dalla pratica ed è diventato lo standard de facto per Internet.</p>
+                <p class="mb-0"><strong>Clicca su ogni livello per approfondire!</strong></p>
             </div>
+        </div>
 
-            <!-- Torre TCP/IP -->
-            <div class="row mb-5">
-                <div class="col-12">
-                    <h4 class="fw-bold mb-4 text-center">Torre del Modello TCP/IP</h4>
-                    <p class="text-center text-muted mb-4">Clicca su un livello per esplorarne i protocolli</p>
-                    
-                    <div class="tcp-tower">
-                        <!-- Livello 4: Applicazione -->
-                        <div class="tcp-level tcp-level-4" onclick="showLevel('applicazione')" id="level-applicazione">
-                            <div class="level-number">4</div>
-                            <div class="level-content">
-                                <div class="level-title">Livello Applicazione</div>
-                                <div class="level-subtitle">HTTP, FTP, SMTP, DNS, SSH, DHCP</div>
-                            </div>
-                        </div>
-                        
-                        <!-- Livello 3: Trasporto -->
-                        <div class="tcp-level tcp-level-3" onclick="showLevel('trasporto')" id="level-trasporto">
-                            <div class="level-number">3</div>
-                            <div class="level-content">
-                                <div class="level-title">Livello Trasporto</div>
-                                <div class="level-subtitle">TCP, UDP, SCTP</div>
-                            </div>
-                        </div>
-                        
-                        <!-- Livello 2: Internet -->
-                        <div class="tcp-level tcp-level-2" onclick="showLevel('internet')" id="level-internet">
-                            <div class="level-number">2</div>
-                            <div class="level-content">
-                                <div class="level-title">Livello Internet</div>
-                                <div class="level-subtitle">IP, ICMP, ARP, OSPF, BGP</div>
-                            </div>
-                        </div>
-                        
-                        <!-- Livello 1: Accesso Rete -->
-                        <div class="tcp-level tcp-level-1" onclick="showLevel('accesso')" id="level-accesso">
-                            <div class="level-number">1</div>
-                            <div class="level-content">
-                                <div class="level-title">Livello Accesso alla Rete</div>
-                                <div class="level-subtitle">Ethernet, Wi-Fi, PPP, Token Ring</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <!-- TORRE TCP/IP in stile simile -->
+        <div class="tcp-tower-card">
+            <h3><i class="bi bi-layers"></i> Torre del Modello TCP/IP</h3>
+            <p class="text-muted">4 livelli invece di 7, più pratico e adottato universalmente</p>
+        </div>
 
-            <!-- Protocolli per livello -->
-            <div class="protocols-container" id="protocols-container">
-                <h4 class="fw-bold mb-4 text-center" id="protocols-title">Seleziona un livello della Torre</h4>
-                <p class="text-center text-muted mb-4" id="protocols-subtitle">I protocolli appariranno qui dopo aver selezionato un livello</p>
-                
-                <div class="row" id="protocols-list">
-                    <!-- I protocolli verranno inseriti qui dinamicamente -->
+        <!-- Livello 4: Applicazione -->
+        <div class="tcp-level-card" style="border-left-color: #f06292;" onclick="showDetailModal('tcp', 4)">
+            <div class="level-header">
+                <div class="level-number" style="background-color: #f06292;">4</div>
+                <h3 class="level-title">Applicazione</h3>
+                <button class="level-info-btn" onclick="event.stopPropagation(); showDetailModal('tcp', 4)">
+                    <i class="bi bi-info-circle"></i>
+                </button>
+            </div>
+            <div class="level-description">
+                <p>Fonde insieme i livelli 5, 6 e 7 del modello OSI. Fornisce servizi di rete direttamente alle applicazioni dell'utente.</p>
+                <div class="level-examples" style="border-left-color: #f06292;">
+                    <strong><i class="bi bi-tags"></i> Protocolli:</strong> HTTP/HTTPS, FTP/SFTP, SMTP, DNS, SSH, DHCP, SNMP
                 </div>
             </div>
+        </div>
 
-            <!-- Dettagli Protocollo -->
-            <div class="details-container" id="details-container">
-                <div class="text-center py-5" id="default-details">
-                    <i class="bi bi-info-circle text-muted" style="font-size: 4rem;"></i>
-                    <h4 class="text-muted mt-3">Seleziona un protocollo</h4>
-                    <p class="text-muted">Clicca su un protocollo per visualizzare le informazioni dettagliate</p>
-                </div>
-                
-                <div id="protocol-details" style="display: none;">
-                    <div class="details-header">
-                        <h3 id="detail-title" class="fw-bold mb-2"></h3>
-                        <div id="detail-subtitle" class="text-muted"></div>
-                    </div>
-                    <div id="detail-content" class="fade-in">
-                        <!-- Il contenuto verrà inserito qui dinamicamente -->
-                    </div>
+        <!-- Livello 3: Trasporto -->
+        <div class="tcp-level-card" style="border-left-color: #ffc107;" onclick="showDetailModal('tcp', 3)">
+            <div class="level-header">
+                <div class="level-number" style="background-color: #ffc107; color: #333;">3</div>
+                <h3 class="level-title">Trasporto</h3>
+                <button class="level-info-btn" onclick="event.stopPropagation(); showDetailModal('tcp', 3)">
+                    <i class="bi bi-info-circle"></i>
+                </button>
+            </div>
+            <div class="level-description">
+                <p>Corrisponde perfettamente al livello 4 del modello OSI. Gestisce la comunicazione end-to-end tra host.</p>
+                <div class="level-examples" style="border-left-color: #ffc107;">
+                    <strong><i class="bi bi-tags"></i> Protocolli:</strong> TCP (affidabile, orientato alla connessione), UDP (veloce, senza connessione), SCTP
                 </div>
             </div>
+        </div>
 
-            <!-- Tabella comparativa TCP/IP vs OSI -->
-            <div class="row mt-5">
-                <div class="col-12">
-                    <h4 class="fw-bold mb-4">📊 Confronto TCP/IP vs ISO/OSI</h4>
-                    <div class="comparison-table">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th width="30%">Modello TCP/IP (4 livelli)</th>
-                                    <th width="40%">Funzione Principale</th>
-                                    <th width="30%">Corrispondenza ISO/OSI</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><strong>Applicazione</strong><br><small>HTTP, FTP, SMTP, DNS</small></td>
-                                    <td>Interfaccia utente, servizi di rete, formattazione dati</td>
-                                    <td>Livelli 5, 6, 7<br>(Sessione, Presentazione, Applicazione)</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Trasporto</strong><br><small>TCP, UDP, SCTP</small></td>
-                                    <td>Comunicazione end-to-end, controllo flusso, affidabilità</td>
-                                    <td>Livello 4<br>(Trasporto)</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Internet</strong><br><small>IP, ICMP, ARP</small></td>
-                                    <td>Indirizzamento logico, routing, frammentazione</td>
-                                    <td>Livello 3<br>(Rete)</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Accesso Rete</strong><br><small>Ethernet, Wi-Fi, PPP</small></td>
-                                    <td>Trasmissione fisica, indirizzamento fisico (MAC)</td>
-                                    <td>Livelli 1, 2<br>(Fisico, Collegamento Dati)</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+        <!-- Livello 2: Internet -->
+        <div class="tcp-level-card" style="border-left-color: #4caf50;" onclick="showDetailModal('tcp', 2)">
+            <div class="level-header">
+                <div class="level-number" style="background-color: #4caf50;">2</div>
+                <h3 class="level-title">Internet</h3>
+                <button class="level-info-btn" onclick="event.stopPropagation(); showDetailModal('tcp', 2)">
+                    <i class="bi bi-info-circle"></i>
+                </button>
+            </div>
+            <div class="level-description">
+                <p>Corrisponde al livello 3 del modello OSI. Si occupa dell'indirizzamento logico, del routing e del frammentamento dei pacchetti attraverso reti multiple.</p>
+                <div class="level-examples" style="border-left-color: #4caf50;">
+                    <strong><i class="bi bi-tags"></i> Protocolli:</strong> IP (IPv4/IPv6), ICMP, ARP, OSPF, BGP, RIP
                 </div>
             </div>
+        </div>
 
-            <!-- Navigazione inferiore -->
-            <div class="row mt-5">
-                <div class="col-12 text-center">
-                    <div class="btn-group" role="group">
-                        <a href="index.html" class="btn btn-primary">
-                            <i class="bi bi-arrow-left"></i> Torna alla Dashboard
-                        </a>
-                        <a href="confronto_tcp.html" class="btn btn-outline-primary">
-                            <i class="bi bi-columns-gap"></i> Confronto Dettagliato
-                        </a>
-                        <a href="iso_osi_spiegazione.html" class="btn btn-outline-primary">
-                            <i class="bi bi-layers"></i> Vedi Torre ISO/OSI
-                        </a>
-                        <button class="btn btn-outline-success" onclick="showSource()">
-                            <i class="bi bi-code-slash"></i> Vedi Sorgente
-                        </button>
-                    </div>
+        <!-- Livello 1: Accesso alla Rete -->
+        <div class="tcp-level-card" style="border-left-color: #2196f3;" onclick="showDetailModal('tcp', 1)">
+            <div class="level-header">
+                <div class="level-number" style="background-color: #2196f3;">1</div>
+                <h3 class="level-title">Accesso alla Rete</h3>
+                <button class="level-info-btn" onclick="event.stopPropagation(); showDetailModal('tcp', 1)">
+                    <i class="bi bi-info-circle"></i>
+                </button>
+            </div>
+            <div class="level-description">
+                <p>Fonde insieme i livelli 1 e 2 del modello OSI. Definisce come i dati sono fisicamente trasmessi attraverso il mezzo di rete.</p>
+                <div class="level-examples" style="border-left-color: #2196f3;">
+                    <strong><i class="bi bi-tags"></i> Tecnologie/Standard:</strong> Ethernet (IEEE 802.3), Wi-Fi (IEEE 802.11), PPP, Token Ring, Frame Relay
                 </div>
             </div>
-        </main>
-        
-        <!-- Footer didattico -->
-        <div class="footer-didattico">
-            <a href="fonti_bibliografia.html" class="btn-fonti">
-                📚 Consulta tutte le fonti e i riferimenti
+        </div>
+
+        <!-- Tabella comparativa -->
+        <div class="comparison-table">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th width="30%">Modello TCP/IP (4 livelli)</th>
+                        <th width="40%">Funzione Principale</th>
+                        <th width="30%">Corrispondenza ISO/OSI</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Applicazione</strong><br><small>HTTP, FTP, SMTP, DNS</small></td>
+                        <td>Interfaccia utente, servizi di rete, formattazione dati</td>
+                        <td>Livelli 5, 6, 7<br>(Sessione, Presentazione, Applicazione)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Trasporto</strong><br><small>TCP, UDP, SCTP</small></td>
+                        <td>Comunicazione end-to-end, controllo flusso, affidabilità</td>
+                        <td>Livello 4<br>(Trasporto)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Internet</strong><br><small>IP, ICMP, ARP</small></td>
+                        <td>Indirizzamento logico, routing, frammentazione</td>
+                        <td>Livello 3<br>(Rete)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Accesso Rete</strong><br><small>Ethernet, Wi-Fi, PPP</small></td>
+                        <td>Trasmissione fisica, indirizzamento fisico (MAC)</td>
+                        <td>Livelli 1, 2<br>(Fisico, Collegamento Dati)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Note importanti -->
+        <div class="info-box">
+            <h5><i class="bi bi-lightbulb"></i> Perché TCP/IP ha solo 4 livelli?</h5>
+            <p>TCP/IP è nato come <strong>modello pratico</strong>, non teorico. I progettisti hanno scelto di fondere alcuni livelli perché nella realtà molte funzioni sono strettamente integrate:</p>
+            <ul class="mb-0">
+                <li><strong>Sessione + Presentazione + Applicazione</strong> = Molte applicazioni gestiscono già queste funzioni internamente</li>
+                <li><strong>Fisico + Collegamento Dati</strong> = Le tecnologie fisiche definiscono già i formati dei frame (es: Ethernet)</li>
+            </ul>
+        </div>
+
+        <div class="nav-footer">
+            <a href="confronto_tcp.html" class="btn-nav btn-back">
+                <span class="btn-icon"><i class="bi bi-arrow-left"></i></span> Torna al Confronto
             </a>
-            <div style="color: #495057; font-size: 0.9rem; line-height: 1.6;">
-                <div style="margin-bottom: 10px;">
-                    <strong>Uso didattico</strong> - Art. 70 Legge 633/1941 sul Diritto d'Autore
-                </div>
-                <div style="color: #6c757d; font-size: 0.85rem;">
-                    © Corso di Reti e Telecomunicazioni<br>
-                    Materiale didattico per uso educativo non commerciale
-                </div>
+            
+            <a href="iso_osi_spiegazione.html" class="btn-nav btn-osi">
+                <span class="btn-icon"><i class="bi bi-layers"></i></span> Vedi ISO/OSI
+            </a>
+            
+            <a onclick="mostraCodice()" class="btn-nav btn-source">
+                <span class="btn-icon"><i class="bi bi-code-slash"></i></span> Vedi Sorgente HTML
+            </a>
+        </div>
+
+    </div>
+
+    <!-- Modal per approfondimenti - STESSI POPUP della pagina del confronto -->
+    <div id="detailModal" class="modal-custom">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalLevelTitle"></h3>
+                <button class="close-modal" onclick="closeDetailModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modalLevelContent">
+                <!-- Il contenuto viene inserito dinamicamente via JavaScript -->
             </div>
         </div>
     </div>
 
-    <!-- Bottone Vedi Sorgente Fisso -->
-    <button class="btn btn-dark btn-source" onclick="showSource()">
-        <i class="bi bi-code-slash"></i> Vedi Sorgente
-    </button>
+    <!-- Bottone Vedi Sorgente Fisso (mobile friendly) -->
+    <div class="btn-source-fixed">
+        <button class="btn btn-dark shadow-lg rounded-pill px-4 d-flex align-items-center" onclick="mostraCodice()" style="font-weight: 600;">
+            <i class="bi bi-code-slash me-2"></i> Sorgente
+        </button>
+    </div>
 
-    <!-- JavaScript -->
     <script>
-        // Dati dei protocolli TCP/IP
-        const tcpProtocols = {
-            applicazione: {
-                title: "Livello Applicazione",
-                subtitle: "HTTP, FTP, SMTP, DNS, SSH, DHCP",
-                description: "Combina le funzioni dei livelli 5, 6 e 7 del modello OSI. Fornisce servizi di rete direttamente alle applicazioni dell'utente.",
-                protocols: [
-                    {
-                        id: 'http',
-                        name: 'HTTP/HTTPS',
-                        desc: 'HyperText Transfer Protocol (Sicuro)',
-                        icon: '🌍',
-                        level: 'applicazione',
-                        details: {
-                            title: '🌐 HTTP/HTTPS - Protocollo di Trasferimento Ipertestuale',
-                            subtitle: 'Porte: 80 (HTTP), 443 (HTTPS)',
-                            content: `
-                                <div class="detail-item">
-                                    <div class="detail-label">🔤 Significato dell'acronimo</div>
-                                    <div class="detail-value">
-                                        <strong>HTTP</strong> = HyperText Transfer Protocol<br>
-                                        <strong>HTTPS</strong> = HTTP Secure (HTTP con SSL/TLS)
-                                    </div>
-                                </div>
-                                <div class="detail-item">
-                                    <div class="detail-label">🎯 Funzione Principale</div>
-                                    <div class="detail-value">
-                                        HTTP è il fondamento del Web. Permette al browser di comunicare con i server web per caricare pagine, immagini, video.
-                                        HTTPS è la versione crittografata che protegge i dati da intercettazioni.
-                                    </div>
-                                </div>
-                                <div class="detail-item">
-                                    <div class="detail-label">⚙️ Caratteristiche Tecniche</div>
-                                    <div class="detail-value">
-                                        • <strong>Stateless</strong>: Ogni richiesta è indipendente<br>
-                                        • <strong>Request/Response</strong>: Modello client-server<br>
-                                        • <strong>Metodi</strong>: GET, POST, PUT, DELETE, PATCH<br>
-                                        • <strong>Stato</strong>: HTTP/1.1 (1997), HTTP/2 (2015), HTTP/3 (2022)
-                                    </div>
-                                </div>
-                                <div class="detail-item">
-                                    <div class="detail-label">💡 Esempio Pratico</div>
-                                    <div class="detail-value">
-                                        Quando digiti "https://www.google.com":<br>
-                                        1. Browser invia HTTP GET al server Google<br>
-                                        2. Google risponde con codice HTML della homepage<br>
-                                        3. Browser interpreta HTML e mostra la pagina
-                                    </div>
-                                </div>
-                            `
+        // Funzione per mostrare il codice sorgente (STESSO STILE delle altre pagine)
+        function mostraCodice() {
+            const html = document.documentElement.outerHTML;
+            const win = window.open("", "Sorgente", "width=900,height=700");
+            
+            win.document.write(`
+                <html>
+                <head>
+                    <title>Sorgente Pagina - Spiegazione TCP/IP</title>
+                    <style>
+                        body { font-family: 'Segoe UI', sans-serif; padding: 20px; background: #f8f9fa; }
+                        h3 { color: #343a40; margin-bottom: 20px; }
+                        pre { 
+                            background: white; 
+                            padding: 20px; 
+                            border-radius: 10px; 
+                            border: 1px solid #ddd;
+                            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+                            overflow: auto; 
+                            max-height: 500px;
+                            font-family: 'Courier New', monospace;
+                            font-size: 14px;
+                            line-height: 1.5;
                         }
-                    },
-                    {
-                        id: 'ftp',
-                        name: 'FTP/SFTP',
-                        desc: 'File Transfer Protocol (Sicuro)',
-                        icon: '📁',
-                        level: 'applicazione',
-                        details: {
-                            title: '📁 FTP/SFTP - Protocollo di Trasferimento File',
-                            subtitle: 'Porte: 21 (controllo), 20 (dati)',
-                            content: `
-                                <div class="detail-item">
-                                    <div class="detail-label">🔤 Significato dell'acronimo</div>
-                                    <div class="detail-value">
-                                        <strong>FTP</strong> = File Transfer Protocol<br>
-                                        <strong>SFTP</strong> = SSH File Transfer Protocol
-                                    </div>
-                                </div>
-                                <div class="detail-item">
-                                    <div class="detail-label">🎯 Funzione Principale</div>
-                                    <div class="detail-value">
-                                        Trasferimento file tra client e server su una rete. FTP è il protocollo storico (1971), 
-                                        SFTP è la versione moderna e sicura che usa SSH per la crittografia.
-                                    </div>
-                                </div>
-                            `
+                        .btn-close {
+                            background: #0d6efd;
+                            color: white;
+                            border: none;
+                            padding: 10px 25px;
+                            border-radius: 25px;
+                            cursor: pointer;
+                            font-weight: bold;
+                            margin-top: 20px;
                         }
-                    },
-                    {
-                        id: 'smtp',
-                        name: 'SMTP',
-                        desc: 'Simple Mail Transfer Protocol',
-                        icon: '✉️',
-                        level: 'applicazione',
-                        details: {
-                            title: '✉️ SMTP - Protocollo di Trasferimento Email Semplice',
-                            subtitle: 'Porte: 25 (standard), 587 (con autenticazione)',
-                            content: `
-                                <div class="detail-item">
-                                    <div class="detail-label">🔤 Significato dell'acronimo</div>
-                                    <div class="detail-value">
-                                        <strong>SMTP</strong> = Simple Mail Transfer Protocol
-                                    </div>
-                                </div>
-                            `
-                        }
-                    },
-                    {
-                        id: 'dns',
-                        name: 'DNS',
-                        desc: 'Domain Name System',
-                        icon: '🔍',
-                        level: 'applicazione',
-                        details: {
-                            title: '🔍 DNS - Sistema dei Nomi di Dominio',
-                            subtitle: 'Porta: 53 (TCP/UDP)',
-                            content: `
-                                <div class="detail-item">
-                                    <div class="detail-label">🔤 Significato dell'acronimo</div>
-                                    <div class="detail-value">
-                                        <strong>DNS</strong> = Domain Name System
-                                    </div>
-                                </div>
-                                <div class="detail-item">
-                                    <div class="detail-label">🎯 Funzione Principale</div>
-                                    <div class="detail-value">
-                                        Il DNS è "l'elenco telefonico di Internet". Traduce nomi di dominio leggibili 
-                                        (come google.com) in indirizzi IP numerici (come 142.250.190.78) che i computer usano per comunicare.
-                                    </div>
-                                </div>
-                            `
-                        }
-                    }
-                ]
+                        .btn-close:hover { background: #0b5ed7; }
+                    </style>
+                </head>
+                <body>
+                    <h3>📄 Codice Sorgente - Spiegazione TCP/IP</h3>
+                    <pre>${html.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</pre>
+                    <div style="text-align: center;">
+                        <button class="btn-close" onclick="window.close()">Chiudi Finestra</button>
+                    </div>
+                </body>
+                </html>
+            `);
+            
+            win.document.close();
+        }
+
+        // Dati per i popup approfondimenti TCP/IP (STESSI della pagina del confronto)
+        const tcpLevelDetails = {
+            4: {
+                title: "Livello: Applicazione - TCP/IP",
+                color: "#f06292",
+                content: `
+                    <div class="level-detail-item">
+                        <h5><i class="bi bi-layers"></i> La fusione dei 3 livelli superiori</h5>
+                        <p>Il livello Applicazione di TCP/IP unisce in un solo livello le funzioni dei livelli 5, 6 e 7 del modello ISO/OSI. Questa semplificazione riflette come Internet funziona nella realtà.</p>
+                    </div>
+                    
+                    <div class="level-detail-item">
+                        <h5><i class="bi bi-puzzle"></i> Cosa contiene questo livello?</h5>
+                        <ul>
+                            <li><strong>Protocolli di applicazione:</strong> HTTP, FTP, SMTP, DNS, SSH, Telnet</li>
+                            <li><strong>Servizi di rete:</strong> Servizi per le applicazioni degli utenti</li>
+                            <li><strong>Interfaccia utente:</strong> Browser, client di posta, applicazioni di rete</li>
+                            <li><strong>Gestione sessioni:</strong> Controllo del dialogo tra applicazioni</li>
+                            <li><strong>Presentazione dati:</strong> Criptazione, compressione, conversione</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="modal-highlight">
+                        <strong>Vantaggio pratico:</strong> Questa fusione rende TCP/IP più semplice da implementare rispetto al modello ISO/OSI teorico, spiegando perché è diventato lo standard de facto di Internet.
+                    </div>
+                `
             },
-            trasporto: {
-                title: "Livello Trasporto",
-                subtitle: "TCP, UDP, SCTP",
-                description: "Corrisponde al livello 4 del modello OSI. Garantisce la comunicazione end-to-end tra host. Gestisce la segmentazione dei dati, il controllo di flusso e l'affidabilità.",
-                protocols: [
-                    {
-                        id: 'tcp',
-                        name: 'TCP',
-                        desc: 'Transmission Control Protocol',
-                        icon: '🔄',
-                        level: 'trasporto',
-                        details: {
-                            title: '🔄 TCP - Protocollo di Controllo della Trasmissione',
-                            subtitle: 'Connection-oriented, affidabile',
-                            content: `
-                                <div class="detail-item">
-                                    <div class="detail-label">🔤 Significato dell'acronimo</div>
-                                    <div class="detail-value">
-                                        <strong>TCP</strong> = Transmission Control Protocol
-                                    </div>
-                                </div>
-                                <div class="detail-item">
-                                    <div class="detail-label">🎯 Funzione Principale</div>
-                                    <div class="detail-value">
-                                        TCP garantisce una comunicazione <strong>affidabile, ordinata e senza errori</strong> tra due dispositivi. 
-                                        È "orientato alla connessione": prima di inviare dati, stabilisce un canale sicuro (three-way handshake).
-                                    </div>
-                                </div>
-                            `
-                        }
-                    },
-                    {
-                        id: 'udp',
-                        name: 'UDP',
-                        desc: 'User Datagram Protocol',
-                        icon: '⚡',
-                        level: 'trasporto',
-                        details: {
-                            title: '⚡ UDP - Protocollo Datagramma Utente',
-                            subtitle: 'Connectionless, veloce, non affidabile',
-                            content: `
-                                <div class="detail-item">
-                                    <div class="detail-label">🔤 Significato dell'acronimo</div>
-                                    <div class="detail-value">
-                                        <strong>UDP</strong> = User Datagram Protocol
-                                    </div>
-                                </div>
-                            `
-                        }
-                    }
-                ]
+            3: {
+                title: "Livello: Trasporto - TCP/IP",
+                color: "#ffc107",
+                content: `
+                    <div class="level-detail-item">
+                        <h5><i class="bi bi-arrow-left-right"></i> Comunicazione end-to-end</h5>
+                        <p>Questo livello corrisponde perfettamente al livello 4 di ISO/OSI. Gestisce la comunicazione diretta tra due host, garantendo (o meno) l'affidabilità della trasmissione.</p>
+                    </div>
+                    
+                    <div class="level-detail-item">
+                        <h5><i class="bi bi-diagram-2"></i> Protocolli principali</h5>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 15px 0;">
+                            <div style="background: #d1e7dd; padding: 15px; border-radius: 10px;">
+                                <strong>TCP</strong><br>
+                                <small>Transmission Control Protocol</small>
+                                <ul style="font-size: 0.9rem; margin-top: 10px;">
+                                    <li>✅ Connessione orientata</li>
+                                    <li>✅ Controllo di flusso</li>
+                                    <li>✅ Controllo errori</li>
+                                    <li>✅ Riordinamento</li>
+                                    <li>📊 Web, Email</li>
+                                </ul>
+                            </div>
+                            <div style="background: #fff3cd; padding: 15px; border-radius: 10px;">
+                                <strong>UDP</strong><br>
+                                <small>User Datagram Protocol</small>
+                                <ul style="font-size: 0.9rem; margin-top: 10px;">
+                                    <li>⚡ Senza connessione</li>
+                                    <li>⚡ Basso overhead</li>
+                                    <li>⚡ Nessun controllo</li>
+                                    <li>⚡ Più veloce</li>
+                                    <li>📊 Streaming, DNS</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-highlight">
+                        <strong>Porte:</strong> Il livello trasporto usa numeri di porta (0-65535) per identificare le applicazioni. Le porte ben note (well-known) vanno da 0 a 1023 (es: 80 HTTP, 443 HTTPS).
+                    </div>
+                `
             },
-            internet: {
-                title: "Livello Internet",
-                subtitle: "IP, ICMP, ARP, OSPF, BGP",
-                description: "Corrisponde al livello 3 del modello OSI. Si occupa dell'indirizzamento logico, del routing e del frammentamento dei pacchetti attraverso reti multiple. È il 'cuore' di Internet.",
-                protocols: [
-                    {
-                        id: 'ip',
-                        name: 'IP',
-                        desc: 'Internet Protocol (IPv4/IPv6)',
-                        icon: '📍',
-                        level: 'internet',
-                        details: {
-                            title: '📍 IP - Protocollo Internet',
-                            subtitle: 'IPv4 (32-bit), IPv6 (128-bit)',
-                            content: `
-                                <div class="detail-item">
-                                    <div class="detail-label">🔤 Significato dell'acronimo</div>
-                                    <div class="detail-value">
-                                        <strong>IP</strong> = Internet Protocol
-                                    </div>
-                                </div>
-                                <div class="detail-item">
-                                    <div class="detail-label">🎯 Funzione Principale</div>
-                                    <div class="detail-value">
-                                        IP è il <strong>cuore di Internet</strong>. Assegna un indirizzo univoco a ogni dispositivo (indirizzo IP) 
-                                        e instrada i pacchetti attraverso le reti usando algoritmi di routing.
-                                    </div>
-                                </div>
-                            `
-                        }
-                    },
-                    {
-                        id: 'icmp',
-                        name: 'ICMP',
-                        desc: 'Internet Control Message Protocol',
-                        icon: '📶',
-                        level: 'internet',
-                        details: {
-                            title: '📶 ICMP - Protocollo Messaggi di Controllo Internet',
-                            subtitle: 'Diagnostica e segnalazione errori',
-                            content: `
-                                <div class="detail-item">
-                                    <div class="detail-label">🔤 Significato dell'acronimo</div>
-                                    <div class="detail-value">
-                                        <strong>ICMP</strong> = Internet Control Message Protocol
-                                    </div>
-                                </div>
-                            `
-                        }
-                    }
-                ]
+            2: {
+                title: "Livello: Internet - TCP/IP",
+                color: "#4caf50",
+                content: `
+                    <div class="level-detail-item">
+                        <h5><i class="bi bi-globe"></i> Il cuore di Internet</h5>
+                        <p>Questo livello corrisponde al livello 3 di ISO/OSI. È responsabile dell'indirizzamento logico, del routing e dell'instradamento dei pacchetti attraverso reti multiple.</p>
+                    </div>
+                    
+                    <div class="level-detail-item">
+                        <h5><i class="bi bi-gear-wide-connected"></i> Il protocollo IP</h5>
+                        <p>L'Internet Protocol (IP) è il protocollo principale di questo livello. Fornisce:</p>
+                        <ul>
+                            <li><strong>Indirizzamento logico:</strong> Assegna indirizzi IP univoci (IPv4: 192.168.1.1, IPv6: 2001:0db8:85a3::)</li>
+                            <li><strong>Routing:</strong> Trova il percorso attraverso la rete</li>
+                            <li><strong>Fragmentazione:</strong> Divide pacchetti troppo grandi</li>
+                            <li><strong>Best-effort delivery:</strong> Consegna senza garanzie (l'affidabilità è compito del TCP)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="modal-highlight">
+                        <strong>Router:</strong> I router operano a questo livello, prendendo decisioni di instradamento basate sulle tabelle di routing e sugli indirizzi IP di destinazione.
+                    </div>
+                `
             },
-            accesso: {
-                title: "Livello Accesso alla Rete",
-                subtitle: "Ethernet, Wi-Fi, PPP, Token Ring",
-                description: "Combina le funzioni dei livelli 1 e 2 del modello OSI. Definisce come i dati sono fisicamente trasmessi attraverso il mezzo di rete. Gestisce l'accesso al mezzo e l'indirizzamento fisico (MAC).",
-                protocols: [
-                    {
-                        id: 'ethernet',
-                        name: 'Ethernet',
-                        desc: 'IEEE 802.3 (Reti cablate)',
-                        icon: '🔌',
-                        level: 'accesso',
-                        details: {
-                            title: '🔌 Ethernet - Standard per Reti Locali Cablate',
-                            subtitle: 'IEEE 802.3, velocità 10 Mbps - 100 Gbps',
-                            content: `
-                                <div class="detail-item">
-                                    <div class="detail-label">📋 Specifica Tecnica</div>
-                                    <div class="detail-value">
-                                        <strong>Ethernet</strong> (IEEE 802.3) è lo standard più diffuso per le reti locali cablate (LAN).
-                                    </div>
-                                </div>
-                            `
-                        }
-                    },
-                    {
-                        id: 'wifi',
-                        name: 'Wi-Fi',
-                        desc: 'IEEE 802.11 (Reti wireless)',
-                        icon: '📶',
-                        level: 'accesso',
-                        details: {
-                            title: '📶 Wi-Fi - Standard per Reti Locali Wireless',
-                            subtitle: 'IEEE 802.11 a/b/g/n/ac/ax',
-                            content: `
-                                <div class="detail-item">
-                                    <div class="detail-label">📋 Specifica Tecnica</div>
-                                    <div class="detail-value">
-                                        <strong>Wi-Fi</strong> (IEEE 802.11) è la famiglia di standard per reti locali wireless.
-                                    </div>
-                                </div>
-                            `
-                        }
-                    }
-                ]
+            1: {
+                title: "Livello: Accesso alla Rete - TCP/IP",
+                color: "#2196f3",
+                content: `
+                    <div class="level-detail-item">
+                        <h5><i class="bi bi-wifi"></i> L'interfaccia con l'hardware</h5>
+                        <p>Questo livello fonde insieme i livelli 1 e 2 di ISO/OSI. Gestisce tutto ciò che riguarda la connessione fisica alla rete e la comunicazione locale.</p>
+                    </div>
+                    
+                    <div class="level-detail-item">
+                        <h5><i class="bi bi-hdd-stack"></i> Cosa include questo livello?</h5>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 15px 0;">
+                            <div style="background: #e2e3e5; padding: 15px; border-radius: 10px;">
+                                <strong>Parte Fisica</strong>
+                                <ul style="font-size: 0.9rem;">
+                                    <li>Cavi (rame, fibra)</li>
+                                    <li>Connettori (RJ45)</li>
+                                    <li>Schede di rete</li>
+                                    <li>Segnali wireless</li>
+                                    <li>Hub/Ripetitori</li>
+                                </ul>
+                            </div>
+                            <div style="background: #cfe2ff; padding: 15px; border-radius: 10px;">
+                                <strong>Parte Collegamento</strong>
+                                <ul style="font-size: 0.9rem;">
+                                    <li>Frame (trame dati)</li>
+                                    <li>MAC Address</li>
+                                    <li>Switch/Bridge</li>
+                                    <li>Ethernet, Wi-Fi</li>
+                                    <li>Controllo errori</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-highlight">
+                        <strong>Vantaggio:</strong> Questa fusione riflette come nella realtà le tecnologie fisiche e di collegamento sono strettamente integrate (es: Ethernet specifica sia il cavo che il formato dei frame).
+                    </div>
+                `
             }
         };
 
-        // Stato corrente
-        let currentLevel = null;
-        let currentProtocol = null;
-
-        // Inizializzazione
-        document.addEventListener('DOMContentLoaded', function() {
-            // Seleziona automaticamente il primo livello
-            showLevel('applicazione');
-        });
-
-        // Mostra i protocolli di un livello
-        function showLevel(levelId) {
-            // Aggiorna lo stato
-            currentLevel = levelId;
-            currentProtocol = null;
+        // Funzioni per gestire i modal (STESSE della pagina del confronto)
+        function showDetailModal(model, level) {
+            const modal = document.getElementById('detailModal');
+            const title = document.getElementById('modalLevelTitle');
+            const content = document.getElementById('modalLevelContent');
             
-            // Rimuovi classe active da tutti i livelli
-            document.querySelectorAll('.tcp-level').forEach(el => {
-                el.classList.remove('active');
-            });
+            const detail = tcpLevelDetails[level];
+            title.textContent = detail.title;
+            title.style.color = detail.color;
+            content.innerHTML = detail.content;
             
-            // Aggiungi classe active al livello selezionato
-            document.getElementById(`level-${levelId}`).classList.add('active');
-            
-            const level = tcpProtocols[levelId];
-            
-            // Aggiorna il titolo dell'area protocolli
-            document.getElementById('protocols-title').textContent = level.title;
-            document.getElementById('protocols-subtitle').textContent = level.description;
-            
-            // Genera i bottoni dei protocolli
-            const protocolsList = document.getElementById('protocols-list');
-            protocolsList.innerHTML = '';
-            
-            level.protocols.forEach(protocol => {
-                const col = document.createElement('div');
-                col.className = 'col-md-6 col-lg-4 mb-3';
-                
-                col.innerHTML = `
-                    <button class="protocol-btn ${protocol.level}" onclick="showProtocol('${protocol.id}')">
-                        <div class="protocol-icon">${protocol.icon}</div>
-                        <div>
-                            <div class="protocol-name">${protocol.name}</div>
-                            <div class="protocol-desc">${protocol.desc}</div>
-                        </div>
-                    </button>
-                `;
-                
-                protocolsList.appendChild(col);
-            });
-            
-            // Reset dettagli
-            resetDetails();
+            modal.style.display = 'block';
         }
 
-        // Mostra i dettagli di un protocollo
-        function showProtocol(protocolId) {
-            // Trova il protocollo
-            let targetProtocol = null;
-            for (const level in tcpProtocols) {
-                const protocol = tcpProtocols[level].protocols.find(p => p.id === protocolId);
-                if (protocol) {
-                    targetProtocol = protocol;
-                    break;
-                }
+        function closeDetailModal() {
+            document.getElementById('detailModal').style.display = 'none';
+        }
+
+        // Chiudi modal cliccando fuori
+        window.onclick = function(event) {
+            const modal = document.getElementById('detailModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
             }
-            
-            if (!targetProtocol) return;
-            
-            // Aggiorna lo stato
-            currentProtocol = protocolId;
-            
-            // Rimuovi active da tutti i bottoni
-            document.querySelectorAll('.protocol-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            
-            // Aggiungi active al bottone cliccato
-            document.querySelectorAll('.protocol-btn').forEach(btn => {
-                if (btn.textContent.includes(targetProtocol.name)) {
-                    btn.classList.add('active');
-                }
-            });
-            
-            // Mostra i dettagli
-            const details = targetProtocol.details;
-            document.getElementById('default-details').style.display = 'none';
-            document.getElementById('protocol-details').style.display = 'block';
-            document.getElementById('detail-title').textContent = details.title;
-            document.getElementById('detail-subtitle').innerHTML = details.subtitle;
-            document.getElementById('detail-content').innerHTML = details.content;
-            
-            // Scroll ai dettagli
-            document.getElementById('details-container').scrollIntoView({ behavior: 'smooth' });
-        }
-
-        // Reset dettagli
-        function resetDetails() {
-            document.getElementById('default-details').style.display = 'block';
-            document.getElementById('protocol-details').style.display = 'none';
-            document.getElementById('detail-title').textContent = '';
-            document.getElementById('detail-subtitle').textContent = '';
-            document.getElementById('detail-content').innerHTML = '';
-            
-            // Rimuovi active dai bottoni
-            document.querySelectorAll('.protocol-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-        }
-
-        // Funzione per mostrare il sorgente
-        function showSource() {
-            const html = document.documentElement.outerHTML;
-            const win = window.open("", "Sorgente", "width=900,height=700");
-            win.document.write('<html><head><title>Sorgente Pagina</title></head><body>');
-            win.document.write('<h3>Codice Sorgente della Pagina:</h3>');
-            win.document.write('<pre style="background:#f4f4f4; padding:15px; border:1px solid #ccc; white-space: pre-wrap;">');
-            win.document.write(html.replace(/</g, "&lt;").replace(/>/g, "&gt;"));
-            win.document.write('</pre></body></html>');
-            win.document.close();
         }
     </script>
+
+<!-- ========== FOOTER CON FONTI ========== -->
+<div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-top: 3px solid #0d6efd; text-align: center; border-radius: 15px;">
+    <a href="fonti_bibliografia.html" style="padding: 10px 25px; background: linear-gradient(135deg, #0d6efd 0%, #0b5ed7 100%); color: white; text-decoration: none; border-radius: 25px; font-weight: 600; display: inline-block; margin-bottom: 15px; transition: all 0.3s;">
+        <i class="bi bi-book me-2"></i> Consulta tutte le fonti
+    </a>
+    <p style="color: #666; font-size: 0.9em; margin: 5px 0; line-height: 1.6;">
+        <strong>Uso didattico</strong> - Corso di Reti e Telecomunicazioni<br>
+        Luigi Pelagagge - Art. 70 L. 633/1941<br>
+        <small class="text-muted">© Materiale didattico per uso educativo non commerciale</small>
+    </p>
+</div>
+<!-- ========== FINE FOOTER ========== -->
 
 </body>
 </html>
