@@ -42,42 +42,71 @@
             margin-top: 25px;
         }
         
-        .mezzo-card {
+        .intro-box {
             background: white;
             border-radius: 8px;
-            padding: 20px;
+            padding: 25px;
             margin: 20px 0;
             box-shadow: 0 2px 10px rgba(0,0,0,0.08);
             border-left: 5px solid #3498db;
-            transition: transform 0.3s;
         }
         
-        .mezzo-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        .percorso-didattico {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
         }
         
-        .utp-card {
-            border-left-color: #2ecc71;
+        .tappa {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            text-align: center;
         }
         
-        .coax-card {
-            border-left-color: #e74c3c;
+        .numero-tappa {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            background: #3498db;
+            color: white;
+            border-radius: 50%;
+            font-weight: bold;
+            margin-bottom: 15px;
         }
         
-        .fibra-card {
-            border-left-color: #9b59b6;
+        .mezzo-section {
+            background: white;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 30px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
         }
         
-        .wireless-card {
-            border-left-color: #f39c12;
+        .utp-section {
+            border-left: 5px solid #2ecc71;
+        }
+        
+        .coax-section {
+            border-left: 5px solid #e74c3c;
+        }
+        
+        .fibra-section {
+            border-left: 5px solid #9b59b6;
+        }
+        
+        .wireless-section {
+            border-left: 5px solid #f39c12;
         }
         
         .vantaggi-svantaggi {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 20px;
-            margin: 15px 0;
+            margin: 20px 0;
         }
         
         .vantaggi {
@@ -118,7 +147,7 @@
             background-color: #f5f5f5;
         }
         
-        .esempio {
+        .esempio-pratico {
             background: #eaf2f8;
             padding: 15px;
             border-radius: 5px;
@@ -126,49 +155,15 @@
             border-left: 4px solid #3498db;
         }
         
-        .esempio-icon {
-            font-size: 1.2em;
-            margin-right: 8px;
-            color: #2c3e50;
-        }
-        
-        .diagramma-scelta {
-            background: white;
-            padding: 25px;
-            border-radius: 10px;
-            margin: 30px 0;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-        
-        .domanda {
-            font-weight: bold;
-            margin: 15px 0;
-            color: #2c3e50;
-        }
-        
-        .opzione {
-            margin: 10px 0;
-            padding: 10px;
-            background: #f8f9fa;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        
-        .opzione:hover {
-            background: #e9ecef;
-        }
-        
-        .risultato {
-            display: none;
-            margin-top: 20px;
-            padding: 15px;
-            background: #d5f4e6;
+        .approfondimento-box {
+            background: #fff8e1;
+            padding: 20px;
             border-radius: 8px;
-            border-left: 5px solid #2ecc71;
+            margin: 25px 0;
+            border: 2px dashed #f39c12;
         }
         
-        .nav-link {
+        .nav-button {
             display: inline-block;
             background: #3498db;
             color: white;
@@ -176,11 +171,39 @@
             border-radius: 5px;
             text-decoration: none;
             margin: 10px 5px;
-            transition: background 0.3s;
+            transition: all 0.3s;
+            font-weight: bold;
         }
         
-        .nav-link:hover {
+        .nav-button:hover {
             background: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .utp-button {
+            background: #2ecc71;
+        }
+        
+        .coax-button {
+            background: #e74c3c;
+        }
+        
+        .fibra-button {
+            background: #9b59b6;
+        }
+        
+        .wireless-button {
+            background: #f39c12;
+        }
+        
+        .image-placeholder {
+            text-align: center;
+            margin: 20px 0;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 2px dashed #dee2e6;
         }
         
         footer {
@@ -189,101 +212,272 @@
             color: #7f8c8d;
             font-size: 0.9em;
         }
+        
+        .callout {
+            background: #e8f4fc;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+            border-left: 5px solid #2980b9;
+        }
     </style>
 </head>
 <body>
     <header>
-        <h1>Mezzi Trasmissivi nelle Reti</h1>
-        <p>I "canali" fisici che permettono la comunicazione tra dispositivi</p>
+        <h1>Mezzi Trasmissivi nelle Reti di Computer</h1>
+        <p>Guida didattica per la scuola secondaria - Allineato alle linee guida ministeriali</p>
     </header>
 
     <section>
-        <h2>Introduzione</h2>
-        <p>I mezzi trasmissivi sono i <strong>canali fisici</strong> attraverso i quali i dati viaggiano da un dispositivo a un altro in una rete. Si dividono in due grandi categorie:</p>
-        
-        <div class="vantaggi-svantaggi" style="grid-template-columns: 1fr 1fr; margin: 25px 0;">
-            <div style="background: #e8f6f3; padding: 20px; border-radius: 5px;">
-                <h3 style="color: #27ae60; margin-top: 0;">🔗 Mezzi Guidati</h3>
-                <p>Il segnale è confinato in un supporto fisico (cavo).</p>
-                <ul>
-                    <li>Doppino intrecciato (UTP/STP)</li>
-                    <li>Cavo coassiale</li>
-                    <li>Fibra ottica</li>
-                </ul>
+        <h2>Introduzione ai Mezzi Trasmissivi</h2>
+        <div class="intro-box">
+            <p>I <strong>mezzi trasmissivi</strong> sono i "canali" fisici attraverso i quali i dati viaggiano da un dispositivo a un altro in una rete. Si dividono in due grandi categorie:</p>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0;">
+                <div style="background: #e8f6f3; padding: 20px; border-radius: 5px;">
+                    <h3 style="color: #27ae60; margin-top: 0;">🔗 Mezzi Guidati</h3>
+                    <p>Il segnale è confinato in un supporto fisico (cavo). Esempi:</p>
+                    <ul>
+                        <li>Doppino intrecciato (UTP/STP)</li>
+                        <li>Cavo coassiale</li>
+                        <li>Fibra ottica</li>
+                    </ul>
+                </div>
+                
+                <div style="background: #f4ecf7; padding: 20px; border-radius: 5px;">
+                    <h3 style="color: #8e44ad; margin-top: 0;">📡 Mezzi Non Guidati</h3>
+                    <p>Il segnale viaggia nell'aria senza supporto fisico. Esempi:</p>
+                    <ul>
+                        <li>Wi-Fi (onde radio)</li>
+                        <li>Bluetooth</li>
+                        <li>Infrarossi</li>
+                        <li>Satellite</li>
+                    </ul>
+                </div>
             </div>
             
-            <div style="background: #f4ecf7; padding: 20px; border-radius: 5px;">
-                <h3 style="color: #8e44ad; margin-top: 0;">📡 Mezzi Non Guidati</h3>
-                <p>Il segnale viaggia nell'aria (senza cavo).</p>
-                <ul>
-                    <li>Onde radio (Wi-Fi, Bluetooth)</li>
-                    <li>Infrarossi</li>
-                    <li>Microonde</li>
-                </ul>
+            <div class="callout">
+                <h3>🎯 Obiettivo Didattico</h3>
+                <p>Al termine di questa unità, sarai in grado di:</p>
+                <ol>
+                    <li>Identificare i diversi tipi di mezzi trasmissivi</li>
+                    <li>Comprendere vantaggi e limiti di ciascuno</li>
+                    <li>Scegliere il mezzo appropriato in base alle esigenze</li>
+                    <li>Comprendere i principi fisici alla base della trasmissione</li>
+                </ol>
             </div>
         </div>
     </section>
 
     <section>
-        <h2>Mezzi Guidati</h2>
-        <p>Analizziamo i tre tipi principali di mezzi guidati, partendo dal più comune fino al più performante.</p>
+        <h2>Percorso Didattico</h2>
+        <p>Segui l'ordine logico di apprendimento:</p>
         
-        <!-- UTP -->
-        <div class="mezzo-card utp-card">
-            <h3>1. Doppino Intrecciato (UTP/STP)</h3>
-            <p>Il cavo più diffuso nelle reti locali (LAN), uffici e abitazioni.</p>
-            
-            <div class="esempio">
-                <span class="esempio-icon">💡</span>
-                <strong>Esempio concreto:</strong> Il cavo che collega il tuo PC al router di casa o alla presa di rete a scuola è quasi certamente un UTP.
+        <div class="percorso-didattico">
+            <div class="tappa">
+                <div class="numero-tappa" style="background: #2ecc71;">1</div>
+                <h3>UTP - Doppino Intrecciato</h3>
+                <p>Il mezzo più comune nelle reti locali</p>
+                <p>Facile, economico, diffuso</p>
             </div>
             
-            <div class="vantaggi-svantaggi">
-                <div class="vantaggi">
-                    <h4>✅ Vantaggi</h4>
-                    <ul>
-                        <li>Economico e facilmente reperibile</li>
-                        <li>Facile da installare e connettere (connettore RJ-45)</li>
-                        <li>Flessibile e leggero</li>
-                        <li>Adeguato per la maggior parte delle reti locali</li>
-                    </ul>
-                </div>
-                <div class="svantaggi">
-                    <h4>❌ Svantaggi</h4>
-                    <ul>
-                        <li>Sensibile ai disturbi elettromagnetici</li>
-                        <li>Distanza limitata (max 100 metri)</li>
-                        <li>Velocità massima inferiore rispetto ad altri mezzi</li>
-                        <li>Possibili intercettazioni fisiche</li>
-                    </ul>
-                </div>
+            <div class="tappa">
+                <div class="numero-tappa" style="background: #e74c3c;">2</div>
+                <h3>Cavo Coassiale</h3>
+                <p>Storico ma ancora utilizzato</p>
+                <p>TV via cavo, segnali video</p>
             </div>
             
-            <p><strong>Uso tipico:</strong> Reti LAN, cablaggio di uffici, reti domestiche.</p>
+            <div class="tappa">
+                <div class="numero-tappa" style="background: #9b59b6;">3</div>
+                <h3>Fibra Ottica</h3>
+                <p>L'autostrada dei dati</p>
+                <p>Massime prestazioni</p>
+            </div>
+            
+            <div class="tappa">
+                <div class="numero-tappa" style="background: #f39c12;">4</div>
+                <h3>Wireless</h3>
+                <p>Comunicazione senza fili</p>
+                <p>Mobilità e flessibilità</p>
+            </div>
         </div>
-        
-        <!-- Coassiale -->
-        <div class="mezzo-card coax-card">
-            <h3>2. Cavo Coassiale</h3>
-            <p>Un tempo usato per le reti Ethernet, oggi principalmente per segnali TV e video.</p>
+    </section>
+
+    <!-- SEZIONE UTP - MANTENIAMO TUTTI I CONTENUTI ORIGINALI -->
+    <section id="utp">
+        <div class="mezzo-section utp-section">
+            <h2>1. Cavo UTP - Doppino Intrecciato</h2>
             
-            <div class="esempio">
-                <span class="esempio-icon">📺</span>
-                <strong>Esempio concreto:</strong> Il cavo che collega l'antenna satellitare al televisore o il modem alla presa del cavo TV è un coassiale.
+            <div class="image-placeholder">
+                <p>📷 <strong>IMMAGINE DA INSERIRE:</strong> Cavo UTP con connettore RJ-45</p>
+                <p><em>Un cavo UTP CAT 6 con connettore RJ-45, il più comune nelle reti LAN</em></p>
             </div>
+            
+            <h3>Cos'è e come funziona</h3>
+            <p>L'<strong>UTP</strong> (Unshielded Twisted Pair - Doppino Intrecciato Non Schermato) è composto da 4 coppie di fili di rame intrecciati tra loro. Ogni coppia è formata da due fili:</p>
+            <ul>
+                <li>Uno con isolante colorato</li>
+                <li>Uno con isolante bianco con striature del colore della coppia</li>
+            </ul>
+            
+            <div class="esempio-pratico">
+                <strong>🧠 Perché si intrecciano i fili?</strong>
+                <p>L'intreccio serve a ridurre le interferenze elettromagnetiche (EMI) e la diafonia (crosstalk) tra le coppie. Ogni giro del twist cancella il rumore elettromagnetico catturato.</p>
+            </div>
+            
+            <h3>Specifiche Tecniche</h3>
+            <table>
+                <tr>
+                    <th>Caratteristica</th>
+                    <th>Descrizione</th>
+                </tr>
+                <tr>
+                    <td><strong>Numero di fili</strong></td>
+                    <td>8 fili (4 coppie intrecciate)</td>
+                </tr>
+                <tr>
+                    <td><strong>Impedenza caratteristica</strong></td>
+                    <td>100 Ohm (±15%)</td>
+                </tr>
+                <tr>
+                    <td><strong>Diametro dei conduttori</strong></td>
+                    <td>0.4 - 0.6 mm (AWG 24-26)</td>
+                </tr>
+                <tr>
+                    <td><strong>Distanza massima</strong></td>
+                    <td>100 metri per segmento</td>
+                </tr>
+                <tr>
+                    <td><strong>Connettore</strong></td>
+                    <td>RJ-45 (8P8C)</td>
+                </tr>
+            </table>
+            
+            <h3>Categorie di Cavi UTP</h3>
+            <table>
+                <tr>
+                    <th>Categoria</th>
+                    <th>Banda</th>
+                    <th>Velocità Max</th>
+                    <th>Uso Principale</th>
+                </tr>
+                <tr>
+                    <td>CAT 5</td>
+                    <td>100 MHz</td>
+                    <td>100 Mbps</td>
+                    <td>Fast Ethernet (obsoleto)</td>
+                </tr>
+                <tr>
+                    <td><strong>CAT 5e</strong></td>
+                    <td>100 MHz</td>
+                    <td>1 Gbps</td>
+                    <td>Gigabit Ethernet (più comune)</td>
+                </tr>
+                <tr>
+                    <td>CAT 6</td>
+                    <td>250 MHz</td>
+                    <td>10 Gbps (fino a 55m)</td>
+                    <td>Gigabit/10G Ethernet</td>
+                </tr>
+                <tr>
+                    <td>CAT 6A</td>
+                    <td>500 MHz</td>
+                    <td>10 Gbps (fino a 100m)</td>
+                    <td>10G Ethernet</td>
+                </tr>
+                <tr>
+                    <td>CAT 7</td>
+                    <td>600 MHz</td>
+                    <td>10 Gbps</td>
+                    <td>Ambienti con forti interferenze</td>
+                </tr>
+            </table>
+            
+            <h3>Standard di Cablaggio</h3>
+            <div class="approfondimento-box">
+                <p>Esistono due standard per crimpare i connettori RJ-45:</p>
+                <ul>
+                    <li><strong>T568A</strong>: Utilizzato principalmente in ambito residenziale</li>
+                    <li><strong>T568B</strong>: Più comune in ambito commerciale e in Italia</li>
+                </ul>
+                <p><strong>IMPORTANTE:</strong> In una rete, tutti i cavi devono usare lo <strong>stesso standard</strong> su entrambe le estremità!</p>
+            </div>
+            
+            <h3>Vantaggi e Svantaggi</h3>
+            <div class="vantaggi-svantaggi">
+                <div class="vantaggi">
+                    <h4>✅ VANTAGGI</h4>
+                    <ul>
+                        <li><strong>Costo ridotto</strong>: Il più economico tra i mezzi guidati</li>
+                        <li><strong>Facile installazione</strong>: Connettori RJ-45 standardizzati</li>
+                        <li><strong>Flessibilità</strong>: Facile da far passare nei tubi e canaline</li>
+                        <li><strong>Compatibilità universale</strong>: Supportato da tutti i dispositivi di rete</li>
+                        <li><strong>Bassa attenuazione</strong> per distanze fino a 100m</li>
+                    </ul>
+                </div>
+                
+                <div class="svantaggi">
+                    <h4>❌ SVANTAGGI</h4>
+                    <ul>
+                        <li><strong>Sensibile alle interferenze</strong>: Campi magnetici, radiofrequenze</li>
+                        <li><strong>Distanza limitata</strong>: Massimo 100 metri per segmento</li>
+                        <li><strong>Sicurezza</strong>: Facile da "cucchiare" (sniffare)</li>
+                        <li><strong>Diafonia (Crosstalk)</strong>: Interferenza tra coppie vicine</li>
+                        <li><strong>Velocità limitata</strong>: Rispetto a fibra ottica</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h3>Esempi Pratici di Utilizzo</h3>
+            <div class="esempio-pratico">
+                <p><strong>🏫 A SCUOLA:</strong> Collegamento dei computer del laboratorio al switch, connessione delle LIM, stampanti di rete.</p>
+                <p><strong>🏠 IN CASA:</strong> Collegamento router-PC fisso, TV Smart alla rete, console di gioco.</p>
+                <p><strong>🏢 IN UFFICIO:</strong> Prese di rete a muro, telefoni VoIP, postazioni di lavoro.</p>
+            </div>
+            
+            <h3>UTP vs STP</h3>
+            <p>Oltre all'UTP esiste anche lo <strong>STP</strong> (Shielded Twisted Pair) che aggiunge una schermatura metallica per migliorare l'immunità ai disturbi, ma costa di più ed è meno flessibile.</p>
+            
+            <div style="text-align: center; margin: 30px 0;">
+                <a href="utp_dettaglio.html" class="nav-button utp-button">
+                    📚 Approfondisci UTP (categorie, cablaggio, esercizi)
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEZIONE COASSIALE -->
+    <section id="coassiale">
+        <div class="mezzo-section coax-section">
+            <h2>2. Cavo Coassiale</h2>
+            
+            <div class="image-placeholder">
+                <p>📷 <strong>IMMAGINE DA INSERIRE:</strong> Cavo coassiale con connettori</p>
+                <p><em>Cavo coassiale RG-6 con connettore F-type, usato per TV via cavo</em></p>
+            </div>
+            
+            <p>Il cavo coassiale è stato il primo mezzo utilizzato per le reti Ethernet (10BASE2, 10BASE5). Oggi è principalmente usato per:</p>
+            <ul>
+                <li>TV via cavo (CATV)</li>
+                <li>Antenne televisive</li>
+                <li>Impianti video sorveglianza</li>
+                <li>Alcune reti dati industriali</li>
+            </ul>
             
             <div class="vantaggi-svantaggi">
                 <div class="vantaggi">
-                    <h4>✅ Vantaggi</h4>
+                    <h4>✅ VANTAGGI</h4>
                     <ul>
                         <li>Maggiore immunità ai disturbi rispetto all'UTP</li>
-                        <li>Distanze maggiori (fino a 500 metri)</li>
+                        <li>Distanze maggiori (fino a 500m)</li>
                         <li>Buona protezione contro le intercettazioni</li>
                         <li>Ottimo per segnali video ad alta frequenza</li>
                     </ul>
                 </div>
+                
                 <div class="svantaggi">
-                    <h4>❌ Svantaggi</h4>
+                    <h4>❌ SVANTAGGI</h4>
                     <ul>
                         <li>Più costoso dell'UTP</li>
                         <li>Più ingombrante e meno flessibile</li>
@@ -293,54 +487,122 @@
                 </div>
             </div>
             
-            <p><strong>Uso tipico:</strong> Impianti TV via cavo, connessioni video, alcune reti dati industriali.</p>
-        </div>
-        
-        <!-- Fibra Ottica -->
-        <div class="mezzo-card fibra-card">
-            <h3>3. Fibra Ottica – L'autostrada della luce</h3>
-            <p>Utilizza impulsi di luce per trasmettere dati, raggiungendo prestazioni elevatissime.</p>
-            
-            <div class="esempio">
-                <span class="esempio-icon">🚀</span>
-                <strong>Esempio concreto:</strong> La connessione Internet a 1 Giga di Fastweb/TIM, i cavi sottomarini tra continenti, i backbone delle università.
+            <div style="text-align: center; margin: 20px 0;">
+                <a href="coassiale_dettaglio.html" class="nav-button coax-button">
+                    📺 Approfondisci Cavo Coassiale
+                </a>
             </div>
+        </div>
+    </section>
+
+    <!-- SEZIONE FIBRA OTTICA -->
+    <section id="fibra">
+        <div class="mezzo-section fibra-section">
+            <h2>3. Fibra Ottica – L'autostrada della luce</h2>
+            
+            <div class="image-placeholder">
+                <p>📷 <strong>IMMAGINE DA INSERIRE:</strong> La tua figura "struttura_fibra_ottica_base.png"</p>
+                <p><em>Struttura di una fibra ottica: core, cladding, coating primario</em></p>
+            </div>
+            
+            <p>La fibra ottica utilizza impulsi di luce (fotoni) invece di segnali elettrici per trasmettere dati, raggiungendo prestazioni elevatissime.</p>
+            
+            <h3>Componenti principali:</h3>
+            <ol>
+                <li><strong>Core</strong> (nucleo): Dove viaggia la luce (vetro ultra-puro)</li>
+                <li><strong>Cladding</strong> (mantello): Riflette la luce verso il core</li>
+                <li><strong>Coating primario</strong>: Protezione meccanica</li>
+                <li><strong>Guaine esterne</strong>: Protezione aggiuntiva</li>
+            </ol>
             
             <div class="vantaggi-svantaggi">
                 <div class="vantaggi">
-                    <h4>✅ Vantaggi</h4>
+                    <h4>✅ VANTAGGI</h4>
                     <ul>
                         <li>Velocità elevatissime (oltre 100 Gbps)</li>
-                        <li>Distanze lunghissime (oltre 100 km senza ripetitori)</li>
+                        <li>Distanze lunghissime (oltre 100 km)</li>
                         <li>Immunità totale ai disturbi elettromagnetici</li>
                         <li>Sicurezza: difficile da intercettare</li>
                         <li>Leggero e sottile</li>
                     </ul>
                 </div>
+                
                 <div class="svantaggi">
-                    <h4>❌ Svantaggi</h4>
+                    <h4>❌ SVANTAGGI</h4>
                     <ul>
                         <li>Costo elevato dei componenti</li>
                         <li>Installazione complessa e specializzata</li>
-                        <li>Fragilità delle fibre (si rompono facilmente se piegate)</li>
+                        <li>Fragilità delle fibre (si rompono se piegate)</li>
                         <li>Necessità di conversione luce/elettricità</li>
                     </ul>
                 </div>
             </div>
             
-            <p><strong>Approfondisci la struttura della fibra ottica:</strong> 
-                <a href="fibra_generale.html" class="nav-link">Vedi la struttura della fibra</a>
-            </p>
-            
-            <p><strong>Scopri i due tipi principali:</strong><br>
-                <a href="fibra_multimodale.html" class="nav-link">Fibra Multimodale</a>
-                <a href="fibra_monomodale.html" class="nav-link">Fibra Monomodale</a>
-            </p>
+            <div style="text-align: center; margin: 20px 0;">
+                <a href="fibra_generale.html" class="nav-button fibra-button">
+                    🔬 Approfondisci la Fibra Ottica
+                </a>
+                <a href="fibra_multimodale.html" class="nav-button" style="background: #8e44ad;">
+                    📊 Fibra Multimodale
+                </a>
+                <a href="fibra_monomodale.html" class="nav-button" style="background: #3498db;">
+                    🚀 Fibra Monomodale
+                </a>
+            </div>
         </div>
     </section>
 
+    <!-- SEZIONE WIRELESS -->
+    <section id="wireless">
+        <div class="mezzo-section wireless-section">
+            <h2>4. Mezzi Non Guidati (Wireless)</h2>
+            
+            <p>I mezzi non guidati utilizzano l'aria come canale di trasmissione, attraverso onde elettromagnetiche.</p>
+            
+            <h3>Tipi principali:</h3>
+            <ul>
+                <li><strong>Wi-Fi</strong> (IEEE 802.11): Reti locali wireless</li>
+                <li><strong>Bluetooth</strong>: Collegamento a corto raggio</li>
+                <li><strong>Infrarossi</strong>: Comandi, telecomandi</li>
+                <li><strong>Microonde</strong>: Ponti radio a lunga distanza</li>
+                <li><strong>Satellite</strong>: Copertura globale</li>
+            </ul>
+            
+            <div class="vantaggi-svantaggi">
+                <div class="vantaggi">
+                    <h4>✅ VANTAGGI</h4>
+                    <ul>
+                        <li>Mobilità totale (nessun cavo)</li>
+                        <li>Installazione rapida e flessibile</li>
+                        <li>Ideale per dispositivi mobili</li>
+                        <li>Perfetto dove il cablaggio è impossibile</li>
+                    </ul>
+                </div>
+                
+                <div class="svantaggi">
+                    <h4>❌ SVANTAGGI</h4>
+                    <ul>
+                        <li>Soggetto a interferenze</li>
+                        <li>Sicurezza inferiore (se non cifrato)</li>
+                        <li>Velocità generalmente inferiori al cablato</li>
+                        <li>Latenza più elevata</li>
+                        <li>Portata limitata da ostacoli</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin: 20px 0;">
+                <a href="wireless.html" class="nav-button wireless-button">
+                    📡 Approfondisci Wireless
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- TABELLA RIASSUNTIVA -->
     <section>
-        <h2>Confronto Sintetico</h2>
+        <h2>Confronto Sintetico tra Mezzi Guidati</h2>
+        
         <table>
             <thead>
                 <tr>
@@ -353,9 +615,9 @@
             <tbody>
                 <tr>
                     <td><strong>Velocità massima</strong></td>
-                    <td>Fino a 10 Gbps</td>
-                    <td>Fino a 1 Gbps</td>
-                    <td>Oltre 100 Gbps</td>
+                    <td>10 Gbps (CAT 6A)</td>
+                    <td>1 Gbps</td>
+                    <td>100+ Gbps</td>
                 </tr>
                 <tr>
                     <td><strong>Distanza massima</strong></td>
@@ -370,155 +632,63 @@
                     <td>Altissima</td>
                 </tr>
                 <tr>
-                    <td><strong>Costo</strong></td>
+                    <td><strong>Costo (materiale)</strong></td>
                     <td>Molto basso</td>
                     <td>Medio</td>
                     <td>Alto</td>
                 </tr>
                 <tr>
+                    <td><strong>Costo (installazione)</strong></td>
+                    <td>Basso</td>
+                    <td>Medio</td>
+                    <td>Alto</td>
+                </tr>
+                <tr>
+                    <td><strong>Sicurezza</strong></td>
+                    <td>Bassa</td>
+                    <td>Media</td>
+                    <td>Alta</td>
+                </tr>
+                <tr>
                     <td><strong>Esempio d'uso</strong></td>
-                    <td>PC → Router</td>
+                    <td>PC → Router (casa/ufficio)</td>
                     <td>Antenna → TV</td>
-                    <td>Città → Città</td>
+                    <td>Città → Città (backbone)</td>
                 </tr>
             </tbody>
         </table>
     </section>
 
+    <!-- ESERCIZIO FINALE -->
     <section>
-        <h2>Diagramma di Scelta: Quale mezzo usare?</h2>
-        <div class="diagramma-scelta">
-            <p>Rispondi alle domande per scoprire quale mezzo trasmissivo è più adatto alle tue esigenze:</p>
-            
-            <div class="domanda" id="domanda1">1. Che distanza devi coprire?</div>
-            <div class="opzione" onclick="mostraRisultato('opzione1a')">Men di 100 metri</div>
-            <div class="opzione" onclick="mostraRisultato('opzione1b')">Tra 100 e 500 metri</div>
-            <div class="opzione" onclick="mostraRisultato('opzione1c')">Più di 500 metri</div>
-            
-            <div class="domanda" id="domanda2" style="display:none;">2. Qual è il tuo budget?</div>
-            <div class="opzione" onclick="mostraRisultato('opzione2a')" style="display:none;">Limitato</div>
-            <div class="opzione" onclick="mostraRisultato('opzione2b')" style="display:none;">Medio</div>
-            <div class="opzione" onclick="mostraRisultato('opzione2c')" style="display:none;">Alto/Illimitato</div>
-            
-            <div class="domanda" id="domanda3" style="display:none;">3. Ci sono forti sorgenti di interferenza?</div>
-            <div class="opzione" onclick="mostraRisultato('opzione3a')" style="display:none;">Sì, molti dispositivi elettrici</div>
-            <div class="opzione" onclick="mostraRisultato('opzione3b')" style="display:none;">Poche interferenze</div>
-            
-            <div id="risultatoFinale" class="risultato"></div>
-            
-            <button onclick="resetDiagramma()" style="margin-top: 20px; padding: 10px 15px; background: #95a5a6; color: white; border: none; border-radius: 5px; cursor: pointer;">Ricomincia</button>
-        </div>
-    </section>
-
-    <section>
-        <h2>Mezzi Non Guidati (Wireless)</h2>
-        <div class="mezzo-card wireless-card">
-            <h3>Comunicazione senza fili</h3>
-            <p>I mezzi non guidati utilizzano l'aria come canale di trasmissione, attraverso onde elettromagnetiche.</p>
-            
-            <div class="vantaggi-svantaggi">
-                <div class="vantaggi">
-                    <h4>✅ Vantaggi</h4>
-                    <ul>
-                        <li>Mobilità totale (nessun cavo)</li>
-                        <li>Installazione rapida e flessibile</li>
-                        <li>Ideale per dispositivi mobili</li>
-                        <li>Perfetto dove il cablaggio è impossibile</li>
-                    </ul>
-                </div>
-                <div class="svantaggi">
-                    <h4>❌ Svantaggi</h4>
-                    <ul>
-                        <li>Soggetto a interferenze</li>
-                        <li>Sicurezza inferiore (se non cifrato)</li>
-                        <li>Velocità generalmente inferiori al cablato</li>
-                        <li>Latenza più elevata</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <p><strong>Tipi principali:</strong> Wi-Fi (reti locali), Bluetooth (dispositivi vicini), Infrarossi (comandi), Microonde (ponti radio).</p>
-        </div>
-    </section>
-
-    <section>
-        <h2>Conclusioni</h2>
-        <p>La scelta del mezzo trasmissivo dipende da diversi fattori:</p>
-        <ul>
-            <li><strong>Distanza da coprire</strong></li>
-            <li><strong>Velocità richiesta</strong></li>
-            <li><strong>Budget disponibile</strong></li>
-            <li><strong>Ambiente (interferenze)</strong></li>
-            <li><strong>Esigenze di sicurezza</strong></li>
-        </ul>
+        <h2>Esercizio di Sintesi</h2>
         
-        <p>Nella pratica, le reti moderne spesso utilizzano <strong>combinazioni</strong> di mezzi: fibra ottica per il backbone, UTP per le connessioni locali e wireless per la mobilità.</p>
+        <div class="intro-box">
+            <h3>🛠️ Scenario Pratico</h3>
+            <p><strong>Situazione:</strong> La tua scuola deve aggiornare la rete informatica. Hai a disposizione tre opzioni:</p>
+            
+            <ol>
+                <li><strong>Opzione A:</strong> Cavi UTP CAT 6 in tutta la scuola (costo: €2.000)</li>
+                <li><strong>Opzione B:</strong> Cavi UTP nelle aule + fibra ottica tra gli edifici (costo: €5.000)</li>
+                <li><strong>Opzione C:</strong> Solo rete wireless con access point in ogni aula (costo: €3.000)</li>
+            </ol>
+            
+            <p><strong>Domande:</strong></p>
+            <ul>
+                <li>Quale opzione sceglieresti e perché?</li>
+                <li>Quali sono i pro e i contro di ciascuna soluzione?</li>
+                <li>Considerando che ci sono 20 aule e 3 edifici, quale sarebbe la soluzione più scalabile?</li>
+            </ul>
+            
+            <div class="esempio-pratico">
+                <strong>💡 Suggerimento:</strong> Pensa a velocità, sicurezza, costi di manutenzione e facilità di espansione futura.
+            </div>
+        </div>
     </section>
 
     <footer>
         <p>Materiale didattico per la scuola secondaria - Reti LAN, WAN, PAN</p>
-        <p>© 2023 - Allineato alle linee guida ministeriali</p>
+        <p>© 2023 - Allineato alle linee guida ministeriali per Tecnologia e Informatica</p>
     </footer>
-
-    <script>
-        let risposte = [];
-        
-        function mostraRisultato(opzione) {
-            // Salva la risposta
-            if (opzione.includes('opzione1')) {
-                risposte[0] = opzione;
-                document.getElementById('domanda2').style.display = 'block';
-                document.querySelectorAll('#domanda2 ~ .opzione').forEach(el => {
-                    el.style.display = 'block';
-                });
-            } else if (opzione.includes('opzione2')) {
-                risposte[1] = opzione;
-                document.getElementById('domanda3').style.display = 'block';
-                document.querySelectorAll('#domanda3 ~ .opzione').forEach(el => {
-                    el.style.display = 'block';
-                });
-            } else if (opzione.includes('opzione3')) {
-                risposte[2] = opzione;
-                calcolaRisultatoFinale();
-            }
-        }
-        
-        function calcolaRisultatoFinale() {
-            let risultato = "";
-            let consiglio = "";
-            
-            // Logica semplificata per il consiglio
-            if (risposte[0] === 'opzione1c' || risposte[1] === 'opzione2c') {
-                risultato = "FIBRA OTTICA";
-                consiglio = "La fibra ottica è l'unica soluzione per distanze lunghe e alte velocità. Considera la monomodale per distanze > 2 km.";
-            } else if (risposte[0] === 'opzione1b' && risposte[2] === 'opzione3a') {
-                risultato = "CAVO COASSIALE";
-                consiglio = "Il coassiale offre buona immunità alle interferenze per distanze medie.";
-            } else {
-                risultato = "UTP (Doppino intrecciato)";
-                consiglio = "L'UTP è la scelta più economica ed efficace per reti locali fino a 100 metri.";
-            }
-            
-            document.getElementById('risultatoFinale').innerHTML = `
-                <h3>Il mezzo consigliato per te è: <strong style="color: #2c3e50;">${risultato}</strong></h3>
-                <p>${consiglio}</p>
-                <p><em>Nota: questa è una guida semplificata. Nella realtà, la scelta dipende da molti altri fattori.</em></p>
-            `;
-            document.getElementById('risultatoFinale').style.display = 'block';
-        }
-        
-        function resetDiagramma() {
-            risposte = [];
-            document.getElementById('domanda2').style.display = 'none';
-            document.getElementById('domanda3').style.display = 'none';
-            document.querySelectorAll('.opzione').forEach(el => {
-                el.style.display = 'none';
-            });
-            document.querySelectorAll('#domanda1 ~ .opzione').forEach(el => {
-                el.style.display = 'block';
-            });
-            document.getElementById('risultatoFinale').style.display = 'none';
-        }
-    </script>
 </body>
 </html>
