@@ -241,6 +241,13 @@
                 max-width: 300px;
             }
         }
+
+        /* Stile per link esterno */
+        .external-link-indicator {
+            color: #0d6efd;
+            font-size: 0.8rem;
+            margin-top: 5px;
+        }
     </style>
 </head>
 <body>
@@ -287,8 +294,14 @@
                         <p class="image-caption">Categorie UTP a confronto</p>
                     </div>
                     <div class="image-item">
-                        <img src="RJ45-pinout-diagram-T568B-1.jpg" alt="Pinout RJ45 standard T568B" onerror="this.src='https://via.placeholder.com/300x200?text=Pinout+RJ45'">
-                        <p class="image-caption">Pinout RJ45 - Standard T568B</p>
+                        <!-- LINK CLICCABILE PER TUTORIAL RJ45 -->
+                        <a href="https://www.thetechmentor.com/posts/easy-rj45-wiring-with-rj45-pinout-pic/" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit; display: block;">
+                            <img src="RJ45-pinout-diagram-T568B-1.jpg" alt="Pinout RJ45 standard T568B - Clicca per tutorial" onerror="this.src='https://via.placeholder.com/300x200?text=Pinout+RJ45+Tutorial'">
+                            <p class="image-caption">
+                                <i class="bi bi-box-arrow-up-right"></i> Pinout RJ45 - Standard T568B
+                                <br><span class="external-link-indicator">(Clicca per tutorial di cablaggio)</span>
+                            </p>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -439,9 +452,14 @@
 
     <!-- ========== FOOTER CON FONTI ========== -->
     <div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-top: 3px solid #0d6efd; text-align: center; border-radius: 15px;">
-        <a href="fonti_bibliografia.html" style="padding: 10px 25px; background: linear-gradient(135deg, #0d6efd 0%, #0b5ed7 100%); color: white; text-decoration: none; border-radius: 25px; font-weight: 600; display: inline-block; margin-bottom: 15px; transition: all 0.3s;">
+        <a href="https://www.thetechmentor.com/posts/easy-rj45-wiring-with-rj45-pinout-pic/" target="_blank" rel="noopener noreferrer" style="padding: 10px 25px; background: linear-gradient(135deg, #28a745 0%, #20c997 100%); color: white; text-decoration: none; border-radius: 25px; font-weight: 600; display: inline-block; margin: 0 10px 15px 10px; transition: all 0.3s;">
+            <i class="bi bi-tools me-2"></i> Tutorial Cablaggio RJ45
+        </a>
+        
+        <a href="fonti_bibliografia.html" style="padding: 10px 25px; background: linear-gradient(135deg, #0d6efd 0%, #0b5ed7 100%); color: white; text-decoration: none; border-radius: 25px; font-weight: 600; display: inline-block; margin: 0 10px 15px 10px; transition: all 0.3s;">
             <i class="bi bi-book me-2"></i> Consulta tutte le fonti
         </a>
+        
         <p style="color: #666; font-size: 0.9em; margin: 5px 0; line-height: 1.6;">
             <strong>Uso didattico</strong> - Corso di Reti e Telecomunicazioni<br>
             Luigi Pelagagge - Art. 70 L. 633/1941<br>
