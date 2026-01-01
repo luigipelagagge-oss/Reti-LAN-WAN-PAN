@@ -3,27 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fibra Ottica - Principi Generali</title>
+    <title>Mezzi Trasmissivi - Reti LAN, WAN, PAN</title>
     <style>
-        /* STILE SEMPLICE E PULITO */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
         body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 20px;
-            background-color: #f9f9f9;
+            background-color: #f8f9fa;
             color: #333;
         }
         
         header {
-            background-color: #6a11cb;
+            background: linear-gradient(135deg, #2c3e50, #4a6491);
             color: white;
             padding: 25px;
             border-radius: 10px;
@@ -32,186 +25,445 @@
         }
         
         h1 {
-            font-size: 2em;
-            margin-bottom: 10px;
+            margin: 0;
+            font-size: 2.2em;
         }
         
         h2 {
-            color: #6a11cb;
-            margin: 25px 0 15px 0;
-            padding-bottom: 8px;
-            border-bottom: 2px solid #6a11cb;
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            margin-top: 30px;
         }
         
-        .section {
+        .intro-box {
             background: white;
+            border-radius: 8px;
             padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        .image-box {
-            text-align: center;
             margin: 20px 0;
-            padding: 15px;
-            background: #f0f0f0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .mezzo-card {
+            background: white;
             border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-left: 5px solid;
         }
         
-        .image-box img {
-            max-width: 80%;
-            height: auto;
-            border-radius: 5px;
-            border: 1px solid #ddd;
+        .utp-card {
+            border-left-color: #28a745;
         }
         
-        .image-caption {
-            font-style: italic;
-            color: #666;
-            margin-top: 10px;
-            font-size: 0.9em;
+        .coax-card {
+            border-left-color: #dc3545;
         }
         
-        .component {
-            background: #f8f9fa;
-            padding: 15px;
-            margin: 10px 0;
-            border-left: 4px solid #6a11cb;
-            border-radius: 5px;
+        .fibra-card {
+            border-left-color: #6f42c1;
         }
         
-        .component strong {
-            color: #6a11cb;
+        .wireless-card {
+            border-left-color: #fd7e14;
         }
         
-        ul, ol {
-            padding-left: 20px;
+        .vantaggi-svantaggi {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
             margin: 15px 0;
         }
         
-        li {
-            margin: 8px 0;
+        .vantaggi {
+            background: #d4edda;
+            padding: 15px;
+            border-radius: 5px;
         }
         
-        .navigation {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin: 30px 0;
+        .svantaggi {
+            background: #f8d7da;
+            padding: 15px;
+            border-radius: 5px;
         }
         
-        .nav-btn {
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        th {
+            background: #2c3e50;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .nav-button {
             display: inline-block;
             padding: 10px 20px;
-            background-color: #2575fc;
+            background: #3498db;
             color: white;
             text-decoration: none;
             border-radius: 5px;
+            margin: 10px 5px;
             font-weight: bold;
             text-align: center;
         }
         
-        .nav-btn:hover {
-            background-color: #1a68e8;
+        .nav-button:hover {
+            background: #2980b9;
         }
         
-        .btn-back {
-            background-color: #666;
+        .utp-btn {
+            background: #28a745;
         }
         
-        .btn-back:hover {
-            background-color: #555;
+        .coax-btn {
+            background: #dc3545;
+        }
+        
+        .fibra-btn {
+            background: #6f42c1;
+        }
+        
+        .wireless-btn {
+            background: #fd7e14;
+        }
+        
+        .esempio {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            border-left: 4px solid #3498db;
+        }
+        
+        .percorso {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin: 30px 0;
+            gap: 10px;
+        }
+        
+        .tappa {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            flex: 1;
+            min-width: 200px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .numero {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            background: #3498db;
+            color: white;
+            border-radius: 50%;
+            font-weight: bold;
+            margin-bottom: 10px;
         }
         
         footer {
-            text-align: center;
             margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid #ddd;
-            color: #777;
+            text-align: center;
+            color: #6c757d;
             font-size: 0.9em;
         }
-        
-        /* NESSUN BOTTONE SORGENTE - PULITO E SICURO */
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Fibra Ottica - Principi Generali</h1>
-        <p>La trasmissione dati attraverso la luce</p>
+        <h1>Mezzi Trasmissivi nelle Reti</h1>
+        <p>Panoramica completa dei canali di comunicazione - Scuola Secondaria</p>
     </header>
 
-    <div class="section">
-        <h2>Cos'è la Fibra Ottica?</h2>
-        <p>La <strong>fibra ottica</strong> è un mezzo trasmissivo che utilizza impulsi di <strong>luce</strong> invece di segnali elettrici per trasmettere informazioni. È composta da sottilissimi filamenti di vetro o plastica trasparente.</p>
-    </div>
-
-    <div class="section">
-        <h2>La Tua Figura: Struttura della Fibra</h2>
-        <div class="image-box">
-            <img src="struttura_fibra_ottica_base.png" alt="Struttura della fibra ottica">
-            <p class="image-caption">Figura 1: Componenti fondamentali di una fibra ottica</p>
+    <section>
+        <h2>Introduzione</h2>
+        <div class="intro-box">
+            <p>I <strong>mezzi trasmissivi</strong> sono i "canali" fisici attraverso i quali i dati viaggiano in una rete. Si dividono in:</p>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0;">
+                <div style="background: #d4edda; padding: 15px; border-radius: 5px;">
+                    <h3 style="color: #28a745; margin-top: 0;">🔗 Mezzi Guidati</h3>
+                    <p>Segnale confinato in un cavo:</p>
+                    <ul>
+                        <li>Doppino intrecciato (UTP)</li>
+                        <li>Cavo coassiale</li>
+                        <li>Fibra ottica</li>
+                    </ul>
+                </div>
+                
+                <div style="background: #e3f2fd; padding: 15px; border-radius: 5px;">
+                    <h3 style="color: #0d6efd; margin-top: 0;">📡 Mezzi Non Guidati</h3>
+                    <p>Segnale viaggia nell'aria:</p>
+                    <ul>
+                        <li>Wi-Fi</li>
+                        <li>Bluetooth</li>
+                        <li>Infrarossi</li>
+                        <li>Satellite</li>
+                    </ul>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
 
-    <div class="section">
-        <h2>I 4 Componenti Principali</h2>
+    <section>
+        <h2>Percorso di Apprendimento</h2>
+        <div class="percorso">
+            <div class="tappa">
+                <div class="numero">1</div>
+                <h3>UTP</h3>
+                <p>Il più comune</p>
+                <p>Reti locali</p>
+            </div>
+            
+            <div class="tappa">
+                <div class="numero">2</div>
+                <h3>Coassiale</h3>
+                <p>Storico</p>
+                <p>TV via cavo</p>
+            </div>
+            
+            <div class="tappa">
+                <div class="numero">3</div>
+                <h3>Fibra Ottica</h3>
+                <p>Alte prestazioni</p>
+                <p>Backbone</p>
+            </div>
+            
+            <div class="tappa">
+                <div class="numero">4</div>
+                <h3>Wireless</h3>
+                <p>Senza fili</p>
+                <p>Mobilità</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEZIONE UTP - COLLEGAMENTO ALLA PAGINA FIGLIA -->
+    <section id="utp">
+        <div class="mezzo-card utp-card">
+            <h2>1. Cavo UTP - Doppino Intrecciato</h2>
+            <p>Il cavo più diffuso nelle reti locali (LAN), uffici e abitazioni.</p>
+            
+            <div class="esempio">
+                <strong>Esempio:</strong> Il cavo che collega il PC al router di casa è un UTP.
+            </div>
+            
+            <div class="vantaggi-svantaggi">
+                <div class="vantaggi">
+                    <h4>✅ Vantaggi</h4>
+                    <ul>
+                        <li>Economico</li>
+                        <li>Facile installazione</li>
+                        <li>Compatibile con tutti i dispositivi</li>
+                    </ul>
+                </div>
+                <div class="svantaggi">
+                    <h4>❌ Svantaggi</h4>
+                    <ul>
+                        <li>Sensibile alle interferenze</li>
+                        <li>Distanza limitata (100m)</li>
+                        <li>Velocità inferiore alla fibra</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin: 20px 0;">
+                <a href="utp_dettaglio.html" class="nav-button utp-btn">
+                    📚 Approfondisci UTP (categorie, cablaggio, esercizi)
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEZIONE COASSIALE - COLLEGAMENTO ALLA PAGINA FIGLIA -->
+    <section id="coassiale">
+        <div class="mezzo-card coax-card">
+            <h2>2. Cavo Coassiale</h2>
+            <p>Un tempo usato per le reti Ethernet, oggi per TV via cavo e segnali video.</p>
+            
+            <div class="esempio">
+                <strong>Esempio:</strong> Il cavo che collega l'antenna satellitare al televisore.
+            </div>
+            
+            <div class="vantaggi-svantaggi">
+                <div class="vantaggi">
+                    <h4>✅ Vantaggi</h4>
+                    <ul>
+                        <li>Maggiore immunità ai disturbi</li>
+                        <li>Distanze maggiori (fino a 500m)</li>
+                        <li>Ottimo per video</li>
+                    </ul>
+                </div>
+                <div class="svantaggi">
+                    <h4>❌ Svantaggi</h4>
+                    <ul>
+                        <li>Più costoso dell'UTP</li>
+                        <li>Ingombrante</li>
+                        <li>Installazione complessa</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin: 20px 0;">
+                <a href="coassiale_dettaglio.html" class="nav-button coax-btn">
+                    📺 Approfondisci Cavo Coassiale
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEZIONE FIBRA OTTICA - COLLEGAMENTO ALLE 3 PAGINE FIGLIE -->
+    <section id="fibra">
+        <div class="mezzo-card fibra-card">
+            <h2>3. Fibra Ottica</h2>
+            <p>Utilizza la luce per trasmettere dati, con prestazioni elevatissime.</p>
+            
+            <div class="esempio">
+                <strong>Esempio:</strong> La connessione Internet a 1 Giga, i cavi sottomarini.
+            </div>
+            
+            <div class="vantaggi-svantaggi">
+                <div class="vantaggi">
+                    <h4>✅ Vantaggi</h4>
+                    <ul>
+                        <li>Velocità elevatissime (100+ Gbps)</li>
+                        <li>Distanze lunghissime (100+ km)</li>
+                        <li>Immunità totale ai disturbi</li>
+                    </ul>
+                </div>
+                <div class="svantaggi">
+                    <h4>❌ Svantaggi</h4>
+                    <ul>
+                        <li>Costo elevato</li>
+                        <li>Installazione complessa</li>
+                        <li>Fragilità delle fibre</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin: 20px 0;">
+                <a href="fibra_generale.html" class="nav-button fibra-btn">
+                    🔬 Principi Generali della Fibra
+                </a>
+                <a href="fibra_multimodale.html" class="nav-button" style="background: #20c997;">
+                    📊 Fibra Multimodale
+                </a>
+                <a href="fibra_monomodale.html" class="nav-button" style="background: #0d6efd;">
+                    🚀 Fibra Monomodale
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEZIONE WIRELESS -->
+    <section id="wireless">
+        <div class="mezzo-card wireless-card">
+            <h2>4. Mezzi Non Guidati (Wireless)</h2>
+            <p>Comunicazione senza fili attraverso onde elettromagnetiche.</p>
+            
+            <div class="vantaggi-svantaggi">
+                <div class="vantaggi">
+                    <h4>✅ Vantaggi</h4>
+                    <ul>
+                        <li>Mobilità totale</li>
+                        <li>Installazione rapida</li>
+                        <li>Ideale per dispositivi mobili</li>
+                    </ul>
+                </div>
+                <div class="svantaggi">
+                    <h4>❌ Svantaggi</h4>
+                    <ul>
+                        <li>Soggetto a interferenze</li>
+                        <li>Sicurezza inferiore</li>
+                        <li>Velocità inferiori al cablato</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin: 20px 0;">
+                <a href="wireless.html" class="nav-button wireless-btn">
+                    📡 Approfondisci Wireless
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- TABELLA RIASSUNTIVA -->
+    <section>
+        <h2>Confronto tra Mezzi Guidati</h2>
         
-        <div class="component">
-            <strong>1. Core (Nucleo)</strong>
-            <p>La parte centrale dove viaggia la luce. Di vetro ultra-puro, con diametro da 8 a 62.5 micrometri.</p>
-        </div>
-        
-        <div class="component">
-            <strong>2. Cladding (Mantello)</strong>
-            <p>Avvolge il core e ha indice di rifrazione più basso. Riflette la luce verso il nucleo.</p>
-        </div>
-        
-        <div class="component">
-            <strong>3. Coating Primario</strong>
-            <p>Rivestimento protettivo in plastica che protegge la fibra da umidità e danni meccanici.</p>
-        </div>
-        
-        <div class="component">
-            <strong>4. Guaine Esterne</strong>
-            <p>Protezioni aggiuntive per resistenza alla trazione e all'ambiente.</p>
-        </div>
-    </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Caratteristica</th>
+                    <th>UTP</th>
+                    <th>Coassiale</th>
+                    <th>Fibra Ottica</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Velocità</strong></td>
+                    <td>10 Gbps</td>
+                    <td>1 Gbps</td>
+                    <td>100+ Gbps</td>
+                </tr>
+                <tr>
+                    <td><strong>Distanza</strong></td>
+                    <td>100 m</td>
+                    <td>500 m</td>
+                    <td>100+ km</td>
+                </tr>
+                <tr>
+                    <td><strong>Immunità disturbi</strong></td>
+                    <td>Bassa</td>
+                    <td>Media</td>
+                    <td>Altissima</td>
+                </tr>
+                <tr>
+                    <td><strong>Costo</strong></td>
+                    <td>Molto basso</td>
+                    <td>Medio</td>
+                    <td>Alto</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
 
-    <div class="section">
-        <h2>Come Funziona: Riflessione Interna Totale</h2>
-        <p>La luce rimane intrappolata nel core grazie a un principio fisico fondamentale:</p>
-        <ul>
-            <li>Il <strong>core</strong> ha indice di rifrazione <strong>n₁</strong> (alto)</li>
-            <li>Il <strong>cladding</strong> ha indice di rifrazione <strong>n₂</strong> (basso)</li>
-            <li>Se <strong>n₁ > n₂</strong>, la luce viene totalmente riflessa all'interno</li>
-            <li>Il segnale luminoso può viaggiare per <strong>chilometri senza uscire</strong></li>
-        </ul>
-    </div>
-
-    <div class="section">
-        <h2>Vantaggi rispetto ai Cavi in Rame</h2>
-        <ol>
-            <li><strong>Velocità elevatissima:</strong> Oltre 100 Gbps (contro 10 Gbps del rame)</li>
-            <li><strong>Distanze lunghe:</strong> Fino a 100 km senza ripetitori (contro 100m)</li>
-            <li><strong>Immunità totale</strong> ai disturbi elettromagnetici</li>
-            <li><strong>Sicurezza:</strong> Difficile da intercettare senza interrompere il segnale</li>
-            <li><strong>Leggerezza:</strong> Molto più leggera e sottile dei cavi in rame</li>
-        </ol>
-    </div>
-
-    <div class="navigation">
-        <a href="mezzi_trasmissivi.html" class="nav-btn btn-back">← Torna ai Mezzi Trasmissivi</a>
-        <a href="fibra_multimodale.html" class="nav-btn">Fibra Multimodale →</a>
-        <a href="fibra_monomodale.html" class="nav-btn">Fibra Monomodale →</a>
-    </div>
+    <!-- NAVIGAZIONE RAPIDA -->
+    <section>
+        <h2>Navigazione Rapida</h2>
+        <div style="text-align: center; margin: 20px 0;">
+            <a href="#utp" class="nav-button utp-btn">🔗 UTP</a>
+            <a href="#coassiale" class="nav-button coax-btn">📺 Coassiale</a>
+            <a href="#fibra" class="nav-button fibra-btn">🔬 Fibra</a>
+            <a href="#wireless" class="nav-button wireless-btn">📡 Wireless</a>
+        </div>
+    </section>
 
     <footer>
-        <p>Materiale didattico per la scuola secondaria</p>
-        <p>Reti LAN, WAN, PAN - © Uso educativo</p>
+        <p>Materiale didattico per la scuola secondaria - Reti LAN, WAN, PAN</p>
+        <p>© Allineato alle linee guida ministeriali</p>
     </footer>
 
 </body>
