@@ -144,7 +144,125 @@
             background-color: #f8f9fa;
         }
 
-        /* BOTTONI LINK */
+        /* BOTTONI PAGINE FIGLIE */
+        .page-link-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #6610f2 0%, #6f42c1 100%);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            margin: 10px 5px;
+            transition: all 0.3s;
+            text-align: center;
+            min-width: 180px;
+        }
+
+        .page-link-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(102, 16, 242, 0.3);
+            color: white;
+        }
+
+        .page-link-button.multimodale {
+            background: linear-gradient(135deg, #20c997 0%, #28a745 100%);
+        }
+
+        .page-link-button.multimodale:hover {
+            box-shadow: 0 6px 15px rgba(40, 167, 69, 0.3);
+        }
+
+        .page-link-button.monomodale {
+            background: linear-gradient(135deg, #0d6efd 0%, #0b5ed7 100%);
+        }
+
+        .page-link-button.monomodale:hover {
+            box-shadow: 0 6px 15px rgba(13, 110, 253, 0.3);
+        }
+
+        .page-link-button.generale {
+            background: linear-gradient(135deg, #ffc107 0%, #fd7e14 100%);
+            color: #212529;
+        }
+
+        .page-link-button.generale:hover {
+            box-shadow: 0 6px 15px rgba(255, 193, 7, 0.3);
+            color: #212529;
+        }
+
+        /* SEZIONE MEZZI GUIDATI MIGLIORATA */
+        .guided-media-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            border-left: 5px solid #6610f2;
+        }
+
+        .guided-media-intro {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .guided-media-intro h4 {
+            color: #6610f2;
+            border-bottom: 2px solid #6610f2;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .media-timeline {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed #dee2e6;
+        }
+
+        .timeline-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .timeline-year {
+            background: #6610f2;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .timeline-content {
+            flex-grow: 1;
+        }
+
+        .timeline-content h6 {
+            color: #6610f2;
+            margin-bottom: 5px;
+        }
+
+        /* BOTTONI LINK ESTERNI */
         .link-button {
             display: inline-block;
             background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
@@ -172,7 +290,7 @@
             box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3);
         }
 
-        /* LIGHTBOX PER INGRANDIMENTO */
+        /* LIGHTBOX */
         .lightbox {
             display: none;
             position: fixed;
@@ -347,6 +465,21 @@
                 max-width: 95%;
                 max-height: 70%;
             }
+            
+            .timeline-item {
+                flex-direction: column;
+            }
+            
+            .timeline-year {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+            
+            .page-link-button {
+                display: block;
+                width: 100%;
+                margin: 10px 0;
+            }
         }
 
         /* TECNICA TWISTED */
@@ -371,6 +504,71 @@
         .twist-icon {
             color: #0d6efd;
             font-size: 1.5rem;
+        }
+
+        /* SCHEMA A BLOCCHI FIBRA OTTICA */
+        .fiber-schema {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        .schema-title {
+            color: #6610f2;
+            font-weight: 700;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .schema-blocks {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .schema-block {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid #dee2e6;
+            transition: all 0.3s;
+        }
+
+        .schema-block:hover {
+            background: #e9ecef;
+            border-color: #6610f2;
+            transform: translateY(-3px);
+        }
+
+        .schema-block-icon {
+            font-size: 2rem;
+            color: #6610f2;
+            margin-bottom: 10px;
+        }
+
+        .schema-block-title {
+            font-weight: 600;
+            color: #495057;
+            font-size: 0.9rem;
+        }
+
+        .schema-arrows {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 15px 0;
+            color: #6610f2;
+            font-size: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .schema-blocks {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
     </style>
 </head>
@@ -545,10 +743,224 @@
             </div>
         </div>
 
-        <!-- MEZZI GUIDATI -->
+        <!-- =========================================== -->
+        <!-- NUOVA SEZIONE: MEZZI GUIDATI E FIBRA OTTICA -->
+        <!-- =========================================== -->
+        <div class="guided-media-section">
+            <h3 class="category-title" style="color: #6610f2; border-bottom: 3px solid #6610f2; padding-bottom: 10px;">
+                <i class="bi bi-cable"></i> Mezzi Guidati (Wired) - Approfondimento
+            </h3>
+            
+            <!-- INTRODUZIONE MEZZI GUIDATI -->
+            <div class="guided-media-intro">
+                <h4><i class="bi bi-info-circle"></i> Cosa sono i Mezzi Guidati?</h4>
+                <p>I <strong>mezzi guidati</strong> utilizzano un supporto fisico per convogliare i segnali elettromagnetici da un punto all'altro. A differenza dei mezzi non guidati (wireless), il segnale è confinato in un percorso fisico predeterminato.</p>
+                
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <h6><i class="bi bi-check-circle"></i> Vantaggi:</h6>
+                        <ul>
+                            <li>Maggiore sicurezza fisica</li>
+                            <li>Minori interferenze esterne</li>
+                            <li>Banda più stabile e prevedibile</li>
+                            <li>Lunghe distanze con ripetitori</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h6><i class="bi bi-exclamation-triangle"></i> Svantaggi:</h6>
+                        <ul>
+                            <li>Costo di installazione più alto</li>
+                            <li>Mancanza di mobilità</li>
+                            <li>Difficoltà nelle modifiche</li>
+                            <li>Vulnerabilità a danni fisici</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TIMELINE EVOLUTIVA -->
+            <div class="media-timeline">
+                <h4><i class="bi bi-clock-history"></i> Breve Storia dei Mezzi Guidati</h4>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">1844</div>
+                    <div class="timeline-content">
+                        <h6>Telegrafo di Morse</h6>
+                        <p>Primo sistema di comunicazione elettrica guidata. Utilizzava fili di rame per trasmettere segnali telegrafici.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">1876</div>
+                    <div class="timeline-content">
+                        <h6>Telefono di Bell</h6>
+                        <p>Nascita della telefonia su cavo. Reti di doppini telefonici in rame si diffondono in tutto il mondo.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">1970</div>
+                    <div class="timeline-content">
+                        <h6>Prima Fibra Ottica</h6>
+                        <p>Corning Glass Works sviluppa la prima fibra ottica con attenuazione inferiore a 20 dB/km.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">1980</div>
+                    <div class="timeline-content">
+                        <h6>Ethernet e LAN</h6>
+                        <p>Diffusione delle reti locali (LAN) con cavi coassiali e successivamente UTP.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">Oggi</div>
+                    <div class="timeline-content">
+                        <h6>Fibra Ottica Globale</h6>
+                        <p>Backbone Internet in fibra ottica, FTTx (Fiber To The Home/Office), reti 5G con fibra.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FIBRA OTTICA - INTRODUZIONE -->
+            <div class="guided-media-intro">
+                <h4><i class="bi bi-brightness-high"></i> Fibra Ottica: La Rivoluzione nella Trasmissione</h4>
+                <p>La <strong>fibra ottica</strong> rappresenta l'evoluzione più significativa nei mezzi guidati. Utilizza impulsi di luce (fotoni) invece di segnali elettrici, offrendo vantaggi rivoluzionari:</p>
+                
+                <div class="row mt-4">
+                    <div class="col-md-4">
+                        <div class="text-center p-3">
+                            <div class="mb-3" style="font-size: 2.5rem; color: #6610f2;">
+                                <i class="bi bi-lightning-charge"></i>
+                            </div>
+                            <h6>Banda Enorme</h6>
+                            <p class="small">Fino a Terabit al secondo</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="text-center p-3">
+                            <div class="mb-3" style="font-size: 2.5rem; color: #6610f2;">
+                                <i class="bi bi-shield-check"></i>
+                            </div>
+                            <h6>Immunità EM</h6>
+                            <p class="small">Nessuna interferenza elettromagnetica</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="text-center p-3">
+                            <div class="mb-3" style="font-size: 2.5rem; color: #6610f2;">
+                                <i class="bi bi-arrows-angle-expand"></i>
+                            </div>
+                            <h6>Lunga Distanza</h6>
+                            <p class="small">Fino a 100 km senza ripetitori</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SCHEMA A BLOCCHI FIBRA OTTICA -->
+            <div class="fiber-schema">
+                <h5 class="schema-title"><i class="bi bi-diagram-3"></i> Schema a Blocchi del Sistema in Fibra Ottica</h5>
+                
+                <div class="schema-blocks">
+                    <div class="schema-block">
+                        <div class="schema-block-icon">
+                            <i class="bi bi-cpu"></i>
+                        </div>
+                        <div class="schema-block-title">Sorgente Elettrica</div>
+                    </div>
+                    
+                    <div class="schema-arrows">
+                        <i class="bi bi-arrow-right"></i>
+                    </div>
+                    
+                    <div class="schema-block">
+                        <div class="schema-block-icon">
+                            <i class="bi bi-lightbulb"></i>
+                        </div>
+                        <div class="schema-block-title">Trasduttore E/O</div>
+                    </div>
+                    
+                    <div class="schema-arrows">
+                        <i class="bi bi-arrow-right"></i>
+                    </div>
+                    
+                    <div class="schema-block">
+                        <div class="schema-block-icon">
+                            <i class="bi bi-fiber-optical"></i>
+                        </div>
+                        <div class="schema-block-title">Fibra Ottica</div>
+                    </div>
+                    
+                    <div class="schema-arrows">
+                        <i class="bi bi-arrow-right"></i>
+                    </div>
+                    
+                    <div class="schema-block">
+                        <div class="schema-block-icon">
+                            <i class="bi bi-sun"></i>
+                        </div>
+                        <div class="schema-block-title">Rivelatore O/E</div>
+                    </div>
+                    
+                    <div class="schema-arrows">
+                        <i class="bi bi-arrow-right"></i>
+                    </div>
+                    
+                    <div class="schema-block">
+                        <div class="schema-block-icon">
+                            <i class="bi bi-display"></i>
+                        </div>
+                        <div class="schema-block-title">Destinazione</div>
+                    </div>
+                </div>
+                
+                <p class="mt-4" style="color: #666; font-size: 0.9rem;">
+                    <strong>Flusso del segnale:</strong> Segnale elettrico → Luce (LED/Laser) → Fibra → Luce ricevuta → Segnale elettrico
+                </p>
+            </div>
+
+            <!-- BOTTONI PER PAGINE FIGLIE -->
+            <div class="text-center mt-5">
+                <h4 class="mb-4" style="color: #6610f2;">
+                    <i class="bi bi-folder2-open"></i> Approfondisci le Tipologie di Fibra Ottica
+                </h4>
+                
+                <div class="row justify-content-center">
+                    <div class="col-md-4 mb-3">
+                        <a href="fibra_generale.html" class="page-link-button generale">
+                            <i class="bi bi-book me-2"></i> Fibra Ottica Generale
+                        </a>
+                        <p class="small mt-2">Principi base, struttura, vantaggi</p>
+                    </div>
+                    
+                    <div class="col-md-4 mb-3">
+                        <a href="fibra_multimodale.html" class="page-link-button multimodale">
+                            <i class="bi bi-diagram-2 me-2"></i> Fibra Multimodale
+                        </a>
+                        <p class="small mt-2">Per distanze medio-brevi, LAN</p>
+                    </div>
+                    
+                    <div class="col-md-4 mb-3">
+                        <a href="fibra_monomodale.html" class="page-link-button monomodale">
+                            <i class="bi bi-bullseye me-2"></i> Fibra Monomodale
+                        </a>
+                        <p class="small mt-2">Per lunghe distanze, backbone</p>
+                    </div>
+                </div>
+                
+                <div class="alert alert-info mt-4" role="alert">
+                    <i class="bi bi-info-circle me-2"></i>
+                    <strong>Nota:</strong> Queste pagine sono in fase di sviluppo. Se non sono ancora disponibili, verranno create prossimamente.
+                </div>
+            </div>
+        </div>
+
+        <!-- MEZZI GUIDATI (sezione originale mantenuta per compatibilità) -->
         <div class="category-card">
             <h3 class="category-title">
-                <i class="bi bi-cable"></i> Mezzi Guidati (Wired)
+                <i class="bi bi-cable"></i> Mezzi Guidati (Wired) - Panoramica
             </h3>
             
             <p>I mezzi guidati utilizzano un supporto fisico per convogliare i segnali da un punto all'altro. Offrono generalmente maggiore sicurezza e affidabilità.</p>
@@ -757,7 +1169,7 @@
     <!-- ========== FINE FOOTER ========== -->
 
     <script>
-        // FUNZIONI LIGHTBOX CORRETTE
+        // FUNZIONI LIGHTBOX
         function openLightbox(imageSrc, caption) {
             console.log('Tentativo di aprire lightbox con:', imageSrc);
             
@@ -765,13 +1177,11 @@
             const lightboxImage = document.getElementById('lightbox-image');
             const lightboxCaption = document.getElementById('lightbox-caption');
             
-            // Prima prova con l'immagine originale
             lightboxImage.src = imageSrc;
             lightboxCaption.textContent = caption || 'Immagine';
             lightbox.style.display = 'block';
             document.body.style.overflow = 'hidden';
             
-            // Se l'immagine non si carica, usa un fallback
             lightboxImage.onerror = function() {
                 console.log('Immagine non caricata, uso fallback');
                 this.src = 'https://via.placeholder.com/800x600?text=Immagine+non+disponibile';
@@ -798,12 +1208,11 @@
             }
         });
 
-        // FUNZIONE MOSTRA CODICE SORGENTE CORRETTA
+        // FUNZIONE MOSTRA CODICE SORGENTE
         function mostraCodice() {
             const html = document.documentElement.outerHTML;
             const win = window.open("", "Sorgente", "width=900,height=700");
             
-            // Usa template literal normale
             win.document.write(`
                 <html>
                 <head>
@@ -849,7 +1258,7 @@
             win.document.close();
         }
 
-        // Gestione immagini mancanti - VERSIONE CORRETTA
+        // Gestione immagini mancanti
         document.addEventListener('DOMContentLoaded', function() {
             const images = document.querySelectorAll('img.column-image');
             images.forEach(img => {
@@ -860,8 +1269,7 @@
             });
         });
 
-        // Debug: verifica che le funzioni siano accessibili
-        console.log('Funzioni caricate: openLightbox, closeLightbox, mostraCodice');
+        console.log('Pagina madre Mezzi Trasmissivi caricata correttamente');
     </script>
 </body>
 </html>
