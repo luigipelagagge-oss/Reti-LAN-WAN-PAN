@@ -3,103 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fibra Ottica - Principi Generali | Reti LAN, WAN, PAN</title>
+    <title>Cavo Coassiale | Reti LAN, WAN, PAN</title>
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: Arial, sans-serif;
             line-height: 1.6;
-            max-width: 1000px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 20px;
-            background-color: #f5f5f5;
-            color: #333;
-        }
-        
-        /* BOTTONE SORGENTE SEMPLICE */
-        .source-button {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: #e74c3c;
-            color: white;
-            padding: 8px 15px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-size: 0.9em;
-            z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-        
-        .source-button:hover {
-            background: #c0392b;
+            background-color: #f8f9fa;
         }
         
         header {
-            background: linear-gradient(135deg, #9b59b6, #8e44ad);
+            background-color: #dc3545;
             color: white;
-            padding: 30px;
-            border-radius: 10px;
+            padding: 25px;
+            border-radius: 8px;
             margin-bottom: 30px;
             text-align: center;
         }
         
         h1 {
-            margin: 0;
-            font-size: 2.2em;
+            font-size: 2em;
+            margin-bottom: 10px;
         }
         
         h2 {
-            color: #8e44ad;
-            border-bottom: 2px solid #9b59b6;
-            padding-bottom: 10px;
-            margin-top: 30px;
+            color: #dc3545;
+            margin: 25px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #dc3545;
         }
         
-        .content-card {
+        .section {
             background: white;
-            border-radius: 8px;
             padding: 20px;
-            margin: 20px 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         
-        .image-container {
+        .image-box {
             text-align: center;
             margin: 20px 0;
-        }
-        
-        .image-container img {
-            max-width: 90%;
-            border-radius: 8px;
-            border: 1px solid #ddd;
-        }
-        
-        .image-caption {
-            font-style: italic;
-            color: #666;
-            margin-top: 8px;
-            font-size: 0.9em;
-        }
-        
-        .component-list {
-            background: #f8f9fa;
             padding: 15px;
+            background: #f8f9fa;
             border-radius: 8px;
+        }
+        
+        .image-box img {
+            max-width: 80%;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
             margin: 15px 0;
         }
         
-        .component-item {
-            margin: 10px 0;
-            padding-left: 20px;
-            position: relative;
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
         }
         
-        .component-item:before {
-            content: "•";
-            color: #9b59b6;
-            font-weight: bold;
-            position: absolute;
-            left: 0;
+        th {
+            background-color: #e9ecef;
         }
         
         .nav-buttons {
@@ -107,114 +78,115 @@
             margin: 30px 0;
         }
         
-        .nav-button {
+        .nav-btn {
             display: inline-block;
-            background: #3498db;
+            padding: 12px 25px;
+            background-color: #007bff;
             color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
             text-decoration: none;
-            margin: 5px;
+            border-radius: 5px;
+            margin: 0 10px;
+            font-weight: bold;
         }
         
-        .nav-button:hover {
-            background: #2980b9;
-        }
-        
-        .btn-back {
-            background: #7f8c8d;
-        }
-        
-        .btn-multimodale {
-            background: #27ae60;
-        }
-        
-        .btn-monomodale {
-            background: #3498db;
-        }
-        
-        footer {
-            margin-top: 40px;
-            text-align: center;
-            color: #7f8c8d;
-            font-size: 0.9em;
+        .nav-btn:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
 <body>
 
-    <!-- BOTTONE SORGENTE SICURO (solo visualizzazione) -->
-    <a href="https://github.com/luigipelagagge-oss/Reti-LAN-WAN-PAN/blob/main/fibra_generale.html" 
-       target="_blank" 
-       class="source-button">
-        📄 Vedi sorgente
-    </a>
-
     <header>
-        <h1>Fibra Ottica - Principi Generali</h1>
-        <p>Comprendere la struttura e il funzionamento delle fibre ottiche</p>
+        <h1>Cavo Coassiale</h1>
+        <p>Storico mezzo trasmissivo per TV via cavo e reti dati</p>
     </header>
 
-    <div class="content-card">
-        <h2>Introduzione alla Fibra Ottica</h2>
-        <p>La <strong>fibra ottica</strong> è un mezzo trasmissivo che utilizza la <strong>luce</strong> invece dell'elettricità per trasmettere dati. È composta da filamenti di vetro o plastica trasparente estremamente sottili.</p>
+    <div class="section">
+        <h2>Cos'è il Cavo Coassiale?</h2>
+        <p>Il cavo <strong>coassiale</strong> ha un conduttore interno circondato da uno schermo, separati da materiale isolante.</p>
         
-        <div class="image-container">
-            <img src="struttura_fibra_ottica_base.png" alt="Struttura della fibra ottica">
-            <p class="image-caption">Figura 1: Struttura di base di una fibra ottica</p>
+        <div class="image-box">
+            <img src="coassiale_structure.jpg" alt="Struttura del cavo coassiale">
+            <p><em>Figura: Struttura di un cavo coassiale</em></p>
         </div>
     </div>
 
-    <div class="content-card">
-        <h2>Componenti della Fibra Ottica</h2>
-        
-        <div class="component-list">
-            <div class="component-item">
-                <strong>Core (Nucleo)</strong> - La parte centrale dove viaggia la luce. Diametro: 8-62.5 µm.
+    <div class="section">
+        <h2>Componenti del Cavo Coassiale</h2>
+        <ol>
+            <li><strong>Conduttore Centrale:</strong> In rame (anima)</li>
+            <li><strong>Dielettrico:</strong> Materiale isolante</li>
+            <li><strong>Schermo:</strong> Maglia di rame/alluminio</li>
+            <li><strong>Guaina Esterna:</strong> Protezione in PVC</li>
+        </ol>
+    </div>
+
+    <div class="section">
+        <h2>Tipi di Cavi Coassiali</h2>
+        <table>
+            <tr>
+                <th>Tipo</th>
+                <th>Impedenza</th>
+                <th>Uso Principale</th>
+            </tr>
+            <tr>
+                <td><strong>RG-6</strong></td>
+                <td>75 Ω</td>
+                <td>TV via cavo, satellitare</td>
+            </tr>
+            <tr>
+                <td><strong>RG-11</strong></td>
+                <td>75 Ω</td>
+                <td>Distanze lunghe (fino a 600m)</td>
+            </tr>
+            <tr>
+                <td><strong>RG-58</strong></td>
+                <td>50 Ω</td>
+                <td>Reti Ethernet 10BASE2</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="section">
+        <h2>Vantaggi e Svantaggi</h2>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div style="background: #f8d7da; padding: 15px; border-radius: 5px;">
+                <h3>✅ VANTAGGI</h3>
+                <ul>
+                    <li>Maggiore immunità ai disturbi</li>
+                    <li>Distanze maggiori (fino a 500m)</li>
+                    <li>Buona protezione</li>
+                    <li>Ottimo per video</li>
+                </ul>
             </div>
-            <div class="component-item">
-                <strong>Cladding (Mantello)</strong> - Avvolge il core e riflette la luce verso l'interno.
-            </div>
-            <div class="component-item">
-                <strong>Coating Primario</strong> - Rivestimento protettivo in plastica.
-            </div>
-            <div class="component-item">
-                <strong>Guaine Esterne</strong> - Protezione meccanica aggiuntiva.
+            
+            <div style="background: #d4edda; padding: 15px; border-radius: 5px;">
+                <h3>❌ SVANTAGGI</h3>
+                <ul>
+                    <li>Più costoso dell'UTP</li>
+                    <li>Più ingombrante</li>
+                    <li>Installazione complessa</li>
+                    <li>Connettori delicati</li>
+                </ul>
             </div>
         </div>
     </div>
 
-    <div class="content-card">
-        <h2>Principio di Funzionamento</h2>
-        <p>La luce rimane confinata nel core grazie al <strong>principio della riflessione interna totale</strong>:</p>
+    <div class="section">
+        <h2>Applicazioni Principali</h2>
         <ul>
-            <li>Il core ha un <strong>indice di rifrazione più alto</strong> del cladding</li>
-            <li>La luce che tenta di uscire viene riflessa verso l'interno</li>
-            <li>Il segnale può viaggiare per <strong>chilometri senza perdite significative</strong></li>
-        </ul>
-    </div>
-
-    <div class="content-card">
-        <h2>Vantaggi Principali</h2>
-        <ul>
-            <li><strong>Banda larghissima:</strong> Fino a Terabit al secondo</li>
-            <li><strong>Distanze lunghe:</strong> Oltre 100 km senza ripetitori</li>
-            <li><strong>Immunità alle interferenze:</strong> Nessun problema con campi elettromagnetici</li>
-            <li><strong>Sicurezza:</strong> Difficile intercettare senza essere rilevati</li>
-            <li><strong>Peso ridotto:</strong> Molto più leggera dei cavi in rame</li>
+            <li><strong>📺 TV via cavo (CATV)</strong></li>
+            <li><strong>📡 Antenne TV</strong></li>
+            <li><strong>🎥 Sistemi videosorveglianza</strong></li>
+            <li><strong>📶 Reti Ethernet storiche</strong></li>
         </ul>
     </div>
 
     <div class="nav-buttons">
-        <a href="mezzi_trasmissivi.html" class="nav-button btn-back">← Torna ai Mezzi Trasmissivi</a>
-        <a href="fibra_multimodale.html" class="nav-button btn-multimodale">Fibra Multimodale →</a>
-        <a href="fibra_monomodale.html" class="nav-button btn-monomodale">Fibra Monomodale →</a>
+        <a href="utp_dettaglio.html" class="nav-btn">← Cavo UTP</a>
+        <a href="mezzi_trasmissivi.html" class="nav-btn">Torna ai Mezzi</a>
+        <a href="fibra_generale.html" class="nav-btn">Fibra Ottica →</a>
     </div>
-
-    <footer>
-        <p>Materiale didattico - Reti LAN, WAN, PAN</p>
-        <p>© Linee guida ministeriali - Uso educativo</p>
-    </footer>
 
 </body>
 </html>
