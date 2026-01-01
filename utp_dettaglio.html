@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html><!DOCTYPE html>
 <html lang="it">
 <head>
     <meta charset="UTF-8">
@@ -6,74 +6,71 @@
     <title>Cavo UTP - Doppino Intrecciato | Reti LAN, WAN, PAN</title>
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: Arial, sans-serif;
             line-height: 1.6;
-            max-width: 1000px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 20px;
-            background-color: #f5f5f5;
-            color: #333;
+            background-color: #f8f9fa;
         }
         
         header {
-            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            background-color: #28a745;
             color: white;
-            padding: 30px;
-            border-radius: 10px;
+            padding: 25px;
+            border-radius: 8px;
             margin-bottom: 30px;
             text-align: center;
         }
         
         h1 {
-            margin: 0;
-            font-size: 2.2em;
+            font-size: 2em;
+            margin-bottom: 10px;
         }
         
         h2 {
-            color: #27ae60;
-            border-bottom: 2px solid #27ae60;
-            padding-bottom: 10px;
-            margin-top: 30px;
+            color: #28a745;
+            margin: 25px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #28a745;
         }
         
-        .card {
+        .section {
             background: white;
-            border-radius: 8px;
             padding: 20px;
-            margin: 20px 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         
-        .image-container {
+        .image-box {
             text-align: center;
             margin: 20px 0;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
         }
         
-        .image-container img {
-            max-width: 90%;
-            border-radius: 8px;
+        .image-box img {
+            max-width: 80%;
             border: 1px solid #ddd;
+            border-radius: 5px;
         }
         
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 20px 0;
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
+            margin: 15px 0;
         }
         
-        th {
-            background: #27ae60;
-            color: white;
-            padding: 12px;
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
             text-align: left;
         }
         
-        td {
-            padding: 10px 12px;
-            border-bottom: 1px solid #ddd;
+        th {
+            background-color: #e9ecef;
         }
         
         .nav-buttons {
@@ -84,7 +81,7 @@
         .nav-btn {
             display: inline-block;
             padding: 12px 25px;
-            background: #3498db;
+            background-color: #007bff;
             color: white;
             text-decoration: none;
             border-radius: 5px;
@@ -93,10 +90,10 @@
         }
         
         .nav-btn:hover {
-            background: #2980b9;
+            background-color: #0056b3;
         }
         
-        .color-box {
+        .color-chip {
             display: inline-block;
             width: 20px;
             height: 20px;
@@ -105,10 +102,10 @@
             vertical-align: middle;
         }
         
-        .verde { background: #27ae60; }
-        .arancione { background: #e67e22; }
-        .blu { background: #3498db; }
-        .marrone { background: #8b4513; }
+        .orange { background: #fd7e14; }
+        .green { background: #28a745; }
+        .blue { background: #007bff; }
+        .brown { background: #8b4513; }
     </style>
 </head>
 <body>
@@ -118,17 +115,17 @@
         <p>Il cavo più diffuso nelle reti locali (LAN)</p>
     </header>
 
-    <div class="card">
+    <div class="section">
         <h2>Cos'è il cavo UTP?</h2>
         <p>L'<strong>UTP</strong> (Unshielded Twisted Pair - Doppino Intrecciato Non Schermato) è composto da 4 coppie di fili di rame intrecciati tra loro.</p>
         
-        <div class="image-container">
+        <div class="image-box">
             <img src="198-Physical-layer-UTP.jpg" alt="Struttura del cavo UTP">
             <p><em>Figura: Struttura di un cavo UTP - 4 coppie di fili intrecciati</em></p>
         </div>
     </div>
 
-    <div class="card">
+    <div class="section">
         <h2>Categorie di Cavi UTP</h2>
         <table>
             <tr>
@@ -147,7 +144,7 @@
                 <td><strong>CAT 5e</strong></td>
                 <td>100 MHz</td>
                 <td>1 Gbps</td>
-                <td>Gigabit Ethernet (più comune)</td>
+                <td>Gigabit Ethernet</td>
             </tr>
             <tr>
                 <td><strong>CAT 6</strong></td>
@@ -164,30 +161,30 @@
         </table>
     </div>
 
-    <div class="card">
+    <div class="section">
         <h2>Standard di Cablaggio T568B</h2>
         <p>Lo standard più comune in Italia:</p>
         <ul>
-            <li>1. <span class="color-box arancione"></span> Arancione-Bianco</li>
-            <li>2. <span class="color-box arancione" style="opacity: 0.7;"></span> Arancione</li>
-            <li>3. <span class="color-box verde"></span> Verde-Bianco</li>
-            <li>4. <span class="color-box blu"></span> Blu</li>
-            <li>5. <span class="color-box blu" style="opacity: 0.7;"></span> Blu-Bianco</li>
-            <li>6. <span class="color-box verde" style="opacity: 0.7;"></span> Verde</li>
-            <li>7. <span class="color-box marrone"></span> Marrone-Bianco</li>
-            <li>8. <span class="color-box marrone" style="opacity: 0.7;"></span> Marrone</li>
+            <li>1. <span class="color-chip orange"></span> Arancione-Bianco</li>
+            <li>2. <span class="color-chip orange" style="opacity: 0.7;"></span> Arancione</li>
+            <li>3. <span class="color-chip green"></span> Verde-Bianco</li>
+            <li>4. <span class="color-chip blue"></span> Blu</li>
+            <li>5. <span class="color-chip blue" style="opacity: 0.7;"></span> Blu-Bianco</li>
+            <li>6. <span class="color-chip green" style="opacity: 0.7;"></span> Verde</li>
+            <li>7. <span class="color-chip brown"></span> Marrone-Bianco</li>
+            <li>8. <span class="color-chip brown" style="opacity: 0.7;"></span> Marrone</li>
         </ul>
         
-        <div class="image-container">
+        <div class="image-box">
             <img src="RJ45-pinout-diagram-T568B-1.jpg" alt="Pinout RJ-45">
             <p><em>Figura: Pinout del connettore RJ-45 (standard T568B)</em></p>
         </div>
     </div>
 
-    <div class="card">
+    <div class="section">
         <h2>Vantaggi e Svantaggi</h2>
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-            <div style="background: #e8f6f3; padding: 15px; border-radius: 5px;">
+            <div style="background: #d4edda; padding: 15px; border-radius: 5px;">
                 <h3>✅ VANTAGGI</h3>
                 <ul>
                     <li>Costo ridotto</li>
@@ -197,19 +194,19 @@
                 </ul>
             </div>
             
-            <div style="background: #fdedec; padding: 15px; border-radius: 5px;">
+            <div style="background: #f8d7da; padding: 15px; border-radius: 5px;">
                 <h3>❌ SVANTAGGI</h3>
                 <ul>
                     <li>Sensibile alle interferenze</li>
                     <li>Distanza limitata (100m max)</li>
                     <li>Sicurezza inferiore</li>
-                    <li>Velocità limitata</li>
+                    <li>Velocità limitata vs fibra</li>
                 </ul>
             </div>
         </div>
     </div>
 
-    <div class="card">
+    <div class="section">
         <h2>Esempi Pratici</h2>
         <ul>
             <li><strong>🏫 A SCUOLA:</strong> Collegamento computer-laboratorio, LIM, stampanti</li>
