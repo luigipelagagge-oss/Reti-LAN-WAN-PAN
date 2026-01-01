@@ -242,38 +242,54 @@
 
     <script>
         function mostraCodice() {
-            // Prende tutto l'HTML della pagina attuale
-            var htmlCode = document.documentElement.outerHTML;
+            const html = document.documentElement.outerHTML;
+            const win = window.open("", "Sorgente", "width=900,height=700");
             
-            // Crea una nuova finestra
-            var newWindow = window.open("", "Codice Sorgente", "width=800,height=600,scrollbars=yes");
+            win.document.write(`
+                <html>
+                <head>
+                    <title>Sorgente Pagina - Confronto ISO/OSI vs TCP/IP</title>
+                    <style>
+                        body { font-family: 'Segoe UI', sans-serif; padding: 20px; background: #f8f9fa; }
+                        h3 { color: #343a40; margin-bottom: 20px; }
+                        pre { 
+                            background: white; 
+                            padding: 20px; 
+                            border-radius: 10px; 
+                            border: 1px solid #ddd;
+                            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+                            overflow: auto; 
+                            max-height: 500px;
+                            font-family: 'Courier New', monospace;
+                            font-size: 14px;
+                            line-height: 1.5;
+                        }
+                        .btn-close {
+                            background: #0d6efd;
+                            color: white;
+                            border: none;
+                            padding: 10px 25px;
+                            border-radius: 25px;
+                            cursor: pointer;
+                            font-weight: bold;
+                            margin-top: 20px;
+                        }
+                        .btn-close:hover { background: #0b5ed7; }
+                    </style>
+                </head>
+                <body>
+                    <h3>📄 Codice Sorgente - Confronto ISO/OSI vs TCP/IP</h3>
+                    <pre>${html.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</pre>
+                    <div style="text-align: center;">
+                        <button class="btn-close" onclick="window.close()">Chiudi Finestra</button>
+                    </div>
+                </body>
+                </html>
+            `);
             
-            // Scrive il codice nella nuova finestra dentro un tag <pre> per mantenerne la formattazione
-            newWindow.document.write('<html><head><title>Sorgente Pagina</title></head><body>');
-            newWindow.document.write('<h3>Codice Sorgente della Pagina:</h3>');
-            newWindow.document.write('<pre style="background:#f4f4f4; padding:15px; border:1px solid #ccc; white-space: pre-wrap;">');
-            
-            // Sostituisce i caratteri < e > per mostrarli a video invece di eseguirli
-            newWindow.document.write(htmlCode.replace(/</g, "&lt;").replace(/>/g, "&gt;"));
-            
-            newWindow.document.write('</pre>
-<!-- ========== FOOTER CON FONTI ========== -->
-<div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-top: 3px solid #0d6efd; text-align: center;">
-    <a href="fonti_bibliografia.html" style="padding: 10px 25px; background: #0d6efd; color: white; text-decoration: none; border-radius: 20px; font-weight: bold; display: inline-block; margin-bottom: 10px;">
-        📚 Consulta tutte le fonti
-    </a>
-    <p style="color: #666; font-size: 0.9em; margin: 5px 0;">
-        <strong>Uso didattico</strong> - Corso di Reti e Telecomunicazioni<br>
-        Luigi Pelagagge - Art. 70 L. 633/1941
-    </p>
-</div>
-<!-- ========== FINE FOOTER ========== -->
-
-</body></html>');
-            newWindow.document.close();
+            win.document.close();
         }
     </script>
-
 
 <!-- ========== FOOTER CON FONTI ========== -->
 <div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-top: 3px solid #0d6efd; text-align: center;">
