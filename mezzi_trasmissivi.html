@@ -74,12 +74,14 @@
             display: inline-flex;
             align-items: center;
             gap: 10px;
+            border: 2px solid transparent;
         }
 
         .clickable-title:hover {
             background-color: #f8f9fa;
             color: #198754;
             transform: translateX(5px);
+            border-color: #20c997;
         }
 
         .image-gallery {
@@ -149,6 +151,8 @@
             max-height: 80%;
             border-radius: 10px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 3px solid white;
+            object-fit: contain;
         }
 
         .modal-actions {
@@ -375,6 +379,18 @@
             font-size: 0.8rem;
             margin-top: 5px;
         }
+        
+        /* Indicatore click */
+        .click-indicator {
+            display: inline-block;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
     </style>
 </head>
 <body>
@@ -403,9 +419,9 @@
                 <!-- TITOLO CLICCABILE -->
                 <h4 class="clickable-title" onclick="openUTPFullscreen()">
                     <i class="bi bi-lightning-charge"></i> Cavo UTP (Unshielded Twisted Pair)
-                    <small style="font-size: 0.8rem; color: #666; margin-left: 10px;">
-                        <i class="bi bi-arrows-fullscreen"></i> Clicca per visualizzare
-                    </small>
+                    <span class="click-indicator" style="font-size: 0.8rem; color: #0d6efd; margin-left: 10px;">
+                        <i class="bi bi-hand-index"></i> Clicca per ingrandire
+                    </span>
                 </h4>
                 
                 <div class="technical-details">
@@ -516,7 +532,7 @@
                     <tr>
                         <td><strong>Fibra Monomodale</strong><br><small>SMF</small></td>
                         <td>10+ Gbps<br><small>fino a Terabit</small></td>
-                        <td>40+ km<br><small>senza ripetitori</small></td>
+                        <td>40+ km<br<small>senza ripetitori</small></td>
                         <td><strong>+</strong> Banda altissima, immunità EM<br><strong>–</strong> Costo elevato, installazione complessa</td>
                     </tr>
                     <tr>
@@ -575,7 +591,7 @@
 
     </div>
 
-    <!-- MODAL A SCHERMO INTERO PER UTP -->
+    <!-- MODAL A SCHERMO INTERNO PER UTP -->
     <div id="utpFullscreenModal" class="fullscreen-modal">
         <div class="modal-content-full">
             <div class="modal-actions">
@@ -589,10 +605,10 @@
             <img id="utpFullscreenImage" class="modal-image-full" 
                  src="98-Physical-layer-UTP.jpg" 
                  alt="Struttura fisica del cavo UTP - Unshielded Twisted Pair"
-                 onerror="this.src='https://via.placeholder.com/800x600?text=Immagine+UTP+non+disponibile'">
+                 onerror="handleUTPImageError()">
             <div class="modal-caption">
                 <strong>Cavo UTP (Unshielded Twisted Pair)</strong> - Struttura fisica a livello 1
-                <br><small>Utilizza il bottone "Approfondimento UTP" per maggiori informazioni tecniche</small>
+                <br><small>4 coppie di fili di rame intrecciati senza schermatura</small>
             </div>
         </div>
     </div>
@@ -630,8 +646,16 @@
         // Funzioni per la modal UTP a schermo intero
         function openUTPFullscreen() {
             const modal = document.getElementById('utpFullscreenModal');
+            const image = document.getElementById('utpFullscreenImage');
+            
+            // Forza il ricaricamento dell'immagine
+            image.src = image.src + '?t=' + new Date().getTime();
+            
             modal.style.display = 'block';
             document.body.style.overflow = 'hidden'; // Disabilita scroll
+            
+            // Log per debug
+            console.log('Modal aperto, immagine src:', image.src);
         }
 
         function closeUTPFullscreen() {
@@ -642,6 +666,12 @@
 
         function openUTPExternal() {
             window.open('https://www.fiberoptics4sale.com/blogs/archive-posts/95046918-what-is-unshielded-twisted-pair-utp-cable', '_blank', 'noopener,noreferrer');
+        }
+
+        function handleUTPImageError() {
+            const image = document.getElementById('utpFullscreenImage');
+            console.error('Errore nel caricamento dell\'immagine UTP');
+            image.src = 'https://via.placeholder.com/800x600?text=Immagine+UTP+non+disponibile\nClicca+"Approfondimento+UTP"+per+maggiori+informazioni';
         }
 
         // Chiudi modal con ESC
@@ -658,10 +688,8 @@
             }
         });
 
-        // Funzione per aprire immagini normali in modal (per le altre immagini)
+        // Funzione per aprire immagini normali in modal
         function openImageModal(src, caption) {
-            // Qui puoi implementare una modal semplice per le altre immagini se vuoi
-            // Per ora apro semplicemente l'immagine in una nuova scheda
             window.open(src, '_blank');
         }
 
