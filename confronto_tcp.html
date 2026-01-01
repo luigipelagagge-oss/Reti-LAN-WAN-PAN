@@ -5,25 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Confronto ISO/OSI vs TCP/IP</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <style>
         body {
             background-color: #f0f2f5;
             font-family: 'Segoe UI', sans-serif;
-            padding: 40px;
+            padding: 20px;
             text-align: center;
         }
 
         .main-card {
             background: white;
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 40px;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
-        h1 { color: #2c3e50; font-weight: 800; margin-bottom: 30px; }
+        h1 { 
+            color: #2c3e50; 
+            font-weight: 800; 
+            margin-bottom: 10px;
+        }
         
+        .subtitle {
+            color: #6c757d;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
         .tower-table {
             width: 100%;
             border-collapse: separate; 
@@ -46,10 +57,16 @@
             vertical-align: middle;
             transition: transform 0.2s;
             position: relative;
+            cursor: pointer;
         }
 
-        .tower-table td:hover { transform: scale(1.02); z-index: 10; }
+        .tower-table td:hover { 
+            transform: scale(1.02); 
+            z-index: 10; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
 
+        /* ISO/OSI colors */
         .iso-7 { background-color: #e83e8c; }
         .iso-6 { background-color: #d63384; }
         .iso-5 { background-color: #fd7e14; }
@@ -58,6 +75,7 @@
         .iso-2 { background-color: #0d6efd; }
         .iso-1 { background-color: #6c757d; }
 
+        /* TCP/IP colors */
         .tcp-app { background-color: #f06292; border: 3px solid #e83e8c; } 
         .tcp-trans { background-color: #ffe082; color: #333 !important; border: 3px solid #ffc107; }
         .tcp-net { background-color: #a5d6a7; border: 3px solid #198754; }
@@ -147,14 +165,124 @@
             margin-right: 8px;
             font-size: 1.1em;
         }
+
+        /* Info button for levels */
+        .level-info {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .level-info:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(1.2);
+        }
+
+        /* Modal per approfondimenti */
+        .modal-custom {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+            animation: modalFade 0.3s;
+        }
+
+        @keyframes modalFade {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f2f5;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #198754;
+            margin: 0;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #666;
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover {
+            color: #333;
+        }
+
+        .modal-body {
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .modal-highlight {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #198754;
+        }
+
+        .level-detail-item {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #eee;
+        }
+
+        .level-detail-item:last-child {
+            border-bottom: none;
+        }
+
+        .tcp-modal-title {
+            color: #0d6efd !important;
+        }
         
     </style>
 </head>
 <body>
 
     <div class="main-card">
-        <h1>Le Due Torri a Confronto</h1>
-        <p>A sinistra il modello teorico (ISO/OSI), a destra Internet reale (TCP/IP).<br>Guarda come i blocchi si fondono!</p>
+        <h1><i class="bi bi-columns-gap"></i> Le Due Torri a Confronto</h1>
+        <p class="subtitle">A sinistra il modello teorico (ISO/OSI), a destra Internet reale (TCP/IP).<br>Guarda come i blocchi si fondono! <strong>Clicca su qualsiasi livello per approfondire</strong></p>
 
         <table class="tower-table">
             <thead>
@@ -165,55 +293,84 @@
                 </tr>
             </thead>
             <tbody>
+                <!-- Riga 1-3: Applicazione -->
                 <tr>
-                    <td class="iso-7">7. Applicazione</td>
+                    <td class="iso-7" onclick="showDetailModal('iso', 7)">
+                        7. Applicazione
+                        <button class="level-info" onclick="event.stopPropagation(); showDetailModal('iso', 7)">i</button>
+                    </td>
                     <td rowspan="3" class="arrow-cell">➡</td> 
-                    <td rowspan="3" class="tcp-app">
+                    <td rowspan="3" class="tcp-app" onclick="showDetailModal('tcp', 'app')">
                         APPLICAZIONE<br>
                         <small style="font-weight: normal;">(HTTP, FTP, SMTP)</small>
+                        <button class="level-info" onclick="event.stopPropagation(); showDetailModal('tcp', 'app')">i</button>
                     </td>
                 </tr>
                 <tr>
-                    <td class="iso-6">6. Presentazione</td>
+                    <td class="iso-6" onclick="showDetailModal('iso', 6)">
+                        6. Presentazione
+                        <button class="level-info" onclick="event.stopPropagation(); showDetailModal('iso', 6)">i</button>
+                    </td>
                 </tr>
                 <tr>
-                    <td class="iso-5">5. Sessione</td>
+                    <td class="iso-5" onclick="showDetailModal('iso', 5)">
+                        5. Sessione
+                        <button class="level-info" onclick="event.stopPropagation(); showDetailModal('iso', 5)">i</button>
+                    </td>
                 </tr>
 
+                <!-- Riga 4: Trasporto -->
                 <tr>
-                    <td class="iso-4">4. Trasporto</td>
+                    <td class="iso-4" onclick="showDetailModal('iso', 4)">
+                        4. Trasporto
+                        <button class="level-info" onclick="event.stopPropagation(); showDetailModal('iso', 4)">i</button>
+                    </td>
                     <td class="arrow-cell">➡</td>
-                    <td class="tcp-trans">
+                    <td class="tcp-trans" onclick="showDetailModal('tcp', 'trans')">
                         TRASPORTO<br>
                         <small style="font-weight: normal;">(TCP, UDP)</small>
+                        <button class="level-info" onclick="event.stopPropagation(); showDetailModal('tcp', 'trans')">i</button>
                     </td>
                 </tr>
 
+                <!-- Riga 5: Rete/Internet -->
                 <tr>
-                    <td class="iso-3">3. Rete</td>
+                    <td class="iso-3" onclick="showDetailModal('iso', 3)">
+                        3. Rete
+                        <button class="level-info" onclick="event.stopPropagation(); showDetailModal('iso', 3)">i</button>
+                    </td>
                     <td class="arrow-cell">➡</td>
-                    <td class="tcp-net">
+                    <td class="tcp-net" onclick="showDetailModal('tcp', 'net')">
                         INTERNET<br>
                         <small style="font-weight: normal;">(IP)</small>
+                        <button class="level-info" onclick="event.stopPropagation(); showDetailModal('tcp', 'net')">i</button>
                     </td>
                 </tr>
 
+                <!-- Riga 6-7: Accesso alla rete -->
                 <tr>
-                    <td class="iso-2">2. Collegamento</td>
+                    <td class="iso-2" onclick="showDetailModal('iso', 2)">
+                        2. Collegamento
+                        <button class="level-info" onclick="event.stopPropagation(); showDetailModal('iso', 2)">i</button>
+                    </td>
                     <td rowspan="2" class="arrow-cell">➡</td>
-                    <td rowspan="2" class="tcp-access">
+                    <td rowspan="2" class="tcp-access" onclick="showDetailModal('tcp', 'access')">
                         ACCESSO ALLA RETE<br>
                         <small style="font-weight: normal;">(Ethernet, Wi-Fi)</small>
+                        <button class="level-info" onclick="event.stopPropagation(); showDetailModal('tcp', 'access')">i</button>
                     </td>
                 </tr>
                 <tr>
-                    <td class="iso-1">1. Fisico</td>
+                    <td class="iso-1" onclick="showDetailModal('iso', 1)">
+                        1. Fisico
+                        <button class="level-info" onclick="event.stopPropagation(); showDetailModal('iso', 1)">i</button>
+                    </td>
                 </tr>
             </tbody>
         </table>
 
         <div class="note-box">
-            <strong>💡 Cosa impariamo dal codice di questa pagina?</strong>
+            <strong><i class="bi bi-lightbulb"></i> Cosa impariamo dal codice di questa pagina?</strong>
             <p style="margin: 5px 0 0 0;">
                 Se clicchi su "Vedi Sorgente", noterai che per creare il blocco gigante "Applicazione" a destra, abbiamo usato l'attributo HTML <code>&lt;td rowspan="3"&gt;</code>. 
                 Questo comando dice al browser: "Questa cella deve essere alta quanto tre celle normali". È l'equivalente informatico della fusione dei livelli!
@@ -222,25 +379,39 @@
 
         <div class="nav-footer">
             <a href="descrizione_livelli.html" class="btn-nav btn-back">
-                <span class="btn-icon">⬅</span> Torna alle Matriosche
+                <span class="btn-icon"><i class="bi bi-arrow-left"></i></span> Torna alle Matriosche
             </a>
             
             <a href="iso_osi_spiegazione.html" class="btn-nav btn-iso">
-                <span class="btn-icon">📘</span> ISO/OSI Spiegazione
+                <span class="btn-icon"><i class="bi bi-layers"></i></span> ISO/OSI Spiegazione
             </a>
             
             <a href="tcp_ip_spiegazione.html" class="btn-nav btn-tcp">
-                <span class="btn-icon">🌐</span> TCP/IP Spiegazione
+                <span class="btn-icon"><i class="bi bi-globe"></i></span> TCP/IP Spiegazione
             </a>
             
             <a onclick="mostraCodice()" class="btn-nav btn-source">
-                <span class="btn-icon">< /></span> Vedi Sorgente HTML
+                <span class="btn-icon"><i class="bi bi-code-slash"></i></span> Vedi Sorgente HTML
             </a>
         </div>
 
     </div>
 
+    <!-- Modal per approfondimenti -->
+    <div id="detailModal" class="modal-custom">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalLevelTitle"></h3>
+                <button class="close-modal" onclick="closeDetailModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modalLevelContent">
+                <!-- Il contenuto viene inserito dinamicamente via JavaScript -->
+            </div>
+        </div>
+    </div>
+
     <script>
+        // Funzione per mostrare il codice sorgente (CORRETTA)
         function mostraCodice() {
             const html = document.documentElement.outerHTML;
             const win = window.open("", "Sorgente", "width=900,height=700");
@@ -289,12 +460,365 @@
             
             win.document.close();
         }
+
+        // Dati per i popup approfondimenti (ISO/OSI - stessi della pagina precedente)
+        const isoLevelDetails = {
+            7: {
+                title: "Livello 7: Applicazione - ISO/OSI",
+                color: "#e83e8c",
+                content: `
+                    <div class="level-detail-item">
+                        <h5><i class="bi bi-laptop"></i> Il ruolo dell'utente</h5>
+                        <p>Questo livello è l'unico visibile direttamente all'utente finale. Quando usi un browser web, un client di posta elettronica o un'applicazione di messaggistica, stai interagendo con il livello applicazione.</p>
+                    </div>
+                    
+                    <div class="level-detail-item">
+                        <h5><i class="bi bi-shield-check"></i> Funzioni principali</h5>
+                        <ul>
+                            <li><strong>Identificazione dei servizi:</strong> Riconosce se la comunicazione è per il web (HTTP), la posta (SMTP), il trasferimento file (FTP), ecc.</li>
+                            <li><strong>Sincronizzazione:</strong> Garantisce che le applicazioni siano pronte a comunicare.</li>
+                            <li><strong>Autenticazione:</strong> Verifica l'identità degli utenti e dei sistemi.</li>
+                            <li><strong>Privacy:</strong> Implementa misure di sicurezza a livello applicativo.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="modal-highlight">
+                        <strong>Fusione TCP/IP:</strong> Nel modello TCP/IP, questo livello corrisponde al livello <strong>Applicazione</strong> che fonde insieme i livelli 5, 6 e 7 di ISO/OSI.
+                    </div>
+                `
+            },
+            6: {
+                title: "Livello 6: Presentazione - ISO/OSI",
+                color: "#d63384",
+                content: `
+                    <div class="level-detail-item">
+                        <h5><i class="bi bi-translate"></i> Il traduttore universale</h5>
+                        <p>Pensa a questo livello come a un interprete simultaneo. Se un computer parla "ASCII" e un altro "EBCDIC", il livello di presentazione si occupa della traduzione.</p>
+                    </div>
+                    
+                    <div class="level-detail-item">
+                        <h5><i class="bi bi-file-earmark-lock"></i> Funzioni critiche</h5>
+                        <ul>
+                            <li><strong>Crittografia/Decrittografia:</strong> Protegge i dati durante la trasmissione (HTTPS, SSL, TLS).</li>
+                            <li><strong>Compressione/Decompressione:</strong> Riduce la dimensione dei dati per trasmissioni più veloci.</li>
+                            <li><strong>Conversione di formato:</strong> Traduce tra diversi formati di dati (testo, immagini, video).</li>
+                            <li><strong>Serializzazione:</strong> Converte strutture dati complesse in formato trasmissibile.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="modal-highlight">
+                        <strong>Nel TCP/IP:</strong> Le funzioni di presentazione sono gestite direttamente dalle applicazioni nel livello <strong>Applicazione</strong> di TCP/IP.
+                    </div>
+                `
+            },
+            5: {
+                title: "Livello 5: Sessione - ISO/OSI",
+                color: "#fd7e14",
+                content: `
+                    <div class="level-detail-item">
+                        <h5><i class="bi bi-chat-dots"></i> Il moderatore della conversazione</h5>
+                        <p>Questo livello gestisce i "dialoghi" tra computer. Stabilisce chi parla, per quanto tempo, e cosa succede se qualcuno interrompe la conversazione.</p>
+                    </div>
+                    
+                    <div class="level-detail-item">
+                        <h5><i class="bi bi-clock-history"></i> Gestione della sessione</h5>
+                        <ul>
+                            <li><strong>Apertura sessione:</strong> Stabilisce la connessione tra le applicazioni.</li>
+                            <li><strong>Sincronizzazione:</strong> Inserisce punti di controllo (checkpoint) per permettere il ripristino dopo interruzioni.</li>
+                            <li><strong>Dialog control:</strong> Gestisce se la comunicazione è half-duplex (uno parla alla volta) o full-duplex (tutti parlano insieme).</li>
+                            <li><strong>Chiusura sessione:</strong> Termina la conversazione in modo ordinato.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="modal-highlight">
+                        <strong>Integrazione TCP/IP:</strong> Nel TCP/IP, la gestione delle sessioni è integrata nel livello <strong>Trasporto</strong> (TCP) o gestita direttamente dalle applicazioni.
+                    </div>
+                `
+            },
+            4: {
+                title: "Livello 4: Trasporto - ISO/OSI",
+                color: "#ffc107",
+                content: `
+                    <div class="level-detail-item">
+                        <h5><i class="bi bi-truck"></i> Il corriere di rete</h5>
+                        <p>Questo livello si occupa della consegna end-to-end dei dati. Prende i pacchetti e li porta dal computer di origine a quello di destinazione.</p>
+                    </div>
+                    
+                    <div class="level-detail-item">
+                        <h5><i class="bi bi-shield-check"></i> TCP vs UDP - La scelta fondamentale</h5>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 15px 0;">
+                            <div style="background: #d1e7dd; padding: 15px; border-radius: 10px;">
+                                <strong>TCP (Transmission Control Protocol)</strong>
+                                <ul style="font-size: 0.9rem;">
+                                    <li>✅ Connessione orientata</li>
+                                    <li>✅ Affidabile (conferme)</li>
+                                    <li>✅ Controllo di flusso</li>
+                                    <li>✅ Riordinamento pacchetti</li>
+                                    <li>📌 Uso: Web, Email, FTP</li>
+                                </ul>
+                            </div>
+                            <div style="background: #fff3cd; padding: 15px; border-radius: 10px;">
+                                <strong>UDP (User Datagram Protocol)</strong>
+                                <ul style="font-size: 0.9rem;">
+                                    <li>⚡ Senza connessione</li>
+                                    <li>⚡ Più veloce</li>
+                                    <li>⚡ Nessuna conferma</li>
+                                    <li>⚡ Nessun riordinamento</li>
+                                    <li>📌 Uso: VoIP, Streaming, DNS</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-highlight">
+                        <strong>Corrispondenza:</strong> Questo livello corrisponde perfettamente al livello <strong>Trasporto</strong> del modello TCP/IP.
+                    </div>
+                `
+            },
+            3: {
+                title: "Livello 3: Rete - ISO/OSI",
+                color: "#198754",
+                content: `
+                    <div class="level-detail-item">
+                        <h5><i class="bi bi-signpost-split"></i> Il navigatore della rete</h5>
+                        <p>Questo livello è responsabile di trovare il percorso migliore per far viaggiare i dati attraverso le reti. È il livello dei router e degli indirizzi IP.</p>
+                    </div>
+                    
+                    <div class="level-detail-item">
+                        <h5><i class="bi bi-geo-alt"></i> Funzioni principali</h5>
+                        <ul>
+                            <li><strong>Indirizzamento logico:</strong> Assegna indirizzi IP univoci a tutti i dispositivi.</li>
+                            <li><strong>Routing:</strong> Determina il percorso ottimale attraverso la rete.</li>
+                            <li><strong>Instradamento:</strong> Inoltra i pacchetti verso la destinazione.</li>
+                            <li><strong>Frammentazione:</strong> Divide i pacchetti troppo grandi per la rete.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="modal-highlight">
+                        <strong>Corrispondenza TCP/IP:</strong> Questo livello corrisponde al livello <strong>Internet</strong> del modello TCP/IP, che ha come protocollo principale l'IP.
+                    </div>
+                `
+            },
+            2: {
+                title: "Livello 2: Collegamento Dati - ISO/OSI",
+                color: "#0d6efd",
+                content: `
+                    <div class="level-detail-item">
+                        <h5><i class="bi bi-ethernet"></i> Il fattorino di quartiere</h5>
+                        <p>Questo livello gestisce la consegna locale dei dati all'interno di una singola rete. Conosce tutti i dispositivi del vicinato (rete locale) e sa dove consegnare i pacchi.</p>
+                    </div>
+                    
+                    <div class="level-detail-item">
+                        <h5><i class="bi bi-fingerprint"></i> MAC Address - L'impronta digitale dell'hardware</h5>
+                        <p>Ogni scheda di rete ha un indirizzo MAC univoco (es: 00:1A:2B:3C:4D:5E) che identifica fisicamente il dispositivo. A differenza dell'IP, il MAC address non cambia mai.</p>
+                    </div>
+                    
+                    <div class="modal-highlight">
+                        <strong>Fusione TCP/IP:</strong> Questo livello, insieme al livello 1, corrisponde al livello <strong>Accesso alla Rete</strong> di TCP/IP.
+                    </div>
+                `
+            },
+            1: {
+                title: "Livello 1: Fisico - ISO/OSI",
+                color: "#6c757d",
+                content: `
+                    <div class="level-detail-item">
+                        <h5><i class="bi bi-lightning-charge"></i> Il mondo reale</h5>
+                        <p>Qui il software smette di esistere e diventano elettricità, luce o onde radio. È il livello dei cavi, delle prese e dei segnali.</p>
+                    </div>
+                    
+                    <div class="level-detail-item">
+                        <h5><i class="bi bi-cpu"></i> Compiti del livello fisico</h5>
+                        <ul>
+                            <li><strong>Rappresentazione dei bit:</strong> Decide come rappresentare 0 e 1 (5V vs 0V, luce accesa vs spenta, ecc.)</li>
+                            <li><strong>Sincronizzazione:</strong> Definisce quando inizia e finisce ogni bit.</li>
+                            <li><strong>Configurazione fisica:</strong> Specifica connettori, lunghezze dei cavi, tipi di cavi.</li>
+                            <li><strong>Topologia:</strong> Definisce come sono fisicamente collegati i dispositivi.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="modal-highlight">
+                        <strong>Fusione TCP/IP:</strong> Questo livello è fuso con il livello 2 nel livello <strong>Accesso alla Rete</strong> di TCP/IP.
+                    </div>
+                `
+            }
+        };
+
+        // Dati per i popup approfondimenti TCP/IP
+        const tcpLevelDetails = {
+            'app': {
+                title: "Livello: Applicazione - TCP/IP",
+                color: "#f06292",
+                content: `
+                    <div class="level-detail-item">
+                        <h5><i class="bi bi-layers"></i> La fusione dei 3 livelli superiori</h5>
+                        <p>Il livello Applicazione di TCP/IP unisce in un solo livello le funzioni dei livelli 5, 6 e 7 del modello ISO/OSI. Questa semplificazione riflette come Internet funziona nella realtà.</p>
+                    </div>
+                    
+                    <div class="level-detail-item">
+                        <h5><i class="bi bi-puzzle"></i> Cosa contiene questo livello?</h5>
+                        <ul>
+                            <li><strong>Protocolli di applicazione:</strong> HTTP, FTP, SMTP, DNS, SSH, Telnet</li>
+                            <li><strong>Servizi di rete:</strong> Servizi per le applicazioni degli utenti</li>
+                            <li><strong>Interfaccia utente:</strong> Browser, client di posta, applicazioni di rete</li>
+                            <li><strong>Gestione sessioni:</strong> Controllo del dialogo tra applicazioni</li>
+                            <li><strong>Presentazione dati:</strong> Criptazione, compressione, conversione</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="modal-highlight">
+                        <strong>Vantaggio pratico:</strong> Questa fusione rende TCP/IP più semplice da implementare rispetto al modello ISO/OSI teorico, spiegando perché è diventato lo standard de facto di Internet.
+                    </div>
+                `
+            },
+            'trans': {
+                title: "Livello: Trasporto - TCP/IP",
+                color: "#ffc107",
+                content: `
+                    <div class="level-detail-item">
+                        <h5><i class="bi bi-arrow-left-right"></i> Comunicazione end-to-end</h5>
+                        <p>Questo livello corrisponde perfettamente al livello 4 di ISO/OSI. Gestisce la comunicazione diretta tra due host, garantendo (o meno) l'affidabilità della trasmissione.</p>
+                    </div>
+                    
+                    <div class="level-detail-item">
+                        <h5><i class="bi bi-diagram-2"></i> Protocolli principali</h5>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 15px 0;">
+                            <div style="background: #d1e7dd; padding: 15px; border-radius: 10px;">
+                                <strong>TCP</strong><br>
+                                <small>Transmission Control Protocol</small>
+                                <ul style="font-size: 0.9rem; margin-top: 10px;">
+                                    <li>✅ Connessione orientata</li>
+                                    <li>✅ Controllo di flusso</li>
+                                    <li>✅ Controllo errori</li>
+                                    <li>✅ Riordinamento</li>
+                                    <li>📊 Web, Email</li>
+                                </ul>
+                            </div>
+                            <div style="background: #fff3cd; padding: 15px; border-radius: 10px;">
+                                <strong>UDP</strong><br>
+                                <small>User Datagram Protocol</small>
+                                <ul style="font-size: 0.9rem; margin-top: 10px;">
+                                    <li>⚡ Senza connessione</li>
+                                    <li>⚡ Basso overhead</li>
+                                    <li>⚡ Nessun controllo</li>
+                                    <li>⚡ Più veloce</li>
+                                    <li>📊 Streaming, DNS</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-highlight">
+                        <strong>Porte:</strong> Il livello trasporto usa numeri di porta (0-65535) per identificare le applicazioni. Le porte ben note (well-known) vanno da 0 a 1023 (es: 80 HTTP, 443 HTTPS).
+                    </div>
+                `
+            },
+            'net': {
+                title: "Livello: Internet - TCP/IP",
+                color: "#4caf50",
+                content: `
+                    <div class="level-detail-item">
+                        <h5><i class="bi bi-globe"></i> Il cuore di Internet</h5>
+                        <p>Questo livello corrisponde al livello 3 di ISO/OSI. È responsabile dell'indirizzamento logico, del routing e dell'instradamento dei pacchetti attraverso reti multiple.</p>
+                    </div>
+                    
+                    <div class="level-detail-item">
+                        <h5><i class="bi bi-gear-wide-connected"></i> Il protocollo IP</h5>
+                        <p>L'Internet Protocol (IP) è il protocollo principale di questo livello. Fornisce:</p>
+                        <ul>
+                            <li><strong>Indirizzamento logico:</strong> Assegna indirizzi IP univoci (IPv4: 192.168.1.1, IPv6: 2001:0db8:85a3::)</li>
+                            <li><strong>Routing:</strong> Trova il percorso attraverso la rete</li>
+                            <li><strong>Fragmentazione:</strong> Divide pacchetti troppo grandi</li>
+                            <li><strong>Best-effort delivery:</strong> Consegna senza garanzie (l'affidabilità è compito del TCP)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="modal-highlight">
+                        <strong>Router:</strong> I router operano a questo livello, prendendo decisioni di instradamento basate sulle tabelle di routing e sugli indirizzi IP di destinazione.
+                    </div>
+                `
+            },
+            'access': {
+                title: "Livello: Accesso alla Rete - TCP/IP",
+                color: "#2196f3",
+                content: `
+                    <div class="level-detail-item">
+                        <h5><i class="bi bi-wifi"></i> L'interfaccia con l'hardware</h5>
+                        <p>Questo livello fonde insieme i livelli 1 e 2 di ISO/OSI. Gestisce tutto ciò che riguarda la connessione fisica alla rete e la comunicazione locale.</p>
+                    </div>
+                    
+                    <div class="level-detail-item">
+                        <h5><i class="bi bi-hdd-stack"></i> Cosa include questo livello?</h5>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 15px 0;">
+                            <div style="background: #e2e3e5; padding: 15px; border-radius: 10px;">
+                                <strong>Parte Fisica</strong>
+                                <ul style="font-size: 0.9rem;">
+                                    <li>Cavi (rame, fibra)</li>
+                                    <li>Connettori (RJ45)</li>
+                                    <li>Schede di rete</li>
+                                    <li>Segnali wireless</li>
+                                    <li>Hub/Ripetitori</li>
+                                </ul>
+                            </div>
+                            <div style="background: #cfe2ff; padding: 15px; border-radius: 10px;">
+                                <strong>Parte Collegamento</strong>
+                                <ul style="font-size: 0.9rem;">
+                                    <li>Frame (trame dati)</li>
+                                    <li>MAC Address</li>
+                                    <li>Switch/Bridge</li>
+                                    <li>Ethernet, Wi-Fi</li>
+                                    <li>Controllo errori</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-highlight">
+                        <strong>Vantaggio:</strong> Questa fusione riflette come nella realtà le tecnologie fisiche e di collegamento sono strettamente integrate (es: Ethernet specifica sia il cavo che il formato dei frame).
+                    </div>
+                `
+            }
+        };
+
+        // Funzioni per gestire i modal
+        function showDetailModal(model, level) {
+            const modal = document.getElementById('detailModal');
+            const title = document.getElementById('modalLevelTitle');
+            const content = document.getElementById('modalLevelContent');
+            
+            let detail;
+            if (model === 'iso') {
+                detail = isoLevelDetails[level];
+                title.className = 'modal-title';
+            } else {
+                detail = tcpLevelDetails[level];
+                title.className = 'modal-title tcp-modal-title';
+            }
+            
+            title.textContent = detail.title;
+            title.style.color = detail.color;
+            content.innerHTML = detail.content;
+            
+            modal.style.display = 'block';
+        }
+
+        function closeDetailModal() {
+            document.getElementById('detailModal').style.display = 'none';
+        }
+
+        // Chiudi modal cliccando fuori
+        window.onclick = function(event) {
+            const modal = document.getElementById('detailModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
     </script>
 
 <!-- ========== FOOTER CON FONTI ========== -->
 <div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-top: 3px solid #0d6efd; text-align: center;">
     <a href="fonti_bibliografia.html" style="padding: 10px 25px; background: #0d6efd; color: white; text-decoration: none; border-radius: 20px; font-weight: bold; display: inline-block; margin-bottom: 10px;">
-        📚 Consulta tutte le fonti
+        <i class="bi bi-book"></i> Consulta tutte le fonti
     </a>
     <p style="color: #666; font-size: 0.9em; margin: 5px 0;">
         <strong>Uso didattico</strong> - Corso di Reti e Telecomunicazioni<br>
