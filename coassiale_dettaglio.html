@@ -6,74 +6,71 @@
     <title>Cavo Coassiale | Reti LAN, WAN, PAN</title>
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: Arial, sans-serif;
             line-height: 1.6;
-            max-width: 1000px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 20px;
-            background-color: #f5f5f5;
-            color: #333;
+            background-color: #f8f9fa;
         }
         
         header {
-            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            background-color: #dc3545;
             color: white;
-            padding: 30px;
-            border-radius: 10px;
+            padding: 25px;
+            border-radius: 8px;
             margin-bottom: 30px;
             text-align: center;
         }
         
         h1 {
-            margin: 0;
-            font-size: 2.2em;
+            font-size: 2em;
+            margin-bottom: 10px;
         }
         
         h2 {
-            color: #e74c3c;
-            border-bottom: 2px solid #e74c3c;
-            padding-bottom: 10px;
-            margin-top: 30px;
+            color: #dc3545;
+            margin: 25px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #dc3545;
         }
         
-        .card {
+        .section {
             background: white;
-            border-radius: 8px;
             padding: 20px;
-            margin: 20px 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         
-        .image-container {
+        .image-box {
             text-align: center;
             margin: 20px 0;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
         }
         
-        .image-container img {
-            max-width: 90%;
-            border-radius: 8px;
+        .image-box img {
+            max-width: 80%;
             border: 1px solid #ddd;
+            border-radius: 5px;
         }
         
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 20px 0;
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
+            margin: 15px 0;
         }
         
-        th {
-            background: #e74c3c;
-            color: white;
-            padding: 12px;
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
             text-align: left;
         }
         
-        td {
-            padding: 10px 12px;
-            border-bottom: 1px solid #ddd;
+        th {
+            background-color: #e9ecef;
         }
         
         .nav-buttons {
@@ -84,7 +81,7 @@
         .nav-btn {
             display: inline-block;
             padding: 12px 25px;
-            background: #3498db;
+            background-color: #007bff;
             color: white;
             text-decoration: none;
             border-radius: 5px;
@@ -93,7 +90,7 @@
         }
         
         .nav-btn:hover {
-            background: #2980b9;
+            background-color: #0056b3;
         }
     </style>
 </head>
@@ -104,27 +101,27 @@
         <p>Storico mezzo trasmissivo per TV via cavo e reti dati</p>
     </header>
 
-    <div class="card">
+    <div class="section">
         <h2>Cos'è il Cavo Coassiale?</h2>
-        <p>Il cavo <strong>coassiale</strong> è un tipo di cavo elettrico con un conduttore interno circondato da uno schermo conduttivo, con i due separati da un materiale isolante.</p>
+        <p>Il cavo <strong>coassiale</strong> ha un conduttore interno circondato da uno schermo, separati da materiale isolante.</p>
         
-        <div class="image-container">
-            <img src="coassiale_structure.jpg" alt="Struttura del cavo coassiale" onerror="this.onerror=null; this.src='https://via.placeholder.com/800x300?text=Struttura+Cavo+Coassiale'">
+        <div class="image-box">
+            <img src="coassiale_structure.jpg" alt="Struttura del cavo coassiale">
             <p><em>Figura: Struttura di un cavo coassiale</em></p>
         </div>
     </div>
 
-    <div class="card">
+    <div class="section">
         <h2>Componenti del Cavo Coassiale</h2>
         <ol>
             <li><strong>Conduttore Centrale:</strong> In rame (anima)</li>
-            <li><strong>Dielettrico:</strong> Materiale isolante (polietilene)</li>
-            <li><strong>Schermo:</strong> Maglia o foglio di rame/alluminio</li>
+            <li><strong>Dielettrico:</strong> Materiale isolante</li>
+            <li><strong>Schermo:</strong> Maglia di rame/alluminio</li>
             <li><strong>Guaina Esterna:</strong> Protezione in PVC</li>
         </ol>
     </div>
 
-    <div class="card">
+    <div class="section">
         <h2>Tipi di Cavi Coassiali</h2>
         <table>
             <tr>
@@ -135,7 +132,7 @@
             <tr>
                 <td><strong>RG-6</strong></td>
                 <td>75 Ω</td>
-                <td>TV via cavo, satellitare, CCTV</td>
+                <td>TV via cavo, satellitare</td>
             </tr>
             <tr>
                 <td><strong>RG-11</strong></td>
@@ -145,66 +142,49 @@
             <tr>
                 <td><strong>RG-58</strong></td>
                 <td>50 Ω</td>
-                <td>Reti Ethernet 10BASE2 (obsoleto)</td>
-            </tr>
-            <tr>
-                <td><strong>RG-59</strong></td>
-                <td>75 Ω</td>
-                <td>Video composito (obsoleto)</td>
+                <td>Reti Ethernet 10BASE2</td>
             </tr>
         </table>
     </div>
 
-    <div class="card">
+    <div class="section">
         <h2>Vantaggi e Svantaggi</h2>
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-            <div style="background: #fdedec; padding: 15px; border-radius: 5px;">
+            <div style="background: #f8d7da; padding: 15px; border-radius: 5px;">
                 <h3>✅ VANTAGGI</h3>
                 <ul>
-                    <li>Maggiore immunità ai disturbi vs UTP</li>
+                    <li>Maggiore immunità ai disturbi</li>
                     <li>Distanze maggiori (fino a 500m)</li>
-                    <li>Buona protezione contro intercettazioni</li>
-                    <li>Ottimo per segnali video</li>
+                    <li>Buona protezione</li>
+                    <li>Ottimo per video</li>
                 </ul>
             </div>
             
-            <div style="background: #e8f6f3; padding: 15px; border-radius: 5px;">
+            <div style="background: #d4edda; padding: 15px; border-radius: 5px;">
                 <h3>❌ SVANTAGGI</h3>
                 <ul>
                     <li>Più costoso dell'UTP</li>
-                    <li>Più ingombrante e meno flessibile</li>
-                    <li>Installazione più complessa</li>
-                    <li>Connettori delicati (BNC, F-type)</li>
+                    <li>Più ingombrante</li>
+                    <li>Installazione complessa</li>
+                    <li>Connettori delicati</li>
                 </ul>
             </div>
         </div>
     </div>
 
-    <div class="card">
+    <div class="section">
         <h2>Applicazioni Principali</h2>
         <ul>
-            <li><strong>📺 TV via cavo (CATV):</strong> Distribuzione segnale TV</li>
-            <li><strong>📡 Antenne TV:</strong> Collegamento antenna-televisore</li>
-            <li><strong>🎥 CCTV:</strong> Sistemi videosorveglianza analogici</li>
-            <li><strong>📶 Reti dati storiche:</strong> Ethernet 10BASE2/10BASE5</li>
-            <li><strong>📻 Radioamatori:</strong> Collegamenti RF</li>
-        </ul>
-    </div>
-
-    <div class="card">
-        <h2>Storia del Coassiale nelle Reti</h2>
-        <p>Il cavo coassiale è stato il <strong>primo mezzo utilizzato per le reti Ethernet</strong>:</p>
-        <ul>
-            <li><strong>10BASE5 (Thick Ethernet):</strong> Cavo spesso giallo, fino a 500m</li>
-            <li><strong>10BASE2 (Thin Ethernet):</strong> Cavo sottile RG-58, fino a 185m</li>
-            <li><strong>Topologia a bus:</strong> Tutti i PC collegati sullo stesso cavo</li>
-            <li><strong>Fine anni '90:</strong> Sostituito dall'UTP per maggiore flessibilità</li>
+            <li><strong>📺 TV via cavo (CATV)</strong></li>
+            <li><strong>📡 Antenne TV</strong></li>
+            <li><strong>🎥 Sistemi videosorveglianza</strong></li>
+            <li><strong>📶 Reti Ethernet storiche</strong></li>
         </ul>
     </div>
 
     <div class="nav-buttons">
         <a href="utp_dettaglio.html" class="nav-btn">← Cavo UTP</a>
-        <a href="mezzi_trasmissivi.html" class="nav-btn">Torna ai Mezzi Trasmissivi</a>
+        <a href="mezzi_trasmissivi.html" class="nav-btn">Torna ai Mezzi</a>
         <a href="fibra_generale.html" class="nav-btn">Fibra Ottica →</a>
     </div>
 
