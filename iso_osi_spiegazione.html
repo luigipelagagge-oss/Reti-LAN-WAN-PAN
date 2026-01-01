@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spiegazione Modello ISO/OSI</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <style>
         body {
             background-color: #f0f2f5;
@@ -46,16 +47,20 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             border-left: 5px solid;
             transition: transform 0.3s;
+            cursor: pointer;
+            position: relative;
         }
 
         .level-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
         }
 
         .level-header {
             display: flex;
             align-items: center;
             margin-bottom: 15px;
+            justify-content: space-between;
         }
 
         .level-number {
@@ -75,23 +80,48 @@
             font-weight: 700;
             font-size: 1.4rem;
             margin: 0;
+            flex-grow: 1;
+        }
+
+        .level-info-btn {
+            background: none;
+            border: 2px solid #ddd;
+            color: #666;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .level-info-btn:hover {
+            background: #f8f9fa;
+            border-color: #198754;
+            color: #198754;
         }
 
         .level-description {
             color: #555;
             line-height: 1.6;
+            margin-bottom: 15px;
         }
 
         .level-examples {
             background-color: #f8f9fa;
             border-radius: 10px;
             padding: 15px;
-            margin-top: 15px;
+            margin-top: 10px;
             font-size: 0.9rem;
+            border-left: 3px solid;
         }
 
         .level-examples strong {
             color: #333;
+            display: block;
+            margin-bottom: 5px;
         }
 
         .nav-footer { 
@@ -159,6 +189,88 @@
             border-radius: 10px;
             margin: 30px 0;
         }
+
+        /* Modal per approfondimenti */
+        .modal-custom {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+            animation: modalFade 0.3s;
+        }
+
+        @keyframes modalFade {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f2f5;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #198754;
+            margin: 0;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #666;
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover {
+            color: #333;
+        }
+
+        .modal-body {
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .modal-highlight {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #198754;
+        }
+
+        .level-detail-item {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #eee;
+        }
+
+        .level-detail-item:last-child {
+            border-bottom: none;
+        }
         
     </style>
 </head>
@@ -166,167 +278,452 @@
 
     <div class="main-container">
         <div class="header-card">
-            <h1>📘 Modello ISO/OSI - Spiegazione Completa</h1>
+            <h1><i class="bi bi-layers"></i> Modello ISO/OSI - Spiegazione Completa</h1>
             <p class="subtitle">Il modello di riferimento a 7 livelli per le comunicazioni di rete</p>
             
             <div class="info-box">
-                <p><strong>ISO/OSI</strong> (International Organization for Standardization / Open Systems Interconnection) è un modello teorico creato negli anni '70 per standardizzare le comunicazioni tra sistemi informatici diversi. Divide il processo di comunicazione in 7 livelli logici, ognuno con compiti specifici.</p>
+                <p><strong>ISO/OSI</strong> (International Organization for Standardization / Open Systems Interconnection) è un modello teorico creato negli anni '70 per standardizzare le comunicazioni tra sistemi informatici diversi. Divide il processo di comunicazione in 7 livelli logici, ognuno con compiti specifici. <strong>Clicca su ogni livello per approfondire!</strong></p>
             </div>
         </div>
 
         <!-- Livello 7 -->
-        <div class="level-card" style="border-left-color: #e83e8c;">
+        <div class="level-card" style="border-left-color: #e83e8c;" onclick="showDetailModal(7)">
             <div class="level-header">
                 <div class="level-number" style="background-color: #e83e8c;">7</div>
                 <h3 class="level-title">Applicazione</h3>
+                <button class="level-info-btn" onclick="event.stopPropagation(); showDetailModal(7)">
+                    <i class="bi bi-info-circle"></i>
+                </button>
             </div>
             <div class="level-description">
                 <p>È l'interfaccia tra l'utente e la rete. Fornisce servizi di rete alle applicazioni dell'utente (posta elettronica, browser, trasferimento file).</p>
-                <div class="level-examples">
-                    <strong>Esempi:</strong> HTTP, FTP, SMTP, DNS, SSH
+                <div class="level-examples" style="border-left-color: #e83e8c;">
+                    <strong><i class="bi bi-tags"></i> Protocolli:</strong> HTTP, FTP, SMTP, DNS, SSH
                 </div>
             </div>
         </div>
 
         <!-- Livello 6 -->
-        <div class="level-card" style="border-left-color: #d63384;">
+        <div class="level-card" style="border-left-color: #d63384;" onclick="showDetailModal(6)">
             <div class="level-header">
                 <div class="level-number" style="background-color: #d63384;">6</div>
                 <h3 class="level-title">Presentazione</h3>
+                <button class="level-info-btn" onclick="event.stopPropagation(); showDetailModal(6)">
+                    <i class="bi bi-info-circle"></i>
+                </button>
             </div>
             <div class="level-description">
                 <p>Si occupa della rappresentazione dei dati. Traduce i dati dal formato dell'applicazione a un formato di rete standard e viceversa. Gestisce crittografia, compressione e conversione.</p>
-                <div class="level-examples">
-                    <strong>Esempi:</strong> SSL/TLS, JPEG, MPEG, ASCII/Unicode conversion
+                <div class="level-examples" style="border-left-color: #d63384;">
+                    <strong><i class="bi bi-tags"></i> Protocolli/Tecnologie:</strong> SSL/TLS, JPEG, MPEG, ASCII/Unicode
                 </div>
             </div>
         </div>
 
         <!-- Livello 5 -->
-        <div class="level-card" style="border-left-color: #fd7e14;">
+        <div class="level-card" style="border-left-color: #fd7e14;" onclick="showDetailModal(5)">
             <div class="level-header">
                 <div class="level-number" style="background-color: #fd7e14;">5</div>
                 <h3 class="level-title">Sessione</h3>
+                <button class="level-info-btn" onclick="event.stopPropagation(); showDetailModal(5)">
+                    <i class="bi bi-info-circle"></i>
+                </button>
             </div>
             <div class="level-description">
                 <p>Gestisce il dialogo tra due computer. Stabilisce, gestisce e termina le connessioni (sessioni) tra applicazioni. Coordina chi deve trasmettere e quando.</p>
-                <div class="level-examples">
-                    <strong>Esempi:</strong> NetBIOS, RPC (Remote Procedure Call), SIP
+                <div class="level-examples" style="border-left-color: #fd7e14;">
+                    <strong><i class="bi bi-tags"></i> Protocolli:</strong> NetBIOS, RPC (Remote Procedure Call), SIP
                 </div>
             </div>
         </div>
 
         <!-- Livello 4 -->
-        <div class="level-card" style="border-left-color: #ffc107;">
+        <div class="level-card" style="border-left-color: #ffc107;" onclick="showDetailModal(4)">
             <div class="level-header">
                 <div class="level-number" style="background-color: #ffc107; color: #333;">4</div>
                 <h3 class="level-title">Trasporto</h3>
+                <button class="level-info-btn" onclick="event.stopPropagation(); showDetailModal(4)">
+                    <i class="bi bi-info-circle"></i>
+                </button>
             </div>
             <div class="level-description">
                 <p>Garantisce il trasferimento affidabile dei dati tra host. Fornisce controllo di flusso, segmentazione, controllo degli errori e multiplexing.</p>
-                <div class="level-examples">
-                    <strong>Esempi:</strong> TCP (affidabile), UDP (non affidabile)
+                <div class="level-examples" style="border-left-color: #ffc107;">
+                    <strong><i class="bi bi-tags"></i> Protocolli:</strong> TCP (affidabile), UDP (non affidabile)
                 </div>
             </div>
         </div>
 
         <!-- Livello 3 -->
-        <div class="level-card" style="border-left-color: #198754;">
+        <div class="level-card" style="border-left-color: #198754;" onclick="showDetailModal(3)">
             <div class="level-header">
                 <div class="level-number" style="background-color: #198754;">3</div>
                 <h3 class="level-title">Rete</h3>
+                <button class="level-info-btn" onclick="event.stopPropagation(); showDetailModal(3)">
+                    <i class="bi bi-info-circle"></i>
+                </button>
             </div>
             <div class="level-description">
                 <p>Si occupa dell'indirizzamento logico e del routing dei pacchetti attraverso più reti. Determina il percorso migliore per far viaggiare i dati dalla sorgente alla destinazione.</p>
-                <div class="level-examples">
-                    <strong>Esempi:</strong> IP, ICMP, OSPF, BGP, Router
+                <div class="level-examples" style="border-left-color: #198754;">
+                    <strong><i class="bi bi-tags"></i> Protocolli/Dispositivi:</strong> IP, ICMP, OSPF, BGP, Router
                 </div>
             </div>
         </div>
 
         <!-- Livello 2 -->
-        <div class="level-card" style="border-left-color: #0d6efd;">
+        <div class="level-card" style="border-left-color: #0d6efd;" onclick="showDetailModal(2)">
             <div class="level-header">
                 <div class="level-number" style="background-color: #0d6efd;">2</div>
                 <h3 class="level-title">Collegamento Dati</h3>
+                <button class="level-info-btn" onclick="event.stopPropagation(); showDetailModal(2)">
+                    <i class="bi bi-info-circle"></i>
+                </button>
             </div>
             <div class="level-description">
                 <p>Organizza i bit in frame e fornisce il trasferimento affidabile dei dati attraverso il mezzo fisico. Gestisce il controllo degli errori a livello di collegamento e l'accesso al mezzo.</p>
-                <div class="level-examples">
-                    <strong>Esempi:</strong> Ethernet, Wi-Fi (802.11), PPP, Switch, Bridge
+                <div class="level-examples" style="border-left-color: #0d6efd;">
+                    <strong><i class="bi bi-tags"></i> Tecnologie/Dispositivi:</strong> Ethernet, Wi-Fi (802.11), PPP, Switch, Bridge
                 </div>
             </div>
         </div>
 
         <!-- Livello 1 -->
-        <div class="level-card" style="border-left-color: #6c757d;">
+        <div class="level-card" style="border-left-color: #6c757d;" onclick="showDetailModal(1)">
             <div class="level-header">
                 <div class="level-number" style="background-color: #6c757d;">1</div>
                 <h3 class="level-title">Fisico</h3>
+                <button class="level-info-btn" onclick="event.stopPropagation(); showDetailModal(1)">
+                    <i class="bi bi-info-circle"></i>
+                </button>
             </div>
             <div class="level-description">
                 <p>Trasmette il flusso di bit grezzo attraverso il mezzo fisico. Definisce le caratteristiche elettriche, meccaniche, procedurali e funzionali per attivare, mantenere e disattivare il collegamento fisico.</p>
-                <div class="level-examples">
-                    <strong>Esempi:</strong> Cavi (UTP, fibra ottica), connettori (RJ-45), Hub, Ripetitori, Segnali wireless
+                <div class="level-examples" style="border-left-color: #6c757d;">
+                    <strong><i class="bi bi-tags"></i> Componenti/Tecnologie:</strong> Cavi (UTP, fibra ottica), connettori (RJ-45), Hub, Ripetitori, Segnali wireless
                 </div>
             </div>
         </div>
 
         <div class="nav-footer">
             <a href="confronto_tcp.html" class="btn-nav btn-back">
-                <span class="btn-icon">⬅</span> Torna al Confronto
+                <span class="btn-icon"><i class="bi bi-arrow-left"></i></span> Torna al Confronto
             </a>
             
             <a href="descrizione_livelli.html" class="btn-nav btn-compare">
-                <span class="btn-icon">🏠</span> Torna alle Matriosche
+                <span class="btn-icon"><i class="bi bi-house"></i></span> Torna alle Matriosche
             </a>
             
             <a onclick="mostraCodice()" class="btn-nav btn-source">
-                <span class="btn-icon">< /></span> Vedi Sorgente HTML
+                <span class="btn-icon"><i class="bi bi-code-slash"></i></span> Vedi Sorgente HTML
             </a>
         </div>
 
     </div>
 
-    <script>
-        function mostraCodice() {
-            // Prende tutto l'HTML della pagina attuale
-            var htmlCode = document.documentElement.outerHTML;
-            
-            // Crea una nuova finestra
-            var newWindow = window.open("", "Codice Sorgente", "width=800,height=600,scrollbars=yes");
-            
-            // Scrive il codice nella nuova finestra dentro un tag <pre> per mantenerne la formattazione
-            newWindow.document.write('<html><head><title>Sorgente Pagina</title></head><body>');
-            newWindow.document.write('<h3>Codice Sorgente della Pagina:</h3>');
-            newWindow.document.write('<pre style="background:#f4f4f4; padding:15px; border:1px solid #ccc; white-space: pre-wrap;">');
-            
-            // Sostituisce i caratteri < e > per mostrarli a video invece di eseguirli
-            newWindow.document.write(htmlCode.replace(/</g, "&lt;").replace(/>/g, "&gt;"));
-            
-            newWindow.document.write('</pre>
-<!-- ========== FOOTER CON FONTI ========== -->
-<div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-top: 3px solid #0d6efd; text-align: center;">
-    <a href="fonti_bibliografia.html" style="padding: 10px 25px; background: #0d6efd; color: white; text-decoration: none; border-radius: 20px; font-weight: bold; display: inline-block; margin-bottom: 10px;">
-        📚 Consulta tutte le fonti
-    </a>
-    <p style="color: #666; font-size: 0.9em; margin: 5px 0;">
-        <strong>Uso didattico</strong> - Corso di Reti e Telecomunicazioni<br>
-        Luigi Pelagagge - Art. 70 L. 633/1941
-    </p>
-</div>
-<!-- ========== FINE FOOTER ========== -->
+    <!-- Modal per approfondimenti -->
+    <div id="detailModal" class="modal-custom">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalLevelTitle"></h3>
+                <button class="close-modal" onclick="closeDetailModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modalLevelContent">
+                <!-- Il contenuto viene inserito dinamicamente via JavaScript -->
+            </div>
+        </div>
+    </div>
 
-</body></html>');
-            newWindow.document.close();
+    <script>
+        // Funzione per mostrare il codice sorgente (CORRETTA)
+        function mostraCodice() {
+            const html = document.documentElement.outerHTML;
+            const win = window.open("", "Sorgente", "width=900,height=700");
+            
+            win.document.write(`
+                <html>
+                <head>
+                    <title>Sorgente Pagina - Spiegazione ISO/OSI</title>
+                    <style>
+                        body { font-family: 'Segoe UI', sans-serif; padding: 20px; background: #f8f9fa; }
+                        h3 { color: #343a40; margin-bottom: 20px; }
+                        pre { 
+                            background: white; 
+                            padding: 20px; 
+                            border-radius: 10px; 
+                            border: 1px solid #ddd;
+                            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+                            overflow: auto; 
+                            max-height: 500px;
+                            font-family: 'Courier New', monospace;
+                            font-size: 14px;
+                            line-height: 1.5;
+                        }
+                        .btn-close {
+                            background: #198754;
+                            color: white;
+                            border: none;
+                            padding: 10px 25px;
+                            border-radius: 25px;
+                            cursor: pointer;
+                            font-weight: bold;
+                            margin-top: 20px;
+                        }
+                        .btn-close:hover { background: #157347; }
+                    </style>
+                </head>
+                <body>
+                    <h3>📄 Codice Sorgente - Spiegazione ISO/OSI</h3>
+                    <pre>${html.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</pre>
+                    <div style="text-align: center;">
+                        <button class="btn-close" onclick="window.close()">Chiudi Finestra</button>
+                    </div>
+                </body>
+                </html>
+            `);
+            
+            win.document.close();
+        }
+
+        // Dati per i popup approfondimenti
+        const levelDetails = {
+            7: {
+                title: "Livello 7: Applicazione - Approfondimento",
+                color: "#e83e8c",
+                content: `
+                    <div class="level-detail-item">
+                        <h5><i class="bi bi-laptop"></i> Il ruolo dell'utente</h5>
+                        <p>Questo livello è l'unico visibile direttamente all'utente finale. Quando usi un browser web, un client di posta elettronica o un'applicazione di messaggistica, stai interagendo con il livello applicazione.</p>
+                    </div>
+                    
+                    <div class="level-detail-item">
+                        <h5><i class="bi bi-shield-check"></i> Funzioni principali</h5>
+                        <ul>
+                            <li><strong>Identificazione dei servizi:</strong> Riconosce se la comunicazione è per il web (HTTP), la posta (SMTP), il trasferimento file (FTP), ecc.</li>
+                            <li><strong>Sincronizzazione:</strong> Garantisce che le applicazioni siano pronte a comunicare.</li>
+                            <li><strong>Autenticazione:</strong> Verifica l'identità degli utenti e dei sistemi.</li>
+                            <li><strong>Privacy:</strong> Implementa misure di sicurezza a livello applicativo.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="modal-highlight">
+                        <strong>Esempio pratico:</strong> Quando digiti "https://www.google.com" nella barra degli indirizzi, il browser (livello applicazione) converte questa richiesta in una richiesta HTTP che viene poi passata ai livelli inferiori.
+                    </div>
+                `
+            },
+            6: {
+                title: "Livello 6: Presentazione - Approfondimento",
+                color: "#d63384",
+                content: `
+                    <div class="level-detail-item">
+                        <h5><i class="bi bi-translate"></i> Il traduttore universale</h5>
+                        <p>Pensa a questo livello come a un interprete simultaneo. Se un computer parla "ASCII" e un altro "EBCDIC", il livello di presentazione si occupa della traduzione.</p>
+                    </div>
+                    
+                    <div class="level-detail-item">
+                        <h5><i class="bi bi-file-earmark-lock"></i> Funzioni critiche</h5>
+                        <ul>
+                            <li><strong>Crittografia/Decrittografia:</strong> Protegge i dati durante la trasmissione (HTTPS, SSL, TLS).</li>
+                            <li><strong>Compressione/Decompressione:</strong> Riduce la dimensione dei dati per trasmissioni più veloci.</li>
+                            <li><strong>Conversione di formato:</strong> Traduce tra diversi formati di dati (testo, immagini, video).</li>
+                            <li><strong>Serializzazione:</strong> Converte strutture dati complesse in formato trasmissibile.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="modal-highlight">
+                        <strong>Curiosità:</strong> Il livello di presentazione è spesso "trasparente" per l'utente. Quando scarichi una foto JPEG dal web, non ti accorgi che è stata compressa dal livello 6 per viaggiare più velocemente.
+                    </div>
+                `
+            },
+            5: {
+                title: "Livello 5: Sessione - Approfondimento",
+                color: "#fd7e14",
+                content: `
+                    <div class="level-detail-item">
+                        <h5><i class="bi bi-chat-dots"></i> Il moderatore della conversazione</h5>
+                        <p>Questo livello gestisce i "dialoghi" tra computer. Stabilisce chi parla, per quanto tempo, e cosa succede se qualcuno interrompe la conversazione.</p>
+                    </div>
+                    
+                    <div class="level-detail-item">
+                        <h5><i class="bi bi-clock-history"></i> Gestione della sessione</h5>
+                        <ul>
+                            <li><strong>Apertura sessione:</strong> Stabilisce la connessione tra le applicazioni.</li>
+                            <li><strong>Sincronizzazione:</strong> Inserisce punti di controllo (checkpoint) per permettere il ripristino dopo interruzioni.</li>
+                            <li><strong>Dialog control:</strong> Gestisce se la comunicazione è half-duplex (uno parla alla volta) o full-duplex (tutti parlano insieme).</li>
+                            <li><strong>Chiusura sessione:</strong> Termina la conversazione in modo ordinato.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="modal-highlight">
+                        <strong>Esempio reale:</strong> Quando scarichi un file grande e la connessione cade, il livello di sessione permette di riprendere il download da dove si era interrotto invece di ricominciare da zero.
+                    </div>
+                `
+            },
+            4: {
+                title: "Livello 4: Trasporto - Approfondimento",
+                color: "#ffc107",
+                content: `
+                    <div class="level-detail-item">
+                        <h5><i class="bi bi-truck"></i> Il corriere di rete</h5>
+                        <p>Questo livello si occupa della consegna end-to-end dei dati. Prende i pacchetti e li porta dal computer di origine a quello di destinazione.</p>
+                    </div>
+                    
+                    <div class="level-detail-item">
+                        <h5><i class="bi bi-shield-check"></i> TCP vs UDP - La scelta fondamentale</h5>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 15px 0;">
+                            <div style="background: #d1e7dd; padding: 15px; border-radius: 10px;">
+                                <strong>TCP (Transmission Control Protocol)</strong>
+                                <ul style="font-size: 0.9rem;">
+                                    <li>✅ Connessione orientata</li>
+                                    <li>✅ Affidabile (conferme)</li>
+                                    <li>✅ Controllo di flusso</li>
+                                    <li>✅ Riordinamento pacchetti</li>
+                                    <li>📌 Uso: Web, Email, FTP</li>
+                                </ul>
+                            </div>
+                            <div style="background: #fff3cd; padding: 15px; border-radius: 10px;">
+                                <strong>UDP (User Datagram Protocol)</strong>
+                                <ul style="font-size: 0.9rem;">
+                                    <li>⚡ Senza connessione</li>
+                                    <li>⚡ Più veloce</li>
+                                    <li>⚡ Nessuna conferma</li>
+                                    <li>⚡ Nessun riordinamento</li>
+                                    <li>📌 Uso: VoIP, Streaming, DNS</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-highlight">
+                        <strong>Porte:</strong> Il livello di trasporto usa le "porte" per indirizzare i dati alle applicazioni corrette (es. porta 80 per HTTP, 443 per HTTPS, 25 per SMTP).
+                    </div>
+                `
+            },
+            3: {
+                title: "Livello 3: Rete - Approfondimento",
+                color: "#198754",
+                content: `
+                    <div class="level-detail-item">
+                        <h5><i class="bi bi-signpost-split"></i> Il navigatore della rete</h5>
+                        <p>Questo livello è responsabile di trovare il percorso migliore per far viaggiare i dati attraverso le reti. È il livello dei router e degli indirizzi IP.</p>
+                    </div>
+                    
+                    <div class="level-detail-item">
+                        <h5><i class="bi bi-geo-alt"></i> Funzioni principali</h5>
+                        <ul>
+                            <li><strong>Indirizzamento logico:</strong> Assegna indirizzi IP univoci a tutti i dispositivi.</li>
+                            <li><strong>Routing:</strong> Determina il percorso ottimale attraverso la rete.</li>
+                            <li><strong>Instradamento:</strong> Inoltra i pacchetti verso la destinazione.</li>
+                            <li><strong>Frammentazione:</strong> Divide i pacchetti troppo grandi per la rete.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="level-detail-item">
+                        <h5><i class="bi bi-router"></i> Router - Il cervello del livello 3</h5>
+                        <p>I router sono i dispositivi principali di questo livello. Mantengono tabelle di routing che contengono le "mappe" della rete per sapere dove inviare i pacchetti.</p>
+                    </div>
+                    
+                    <div class="modal-highlight">
+                        <strong>Metafora:</strong> Se il livello 4 è il corriere che consegna un pacco, il livello 3 è il sistema GPS che gli dice quale strada prendere per arrivare a destinazione nel modo più efficiente.
+                    </div>
+                `
+            },
+            2: {
+                title: "Livello 2: Collegamento Dati - Approfondimento",
+                color: "#0d6efd",
+                content: `
+                    <div class="level-detail-item">
+                        <h5><i class="bi bi-ethernet"></i> Il fattorino di quartiere</h5>
+                        <p>Questo livello gestisce la consegna locale dei dati all'interno di una singola rete. Conosce tutti i dispositivi del vicinato (rete locale) e sa dove consegnare i pacchi.</p>
+                    </div>
+                    
+                    <div class="level-detail-item">
+                        <h5><i class="bi bi-fingerprint"></i> MAC Address - L'impronta digitale dell'hardware</h5>
+                        <p>Ogni scheda di rete ha un indirizzo MAC univoco (es: 00:1A:2B:3C:4D:5E) che identifica fisicamente il dispositivo. A differenza dell'IP, il MAC address non cambia mai.</p>
+                    </div>
+                    
+                    <div class="level-detail-item">
+                        <h5><i class="bi bi-hdd-network"></i> Switch - Il dispositivo chiave</h5>
+                        <p>Gli switch memorizzano una tabella che associa ogni MAC address alla porta fisica a cui è collegato. Questo permette di inviare i dati solo al destinatario corretto, migliorando l'efficienza.</p>
+                    </div>
+                    
+                    <div class="modal-highlight">
+                        <strong>Controllo degli errori:</strong> Il livello 2 calcola il CRC (Cyclic Redundancy Check) per verificare se i dati sono arrivati integri. Se trova errori, scarta semplicemente il frame (la ritrasmissione è compito del livello 4).
+                    </div>
+                `
+            },
+            1: {
+                title: "Livello 1: Fisico - Approfondimento",
+                color: "#6c757d",
+                content: `
+                    <div class="level-detail-item">
+                        <h5><i class="bi bi-lightning-charge"></i> Il mondo reale</h5>
+                        <p>Qui il software smette di esistere e diventano elettricità, luce o onde radio. È il livello dei cavi, delle prese e dei segnali.</p>
+                    </div>
+                    
+                    <div class="level-detail-item">
+                        <h5><i class="bi bi-cpu"></i> Compiti del livello fisico</h5>
+                        <ul>
+                            <li><strong>Rappresentazione dei bit:</strong> Decide come rappresentare 0 e 1 (5V vs 0V, luce accesa vs spenta, ecc.)</li>
+                            <li><strong>Sincronizzazione:</strong> Definisce quando inizia e finisce ogni bit.</li>
+                            <li><strong>Configurazione fisica:</strong> Specifica connettori, lunghezze dei cavi, tipi di cavi.</li>
+                            <li><strong>Topologia:</strong> Definisce come sono fisicamente collegati i dispositivi.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="level-detail-item">
+                        <h5><i class="bi bi-tools"></i> Mezzi trasmissivi</h5>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin: 15px 0;">
+                            <div style="background: #e2e3e5; padding: 10px; border-radius: 8px; text-align: center;">
+                                <strong>Rame</strong><br>Ethernet
+                            </div>
+                            <div style="background: #d1ecf1; padding: 10px; border-radius: 8px; text-align: center;">
+                                <strong>Fibra</strong><br>Ottica
+                            </div>
+                            <div style="background: #f8d7da; padding: 10px; border-radius: 8px; text-align: center;">
+                                <strong>Aria</strong><br>Wi-Fi
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-highlight">
+                        <strong>Hub vs Switch:</strong> Gli hub (livello 1) sono "stupidi" - ripetono il segnale a tutti. Gli switch (livello 2) sono "intelligenti" - inviano i dati solo al destinatario corretto.
+                    </div>
+                `
+            }
+        };
+
+        // Funzioni per gestire i modal
+        function showDetailModal(level) {
+            const modal = document.getElementById('detailModal');
+            const title = document.getElementById('modalLevelTitle');
+            const content = document.getElementById('modalLevelContent');
+            
+            const detail = levelDetails[level];
+            title.textContent = detail.title;
+            title.style.color = detail.color;
+            content.innerHTML = detail.content;
+            
+            modal.style.display = 'block';
+        }
+
+        function closeDetailModal() {
+            document.getElementById('detailModal').style.display = 'none';
+        }
+
+        // Chiudi modal cliccando fuori
+        window.onclick = function(event) {
+            const modal = document.getElementById('detailModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
         }
     </script>
 
-
 <!-- ========== FOOTER CON FONTI ========== -->
 <div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-top: 3px solid #0d6efd; text-align: center;">
     <a href="fonti_bibliografia.html" style="padding: 10px 25px; background: #0d6efd; color: white; text-decoration: none; border-radius: 20px; font-weight: bold; display: inline-block; margin-bottom: 10px;">
-        📚 Consulta tutte le fonti
+        <i class="bi bi-book"></i> Consulta tutte le fonti
     </a>
     <p style="color: #666; font-size: 0.9em; margin: 5px 0;">
         <strong>Uso didattico</strong> - Corso di Reti e Telecomunicazioni<br>
