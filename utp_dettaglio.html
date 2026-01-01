@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cavo UTP - Doppino Intrecciato | Reti LAN, WAN, PAN</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        h1 {
+            margin: 0;
+            font-size: 2.2em;
+        }
+        
+        h2 {
+            color: #27ae60;
+            border-bottom: 2px solid #27ae60;
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .image-container img {
+            max-width: 90%;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        th {
+            background: #27ae60;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .nav-buttons {
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .nav-btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 0 10px;
+            font-weight: bold;
+        }
+        
+        .nav-btn:hover {
+            background: #2980b9;
+        }
+        
+        .color-box {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+            border-radius: 3px;
+            vertical-align: middle;
+        }
+        
+        .verde { background: #27ae60; }
+        .arancione { background: #e67e22; }
+        .blu { background: #3498db; }
+        .marrone { background: #8b4513; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Cavo UTP - Doppino Intrecciato</h1>
+        <p>Il cavo più diffuso nelle reti locali (LAN)</p>
+    </header>
+
+    <div class="card">
+        <h2>Cos'è il cavo UTP?</h2>
+        <p>L'<strong>UTP</strong> (Unshielded Twisted Pair - Doppino Intrecciato Non Schermato) è composto da 4 coppie di fili di rame intrecciati tra loro.</p>
+        
+        <div class="image-container">
+            <img src="198-Physical-layer-UTP.jpg" alt="Struttura del cavo UTP">
+            <p><em>Figura: Struttura di un cavo UTP - 4 coppie di fili intrecciati</em></p>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Categorie di Cavi UTP</h2>
+        <table>
+            <tr>
+                <th>Categoria</th>
+                <th>Banda</th>
+                <th>Velocità Max</th>
+                <th>Uso Principale</th>
+            </tr>
+            <tr>
+                <td>CAT 5</td>
+                <td>100 MHz</td>
+                <td>100 Mbps</td>
+                <td>Fast Ethernet</td>
+            </tr>
+            <tr>
+                <td><strong>CAT 5e</strong></td>
+                <td>100 MHz</td>
+                <td>1 Gbps</td>
+                <td>Gigabit Ethernet (più comune)</td>
+            </tr>
+            <tr>
+                <td><strong>CAT 6</strong></td>
+                <td>250 MHz</td>
+                <td>10 Gbps (fino a 55m)</td>
+                <td>Gigabit/10G Ethernet</td>
+            </tr>
+            <tr>
+                <td>CAT 6A</td>
+                <td>500 MHz</td>
+                <td>10 Gbps (fino a 100m)</td>
+                <td>10GBASE-T</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="card">
+        <h2>Standard di Cablaggio T568B</h2>
+        <p>Lo standard più comune in Italia:</p>
+        <ul>
+            <li>1. <span class="color-box arancione"></span> Arancione-Bianco</li>
+            <li>2. <span class="color-box arancione" style="opacity: 0.7;"></span> Arancione</li>
+            <li>3. <span class="color-box verde"></span> Verde-Bianco</li>
+            <li>4. <span class="color-box blu"></span> Blu</li>
+            <li>5. <span class="color-box blu" style="opacity: 0.7;"></span> Blu-Bianco</li>
+            <li>6. <span class="color-box verde" style="opacity: 0.7;"></span> Verde</li>
+            <li>7. <span class="color-box marrone"></span> Marrone-Bianco</li>
+            <li>8. <span class="color-box marrone" style="opacity: 0.7;"></span> Marrone</li>
+        </ul>
+        
+        <div class="image-container">
+            <img src="RJ45-pinout-diagram-T568B-1.jpg" alt="Pinout RJ-45">
+            <p><em>Figura: Pinout del connettore RJ-45 (standard T568B)</em></p>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Vantaggi e Svantaggi</h2>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div style="background: #e8f6f3; padding: 15px; border-radius: 5px;">
+                <h3>✅ VANTAGGI</h3>
+                <ul>
+                    <li>Costo ridotto</li>
+                    <li>Facile installazione</li>
+                    <li>Flessibilità</li>
+                    <li>Compatibilità universale</li>
+                </ul>
+            </div>
+            
+            <div style="background: #fdedec; padding: 15px; border-radius: 5px;">
+                <h3>❌ SVANTAGGI</h3>
+                <ul>
+                    <li>Sensibile alle interferenze</li>
+                    <li>Distanza limitata (100m max)</li>
+                    <li>Sicurezza inferiore</li>
+                    <li>Velocità limitata</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Esempi Pratici</h2>
+        <ul>
+            <li><strong>🏫 A SCUOLA:</strong> Collegamento computer-laboratorio, LIM, stampanti</li>
+            <li><strong>🏠 IN CASA:</strong> Collegamento router-PC, TV Smart, console di gioco</li>
+            <li><strong>🏢 IN UFFICIO:</strong> Prese di rete a muro, telefoni VoIP</li>
+        </ul>
+    </div>
+
+    <div class="nav-buttons">
+        <a href="mezzi_trasmissivi.html" class="nav-btn">← Torna ai Mezzi Trasmissivi</a>
+        <a href="coassiale_dettaglio.html" class="nav-btn">Cavo Coassiale →</a>
+    </div>
+
+</body>
+</html>
