@@ -206,6 +206,7 @@
             max-height: 80%;
             border-radius: 10px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            object-fit: contain;
         }
 
         .lightbox-close {
@@ -714,7 +715,7 @@
     <div id="lightbox" class="lightbox">
         <div class="lightbox-content">
             <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
-            <img id="lightbox-image" class="lightbox-image">
+            <img id="lightbox-image" class="lightbox-image" alt="Immagine ingrandita">
             <div class="lightbox-caption" id="lightbox-caption"></div>
         </div>
     </div>
@@ -756,28 +757,31 @@
     <!-- ========== FINE FOOTER ========== -->
 
     <script>
-        // FUNZIONI LIGHTBOX
+        // FUNZIONI LIGHTBOX CORRETTE
         function openLightbox(imageSrc, caption) {
+            console.log('Tentativo di aprire lightbox con:', imageSrc);
+            
             const lightbox = document.getElementById('lightbox');
             const lightboxImage = document.getElementById('lightbox-image');
             const lightboxCaption = document.getElementById('lightbox-caption');
             
-            // Aggiungi timestamp per evitare cache
-            const timestamp = new Date().getTime();
-            const imageWithTimestamp = imageSrc + (imageSrc.includes('?') ? '&' : '?') + 't=' + timestamp;
-            
-            lightboxImage.src = imageWithTimestamp;
+            // Prima prova con l'immagine originale
+            lightboxImage.src = imageSrc;
             lightboxCaption.textContent = caption || 'Immagine';
             lightbox.style.display = 'block';
-            document.body.style.overflow = 'hidden'; // Disabilita scroll
+            document.body.style.overflow = 'hidden';
             
-            console.log('Lightbox aperto con immagine:', imageWithTimestamp);
+            // Se l'immagine non si carica, usa un fallback
+            lightboxImage.onerror = function() {
+                console.log('Immagine non caricata, uso fallback');
+                this.src = 'https://via.placeholder.com/800x600?text=Immagine+non+disponibile';
+            };
         }
 
         function closeLightbox() {
             const lightbox = document.getElementById('lightbox');
             lightbox.style.display = 'none';
-            document.body.style.overflow = 'auto'; // Riabilita scroll
+            document.body.style.overflow = 'auto';
         }
 
         // Chiudi lightbox con ESC
@@ -794,11 +798,12 @@
             }
         });
 
-        // Funzione per mostrare il codice sorgente
+        // FUNZIONE MOSTRA CODICE SORGENTE CORRETTA
         function mostraCodice() {
             const html = document.documentElement.outerHTML;
             const win = window.open("", "Sorgente", "width=900,height=700");
             
+            // Usa template literal normale
             win.document.write(`
                 <html>
                 <head>
@@ -844,16 +849,19 @@
             win.document.close();
         }
 
-        // Gestione immagini mancanti
+        // Gestione immagini mancanti - VERSIONE CORRETTA
         document.addEventListener('DOMContentLoaded', function() {
             const images = document.querySelectorAll('img.column-image');
             images.forEach(img => {
                 img.onerror = function() {
                     const alt = this.alt || 'Immagine';
-                    this.src = \`https://via.placeholder.com/400x200?text=\${encodeURIComponent(alt)}\`;
+                    this.src = 'https://via.placeholder.com/400x200?text=' + encodeURIComponent(alt);
                 };
             });
         });
+
+        // Debug: verifica che le funzioni siano accessibili
+        console.log('Funzioni caricate: openLightbox, closeLightbox, mostraCodice');
     </script>
 </body>
 </html>
