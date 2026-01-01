@@ -64,26 +64,6 @@
             gap: 10px;
         }
 
-        /* Stile per titolo cliccabile */
-        .clickable-title {
-            cursor: pointer;
-            color: #20c997;
-            transition: all 0.3s;
-            padding: 10px 15px;
-            border-radius: 10px;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            border: 2px solid transparent;
-        }
-
-        .clickable-title:hover {
-            background-color: #f8f9fa;
-            color: #198754;
-            transform: translateX(5px);
-            border-color: #20c997;
-        }
-
         .image-gallery {
             display: flex;
             flex-wrap: wrap;
@@ -115,100 +95,6 @@
             color: #666;
             font-size: 0.9rem;
             font-style: italic;
-        }
-
-        /* Modal a schermo intero per UTP */
-        .fullscreen-modal {
-            display: none;
-            position: fixed;
-            z-index: 10000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.95);
-            animation: fadeIn 0.3s;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .modal-content-full {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .modal-image-full {
-            max-width: 90%;
-            max-height: 80%;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            border: 3px solid white;
-            object-fit: contain;
-        }
-
-        .modal-actions {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            display: flex;
-            gap: 15px;
-            z-index: 10001;
-        }
-
-        .modal-btn {
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.3s;
-            backdrop-filter: blur(10px);
-        }
-
-        .modal-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px);
-        }
-
-        .modal-btn.close-btn {
-            background: rgba(220, 53, 69, 0.8);
-        }
-
-        .modal-btn.close-btn:hover {
-            background: rgba(220, 53, 69, 1);
-        }
-
-        .modal-btn.external-btn {
-            background: rgba(32, 201, 151, 0.8);
-        }
-
-        .modal-btn.external-btn:hover {
-            background: rgba(32, 201, 151, 1);
-        }
-
-        .modal-caption {
-            color: white;
-            text-align: center;
-            margin-top: 20px;
-            font-size: 1.2rem;
-            max-width: 80%;
-            padding: 15px;
-            background: rgba(0, 0, 0, 0.5);
-            border-radius: 10px;
         }
 
         .table-comparison {
@@ -355,22 +241,6 @@
                 width: 90%;
                 max-width: 300px;
             }
-            
-            .modal-image-full {
-                max-width: 95%;
-                max-height: 70%;
-            }
-            
-            .modal-actions {
-                flex-direction: column;
-                top: 10px;
-                right: 10px;
-            }
-            
-            .modal-btn {
-                padding: 10px 15px;
-                font-size: 0.9rem;
-            }
         }
 
         /* Stile per link esterno */
@@ -378,18 +248,16 @@
             color: #0d6efd;
             font-size: 0.8rem;
             margin-top: 5px;
+            font-weight: 600;
         }
         
-        /* Indicatore click */
-        .click-indicator {
-            display: inline-block;
-            animation: pulse 2s infinite;
+        .link-external {
+            color: #20c997;
+            text-decoration: none;
         }
         
-        @keyframes pulse {
-            0% { opacity: 1; }
-            50% { opacity: 0.5; }
-            100% { opacity: 1; }
+        .link-external:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -416,12 +284,8 @@
             
             <!-- Cavo UTP -->
             <div style="margin-bottom: 30px;">
-                <!-- TITOLO CLICCABILE -->
-                <h4 class="clickable-title" onclick="openUTPFullscreen()">
+                <h4 style="color: #20c997; display: flex; align-items: center; gap: 10px;">
                     <i class="bi bi-lightning-charge"></i> Cavo UTP (Unshielded Twisted Pair)
-                    <span class="click-indicator" style="font-size: 0.8rem; color: #0d6efd; margin-left: 10px;">
-                        <i class="bi bi-hand-index"></i> Clicca per ingrandire
-                    </span>
                 </h4>
                 
                 <div class="technical-details">
@@ -433,18 +297,39 @@
                 </div>
                 
                 <div class="image-gallery">
+                    <!-- IMMAGINE UTP CON LINK ESTERNO -->
                     <div class="image-item">
-                        <img src="98-Physical-layer-UTP.jpg" alt="Cavo UTP - Livello Fisico" onclick="openUTPFullscreen()" onerror="this.src='https://via.placeholder.com/300x200?text=Cavo+UTP'">
-                        <p class="image-caption">Clicca per visualizzare a schermo intero</p>
+                        <a href="https://www.fiberoptics4sale.com/blogs/archive-posts/95046918-what-is-unshielded-twisted-pair-utp-cable" 
+                           target="_blank" 
+                           rel="noopener noreferrer" 
+                           style="text-decoration: none; color: inherit; display: block;">
+                            <img src="98-Physical-layer-UTP.jpg" 
+                                 alt="Struttura fisica del cavo UTP - Clicca per approfondimento" 
+                                 onerror="this.src='https://via.placeholder.com/300x200?text=Cavo+UTP+Immagine'">
+                            <p class="image-caption">
+                                <i class="bi bi-box-arrow-up-right"></i> Struttura fisica UTP
+                                <br><span class="external-link-indicator">(Clicca per approfondimento)</span>
+                            </p>
+                        </a>
                     </div>
+                    
+                    <!-- IMMAGINE CATEGORIE UTP -->
                     <div class="image-item">
-                        <img src="CategorieUTP.png" alt="Categorie UTP a confronto" onclick="openImageModal('CategorieUTP.png', 'Categorie UTP a confronto')" onerror="this.src='https://via.placeholder.com/300x200?text=Categorie+UTP'">
+                        <img src="CategorieUTP.png" 
+                             alt="Categorie UTP a confronto" 
+                             onerror="this.src='https://via.placeholder.com/300x200?text=Categorie+UTP'">
                         <p class="image-caption">Categorie UTP a confronto</p>
                     </div>
+                    
+                    <!-- IMMAGINE RJ45 PINOUT CON LINK ESTERNO -->
                     <div class="image-item">
-                        <!-- LINK CLICCABILE PER TUTORIAL RJ45 -->
-                        <a href="https://www.thetechmentor.com/posts/easy-rj45-wiring-with-rj45-pinout-pic/" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit; display: block;">
-                            <img src="RJ45-pinout-diagram-T568B-1.jpg" alt="Pinout RJ45 standard T568B - Clicca per tutorial" onerror="this.src='https://via.placeholder.com/300x200?text=Pinout+RJ45+Tutorial'">
+                        <a href="https://www.thetechmentor.com/posts/easy-rj45-wiring-with-rj45-pinout-pic/" 
+                           target="_blank" 
+                           rel="noopener noreferrer" 
+                           style="text-decoration: none; color: inherit; display: block;">
+                            <img src="RJ45-pinout-diagram-T568B-1.jpg" 
+                                 alt="Pinout RJ45 standard T568B - Clicca per tutorial" 
+                                 onerror="this.src='https://via.placeholder.com/300x200?text=Pinout+RJ45+Tutorial'">
                             <p class="image-caption">
                                 <i class="bi bi-box-arrow-up-right"></i> Pinout RJ45 - Standard T568B
                                 <br><span class="external-link-indicator">(Clicca per tutorial di cablaggio)</span>
@@ -489,15 +374,21 @@
             
             <div class="image-gallery">
                 <div class="image-item">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Wireless_icon.svg/512px-Wireless_icon.svg.png" alt="Wi-Fi Wireless" onclick="openImageModal('https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Wireless_icon.svg/512px-Wireless_icon.svg.png', 'Icona Wi-Fi')" onerror="this.src='https://via.placeholder.com/300x200?text=Wi-Fi+Wireless'">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Wireless_icon.svg/512px-Wireless_icon.svg.png" 
+                         alt="Wi-Fi Wireless" 
+                         onerror="this.src='https://via.placeholder.com/300x200?text=Wi-Fi+Wireless'">
                     <p class="image-caption">Wi-Fi (IEEE 802.11)</p>
                 </div>
                 <div class="image-item">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Bluetooth.svg/512px-Bluetooth.svg.png" alt="Bluetooth" onclick="openImageModal('https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Bluetooth.svg/512px-Bluetooth.svg.png', 'Icona Bluetooth')" onerror="this.src='https://via.placeholder.com/300x200?text=Bluetooth'">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Bluetooth.svg/512px-Bluetooth.svg.png" 
+                         alt="Bluetooth" 
+                         onerror="this.src='https://via.placeholder.com/300x200?text=Bluetooth'">
                     <p class="image-caption">Bluetooth (PAN)</p>
                 </div>
                 <div class="image-item">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Satellite_icon.svg/512px-Satellite_icon.svg.png" alt="Satellite" onclick="openImageModal('https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Satellite_icon.svg/512px-Satellite_icon.svg.png', 'Icona Satellite')" onerror="this.src='https://via.placeholder.com/300x200?text=Satellite'">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Satellite_icon.svg/512px-Satellite_icon.svg.png" 
+                         alt="Satellite" 
+                         onerror="this.src='https://via.placeholder.com/300x200?text=Satellite'">
                     <p class="image-caption">Comunicazioni Satellite</p>
                 </div>
             </div>
@@ -532,7 +423,7 @@
                     <tr>
                         <td><strong>Fibra Monomodale</strong><br><small>SMF</small></td>
                         <td>10+ Gbps<br><small>fino a Terabit</small></td>
-                        <td>40+ km<br<small>senza ripetitori</small></td>
+                        <td>40+ km<br><small>senza ripetitori</small></td>
                         <td><strong>+</strong> Banda altissima, immunità EM<br><strong>–</strong> Costo elevato, installazione complessa</td>
                     </tr>
                     <tr>
@@ -570,7 +461,7 @@
             </div>
         </div>
 
-        <!-- BOTTONI DI NAVIGAZIONE AGGIUNTI -->
+        <!-- BOTTONI DI NAVIGAZIONE -->
         <div class="nav-footer">
             <a href="confronto_tcp.html" class="btn-nav btn-back">
                 <span class="btn-icon"><i class="bi bi-arrow-left"></i></span> Torna al Confronto
@@ -591,28 +482,6 @@
 
     </div>
 
-    <!-- MODAL A SCHERMO INTERNO PER UTP -->
-    <div id="utpFullscreenModal" class="fullscreen-modal">
-        <div class="modal-content-full">
-            <div class="modal-actions">
-                <button class="modal-btn external-btn" onclick="openUTPExternal()">
-                    <i class="bi bi-box-arrow-up-right"></i> Approfondimento UTP
-                </button>
-                <button class="modal-btn close-btn" onclick="closeUTPFullscreen()">
-                    <i class="bi bi-x-lg"></i> Chiudi
-                </button>
-            </div>
-            <img id="utpFullscreenImage" class="modal-image-full" 
-                 src="98-Physical-layer-UTP.jpg" 
-                 alt="Struttura fisica del cavo UTP - Unshielded Twisted Pair"
-                 onerror="handleUTPImageError()">
-            <div class="modal-caption">
-                <strong>Cavo UTP (Unshielded Twisted Pair)</strong> - Struttura fisica a livello 1
-                <br><small>4 coppie di fili di rame intrecciati senza schermatura</small>
-            </div>
-        </div>
-    </div>
-
     <!-- Bottone Vedi Sorgente Fisso (mobile friendly) -->
     <div class="btn-source-fixed">
         <button class="btn btn-dark shadow-lg rounded-pill px-4 d-flex align-items-center" onclick="mostraCodice()" style="font-weight: 600;">
@@ -622,15 +491,22 @@
 
     <!-- ========== FOOTER CON FONTI ========== -->
     <div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-top: 3px solid #0d6efd; text-align: center; border-radius: 15px;">
-        <a href="https://www.fiberoptics4sale.com/blogs/archive-posts/95046918-what-is-unshielded-twisted-pair-utp-cable" target="_blank" rel="noopener noreferrer" style="padding: 10px 25px; background: linear-gradient(135deg, #0d6efd 0%, #0b5ed7 100%); color: white; text-decoration: none; border-radius: 25px; font-weight: 600; display: inline-block; margin: 0 10px 15px 10px; transition: all 0.3s;">
+        <a href="https://www.fiberoptics4sale.com/blogs/archive-posts/95046918-what-is-unshielded-twisted-pair-utp-cable" 
+           target="_blank" 
+           rel="noopener noreferrer" 
+           style="padding: 10px 25px; background: linear-gradient(135deg, #0d6efd 0%, #0b5ed7 100%); color: white; text-decoration: none; border-radius: 25px; font-weight: 600; display: inline-block; margin: 0 10px 15px 10px; transition: all 0.3s;">
             <i class="bi bi-book me-2"></i> Approfondimento UTP
         </a>
         
-        <a href="https://www.thetechmentor.com/posts/easy-rj45-wiring-with-rj45-pinout-pic/" target="_blank" rel="noopener noreferrer" style="padding: 10px 25px; background: linear-gradient(135deg, #28a745 0%, #20c997 100%); color: white; text-decoration: none; border-radius: 25px; font-weight: 600; display: inline-block; margin: 0 10px 15px 10px; transition: all 0.3s;">
+        <a href="https://www.thetechmentor.com/posts/easy-rj45-wiring-with-rj45-pinout-pic/" 
+           target="_blank" 
+           rel="noopener noreferrer" 
+           style="padding: 10px 25px; background: linear-gradient(135deg, #28a745 0%, #20c997 100%); color: white; text-decoration: none; border-radius: 25px; font-weight: 600; display: inline-block; margin: 0 10px 15px 10px; transition: all 0.3s;">
             <i class="bi bi-tools me-2"></i> Tutorial Cablaggio RJ45
         </a>
         
-        <a href="fonti_bibliografia.html" style="padding: 10px 25px; background: linear-gradient(135deg, #6f42c1 0%, #6610f2 100%); color: white; text-decoration: none; border-radius: 25px; font-weight: 600; display: inline-block; margin: 0 10px 15px 10px; transition: all 0.3s;">
+        <a href="fonti_bibliografia.html" 
+           style="padding: 10px 25px; background: linear-gradient(135deg, #6f42c1 0%, #6610f2 100%); color: white; text-decoration: none; border-radius: 25px; font-weight: 600; display: inline-block; margin: 0 10px 15px 10px; transition: all 0.3s;">
             <i class="bi bi-journal-text me-2"></i> Tutte le fonti
         </a>
         
@@ -643,56 +519,6 @@
     <!-- ========== FINE FOOTER ========== -->
 
     <script>
-        // Funzioni per la modal UTP a schermo intero
-        function openUTPFullscreen() {
-            const modal = document.getElementById('utpFullscreenModal');
-            const image = document.getElementById('utpFullscreenImage');
-            
-            // Forza il ricaricamento dell'immagine
-            image.src = image.src + '?t=' + new Date().getTime();
-            
-            modal.style.display = 'block';
-            document.body.style.overflow = 'hidden'; // Disabilita scroll
-            
-            // Log per debug
-            console.log('Modal aperto, immagine src:', image.src);
-        }
-
-        function closeUTPFullscreen() {
-            const modal = document.getElementById('utpFullscreenModal');
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto'; // Riabilita scroll
-        }
-
-        function openUTPExternal() {
-            window.open('https://www.fiberoptics4sale.com/blogs/archive-posts/95046918-what-is-unshielded-twisted-pair-utp-cable', '_blank', 'noopener,noreferrer');
-        }
-
-        function handleUTPImageError() {
-            const image = document.getElementById('utpFullscreenImage');
-            console.error('Errore nel caricamento dell\'immagine UTP');
-            image.src = 'https://via.placeholder.com/800x600?text=Immagine+UTP+non+disponibile\nClicca+"Approfondimento+UTP"+per+maggiori+informazioni';
-        }
-
-        // Chiudi modal con ESC
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeUTPFullscreen();
-            }
-        });
-
-        // Chiudi modal cliccando sullo sfondo
-        document.getElementById('utpFullscreenModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeUTPFullscreen();
-            }
-        });
-
-        // Funzione per aprire immagini normali in modal
-        function openImageModal(src, caption) {
-            window.open(src, '_blank');
-        }
-
         // Funzione per mostrare il codice sorgente
         function mostraCodice() {
             const html = document.documentElement.outerHTML;
@@ -749,7 +575,7 @@
             images.forEach(img => {
                 img.onerror = function() {
                     const alt = this.alt || 'Immagine';
-                    this.src = `https://via.placeholder.com/300x200?text=${encodeURIComponent(alt)}`;
+                    this.src = \`https://via.placeholder.com/300x200?text=\${encodeURIComponent(alt)}\`;
                 };
             });
         });
