@@ -1,774 +1,218 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mezzi Trasmissivi - Reti LAN, WAN, PAN</title>
+    <title>Fibra Ottica - Principi Generali</title>
     <style>
+        /* STILE SEMPLICE E PULITO */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: Arial, sans-serif;
             line-height: 1.6;
-            max-width: 1000px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 20px;
-            background-color: #f5f5f5;
+            background-color: #f9f9f9;
             color: #333;
         }
         
-        /* BOTTONE SORGENTE HTML */
-        .source-button {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: #e74c3c;
-            color: white;
-            padding: 8px 15px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-size: 0.9em;
-            z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            transition: all 0.3s;
-        }
-        
-        .source-button:hover {
-            background: #c0392b;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-        }
-        
         header {
-            background: linear-gradient(135deg, #2c3e50, #4a6491);
+            background-color: #6a11cb;
             color: white;
-            padding: 30px;
+            padding: 25px;
             border-radius: 10px;
             margin-bottom: 30px;
             text-align: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
         
         h1 {
-            margin: 0;
-            font-size: 2.5em;
+            font-size: 2em;
+            margin-bottom: 10px;
         }
         
         h2 {
-            color: #2c3e50;
-            border-bottom: 3px solid #3498db;
-            padding-bottom: 10px;
-            margin-top: 40px;
+            color: #6a11cb;
+            margin: 25px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #6a11cb;
         }
         
-        h3 {
-            color: #2980b9;
-            margin-top: 25px;
-        }
-        
-        .intro-box {
-            background: white;
-            border-radius: 8px;
-            padding: 25px;
-            margin: 20px 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-            border-left: 5px solid #3498db;
-        }
-        
-        .percorso-didattico {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin: 30px 0;
-        }
-        
-        .tappa {
+        .section {
             background: white;
             padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .image-box {
             text-align: center;
-        }
-        
-        .numero-tappa {
-            display: inline-block;
-            width: 40px;
-            height: 40px;
-            line-height: 40px;
-            background: #3498db;
-            color: white;
-            border-radius: 50%;
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
-        
-        .mezzo-section {
-            background: white;
-            border-radius: 8px;
-            padding: 25px;
-            margin: 30px 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-        }
-        
-        .utp-section {
-            border-left: 5px solid #2ecc71;
-        }
-        
-        .coax-section {
-            border-left: 5px solid #e74c3c;
-        }
-        
-        .fibra-section {
-            border-left: 5px solid #9b59b6;
-        }
-        
-        .wireless-section {
-            border-left: 5px solid #f39c12;
-        }
-        
-        .vantaggi-svantaggi {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
             margin: 20px 0;
-        }
-        
-        .vantaggi {
-            background: #e8f6f3;
             padding: 15px;
-            border-radius: 5px;
-        }
-        
-        .svantaggi {
-            background: #fdedec;
-            padding: 15px;
-            border-radius: 5px;
-        }
-        
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 25px 0;
-            background: white;
+            background: #f0f0f0;
             border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
         }
         
-        th {
-            background: #2c3e50;
-            color: white;
-            padding: 15px;
-            text-align: left;
-        }
-        
-        td {
-            padding: 12px 15px;
-            border-bottom: 1px solid #ddd;
-        }
-        
-        tr:hover {
-            background-color: #f5f5f5;
-        }
-        
-        .esempio-pratico {
-            background: #eaf2f8;
-            padding: 15px;
+        .image-box img {
+            max-width: 80%;
+            height: auto;
             border-radius: 5px;
-            margin: 15px 0;
-            border-left: 4px solid #3498db;
-        }
-        
-        .approfondimento-box {
-            background: #fff8e1;
-            padding: 20px;
-            border-radius: 8px;
-            margin: 25px 0;
-            border: 2px dashed #f39c12;
-        }
-        
-        .nav-button {
-            display: inline-block;
-            background: #3498db;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            margin: 10px 5px;
-            transition: all 0.3s;
-            font-weight: bold;
-        }
-        
-        .nav-button:hover {
-            background: #2980b9;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        
-        .utp-button {
-            background: #2ecc71;
-        }
-        
-        .coax-button {
-            background: #e74c3c;
-        }
-        
-        .fibra-button {
-            background: #9b59b6;
-        }
-        
-        .wireless-button {
-            background: #f39c12;
-        }
-        
-        .image-container {
-            text-align: center;
-            margin: 25px 0;
-        }
-        
-        .image-container img {
-            max-width: 100%;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             border: 1px solid #ddd;
         }
         
         .image-caption {
             font-style: italic;
             color: #666;
-            margin-top: 8px;
+            margin-top: 10px;
             font-size: 0.9em;
         }
         
-        footer {
-            margin-top: 50px;
-            text-align: center;
-            color: #7f8c8d;
-            font-size: 0.9em;
+        .component {
+            background: #f8f9fa;
+            padding: 15px;
+            margin: 10px 0;
+            border-left: 4px solid #6a11cb;
+            border-radius: 5px;
         }
         
-        .callout {
-            background: #e8f4fc;
-            padding: 20px;
-            border-radius: 8px;
-            margin: 25px 0;
-            border-left: 5px solid #2980b9;
+        .component strong {
+            color: #6a11cb;
         }
         
-        .colore-pino {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            margin-right: 8px;
-            border-radius: 3px;
-            vertical-align: middle;
+        ul, ol {
+            padding-left: 20px;
+            margin: 15px 0;
         }
         
-        .verde-scuro { background: #27ae60; }
-        .verde-chiaro { background: #2ecc71; }
-        .arancione-scuro { background: #d35400; }
-        .arancione-chiaro { background: #e67e22; }
-        .blu-scuro { background: #2980b9; }
-        .blu-chiaro { background: #3498db; }
-        .marrone-scuro { background: #784212; }
-        .marrone-chiaro { background: #8b4513; }
+        li {
+            margin: 8px 0;
+        }
         
-        .nav-menu {
+        .navigation {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
             gap: 10px;
-            margin: 20px 0;
+            margin: 30px 0;
         }
+        
+        .nav-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #2575fc;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        .nav-btn:hover {
+            background-color: #1a68e8;
+        }
+        
+        .btn-back {
+            background-color: #666;
+        }
+        
+        .btn-back:hover {
+            background-color: #555;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            color: #777;
+            font-size: 0.9em;
+        }
+        
+        /* NESSUN BOTTONE SORGENTE - PULITO E SICURO */
     </style>
 </head>
 <body>
-    <!-- BOTTONE SORGENTE HTML -->
-    <a href="https://github.com/luigipelagagge-oss/Reti-LAN-WAN-PAN/blob/main/mezzi_trasmissivi.html" 
-       target="_blank" 
-       class="source-button">
-        📄 Vedi sorgente HTML
-    </a>
 
     <header>
-        <h1>Mezzi Trasmissivi nelle Reti di Computer</h1>
-        <p>Guida didattica per la scuola secondaria - Allineato alle linee guida ministeriali</p>
+        <h1>Fibra Ottica - Principi Generali</h1>
+        <p>La trasmissione dati attraverso la luce</p>
     </header>
 
-    <section>
-        <h2>Introduzione ai Mezzi Trasmissivi</h2>
-        <div class="intro-box">
-            <p>I <strong>mezzi trasmissivi</strong> sono i "canali" fisici attraverso i quali i dati viaggiano da un dispositivo a un altro in una rete. Si dividono in due grandi categorie:</p>
-            
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0;">
-                <div style="background: #e8f6f3; padding: 20px; border-radius: 5px;">
-                    <h3 style="color: #27ae60; margin-top: 0;">🔗 Mezzi Guidati</h3>
-                    <p>Il segnale è confinato in un supporto fisico (cavo). Esempi:</p>
-                    <ul>
-                        <li>Doppino intrecciato (UTP/STP)</li>
-                        <li>Cavo coassiale</li>
-                        <li>Fibra ottica</li>
-                    </ul>
-                </div>
-                
-                <div style="background: #f4ecf7; padding: 20px; border-radius: 5px;">
-                    <h3 style="color: #8e44ad; margin-top: 0;">📡 Mezzi Non Guidati</h3>
-                    <p>Il segnale viaggia nell'aria senza supporto fisico. Esempi:</p>
-                    <ul>
-                        <li>Wi-Fi (onde radio)</li>
-                        <li>Bluetooth</li>
-                        <li>Infrarossi</li>
-                        <li>Satellite</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="callout">
-                <h3>🎯 Obiettivo Didattico</h3>
-                <p>Al termine di questa unità, sarai in grado di:</p>
-                <ol>
-                    <li>Identificare i diversi tipi di mezzi trasmissivi</li>
-                    <li>Comprendere vantaggi e limiti di ciascuno</li>
-                    <li>Scegliere il mezzo appropriato in base alle esigenze</li>
-                    <li>Comprendere i principi fisici alla base della trasmissione</li>
-                </ol>
-            </div>
-        </div>
-    </section>
+    <div class="section">
+        <h2>Cos'è la Fibra Ottica?</h2>
+        <p>La <strong>fibra ottica</strong> è un mezzo trasmissivo che utilizza impulsi di <strong>luce</strong> invece di segnali elettrici per trasmettere informazioni. È composta da sottilissimi filamenti di vetro o plastica trasparente.</p>
+    </div>
 
-    <section>
-        <h2>Percorso Didattico</h2>
-        <p>Segui l'ordine logico di apprendimento:</p>
+    <div class="section">
+        <h2>La Tua Figura: Struttura della Fibra</h2>
+        <div class="image-box">
+            <img src="struttura_fibra_ottica_base.png" alt="Struttura della fibra ottica">
+            <p class="image-caption">Figura 1: Componenti fondamentali di una fibra ottica</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>I 4 Componenti Principali</h2>
         
-        <div class="percorso-didattico">
-            <div class="tappa">
-                <div class="numero-tappa" style="background: #2ecc71;">1</div>
-                <h3>UTP - Doppino Intrecciato</h3>
-                <p>Il mezzo più comune nelle reti locali</p>
-                <p>Facile, economico, diffuso</p>
-            </div>
-            
-            <div class="tappa">
-                <div class="numero-tappa" style="background: #e74c3c;">2</div>
-                <h3>Cavo Coassiale</h3>
-                <p>Storico ma ancora utilizzato</p>
-                <p>TV via cavo, segnali video</p>
-            </div>
-            
-            <div class="tappa">
-                <div class="numero-tappa" style="background: #9b59b6;">3</div>
-                <h3>Fibra Ottica</h3>
-                <p>L'autostrada dei dati</p>
-                <p>Massime prestazioni</p>
-            </div>
-            
-            <div class="tappa">
-                <div class="numero-tappa" style="background: #f39c12;">4</div>
-                <h3>Wireless</h3>
-                <p>Comunicazione senza fili</p>
-                <p>Mobilità e flessibilità</p>
-            </div>
+        <div class="component">
+            <strong>1. Core (Nucleo)</strong>
+            <p>La parte centrale dove viaggia la luce. Di vetro ultra-puro, con diametro da 8 a 62.5 micrometri.</p>
         </div>
-    </section>
-
-    <!-- SEZIONE UTP -->
-    <section id="utp">
-        <div class="mezzo-section utp-section">
-            <h2>1. Cavo UTP - Doppino Intrecciato</h2>
-            
-            <div class="image-container">
-                <img src="198-Physical-layer-UTP.jpg" 
-                     alt="Struttura del cavo UTP con 4 doppini intrecciati">
-                <p class="image-caption">Figura 1: Struttura di un cavo UTP - 4 coppie di fili intrecciati</p>
-            </div>
-            
-            <h3>Cos'è e come funziona</h3>
-            <p>L'<strong>UTP</strong> (Unshielded Twisted Pair - Doppino Intrecciato Non Schermato) è composto da 4 coppie di fili di rame intrecciati tra loro. Ogni coppia è formata da due fili:</p>
-            <ul>
-                <li>Uno con isolante colorato</li>
-                <li>Uno con isolante bianco con striature del colore della coppia</li>
-            </ul>
-            
-            <div class="esempio-pratico">
-                <strong>🧠 Perché si intrecciano i fili?</strong>
-                <p>L'intreccio serve a ridurre le interferenze elettromagnetiche (EMI) e la diafonia (crosstalk) tra le coppie. Ogni giro del twist cancella il rumore elettromagnetico catturato.</p>
-            </div>
-            
-            <h3>Categorie di Cavi UTP</h3>
-            <table>
-                <tr>
-                    <th>Categoria</th>
-                    <th>Banda</th>
-                    <th>Velocità Max</th>
-                    <th>Uso Principale</th>
-                    <th>Note</th>
-                </tr>
-                <tr>
-                    <td>CAT 3</td>
-                    <td>16 MHz</td>
-                    <td>10 Mbps</td>
-                    <td>Telefonia, Ethernet 10BASE-T</td>
-                    <td>Ormai obsoleto</td>
-                </tr>
-                <tr>
-                    <td>CAT 5</td>
-                    <td>100 MHz</td>
-                    <td>100 Mbps</td>
-                    <td>Fast Ethernet 100BASE-TX</td>
-                    <td>Ancora in uso ma datato</td>
-                </tr>
-                <tr>
-                    <td><strong>CAT 5e</strong></td>
-                    <td>100 MHz</td>
-                    <td>1 Gbps</td>
-                    <td>Gigabit Ethernet 1000BASE-T</td>
-                    <td>✅ Più comune e utilizzato</td>
-                </tr>
-                <tr>
-                    <td><strong>CAT 6</strong></td>
-                    <td>250 MHz</td>
-                    <td>10 Gbps (fino a 55m)<br>1 Gbps (fino a 100m)</td>
-                    <td>Gigabit/10G Ethernet</td>
-                    <td>✅ Raccomandato per nuove installazioni</td>
-                </tr>
-                <tr>
-                    <td>CAT 6A</td>
-                    <td>500 MHz</td>
-                    <td>10 Gbps (fino a 100m)</td>
-                    <td>10GBASE-T</td>
-                    <td>🔼 Per alte prestazioni</td>
-                </tr>
-                <tr>
-                    <td>CAT 7</td>
-                    <td>600 MHz</td>
-                    <td>10 Gbps (fino a 100m)<br>40 Gbps (fino a 50m)</td>
-                    <td>Data center, ambienti rumorosi</td>
-                    <td>🛡️ Schermato (STP)</td>
-                </tr>
-            </table>
-            
-            <h3>Standard di Cablaggio T568A e T568B</h3>
-            <div class="approfondimento-box">
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center;">
-                    <div>
-                        <p>Esistono due standard per crimpare i connettori RJ-45:</p>
-                        <ul>
-                            <li><strong>T568A</strong>: Utilizzato principalmente in ambito residenziale</li>
-                            <li><strong>T568B</strong>: Più comune in ambito commerciale e in Italia</li>
-                        </ul>
-                        <p><strong>IMPORTANTE:</strong> In una rete, tutti i cavi devono usare lo <strong>stesso standard</strong> su entrambe le estremità!</p>
-                        
-                        <h4>Pinout T568B (il più comune):</h4>
-                        <p>1. <span class="colore-pino arancione-scuro"></span>Arancione-Bianco</p>
-                        <p>2. <span class="colore-pino arancione-chiaro"></span>Arancione</p>
-                        <p>3. <span class="colore-pino verde-scuro"></span>Verde-Bianco</p>
-                        <p>4. <span class="colore-pino blu-scuro"></span>Blu</p>
-                        <p>5. <span class="colore-pino blu-chiaro"></span>Blu-Bianco</p>
-                        <p>6. <span class="colore-pino verde-chiaro"></span>Verde</p>
-                        <p>7. <span class="colore-pino marrone-scuro"></span>Marrone-Bianco</p>
-                        <p>8. <span class="colore-pino marrone-chiaro"></span>Marrone</p>
-                    </div>
-                    <div style="text-align: center;">
-                        <img src="RJ45-pinout-diagram-T568B-1.jpg" 
-                             alt="Pinout del connettore RJ-45 standard T568B" 
-                             style="max-width: 100%; border-radius: 8px; border: 1px solid #ddd; padding: 10px; background: white;">
-                        <p class="image-caption">Figura 2: Pinout RJ-45 - Standard T568B</p>
-                    </div>
-                </div>
-            </div>
-            
-            <h3>Vantaggi e Svantaggi</h3>
-            <div class="vantaggi-svantaggi">
-                <div class="vantaggi">
-                    <h4>✅ VANTAGGI</h4>
-                    <ul>
-                        <li><strong>Costo ridotto</strong>: Il più economico tra i mezzi guidati</li>
-                        <li><strong>Facile installazione</strong>: Connettori RJ-45 standardizzati</li>
-                        <li><strong>Flessibilità</strong>: Facile da far passare nei tubi e canaline</li>
-                        <li><strong>Compatibilità universale</strong>: Supportato da tutti i dispositivi di rete</li>
-                        <li><strong>Bassa attenuazione</strong> per distanze fino a 100m</li>
-                    </ul>
-                </div>
-                
-                <div class="svantaggi">
-                    <h4>❌ SVANTAGGI</h4>
-                    <ul>
-                        <li><strong>Sensibile alle interferenze</strong>: Campi magnetici, radiofrequenze</li>
-                        <li><strong>Distanza limitata</strong>: Massimo 100 metri per segmento</li>
-                        <li><strong>Sicurezza</strong>: Facile da "cucchiare" (sniffare)</li>
-                        <li><strong>Diafonia (Crosstalk)</strong>: Interferenza tra coppie vicine</li>
-                        <li><strong>Velocità limitata</strong>: Rispetto a fibra ottica</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div style="text-align: center; margin: 30px 0;">
-                <a href="utp_dettaglio.html" class="nav-button utp-button">
-                    📖 Pagina Dedicata UTP (Approfondimento)
-                </a>
-                <a href="#coassiale" class="nav-button" style="background: #e74c3c;">
-                    ⬇️ Prosegui con Cavo Coassiale
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- SEZIONE COASSIALE -->
-    <section id="coassiale">
-        <div class="mezzo-section coax-section">
-            <h2>2. Cavo Coassiale</h2>
-            
-            <p>Il cavo coassiale è stato il primo mezzo utilizzato per le reti Ethernet (10BASE2, 10BASE5). Oggi è principalmente usato per:</p>
-            <ul>
-                <li>TV via cavo (CATV)</li>
-                <li>Antenne televisive</li>
-                <li>Impianti video sorveglianza</li>
-                <li>Alcune reti dati industriali</li>
-            </ul>
-            
-            <div class="vantaggi-svantaggi">
-                <div class="vantaggi">
-                    <h4>✅ VANTAGGI</h4>
-                    <ul>
-                        <li>Maggiore immunità ai disturbi rispetto all'UTP</li>
-                        <li>Distanze maggiori (fino a 500m)</li>
-                        <li>Buona protezione contro le intercettazioni</li>
-                        <li>Ottimo per segnali video ad alta frequenza</li>
-                    </ul>
-                </div>
-                
-                <div class="svantaggi">
-                    <h4>❌ SVANTAGGI</h4>
-                    <ul>
-                        <li>Più costoso dell'UTP</li>
-                        <li>Più ingombrante e meno flessibile</li>
-                        <li>Installazione più complessa</li>
-                        <li>Connettori più delicati (BNC, F-type)</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div style="text-align: center; margin: 20px 0;">
-                <a href="coassiale_dettaglio.html" class="nav-button coax-button">
-                    📺 Approfondisci Cavo Coassiale
-                </a>
-                <a href="#fibra" class="nav-button" style="background: #9b59b6;">
-                    ⬇️ Prosegui con Fibra Ottica
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- SEZIONE FIBRA OTTICA -->
-    <section id="fibra">
-        <div class="mezzo-section fibra-section">
-            <h2>3. Fibra Ottica – L'autostrada della luce</h2>
-            
-            <div class="image-container">
-                <img src="struttura_fibra_ottica_base.png" 
-                     alt="Struttura di una fibra ottica: core, cladding, coating primario">
-                <p class="image-caption">Figura 3: Struttura di una fibra ottica - core, cladding, rivestimento primario</p>
-            </div>
-            
-            <p>La fibra ottica utilizza impulsi di luce (fotoni) invece di segnali elettrici per trasmettere dati, raggiungendo prestazioni elevatissime.</p>
-            
-            <h3>Componenti principali:</h3>
-            <ol>
-                <li><strong>Core</strong> (nucleo): Dove viaggia la luce (vetro ultra-puro)</li>
-                <li><strong>Cladding</strong> (mantello): Riflette la luce verso il core</li>
-                <li><strong>Coating primario</strong>: Protezione meccanica</li>
-                <li><strong>Guaine esterne</strong>: Protezione aggiuntiva</li>
-            </ol>
-            
-            <div class="esempio-pratico">
-                <strong>💡 Principio fisico: Riflessione interna totale</strong>
-                <p>La luce rimane intrappolata nel core perché il cladding ha un indice di rifrazione minore. Questo permette alla luce di viaggiare per chilometri senza dispersione.</p>
-            </div>
-            
-            <div class="vantaggi-svantaggi">
-                <div class="vantaggi">
-                    <h4>✅ VANTAGGI</h4>
-                    <ul>
-                        <li>Velocità elevatissime (oltre 100 Gbps)</li>
-                        <li>Distanze lunghissime (oltre 100 km)</li>
-                        <li>Immunità totale ai disturbi elettromagnetici</li>
-                        <li>Sicurezza: difficile da intercettare</li>
-                        <li>Leggero e sottile</li>
-                    </ul>
-                </div>
-                
-                <div class="svantaggi">
-                    <h4>❌ SVANTAGGI</h4>
-                    <ul>
-                        <li>Costo elevato dei componenti</li>
-                        <li>Installazione complessa e specializzata</li>
-                        <li>Fragilità delle fibre (si rompono se piegate)</li>
-                        <li>Necessità di conversione luce/elettricità</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div style="text-align: center; margin: 20px 0;">
-                <a href="fibra_generale.html" class="nav-button fibra-button">
-                    🔬 Approfondisci la Fibra Ottica
-                </a>
-                <a href="fibra_multimodale.html" class="nav-button" style="background: #8e44ad;">
-                    📊 Fibra Multimodale
-                </a>
-                <a href="fibra_monomodale.html" class="nav-button" style="background: #3498db;">
-                    🚀 Fibra Monomodale
-                </a>
-                <a href="#wireless" class="nav-button" style="background: #f39c12;">
-                    ⬇️ Prosegui con Wireless
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- SEZIONE WIRELESS -->
-    <section id="wireless">
-        <div class="mezzo-section wireless-section">
-            <h2>4. Mezzi Non Guidati (Wireless)</h2>
-            
-            <p>I mezzi non guidati utilizzano l'aria come canale di trasmissione, attraverso onde elettromagnetiche.</p>
-            
-            <h3>Tipi principali:</h3>
-            <ul>
-                <li><strong>Wi-Fi</strong> (IEEE 802.11): Reti locali wireless</li>
-                <li><strong>Bluetooth</strong>: Collegamento a corto raggio</li>
-                <li><strong>Infrarossi</strong>: Comandi, telecomandi</li>
-                <li><strong>Microonde</strong>: Ponti radio a lunga distanza</li>
-                <li><strong>Satellite</strong>: Copertura globale</li>
-            </ul>
-            
-            <div class="vantaggi-svantaggi">
-                <div class="vantaggi">
-                    <h4>✅ VANTAGGI</h4>
-                    <ul>
-                        <li>Mobilità totale (nessun cavo)</li>
-                        <li>Installazione rapida e flessibile</li>
-                        <li>Ideale per dispositivi mobili</li>
-                        <li>Perfetto dove il cablaggio è impossibile</li>
-                    </ul>
-                </div>
-                
-                <div class="svantaggi">
-                    <h4>❌ SVANTAGGI</h4>
-                    <ul>
-                        <li>Soggetto a interferenze</li>
-                        <li>Sicurezza inferiore (se non cifrato)</li>
-                        <li>Velocità generalmente inferiori al cablato</li>
-                        <li>Latenza più elevata</li>
-                        <li>Portata limitata da ostacoli</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div style="text-align: center; margin: 20px 0;">
-                <a href="wireless.html" class="nav-button wireless-button">
-                    📡 Approfondisci Wireless
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- TABELLA RIASSUNTIVA -->
-    <section>
-        <h2>Confronto Sintetico tra Mezzi Guidati</h2>
         
-        <table>
-            <thead>
-                <tr>
-                    <th>Caratteristica</th>
-                    <th>UTP</th>
-                    <th>Coassiale</th>
-                    <th>Fibra Ottica</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>Velocità massima</strong></td>
-                    <td>10 Gbps (CAT 6A)</td>
-                    <td>1 Gbps</td>
-                    <td>100+ Gbps</td>
-                </tr>
-                <tr>
-                    <td><strong>Distanza massima</strong></td>
-                    <td>100 m</td>
-                    <td>500 m</td>
-                    <td>100+ km</td>
-                </tr>
-                <tr>
-                    <td><strong>Immunità ai disturbi</strong></td>
-                    <td>Bassa</td>
-                    <td>Media</td>
-                    <td>Altissima</td>
-                </tr>
-                <tr>
-                    <td><strong>Costo (materiale)</strong></td>
-                    <td>Molto basso</td>
-                    <td>Medio</td>
-                    <td>Alto</td>
-                </tr>
-                <tr>
-                    <td><strong>Costo (installazione)</strong></td>
-                    <td>Basso</td>
-                    <td>Medio</td>
-                    <td>Alto</td>
-                </tr>
-                <tr>
-                    <td><strong>Sicurezza</strong></td>
-                    <td>Bassa</td>
-                    <td>Media</td>
-                    <td>Alta</td>
-                </tr>
-                <tr>
-                    <td><strong>Esempio d'uso</strong></td>
-                    <td>PC → Router (casa/ufficio)</td>
-                    <td>Antenna → TV</td>
-                    <td>Città → Città (backbone)</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-
-    <!-- ESERCIZIO FINALE -->
-    <section>
-        <h2>Esercizio di Sintesi</h2>
-        
-        <div class="intro-box">
-            <h3>🛠️ Scenario Pratico</h3>
-            <p><strong>Situazione:</strong> La tua scuola deve aggiornare la rete informatica. Hai a disposizione tre opzioni:</p>
-            
-            <ol>
-                <li><strong>Opzione A:</strong> Cavi UTP CAT 6 in tutta la scuola (costo: €2.000)</li>
-                <li><strong>Opzione B:</strong> Cavi UTP nelle aule + fibra ottica tra gli edifici (costo: €5.000)</li>
-                <li><strong>Opzione C:</strong> Solo rete wireless con access point in ogni aula (costo: €3.000)</li>
-            </ol>
-            
-            <p><strong>Domande:</strong></p>
-            <ul>
-                <li>Quale opzione sceglieresti e perché?</li>
-                <li>Quali sono i pro e i contro di ciascuna soluzione?</li>
-                <li>Considerando che ci sono 20 aule e 3 edifici, quale sarebbe la soluzione più scalabile?</li>
-            </ul>
-            
-            <div class="esempio-pratico">
-                <strong>💡 Suggerimento:</strong> Pensa a velocità, sicurezza, costi di manutenzione e facilità di espansione futura.
-            </div>
+        <div class="component">
+            <strong>2. Cladding (Mantello)</strong>
+            <p>Avvolge il core e ha indice di rifrazione più basso. Riflette la luce verso il nucleo.</p>
         </div>
-    </section>
+        
+        <div class="component">
+            <strong>3. Coating Primario</strong>
+            <p>Rivestimento protettivo in plastica che protegge la fibra da umidità e danni meccanici.</p>
+        </div>
+        
+        <div class="component">
+            <strong>4. Guaine Esterne</strong>
+            <p>Protezioni aggiuntive per resistenza alla trazione e all'ambiente.</p>
+        </div>
+    </div>
 
-    <!-- MENU DI NAVIGAZIONE -->
-    <div class="nav-menu">
-        <a href="#utp" class="nav-button utp-button">🔗 UTP</a>
-        <a href="#coassiale" class="nav-button coax-button">📺 Coassiale</a>
-        <a href="#fibra" class="nav-button fibra-button">🔬 Fibra</a>
-        <a href="#wireless" class="nav-button wireless-button">📡 Wireless</a>
-        <a href="index.html" class="nav-button" style="background: #7f8c8d;">🏠 Home</a>
+    <div class="section">
+        <h2>Come Funziona: Riflessione Interna Totale</h2>
+        <p>La luce rimane intrappolata nel core grazie a un principio fisico fondamentale:</p>
+        <ul>
+            <li>Il <strong>core</strong> ha indice di rifrazione <strong>n₁</strong> (alto)</li>
+            <li>Il <strong>cladding</strong> ha indice di rifrazione <strong>n₂</strong> (basso)</li>
+            <li>Se <strong>n₁ > n₂</strong>, la luce viene totalmente riflessa all'interno</li>
+            <li>Il segnale luminoso può viaggiare per <strong>chilometri senza uscire</strong></li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Vantaggi rispetto ai Cavi in Rame</h2>
+        <ol>
+            <li><strong>Velocità elevatissima:</strong> Oltre 100 Gbps (contro 10 Gbps del rame)</li>
+            <li><strong>Distanze lunghe:</strong> Fino a 100 km senza ripetitori (contro 100m)</li>
+            <li><strong>Immunità totale</strong> ai disturbi elettromagnetici</li>
+            <li><strong>Sicurezza:</strong> Difficile da intercettare senza interrompere il segnale</li>
+            <li><strong>Leggerezza:</strong> Molto più leggera e sottile dei cavi in rame</li>
+        </ol>
+    </div>
+
+    <div class="navigation">
+        <a href="mezzi_trasmissivi.html" class="nav-btn btn-back">← Torna ai Mezzi Trasmissivi</a>
+        <a href="fibra_multimodale.html" class="nav-btn">Fibra Multimodale →</a>
+        <a href="fibra_monomodale.html" class="nav-btn">Fibra Monomodale →</a>
     </div>
 
     <footer>
-        <p>Materiale didattico per la scuola secondaria - Reti LAN, WAN, PAN</p>
-        <p>© 2023 - Allineato alle linee guida ministeriali per Tecnologia e Informatica</p>
+        <p>Materiale didattico per la scuola secondaria</p>
+        <p>Reti LAN, WAN, PAN - © Uso educativo</p>
     </footer>
+
 </body>
 </html>
