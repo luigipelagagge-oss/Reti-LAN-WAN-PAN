@@ -3,441 +3,218 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fibra Ottica - Principi Generali</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <title>Fibra Ottica - Principi Generali | Reti LAN, WAN, PAN</title>
     <style>
         body {
-            background-color: #f0f2f5;
-            font-family: 'Segoe UI', sans-serif;
-            padding: 20px;
-        }
-
-        .main-container {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
             max-width: 1000px;
             margin: 0 auto;
-        }
-
-        .header-card {
-            background: linear-gradient(135deg, #fd7e14 0%, #ffc107 100%);
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
-            text-align: center;
-            color: white;
-        }
-
-        h1 { 
-            color: white; 
-            font-weight: 800; 
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
         }
         
-        .subtitle {
-            color: rgba(255,255,255,0.9);
-            font-size: 1.2rem;
-            margin-bottom: 30px;
+        /* BOTTONE SORGENTE SEMPLICE */
+        .source-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #e74c3c;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.9em;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
-
+        
+        .source-button:hover {
+            background: #c0392b;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #9b59b6, #8e44ad);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        h1 {
+            margin: 0;
+            font-size: 2.2em;
+        }
+        
+        h2 {
+            color: #8e44ad;
+            border-bottom: 2px solid #9b59b6;
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+        
         .content-card {
             background: white;
-            border-radius: 15px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-
-        .section-title {
-            color: #fd7e14;
-            font-weight: 700;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 3px solid #fd7e14;
-        }
-
-        .principle-card {
-            background: #fff9e6;
-            border-radius: 10px;
-            padding: 20px;
-            margin: 15px 0;
-            border-left: 5px solid #ffc107;
-        }
-
-        .structure-diagram {
-            background: white;
-            padding: 25px;
-            border-radius: 10px;
-            margin: 25px 0;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            text-align: center;
-            border: 2px dashed #fd7e14;
-        }
-
-        .layer-box {
-            display: inline-block;
-            padding: 15px;
-            margin: 10px;
             border-radius: 8px;
-            font-weight: 600;
-            color: white;
-            min-width: 150px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
-
-        .core-layer {
-            background: #6610f2;
+        
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
         }
-
-        .cladding-layer {
-            background: #20c997;
+        
+        .image-container img {
+            max-width: 90%;
+            border-radius: 8px;
+            border: 1px solid #ddd;
         }
-
-        .coating-layer {
-            background: #0d6efd;
+        
+        .image-caption {
+            font-style: italic;
+            color: #666;
+            margin-top: 8px;
+            font-size: 0.9em;
         }
-
-        .comparison-table {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        
+        .component-list {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .component-item {
+            margin: 10px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .component-item:before {
+            content: "•";
+            color: #9b59b6;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        .nav-buttons {
+            text-align: center;
             margin: 30px 0;
         }
         
-        .comparison-table th {
-            background: #fff3cd;
-            font-weight: 600;
-            padding: 15px;
-            border-bottom: 2px solid #ffc107;
+        .nav-button {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin: 5px;
         }
         
-        .comparison-table td {
-            padding: 15px;
-            border-bottom: 1px solid #e9ecef;
-        }
-
-        .nav-buttons { 
-            margin-top: 40px; 
-            display: flex; 
-            justify-content: center; 
-            flex-wrap: wrap;
-            gap: 15px; 
+        .nav-button:hover {
+            background: #2980b9;
         }
         
-        .btn-nav { 
-            padding: 10px 20px; 
-            border-radius: 50px; 
-            text-decoration: none; 
-            font-weight: bold; 
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
-            border: 2px solid transparent;
-        }
-        
-        .btn-back { 
-            background-color: #6c757d; 
-            color: white; 
-        }
-        
-        .btn-back:hover {
-            background-color: #5a6268;
-            transform: translateY(-2px);
+        .btn-back {
+            background: #7f8c8d;
         }
         
         .btn-multimodale {
-            background: linear-gradient(135deg, #20c997 0%, #28a745 100%);
-            color: white;
+            background: #27ae60;
         }
         
-        .btn-multimodale:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(40, 167, 69, 0.3);
-        }
-
         .btn-monomodale {
-            background: linear-gradient(135deg, #0d6efd 0%, #0b5ed7 100%);
-            color: white;
+            background: #3498db;
         }
         
-        .btn-monomodale:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(13, 110, 253, 0.3);
-        }
-
-        .btn-icon {
-            margin-right: 8px;
-            font-size: 1.1em;
-        }
-
-        .info-box {
-            background-color: #e3f2fd;
-            border-left: 5px solid #0d6efd;
-            padding: 20px;
-            border-radius: 10px;
-            margin: 30px 0;
-        }
-
-        @media (max-width: 768px) {
-            .nav-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .btn-nav {
-                width: 90%;
-                max-width: 300px;
-            }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 0.9em;
         }
     </style>
 </head>
 <body>
 
-    <div class="main-container">
-        <div class="header-card">
-            <h1><i class="bi bi-brightness-high"></i> Fibra Ottica - Principi Generali</h1>
-            <p class="subtitle">Dalla teoria della luce alla rivoluzione delle telecomunicazioni</p>
-        </div>
+    <!-- BOTTONE SORGENTE SICURO (solo visualizzazione) -->
+    <a href="https://github.com/luigipelagagge-oss/Reti-LAN-WAN-PAN/blob/main/fibra_generale.html" 
+       target="_blank" 
+       class="source-button">
+        📄 Vedi sorgente
+    </a>
 
-        <!-- INTRODUZIONE -->
-        <div class="content-card">
-            <h3 class="section-title"><i class="bi bi-info-circle"></i> Cos'è la Fibra Ottica?</h3>
-            <p>La <strong>fibra ottica</strong> è un mezzo trasmissivo che utilizza <strong>impulsi di luce</strong> (fotoni) invece di segnali elettrici per trasmettere informazioni. È composta da filamenti sottilissimi di vetro o plastica trasparente, in grado di guidare la luce al loro interno per riflessione interna totale.</p>
-            
-            <div class="principle-card">
-                <h5><i class="bi bi-lightbulb"></i> Principio Fondamentale: Riflessione Interna Totale</h5>
-                <p>La luce rimane confinata nel <strong>core</strong> (nucleo) della fibra perché l'indice di rifrazione del core è maggiore di quello del <strong>cladding</strong> (mantello). Questo crea un effetto specchio che riflette continuamente la luce all'interno del core.</p>
-            </div>
-        </div>
+    <header>
+        <h1>Fibra Ottica - Principi Generali</h1>
+        <p>Comprendere la struttura e il funzionamento delle fibre ottiche</p>
+    </header>
 
-        <!-- STRUTTURA -->
-        <div class="content-card">
-            <h3 class="section-title"><i class="bi bi-layers"></i> Struttura a 3 Strati</h3>
-            
-            <div class="structure-diagram">
-                <h5><i class="bi bi-arrow-down-up"></i> Sezione Trasversale della Fibra Ottica</h5>
-                
-                <div class="mt-4">
-                    <div class="layer-box core-layer">
-                        <i class="bi bi-bullseye"></i> Core (Nucleo)
-                        <br><small>8-62.5 µm | n₁ alto</small>
-                    </div>
-                    
-                    <div class="mt-3" style="color: #666; font-size: 1.5rem;">
-                        <i class="bi bi-arrow-down"></i>
-                    </div>
-                    
-                    <div class="layer-box cladding-layer">
-                        <i class="bi bi-circle"></i> Cladding (Mantello)
-                        <br><small>125 µm | n₂ basso</small>
-                    </div>
-                    
-                    <div class="mt-3" style="color: #666; font-size: 1.5rem;">
-                        <i class="bi bi-arrow-down"></i>
-                    </div>
-                    
-                    <div class="layer-box coating-layer">
-                        <i class="bi bi-shield"></i> Coating (Rivestimento)
-                        <br><small>250 µm | Protezione</small>
-                    </div>
-                </div>
-                
-                <p class="mt-4" style="color: #666;">
-                    <strong>n₁ > n₂</strong> → Condizione per la riflessione interna totale
-                </p>
-            </div>
+    <div class="content-card">
+        <h2>Introduzione alla Fibra Ottica</h2>
+        <p>La <strong>fibra ottica</strong> è un mezzo trasmissivo che utilizza la <strong>luce</strong> invece dell'elettricità per trasmettere dati. È composta da filamenti di vetro o plastica trasparente estremamente sottili.</p>
+        
+        <div class="image-container">
+            <img src="struttura_fibra_ottica_base.png" alt="Struttura della fibra ottica">
+            <p class="image-caption">Figura 1: Struttura di base di una fibra ottica</p>
         </div>
-
-        <!-- VANTAGGI PRINCIPALI -->
-        <div class="content-card">
-            <h3 class="section-title"><i class="bi bi-award"></i> Vantaggi della Fibra Ottica</h3>
-            
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <div class="principle-card">
-                        <h5><i class="bi bi-lightning-charge" style="color: #6610f2;"></i> Banda Enorme</h5>
-                        <p>Teoricamente illimitata (THz). In pratica, 10+ Gbps per canale, fino a Terabit con WDM.</p>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 mb-3">
-                    <div class="principle-card">
-                        <h5><i class="bi bi-shield-check" style="color: #20c997;"></i> Immunità EM</h5>
-                        <p>Nessuna interferenza elettromagnetica. Ideale per ambienti industriali rumorosi.</p>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 mb-3">
-                    <div class="principle-card">
-                        <h5><i class="bi bi-arrows-angle-expand" style="color: #0d6efd;"></i> Bassa Attenuazione</h5>
-                        <p>0.2 dB/km (monomodale) vs 20+ dB/km per il rame. Minor bisogno di ripetitori.</p>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 mb-3">
-                    <div class="principle-card">
-                        <h5><i class="bi bi-key" style="color: #dc3545;"></i> Sicurezza</h5>
-                        <p>Difficile intercettare senza interrompere il segnale. Rilevazione intrusioni immediata.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- APPLICAZIONI -->
-        <div class="content-card">
-            <h3 class="section-title"><i class="bi bi-cpu"></i> Applicazioni Principali</h3>
-            
-            <div class="comparison-table">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Applicazione</th>
-                            <th>Distanza</th>
-                            <th>Banda</th>
-                            <th>Tipo di Fibra</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Backbone Internet</strong><br><small>Collegamenti intercontinentali</small></td>
-                            <td>1000+ km<br><small>con amplificatori</small></td>
-                            <td>Terabit/s<br><small>WDM avanzato</small></td>
-                            <td>Monomodale subacquea</td>
-                        </tr>
-                        <tr>
-                            <td><strong>FTTH/FTTB</strong><br><small>Fibra fino a casa/ufficio</small></td>
-                            <td>0-20 km</td>
-                            <td>1-10 Gbps<br><small>simmetrico</small></td>
-                            <td>Monomodale G.657</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Reti Metropolitane</strong><br><small>MAN (Metropolitan Area Network)</small></td>
-                            <td>10-80 km</td>
-                            <td>10-100 Gbps</td>
-                            <td>Monomodale standard</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Data Center</strong><br><small>Collegamenti rack-to-rack</small></td>
-                            <td>0-300 m</td>
-                            <td>10-400 Gbps</td>
-                            <td>Multimodale OM3/OM4</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Industriale</strong><br><small>Automazione, controllo</small></td>
-                            <td>0-2 km</td>
-                            <td>100 Mbps-1 Gbps</td>
-                            <td>Multimodale/PCS</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- COSA DISTINGUE MULTIMODALE DA MONOMODALE -->
-        <div class="info-box">
-            <h5><i class="bi bi-question-circle"></i> Multimodale vs Monomodale: Quale Scegliere?</h5>
-            <p>La scelta tra fibra <strong>multimodale</strong> e <strong>monomodale</strong> dipende principalmente da:</p>
-            <ul>
-                <li><strong>Distanza:</strong> Multimodale fino a 550m, Monomodale fino a 100km+</li>
-                <li><strong>Costo:</strong> Multimodale più economica per installazioni brevi</li>
-                <li><strong>Banda:</strong> Monomodale superiore per applicazioni critiche</li>
-                <li><strong>Applicazione:</strong> LAN vs Backbone, Data Center vs FTTH</li>
-            </ul>
-            <p class="mb-0"><strong>Approfondisci cliccando sui bottoni qui sotto!</strong></p>
-        </div>
-
-        <!-- BOTTONI NAVIGAZIONE -->
-        <div class="nav-buttons">
-            <a href="mezzi_trasmissivi.html" class="btn-nav btn-back">
-                <span class="btn-icon"><i class="bi bi-arrow-left"></i></span> Torna ai Mezzi Trasmissivi
-            </a>
-            
-            <a href="fibra_multimodale.html" class="btn-nav btn-multimodale">
-                <span class="btn-icon"><i class="bi bi-diagram-2"></i></span> Fibra Multimodale
-            </a>
-            
-            <a href="fibra_monomodale.html" class="btn-nav btn-monomodale">
-                <span class="btn-icon"><i class="bi bi-bullseye"></i></span> Fibra Monomodale
-            </a>
-        </div>
-
     </div>
 
-    <!-- ========== FOOTER ========== -->
-    <div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-top: 3px solid #fd7e14; text-align: center; border-radius: 15px;">
-        <p style="color: #666; font-size: 0.9em; margin: 5px 0; line-height: 1.6;">
-            <strong>Uso didattico</strong> - Corso di Reti e Telecomunicazioni<br>
-            Luigi Pelagagge - Art. 70 L. 633/1941<br>
-            <small class="text-muted">© Materiale didattico per uso educativo non commerciale</small>
-        </p>
+    <div class="content-card">
+        <h2>Componenti della Fibra Ottica</h2>
+        
+        <div class="component-list">
+            <div class="component-item">
+                <strong>Core (Nucleo)</strong> - La parte centrale dove viaggia la luce. Diametro: 8-62.5 µm.
+            </div>
+            <div class="component-item">
+                <strong>Cladding (Mantello)</strong> - Avvolge il core e riflette la luce verso l'interno.
+            </div>
+            <div class="component-item">
+                <strong>Coating Primario</strong> - Rivestimento protettivo in plastica.
+            </div>
+            <div class="component-item">
+                <strong>Guaine Esterne</strong> - Protezione meccanica aggiuntiva.
+            </div>
+        </div>
     </div>
-    <!-- ========== FINE FOOTER ========== -->
 
-    <script>
-        // Funzione per mostrare il codice sorgente
-        function mostraCodice() {
-            const html = document.documentElement.outerHTML;
-            const win = window.open("", "Sorgente", "width=900,height=700");
-            
-            win.document.write(`
-                <html>
-                <head>
-                    <title>Sorgente Pagina - Fibra Ottica Generale</title>
-                    <style>
-                        body { font-family: 'Segoe UI', sans-serif; padding: 20px; background: #f8f9fa; }
-                        h3 { color: #343a40; margin-bottom: 20px; }
-                        pre { 
-                            background: white; 
-                            padding: 20px; 
-                            border-radius: 10px; 
-                            border: 1px solid #ddd;
-                            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-                            overflow: auto; 
-                            max-height: 500px;
-                            font-family: 'Courier New', monospace;
-                            font-size: 14px;
-                            line-height: 1.5;
-                        }
-                        .btn-close {
-                            background: #0d6efd;
-                            color: white;
-                            border: none;
-                            padding: 10px 25px;
-                            border-radius: 25px;
-                            cursor: pointer;
-                            font-weight: bold;
-                            margin-top: 20px;
-                        }
-                        .btn-close:hover { background: #0b5ed7; }
-                    </style>
-                </head>
-                <body>
-                    <h3>📄 Codice Sorgente - Fibra Ottica Generale</h3>
-                    <pre>${html.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</pre>
-                    <div style="text-align: center;">
-                        <button class="btn-close" onclick="window.close()">Chiudi Finestra</button>
-                    </div>
-                </body>
-                </html>
-            `);
-            
-            win.document.close();
-        }
+    <div class="content-card">
+        <h2>Principio di Funzionamento</h2>
+        <p>La luce rimane confinata nel core grazie al <strong>principio della riflessione interna totale</strong>:</p>
+        <ul>
+            <li>Il core ha un <strong>indice di rifrazione più alto</strong> del cladding</li>
+            <li>La luce che tenta di uscire viene riflessa verso l'interno</li>
+            <li>Il segnale può viaggiare per <strong>chilometri senza perdite significative</strong></li>
+        </ul>
+    </div>
 
-        // Bottone sorgente fisso
-        document.addEventListener('DOMContentLoaded', function() {
-            const sourceBtn = document.createElement('div');
-            sourceBtn.innerHTML = `
-                <button class="btn btn-dark shadow-lg rounded-pill px-4 d-flex align-items-center" onclick="mostraCodice()" 
-                        style="position: fixed; bottom: 20px; right: 20px; z-index: 1000; font-weight: 600;">
-                    <i class="bi bi-code-slash me-2"></i> Sorgente
-                </button>
-            `;
-            document.body.appendChild(sourceBtn);
-        });
-    </script>
+    <div class="content-card">
+        <h2>Vantaggi Principali</h2>
+        <ul>
+            <li><strong>Banda larghissima:</strong> Fino a Terabit al secondo</li>
+            <li><strong>Distanze lunghe:</strong> Oltre 100 km senza ripetitori</li>
+            <li><strong>Immunità alle interferenze:</strong> Nessun problema con campi elettromagnetici</li>
+            <li><strong>Sicurezza:</strong> Difficile intercettare senza essere rilevati</li>
+            <li><strong>Peso ridotto:</strong> Molto più leggera dei cavi in rame</li>
+        </ul>
+    </div>
+
+    <div class="nav-buttons">
+        <a href="mezzi_trasmissivi.html" class="nav-button btn-back">← Torna ai Mezzi Trasmissivi</a>
+        <a href="fibra_multimodale.html" class="nav-button btn-multimodale">Fibra Multimodale →</a>
+        <a href="fibra_monomodale.html" class="nav-button btn-monomodale">Fibra Monomodale →</a>
+    </div>
+
+    <footer>
+        <p>Materiale didattico - Reti LAN, WAN, PAN</p>
+        <p>© Linee guida ministeriali - Uso educativo</p>
+    </footer>
+
 </body>
 </html>
