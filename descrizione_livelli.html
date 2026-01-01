@@ -121,6 +121,24 @@
     </p>
 </div>
 <!-- ========== FINE FOOTER ========== -->
+<!-- BOTTONE VEDI SORGENTE -->
+<div class="position-fixed bottom-0 end-0 p-3">
+    <button class="btn btn-dark shadow-lg rounded-pill px-4" onclick="showSource()">
+        <i class="bi bi-code-slash"></i> Vedi Sorgente
+    </button>
+</div>
 
+<script>
+    function showSource() {
+        const html = document.documentElement.outerHTML;
+        const win = window.open("", "Sorgente", "width=900,height=700");
+        win.document.write('<html><head><title>Sorgente Pagina</title></head><body>');
+        win.document.write('<h3>Codice Sorgente della Pagina:</h3>');
+        win.document.write('<pre style="background:#f4f4f4; padding:15px; border:1px solid #ccc; white-space: pre-wrap;">');
+        win.document.write(html.replace(/</g, "&lt;").replace(/>/g, "&gt;"));
+        win.document.write('</pre></body></html>');
+        win.document.close();
+    }
+</script>
 </body>
 </html>
