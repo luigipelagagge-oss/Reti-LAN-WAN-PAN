@@ -39,6 +39,49 @@
             margin-bottom: 30px;
         }
 
+        /* MINIATURA UTP INTERATTIVA */
+        .utp-thumbnail-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 30px auto;
+            max-width: 400px;
+        }
+
+        .utp-thumbnail {
+            width: 200px;
+            height: 150px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border: 3px solid transparent;
+            object-fit: cover;
+        }
+
+        .utp-thumbnail:hover {
+            transform: scale(1.8);
+            z-index: 1000;
+            position: relative;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            border-color: #0d6efd;
+        }
+
+        .thumbnail-caption {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: #666;
+            font-style: italic;
+        }
+
+        .thumbnail-caption .instruction {
+            color: #0d6efd;
+            font-weight: 600;
+            margin-top: 5px;
+            font-size: 0.8rem;
+        }
+
         .category-card {
             background: white;
             border-radius: 15px;
@@ -225,6 +268,59 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
+        /* Modal per immagine ingrandita */
+        .image-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-image {
+            max-width: 90%;
+            max-height: 80%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover {
+            color: #0d6efd;
+        }
+
+        .modal-caption {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            color: white;
+            padding: 10px;
+            background: rgba(0,0,0,0.7);
+        }
+
         @media (max-width: 768px) {
             .btn-source-fixed {
                 bottom: 70px;
@@ -239,6 +335,10 @@
             .btn-nav {
                 width: 90%;
                 max-width: 300px;
+            }
+            
+            .utp-thumbnail:hover {
+                transform: scale(1.3);
             }
         }
 
@@ -256,6 +356,23 @@
         <div class="header-card">
             <h1><i class="bi bi-ethernet"></i> Mezzi Trasmissivi nelle Reti</h1>
             <p class="subtitle">Dai cavi in rame alla fibra ottica, passando per le onde radio</p>
+            
+            <!-- MINIATURA UTP INTERATTIVA -->
+            <div class="utp-thumbnail-container">
+                <img src="98-Physical-layer-UTP.jpg" 
+                     alt="Struttura fisica del cavo UTP - Doppio click per approfondimenti" 
+                     class="utp-thumbnail"
+                     id="utpThumbnail"
+                     onerror="this.src='https://via.placeholder.com/300x200?text=UTP+Physical+Layer'">
+                <div class="thumbnail-caption">
+                    <div>Struttura fisica del cavo UTP</div>
+                    <div class="instruction">
+                        <i class="bi bi-hand-index"></i> Passa il mouse per ingrandire
+                        <br>
+                        <i class="bi bi-mouse2"></i> Doppio click per approfondimenti
+                    </div>
+                </div>
+            </div>
             
             <div class="info-box">
                 <p>I <strong>mezzi trasmissivi</strong> sono i canali fisici attraverso cui viaggiano i dati nelle reti di telecomunicazioni. La scelta del mezzo adeguato dipende da diversi fattori: distanza, banda richiesta, costo, immunità ai disturbi e flessibilità di installazione.</p>
@@ -286,11 +403,11 @@
                 
                 <div class="image-gallery">
                     <div class="image-item">
-                        <img src="98-Physical-layer-UTP.jpg" alt="Cavo UTP - Livello Fisico" onerror="this.src='https://via.placeholder.com/300x200?text=Cavo+UTP'">
+                        <img src="98-Physical-layer-UTP.jpg" alt="Cavo UTP - Livello Fisico" onclick="openImageModal('98-Physical-layer-UTP.jpg', 'Struttura fisica del cavo UTP')" onerror="this.src='https://via.placeholder.com/300x200?text=Cavo+UTP'">
                         <p class="image-caption">Cavo UTP - Livello Fisico</p>
                     </div>
                     <div class="image-item">
-                        <img src="CategorieUTP.png" alt="Categorie UTP a confronto" onerror="this.src='https://via.placeholder.com/300x200?text=Categorie+UTP'">
+                        <img src="CategorieUTP.png" alt="Categorie UTP a confronto" onclick="openImageModal('CategorieUTP.png', 'Categorie UTP a confronto')" onerror="this.src='https://via.placeholder.com/300x200?text=Categorie+UTP'">
                         <p class="image-caption">Categorie UTP a confronto</p>
                     </div>
                     <div class="image-item">
@@ -341,15 +458,15 @@
             
             <div class="image-gallery">
                 <div class="image-item">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Wireless_icon.svg/512px-Wireless_icon.svg.png" alt="Wi-Fi Wireless" onerror="this.src='https://via.placeholder.com/300x200?text=Wi-Fi+Wireless'">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Wireless_icon.svg/512px-Wireless_icon.svg.png" alt="Wi-Fi Wireless" onclick="openImageModal('https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Wireless_icon.svg/512px-Wireless_icon.svg.png', 'Icona Wi-Fi')" onerror="this.src='https://via.placeholder.com/300x200?text=Wi-Fi+Wireless'">
                     <p class="image-caption">Wi-Fi (IEEE 802.11)</p>
                 </div>
                 <div class="image-item">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Bluetooth.svg/512px-Bluetooth.svg.png" alt="Bluetooth" onerror="this.src='https://via.placeholder.com/300x200?text=Bluetooth'">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Bluetooth.svg/512px-Bluetooth.svg.png" alt="Bluetooth" onclick="openImageModal('https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Bluetooth.svg/512px-Bluetooth.svg.png', 'Icona Bluetooth')" onerror="this.src='https://via.placeholder.com/300x200?text=Bluetooth'">
                     <p class="image-caption">Bluetooth (PAN)</p>
                 </div>
                 <div class="image-item">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Satellite_icon.svg/512px-Satellite_icon.svg.png" alt="Satellite" onerror="this.src='https://via.placeholder.com/300x200?text=Satellite'">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Satellite_icon.svg/512px-Satellite_icon.svg.png" alt="Satellite" onclick="openImageModal('https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Satellite_icon.svg/512px-Satellite_icon.svg.png', 'Icona Satellite')" onerror="this.src='https://via.placeholder.com/300x200?text=Satellite'">
                     <p class="image-caption">Comunicazioni Satellite</p>
                 </div>
             </div>
@@ -443,6 +560,13 @@
 
     </div>
 
+    <!-- MODAL PER IMMAGINE INGRANDITA -->
+    <div id="imageModal" class="image-modal">
+        <span class="close-modal" onclick="closeImageModal()">&times;</span>
+        <img class="modal-image" id="modalImage">
+        <div class="modal-caption" id="modalCaption"></div>
+    </div>
+
     <!-- Bottone Vedi Sorgente Fisso (mobile friendly) -->
     <div class="btn-source-fixed">
         <button class="btn btn-dark shadow-lg rounded-pill px-4 d-flex align-items-center" onclick="mostraCodice()" style="font-weight: 600;">
@@ -452,12 +576,16 @@
 
     <!-- ========== FOOTER CON FONTI ========== -->
     <div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-top: 3px solid #0d6efd; text-align: center; border-radius: 15px;">
+        <a href="https://www.fiberoptics4sale.com/blogs/archive-posts/95046918-what-is-unshielded-twisted-pair-utp-cable" target="_blank" rel="noopener noreferrer" style="padding: 10px 25px; background: linear-gradient(135deg, #0d6efd 0%, #0b5ed7 100%); color: white; text-decoration: none; border-radius: 25px; font-weight: 600; display: inline-block; margin: 0 10px 15px 10px; transition: all 0.3s;">
+            <i class="bi bi-book me-2"></i> Approfondimento UTP
+        </a>
+        
         <a href="https://www.thetechmentor.com/posts/easy-rj45-wiring-with-rj45-pinout-pic/" target="_blank" rel="noopener noreferrer" style="padding: 10px 25px; background: linear-gradient(135deg, #28a745 0%, #20c997 100%); color: white; text-decoration: none; border-radius: 25px; font-weight: 600; display: inline-block; margin: 0 10px 15px 10px; transition: all 0.3s;">
             <i class="bi bi-tools me-2"></i> Tutorial Cablaggio RJ45
         </a>
         
-        <a href="fonti_bibliografia.html" style="padding: 10px 25px; background: linear-gradient(135deg, #0d6efd 0%, #0b5ed7 100%); color: white; text-decoration: none; border-radius: 25px; font-weight: 600; display: inline-block; margin: 0 10px 15px 10px; transition: all 0.3s;">
-            <i class="bi bi-book me-2"></i> Consulta tutte le fonti
+        <a href="fonti_bibliografia.html" style="padding: 10px 25px; background: linear-gradient(135deg, #6f42c1 0%, #6610f2 100%); color: white; text-decoration: none; border-radius: 25px; font-weight: 600; display: inline-block; margin: 0 10px 15px 10px; transition: all 0.3s;">
+            <i class="bi bi-journal-text me-2"></i> Tutte le fonti
         </a>
         
         <p style="color: #666; font-size: 0.9em; margin: 5px 0; line-height: 1.6;">
@@ -469,7 +597,66 @@
     <!-- ========== FINE FOOTER ========== -->
 
     <script>
-        // Funzione per mostrare il codice sorgente (stile coerente con altre pagine)
+        // Variabili per gestire il doppio click
+        let lastClickTime = 0;
+        const doubleClickDelay = 300; // ms per considerarlo doppio click
+
+        // Miniatura UTP interattiva
+        const utpThumbnail = document.getElementById('utpThumbnail');
+        
+        if (utpThumbnail) {
+            // Gestione click sulla miniatura
+            utpThumbnail.addEventListener('click', function(e) {
+                const currentTime = new Date().getTime();
+                const timeSinceLastClick = currentTime - lastClickTime;
+                
+                if (timeSinceLastClick < doubleClickDelay) {
+                    // Doppio click - apri sito UTP
+                    e.preventDefault();
+                    e.stopPropagation();
+                    window.open('https://www.fiberoptics4sale.com/blogs/archive-posts/95046918-what-is-unshielded-twisted-pair-utp-cable', '_blank', 'noopener,noreferrer');
+                } else {
+                    // Singolo click - mostra modal ingrandita
+                    openImageModal(this.src, 'Struttura fisica del cavo UTP');
+                }
+                
+                lastClickTime = currentTime;
+            });
+            
+            // Aggiungi stile cursor pointer
+            utpThumbnail.style.cursor = 'pointer';
+        }
+
+        // Funzione per aprire modal immagine ingrandita
+        function openImageModal(src, caption) {
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            const modalCaption = document.getElementById('modalCaption');
+            
+            modalImage.src = src;
+            modalCaption.textContent = caption || 'Immagine';
+            modal.style.display = 'flex';
+            
+            // Previene lo scroll dello sfondo
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Funzione per chiudere modal
+        function closeImageModal() {
+            const modal = document.getElementById('imageModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Chiudi modal cliccando fuori
+        window.addEventListener('click', function(e) {
+            const modal = document.getElementById('imageModal');
+            if (e.target === modal) {
+                closeImageModal();
+            }
+        });
+
+        // Funzione per mostrare il codice sorgente
         function mostraCodice() {
             const html = document.documentElement.outerHTML;
             const win = window.open("", "Sorgente", "width=900,height=700");
@@ -527,6 +714,14 @@
                     const alt = this.alt || 'Immagine';
                     this.src = `https://via.placeholder.com/300x200?text=${encodeURIComponent(alt)}`;
                 };
+                
+                // Aggiungi click per aprire modal a tutte le immagini (tranne quelle già con link)
+                if (!img.closest('a')) {
+                    img.addEventListener('click', function() {
+                        openImageModal(this.src, this.alt);
+                    });
+                    img.style.cursor = 'pointer';
+                }
             });
         });
     </script>
