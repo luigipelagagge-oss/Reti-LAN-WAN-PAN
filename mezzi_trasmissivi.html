@@ -251,13 +251,61 @@
             font-weight: 600;
         }
         
-        .link-external {
-            color: #20c997;
-            text-decoration: none;
+        /* Tabella categorie UTP */
+        .category-table {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            margin: 20px 0;
         }
         
-        .link-external:hover {
-            text-decoration: underline;
+        .category-table th {
+            background: #f0f8ff;
+            font-weight: 600;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .category-table td {
+            padding: 12px;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .category-table tr:hover {
+            background-color: #f8f9fa;
+        }
+        
+        /* Spiegazione twist */
+        .twist-explanation {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .twist-diagram {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .twist-icon {
+            font-size: 2rem;
+            color: #0d6efd;
+            animation: twist 2s infinite linear;
+        }
+        
+        @keyframes twist {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
@@ -296,6 +344,68 @@
                     <p><strong>Caratteristiche:</strong> 4 coppie di fili di rame intrecciati (twisted pair) senza schermatura. È il cavo più comune nelle reti LAN.</p>
                 </div>
                 
+                <!-- SPIEGAZIONE DEL "TWIST" -->
+                <div class="twist-explanation">
+                    <h5><i class="bi bi-arrow-repeat"></i> Perché i cavi sono "twisted" (intrecciati)?</h5>
+                    <p>L'intreccio delle coppie di fili serve a:</p>
+                    <ul>
+                        <li><strong>Ridurre le interferenze elettromagnetiche (EMI)</strong>: I segnali opposti si annullano</li>
+                        <li><strong>Minimizzare la diafonia (crosstalk)</strong>: L'intreccio crea un accoppiamento bilanciato</li>
+                        <li><strong>Migliorare l'immunità ai rumori esterni</strong></li>
+                    </ul>
+                    <div class="twist-diagram">
+                        <div>
+                            <div class="twist-icon">
+                                <i class="bi bi-arrow-clockwise"></i>
+                            </div>
+                            <p style="text-align: center; margin-top: 10px;"><small>Intreccio delle coppie</small></p>
+                        </div>
+                        <div>
+                            <p><strong>Ogni coppia ha un diverso passo di intreccio</strong> per ridurre le interferenze tra coppie adiacenti.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- TABELLA CATEGORIE UTP -->
+                <div class="category-table">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Categoria</th>
+                                <th>Banda</th>
+                                <th>Velocità Max</th>
+                                <th>Uso Tipico</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Cat 5e</strong></td>
+                                <td>100 MHz</td>
+                                <td>1 Gbps</td>
+                                <td>Fast Ethernet / Gigabit Ethernet</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Cat 6</strong></td>
+                                <td>250 MHz</td>
+                                <td>10 Gbps (fino a 55m)</td>
+                                <td>Gigabit Ethernet / 10GbE corto</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Cat 6A</strong></td>
+                                <td>500 MHz</td>
+                                <td>10 Gbps (fino a 100m)</td>
+                                <td>10 Gigabit Ethernet</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Cat 7</strong></td>
+                                <td>600 MHz</td>
+                                <td>10 Gbps</td>
+                                <td>10GbE / Alta schermatura</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
                 <div class="image-gallery">
                     <!-- IMMAGINE UTP CON LINK ESTERNO -->
                     <div class="image-item">
@@ -303,11 +413,11 @@
                            target="_blank" 
                            rel="noopener noreferrer" 
                            style="text-decoration: none; color: inherit; display: block;">
-                            <img src="98-Physical-layer-UTP.jpg" 
+                            <img src="198-Physical-layer-UTP.jpg" 
                                  alt="Struttura fisica del cavo UTP - Clicca per approfondimento" 
-                                 onerror="this.src='https://via.placeholder.com/300x200?text=Cavo+UTP+Immagine'">
+                                 onerror="this.src='https://via.placeholder.com/300x200?text=Struttura+UTP+Livello+Fisico'">
                             <p class="image-caption">
-                                <i class="bi bi-box-arrow-up-right"></i> Struttura fisica UTP
+                                <i class="bi bi-box-arrow-up-right"></i> Livello Fisico UTP
                                 <br><span class="external-link-indicator">(Clicca per approfondimento)</span>
                             </p>
                         </a>
@@ -317,7 +427,7 @@
                     <div class="image-item">
                         <img src="CategorieUTP.png" 
                              alt="Categorie UTP a confronto" 
-                             onerror="this.src='https://via.placeholder.com/300x200?text=Categorie+UTP'">
+                             onerror="this.src='https://via.placeholder.com/300x200?text=Categorie+UTP+a+confronto'">
                         <p class="image-caption">Categorie UTP a confronto</p>
                     </div>
                     
@@ -336,6 +446,18 @@
                             </p>
                         </a>
                     </div>
+                </div>
+                
+                <!-- NOTE SULLE CATEGORIE -->
+                <div class="info-box">
+                    <h5><i class="bi bi-info-circle"></i> Come scegliere la categoria UTP giusta?</h5>
+                    <p>La scelta dipende da:</p>
+                    <ul>
+                        <li><strong>Banda richiesta:</strong> Cat 5e per Gigabit, Cat 6/6A per 10GbE</li>
+                        <li><strong>Distanza:</strong> Cat 6 supporta 10GbE solo fino a 55 metri</li>
+                        <li><strong>Budget:</strong> Cat 5e è più economico, Cat 6A più costoso</li>
+                        <li><strong>Futuro:</strong> Considera Cat 6 per nuove installazioni</li>
+                    </ul>
                 </div>
             </div>
             
