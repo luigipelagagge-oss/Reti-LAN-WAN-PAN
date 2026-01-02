@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="it">
 <head>
     <meta charset="UTF-8">
@@ -47,8 +47,47 @@
         <p>Cosa distingue tecnicamente un connettore dall'altro? Osserviamo la struttura interna. Ogni connettore è composto da tre parti fondamentali:</p>
         
         <div class="image-box">
-            <img src="connettori_fibra.jpg" alt="Schema tecnico componenti connettori ST SC LC">
-            <p class="image-caption">Figura 2: Dettaglio della Ferrula, del Corpo e del meccanismo di blocco (Sleeve/Leva).</p>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 250" width="100%" height="auto">
+              <style>
+                .conn-body { fill: #007bff; stroke: #0056b3; stroke-width: 2; } /* Corpo Blu SC */
+                .conn-ferrule { fill: #ffffff; stroke: #333; stroke-width: 2; } /* Ferrula Bianca */
+                .conn-fiber { stroke: #ff9900; stroke-width: 3; stroke-dasharray: 4,2; } /* Fibra interna */
+                .conn-boot { fill: #6c757d; stroke: #495057; stroke-width: 2; } /* Gommino */
+                .conn-cable { fill: #ffc107; stroke: #d39e00; stroke-width: 2; } /* Cavo Giallo */
+                .label-line { stroke: #333; stroke-width: 1.5; marker-end: url(#arrow); }
+                .label-text { font-family: Arial, sans-serif; font-size: 16px; font-weight: bold; fill: #333; }
+              </style>
+              <defs>
+                <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+                  <path d="M0,0 L0,6 L9,3 z" fill="#333" />
+                </marker>
+              </defs>
+
+              <rect x="0" y="85" width="150" height="80" class="conn-cable" />
+              <text x="50" y="130" fill="#856404" font-weight="bold" font-family="Arial">CAVO</text>
+
+              <path d="M140,85 L200,60 L200,190 L140,165 Z" class="conn-boot" />
+              
+              <rect x="200" y="50" width="250" height="150" rx="10" class="conn-body" />
+              
+              <rect x="420" y="95" width="180" height="60" rx="5" class="conn-ferrule" />
+              
+              <line x1="0" y1="125" x2="600" y2="125" class="conn-fiber" />
+              
+              <line x1="550" y1="20" x2="510" y2="95" class="label-line" />
+              <text x="560" y="30" class="label-text">FERRULA (Ceramica)</text>
+              <text x="560" y="50" font-size="12" fill="#555" font-family="Arial">Contiene la fibra (2.5mm o 1.25mm)</text>
+
+              <line x1="325" y1="220" x2="325" y2="180" class="label-line" />
+              <text x="280" y="240" class="label-text">CORPO (Housing)</text>
+
+              <line x1="650" y1="125" x2="600" y2="125" class="label-line" />
+              <text x="660" y="130" class="label-text">CORE FIBRA</text>
+
+              <line x1="170" y1="200" x2="170" y2="170" class="label-line" />
+              <text x="140" y="220" class="label-text">BOOT (Protezione)</text>
+            </svg>
+            <p class="image-caption">Figura 2: Sezione trasversale di un connettore ottico (Simil-SC). La <strong>Ferrula</strong> bianca è la parte più importante per l'allineamento.</p>
         </div>
 
         <div class="definition-box">
