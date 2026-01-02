@@ -7,13 +7,19 @@
     <style>
         body { font-family: Arial, sans-serif; line-height: 1.6; max-width: 900px; margin: 0 auto; padding: 20px; background-color: #f4f7f6; }
         header { background-color: #17a2b8; color: white; padding: 25px; border-radius: 8px; text-align: center; margin-bottom: 20px; }
+        
         .section { background: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        
         .image-box { text-align: center; margin: 20px 0; padding: 15px; background: #f8f9fa; border-radius: 8px; }
         .image-box img { max-width: 100%; height: auto; border: 1px solid #ddd; }
+        
         .nav-buttons { text-align: center; margin: 30px 0; display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; }
         .nav-btn { display: inline-block; padding: 12px 25px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; }
         .btn-source { background-color: #6c757d; }
-        .card-container { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
+        
+        /* MODIFICA GRID: Ora supporta 3 colonne automaticamente */
+        .card-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px; }
+        
         .card { background: #eef9fa; padding: 15px; border-radius: 8px; text-align: center; border: 1px solid #17a2b8; }
         
         /* Classe per evidenziare la sezione connettori */
@@ -60,17 +66,24 @@
     </div>
 
     <div class="section">
-        <h2>Tipologie di Fibra</h2>
+        <h2>Tipologie e Funzionamento</h2>
         <div class="card-container">
             <div class="card">
                 <h3>Monomodale</h3>
                 <p>Core sottile (4-10 µm), percorso unico.</p>
                 <a href="fibra_monomodale.html" class="nav-btn">Vai al dettaglio</a>
             </div>
+            
             <div class="card">
                 <h3>Multimodale</h3>
                 <p>Core ampio, percorsi multipli.</p>
                 <a href="fibra_multimodale.html" class="nav-btn">Vai al dettaglio</a>
+            </div>
+
+            <div class="card" style="border-color: #28a745; background-color: #f0fff4;">
+                <h3 style="color: #28a745;">Trasmissione</h3>
+                <p>Circuiti Tx/Rx e conversione E/O.</p>
+                <a href="trasmissione_ottica.html" class="nav-btn" style="background-color: #28a745;">Come funziona</a>
             </div>
         </div>
     </div>
@@ -82,6 +95,7 @@
             <a href="connettori_fibra.html" class="nav-btn" style="background-color: #6f42c1;">Vai ai Connettori Ottici (ST, SC, LC)</a>
         </div>
     </div>
+    
     <div class="nav-buttons">
         <a href="mezzi_trasmissivi.html" class="nav-btn">Torna ai Mezzi</a>
         <a href="https://raw.githubusercontent.com/luigipelagagge-oss/Reti-LAN-WAN-PAN/main/fibra_generale.html" class="nav-btn btn-source" target="_blank">Vedi Sorgente HTML</a>
