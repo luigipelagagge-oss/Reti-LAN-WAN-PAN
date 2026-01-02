@@ -9,7 +9,7 @@
         header { background-color: #0056b3; color: white; padding: 20px; text-align: center; border-radius: 8px; }
         .section { background: white; padding: 20px; border-radius: 8px; margin-top: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
         .image-box { text-align: center; margin: 20px 0; padding: 15px; background: #f8f9fa; border: 1px solid #0056b3; border-radius: 8px; }
-        .image-box img { max-width: 100%; height: auto; }
+        .image-box img { max-width: 100%; height: auto; border-radius: 5px; }
         .highlight-box { background: #e7f1ff; border-left: 5px solid #0056b3; padding: 15px; margin: 15px 0; }
         .nav-buttons { text-align: center; margin-top: 30px; display: flex; justify-content: center; gap: 10px; }
         .nav-btn { padding: 12px 25px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; }
@@ -21,27 +21,28 @@
 
     <div class="section">
         <h2>Prestazioni Elevate e Core Ridotto</h2>
-        <p>Nella fibra monomodale il core è estremamente sottile (<strong>~9 µm</strong>). Questo costringe la luce a percorrere un <strong>unico tragitto dritto</strong>, eliminando quasi del tutto la dispersione modale.</p>
+        <p>Nella fibra monomodale il core è estremamente sottile (<strong>~9 µm</strong>). Questo costringe la luce a percorrere un <strong>unico tragitto dritto</strong> lungo l'asse della fibra, eliminando quasi del tutto la dispersione modale.</p>
         
         <div class="image-box">
-            <img src="MULTI_MODO_MODALE.png" alt="Propagazione Monomodale">
-            <p><em>Figura: Un singolo raggio che percorre il nucleo stretto senza rimbalzi</em></p>
+            <img src="Multimodale_Monomodale.jpg" alt="Confronto visivo propagazione monomodale">
+            <p><em>Figura: Un singolo raggio percorre il nucleo stretto senza rimbalzi</em></p>
         </div>
-        
+
         <div class="highlight-box">
             <h3>Specifiche di Trasmissione:</h3>
             <ul>
                 <li><strong>Sorgente:</strong> LASER (luce monocromatica e coerente).</li>
-                <li><strong>Lunghezza d'onda:</strong> 1310 nm - 1550 nm.</li>
+                <li><strong>Lunghezza d'onda (λ):</strong> 1310 nm (bassa attenuazione) e 1550 nm (minima attenuazione).</li>
                 <li><strong>Connettore:</strong> ST (Straight Tip).</li>
-                <li><strong>Utilizzo:</strong> Dorsali oceaniche, collegamenti tra città, ISP.</li>
+                <li><strong>Utilizzo:</strong> Lunghe distanze, dorsali oceaniche, collegamenti MAN/WAN, ISP.</li>
+                <li><strong>Costo:</strong> Elevato (dovuto agli apparati Laser).</li>
             </ul>
         </div>
     </div>
 
     <div class="section">
         <h2>Perché è migliore per le lunghe distanze?</h2>
-        <p>Grazie alla sorgente Laser e al core ridotto, il segnale subisce meno attenuazione e può coprire decine di chilometri senza bisogno di ripetitori. Sebbene i componenti siano più costosi, la larghezza di banda è quasi illimitata.</p>
+        <p>Grazie all'uso del Laser e al core ridotto, l'impulso luminoso non si "allarga" durante il tragitto. Questo permette di raggiungere velocità di trasmissione elevatissime (Tbps) su distanze di decine di chilometri senza la necessità di rigenerare il segnale.</p>
     </div>
 
     <div class="nav-buttons">
