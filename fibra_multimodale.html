@@ -8,8 +8,8 @@
         body { font-family: Arial, sans-serif; line-height: 1.6; max-width: 900px; margin: 0 auto; padding: 20px; background-color: #f0f8f0; }
         header { background-color: #20c997; color: white; padding: 20px; text-align: center; border-radius: 8px; }
         .section { background: white; padding: 20px; border-radius: 8px; margin-top: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-        .image-box { text-align: center; margin: 20px 0; padding: 10px; background: #fafafa; border: 1px solid #20c997; border-radius: 8px; }
-        .image-box img { max-width: 100%; height: auto; }
+        .image-box { text-align: center; margin: 20px 0; padding: 15px; background: #fafafa; border: 1px solid #20c997; border-radius: 8px; }
+        .image-box img { max-width: 100%; height: auto; border-radius: 5px; }
         table { width: 100%; border-collapse: collapse; margin: 15px 0; }
         th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
         th { background-color: #20c997; color: white; }
@@ -23,30 +23,31 @@
 
     <div class="section">
         <h2>Cos'è la Fibra Multimodale?</h2>
-        <p>All'aumentare del diametro del core (50-62.5 µm), la luce può seguire percorsi differenti (modi). Questo causa la <strong>dispersione modale</strong>: i raggi arrivano in tempi leggermente diversi.</p>
+        <p>All'aumentare del diametro del core (50-62.5 µm), la luce può seguire percorsi differenti (chiamati "modi"). Questo causa la <strong>dispersione modale</strong>: i raggi luminosi arrivano a destinazione in tempi leggermente diversi, allargando l'impulso.</p>
         
         <div class="image-box">
-            <img src="MULTI_MODO_MODALE.png" alt="Propagazione Multimodale">
+            <img src="MULTI_MONO_MODALE.webp" alt="Propagazione in fibra multimodale">
             <p><em>Figura: Molteplici traiettorie che rimbalzano nel nucleo ampio</em></p>
         </div>
-        
+
         <h3>Dettagli Tecnici:</h3>
         <ul>
             <li><strong>Sorgente:</strong> LED (economici).</li>
             <li><strong>Lunghezza d'onda:</strong> 850 nm - 1310 nm.</li>
             <li><strong>Connettore:</strong> SC (Subscriber Connector).</li>
             <li><strong>Distanza:</strong> Brevi tratti (LAN, Data Center) fino a 550m.</li>
+            <li><strong>Costo:</strong> Contenuto.</li>
         </ul>
     </div>
 
     <div class="section">
-        <h2>Classificazioni OM</h2>
+        <h2>Classificazioni OM (Optical Multimode)</h2>
         <table>
-            <tr><th>Classe</th><th>Banda</th><th>Distanza Max (10GbE)</th><th>Applicazione</th></tr>
-            <tr><td>OM1</td><td>200 MHz·km</td><td>33 m</td><td>Fast Ethernet</td></tr>
-            <tr><td>OM2</td><td>500 MHz·km</td><td>82 m</td><td>Gigabit Ethernet</td></tr>
-            <tr><td>OM3</td><td>2000 MHz·km</td><td>300 m</td><td>10GbE Data Center</td></tr>
-            <tr><td>OM4</td><td>4700 MHz·km</td><td>550 m</td><td>40/100GbE</td></tr>
+            <tr><th>Classe</th><th>Banda (MHz·km)</th><th>Distanza Max (10GbE)</th><th>Applicazione Tipica</th></tr>
+            <tr><td>OM1</td><td>200</td><td>33 m</td><td>Fast Ethernet (Obsoleta)</td></tr>
+            <tr><td>OM2</td><td>500</td><td>82 m</td><td>Gigabit Ethernet</td></tr>
+            <tr><td>OM3</td><td>2000</td><td>300 m</td><td>Data Center 10GbE</td></tr>
+            <tr><td>OM4</td><td>4700</td><td>550 m</td><td>Data Center 40/100GbE</td></tr>
         </table>
     </div>
 
