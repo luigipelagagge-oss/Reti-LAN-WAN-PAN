@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trasmissione Ottica (Tx/Rx) | Reti</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; max-width: 900px; margin: 0 auto; padding: 20px; background-color: #f4f7f6; }
+        
+        /* Header con colore distintivo (Verde Smeraldo per la "Tecnica") */
+        header { background-color: #28a745; color: white; padding: 25px; border-radius: 8px; text-align: center; margin-bottom: 30px; }
+        
+        .section { background: white; padding: 25px; border-radius: 8px; margin-bottom: 25px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        
+        h2 { color: #28a745; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        h3 { color: #155724; margin-top: 20px; }
+        
+        .diagram-box { text-align: center; margin: 25px 0; padding: 15px; background: #fff; border: 1px solid #ddd; border-radius: 8px; overflow-x: auto;}
+        .caption { font-style: italic; color: #666; font-size: 0.9em; margin-top: 10px; }
+
+        /* Stile per i box di spiegazione tecnica */
+        .tech-box { background-color: #e9ecef; border-left: 5px solid #28a745; padding: 15px; margin-top: 15px; border-radius: 4px; }
+        
+        .nav-buttons { text-align: center; margin-top: 40px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+        .nav-btn { padding: 12px 25px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; }
+        .btn-back { background-color: #6c757d; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Il Sistema di Trasmissione</h1>
+        <p>Dal segnale elettrico alla luce e viceversa (E/O & O/E)</p>
+    </header>
+
+    <div class="section">
+        <h2>1. La Catena di Trasmissione Completa</h2>
+        <p>Per trasmettere dati attraverso la fibra, dobbiamo convertire gli elettroni (elettricità) in fotoni (luce) e poi riconvertirli. Ecco lo schema a blocchi dell'intero sistema.</p>
+
+        <div class="diagram-box">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 450" width="100%" height="auto">
+              <defs>
+                <marker id="arrow-elec" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#004085" /></marker>
+                <marker id="arrow-optic" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#c82333" /></marker>
+                <style>
+                  .container-box { fill: #ffffff; stroke: #adb5bd; stroke-width: 2; rx: 10; }
+                  .block-elec { fill: #e3f2fd; stroke: #004085; stroke-width: 2; rx: 5; }
+                  .block-optic { fill: #f8d7da; stroke: #c82333; stroke-width: 2; rx: 5; }
+                  .fiber-cable { fill: none; stroke: #c82333; stroke-width: 5; stroke-dasharray: 8,4; }
+                  .txt-title { font-family: Arial, sans-serif; font-size: 20px; font-weight: 900; fill: #212529; text-anchor: middle; }
+                  .txt-block { font-family: Arial, sans-serif; font-size: 15px; font-weight: bold; fill: #000000; text-anchor: middle; }
+                  .txt-label { font-family: Arial, sans-serif; font-size: 13px; font-weight: normal; fill: #495057; text-anchor: middle; font-style: italic; }
+                  .path-elec { stroke: #004085; stroke-width: 3; fill: none; marker-end: url(#arrow-elec); }
+                  .path-optic { stroke: #c82333; stroke-width: 3; fill: none; marker-end: url(#arrow-optic); }
+                </style>
+              </defs>
+              <rect x="0" y="0" width="1100" height="450" fill="#f8f9fa"/>
+              <rect x="30" y="40" width="340" height="370" class="container-box" />
+              <text x="200" y="70" class="txt-title" fill="#004085">TRASMETTITORE (E/O)</text>
+              <line x1="10" y1="150" x2="60" y2="150" class="path-elec" /><text x="35" y="140" class="txt-label">Input Dati</text>
+              <rect x="60" y="120" width="130" height="70" class="block-elec" /><text x="125" y="150" class="txt-block">DRIVER</text><text x="125" y="170" class="txt-label">(Modulatore)</text>
+              <line x1="190" y1="155" x2="230" y2="155" class="path-elec" />
+              <rect x="230" y="120" width="130" height="90" class="block-optic" /><text x="295" y="155" class="txt-block">LASER / LED</text><text x="295" y="180" class="txt-label">(Sorgente)</text>
+              <path d="M275,195 L315,195 M295,175 L295,195 M285,195 L305,195" stroke="#c82333" stroke-width="2" />
+              <line x1="360" y1="165" x2="400" y2="165" class="path-optic" />
+              <path d="M400,165 C450,165 450,220 550,220 C650,220 650,165 700,165" class="fiber-cable" />
+              <text x="550" y="250" class="txt-title" fill="#c82333">FIBRA OTTICA</text>
+              <rect x="700" y="40" width="370" height="370" class="container-box" />
+              <text x="885" y="70" class="txt-title" fill="#004085">RICEVITORE (O/E)</text>
+              <line x1="700" y1="165" x2="730" y2="165" class="path-optic" />
+              <rect x="730" y="120" width="140" height="90" class="block-optic" /><text x="800" y="150" class="txt-block">FOTODIODO</text><text x="800" y="170" class="txt-block">(PIN / APD)</text>
+              <path d="M780,195 L820,195 M800,175 L800,195 M790,195 L810,195" stroke="#c82333" stroke-width="2" />
+              <path d="M775,170 L790,185 M785,165 L800,180" stroke="#c82333" stroke-width="2" marker-end="url(#arrow-optic)"/>
+              <line x1="870" y1="165" x2="910" y2="165" class="path-elec" /><text x="890" y="150" class="txt-label">Fotocorrente</text>
+              <rect x="910" y="120" width="140" height="70" class="block-elec" /><text x="980" y="150" class="txt-block">TIA</text><text x="980" y="170" class="txt-label">(Convertitore I-V)</text>
+              <line x1="980" y1="190" x2="980" y2="220" class="path-elec" />
+              <rect x="910" y="220" width="140" height="70" class="block-elec" /><text x="980" y="250" class="txt-block">AMP &amp; FILTRO</text>
+              <line x1="980" y1="290" x2="980" y2="320" class="path-elec" />
+              <rect x="910" y="320" width="140" height="70" class="block-elec" /><text x="980" y="350" class="txt-block">CDR</text>
+              <line x1="1050" y1="355" x2="1100" y2="355" class="path-elec" /><text x="1075" y="345" class="txt-label">Output</text>
+            </svg>
+            <p class="caption">Figura 1: Diagramma a blocchi completo del link ottico.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>2. Il Circuito Trasmettitore (Modulazione Diretta)</h2>
+        <p>Come facciamo a convertire i bit (0 e 1) in luce? Nel caso più semplice (Modulazione Diretta), usiamo un circuito "Driver" che accende e spegne la corrente che attraversa il Laser.</p>
+        
+        <div class="card-container" style="display:grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center;">
+            <div class="text-col">
+                <h3>Funzionamento:</h3>
+                <ol>
+                    <li>Il dato digitale (<strong>Data In</strong>) arriva alla base del transistor.</li>
+                    <li>Se il bit è <strong>1</strong>, l'interruttore (Transistor) si chiude.</li>
+                    <li>La corrente fluisce dalla batteria (Vcc) attraverso il <strong>Laser Diode</strong>.</li>
+                    <li>Il Laser emette luce.</li>
+                    <li>Se il bit è <strong>0</strong>, il transistor si apre e il laser si spegne.</li>
+                </ol>
+            </div>
+            
+            <div class="diagram-box">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="auto">
+                    <style>
+                        .circuit-line { stroke: #333; stroke-width: 2; fill: none; }
+                        .component { fill: none; stroke: #333; stroke-width: 2; }
+                        .label { font-family: Arial, sans-serif; font-size: 14px; fill: #d63384; font-weight: bold; }
+                    </style>
+                    <text x="140" y="20" class="label">Vcc (+)</text>
+                    <line x1="150" y1="30" x2="150" y2="60" class="circuit-line" />
+                    
+                    <rect x="140" y="60" width="20" height="40" class="component" />
+                    <text x="170" y="85" font-size="12" font-family="Arial">R_limit</text>
+                    <line x1="150" y1="100" x2="150" y2="130" class="circuit-line" />
+
+                    <line x1="130" y1="130" x2="170" y2="130" class="component" /> <polygon points="130,130 170,130 150,160" fill="#333" /> <line x1="130" y1="160" x2="170" y2="160" class="component" /> <line x1="150" y1="160" x2="150" y2="200" class="circuit-line" />
+                    <path d="M180,140 L220,130 M180,150 L220,140" stroke="#c82333" stroke-width="2" marker-end="url(#arrow-optic)" />
+                    <text x="230" y="145" fill="#c82333" font-weight="bold" font-family="Arial">LUCE</text>
+
+                    <circle cx="150" cy="220" r="20" stroke="#333" fill="none" stroke-dasharray="2,2"/>
+                    <text x="180" y="225" font-size="12" font-family="Arial">Driver (Switch)</text>
+                    
+                    <line x1="150" y1="200" x2="150" y2="210" class="circuit-line" />
+                    <line x1="150" y1="230" x2="150" y2="260" class="circuit-line" />
+                    
+                    <line x1="130" y1="220" x2="80" y2="220" class="circuit-line" marker-start="url(#arrow-elec)"/>
+                    <text x="20" y="225" class="label">DATA IN</text>
+
+                    <line x1="130" y1="260" x2="170" y2="260" class="component" />
+                    <line x1="140" y1="265" x2="160" y2="265" class="component" />
+                    <line x1="145" y1="270" x2="155" y2="270" class="component" />
+                </svg>
+                <p class="caption">Fig 2: Schema semplificato circuito E/O.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>3. Il Circuito Ricevitore (Rivelazione)</h2>
+        <p>Ricevere il segnale è più difficile. La luce che arriva è debolissima. Usiamo un fotodiodo polarizzato inversamente che genera una corrente minima, la quale deve essere subito amplificata.</p>
+
+        <div class="card-container" style="display:grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center;">
+            <div class="diagram-box">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 250" width="100%" height="auto">
+                    <style>
+                        .circuit-line { stroke: #333; stroke-width: 2; fill: none; }
+                        .opamp { fill: #fff; stroke: #004085; stroke-width: 2; }
+                    </style>
+                    
+                    <path d="M20,60 L60,80 M20,80 L60,100" stroke="#c82333" stroke-width="2" marker-end="url(#arrow-optic)" />
+                    <text x="10" y="50" fill="#c82333" font-weight="bold" font-family="Arial">LUCE IN</text>
+
+                    <line x1="90" y1="50" x2="90" y2="130" class="circuit-line" />
+                    <line x1="70" y1="90" x2="110" y2="90" stroke="#333" stroke-width="2" /> <polygon points="70,90 110,90 90,115" fill="#333" /> <line x1="70" y1="115" x2="110" y2="115" stroke="#333" stroke-width="2" /> <text x="80" y="40" font-size="12" font-family="Arial">V_bias</text>
+
+                    <line x1="90" y1="130" x2="160" y2="130" class="circuit-line" />
+                    
+                    <polygon points="160,110 160,190 240,150" class="opamp" />
+                    <text x="170" y="140" font-size="16" font-weight="bold" fill="#004085">-</text>
+                    <text x="170" y="175" font-size="16" font-weight="bold" fill="#004085">+</text>
+                    <text x="190" y="155" font-size="12" font-weight="bold" fill="#004085">TIA</text>
+
+                    <line x1="175" y1="130" x2="175" y2="80" class="circuit-line" />
+                    <line x1="175" y1="80" x2="200" y2="80" class="circuit-line" />
+                    <rect x="200" y="70" width="40" height="20" stroke="#333" fill="none" stroke-width="2"/> <text x="210" y="65" font-size="12" font-family="Arial">Rf</text>
+                    <line x1="240" y1="80" x2="260" y2="80" class="circuit-line" />
+                    <line x1="260" y1="80" x2="260" y2="150" class="circuit-line" />
+
+                    <line x1="240" y1="150" x2="320" y2="150" class="circuit-line" marker-end="url(#arrow-elec)" />
+                    <text x="270" y="140" fill="#004085" font-weight="bold" font-family="Arial">V_out</text>
+
+                    <line x1="160" y1="170" x2="140" y2="170" class="circuit-line" />
+                    <line x1="140" y1="170" x2="140" y2="190" class="circuit-line" />
+                    <line x1="120" y1="190" x2="160" y2="190" stroke="#333" stroke-width="2" /> </svg>
+                <p class="caption">Fig 3: Schema convertitore Corrente-Tensione (TIA).</p>
+            </div>
+
+            <div class="text-col">
+                <h3>Funzionamento:</h3>
+                <ol>
+                    <li>La luce colpisce il <strong>Fotodiodo</strong>.</li>
+                    <li>Il fotodiodo genera una piccolissima corrente (I_ph).</li>
+                    <li>Questa corrente entra nell'Amplificatore TIA.</li>
+                    <li>Il TIA, grazie alla resistenza di feedback (Rf), trasforma la corrente in una tensione forte (<strong>V_out</strong>).</li>
+                    <li>La formula magica è: <em>V_out = I_in * Rf</em>.</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <div class="nav-buttons">
+        <a href="fibra_generale.html" class="nav-btn btn-back">← Torna alla Fibra</a>
+        <a href="connettori_fibra.html" class="nav-btn">Vai ai Connettori</a>
+        <a href="https://raw.githubusercontent.com/luigipelagagge-oss/Reti-LAN-WAN-PAN/main/trasmissione_ottica.html" class="nav-btn btn-back" target="_blank">Vedi Sorgente</a>
+    </div>
+
+</body>
+</html>
