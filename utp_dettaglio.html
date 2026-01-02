@@ -6,16 +6,35 @@
     <title>Cavo UTP e RJ45 | Dettaglio</title>
     <style>
         body { font-family: Arial, sans-serif; line-height: 1.6; max-width: 900px; margin: 0 auto; padding: 20px; background-color: #f4f7f6; }
+        
         header { background-color: #007bff; color: white; padding: 25px; border-radius: 8px; text-align: center; margin-bottom: 30px; }
         
         .section { background: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        
+        h2 { color: #007bff; border-bottom: 2px solid #eee; padding-bottom: 10px; }
         
         .image-box { text-align: center; margin: 20px 0; padding: 15px; background: #e9ecef; border-radius: 8px; border: 1px solid #ced4da; }
         .image-box img { max-width: 100%; height: auto; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
         .image-caption { font-style: italic; color: #555; margin-top: 10px; font-size: 0.9em; }
 
+        /* Stile del Bottone "Approfondisci" */
+        .info-box { background-color: #d1ecf1; border-left: 5px solid #17a2b8; padding: 15px; margin-top: 15px; border-radius: 4px; display: flex; justify-content: space-between; align-items: center; }
+        .btn-info { background-color: #17a2b8; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 0.9em; transition: background 0.3s; }
+        .btn-info:hover { background-color: #138496; }
+
+        /* Stile del Modale (Pop-up) */
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 1000; justify-content: center; align-items: center; }
+        .modal-content { background: white; padding: 25px; border-radius: 8px; max-width: 800px; width: 90%; max-height: 90vh; overflow-y: auto; box-shadow: 0 5px 15px rgba(0,0,0,0.3); position: relative; }
+        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 24px; cursor: pointer; color: #aaa; font-weight: bold; }
+        .close-btn:hover { color: #333; }
+        .modal-h3 { color: #17a2b8; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+        
+        .shield-list dt { font-weight: bold; color: #333; margin-top: 15px; font-size: 1.1em; }
+        .shield-list dd { margin-left: 20px; margin-bottom: 10px; color: #555; }
+
         .nav-buttons { text-align: center; margin-top: 30px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
         .nav-btn { padding: 12px 25px; background-color: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; }
+        .btn-back-main { background-color: #007bff; }
         .btn-source { background-color: #6c757d; }
     </style>
 </head>
@@ -28,11 +47,20 @@
 
     <div class="section">
         <h2>1. Struttura Fisica del Cavo</h2>
-        <p>Il cavo UTP (Unshielded Twisted Pair) è composto da 8 fili di rame isolati, raggruppati in <strong>4 coppie intrecciate</strong>. L'intreccio (twist) è fondamentale per annullare le interferenze elettromagnetiche (Crosstalk) tra le coppie stesse.</p>
+        <p>Il cavo a coppie intrecciate (Twisted Pair) è composto da 8 fili di rame isolati, raggruppati in <strong>4 coppie</strong>. L'intreccio (twist) è fondamentale per annullare le interferenze elettromagnetiche (Crosstalk) tra le coppie stesse.</p>
+        <p>Il doppino, nato come mezzo trasmissivo per le linee telefoniche, è oggi lo standard per i cablaggi strutturati grazie ai costi nettamente inferiori rispetto al cavo coassiale.</p>
         
         <div class="image-box">
             <img src="198-Physical-layer-UTP.jpg" alt="Cavo UTP con 4 doppini intrecciati">
             <p class="image-caption">Figura 1: I 4 doppini intrecciati all'interno della guaina protettiva.</p>
+        </div>
+
+        <div class="info-box">
+            <div>
+                <strong>Non tutti i cavi sono uguali!</strong><br>
+                Esistono versioni schermate (FTP, STP) per ambienti con forti disturbi elettrici.
+            </div>
+            <button class="btn-info" onclick="openModal()">Confronta Schermature (UTP/FTP/STP)</button>
         </div>
     </div>
 
@@ -71,12 +99,117 @@
         </div>
     </div>
 
+    <div id="shieldModal" class="modal-overlay" onclick="closeModalOutside(event)">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h3 class="modal-h3">Classificazione delle Schermature</h3>
+            
+            <p>Per migliorare la tolleranza ai disturbi elettromagnetici, i cavi possono essere dotati di fogli di alluminio o calze in rame.</p>
+
+            <div style="text-align: center; margin: 20px 0;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 220" width="100%" height="auto">
+                    <style>
+                        .jacket { fill: #e9ecef; stroke: #6c757d; stroke-width: 3; }
+                        .wire-group { fill: none; }
+                        .wire { r: 6; }
+                        .color-o { fill: orange; }
+                        .color-g { fill: green; }
+                        .color-b { fill: blue; }
+                        .color-br { fill: brown; }
+                        .foil { fill: none; stroke: #17a2b8; stroke-width: 4; stroke-dasharray: 5,2; } /* Simulazione foglio */
+                        .braid { fill: none; stroke: #d63384; stroke-width: 2; } /* Simulazione calza */
+                        .label { font-family: Arial; font-weight: bold; font-size: 16px; text-anchor: middle; fill: #333; }
+                    </style>
+                    
+                    <g transform="translate(100, 100)">
+                        <circle cx="0" cy="0" r="70" class="jacket" />
+                        <text x="0" y="100" class="label">UTP</text>
+                        <text x="0" y="120" font-size="12" text-anchor="middle" fill="#555">Nessuna Schermatura</text>
+                        <circle cx="-25" cy="-25" class="wire color-o" /> <circle cx="-15" cy="-35" class="wire color-o" opacity="0.5"/>
+                        <circle cx="25" cy="-25" class="wire color-g" /> <circle cx="35" cy="-15" class="wire color-g" opacity="0.5"/>
+                        <circle cx="-25" cy="25" class="wire color-b" /> <circle cx="-35" cy="15" class="wire color-b" opacity="0.5"/>
+                        <circle cx="25" cy="25" class="wire color-br" /> <circle cx="15" cy="35" class="wire color-br" opacity="0.5"/>
+                    </g>
+
+                    <g transform="translate(300, 100)">
+                        <circle cx="0" cy="0" r="70" class="jacket" />
+                        <circle cx="0" cy="0" r="60" class="foil" /> <text x="0" y="100" class="label">FTP</text>
+                        <text x="0" y="120" font-size="12" text-anchor="middle" fill="#555">Schermo Globale</text>
+                         <circle cx="-25" cy="-25" class="wire color-o" /> <circle cx="-15" cy="-35" class="wire color-o" opacity="0.5"/>
+                        <circle cx="25" cy="-25" class="wire color-g" /> <circle cx="35" cy="-15" class="wire color-g" opacity="0.5"/>
+                        <circle cx="-25" cy="25" class="wire color-b" /> <circle cx="-35" cy="15" class="wire color-b" opacity="0.5"/>
+                        <circle cx="25" cy="25" class="wire color-br" /> <circle cx="15" cy="35" class="wire color-br" opacity="0.5"/>
+                    </g>
+
+                    <g transform="translate(500, 100)">
+                        <circle cx="0" cy="0" r="70" class="jacket" />
+                        <circle cx="0" cy="0" r="65" class="braid" stroke-dasharray="2,2" /> <circle cx="-25" cy="-25" r="15" fill="none" stroke="#17a2b8" stroke-width="2"/>
+                        <circle cx="25" cy="-25" r="15" fill="none" stroke="#17a2b8" stroke-width="2"/>
+                        <circle cx="-25" cy="25" r="15" fill="none" stroke="#17a2b8" stroke-width="2"/>
+                        <circle cx="25" cy="25" r="15" fill="none" stroke="#17a2b8" stroke-width="2"/>
+
+                        <text x="0" y="100" class="label">STP</text>
+                        <text x="0" y="120" font-size="12" text-anchor="middle" fill="#555">Doppia Schermatura</text>
+
+                         <circle cx="-25" cy="-25" class="wire color-o" /> 
+                        <circle cx="25" cy="-25" class="wire color-g" /> 
+                        <circle cx="-25" cy="25" class="wire color-b" /> 
+                        <circle cx="25" cy="25" class="wire color-br" /> 
+                    </g>
+                </svg>
+                <p class="image-caption">Confronto sezioni trasversali: UTP (sinistra), FTP (centro), STP (destra).</p>
+            </div>
+
+            <dl class="shield-list">
+                <dt>UTP (Unshielded Twisted Pair)</dt>
+                <dd>Costituito da 4 coppie di fili attorcigliati in una guaina. Le coppie non sono schermate.
+                    <br><strong>Impedenza:</strong> 100 ohm.
+                    <br><strong>Caratteristiche:</strong> Economico, flessibile, ma sensibile ai disturbi. Max 100 metri.
+                    <br><strong>Uso:</strong> Cablaggio strutturato standard (RJ45).</dd>
+
+                <dt>FTP (Foiled Twisted Pair)</dt>
+                <dd>Quattro coppie attorcigliate con un'unica <strong>schermatura globale</strong> (foglio di alluminio).
+                    <br><strong>Impedenza:</strong> 100 ohm.
+                    <br><strong>Uso:</strong> Ambienti con interferenze moderate.</dd>
+
+                <dt>STP (Shielded Twisted Pair)</dt>
+                <dd>Coppie doppiamente schermate: ogni coppia ha il suo schermo, più una calza/schermo globale.
+                    <br><strong>Impedenza:</strong> circa 150 ohm.
+                    <br><strong>Caratteristiche:</strong> Riduce drasticamente il rumore (crosstalk e EMI) ma è più costoso, rigido e difficile da installare.</dd>
+            </dl>
+            
+            <div style="text-align: center; margin-top: 20px;">
+                <button class="btn-info" onclick="closeModal()">Chiudi</button>
+            </div>
+        </div>
+    </div>
+
     <div class="nav-buttons">
-        <a href="coassiale_dettaglio.html" class="nav-btn">← Cavo Coassiale</a>
-        <a href="mezzi_trasmissivi.html" class="nav-btn">Torna ai Mezzi</a>
+        <a href="coassiale_dettaglio.html" class="nav-btn btn-source">← Cavo Coassiale</a>
+        
+        <a href="mezzi_trasmissivi.html" class="nav-btn btn-back-main">Torna ai Mezzi</a>
+        
         <a href="fibra_generale.html" class="nav-btn">Vai alla Fibra →</a>
         <a href="https://raw.githubusercontent.com/luigipelagagge-oss/Reti-LAN-WAN-PAN/main/utp_dettaglio.html" class="nav-btn btn-source" target="_blank">Vedi Sorgente HTML</a>
     </div>
+
+    <script>
+        // Funzioni per gestire il Pop-up
+        function openModal() {
+            document.getElementById('shieldModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('shieldModal').style.display = 'none';
+        }
+
+        // Chiude il modale se si clicca fuori dal box bianco
+        function closeModalOutside(event) {
+            if (event.target == document.getElementById('shieldModal')) {
+                closeModal();
+            }
+        }
+    </script>
 
 </body>
 </html>
