@@ -3,139 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cavo UTP | Reti LAN, WAN, PAN</title>
+    <title>Cavo UTP e RJ45 | Dettaglio</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f8f9fa;
-        }
+        body { font-family: Arial, sans-serif; line-height: 1.6; max-width: 900px; margin: 0 auto; padding: 20px; background-color: #f4f7f6; }
+        header { background-color: #007bff; color: white; padding: 25px; border-radius: 8px; text-align: center; margin-bottom: 30px; }
         
-        header {
-            background-color: #007bff;
-            color: white;
-            padding: 25px;
-            border-radius: 8px;
-            margin-bottom: 30px;
-            text-align: center;
-        }
+        .section { background: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
         
-        h1 {
-            font-size: 2em;
-            margin-bottom: 10px;
-        }
-        
-        h2 {
-            color: #007bff;
-            margin: 25px 0 15px 0;
-            padding-bottom: 8px;
-            border-bottom: 2px solid #007bff;
-        }
-        
-        .section {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        .image-box {
-            text-align: center;
-            margin: 20px 0;
-            padding: 15px;
-            background: #f8f9fa;
-            border-radius: 8px;
-        }
-        
-        .image-box img {
-            max-width: 80%;
-            height: auto;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-        
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 15px 0;
-        }
-        
-        th, td {
-            border: 1px solid #ddd;
-            padding: 10px;
-            text-align: left;
-        }
-        
-        th {
-            background-color: #e9ecef;
-        }
-        
-        .nav-buttons {
-            text-align: center;
-            margin: 30px 0;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        
-        .nav-btn {
-            display: inline-block;
-            padding: 12px 25px;
-            background-color: #007bff;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: background 0.3s;
-        }
+        .image-box { text-align: center; margin: 20px 0; padding: 15px; background: #e9ecef; border-radius: 8px; border: 1px solid #ced4da; }
+        .image-box img { max-width: 100%; height: auto; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+        .image-caption { font-style: italic; color: #555; margin-top: 10px; font-size: 0.9em; }
 
-        .nav-btn:hover {
-            background-color: #0056b3;
-        }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background-color: #007bff; color: white; }
+        tr:nth-child(even) { background-color: #f2f2f2; }
 
-        .btn-source {
-            background-color: #6c757d;
-        }
-
-        .btn-source:hover {
-            background-color: #495057;
-        }
+        .nav-buttons { text-align: center; margin-top: 30px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+        .nav-btn { padding: 12px 25px; background-color: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; }
+        .btn-source { background-color: #6c757d; }
     </style>
 </head>
 <body>
 
     <header>
         <h1>Cavo UTP (Unshielded Twisted Pair)</h1>
-        <p>Il cuore delle moderne reti LAN cablate</p>
+        <p>Il doppino intrecciato non schermato e lo standard Ethernet</p>
     </header>
 
     <div class="section">
-        <h2>Cos'è il Cavo UTP?</h2>
-        <p>Il cavo <strong>UTP</strong> è composto da 4 coppie di fili di rame intrecciati tra loro (binati) per ridurre le interferenze elettromagnetiche esterne.</p>
+        <h2>Struttura del Cavo</h2>
+        <p>Il cavo UTP è il mezzo trasmissivo più diffuso nelle reti LAN. È costituito da <strong>8 fili di rame</strong> isolati, raggruppati in <strong>4 coppie (doppini)</strong>.</p>
         
         <div class="image-box">
-            
-
-[Image of UTP cable structure and twisted pairs]
-
-            <p><em>Figura: Struttura interna di un cavo UTP Cat 6</em></p>
+            <img src="cavo_utp_interno.jpg" alt="Struttura interna cavo UTP con doppini intrecciati">
+            <p class="image-caption">Figura 1: Le 4 coppie sono intrecciate per cancellare le interferenze elettromagnetiche (Crosstalk).</p>
         </div>
+        
+
+        <h3>Perché "Twisted" (Intrecciato)?</h3>
+        <p>L'intreccio dei fili non è estetico ma fisico: serve a ridurre la diafonia (interferenza tra cavi vicini) e a proteggere il segnale dai disturbi esterni.</p>
     </div>
 
     <div class="section">
-        <h2>Categorie e Prestazioni</h2>
+        <h2>Il Connettore RJ45</h2>
+        <p>La terminazione standard per i cavi UTP è il connettore <strong>RJ45</strong> (tecnicamente 8P8C - 8 Position 8 Contact).</p>
+        
+        <div class="image-box">
+            <img src="rj45_connettore.jpg" alt="Connettore RJ45 Trasparente">
+            <p class="image-caption">Figura 2: Connettore RJ45 maschio, tipicamente trasparente per vedere i colori dei fili.</p>
+        </div>
+        
+    </div>
+
+    <div class="section">
+        <h2>Categorie di Cavo</h2>
+        <p>Non tutti i cavi UTP sono uguali. La "Categoria" definisce la velocità massima e la frequenza supportata.</p>
         <table>
             <thead>
                 <tr>
                     <th>Categoria</th>
                     <th>Velocità Max</th>
                     <th>Frequenza</th>
-                    <th>Applicazione</th>
+                    <th>Utilizzo Tipico</th>
                 </tr>
             </thead>
             <tbody>
@@ -143,54 +73,45 @@
                     <td><strong>Cat 5e</strong></td>
                     <td>1 Gbps</td>
                     <td>100 MHz</td>
-                    <td>Standard domestico</td>
+                    <td>Reti domestiche standard, uffici base.</td>
                 </tr>
                 <tr>
                     <td><strong>Cat 6</strong></td>
-                    <td>1 Gbps</td>
+                    <td>10 Gbps (fino a 55m)</td>
                     <td>250 MHz</td>
-                    <td>Uffici e aziende</td>
+                    <td>Nuovi impianti, uffici moderni.</td>
                 </tr>
                 <tr>
                     <td><strong>Cat 6a</strong></td>
-                    <td>10 Gbps</td>
+                    <td>10 Gbps (fino a 100m)</td>
                     <td>500 MHz</td>
-                    <td>Data Center / Alta velocità</td>
+                    <td>Data Center, dorsali di edificio.</td>
                 </tr>
             </tbody>
         </table>
     </div>
 
     <div class="section">
-        <h2>Vantaggi e Svantaggi</h2>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
-            <div style="background: #d4edda; padding: 15px; border-radius: 5px;">
-                <h3 style="color: #155724;">✅ VANTAGGI</h3>
-                <ul>
-                    <li>Economico e facile da reperire</li>
-                    <li>Molto flessibile e sottile</li>
-                    <li>Facile da crimpare (connettori RJ45)</li>
-                    <li>Compatibile con quasi tutto</li>
-                </ul>
-            </div>
-            
-            <div style="background: #f8d7da; padding: 15px; border-radius: 5px;">
-                <h3 style="color: #721c24;">❌ SVANTAGGI</h3>
-                <ul>
-                    <li>Sensibile a interferenze esterne</li>
-                    <li>Distanza limitata a 100 metri</li>
-                    <li>Nessuna schermatura metallica</li>
-                </ul>
-            </div>
+        <h2>Cablaggio: Standard T568B</h2>
+        <p>Per collegare i fili nel connettore RJ45, bisogna seguire un ordine preciso dei colori. Lo standard più usato in Italia e USA è il <strong>T568B</strong>.</p>
+        
+        <div class="image-box">
+            <img src="t568b_colori.jpg" alt="Schema colori T568B">
+            <p class="image-caption">Figura 3: Ordine da sinistra a destra (con la linguetta verso il basso): Bianco-Arancio, Arancio, Bianco-Verde, Blu, Bianco-Blu, Verde, Bianco-Marrone, Marrone.</p>
         </div>
+        
+
+        <p><strong>Cavo Dritto (Straight-through):</strong> Entrambi i lati sono T568B. Si usa per collegare PC a Switch.<br>
+        <strong>Cavo Incrociato (Crossover):</strong> Un lato T568B e l'altro T568A. Si usava per collegare PC a PC (oggi desueto grazie all'Auto-MDIX).</p>
     </div>
 
     <div class="nav-buttons">
-        <a href="mezzi_trasmissivi.html" class="nav-btn">← Torna ai Mezzi</a>
-        <a href="coassiale_dettaglio.html" class="nav-btn">Cavo Coassiale →</a>
+        <a href="coassiale_dettaglio.html" class="nav-btn">← Cavo Coassiale</a>
+        <a href="mezzi_trasmissivi.html" class="nav-btn">Torna ai Mezzi</a>
+        <a href="fibra_generale.html" class="nav-btn">Vai alla Fibra →</a>
         <a href="https://raw.githubusercontent.com/luigipelagagge-oss/Reti-LAN-WAN-PAN/main/utp_dettaglio.html" 
            class="nav-btn btn-source" 
-           target="_blank">Visualizza Sorgente HTML</a>
+           target="_blank">Vedi Sorgente HTML</a>
     </div>
 
 </body>
