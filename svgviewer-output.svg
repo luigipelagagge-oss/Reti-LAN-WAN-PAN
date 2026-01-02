@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 450" width="1100" height="450">
+  <defs>
+    <marker id="arrow-elec" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#004085" />
+    </marker>
+    <marker id="arrow-optic" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#c82333" />
+    </marker>
+    
+    <style>
+      /* Sfondo contenitori generali */
+      .container-box { fill: #ffffff; stroke: #adb5bd; stroke-width: 2; rx: 10; }
+      
+      /* Blocchi Elettrici (Blu Chiaro - Testo Scuro) */
+      .block-elec { fill: #e3f2fd; stroke: #004085; stroke-width: 2; rx: 5; }
+      
+      /* Blocchi Ottici (Rosso Chiaro - Testo Scuro) */
+      .block-optic { fill: #f8d7da; stroke: #c82333; stroke-width: 2; rx: 5; }
+      
+      /* Cavo Fibra */
+      .fiber-cable { fill: none; stroke: #c82333; stroke-width: 5; stroke-dasharray: 8,4; }
+      
+      /* Testi */
+      .txt-title { font-family: Arial, sans-serif; font-size: 20px; font-weight: 900; fill: #212529; text-anchor: middle; }
+      .txt-block { font-family: Arial, sans-serif; font-size: 15px; font-weight: bold; fill: #000000; text-anchor: middle; }
+      .txt-label { font-family: Arial, sans-serif; font-size: 13px; font-weight: normal; fill: #495057; text-anchor: middle; font-style: italic; }
+      
+      /* Percorsi */
+      .path-elec { stroke: #004085; stroke-width: 3; fill: none; marker-end: url(#arrow-elec); }
+      .path-optic { stroke: #c82333; stroke-width: 3; fill: none; marker-end: url(#arrow-optic); }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="1100" height="450" fill="#f8f9fa"/>
+
+  <rect x="30" y="40" width="340" height="370" class="container-box" />
+  <text x="200" y="70" class="txt-title" fill="#004085">TRASMETTITORE (E/O)</text>
+
+  <line x1="10" y1="150" x2="60" y2="150" class="path-elec" />
+  <text x="35" y="140" class="txt-label">Input Dati</text>
+
+  <rect x="60" y="120" width="130" height="70" class="block-elec" />
+  <text x="125" y="150" class="txt-block">DRIVER</text>
+  <text x="125" y="170" class="txt-label">(Modulatore)</text>
+
+  <line x1="190" y1="155" x2="230" y2="155" class="path-elec" />
+  <text x="210" y="145" class="txt-label">Corrente</text>
+
+  <rect x="230" y="120" width="130" height="90" class="block-optic" />
+  <text x="295" y="155" class="txt-block">LASER / LED</text>
+  <text x="295" y="180" class="txt-label">(Sorgente Luce)</text>
+  <path d="M275,195 L315,195 M295,175 L295,195 M285,195 L305,195" stroke="#c82333" stroke-width="2" />
+  
+  <line x1="360" y1="165" x2="400" y2="165" class="path-optic" />
+
+  <path d="M400,165 C450,165 450,220 550,220 C650,220 650,165 700,165" class="fiber-cable" />
+  <text x="550" y="250" class="txt-title" fill="#c82333">FIBRA OTTICA</text>
+  <text x="550" y="275" class="txt-label">Trasmissione Luce Modulata</text>
+
+  <rect x="700" y="40" width="370" height="370" class="container-box" />
+  <text x="885" y="70" class="txt-title" fill="#004085">RICEVITORE (O/E)</text>
+
+  <line x1="700" y1="165" x2="730" y2="165" class="path-optic" />
+
+  <rect x="730" y="120" width="140" height="90" class="block-optic" />
+  <text x="800" y="150" class="txt-block">FOTODIODO</text>
+  <text x="800" y="170" class="txt-block">(PIN / APD)</text>
+  <path d="M780,195 L820,195 M800,175 L800,195 M790,195 L810,195" stroke="#c82333" stroke-width="2" />
+  <path d="M775,170 L790,185 M785,165 L800,180" stroke="#c82333" stroke-width="2" marker-end="url(#arrow-optic)"/>
+
+  <line x1="870" y1="165" x2="910" y2="165" class="path-elec" />
+  <text x="890" y="150" class="txt-label">Fotocorrente</text>
+
+  <rect x="910" y="120" width="140" height="70" class="block-elec" />
+  <text x="980" y="150" class="txt-block">TIA</text>
+  <text x="980" y="170" class="txt-label">(Convertitore I → V)</text>
+  
+  <line x1="980" y1="190" x2="980" y2="220" class="path-elec" />
+  <text x="1030" y="210" class="txt-label">Tensione</text>
+
+  <rect x="910" y="220" width="140" height="70" class="block-elec" />
+  <text x="980" y="250" class="txt-block">AMP &amp; FILTRO</text>
+  <text x="980" y="270" class="txt-label">(Pulisce Segnale)</text>
+
+   <line x1="980" y1="290" x2="980" y2="320" class="path-elec" />
+
+  <rect x="910" y="320" width="140" height="70" class="block-elec" />
+  <text x="980" y="350" class="txt-block">CDR</text>
+  <text x="980" y="370" class="txt-label">(Clock &amp; Data)</text>
+
+  <line x1="1050" y1="355" x2="1100" y2="355" class="path-elec" />
+  <text x="1075" y="345" class="txt-label">Dati Output</text>
+
+</svg>
