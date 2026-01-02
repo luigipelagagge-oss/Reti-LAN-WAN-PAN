@@ -3,459 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mezzi Trasmissivi - Reti LAN, WAN, PAN</title>
+    <title>Mezzi Trasmissivi | Reti LAN WAN</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f8f9fa;
-            color: #333;
-        }
+        body { font-family: Arial, sans-serif; line-height: 1.6; max-width: 900px; margin: 0 auto; padding: 20px; background-color: #f4f7f6; }
         
-        header {
-            background: linear-gradient(135deg, #2c3e50, #4a6491);
-            color: white;
-            padding: 25px;
-            border-radius: 10px;
-            margin-bottom: 30px;
-            text-align: center;
-        }
+        /* Header Blu Scuro per la categoria "Infrastruttura Fisica" */
+        header { background-color: #0056b3; color: white; padding: 25px; border-radius: 8px; text-align: center; margin-bottom: 30px; }
         
-        h1 {
-            margin: 0;
-            font-size: 2.2em;
-        }
+        .section { background: white; padding: 25px; border-radius: 8px; margin-bottom: 25px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
         
-        h2 {
-            color: #2c3e50;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 10px;
-            margin-top: 30px;
-        }
+        h2 { color: #0056b3; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        h3 { color: #004494; margin-top: 0; }
         
-        .intro-box {
-            background: white;
-            border-radius: 8px;
-            padding: 20px;
-            margin: 20px 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
+        /* Griglia per le card dei mezzi */
+        .card-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 20px; }
         
-        .mezzo-card {
-            background: white;
-            border-radius: 8px;
-            padding: 20px;
-            margin: 20px 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            border-left: 5px solid;
-        }
+        /* Stile delle Card */
+        .card { background: #f8f9fa; padding: 20px; border-radius: 8px; border-left: 5px solid #333; box-shadow: 0 2px 4px rgba(0,0,0,0.05); transition: transform 0.2s; }
+        .card:hover { transform: translateY(-3px); }
+        .card p { font-size: 0.95em; color: #555; }
         
-        .utp-card {
-            border-left-color: #28a745;
-        }
+        /* Tabella confronto */
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background-color: #e9ecef; color: #333; }
+        tr:hover { background-color: #f1f1f1; }
+
+        /* Area Navigazione */
+        .nav-buttons { text-align: center; margin-top: 40px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+        .nav-btn { padding: 12px 25px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; transition: background 0.3s; }
+        .nav-btn:hover { background-color: #004494; }
         
-        .coax-card {
-            border-left-color: #dc3545;
-        }
+        /* Pulsanti specifici */
+        .btn-back { background-color: #6c757d; } /* Grigio per tornare indietro */
+        .btn-back:hover { background-color: #545b62; }
         
-        .fibra-card {
-            border-left-color: #6f42c1;
-        }
-        
-        .wireless-card {
-            border-left-color: #fd7e14;
-        }
-        
-        .vantaggi-svantaggi {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin: 15px 0;
-        }
-        
-        .vantaggi {
-            background: #d4edda;
-            padding: 15px;
-            border-radius: 5px;
-        }
-        
-        .svantaggi {
-            background: #f8d7da;
-            padding: 15px;
-            border-radius: 5px;
-        }
-        
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        
-        th {
-            background: #2c3e50;
-            color: white;
-            padding: 12px;
-            text-align: left;
-        }
-        
-        td {
-            padding: 10px 12px;
-            border-bottom: 1px solid #ddd;
-        }
-        
-        .nav-button {
-            display: inline-block;
-            padding: 10px 20px;
-            background: #3498db;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            margin: 10px 5px;
-            font-weight: bold;
-            text-align: center;
-        }
-        
-        .nav-button:hover {
-            background: #2980b9;
-        }
-        
-        .utp-btn {
-            background: #28a745;
-        }
-        
-        .coax-btn {
-            background: #dc3545;
-        }
-        
-        .fibra-btn {
-            background: #6f42c1;
-        }
-        
-        .wireless-btn {
-            background: #fd7e14;
-        }
-        
-        .esempio {
-            background: #e3f2fd;
-            padding: 15px;
-            border-radius: 5px;
-            margin: 15px 0;
-            border-left: 4px solid #3498db;
-        }
-        
-        footer {
-            margin-top: 40px;
-            text-align: center;
-            color: #6c757d;
-            font-size: 0.9em;
-            padding-top: 20px;
-            border-top: 1px solid #dee2e6;
-        }
+        .btn-source { background-color: #17a2b8; } /* Ciano per il codice */
     </style>
 </head>
 <body>
 
-    <!-- BOTTONE SORGENTE SICURO - SI APRE IN PAGINA -->
-    <a href="javascript:void(0)" 
-       onclick="mostraSorgente()" 
-       style="position: fixed; top: 20px; right: 20px; background: #6c757d; color: white; padding: 8px 15px; border-radius: 4px; text-decoration: none; font-size: 0.9em; z-index: 1000; border: none; cursor: pointer;">
-        📄 Vedi sorgente
-    </a>
-
     <header>
-        <h1>Mezzi Trasmissivi nelle Reti</h1>
-        <p>Panoramica completa dei canali di comunicazione - Scuola Secondaria</p>
+        <h1>Mezzi Trasmissivi</h1>
+        <p>Il Livello Fisico: Come viaggiano i bit?</p>
     </header>
 
-    <section>
+    <div class="section">
         <h2>Introduzione</h2>
-        <div class="intro-box">
-            <p>I <strong>mezzi trasmissivi</strong> sono i "canali" fisici attraverso i quali i dati viaggiano in una rete.</p>
-            
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0;">
-                <div style="background: #d4edda; padding: 15px; border-radius: 5px;">
-                    <h3 style="color: #28a745; margin-top: 0;">🔗 Mezzi Guidati</h3>
-                    <ul>
-                        <li>Doppino intrecciato (UTP)</li>
-                        <li>Cavo coassiale</li>
-                        <li>Fibra ottica</li>
-                    </ul>
-                </div>
-                
-                <div style="background: #e3f2fd; padding: 15px; border-radius: 5px;">
-                    <h3 style="color: #0d6efd; margin-top: 0;">📡 Mezzi Non Guidati</h3>
-                    <ul>
-                        <li>Wi-Fi</li>
-                        <li>Bluetooth</li>
-                        <li>Infrarossi</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
+        <p>I mezzi trasmissivi sono i canali fisici che permettono il trasporto dei dati (bit) da un dispositivo all'altro. Si dividono in due grandi categorie:</p>
+        <ul>
+            <li><strong>Guidati (Cablati):</strong> Il segnale viaggia dentro un cavo (Rame o Fibra).</li>
+            <li><strong>Non Guidati (Wireless):</strong> Il segnale viaggia nell'aria tramite onde elettromagnetiche.</li>
+        </ul>
+    </div>
 
-    <!-- UTP -->
-    <section id="utp">
-        <div class="mezzo-card utp-card">
-            <h2>1. Cavo UTP - Doppino Intrecciato</h2>
-            <p>Il cavo più diffuso nelle reti locali (LAN).</p>
+    <div class="section">
+        <h2>1. Mezzi Guidati (Cablati)</h2>
+        <div class="card-container">
             
-            <div class="esempio">
-                <strong>Esempio:</strong> Il cavo che collega il PC al router di casa.
-            </div>
-            
-            <div class="vantaggi-svantaggi">
-                <div class="vantaggi">
-                    <h4>✅ Vantaggi</h4>
-                    <ul>
-                        <li>Economico</li>
-                        <li>Facile installazione</li>
-                        <li>Compatibile con tutti i dispositivi</li>
-                    </ul>
-                </div>
-                <div class="svantaggi">
-                    <h4>❌ Svantaggi</h4>
-                    <ul>
-                        <li>Sensibile alle interferenze</li>
-                        <li>Distanza limitata (100m)</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div style="text-align: center; margin: 20px 0;">
-                <a href="utp_dettaglio.html" class="nav-button utp-btn">
-                    📚 Approfondisci UTP
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- COASSIALE -->
-    <section id="coassiale">
-        <div class="mezzo-card coax-card">
-            <h2>2. Cavo Coassiale</h2>
-            <p>Per TV via cavo e segnali video.</p>
-            
-            <div class="esempio">
-                <strong>Esempio:</strong> Il cavo dell'antenna satellitare.
-            </div>
-            
-            <div class="vantaggi-svantaggi">
-                <div class="vantaggi">
-                    <h4>✅ Vantaggi</h4>
-                    <ul>
-                        <li>Maggiore immunità ai disturbi</li>
-                        <li>Distanze maggiori (fino a 500m)</li>
-                    </ul>
-                </div>
-                <div class="svantaggi">
-                    <h4>❌ Svantaggi</h4>
-                    <ul>
-                        <li>Più costoso</li>
-                        <li>Installazione complessa</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div style="text-align: center; margin: 20px 0;">
-                <a href="coassiale_dettaglio.html" class="nav-button coax-btn">
-                    📺 Approfondisci Coassiale
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- FIBRA OTTICA -->
-    <section id="fibra">
-        <div class="mezzo-card fibra-card">
-            <h2>3. Fibra Ottica</h2>
-            <p>Utilizza la luce per trasmettere dati.</p>
-            
-            <div class="esempio">
-                <strong>Esempio:</strong> Connessione Internet a 1 Giga.
-            </div>
-            
-            <div class="vantaggi-svantaggi">
-                <div class="vantaggi">
-                    <h4>✅ Vantaggi</h4>
-                    <ul>
-                        <li>Velocità elevatissime</li>
-                        <li>Distanze lunghissime</li>
-                        <li>Immunità totale ai disturbi</li>
-                    </ul>
-                </div>
-                <div class="svantaggi">
-                    <h4>❌ Svantaggi</h4>
-                    <ul>
-                        <li>Costo elevato</li>
-                        <li>Installazione complessa</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div style="text-align: center; margin: 20px 0;">
-                <a href="fibra_generale.html" class="nav-button fibra-btn">
-                    🔬 Principi Generali
-                </a>
-                <a href="fibra_multimodale.html" class="nav-button" style="background: #20c997;">
-                    📊 Multimodale
-                </a>
-                <a href="fibra_monomodale.html" class="nav-button" style="background: #0d6efd;">
-                    🚀 Monomodale
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- WIRELESS -->
-    <section id="wireless">
-        <div class="mezzo-card wireless-card">
-            <h2>4. Mezzi Non Guidati (Wireless)</h2>
-            <p>Comunicazione senza fili.</p>
-            
-            <div class="vantaggi-svantaggi">
-                <div class="vantaggi">
-                    <h4>✅ Vantaggi</h4>
-                    <ul>
-                        <li>Mobilità totale</li>
-                        <li>Installazione rapida</li>
-                    </ul>
-                </div>
-                <div class="svantaggi">
-                    <h4>❌ Svantaggi</h4>
-                    <ul>
-                        <li>Soggetto a interferenze</li>
-                        <li>Sicurezza inferiore</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div style="text-align: center; margin: 20px 0;">
-                <a href="wireless.html" class="nav-button wireless-btn">
-                    📡 Approfondisci Wireless
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- TABELLA RIASSUNTIVA -->
-    <section>
-        <h2>Confronto tra Mezzi Guidati</h2>
-        
-        <table>
-            <thead>
-                <tr>
-                    <th>Caratteristica</th>
-                    <th>UTP</th>
-                    <th>Coassiale</th>
-                    <th>Fibra</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>Velocità</strong></td>
-                    <td>10 Gbps</td>
-                    <td>1 Gbps</td>
-                    <td>100+ Gbps</td>
-                </tr>
-                <tr>
-                    <td><strong>Distanza</strong></td>
-                    <td>100 m</td>
-                    <td>500 m</td>
-                    <td>100+ km</td>
-                </tr>
-                <tr>
-                    <td><strong>Costo</strong></td>
-                    <td>Basso</td>
-                    <td>Medio</td>
-                    <td>Alto</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-
-    <!-- NAVIGAZIONE -->
-    <section style="text-align: center; margin: 30px 0;">
-        <a href="#utp" class="nav-button utp-btn">🔗 UTP</a>
-        <a href="#coassiale" class="nav-button coax-btn">📺 Coassiale</a>
-        <a href="#fibra" class="nav-button fibra-btn">🔬 Fibra</a>
-        <a href="#wireless" class="nav-button wireless-btn">📡 Wireless</a>
-    </section>
-
-    <footer>
-        <p>Materiale didattico per la scuola secondaria - Reti LAN, WAN, PAN</p>
-        <p>© Uso educativo - Linee guida ministeriali</p>
-    </footer>
-
-    <script>
-    // Funzione per mostrare il sorgente IN SICUREZZA
-    function mostraSorgente() {
-        // Crea una finestra/modale semplice
-        const modal = document.createElement('div');
-        modal.style.cssText = `
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.7);
-            z-index: 2000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        `;
-        
-        const content = document.createElement('div');
-        content.style.cssText = `
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            max-width: 90%;
-            max-height: 80%;
-            overflow: auto;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-        `;
-        
-        // Prendi il codice HTML della pagina corrente
-        const htmlContent = document.documentElement.outerHTML;
-        // "Pulisci" il codice per visualizzazione
-        const cleanHTML = htmlContent
-            .replace(/</g, '&lt;')
-            .replace(/>/g, '&gt;')
-            .replace(/\n/g, '<br>')
-            .replace(/  /g, ' &nbsp;');
-        
-        content.innerHTML = `
-            <h3 style="margin-top: 0; color: #333;">📄 Codice Sorgente - mezzi_trasmissivi.html</h3>
-            <div style="background: #f8f9fa; padding: 15px; border-radius: 5px; font-family: monospace; font-size: 14px; max-height: 400px; overflow: auto;">
-                ${cleanHTML}
-            </div>
-            <div style="text-align: center; margin-top: 20px;">
-                <button onclick="this.parentElement.parentElement.parentElement.remove()" 
-                        style="background: #dc3545; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">
-                    Chiudi
-                </button>
-            </div>
-        `;
-        
-        modal.appendChild(content);
-        document.body.appendChild(modal);
-        
-        // Chiudi cliccando sullo sfondo
-        modal.onclick = function(e) {
-            if (e.target === modal) {
-                modal.remove();
-            }
-        };
-    }
-    </script>
-
-</body>
-</html>
+            <div class="card" style="border-left-color: #007bff;">
+                <h3>Doppino UTP</h3>
+                <p>Cavi in rame intrecciati (Twisted Pair). È lo standard per le reti LAN Ethernet.</p>
+                <p><strong>Pro:</strong> Economico, flessibile.</p>
+                <p><strong>Contro:</strong> Interferenze elettriche.</p>
+                <a href="utp_dettaglio
