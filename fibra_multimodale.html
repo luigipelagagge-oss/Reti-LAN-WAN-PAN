@@ -10,6 +10,9 @@
         .section { background: white; padding: 20px; border-radius: 8px; margin-top: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
         .image-box { text-align: center; margin: 20px 0; padding: 15px; background: #fafafa; border: 1px solid #20c997; border-radius: 8px; }
         .image-box img { max-width: 100%; height: auto; border-radius: 5px; }
+        .grid-container { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px; }
+        .pros { background: #d4edda; padding: 15px; border-radius: 8px; border-left: 5px solid #28a745; }
+        .cons { background: #f8d7da; padding: 15px; border-radius: 8px; border-left: 5px solid #dc3545; }
         table { width: 100%; border-collapse: collapse; margin: 15px 0; }
         th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
         th { background-color: #20c997; color: white; }
@@ -22,32 +25,61 @@
     <header><h1>Fibra Ottica Multimodale (MMF)</h1></header>
 
     <div class="section">
-        <h2>Cos'è la Fibra Multimodale?</h2>
-        <p>All'aumentare del diametro del core (50-62.5 µm), la luce può seguire percorsi differenti (chiamati "modi"). Questo causa la <strong>dispersione modale</strong>: i raggi luminosi arrivano a destinazione in tempi leggermente diversi, allargando l'impulso.</p>
+        <h2>Fisica della Propagazione</h2>
+        <p>Nella fibra multimodale, il core è sufficientemente grande (50-62.5 µm) da permettere alla luce di entrare con diverse angolazioni.</p>
         
         <div class="image-box">
-            <img src="MULTI_MONO_MODALE.webp" alt="Propagazione in fibra multimodale">
-            <p><em>Figura: Molteplici traiettorie che rimbalzano nel nucleo ampio</em></p>
+            <img src="propagazione1.jpg" alt="Schema fisico della propagazione e cono di accettazione">
+            <p><em>Figura 1: Ingresso della luce nel cono di accettazione e percorso a zig-zag</em></p>
         </div>
 
-        <h3>Dettagli Tecnici:</h3>
+        <p>Come vediamo nella <strong>Figura 1</strong>:</p>
         <ul>
-            <li><strong>Sorgente:</strong> LED (economici).</li>
-            <li><strong>Lunghezza d'onda:</strong> 850 nm - 1310 nm.</li>
-            <li><strong>Connettore:</strong> SC (Subscriber Connector).</li>
-            <li><strong>Distanza:</strong> Brevi tratti (LAN, Data Center) fino a 550m.</li>
-            <li><strong>Costo:</strong> Contenuto.</li>
+            <li><strong>Cono di Accettazione:</strong> Solo i raggi che entrano entro un certo angolo (indicato dalle linee blu) riescono a essere "intrappolati" nel core.</li>
+            <li><strong>Riflessione Totale:</strong> Una volta dentro, il raggio rimbalza continuamente tra il core (n1) e il cladding (n2).</li>
+            <li><strong>Percorso a Zig-Zag:</strong> Questo continuo rimbalzare allunga notevolmente la strada che la luce deve percorrere rispetto a un raggio che viaggia dritto.</li>
         </ul>
     </div>
 
     <div class="section">
-        <h2>Classificazioni OM (Optical Multimode)</h2>
+        <h2>Il Problema: Dispersione Modale</h2>
+        <p>A causa dei percorsi a zig-zag mostrati sopra, alcuni raggi fanno più strada di altri e arrivano a destinazione in ritardo. Questo fenomeno si chiama <strong>Dispersione Modale</strong>.</p>
+        <div class="image-box">
+            <img src="MULTI_MONO_MODALE.webp" alt="Confronto visuale modi di propagazione">
+            <p><em>Figura 2: Confronto tra i molteplici percorsi della multimodale e il percorso unico</em></p>
+        </div>
+        <p>Il risultato è che l'impulso luminoso si "allarga", limitando la velocità e la distanza massima di trasmissione.</p>
+    </div>
+
+    <div class="section">
+        <h2>Vantaggi e Svantaggi</h2>
+        <div class="grid-container">
+            <div class="pros">
+                <h3 style="color: #155724; margin-top:0;">✅ Vantaggi</h3>
+                <ul>
+                    <li><strong>Sorgenti Economiche:</strong> Utilizza LED o VCSEL invece di laser costosi.</li>
+                    <li><strong>Facilità di installazione:</strong> Il core grande rende più facile l'allineamento dei connettori.</li>
+                    <li><strong>Ideale per LAN:</strong> Perfetta per collegare server e switch nello stesso edificio.</li>
+                </ul>
+            </div>
+            <div class="cons">
+                <h3 style="color: #721c24; margin-top:0;">❌ Svantaggi</h3>
+                <ul>
+                    <li><strong>Distanza Limitata:</strong> Massimo 550m (a 10 Gbps) a causa della dispersione.</li>
+                    <li><strong>Banda inferiore:</strong> Non adatta per le dorsali interurbane.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Classificazioni OM</h2>
         <table>
-            <tr><th>Classe</th><th>Banda (MHz·km)</th><th>Distanza Max (10GbE)</th><th>Applicazione Tipica</th></tr>
-            <tr><td>OM1</td><td>200</td><td>33 m</td><td>Fast Ethernet (Obsoleta)</td></tr>
-            <tr><td>OM2</td><td>500</td><td>82 m</td><td>Gigabit Ethernet</td></tr>
-            <tr><td>OM3</td><td>2000</td><td>300 m</td><td>Data Center 10GbE</td></tr>
-            <tr><td>OM4</td><td>4700</td><td>550 m</td><td>Data Center 40/100GbE</td></tr>
+            <tr><th>Classe</th><th>Sorgente</th><th>Distanza Max (10GbE)</th></tr>
+            <tr><td>OM1</td><td>LED</td><td>33 m (Obsoleta)</td></tr>
+            <tr><td>OM2</td><td>LED</td><td>82 m</td></tr>
+            <tr><td>OM3</td><td>Laser (VCSEL)</td><td>300 m (Standard attuale)</td></tr>
+            <tr><td>OM4</td><td>Laser (VCSEL)</td><td>550 m (Alta velocità)</td></tr>
         </table>
     </div>
 
