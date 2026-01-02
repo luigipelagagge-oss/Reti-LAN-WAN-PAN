@@ -14,11 +14,6 @@
         .image-box img { max-width: 100%; height: auto; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
         .image-caption { font-style: italic; color: #555; margin-top: 10px; font-size: 0.9em; }
 
-        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
-        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
-        th { background-color: #007bff; color: white; }
-        tr:nth-child(even) { background-color: #f2f2f2; }
-
         .nav-buttons { text-align: center; margin-top: 30px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
         .nav-btn { padding: 12px 25px; background-color: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; }
         .btn-source { background-color: #6c757d; }
@@ -27,91 +22,60 @@
 <body>
 
     <header>
-        <h1>Cavo UTP (Unshielded Twisted Pair)</h1>
-        <p>Il doppino intrecciato non schermato e lo standard Ethernet</p>
+        <h1>Cavo UTP e Connettori RJ45</h1>
+        <p>Analisi fisica e schemi di cablaggio</p>
     </header>
 
     <div class="section">
-        <h2>Struttura del Cavo</h2>
-        <p>Il cavo UTP è il mezzo trasmissivo più diffuso nelle reti LAN. È costituito da <strong>8 fili di rame</strong> isolati, raggruppati in <strong>4 coppie (doppini)</strong>.</p>
+        <h2>1. Struttura Fisica del Cavo</h2>
+        <p>Il cavo UTP (Unshielded Twisted Pair) è composto da 8 fili di rame isolati, raggruppati in <strong>4 coppie intrecciate</strong>. L'intreccio (twist) è fondamentale per annullare le interferenze elettromagnetiche (Crosstalk) tra le coppie stesse.</p>
         
         <div class="image-box">
-            <img src="cavo_utp_interno.jpg" alt="Struttura interna cavo UTP con doppini intrecciati">
-            <p class="image-caption">Figura 1: Le 4 coppie sono intrecciate per cancellare le interferenze elettromagnetiche (Crosstalk).</p>
+            <img src="198-Physical-layer-UTP.jpg" alt="Cavo UTP con 4 doppini intrecciati">
+            <p class="image-caption">Figura 1: I 4 doppini intrecciati all'interno della guaina protettiva.</p>
         </div>
-        
-
-        <h3>Perché "Twisted" (Intrecciato)?</h3>
-        <p>L'intreccio dei fili non è estetico ma fisico: serve a ridurre la diafonia (interferenza tra cavi vicini) e a proteggere il segnale dai disturbi esterni.</p>
     </div>
 
     <div class="section">
-        <h2>Il Connettore RJ45</h2>
-        <p>La terminazione standard per i cavi UTP è il connettore <strong>RJ45</strong> (tecnicamente 8P8C - 8 Position 8 Contact).</p>
+        <h2>2. Standard T568B (Pinout)</h2>
+        <p>Per collegare il cavo al connettore <strong>RJ45</strong>, è necessario seguire un ordine preciso dei colori. Lo standard più diffuso è il <strong>T568B</strong>. L'ordine dei pin (da 1 a 8, guardando il connettore con la linguetta verso il basso) è il seguente:</p>
         
         <div class="image-box">
-            <img src="rj45_connettore.jpg" alt="Connettore RJ45 Trasparente">
-            <p class="image-caption">Figura 2: Connettore RJ45 maschio, tipicamente trasparente per vedere i colori dei fili.</p>
+            <img src="RJ45-pinout-diagram-T568B-1.jpg" alt="Schema piedinatura RJ45 T568B">
+            <p class="image-caption">Figura 2: Schema dei colori standard T568B.</p>
         </div>
         
+        <ul>
+            <li>Pin 1: Bianco-Arancio</li>
+            <li>Pin 2: Arancio</li>
+            <li>Pin 3: Bianco-Verde</li>
+            <li>Pin 4: Blu</li>
+            <li>Pin 5: Bianco-Blu</li>
+            <li>Pin 6: Verde</li>
+            <li>Pin 7: Bianco-Marrone</li>
+            <li>Pin 8: Marrone</li>
+        </ul>
     </div>
 
     <div class="section">
-        <h2>Categorie di Cavo</h2>
-        <p>Non tutti i cavi UTP sono uguali. La "Categoria" definisce la velocità massima e la frequenza supportata.</p>
-        <table>
-            <thead>
-                <tr>
-                    <th>Categoria</th>
-                    <th>Velocità Max</th>
-                    <th>Frequenza</th>
-                    <th>Utilizzo Tipico</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>Cat 5e</strong></td>
-                    <td>1 Gbps</td>
-                    <td>100 MHz</td>
-                    <td>Reti domestiche standard, uffici base.</td>
-                </tr>
-                <tr>
-                    <td><strong>Cat 6</strong></td>
-                    <td>10 Gbps (fino a 55m)</td>
-                    <td>250 MHz</td>
-                    <td>Nuovi impianti, uffici moderni.</td>
-                </tr>
-                <tr>
-                    <td><strong>Cat 6a</strong></td>
-                    <td>10 Gbps (fino a 100m)</td>
-                    <td>500 MHz</td>
-                    <td>Data Center, dorsali di edificio.</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+        <h2>3. Schemi di Collegamento</h2>
+        <p>A seconda di come vengono terminati i due estremi del cavo, otteniamo due tipi di collegamenti:</p>
+        <ul>
+            <li><strong>Cavo Dritto (Straight-Through):</strong> Entrambi i lati seguono lo standard T568B. Usato per collegare dispositivi diversi (es. PC a Switch).</li>
+            <li><strong>Cavo Incrociato (Crossover):</strong> Un lato è T568B, l'altro è T568A (dove le coppie Arancio e Verde sono scambiate). Usato per collegare dispositivi uguali (es. PC a PC, Switch a Switch).</li>
+        </ul>
 
-    <div class="section">
-        <h2>Cablaggio: Standard T568B</h2>
-        <p>Per collegare i fili nel connettore RJ45, bisogna seguire un ordine preciso dei colori. Lo standard più usato in Italia e USA è il <strong>T568B</strong>.</p>
-        
         <div class="image-box">
-            <img src="t568b_colori.jpg" alt="Schema colori T568B">
-            <p class="image-caption">Figura 3: Ordine da sinistra a destra (con la linguetta verso il basso): Bianco-Arancio, Arancio, Bianco-Verde, Blu, Bianco-Blu, Verde, Bianco-Marrone, Marrone.</p>
+            <img src="schemi-per-collegamenti-n.jpg" alt="Schemi di collegamento dritto e incrociato">
+            <p class="image-caption">Figura 3: Differenza tra collegamento Dritto e Incrociato (Crossover).</p>
         </div>
-        
-
-        <p><strong>Cavo Dritto (Straight-through):</strong> Entrambi i lati sono T568B. Si usa per collegare PC a Switch.<br>
-        <strong>Cavo Incrociato (Crossover):</strong> Un lato T568B e l'altro T568A. Si usava per collegare PC a PC (oggi desueto grazie all'Auto-MDIX).</p>
     </div>
 
     <div class="nav-buttons">
         <a href="coassiale_dettaglio.html" class="nav-btn">← Cavo Coassiale</a>
         <a href="mezzi_trasmissivi.html" class="nav-btn">Torna ai Mezzi</a>
         <a href="fibra_generale.html" class="nav-btn">Vai alla Fibra →</a>
-        <a href="https://raw.githubusercontent.com/luigipelagagge-oss/Reti-LAN-WAN-PAN/main/utp_dettaglio.html" 
-           class="nav-btn btn-source" 
-           target="_blank">Vedi Sorgente HTML</a>
+        <a href="https://raw.githubusercontent.com/luigipelagagge-oss/Reti-LAN-WAN-PAN/main/utp_dettaglio.html" class="nav-btn btn-source" target="_blank">Vedi Sorgente HTML</a>
     </div>
 
 </body>
