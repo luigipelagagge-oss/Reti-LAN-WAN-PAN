@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cavo Coassiale | Reti LAN, WAN, PAN</title>
+    <title>Fibra Ottica | Reti LAN, WAN, PAN</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -11,11 +11,11 @@
             max-width: 900px;
             margin: 0 auto;
             padding: 20px;
-            background-color: #f8f9fa;
+            background-color: #f4f7f6;
         }
         
         header {
-            background-color: #dc3545;
+            background-color: #17a2b8;
             color: white;
             padding: 25px;
             border-radius: 8px;
@@ -23,16 +23,11 @@
             text-align: center;
         }
         
-        h1 {
-            font-size: 2em;
-            margin-bottom: 10px;
-        }
-        
         h2 {
-            color: #dc3545;
+            color: #17a2b8;
             margin: 25px 0 15px 0;
             padding-bottom: 8px;
-            border-bottom: 2px solid #dc3545;
+            border-bottom: 2px solid #17a2b8;
         }
         
         .section {
@@ -52,30 +47,28 @@
         }
         
         .image-box img {
-            max-width: 80%;
+            max-width: 100%;
+            height: auto;
             border: 1px solid #ddd;
             border-radius: 5px;
         }
-        
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 15px 0;
-        }
-        
-        th, td {
-            border: 1px solid #ddd;
+
+        .formula {
+            background-color: #f1f1f1;
             padding: 10px;
-            text-align: left;
-        }
-        
-        th {
-            background-color: #e9ecef;
+            font-style: italic;
+            text-align: center;
+            border-radius: 5px;
+            margin: 10px 0;
         }
         
         .nav-buttons {
             text-align: center;
             margin: 30px 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
         }
         
         .nav-btn {
@@ -85,107 +78,75 @@
             color: white;
             text-decoration: none;
             border-radius: 5px;
-            margin: 0 10px;
             font-weight: bold;
         }
-        
-        .nav-btn:hover {
-            background-color: #0056b3;
+
+        .btn-source {
+            background-color: #6c757d;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Cavo Coassiale</h1>
-        <p>Storico mezzo trasmissivo per TV via cavo e reti dati</p>
+        <h1>La Fibra Ottica</h1>
+        <p>Trasmissione dati alla velocità della luce</p>
     </header>
 
     <div class="section">
-        <h2>Cos'è il Cavo Coassiale?</h2>
-        <p>Il cavo <strong>coassiale</strong> ha un conduttore interno circondato da uno schermo, separati da materiale isolante.</p>
+        <h2>La Luce come Segnale</h2>
+        <p>La luce è un segnale elettromagnetico che si trasmette nel vuoto con velocità massima di <strong>300.000 km/s</strong>. Nei mezzi materiali questa velocità diminuisce.</p>
+        <ul>
+            <li><strong>Trasmissione Digitale:</strong> Si associa allo "0" l'assenza di segnale e all' "1" la presenza di segnale.</li>
+            <li><strong>Caratteristiche:</strong> Ogni segnale è caratterizzato da ampiezza, frequenza e lunghezza d'onda.</li>
+        </ul>
+        <div class="image-box">
+            <img src="struttura_fibra_ottica_base.png" alt="Struttura base della fibra ottica">
+            <p><em>Figura: Struttura della fibra (Core, Cladding, Coating)</em></p>
+        </div>
+        
+    </div>
+
+    <div class="section">
+        <h2>Leggi di Snell</h2>
+        <p>La propagazione della luce attraverso i mezzi rispetta le <strong>Leggi di Snell</strong>, che regolano la riflessione e la rifrazione quando la luce incontra un ostacolo.</p>
+        
+        <h3>Riflessione e Rifrazione</h3>
+        <ul>
+            <li><strong>Riflessione:</strong> La luce torna indietro nel primo mezzo. L'angolo di incidenza è uguale all'angolo di riflessione.</li>
+            <li><strong>Rifrazione:</strong> La luce attraversa l'ostacolo passando nel secondo mezzo.</li>
+        </ul>
+        
+        <div class="formula">
+            Legge della rifrazione: n₁ · sin(θ₁) = n₂ · sin(θ₂)
+        </div>
+        
+        <p>L'indice di rifrazione (n) è il rapporto tra la velocità della luce nel vuoto e quella nel mezzo.</p>
+
+        <div class="image-box">
+            <img src="leggi-di-snell-n.jpg" alt="Rappresentazione leggi di Snell">
+            <p><em>Figura: Fenomeni di riflessione e rifrazione</em></p>
+        </div>
+        
+    </div>
+
+    <div class="section">
+        <h2>Riflessione Pura (Riflessione Totale)</h2>
+        <p>Quando un segnale luminoso passa da un mezzo più denso (core) ad uno meno denso (cladding), l'angolo di rifrazione aumenta. Oltre un certo valore, chiamato <strong>angolo critico</strong>, la luce non riesce più ad uscire e viene riflessa completamente all'interno del nucleo.</p>
         
         <div class="image-box">
-            <img src="coassiale_structure.jpg" alt="Struttura del cavo coassiale">
-            <p><em>Figura: Struttura di un cavo coassiale</em></p>
+            <img src="riflessione-pura-n.jpg" alt="Riflessione totale interna">
+            <p><em>Figura: Il principio della riflessione pura</em></p>
         </div>
-    </div>
-
-    <div class="section">
-        <h2>Componenti del Cavo Coassiale</h2>
-        <ol>
-            <li><strong>Conduttore Centrale:</strong> In rame (anima)</li>
-            <li><strong>Dielettrico:</strong> Materiale isolante</li>
-            <li><strong>Schermo:</strong> Maglia di rame/alluminio</li>
-            <li><strong>Guaina Esterna:</strong> Protezione in PVC</li>
-        </ol>
-    </div>
-
-    <div class="section">
-        <h2>Tipi di Cavi Coassiali</h2>
-        <table>
-            <tr>
-                <th>Tipo</th>
-                <th>Impedenza</th>
-                <th>Uso Principale</th>
-            </tr>
-            <tr>
-                <td><strong>RG-6</strong></td>
-                <td>75 Ω</td>
-                <td>TV via cavo, satellitare</td>
-            </tr>
-            <tr>
-                <td><strong>RG-11</strong></td>
-                <td>75 Ω</td>
-                <td>Distanze lunghe (fino a 600m)</td>
-            </tr>
-            <tr>
-                <td><strong>RG-58</strong></td>
-                <td>50 Ω</td>
-                <td>Reti Ethernet 10BASE2</td>
-            </tr>
-        </table>
-    </div>
-
-    <div class="section">
-        <h2>Vantaggi e Svantaggi</h2>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-            <div style="background: #f8d7da; padding: 15px; border-radius: 5px;">
-                <h3>✅ VANTAGGI</h3>
-                <ul>
-                    <li>Maggiore immunità ai disturbi</li>
-                    <li>Distanze maggiori (fino a 500m)</li>
-                    <li>Buona protezione</li>
-                    <li>Ottimo per video</li>
-                </ul>
-            </div>
-            
-            <div style="background: #d4edda; padding: 15px; border-radius: 5px;">
-                <h3>❌ SVANTAGGI</h3>
-                <ul>
-                    <li>Più costoso dell'UTP</li>
-                    <li>Più ingombrante</li>
-                    <li>Installazione complessa</li>
-                    <li>Connettori delicati</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="section">
-        <h2>Applicazioni Principali</h2>
-        <ul>
-            <li><strong>📺 TV via cavo (CATV)</strong></li>
-            <li><strong>📡 Antenne TV</strong></li>
-            <li><strong>🎥 Sistemi videosorveglianza</strong></li>
-            <li><strong>📶 Reti Ethernet storiche</strong></li>
-        </ul>
+        
     </div>
 
     <div class="nav-buttons">
-        <a href="utp_dettaglio.html" class="nav-btn">← Cavo UTP</a>
+        <a href="coassiale_dettaglio.html" class="nav-btn">← Cavo Coassiale</a>
         <a href="mezzi_trasmissivi.html" class="nav-btn">Torna ai Mezzi</a>
-        <a href="fibra_generale.html" class="nav-btn">Fibra Ottica →</a>
+        <a href="https://raw.githubusercontent.com/luigipelagagge-oss/Reti-LAN-WAN-PAN/main/fibra_generale.html" 
+           class="nav-btn btn-source" 
+           target="_blank">Visualizza Sorgente HTML</a>
     </div>
 
 </body>
