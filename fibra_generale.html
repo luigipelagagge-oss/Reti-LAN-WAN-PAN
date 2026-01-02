@@ -3,151 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fibra Ottica | Reti LAN, WAN, PAN</title>
+    <title>Fibra Ottica - Generale | Reti</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f4f7f6;
-        }
-        
-        header {
-            background-color: #17a2b8;
-            color: white;
-            padding: 25px;
-            border-radius: 8px;
-            margin-bottom: 30px;
-            text-align: center;
-        }
-        
-        h2 {
-            color: #17a2b8;
-            margin: 25px 0 15px 0;
-            padding-bottom: 8px;
-            border-bottom: 2px solid #17a2b8;
-        }
-        
-        .section {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        .image-box {
-            text-align: center;
-            margin: 20px 0;
-            padding: 15px;
-            background: #f8f9fa;
-            border-radius: 8px;
-        }
-        
-        .image-box img {
-            max-width: 100%;
-            height: auto;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-
-        .formula {
-            background-color: #f1f1f1;
-            padding: 10px;
-            font-style: italic;
-            text-align: center;
-            border-radius: 5px;
-            margin: 10px 0;
-        }
-        
-        .nav-buttons {
-            text-align: center;
-            margin: 30px 0;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        
-        .nav-btn {
-            display: inline-block;
-            padding: 12px 25px;
-            background-color: #007bff;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-        }
-
-        .btn-source {
-            background-color: #6c757d;
-        }
+        body { font-family: Arial, sans-serif; line-height: 1.6; max-width: 900px; margin: 0 auto; padding: 20px; background-color: #f4f7f6; }
+        header { background-color: #17a2b8; color: white; padding: 25px; border-radius: 8px; text-align: center; margin-bottom: 20px; }
+        .section { background: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .image-box { text-align: center; margin: 20px 0; padding: 15px; background: #f8f9fa; border-radius: 8px; }
+        .image-box img { max-width: 100%; height: auto; border: 1px solid #ddd; }
+        .nav-buttons { text-align: center; margin: 30px 0; display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; }
+        .nav-btn { display: inline-block; padding: 12px 25px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; }
+        .btn-source { background-color: #6c757d; }
+        .card-container { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
+        .card { background: #eef9fa; padding: 15px; border-radius: 8px; text-align: center; border: 1px solid #17a2b8; }
     </style>
 </head>
 <body>
-
     <header>
         <h1>La Fibra Ottica</h1>
-        <p>Trasmissione dati alla velocità della luce</p>
+        <p>Principi fisici e propagazione della luce</p>
     </header>
 
     <div class="section">
         <h2>La Luce come Segnale</h2>
-        <p>La luce è un segnale elettromagnetico che si trasmette nel vuoto con velocità massima di <strong>300.000 km/s</strong>. Nei mezzi materiali questa velocità diminuisce.</p>
+        <p>La luce è un segnale elettromagnetico che si trasmette nel vuoto con velocità massima di <strong>300.000 km/s</strong>. Nei mezzi materiali la velocità diminuisce.</p>
         <ul>
-            <li><strong>Trasmissione Digitale:</strong> Si associa allo "0" l'assenza di segnale e all' "1" la presenza di segnale.</li>
-            <li><strong>Caratteristiche:</strong> Ogni segnale è caratterizzato da ampiezza, frequenza e lunghezza d'onda.</li>
+            <li><strong>Trasmissione Digitale:</strong> Si associa allo 0 l'assenza di segnale e all'1 la presenza di segnale.</li>
+            <li><strong>Caratteristiche:</strong> Ampiezza, frequenza e lunghezza d'onda (λ).</li>
         </ul>
         <div class="image-box">
-            <img src="struttura_fibra_ottica_base.png" alt="Struttura base della fibra ottica">
-            <p><em>Figura: Struttura della fibra (Core, Cladding, Coating)</em></p>
+            <img src="struttura_fibra_ottica_base.png" alt="Struttura Fibra Ottica">
+            <p><em>Struttura: Core, Cladding (Mantello) e Coating (Rivestimento)</em></p>
         </div>
         
     </div>
 
     <div class="section">
         <h2>Leggi di Snell</h2>
-        <p>La propagazione della luce attraverso i mezzi rispetta le <strong>Leggi di Snell</strong>, che regolano la riflessione e la rifrazione quando la luce incontra un ostacolo.</p>
-        
-        <h3>Riflessione e Rifrazione</h3>
+        <p>Le leggi di Snell regolano la riflessione e la rifrazione della luce quando incontra la superficie di separazione tra due mezzi.</p>
         <ul>
-            <li><strong>Riflessione:</strong> La luce torna indietro nel primo mezzo. L'angolo di incidenza è uguale all'angolo di riflessione.</li>
-            <li><strong>Rifrazione:</strong> La luce attraversa l'ostacolo passando nel secondo mezzo.</li>
+            <li><strong>Riflessione:</strong> Il raggio incidente e il raggio riflesso giacciono sullo stesso piano; l'angolo di incidenza è uguale all'angolo di riflessione rispetto alla normale.</li>
+            <li><strong>Rifrazione:</strong> La luce passa da un mezzo a un altro cambiando velocità secondo la legge: <em>n1 * sin(θ1) = n2 * sin(θ2)</em>.</li>
         </ul>
-        
-        <div class="formula">
-            Legge della rifrazione: n₁ · sin(θ₁) = n₂ · sin(θ₂)
-        </div>
-        
-        <p>L'indice di rifrazione (n) è il rapporto tra la velocità della luce nel vuoto e quella nel mezzo.</p>
-
         <div class="image-box">
-            <img src="leggi-di-snell-n.jpg" alt="Rappresentazione leggi di Snell">
-            <p><em>Figura: Fenomeni di riflessione e rifrazione</em></p>
+            <img src="leggi-di-snell-n.jpg" alt="Leggi di Snell">
         </div>
         
     </div>
 
     <div class="section">
-        <h2>Riflessione Pura (Riflessione Totale)</h2>
-        <p>Quando un segnale luminoso passa da un mezzo più denso (core) ad uno meno denso (cladding), l'angolo di rifrazione aumenta. Oltre un certo valore, chiamato <strong>angolo critico</strong>, la luce non riesce più ad uscire e viene riflessa completamente all'interno del nucleo.</p>
-        
+        <h2>Riflessione Pura</h2>
+        <p>Quando la luce passa da un mezzo più denso (Core) a uno meno denso (Cladding), superando l'<strong>angolo critico</strong>, si ha la riflessione pura. Il segnale rimane intrappolato nel core.</p>
         <div class="image-box">
-            <img src="riflessione-pura-n.jpg" alt="Riflessione totale interna">
-            <p><em>Figura: Il principio della riflessione pura</em></p>
+            <img src="riflessione-pura-n.jpg" alt="Riflessione Pura">
         </div>
         
     </div>
 
-    <div class="nav-buttons">
-        <a href="coassiale_dettaglio.html" class="nav-btn">← Cavo Coassiale</a>
-        <a href="mezzi_trasmissivi.html" class="nav-btn">Torna ai Mezzi</a>
-        <a href="https://raw.githubusercontent.com/luigipelagagge-oss/Reti-LAN-WAN-PAN/main/fibra_generale.html" 
-           class="nav-btn btn-source" 
-           target="_blank">Visualizza Sorgente HTML</a>
+    <div class="section">
+        <h2>Tipologie di Fibra</h2>
+        <div class="card-container">
+            <div class="card">
+                <h3>Monomodale</h3>
+                <p>Core sottile (4-10 µm), percorso unico.</p>
+                <a href="fibra_monomodale.html" class="nav-btn">Vai al dettaglio</a>
+            </div>
+            <div class="card">
+                <h3>Multimodale</h3>
+                <p>Core ampio, percorsi multipli.</p>
+                <a href="fibra_multimodale.html" class="nav-btn">Vai al dettaglio</a>
+            </div>
+        </div>
     </div>
 
+    <div class="nav-buttons">
+        <a href="mezzi_trasmissivi.html" class="nav-btn">Torna ai Mezzi</a>
+        <a href="https://raw.githubusercontent.com/luigipelagagge-oss/Reti-LAN-WAN-PAN/main/fibra_generale.html" class="nav-btn btn-source" target="_blank">Vedi Sorgente HTML</a>
+    </div>
 </body>
 </html>
