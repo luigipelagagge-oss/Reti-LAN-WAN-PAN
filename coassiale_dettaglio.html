@@ -53,6 +53,7 @@
         
         .image-box img {
             max-width: 80%;
+            height: auto;
             border: 1px solid #ddd;
             border-radius: 5px;
         }
@@ -76,6 +77,10 @@
         .nav-buttons {
             text-align: center;
             margin: 30px 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
         }
         
         .nav-btn {
@@ -85,12 +90,21 @@
             color: white;
             text-decoration: none;
             border-radius: 5px;
-            margin: 0 10px;
             font-weight: bold;
+            transition: background 0.3s;
         }
-        
+
         .nav-btn:hover {
             background-color: #0056b3;
+        }
+
+        /* Stile specifico per il bottone sorgente */
+        .btn-source {
+            background-color: #6c757d;
+        }
+
+        .btn-source:hover {
+            background-color: #495057;
         }
     </style>
 </head>
@@ -106,7 +120,7 @@
         <p>Il cavo <strong>coassiale</strong> ha un conduttore interno circondato da uno schermo, separati da materiale isolante.</p>
         
         <div class="image-box">
-            <img src="coassiale_structure.jpg" alt="Struttura del cavo coassiale">
+            <img src="cavi-coassiali-l.jpg" alt="Struttura del cavo coassiale">
             <p><em>Figura: Struttura di un cavo coassiale</em></p>
         </div>
     </div>
@@ -124,34 +138,38 @@
     <div class="section">
         <h2>Tipi di Cavi Coassiali</h2>
         <table>
-            <tr>
-                <th>Tipo</th>
-                <th>Impedenza</th>
-                <th>Uso Principale</th>
-            </tr>
-            <tr>
-                <td><strong>RG-6</strong></td>
-                <td>75 Ω</td>
-                <td>TV via cavo, satellitare</td>
-            </tr>
-            <tr>
-                <td><strong>RG-11</strong></td>
-                <td>75 Ω</td>
-                <td>Distanze lunghe (fino a 600m)</td>
-            </tr>
-            <tr>
-                <td><strong>RG-58</strong></td>
-                <td>50 Ω</td>
-                <td>Reti Ethernet 10BASE2</td>
-            </tr>
+            <thead>
+                <tr>
+                    <th>Tipo</th>
+                    <th>Impedenza</th>
+                    <th>Uso Principale</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>RG-6</strong></td>
+                    <td>75 Ω</td>
+                    <td>TV via cavo, satellitare</td>
+                </tr>
+                <tr>
+                    <td><strong>RG-11</strong></td>
+                    <td>75 Ω</td>
+                    <td>Distanze lunghe (fino a 600m)</td>
+                </tr>
+                <tr>
+                    <td><strong>RG-58</strong></td>
+                    <td>50 Ω</td>
+                    <td>Reti Ethernet 10BASE2</td>
+                </tr>
+            </tbody>
         </table>
     </div>
 
     <div class="section">
         <h2>Vantaggi e Svantaggi</h2>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
             <div style="background: #f8d7da; padding: 15px; border-radius: 5px;">
-                <h3>✅ VANTAGGI</h3>
+                <h3 style="color: #721c24;">✅ VANTAGGI</h3>
                 <ul>
                     <li>Maggiore immunità ai disturbi</li>
                     <li>Distanze maggiori (fino a 500m)</li>
@@ -161,7 +179,7 @@
             </div>
             
             <div style="background: #d4edda; padding: 15px; border-radius: 5px;">
-                <h3>❌ SVANTAGGI</h3>
+                <h3 style="color: #155724;">❌ SVANTAGGI</h3>
                 <ul>
                     <li>Più costoso dell'UTP</li>
                     <li>Più ingombrante</li>
@@ -186,6 +204,7 @@
         <a href="utp_dettaglio.html" class="nav-btn">← Cavo UTP</a>
         <a href="mezzi_trasmissivi.html" class="nav-btn">Torna ai Mezzi</a>
         <a href="fibra_generale.html" class="nav-btn">Fibra Ottica →</a>
+        <a href="view-source:https://luigipelagagge-oss.github.io/Reti-LAN-WAN-PAN/coassiale_dettaglio.html" class="nav-btn btn-source" target="_blank">Codice Sorgente HTML</a>
     </div>
 
 </body>
