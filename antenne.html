@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Antenne e Dipolo | Teoria Base</title>
+    <title>Antenne: Hertz e Marconi | Teoria</title>
     <style>
         body { font-family: Arial, sans-serif; line-height: 1.6; max-width: 900px; margin: 0 auto; padding: 20px; background-color: #f4f7f6; }
         
@@ -15,18 +15,18 @@
         h2 { color: #d35400; border-bottom: 2px solid #eee; padding-bottom: 10px; }
         h3 { color: #e67e22; margin-top: 20px; }
         
-        .external-link { color: #0056b3; text-decoration: none; border-bottom: 1px dotted #0056b3; }
-        .external-link:hover { color: #d35400; border-bottom-color: #d35400; }
+        /* Link Esterni stilizzati */
+        .external-link { color: #0056b3; text-decoration: none; border-bottom: 1px dotted #0056b3; font-weight: 500; }
+        .external-link:hover { background-color: #fff3cd; color: #d35400; border-bottom-color: #d35400; }
         .external-link::after { content: " ↗"; font-size: 0.8em; }
 
-        .image-box { text-align: center; margin: 25px 0; padding: 15px; background: #fff; border: 1px solid #ddd; border-radius: 8px; }
+        .image-box { text-align: center; margin: 25px 0; padding: 15px; background: #fff; border: 1px solid #ddd; border-radius: 8px; overflow-x: auto; }
         .caption { font-style: italic; color: #666; font-size: 0.9em; margin-top: 10px; }
 
-        /* Formule in evidenza */
         .formula-box { background: #fff5eb; border-left: 5px solid #e67e22; padding: 15px; margin: 15px 0; font-family: 'Courier New', monospace; font-weight: bold; text-align: center; font-size: 1.1em; }
 
-        /* Stile del Bottone "Cultura Generale" */
-        .culture-box { background-color: #e2e3e5; border-left: 5px solid #6c757d; padding: 15px; margin-top: 30px; border-radius: 4px; display: flex; justify-content: space-between; align-items: center; }
+        /* Bottone Cultura */
+        .culture-box { background-color: #e2e3e5; border-left: 5px solid #6c757d; padding: 15px; margin-top: 30px; border-radius: 4px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
         .btn-culture { background-color: #6c757d; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold; transition: background 0.3s; }
         .btn-culture:hover { background-color: #5a6268; }
 
@@ -45,33 +45,28 @@
 
     <header>
         <h1>Teoria delle Antenne</h1>
-        <p>Il Dipolo Hertziano e i principi di irradiazione</p>
+        <p>Dal Dipolo Hertziano al Monopolo Marconiano</p>
     </header>
 
     <div class="section">
         <h2>1. Che cos'è un'antenna?</h2>
-        <p>Un'antenna è un <strong>trasduttore</strong> reciproco: converte un segnale elettrico (corrente alternata) in onde elettromagnetiche (trasmissione) e viceversa (ricezione).</p>
-        <p>Affinché questa conversione sia efficiente, le dimensioni fisiche dell'antenna devono essere proporzionate alla <a href="https://it.wikipedia.org/wiki/Lunghezza_d%27onda" target="_blank" class="external-link">Lunghezza d'onda</a> ($\lambda$) del segnale.</p>
+        <p>Un'antenna è un trasduttore che converte segnali elettrici in onde elettromagnetiche. La sua efficienza dipende dal rapporto tra la sua lunghezza fisica e la <a href="https://it.wikipedia.org/wiki/Lunghezza_d%27onda" target="_blank" class="external-link">Lunghezza d'onda</a> ($\lambda$) del segnale.</p>
     </div>
 
     <div class="section">
-        <h2>2. Il Dipolo a Mezz'onda ($\lambda/2$)</h2>
-        <p>L'antenna fondamentale nello studio delle telecomunicazioni è il <strong>Dipolo Hertziano</strong>. È costituito da due bracci conduttori aperti, alimentati al centro.</p>
+        <h2>2. Il Dipolo Hertziano ($\lambda/2$)</h2>
+        <p>È l'antenna base, costituita da due bracci aperti alimentati al centro. È isolata da terra (bilanciata).</p>
+        <p><em>Approfondimenti:</em> <a href="https://it.wikipedia.org/wiki/Antenna_a_dipolo" target="_blank" class="external-link">Wikipedia: Dipolo</a> | <a href="https://www.edutecnica.it/elettronica/antenne/antenne.htm" target="_blank" class="external-link">Edutecnica: Antenne</a></p>
         
-        <div class="formula-box">
-            Lunghezza ideale (L) = $\lambda$ / 2
-        </div>
+        <div class="formula-box">Lunghezza Totale = $\lambda$ / 2</div>
         
-        <p>Esempio: Il Wi-Fi a 2.4 GHz ha un'onda lunga circa 12.5 cm. Un'antenna dipolo perfetta per il Wi-Fi sarà lunga circa 6.25 cm.</p>
-
         <div class="image-box">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 250" width="100%" height="auto">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 220" width="100%" height="auto">
                 <style>
                     .rod { stroke: #333; stroke-width: 8; stroke-linecap: round; }
                     .feeder { stroke: #333; stroke-width: 2; fill: none; }
-                    .wave-v { stroke: #dc3545; stroke-width: 3; fill: none; stroke-dasharray: 5,2; } /* Tensione Rossa */
-                    .wave-i { stroke: #007bff; stroke-width: 3; fill: none; } /* Corrente Blu */
-                    .axis { stroke: #ccc; stroke-dasharray: 2,2; }
+                    .wave-i { stroke: #007bff; stroke-width: 3; fill: none; } 
+                    .wave-v { stroke: #dc3545; stroke-width: 3; fill: none; stroke-dasharray: 4,2; }
                     .label { font-family: Arial; font-weight: bold; font-size: 14px; }
                 </style>
 
@@ -80,26 +75,68 @@
                 
                 <line x1="290" y1="125" x2="290" y2="180" class="feeder" />
                 <line x1="310" y1="125" x2="310" y2="180" class="feeder" />
-                <circle cx="300" cy="180" r="10" stroke="#333" fill="white" stroke-width="2"/>
-                <text x="300" y="200" text-anchor="middle" font-size="12">Generatore RF</text>
+                <circle cx="300" cy="180" r="8" stroke="#333" fill="white" stroke-width="2"/>
 
                 <path d="M100,125 Q300,20 500,125" class="wave-i" />
-                <text x="300" y="50" fill="#007bff" class="label" text-anchor="middle">I (Corrente) MAX</text>
+                <text x="300" y="45" fill="#007bff" class="label" text-anchor="middle">I (Corrente) MAX</text>
 
-                <path d="M100,125 Q100,60 150,60 T300,125 T450,190 T500,125" class="wave-v" opacity="0.6" style="display:none;"/> <path d="M100,125 Q150,200 300,125 Q450,50 500,125" class="wave-v" />
-                <text x="100" y="100" fill="#dc3545" class="label">V (Tensione) MAX</text>
-                <text x="500" y="100" fill="#dc3545" class="label" text-anchor="end">V (Tensione) MAX</text>
+                <path d="M100,125 Q150,200 300,125 Q450,50 500,125" class="wave-v" />
+                <text x="100" y="100" fill="#dc3545" class="label">V MAX</text>
+                <text x="500" y="100" fill="#dc3545" class="label" text-anchor="end">V MAX</text>
 
-                <line x1="100" y1="220" x2="500" y2="220" stroke="#333" marker-start="url(#arrow)" marker-end="url(#arrow)" />
-                <text x="300" y="240" text-anchor="middle" font-weight="bold">L = λ / 2</text>
+                <text x="300" y="210" text-anchor="middle" font-weight="bold">Dipolo in Spazio Libero</text>
             </svg>
-            <p class="caption">Figura 1: Distribuzione di Tensione (V) e Corrente (I). Nel dipolo, la corrente è massima al centro (bassa impedenza) e la tensione è massima agli estremi (alta impedenza).</p>
         </div>
     </div>
 
     <div class="section">
-        <h2>3. Diagramma di Irradiazione</h2>
-        <p>Un dipolo non irradia l'energia in tutte le direzioni allo stesso modo (non è isotropico). L'energia è massima perpendicolarmente al filo e nulla lungo la direzione del filo stesso.</p>
+        <h2>3. Il Dipolo Marconiano ($\lambda/4$)</h2>
+        <p>Detto anche <strong>Monopolo</strong>, è l'antenna usata da Guglielmo Marconi. È costituita da un solo braccio perpendicolare a un <strong>Piano di Massa</strong> (Terra).</p>
+        <p>Grazie all'effetto specchio del terreno conduttore, si crea un'immagine "virtuale" che completa l'antenna, permettendo di dimezzare l'altezza fisica necessaria.</p>
+        
+        <p><em>Approfondimenti:</em> <a href="https://it.wikipedia.org/wiki/Antenna_a_monopolo" target="_blank" class="external-link">Wikipedia: Monopolo</a> | <a href="https://www.edutecnica.it/elettronica/antenne/antenne.htm" target="_blank" class="external-link">Edutecnica: Teoria</a></p>
+
+        <div class="formula-box">Altezza Fisica = $\lambda$ / 4</div>
+
+        <div class="image-box">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300" width="100%" height="auto">
+                <style>
+                    .rod { stroke: #333; stroke-width: 8; stroke-linecap: round; }
+                    .rod-ghost { stroke: #999; stroke-width: 6; stroke-dasharray: 8,4; opacity: 0.6; }
+                    .ground-line { stroke: #28a745; stroke-width: 4; }
+                    .hatch { stroke: #28a745; stroke-width: 1; opacity: 0.5; }
+                    .wave-i { stroke: #007bff; stroke-width: 3; fill: none; }
+                    .wave-ghost { stroke: #007bff; stroke-width: 2; fill: none; stroke-dasharray: 4,2; opacity: 0.5; }
+                    .label { font-family: Arial; font-weight: bold; font-size: 14px; }
+                </style>
+
+                <line x1="50" y1="150" x2="550" y2="150" class="ground-line" />
+                <path d="M50,150 L30,170 M90,150 L70,170 M130,150 L110,170 M170,150 L150,170 M210,150 L190,170 M250,150 L230,170 M370,150 L350,170 M410,150 L390,170 M450,150 L430,170 M490,150 L470,170 M530,150 L510,170" class="hatch" />
+
+                <line x1="300" y1="150" x2="300" y2="50" class="rod" />
+                <text x="310" y="100" class="label" fill="#333">Antenna Reale ($\lambda/4$)</text>
+
+                <line x1="300" y1="150" x2="300" y2="250" class="rod-ghost" />
+                <text x="310" y="200" class="label" fill="#999">Immagine Virtuale</text>
+
+                <path d="M300,50 Q240,100 240,150" class="wave-i" fill="none"/>
+                
+                <path d="M240,150 Q240,200 300,250" class="wave-ghost" fill="none"/>
+
+                <text x="180" y="140" fill="#007bff" class="label">I MAX</text>
+                <text x="450" y="140" fill="#28a745" class="label" font-style="italic">Terra / Massa</text>
+                
+                <circle cx="300" cy="150" r="8" fill="white" stroke="#333" stroke-width="2"/>
+                <text x="320" y="165" font-size="12">Feed</text>
+
+            </svg>
+            <p class="caption">Figura 2: Il terreno conduttore riflette l'antenna reale creando un "doppio" virtuale sottoterra.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>4. Diagramma di Irradiazione</h2>
+        <p>Come si diffonde il segnale? Immagina una ciambella infilata nell'antenna. L'energia è massima ai lati e nulla sopra la punta.</p>
         
         <div class="image-box">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 200" width="100%" height="auto">
@@ -107,53 +144,37 @@
                     .pattern { fill: rgba(230, 126, 34, 0.3); stroke: #e67e22; stroke-width: 2; }
                     .antenna-top { stroke: #333; stroke-width: 4; }
                 </style>
-                
-                <g transform="translate(100, 100)">
-                    <text x="0" y="-80" text-anchor="middle" font-weight="bold" font-size="14">Vista Laterale</text>
-                    <ellipse cx="-40" cy="0" rx="50" ry="30" class="pattern" />
-                    <ellipse cx="40" cy="0" rx="50" ry="30" class="pattern" />
-                    <line x1="0" y1="-20" x2="0" y2="20" class="antenna-top" />
-                    <text x="0" y="80" text-anchor="middle" font-size="12" fill="#555">Forma a "8"</text>
-                </g>
-
-                <g transform="translate(350, 100)">
-                    <text x="0" y="-80" text-anchor="middle" font-weight="bold" font-size="14">Vista 3D (Toroide)</text>
-                    <path d="M-70,0 A70,30 0 0,1 70,0" fill="none" stroke="#e67e22" stroke-dasharray="2,2" />
-                    <path d="M-70,0 A70,30 0 0,0 70,0" class="pattern" fill="rgba(230, 126, 34, 0.1)" />
-                    <ellipse cx="0" cy="0" rx="20" ry="10" fill="white" stroke="#e67e22" />
-                    <line x1="0" y1="-50" x2="0" y2="50" class="antenna-top" />
-                    <text x="0" y="80" text-anchor="middle" font-size="12" fill="#555">Forma a "Ciambella"</text>
+                <g transform="translate(250, 100)">
+                    <path d="M-80,0 A80,35 0 0,1 80,0" fill="none" stroke="#e67e22" stroke-dasharray="2,2" />
+                    <path d="M-80,0 A80,35 0 0,0 80,0" class="pattern" fill="rgba(230, 126, 34, 0.1)" />
+                    <line x1="0" y1="-60" x2="0" y2="60" class="antenna-top" />
+                    <text x="100" y="0" font-size="14" fill="#d35400">Irradiazione Omnidirezionale</text>
                 </g>
             </svg>
-            <p class="caption">Figura 2: Il solido di irradiazione del dipolo ricorda una ciambella (toroide) infilata nell'antenna.</p>
         </div>
     </div>
 
     <div class="culture-box">
         <div>
-            <strong>Curiosità Storica & Fisica</strong><br>
-            Chi ha inventato l'antenna? Come fanno a stare dentro gli smartphone?
+            <strong>Curiosità Storica & Evoluzione</strong><br>
+            L'esperimento di Hertz e le antenne invisibili degli smartphone.
         </div>
-        <button class="btn-culture" onclick="openModal()">Approfondisci</button>
+        <button class="btn-culture" onclick="openModal()">Leggi Approfondimento</button>
     </div>
 
     <div id="cultureModal" class="modal-overlay" onclick="closeModalOutside(event)">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal()">&times;</span>
-            <h3 style="color:#6c757d; border-bottom:1px solid #ddd; padding-bottom:10px;">Storia e Evoluzione</h3>
+            <h3 style="color:#6c757d; border-bottom:1px solid #ddd; padding-bottom:10px;">Storia e Tecnica</h3>
             
-            <h4>1. L'esperimento di Hertz (1887)</h4>
-            <p>Il fisico tedesco <a href="https://it.wikipedia.org/wiki/Heinrich_Rudolf_Hertz" target="_blank" class="external-link">Heinrich Hertz</a> fu il primo a dimostrare l'esistenza delle onde elettromagnetiche previste da Maxwell. Usò un rudimentale dipolo: due sfere di ottone collegate a bobine ad alta tensione. Quando scoccava una scintilla nel trasmettitore, una scintilla più piccola scoccava anche in un anello di rame aperto (ricevitore) posto a metri di distanza, senza fili!</p>
+            <h4>1. Hertz e la Scintilla (1887)</h4>
+            <p>Heinrich Hertz dimostrò l'esistenza delle onde usando un dipolo con due sfere. Una scintilla nel trasmettitore ne induceva una nel ricevitore staccato! <a href="https://it.wikipedia.org/wiki/Heinrich_Rudolf_Hertz" target="_blank" class="external-link">Wikipedia: H. Hertz</a></p>
 
-            <h4>2. Perché "Hertziano"?</h4>
-            <p>In onore della sua scoperta, l'unità di misura della frequenza è l'Hertz (Hz). 1 Hz = 1 oscillazione al secondo.</p>
+            <h4>2. Marconi e la Terra</h4>
+            <p>Marconi capì che collegando un polo a terra (Monopolo), poteva usare antenne più basse e trasmettere più lontano sfruttando la conducibilità del suolo (Onde di terra).</p>
 
-            <h4>3. Dalle torri agli Smartphone</h4>
-            <p>Se la regola è $L = \lambda/2$, come fa un cellulare (che usa onde di 15-30 cm per il 4G/5G banda bassa) a non avere un'antenna esterna estraibile come i vecchi telefoni?</p>
-            <ul>
-                <li><strong>Antenne a F/L invertita (PIFA):</strong> Ripiegano il percorso conduttivo su se stesso.</li>
-                <li><strong>Antenne Frattali:</strong> Usano forme geometriche complesse per compattare una lunghezza elettrica elevata in uno spazio fisico minuscolo.</li>
-            </ul>
+            <h4>3. Antenne Frattali</h4>
+            <p>Oggi, per far entrare un'antenna in un cellulare, si usano geometrie frattali che ripiegano il filo in uno spazio minuscolo, mantenendo la lunghezza elettrica necessaria.</p>
             
             <div style="text-align: center; margin-top: 20px;">
                 <button class="btn-culture" onclick="closeModal()">Chiudi</button>
