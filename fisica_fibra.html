@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fisica della Fibra Ottica | Modulo 5</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; max-width: 900px; margin: 0 auto; padding: 20px; background-color: #f4f7f6; }
+        
+        /* Header Viola/Tecnico */
+        header { background: linear-gradient(135deg, #6f42c1, #4a2c85); color: white; padding: 25px; border-radius: 8px; text-align: center; margin-bottom: 30px; }
+        
+        .section { background: white; padding: 25px; border-radius: 8px; margin-bottom: 25px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        
+        h2 { color: #4a2c85; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        h3 { color: #6f42c1; margin-top: 20px; }
+        
+        /* Box CLIL (Inglese) */
+        .clil-box { background: #e8f0fe; border-left: 5px solid #0d6efd; padding: 15px; margin: 15px 0; font-size: 0.95em; color: #004085; }
+        .clil-title { font-weight: bold; text-transform: uppercase; font-size: 0.8em; color: #0d6efd; letter-spacing: 1px; }
+
+        .image-box { text-align: center; margin: 25px 0; padding: 15px; background: #fff; border: 1px solid #ddd; border-radius: 8px; overflow-x: auto; }
+        .caption { font-style: italic; color: #666; font-size: 0.9em; margin-top: 10px; }
+
+        /* Formule */
+        .formula { background: #f8f9fa; padding: 10px; border-radius: 4px; border: 1px dashed #6f42c1; font-family: 'Courier New', monospace; text-align: center; font-weight: bold; margin: 10px 0; }
+
+        .nav-buttons { text-align: center; margin-top: 40px; }
+        .nav-btn { padding: 12px 25px; background-color: #6c757d; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <a href="javascript:void(0)" onclick="mostraSorgente()" style="position: fixed; top: 20px; right: 20px; background: #17a2b8; color: white; padding: 8px 15px; border-radius: 4px; text-decoration: none; font-size: 0.9em; z-index: 1000; border: none; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">📄 Vedi sorgente</a>
+
+    <header>
+        <h1>Fisica della Fibra Ottica</h1>
+        <p>Apertura Numerica, Dispersione e Attenuazione</p>
+    </header>
+
+    <div class="section">
+        <h2>1. Cono di Accettazione e Apertura Numerica</h2>
+        <p>Non tutta la luce che colpisce la fibra riesce a entrare e propagarsi. Solo i raggi che arrivano entro un certo angolo limite (cono) vengono intrappolati per riflessione totale interna.</p>
+        
+        <div class="clil-box">
+            <span class="clil-title">CLIL - Key Concepts</span><br>
+            <strong>Numerical Aperture (NA):</strong> A dimensionless number that characterizes the range of angles over which the system can accept or emit light.<br>
+            <strong>Acceptance Cone:</strong> The solid angle within which light rays enter the fiber and are guided along its core.
+        </div>
+
+        <div class="formula">
+            NA = sin(θ<sub>a</sub>) = √(n₁² - n₂²)
+        </div>
+        <p style="font-size: 0.9em; text-align: center;">Dove <em>n₁</em> è l'indice del Core e <em>n₂</em> quello del Cladding.</p>
+
+        <div class="image-box">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 250" width="100%" height="auto">
+                <defs>
+                    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#d63384" /></marker>
+                </defs>
+                <style>
+                    .core { fill: #e0f7fa; stroke: #00bcd4; stroke-width: 2; }
+                    .clad { fill: #eceff1; stroke: #b0bec5; stroke-width: 2; }
+                    .ray-ok { stroke: #28a745; stroke-width: 3; fill: none; marker-end: url(#arrow); } /* Raggio verde OK */
+                    .ray-no { stroke: #dc3545; stroke-width: 2; fill: none; stroke-dasharray: 5,5; } /* Raggio rosso NO */
+                    .cone { fill: rgba(255, 193, 7, 0.3); stroke: #ffc107; stroke-dasharray: 4,4; }
+                </style>
+
+                <rect x="200" y="50" width="400" height="40" class="clad" /> <rect x="200" y="90" width="400" height="70" class="core" /> <rect x="200" y="160" width="400" height="40" class="clad" /> <text x="400" y="130" text-anchor="middle" fill="#00838f" font-weight="bold">CORE (n₁)</text>
+                <text x="400" y="75" text-anchor="middle" fill="#546e7a">CLADDING (n₂)</text>
+
+                <path d="M200,125 L50,50 L50,200 Z" class="cone" />
+                <text x="100" y="125" fill="#d35400" font-weight="bold" font-size="14">θa</text>
+
+                <path d="M50,125 L200,125 L350,90" class="ray-ok" />
+                <path d="M350,90 L500,140" stroke="#28a745" stroke-width="3" fill="none"/>
+                
+                <path d="M50,20 L200,110 L300,30" class="ray-no" />
+                <text x="310" y="30" fill="#dc3545" font-size="12">Refracted out</text>
+
+            </svg>
+            <p class="caption">Figura 1: I raggi dentro il cono giallo (verde) vengono guidati. Quelli fuori (rosso) si perdono nel mantello.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>2. Dispersione (Degradazione del segnale)</h2>
+        <p>L'impulso luminoso non rimane perfetto durante il viaggio: tende ad "allargarsi" nel tempo. Questo fenomeno si chiama dispersione e limita la velocità massima di trasmissione (Bandwidth).</p>
+        
+        <div class="clil-box">
+            <span class="clil-title">CLIL - Key Concepts</span><br>
+            <strong>Dispersion:</strong> The spreading of light pulses as they travel down the fiber.<br>
+            If pulses spread too much, they overlap (Inter-Symbol Interference), causing errors.
+        </div>
+
+        <h3>A. Dispersione Modale</h3>
+        <p>Tipica delle fibre <strong>Multimodali</strong>. I raggi di luce percorrono strade diverse (modi): alcuni vanno dritti (più veloci), altri rimbalzano (più lenti). Arrivano a destinazione in tempi diversi.</p>
+
+        <h3>B. Dispersione Cromatica</h3>
+        <p>Tipica anche delle <strong>Monomodali</strong>. La luce non è mai perfettamente monocromatica (es. un Laser ha una larghezza spettrale). I colori diversi viaggiano a velocità leggermente diverse nel vetro.</p>
+
+        <div class="image-box">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 150" width="100%" height="auto">
+                <style>
+                    .pulse-in { fill: #28a745; stroke: #1e7e34; stroke-width: 2; }
+                    .pulse-out { fill: #ffc107; stroke: #d39e00; stroke-width: 2; opacity: 0.8; }
+                    .axis { stroke: #333; stroke-width: 2; marker-end: url(#arrow-bk); }
+                </style>
+                <defs>
+                    <marker id="arrow-bk" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#333" /></marker>
+                </defs>
+
+                <text x="100" y="30" text-anchor="middle" font-weight="bold">INPUT (Tx)</text>
+                <path d="M50,120 L80,120 L80,60 L120,60 L120,120 L150,120" class="pulse-in" />
+                <text x="100" y="140" text-anchor="middle" font-size="12">Impulso Squadrato (Bit 1)</text>
+
+                <line x1="180" y1="90" x2="380" y2="90" stroke="#666" stroke-width="4" stroke-dasharray="5,5" marker-end="url(#arrow-bk)" />
+                <text x="280" y="70" text-anchor="middle" fill="#666">Viaggio in Fibra</text>
+
+                <text x="480" y="30" text-anchor="middle" font-weight="bold">OUTPUT (Rx)</text>
+                <path d="M400,120 Q440,120 440,120 Q480,40 520,120 Q560,120 560,120" class="pulse-out" />
+                <text x="480" y="140" text-anchor="middle" font-size="12">Impulso Allargato</text>
+            </svg>
+            <p class="caption">Figura 2: Effetto della dispersione. L'impulso stretto diventa largo e basso.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>3. Attenuazione (Perdita di Potenza)</h2>
+        <p>Mentre viaggia, il segnale perde potenza a causa di impurità nel vetro (assorbimento) e curve (scattering). Si misura in <strong>dB/km</strong>.</p>
+        
+        <div class="clil-box">
+            <span class="clil-title">CLIL - Key Concepts</span><br>
+            <strong>Attenuation:</strong> The reduction in signal strength (power) as it travels.<br>
+            Measured in decibels (dB). <br>
+            <em>Formula:</em> Loss (dB) = 10 * log₁₀(P_out / P_in)
+        </div>
+
+        <p>Per ridurre l'attenuazione, si usano specifiche "finestre trasmissive" (lunghezze d'onda dove il vetro è più trasparente):</p>
+        <ul>
+            <li><strong>850 nm:</strong> Prima finestra (Multimodale, alta attenuazione).</li>
+            <li><strong>1310 nm:</strong> Seconda finestra (Monomodale, dispersione zero).</li>
+            <li><strong>1550 nm:</strong> Terza finestra (Monomodale, <strong>minima attenuazione</strong> assoluta).</li>
+        </ul>
+    </div>
+
+    <div class="nav-buttons">
+        <a href="fibra_generale.html" class="nav-btn">← Torna a Fibra Generale</a>
+    </div>
+
+    <script>
+    function mostraSorgente() {
+        const modal = document.createElement('div');
+        modal.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);z-index:2000;display:flex;justify-content:center;align-items:center;';
+        const content = document.createElement('div');
+        content.style.cssText = 'background:white;padding:20px;border-radius:10px;max-width:90%;max-height:80%;overflow:auto;box-shadow:0 4px 20px rgba(0,0,0,0.3);';
+        const htmlContent = document.documentElement.outerHTML.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        content.innerHTML = '<h3 style="margin-top:0;">Codice Sorgente</h3><pre style="background:#f8f9fa;padding:15px;border-radius:5px;overflow:auto;">' + htmlContent + '</pre><div style="text-align:center;margin-top:20px;"><button onclick="this.parentElement.parentElement.parentElement.remove()" style="background:#dc3545;color:white;border:none;padding:10px 20px;border-radius:5px;cursor:pointer;">Chiudi</button></div>';
+        modal.appendChild(content);
+        document.body.appendChild(modal);
+        modal.onclick = function(e) { if (e.target === modal) modal.remove(); };
+    }
+    </script>
+
+</body>
+</html>
