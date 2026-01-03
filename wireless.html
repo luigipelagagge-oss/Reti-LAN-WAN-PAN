@@ -18,7 +18,7 @@
         /* Stile per i link esterni nel testo */
         .external-link { color: #0056b3; text-decoration: none; border-bottom: 1px dotted #0056b3; font-weight: 500; }
         .external-link:hover { background-color: #e9ecef; color: #d35400; border-bottom-color: #d35400; }
-        .external-link::after { content: " ↗"; font-size: 0.8em; } /* Freccina per indicare link esterno */
+        .external-link::after { content: " ↗"; font-size: 0.8em; } 
 
         .image-box { text-align: center; margin: 25px 0; padding: 15px; background: #fff; border: 1px solid #ddd; border-radius: 8px; overflow-x: auto; }
         .caption { font-style: italic; color: #666; font-size: 0.9em; margin-top: 10px; }
@@ -33,14 +33,16 @@
         .nav-buttons { text-align: center; margin-top: 40px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
         .nav-btn { padding: 12px 25px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; transition: background 0.3s; }
         .btn-back { background-color: #6c757d; }
-        .btn-source { background-color: #17a2b8; }
+        
+        /* Nuovo bottone specifico per Antenne */
+        .btn-antenna { background-color: #d35400; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .btn-antenna:hover { background-color: #a84300; transform: scale(1.05); }
+
     </style>
 </head>
 <body>
 
-    <a href="javascript:void(0)" onclick="mostraSorgente()" style="position: fixed; top: 20px; right: 20px; background: #17a2b8; color: white; padding: 8px 15px; border-radius: 4px; text-decoration: none; font-size: 0.9em; z-index: 1000; border: none; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
-        📄 Vedi sorgente
-    </a>
+    <a href="javascript:void(0)" onclick="mostraSorgente()" style="position: fixed; top: 20px; right: 20px; background: #17a2b8; color: white; padding: 8px 15px; border-radius: 4px; text-decoration: none; font-size: 0.9em; z-index: 1000; border: none; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">📄 Vedi sorgente</a>
 
     <header>
         <h1>Trasmissioni Wireless</h1>
@@ -56,10 +58,8 @@
                 <style>
                     .tower { stroke: #333; stroke-width: 3; fill: none; }
                     .wave { fill: none; stroke: #e67e22; stroke-width: 3; stroke-linecap: round; opacity: 0.8; }
-                    .electron-flow { stroke: #007bff; stroke-width: 2; stroke-dasharray: 4,2; }
                     .txt-label { font-family: Arial, sans-serif; font-weight: bold; fill: #333; font-size: 14px; text-anchor: middle; }
                 </style>
-                
                 <g transform="translate(100, 200)">
                     <line x1="0" y1="0" x2="0" y2="-120" class="tower" />
                     <line x1="-20" y1="0" x2="20" y2="0" class="tower" />
@@ -68,25 +68,25 @@
                     <path d="M-60,-60 Q-50,-75 -40,-60" fill="none" stroke="#333" stroke-width="2"/>
                     <line x1="-35" y1="-60" x2="0" y2="-60" stroke="#333" stroke-width="2"/>
                     <text x="0" y="25" class="txt-label">TRASMETTITORE (Tx)</text>
-                    <text x="0" y="45" font-size="12" fill="#666" text-anchor="middle">Corrente Oscillante</text>
                 </g>
-
                 <g transform="translate(150, 100)">
                     <path d="M0,0 Q50,-50 100,0 T200,0 T300,0 T400,0 T500,0" class="wave">
                         <animate attributeName="d" values="M0,0 Q50,-50 100,0 T200,0 T300,0 T400,0 T500,0; M0,0 Q50,50 100,0 T200,0 T300,0 T400,0 T500,0; M0,0 Q50,-50 100,0 T200,0 T300,0 T400,0 T500,0" dur="2s" repeatCount="indefinite" />
                     </path>
                     <text x="250" y="-60" class="txt-label" fill="#e67e22">ONDA ELETTROMAGNETICA</text>
-                    <text x="250" y="-40" font-size="12" fill="#e67e22" text-anchor="middle">Campo Elettrico + Campo Magnetico</text>
                 </g>
-
                 <g transform="translate(700, 200)">
                     <line x1="0" y1="0" x2="0" y2="-120" class="tower" />
                     <line x1="-20" y1="0" x2="20" y2="0" class="tower" />
                     <text x="0" y="25" class="txt-label">RICEVITORE (Rx)</text>
-                    <text x="0" y="45" font-size="12" fill="#666" text-anchor="middle">Corrente Indotta</text>
                 </g>
             </svg>
-            <p class="caption">Figura 1: L'antenna Tx trasforma la corrente elettrica in onde; l'antenna Rx fa l'opposto.</p>
+            <p class="caption">Figura 1: Trasmissione via etere.</p>
+        </div>
+
+        <div style="text-align: center; margin-top: 20px; padding: 15px; background: #fff5eb; border-radius: 8px;">
+            <p style="margin-bottom: 15px; color: #555;">Come fa un pezzo di metallo a trasformare l'elettricità in onde? Scopri il dipolo.</p>
+            <a href="antenne.html" class="nav-btn btn-antenna">📡 Vai alla Teoria delle Antenne</a>
         </div>
     </div>
 
@@ -108,53 +108,45 @@
                 </defs>
                 <line x1="50" y1="100" x2="750" y2="100" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
                 <path d="M50,100 Q100,50 150,100 T250,100 T340,100 T420,100 T490,100 T550,100 T600,100 T640,100 T670,100 T690,100" fill="none" stroke="url(#grad1)" stroke-width="3" />
-
+                
                 <line x1="150" y1="100" x2="150" y2="140" stroke="#ccc" stroke-dasharray="4"/>
                 <text x="100" y="160" font-size="14" font-weight="bold" text-anchor="middle" fill="#3498db">ONDE LUNGHE</text>
-                <text x="100" y="180" font-size="12" text-anchor="middle" fill="#666">AM Radio</text>
-
+                
                 <line x1="350" y1="100" x2="350" y2="140" stroke="#ccc" stroke-dasharray="4"/>
                 <text x="250" y="160" font-size="14" font-weight="bold" text-anchor="middle" fill="#9b59b6">ONDE CORTE</text>
-                <text x="250" y="180" font-size="12" text-anchor="middle" fill="#666">Radioamatori</text>
 
                 <line x1="550" y1="100" x2="550" y2="140" stroke="#ccc" stroke-dasharray="4"/>
                 <text x="450" y="160" font-size="14" font-weight="bold" text-anchor="middle" fill="#e67e22">UHF / VHF</text>
-                <text x="450" y="180" font-size="12" text-anchor="middle" fill="#666">TV, FM</text>
 
                 <text x="650" y="160" font-size="14" font-weight="bold" text-anchor="middle" fill="#c0392b">MICROONDE</text>
-                <text x="650" y="180" font-size="12" text-anchor="middle" fill="#666">Wi-Fi, 5G</text>
             </svg>
-            <p class="caption">Figura 2: Lo <a href="https://it.wikipedia.org/wiki/Spettro_elettromagnetico" target="_blank" class="external-link">spettro elettromagnetico</a>. A destra le microonde, che trasportano più dati ma coprono distanze minori.</p>
+            <p class="caption">Figura 2: Lo <a href="https://it.wikipedia.org/wiki/Spettro_elettromagnetico" target="_blank" class="external-link">spettro elettromagnetico</a>.</p>
         </div>
 
         <h3>Dettaglio Propagazione:</h3>
         <ul>
-            <li><strong>Onde Lunghe/Medie (LF/MF):</strong> Seguono la curvatura terrestre. Possono coprire continenti ma trasportano pochi dati.</li>
-            <li><strong>Onde Corte (HF):</strong> Rimbalzano sulla <a href="https://it.wikipedia.org/wiki/Ionosfera" target="_blank" class="external-link">Ionosfera</a> (uno strato dell'atmosfera) e tornano a terra. Permettono collegamenti intercontinentali "a sbalzo".</li>
-            <li><strong>Microonde (UHF/SHF):</strong> Viaggiano in <a href="https://it.wikipedia.org/wiki/Line_of_sight" target="_blank" class="external-link">Line of Sight</a> (linea di vista). Se c'è una montagna o un palazzo, il segnale si ferma o si degrada molto. È qui che operano il Wi-Fi e i cellulari moderni.</li>
+            <li><strong>Onde Lunghe/Medie:</strong> Seguono la curvatura terrestre.</li>
+            <li><strong>Onde Corte (HF):</strong> Rimbalzano sulla <a href="https://it.wikipedia.org/wiki/Ionosfera" target="_blank" class="external-link">Ionosfera</a>.</li>
+            <li><strong>Microonde (UHF/SHF):</strong> Viaggiano in <a href="https://it.wikipedia.org/wiki/Line_of_sight" target="_blank" class="external-link">Line of Sight</a> (linea di vista).</li>
         </ul>
     </div>
 
     <div class="section">
         <h2>3. Tecnologie Wireless Moderne</h2>
-        <p>Oggi la trasmissione dati utilizza quasi esclusivamente la parte alta dello spettro (Microonde). Ecco le tecnologie principali:</p>
-        
         <div class="tech-grid">
             <div class="tech-card">
                 <h3>Wi-Fi (WLAN)</h3>
-                <p>Standard <strong>IEEE 802.11</strong>. Opera a 2.4 GHz e 5 GHz.</p>
+                <p>IEEE 802.11. Opera a 2.4 GHz e 5 GHz.</p>
                 <button class="nav-btn" style="background:#ddd; color:#555; cursor:not-allowed;">Prossimamente...</button>
             </div>
-
             <div class="tech-card">
-                <h3>Bluetooth (WPAN)</h3>
-                <p>Standard <strong>IEEE 802.15.1</strong>. Corto raggio per periferiche.</p>
+                <h3>Bluetooth</h3>
+                <p>IEEE 802.15.1. Corto raggio.</p>
                 <button class="nav-btn" style="background:#ddd; color:#555; cursor:not-allowed;">Prossimamente...</button>
             </div>
-
             <div class="tech-card">
-                <h3>Reti Cellulari (WWAN)</h3>
-                <p>4G LTE e 5G. Usano celle terrestri per coprire il territorio.</p>
+                <h3>5G / 4G</h3>
+                <p>Reti cellulari a celle.</p>
                 <button class="nav-btn" style="background:#ddd; color:#555; cursor:not-allowed;">Prossimamente...</button>
             </div>
         </div>
@@ -177,6 +169,5 @@
         modal.onclick = function(e) { if (e.target === modal) modal.remove(); };
     }
     </script>
-
 </body>
 </html>
