@@ -6,18 +6,63 @@
     <title>Fibra Monomodale | Dettaglio</title>
     <style>
         body { font-family: Arial, sans-serif; line-height: 1.6; max-width: 900px; margin: 0 auto; padding: 20px; background-color: #f0f4f8; }
+        
         header { background-color: #0056b3; color: white; padding: 20px; text-align: center; border-radius: 8px; }
+        
         .section { background: white; padding: 20px; border-radius: 8px; margin-top: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        
         .image-box { text-align: center; margin: 20px 0; padding: 15px; background: #f8f9fa; border: 1px solid #0056b3; border-radius: 8px; }
         .image-box img { max-width: 100%; height: auto; border-radius: 5px; }
+        
         .highlight-box { background: #e7f1ff; border-left: 5px solid #0056b3; padding: 15px; margin: 15px 0; }
+        
         .nav-buttons { text-align: center; margin-top: 30px; display: flex; justify-content: center; gap: 10px; }
         .nav-btn { padding: 12px 25px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; }
         .btn-source { background: #6c757d; }
+
+        /* ========================================= */
+        /* 🔥 1. MODIFICA CSS: Stile Bottone Stampa  */
+        /* (Blu scuro #0056b3 per coerenza)          */
+        /* ========================================= */
+        .btn-print {
+            background-color: white;
+            color: #0056b3; /* Blu scuro */
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+        }
+        .btn-print:hover {
+            background-color: #e7f1ff; /* Blu chiarissimo */
+            transform: scale(1.05);
+        }
+
+        /* 🔥 2. MODIFICA CSS: Regole per la Stampa */
+        @media print {
+            .btn-print, .nav-buttons { display: none !important; }
+            
+            body { background-color: white; padding: 0; }
+            header { background-color: white !important; color: #0056b3 !important; border: 2px solid #0056b3; }
+            .section { box-shadow: none; border: 1px solid #ccc; page-break-inside: avoid; }
+            
+            /* Ottimizzazione box immagini e highlight */
+            .image-box, .highlight-box { border: 1px solid #0056b3; box-shadow: none; }
+            
+            a { text-decoration: none; color: black; }
+        }
     </style>
 </head>
 <body>
-    <header><h1>Fibra Ottica Monomodale (SMF)</h1></header>
+    <header>
+        <h1>Fibra Ottica Monomodale (SMF)</h1>
+        
+        <button onclick="window.print()" class="btn-print">🖨️ Scarica Dispensa PDF</button>
+    </header>
 
     <div class="section">
         <h2>La Soluzione alla Dispersione</h2>
