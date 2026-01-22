@@ -6,23 +6,71 @@
     <title>Fibra Multimodale | Dettaglio</title>
     <style>
         body { font-family: Arial, sans-serif; line-height: 1.6; max-width: 900px; margin: 0 auto; padding: 20px; background-color: #f0f8f0; }
+        
         header { background-color: #20c997; color: white; padding: 20px; text-align: center; border-radius: 8px; }
+        
         .section { background: white; padding: 20px; border-radius: 8px; margin-top: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        
         .image-box { text-align: center; margin: 20px 0; padding: 15px; background: #fafafa; border: 1px solid #20c997; border-radius: 8px; }
         .image-box img { max-width: 100%; height: auto; border-radius: 5px; }
+        
         .grid-container { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px; }
+        
         .pros { background: #d4edda; padding: 15px; border-radius: 8px; border-left: 5px solid #28a745; }
         .cons { background: #f8d7da; padding: 15px; border-radius: 8px; border-left: 5px solid #dc3545; }
+        
         table { width: 100%; border-collapse: collapse; margin: 15px 0; }
         th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
         th { background-color: #20c997; color: white; }
+        
         .nav-buttons { text-align: center; margin-top: 30px; display: flex; justify-content: center; gap: 10px; }
         .nav-btn { padding: 12px 25px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; }
         .btn-source { background: #6c757d; }
+
+        /* ========================================= */
+        /* 🔥 1. MODIFICA CSS: Stile Bottone Stampa  */
+        /* (Verde acqua #20c997 per coerenza)        */
+        /* ========================================= */
+        .btn-print {
+            background-color: white;
+            color: #20c997; /* Verde acqua scuro */
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+        }
+        .btn-print:hover {
+            background-color: #e6fffa; /* Verde chiarissimo */
+            transform: scale(1.05);
+        }
+
+        /* 🔥 2. MODIFICA CSS: Regole per la Stampa */
+        @media print {
+            .btn-print, .nav-buttons { display: none !important; }
+            
+            body { background-color: white; padding: 0; }
+            header { background-color: white !important; color: #20c997 !important; border: 2px solid #20c997; }
+            .section { box-shadow: none; border: 1px solid #ccc; page-break-inside: avoid; }
+            
+            /* Migliora la leggibilità delle tabelle su carta */
+            th { color: black !important; background-color: #e6fffa !important; border-bottom: 2px solid #20c997; }
+            
+            a { text-decoration: none; color: black; }
+        }
     </style>
 </head>
 <body>
-    <header><h1>Fibra Ottica Multimodale (MMF)</h1></header>
+    <header>
+        <h1>Fibra Ottica Multimodale (MMF)</h1>
+
+        <button onclick="window.print()" class="btn-print">🖨️ Scarica Dispensa PDF</button>
+
+    </header>
 
     <div class="section">
         <h2>Fisica della Propagazione</h2>
