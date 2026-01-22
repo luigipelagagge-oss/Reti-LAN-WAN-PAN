@@ -37,8 +37,37 @@
         /* Pulsanti specifici */
         .btn-back { background-color: #6c757d; } /* Grigio per tornare indietro */
         .btn-back:hover { background-color: #545b62; }
-        
         .btn-source { background-color: #17a2b8; } /* Ciano per il codice */
+
+        /* ========================================= */
+        /* 🔥 1. MODIFICA CSS: Stile Bottone Stampa  */
+        /* ========================================= */
+        .btn-print {
+            background-color: white;
+            color: #0056b3;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+        }
+        .btn-print:hover {
+            background-color: #e2e6ea;
+            transform: scale(1.05);
+        }
+
+        /* 🔥 2. MODIFICA CSS: Regole per nascondere elementi in Stampa */
+        @media print {
+            .btn-print, .nav-buttons { display: none !important; } /* Nasconde i bottoni */
+            body { background-color: white; padding: 0; }
+            header { background-color: white !important; color: #0056b3 !important; border: 1px solid #0056b3; }
+            .section { box-shadow: none; border: 1px solid #ccc; page-break-inside: avoid; }
+            a { text-decoration: none; color: black; }
+        }
     </style>
 </head>
 <body>
@@ -46,6 +75,9 @@
     <header>
         <h1>Mezzi Trasmissivi</h1>
         <p>Il Livello Fisico: Come viaggiano i bit?</p>
+        
+        <button onclick="window.print()" class="btn-print">🖨️ Scarica Dispensa PDF</button>
+
     </header>
 
     <div class="section">
@@ -148,7 +180,6 @@
 
     <div class="nav-buttons">
         <a href="tcp_ip_spiegazione.html" class="nav-btn btn-back">← Torna al TCP/IP</a>
-        
         <a href="https://raw.githubusercontent.com/luigipelagagge-oss/Reti-LAN-WAN-PAN/main/mezzi_trasmissivi.html" class="nav-btn btn-source" target="_blank">Vedi Sorgente HTML</a>
     </div>
 
