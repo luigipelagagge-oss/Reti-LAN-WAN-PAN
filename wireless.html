@@ -3,509 +3,172 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Master Dashboard - Corso di Reti</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
-    
+    <title>Servizi Wireless - Connessione Veloce</title>
     <style>
-        body { 
-            background: #f8f9fa; 
-            font-family: 'Segoe UI', sans-serif; 
-        }
-        
-        /* Gestione Visibilità Sezioni */
-        .section-content { display: none; }
-        .section-content.active { 
-            display: block; 
-            animation: fadeIn 0.4s; 
-        }
-        
-        @keyframes fadeIn { 
-            from { opacity: 0; transform: translateY(10px); } 
-            to { opacity: 1; transform: translateY(0); } 
+        /* --- Stili Generali (Usa gli stessi del tuo index per coerenza) --- */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f4f4f9;
         }
 
-        /* Bottoni Navigazione */
-        .btn-outline-primary { 
-            background-color: #fff !important; 
-            color: #0d6efd !important; 
-            border: 2px solid #0d6efd !important; 
-            font-weight: 600; 
+        /* --- Navbar / Menu --- */
+        header {
+            background-color: #0044cc;
+            color: white;
+            padding: 1rem 0;
         }
-        
-        .btn-primary.active { 
-            background-color: #0d6efd !important; 
-            color: #fff !important; 
-            border: 2px solid #0d6efd !important; 
-            font-weight: 600; 
-        }
-
-        /* Card Effetti */
-        .card-net { 
-            border-radius: 12px; 
-            transition: transform 0.3s, box-shadow 0.3s; 
-            height: 100%; 
-            border: 1px solid #dee2e6; 
-        }
-        
-        .card-net:hover { 
-            transform: translateY(-5px); 
-            box-shadow: 0 8px 15px rgba(0,0,0,0.1); 
-        }
-        
-        /* Pila ISO/OSI */
-        .btn-level-stack {
-            display: flex; 
-            align-items: center; 
+        nav {
+            display: flex;
             justify-content: space-between;
-            color: white !important; 
-            border: none; 
-            padding: 12px 20px; 
-            border-radius: 8px; 
-            text-decoration: none; 
-            font-weight: bold; 
-            transition: all 0.3s ease;
-            width: 100%; 
-            margin-bottom: 8px;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
-        
-        .btn-level-stack:hover { 
-            transform: translateX(10px); 
-            filter: brightness(1.1); 
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
         }
-        
-        .btn-level-stack::after { 
-            content: '🔎'; 
-            opacity: 0.6; 
-        }
-        
-        .highlight-flow { 
-            transform: scale(1.05) translateX(15px); 
-            box-shadow: 0 0 20px rgba(0,0,0,0.2); 
-            z-index: 10; 
-            filter: brightness(1.2); 
-        }
-
-        /* Immagini */
-        .img-box { 
-            border: 1px solid #ddd; 
-            border-radius: 15px; 
-            padding: 15px; 
-            background: white; 
-            box-shadow: 0 4px 8px rgba(0,0,0,0.05); 
-        }
-        
-        .img-box img { 
-            max-width: 100%; 
-            height: auto; 
-            border-radius: 10px; 
-            transition: transform 0.3s; 
-        }
-        
-        .pan-title { 
-            color: #dc3545; 
-            font-weight: bold; 
-            margin-top: 30px; 
-        }
-        
-        /* Bottoni Speciali */
-        .btn-warning-custom {
-            background-color: #ffc107 !important; 
-            color: #000 !important;
-            font-weight: 700 !important; 
-            border: 2px solid #eec107 !important;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        
-        .btn-warning-custom:hover {
-            background-color: #ffca2c !important;
-            transform: translateY(-2px);
-        }
-        
-        /* FOOTER PULITO */
-        .footer-didattico {
-            margin-top: 60px;
-            padding: 25px;
-            background: #f8f9fa;
-            border-top: 3px solid #0d6efd;
-            text-align: center;
-            border-radius: 15px 15px 0 0;
-        }
-        
-        .btn-fonti {
-            padding: 12px 30px;
-            background: linear-gradient(135deg, #0d6efd 0%, #0b5ed7 100%);
+        .menu a {
             color: white;
             text-decoration: none;
-            border-radius: 25px;
-            font-weight: 600;
-            display: inline-block;
-            margin-bottom: 15px;
-            transition: all 0.3s;
+            margin-left: 20px;
+            font-weight: 500;
         }
-        
-        .btn-fonti:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(13, 110, 253, 0.3);
-            color: white;
+        .menu a:hover {
+            text-decoration: underline;
+        }
+        /* Classe per evidenziare la pagina corrente */
+        .active {
+            border-bottom: 2px solid #fff;
         }
 
-        /* Utility testi piccoli per la mappa */
-        .x-small { font-size: 0.85rem; }
+        /* --- Contenuto Specifico Wireless --- */
+        .hero-wireless {
+            background-color: #0056e0;
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        h2 { text-align: center; color: #0044cc; }
+
+        /* Griglia delle offerte */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            border-top: 5px solid #0044cc;
+        }
+        .price {
+            font-size: 2.5rem;
+            color: #0044cc;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 15px;
+        }
+        
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+        }
     </style>
 </head>
 <body>
 
-    <div class="container py-5">
-        <header class="text-center mb-5">
-            <h1 class="fw-bold text-dark">Corso di Reti e Telecomunicazioni</h1>
-            <p class="text-muted">Navigazione Didattica: Dalla teoria di base alla simulazione pratica.</p>
-        </header>
-
-        <nav class="text-center mb-5">
-            <div class="btn-group shadow-sm mb-3">
-                <button class="btn px-4 btn-outline-primary" id="nav-standalone" onclick="switchTab('standalone')">1. Stand-Alone</button>
-                <button class="btn px-4 btn-outline-primary" id="nav-retelocale" onclick="switchTab('retelocale')">2. Rete Locale</button>
-                <button class="btn btn-outline-primary px-4" id="nav-isoosi" onclick="switchTab('isoosi')">3. Modello ISO/OSI</button>
-                <button class="btn px-4 btn-primary active" id="nav-mappa" onclick="switchTab('mappa')">🧭 Mappa Sito</button>
-            </div>
-            <div class="mt-2 text-center">
-                <a href="lab_ping.html" class="btn btn-success rounded-pill px-4 btn-sm mx-1 shadow-sm btn-outline-primary">Vai al Laboratorio</a>
-            </div>
+    <header>
+        <nav>
+            <div class="logo">TuoProvider</div>
+            <div class="menu">
+                <a href="index.html">Home</a>
+                <a href="wireless.html" class="active">Wireless</a>
+                <a href="#">Fibra</a> <a href="#">Contatti</a> </div>
         </nav>
+    </header>
 
-        <main class="bg-white p-4 p-md-5 shadow rounded-4 border">
-            
-            <div id="standalone" class="section-content">
-                <h2 class="fw-bold mb-4 text-danger">1. Stand-Alone (L'Isola Digitale)</h2>
-                <div class="row align-items-center">
-                    <div class="col-md-7">
-                        <p class="lead text-secondary">Una macchina isolata garantisce la massima sicurezza fisica.</p>
-                        <div class="p-3 border-start border-danger border-4 bg-light rounded text-dark">
-                            <h6 class="text-danger fw-bold"><i class="bi bi-shield-lock"></i> Concetto di Air Gap</h6>
-                            <p class="small mb-0">L'Air Gap è una misura di sicurezza che prevede l'assenza totale di interfacce di rete. È lo stato "zero" da cui parte lo studio delle reti.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-5 text-center">
-                        <div class="img-box d-inline-block border-danger border-dashed">
-                            <i class="bi bi-pc-display text-primary" style="font-size: 4rem;"></i>
-                            <div class="badge bg-danger d-block mt-2">OFFLINE</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <section class="hero-wireless">
+        <h1>Connettività Wireless FWA</h1>
+        <p>Internet veloce ovunque, anche dove la fibra non arriva.</p>
+    </section>
 
-            <div id="retelocale" class="section-content">
-                <h2 class="fw-bold mb-4 text-primary">Evoluzione: Dallo Stand-Alone alla LAN</h2>
-                <div class="row g-4 mb-5">
-                    <div class="col-md-4">
-                        <div class="card p-3 bg-light border-0 card-net text-start">
-                            <h6 class="fw-bold text-center">SOHO (Small Office)</h6>
-                            <hr class="my-1">
-                            <ul class="x-small list-unstyled ps-0 mb-0">
-                                <li><i class="bi bi-cpu text-primary me-1"></i> <b>Gateway:</b> Router unico LAN/WAN.</li>
-                                <li><i class="bi bi-share text-primary me-1"></i> <b>Risorse:</b> Stampanti condivise.</li>
-                                <li><i class="bi bi-shield-check text-primary me-1"></i> <b>Sicurezza:</b> Firewall integrato.</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card p-3 border-primary shadow-sm card-net">
-                            <h6 class="fw-bold text-primary">LAN (Local Area)</h6>
-                            <p class="small text-muted">Rete privata ad alta velocità entro edifici limitati.</p>
-                            <a href="lan_approfondimento.html" class="btn btn-primary btn-sm mt-auto fw-bold">Dettagli LAN</a>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card p-3 border-danger shadow-sm card-net">
-                            <h6 class="fw-bold text-danger">WAN (Wide Area)</h6>
-                            <p class="small text-muted">Interconnessione globale (Internet).</p>
-                            <a href="wan_approfondimento.html" class="btn btn-danger btn-sm mt-auto fw-bold">Dettagli WAN</a>
-                        </div>
-                    </div>
-                </div>
-
-                <h4 class="pan-title">1. La P.A.N. (Personal Area Network)</h4>
-                <div class="row align-items-center">
-                    <div class="col-md-5">
-                        <p class="text-secondary small">Rete centrata sulla persona (raggio ~10m).</p>
-                        <div class="bg-light p-3 rounded border-start border-danger border-4 mb-3 text-dark">
-                            <ul class="small mb-0 ps-3">
-                                <li><b>WPAN:</b> Bluetooth, ZigBee.</li>
-                                <li><b>Uso:</b> Smartwatch, cuffie wireless.</li>
-                                <li><b>NFC:</b> Pagamenti e domotica a contatto.</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-7 text-center">
-                        <div class="img-box">
-                            <a href="https://itrelease.com/2018/07/advantages-and-disadvantages-of-personal-area-network-pan/" target="_blank">
-                                <img src="pan_network.png" alt="Personal Area Network" style="width: 100%; height: auto; border-radius: 10px;">
-                            </a>
-                        </div>
-                    </div>  
-                </div>
-            </div>
-
-            <div id="isoosi" class="section-content">
-                <div class="text-center mb-4">
-                    <h2 class="fw-bold" style="color: #d63384;">Il Concetto delle Matrioske</h2>
-                    <p class="text-muted small">ISO/OSI è una pila. A sinistra il concetto, a destra i livelli cliccabili.</p>
-                    
-                    <a href="descrizione_livelli.html" class="btn btn-warning-custom px-5 py-2 mt-2 shadow-sm">
-                        <i class="bi bi-box-arrow-in-right"></i> VAI ALLA SPIEGAZIONE DEI LIVELLI
-                    </a>
-                </div>
-                
-                <div class="row g-5">
-                    <div class="col-lg-5">
-                        <div class="alert alert-info border-0 shadow-sm mb-4">
-                            <h6 class="fw-bold"><i class="bi bi-info-circle"></i> Cos'è la PDU?</h6>
-                            <p class="x-small mb-0">
-                                La <b>PDU (Protocol Data Unit)</b> è il nome che i dati assumono a ogni livello. 
-                                Attraverso l'<b>incapsulamento</b>, ogni strato "impacchetta" le informazioni del livello superiore aggiungendo i propri controlli.
-                            </p>
-                        </div>
-
-                        <div class="img-box mb-4 text-center">
-                            <img src="matriosche.jpg" alt="Incapsulamento">
-                            <p class="x-small text-muted mt-2 italic">L'incapsulamento visivo</p>
-                        </div>
-
-                        <div class="card border-success shadow-sm overflow-hidden">
-                            <div class="card-header bg-success text-white py-1 small fw-bold">Tabella PDU</div>
-                            <table class="table table-sm small mb-0">
-                                <tbody>
-                                    <tr class="table-danger"><td>7-5</td><td><b>DATI</b></td></tr>
-                                    <tr class="table-warning"><td>4</td><td><b>SEGMENTO</b></td></tr>
-                                    <tr class="table-info"><td>3</td><td><b>PACCHETTO</b></td></tr>
-                                    <tr class="table-primary"><td>2</td><td><b>FRAME</b></td></tr>
-                                    <tr class="table-dark text-white"><td>1</td><td><b>BIT</b></td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-7">
-                        <div class="d-flex gap-2 mb-4">
-                            <button class="btn btn-danger btn-sm w-100 fw-bold" onclick="animateOSI('send')">SENDER (7 → 1)</button>
-                            <button class="btn btn-primary btn-sm w-100 fw-bold" onclick="animateOSI('receive')">RECEIVER (1 → 7)</button>
-                        </div>
-                        <div id="osi-stack">
-                            <a href="livello7.html" class="btn-level-stack osi-item" style="background-color: #e83e8c;">7. Applicazione</a>
-                            <a href="livello6.html" class="btn-level-stack osi-item" style="background-color: #d63384;">6. Presentazione</a>
-                            <a href="livello5.html" class="btn-level-stack osi-item" style="background-color: #fd7e14;">5. Sessione</a>
-                            <a href="livello4.html" class="btn-level-stack osi-item" style="background-color: #ffc107; color: #333 !important;">4. Trasporto</a>
-                            <a href="livello3.html" class="btn-level-stack osi-item" style="background-color: #198754;">3. Rete</a>
-                            <a href="livello2.html" class="btn-level-stack osi-item" style="background-color: #0d6efd;">2. Collegamento</a>
-                            <a href="livello1.html" class="btn-level-stack osi-item" style="background-color: #6c757d;">1. Fisico</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="mappa" class="section-content active">
-                <h2 class="fw-bold mb-4 text-center" style="color: #0d6efd;">🧭 Mappa Completa del Progetto</h2>
-                <p class="text-center text-muted mb-4">Architettura completa del corso</p>
-                
-                <div class="row">
-                    <div class="col-lg-3 mb-4">
-                        <div class="card shadow-sm border-0 h-100">
-                            <div class="card-header bg-dark text-white">
-                                <h6 class="mb-0"><i class="bi bi-info-circle"></i> Legenda</h6>
-                            </div>
-                            <div class="card-body p-3">
-                                <ul class="list-unstyled small">
-                                    <li class="mb-2"><span class="badge bg-primary">Main</span> Dashboard</li>
-                                    <li class="mb-2"><span class="badge bg-success">Teoria</span> LAN/WAN/Mezzi</li>
-                                    <li class="mb-2"><span class="badge bg-info text-dark">OSI</span> Modelli a strati</li>
-                                    <li class="mb-2"><span class="badge bg-warning text-dark">Lab</span> Esercitazioni</li>
-                                </ul>
-                                <hr>
-                                <div class="text-center">
-                                    <div class="display-6 text-primary mb-0">26+</div>
-                                    <small class="text-muted">Pagine HTML Totali</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-lg-9">
-                        <div class="text-center mb-4">
-                            <a href="index.html" class="text-decoration-none d-inline-block">
-                                <div class="p-3 bg-primary text-white rounded shadow-sm border-0" style="min-width: 250px;">
-                                    <i class="bi bi-house-door-fill fs-2 d-block"></i>
-                                    <span class="fw-bold">HOME (Dashboard)</span>
-                                </div>
-                            </a>
-                        </div>
-                        
-                        <div class="row g-3">
-                            <div class="col-md-4">
-                                <div class="card h-100 border-start border-4 border-success">
-                                    <div class="card-body p-3">
-                                        <h6 class="fw-bold text-success border-bottom pb-2 mb-3">
-                                            <i class="bi bi-book"></i> Teoria & Hardware
-                                        </h6>
-                                        
-                                        <div class="mb-3">
-                                            <a href="lan_approfondimento.html" class="d-block small text-decoration-none text-dark mb-1">▪ LAN (Locale)</a>
-                                            <a href="wan_approfondimento.html" class="d-block small text-decoration-none text-dark mb-1">▪ WAN (Geografica)</a>
-                                            <a href="topologia.html" class="d-block small text-decoration-none text-dark mb-1">▪ Topologie</a>
-                                        </div>
-
-                                        <div class="bg-light p-2 rounded border border-success border-opacity-25">
-                                            <a href="mezzi_trasmissivi.html" class="fw-bold text-success small text-decoration-none d-block mb-2">
-                                                <i class="bi bi-usb-plug"></i> MEZZI TRASMISSIVI
-                                            </a>
-                                            
-                                            <div style="border-left: 2px solid #198754; padding-left: 10px; margin-left: 5px;">
-                                                <a href="utp_dettaglio.html" class="d-block x-small text-secondary text-decoration-none mb-1">
-                                                    ├─ Rame (UTP)
-                                                </a>
-                                                <a href="coassiale_dettaglio.html" class="d-block x-small text-secondary text-decoration-none mb-1">
-                                                    ├─ Coassiale
-                                                </a>
-                                                <a href="fibra_generale.html" class="d-block x-small text-secondary text-decoration-none mb-1">
-                                                    ├─ Fibra Ottica
-                                                </a>
-                                                <div class="mt-1">
-                                                    <a href="wireless.html" class="d-block x-small text-secondary text-decoration-none fw-bold">
-                                                        └─ Wireless
-                                                    </a>
-                                                    <a href="antenne.html" class="d-block x-small text-muted text-decoration-none ms-3">
-                                                        ↳ Antenne <span class="badge bg-secondary" style="font-size:0.5em;">NEW</span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="col-md-4">
-                                <div class="card h-100 border-start border-4 border-info">
-                                    <div class="card-body p-3">
-                                        <h6 class="fw-bold text-info border-bottom pb-2 mb-3">
-                                            <i class="bi bi-layers"></i> Modello ISO/OSI
-                                        </h6>
-                                        
-                                        <div class="d-grid gap-1 mb-3">
-                                            <a href="livello7.html" class="btn btn-sm text-white py-0" style="background:#e83e8c; font-size:0.75rem;">7. App</a>
-                                            <a href="livello6.html" class="btn btn-sm text-white py-0" style="background:#d63384; font-size:0.75rem;">6. Pres</a>
-                                            <a href="livello5.html" class="btn btn-sm text-white py-0" style="background:#fd7e14; font-size:0.75rem;">5. Sess</a>
-                                            <a href="livello4.html" class="btn btn-sm text-dark py-0" style="background:#ffc107; font-size:0.75rem;">4. Trasp</a>
-                                            <a href="livello3.html" class="btn btn-sm text-white py-0" style="background:#198754; font-size:0.75rem;">3. Rete</a>
-                                            <a href="livello2.html" class="btn btn-sm text-white py-0" style="background:#0d6efd; font-size:0.75rem;">2. Coll</a>
-                                            <a href="livello1.html" class="btn btn-sm text-white py-0" style="background:#6c757d; font-size:0.75rem;">1. Fisico</a>
-                                        </div>
-                                        
-                                        <div class="small">
-                                            <a href="descrizione_livelli.html" class="d-block text-decoration-none text-muted mb-1">▪ Descrizione</a>
-                                            <a href="tcp_ip_spiegazione.html" class="d-block text-decoration-none text-muted mb-1">▪ TCP/IP vs OSI</a>
-                                            <a href="confronto_tcp.html" class="d-block text-decoration-none text-muted">▪ Confronto</a>
-                                            <a href="mezzi_trasmissivi.html" class="d-block text-decoration-none fst-italic mt-2 text-end" style="color: #17a2b8; font-size: 0.8rem;">
-                                                Vedi Hardware <i class="bi bi-arrow-return-left"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="col-md-4">
-                                <div class="card h-100 border-start border-4 border-warning">
-                                    <div class="card-body p-3">
-                                        <h6 class="fw-bold text-warning border-bottom pb-2 mb-3">
-                                            <i class="bi bi-cpu"></i> Laboratori
-                                        </h6>
-                                        <div class="list-group list-group-flush small">
-                                            <a href="lab_ping.html" class="list-group-item list-group-item-action py-2">
-                                                <i class="bi bi-lightning-charge text-warning me-1"></i> Lab 1: Ping
-                                            </a>
-                                            <a href="lab_cs.html" class="list-group-item list-group-item-action py-2">
-                                                <i class="bi bi-hdd-network text-warning me-1"></i> Lab 2: Client/Server
-                                            </a>
-                                            <a href="lab_i2c.html" class="list-group-item list-group-item-action py-2">
-                                                <i class="bi bi-motherboard text-warning me-1"></i> Lab 3: I2C Bus
-                                            </a>
-                                            <a href="lab_temp.html" class="list-group-item list-group-item-action py-2">
-                                                <i class="bi bi-thermometer text-warning me-1"></i> Lab 4: Sensori
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </main>
+    <div class="container">
+        <h2>Scegli il tuo piano Wireless</h2>
         
-        <div class="footer-didattico">
-            <a href="fonti_bibliografia.html" class="btn-fonti">
-                📚 Consulta tutte le fonti e i riferimenti
-            </a>
-            <div style="color: #495057; font-size: 0.9rem; line-height: 1.6;">
-                <div style="margin-bottom: 10px;">
-                    <strong>Uso didattico</strong> - Art. 70 Legge 633/1941 sul Diritto d'Autore
-                </div>
-                <div style="color: #6c757d; font-size: 0.85rem;">
-                    © Corso di Reti e Telecomunicazioni - Luigi Pelagagge<br>
-                    Materiale didattico per uso educativo non commerciale
-                </div>
+        <div class="pricing-grid">
+            <div class="card">
+                <h3>Wireless START</h3>
+                <p>Ideale per navigazione base e social</p>
+                <div class="price">€ 19,90<span style="font-size:1rem">/mese</span></div>
+                <ul style="list-style: none; padding: 0;">
+                    <li>Fino a <strong>30 Mega</strong></li>
+                    <li>Traffico Illimitato</li>
+                    <li>Installazione Inclusa</li>
+                </ul>
+                <a href="#" class="btn">Attiva Ora</a>
+            </div>
+
+            <div class="card">
+                <h3>Wireless PRO</h3>
+                <p>Per streaming HD e smart working</p>
+                <div class="price">€ 24,90<span style="font-size:1rem">/mese</span></div>
+                <ul style="list-style: none; padding: 0;">
+                    <li>Fino a <strong>100 Mega</strong></li>
+                    <li>Bassa latenza</li>
+                    <li>Router WiFi incluso</li>
+                </ul>
+                <a href="#" class="btn">Attiva Ora</a>
+            </div>
+
+            <div class="card">
+                <h3>Wireless GAMER</h3>
+                <p>Massime prestazioni e ping minimo</p>
+                <div class="price">€ 29,90<span style="font-size:1rem">/mese</span></div>
+                <ul style="list-style: none; padding: 0;">
+                    <li>Fino a <strong>300 Mega</strong> (5G)</li>
+                    <li>IP Pubblico Statico</li>
+                    <li>Assistenza prioritaria</li>
+                </ul>
+                <a href="#" class="btn">Attiva Ora</a>
             </div>
         </div>
     </div>
 
-    <div class="position-fixed bottom-0 end-0 p-3">
-        <button class="btn btn-dark shadow-lg rounded-pill px-4" onclick="showSource()">
-            <i class="bi bi-code-slash"></i> Vedi Sorgente
-        </button>
-    </div>
+    <footer>
+        <p>&copy; 2024 TuoProvider Internet Solutions. Tutti i diritti riservati.</p>
+    </footer>
 
-    <script>
-        // Inizializza la prima tab come attiva
-        document.addEventListener('DOMContentLoaded', function() {
-            // Seleziona la tab attiva di default (Mappa)
-            switchTab('mappa');
-        });
-
-        function switchTab(tabId) {
-            document.querySelectorAll('.section-content').forEach(s => s.classList.remove('active'));
-            document.querySelectorAll('nav .btn').forEach(b => {
-                b.classList.remove('active', 'btn-primary');
-                b.classList.add('btn-outline-primary');
-            });
-            document.getElementById(tabId).classList.add('active');
-            const btn = document.getElementById('nav-' + tabId);
-            if(btn) { 
-                btn.classList.remove('btn-outline-primary'); 
-                btn.classList.add('btn-primary', 'active'); 
-            }
-        }
-
-        function animateOSI(mode) {
-            const items = Array.from(document.querySelectorAll('.osi-item'));
-            items.forEach(i => i.classList.remove('highlight-flow'));
-            const sequence = (mode === 'send') ? items : items.reverse();
-            sequence.forEach((item, i) => {
-                setTimeout(() => {
-                    sequence.forEach(el => el.classList.remove('highlight-flow'));
-                    item.classList.add('highlight-flow');
-                }, i * 350);
-            });
-        }
-
-        function showSource() {
-            const html = document.documentElement.outerHTML;
-            const win = window.open("", "Sorgente", "width=900,height=700");
-            win.document.write('<html><head><title>Sorgente Pagina</title></head><body>');
-            win.document.write('<h3>Codice Sorgente della Pagina:</h3>');
-            win.document.write('<pre style="background:#f4f4f4; padding:15px; border:1px solid #ccc; white-space: pre-wrap;">');
-            win.document.write(html.replace(/</g, "&lt;").replace(/>/g, "&gt;"));
-            win.document.write('</pre></body></html>');
-            win.document.close();
-        }
-    </script>
 </body>
 </html>
