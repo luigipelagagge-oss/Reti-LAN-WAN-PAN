@@ -6,6 +6,7 @@
     <title>Connettori Ottici | ST, SC, LC, FC</title>
     <style>
         body { font-family: Arial, sans-serif; line-height: 1.6; max-width: 900px; margin: 0 auto; padding: 20px; background-color: #f4f7f6; }
+        
         header { background-color: #6f42c1; color: white; padding: 25px; border-radius: 8px; text-align: center; margin-bottom: 30px; }
         
         .section { background: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
@@ -23,6 +24,42 @@
         .nav-buttons { text-align: center; margin-top: 30px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
         .nav-btn { padding: 12px 25px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; }
         .btn-source { background-color: #6c757d; }
+
+        /* ========================================= */
+        /* 🔥 1. MODIFICA CSS: Stile Bottone Stampa  */
+        /* (Viola #6f42c1 per coerenza)              */
+        /* ========================================= */
+        .btn-print {
+            background-color: white;
+            color: #6f42c1; /* Viola scuro */
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+        }
+        .btn-print:hover {
+            background-color: #f3e5f5; /* Viola chiarissimo */
+            transform: scale(1.05);
+        }
+
+        /* 🔥 2. MODIFICA CSS: Regole per la Stampa */
+        @media print {
+            .btn-print, .nav-buttons { display: none !important; }
+            
+            body { background-color: white; padding: 0; }
+            header { background-color: white !important; color: #6f42c1 !important; border: 2px solid #6f42c1; }
+            .section { box-shadow: none; border: 1px solid #ccc; page-break-inside: avoid; }
+            
+            /* Ottimizzazione griglia connettori su carta */
+            .connector-card { border: 1px solid #ccc; break-inside: avoid; }
+            
+            a { text-decoration: none; color: black; }
+        }
     </style>
 </head>
 <body>
@@ -30,6 +67,9 @@
     <header>
         <h1>Connettori Fibra Ottica</h1>
         <p>Tipologie, Struttura e Standard</p>
+        
+        <button onclick="window.print()" class="btn-print">🖨️ Scarica Dispensa PDF</button>
+
     </header>
 
     <div class="section">
