@@ -37,15 +37,63 @@
         
         .nav-buttons { text-align: center; margin-top: 40px; }
         .nav-btn { padding: 12px 25px; background-color: #6c757d; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; }
+
+        /* Stile Link Sorgente Fisso */
+        #view-source-link {
+            position: fixed; top: 20px; right: 20px; background: #17a2b8; color: white; 
+            padding: 8px 15px; border-radius: 4px; text-decoration: none; font-size: 0.9em; 
+            z-index: 1000; border: none; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        /* ========================================= */
+        /* 🔥 1. MODIFICA CSS: Stile Bottone Stampa  */
+        /* (Arancione #d35400 per coerenza)          */
+        /* ========================================= */
+        .btn-print {
+            background-color: white;
+            color: #d35400; /* Arancione scuro */
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+        }
+        .btn-print:hover {
+            background-color: #fff5eb; /* Arancione chiarissimo */
+            transform: scale(1.05);
+        }
+
+        /* 🔥 2. MODIFICA CSS: Regole per la Stampa */
+        @media print {
+            /* Nasconde: Bottone Stampa, Navigazione, Link Sorgente Fisso e Bottoni Modale */
+            .btn-print, .nav-buttons, #view-source-link, .btn-culture { display: none !important; }
+            
+            body { background-color: white; padding: 0; }
+            /* Header bianco con bordo arancione */
+            header { background: white !important; color: #d35400 !important; border: 2px solid #d35400; }
+            .section { box-shadow: none; border: 1px solid #ccc; page-break-inside: avoid; }
+            
+            /* Ottimizzazione SVG e Formule */
+            .image-box, .formula-box, .culture-box { border: 1px solid #ccc; background-color: white !important; page-break-inside: avoid; }
+            
+            a { text-decoration: none; color: black; }
+        }
     </style>
 </head>
 <body>
 
-    <a href="javascript:void(0)" onclick="mostraSorgente()" style="position: fixed; top: 20px; right: 20px; background: #17a2b8; color: white; padding: 8px 15px; border-radius: 4px; text-decoration: none; font-size: 0.9em; z-index: 1000; border: none; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">📄 Vedi sorgente</a>
+    <a href="javascript:void(0)" onclick="mostraSorgente()" id="view-source-link">📄 Vedi sorgente</a>
 
     <header>
         <h1>Teoria delle Antenne</h1>
         <p>Dal Dipolo Hertziano al Monopolo Marconiano</p>
+        
+        <button onclick="window.print()" class="btn-print">🖨️ Scarica Dispensa PDF</button>
+
     </header>
 
     <div class="section">
