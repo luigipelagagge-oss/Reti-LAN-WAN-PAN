@@ -15,7 +15,7 @@
         }
         
         header {
-            background-color: #dc3545;
+            background-color: #dc3545; /* Rosso */
             color: white;
             padding: 25px;
             border-radius: 8px;
@@ -105,6 +105,41 @@
         .btn-source:hover {
             background-color: #495057;
         }
+
+        /* ========================================= */
+        /* 🔥 1. MODIFICA CSS: Stile Bottone Stampa  */
+        /* (Adattato al colore Rosso #dc3545)       */
+        /* ========================================= */
+        .btn-print {
+            background-color: white;
+            color: #dc3545; /* Rosso come l'header */
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+        }
+        .btn-print:hover {
+            background-color: #f8d7da; /* Rosso molto chiaro al passaggio mouse */
+            transform: scale(1.05);
+        }
+
+        /* 🔥 2. MODIFICA CSS: Regole per la Stampa */
+        @media print {
+            /* Nasconde i pulsanti su carta */
+            .btn-print, .nav-buttons { display: none !important; }
+            
+            /* Ottimizzazione layout stampante */
+            body { background-color: white; padding: 0; }
+            /* Header bianco con testo rosso per risparmiare inchiostro */
+            header { background-color: white !important; color: #dc3545 !important; border: 2px solid #dc3545; }
+            .section { box-shadow: none; border: 1px solid #ccc; page-break-inside: avoid; }
+            a { text-decoration: none; color: black; }
+        }
     </style>
 </head>
 <body>
@@ -112,6 +147,8 @@
     <header>
         <h1>Cavo Coassiale</h1>
         <p>Storico mezzo trasmissivo per TV via cavo e reti dati</p>
+        
+        <button onclick="window.print()" class="btn-print">🖨️ Scarica Dispensa PDF</button>
     </header>
 
     <div class="section">
