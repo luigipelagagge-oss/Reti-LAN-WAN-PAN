@@ -27,15 +27,61 @@
 
         .nav-buttons { text-align: center; margin-top: 40px; }
         .nav-btn { padding: 12px 25px; background-color: #6c757d; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; }
+
+        /* Stile del link fisso "Vedi sorgente" esistente */
+        #view-source-link {
+            position: fixed; top: 20px; right: 20px; background: #17a2b8; color: white; 
+            padding: 8px 15px; border-radius: 4px; text-decoration: none; font-size: 0.9em; 
+            z-index: 1000; border: none; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        /* ========================================= */
+        /* 🔥 1. MODIFICA CSS: Stile Bottone Stampa  */
+        /* (Viola #6f42c1 per coerenza)              */
+        /* ========================================= */
+        .btn-print {
+            background-color: white;
+            color: #6f42c1; /* Viola */
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+        }
+        .btn-print:hover {
+            background-color: #f3e5f5; /* Viola chiarissimo */
+            transform: scale(1.05);
+        }
+
+        /* 🔥 2. MODIFICA CSS: Regole per la Stampa */
+        @media print {
+            /* Nascondi: bottone stampa, navigazione e il link fisso "Vedi sorgente" */
+            .btn-print, .nav-buttons, #view-source-link { display: none !important; }
+            
+            body { background-color: white; padding: 0; }
+            /* Rimuove gradiente header per risparmiare inchiostro, usa bordo viola */
+            header { background: white !important; color: #4a2c85 !important; border: 2px solid #6f42c1; }
+            .section { box-shadow: none; border: 1px solid #ccc; page-break-inside: avoid; }
+            
+            /* Ottimizzazione SVG e Formule */
+            .image-box, .formula, .clil-box { border: 1px solid #ccc; background-color: white !important; }
+        }
     </style>
 </head>
 <body>
 
-    <a href="javascript:void(0)" onclick="mostraSorgente()" style="position: fixed; top: 20px; right: 20px; background: #17a2b8; color: white; padding: 8px 15px; border-radius: 4px; text-decoration: none; font-size: 0.9em; z-index: 1000; border: none; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">📄 Vedi sorgente</a>
+    <a href="javascript:void(0)" onclick="mostraSorgente()" id="view-source-link">📄 Vedi sorgente</a>
 
     <header>
         <h1>Fisica della Fibra Ottica</h1>
         <p>Apertura Numerica, Dispersione e Attenuazione</p>
+        
+        <button onclick="window.print()" class="btn-print">🖨️ Scarica Dispensa PDF</button>
+
     </header>
 
     <div class="section">
@@ -61,8 +107,8 @@
                 <style>
                     .core { fill: #e0f7fa; stroke: #00bcd4; stroke-width: 2; }
                     .clad { fill: #eceff1; stroke: #b0bec5; stroke-width: 2; }
-                    .ray-ok { stroke: #28a745; stroke-width: 3; fill: none; marker-end: url(#arrow); } /* Raggio verde OK */
-                    .ray-no { stroke: #dc3545; stroke-width: 2; fill: none; stroke-dasharray: 5,5; } /* Raggio rosso NO */
+                    .ray-ok { stroke: #28a745; stroke-width: 3; fill: none; marker-end: url(#arrow); } 
+                    .ray-no { stroke: #dc3545; stroke-width: 2; fill: none; stroke-dasharray: 5,5; } 
                     .cone { fill: rgba(255, 193, 7, 0.3); stroke: #ffc107; stroke-dasharray: 4,4; }
                 </style>
 
