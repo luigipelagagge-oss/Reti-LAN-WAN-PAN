@@ -36,6 +36,38 @@
         .nav-btn { padding: 12px 25px; background-color: #28a745; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; }
         .btn-back-main { background-color: #007bff; }
         .btn-source { background-color: #6c757d; }
+
+        /* ========================================= */
+        /* 🔥 1. MODIFICA CSS: Stile Bottone Stampa  */
+        /* ========================================= */
+        .btn-print {
+            background-color: white;
+            color: #007bff; /* Blu come l'header */
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+        }
+        .btn-print:hover {
+            background-color: #e2e6ea;
+            transform: scale(1.05);
+        }
+
+        /* 🔥 2. MODIFICA CSS: Regole per la Stampa */
+        @media print {
+            /* Nasconde: Bottone Stampa, Navigazione e il bottone che apre il Modale (inutile su carta) */
+            .btn-print, .nav-buttons, .btn-info { display: none !important; }
+            
+            body { background-color: white; padding: 0; }
+            header { background-color: white !important; color: #007bff !important; border: 1px solid #007bff; }
+            .section { box-shadow: none; border: 1px solid #ccc; page-break-inside: avoid; }
+            a { text-decoration: none; color: black; }
+        }
     </style>
 </head>
 <body>
@@ -43,6 +75,8 @@
     <header>
         <h1>Cavo UTP e Connettori RJ45</h1>
         <p>Analisi fisica e schemi di cablaggio</p>
+        
+        <button onclick="window.print()" class="btn-print">🖨️ Scarica Dispensa PDF</button>
     </header>
 
     <div class="section">
@@ -116,8 +150,8 @@
                         .color-g { fill: green; }
                         .color-b { fill: blue; }
                         .color-br { fill: brown; }
-                        .foil { fill: none; stroke: #17a2b8; stroke-width: 4; stroke-dasharray: 5,2; } /* Simulazione foglio */
-                        .braid { fill: none; stroke: #d63384; stroke-width: 2; } /* Simulazione calza */
+                        .foil { fill: none; stroke: #17a2b8; stroke-width: 4; stroke-dasharray: 5,2; }
+                        .braid { fill: none; stroke: #d63384; stroke-width: 2; }
                         .label { font-family: Arial; font-weight: bold; font-size: 16px; text-anchor: middle; fill: #333; }
                     </style>
                     
