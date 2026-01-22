@@ -3,23 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Servizi Wireless - Connessione Veloce</title>
+    <title>Mezzi Trasmissivi: Il Wireless</title>
     <style>
-        /* --- Stili Generali (Usa gli stessi del tuo index per coerenza) --- */
+        /* --- Stili Base (Uguali a Index) --- */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
             color: #333;
             background-color: #f4f4f9;
+            line-height: 1.6;
         }
 
-        /* --- Navbar / Menu --- */
-        header {
-            background-color: #0044cc;
-            color: white;
-            padding: 1rem 0;
-        }
+        header { background-color: #2c3e50; color: white; padding: 1rem 0; }
+        
         nav {
             display: flex;
             justify-content: space-between;
@@ -28,78 +25,62 @@
             margin: 0 auto;
             padding: 0 20px;
         }
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-        .menu a {
-            color: white;
-            text-decoration: none;
-            margin-left: 20px;
-            font-weight: 500;
-        }
-        .menu a:hover {
-            text-decoration: underline;
-        }
-        /* Classe per evidenziare la pagina corrente */
-        .active {
-            border-bottom: 2px solid #fff;
-        }
+        .logo { font-size: 1.5rem; font-weight: bold; }
+        .menu a { color: white; text-decoration: none; margin-left: 20px; font-weight: 500; }
+        .menu a:hover { text-decoration: underline; }
+        .active { border-bottom: 2px solid #fff; }
 
-        /* --- Contenuto Specifico Wireless --- */
-        .hero-wireless {
-            background-color: #0056e0;
+        /* --- Header della Lezione --- */
+        .hero-lesson {
+            background-color: #34495e; /* Colore più sobrio/accademico */
             color: white;
             text-align: center;
-            padding: 60px 20px;
+            padding: 50px 20px;
         }
-        
+
         .container {
-            max-width: 1100px;
+            max-width: 900px;
             margin: 40px auto;
             padding: 0 20px;
-        }
-
-        h2 { text-align: center; color: #0044cc; }
-
-        /* Griglia delle offerte */
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
-        }
-
-        .card {
             background: white;
-            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            text-align: center;
-            transition: transform 0.3s;
+            padding: 40px;
         }
-        .card:hover {
-            transform: translateY(-5px);
-            border-top: 5px solid #0044cc;
+
+        h1 { margin: 0; }
+        h2 { color: #2c3e50; border-bottom: 2px solid #eee; padding-bottom: 10px; margin-top: 40px; }
+        h3 { color: #2980b9; margin-top: 30px; }
+
+        /* --- Tabella di Confronto --- */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
         }
-        .price {
-            font-size: 2.5rem;
-            color: #0044cc;
-            font-weight: bold;
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #2980b9;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        /* --- Box Concetti Chiave --- */
+        .concept-box {
+            background-color: #e8f4f8;
+            border-left: 5px solid #2980b9;
+            padding: 15px;
             margin: 20px 0;
         }
-        .btn {
-            display: inline-block;
-            background-color: #28a745;
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-top: 15px;
-        }
-        
+
         footer {
-            background-color: #333;
+            background-color: #2c3e50;
             color: white;
             text-align: center;
             padding: 20px;
@@ -111,63 +92,110 @@
 
     <header>
         <nav>
-            <div class="logo">TuoProvider</div>
+            <div class="logo">Reti & Telecomunicazioni</div>
             <div class="menu">
                 <a href="index.html">Home</a>
-                <a href="wireless.html" class="active">Wireless</a>
-                <a href="#">Fibra</a> <a href="#">Contatti</a> </div>
+                <a href="wireless.html" class="active">Mezzi Wireless</a>
+                <a href="#">Cavi Cablati</a>
+            </div>
         </nav>
     </header>
 
-    <section class="hero-wireless">
-        <h1>Connettività Wireless FWA</h1>
-        <p>Internet veloce ovunque, anche dove la fibra non arriva.</p>
+    <section class="hero-lesson">
+        <h1>Il Livello Fisico: Trasmissione Wireless</h1>
+        <p>I mezzi trasmissivi non guidati nel modello ISO/OSI</p>
     </section>
 
     <div class="container">
-        <h2>Scegli il tuo piano Wireless</h2>
         
-        <div class="pricing-grid">
-            <div class="card">
-                <h3>Wireless START</h3>
-                <p>Ideale per navigazione base e social</p>
-                <div class="price">€ 19,90<span style="font-size:1rem">/mese</span></div>
-                <ul style="list-style: none; padding: 0;">
-                    <li>Fino a <strong>30 Mega</strong></li>
-                    <li>Traffico Illimitato</li>
-                    <li>Installazione Inclusa</li>
-                </ul>
-                <a href="#" class="btn">Attiva Ora</a>
-            </div>
+        <p>
+            Nel contesto delle reti di calcolatori, il <strong>Livello 1 (Fisico)</strong> si occupa della trasmissione dei bit grezzi attraverso un mezzo fisico. 
+            Mentre i cavi (UTP, Coassiali, Fibra) sono mezzi "guidati", il Wireless utilizza lo spazio libero (aria/vuoto) come mezzo trasmissivo "non guidato".
+        </p>
 
-            <div class="card">
-                <h3>Wireless PRO</h3>
-                <p>Per streaming HD e smart working</p>
-                <div class="price">€ 24,90<span style="font-size:1rem">/mese</span></div>
-                <ul style="list-style: none; padding: 0;">
-                    <li>Fino a <strong>100 Mega</strong></li>
-                    <li>Bassa latenza</li>
-                    <li>Router WiFi incluso</li>
-                </ul>
-                <a href="#" class="btn">Attiva Ora</a>
-            </div>
+        <h2>1. Mezzi Guidati vs Non Guidati</h2>
+        <p>
+            La differenza fondamentale risiede nel modo in cui il segnale viene confinato.
+        </p>
 
-            <div class="card">
-                <h3>Wireless GAMER</h3>
-                <p>Massime prestazioni e ping minimo</p>
-                <div class="price">€ 29,90<span style="font-size:1rem">/mese</span></div>
-                <ul style="list-style: none; padding: 0;">
-                    <li>Fino a <strong>300 Mega</strong> (5G)</li>
-                    <li>IP Pubblico Statico</li>
-                    <li>Assistenza prioritaria</li>
-                </ul>
-                <a href="#" class="btn">Attiva Ora</a>
-            </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Caratteristica</th>
+                    <th>Cavo UTP (Rame)</th>
+                    <th>Fibra Ottica (Vetro)</th>
+                    <th>Wireless (Aria)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Natura del Segnale</strong></td>
+                    <td>Segnale Elettrico (Variazione di Tensione)</td>
+                    <td>Impulsi di Luce (Fotoni)</td>
+                    <td>Onde Elettromagnetiche (Radio/Microonde)</td>
+                </tr>
+                <tr>
+                    <td><strong>Confinamento</strong></td>
+                    <td>Guidato nel rame</td>
+                    <td>Guidato nel core (riflessione totale)</td>
+                    <td>Non guidato (diffusione nello spazio)</td>
+                </tr>
+                <tr>
+                    <td><strong>Problemi Principali</strong></td>
+                    <td>Attenuazione, Diafonia (Crosstalk)</td>
+                    <td>Costo, Fragilità</td>
+                    <td>Interferenze, Ostacoli fisici, Sicurezza</td>
+                </tr>
+            </tbody>
+        </table>
+
+        
+
+        <h2>2. La Fisica della Trasmissione Wireless</h2>
+        <p>
+            Nella trasmissione wireless, l'antenna trasmettitrice irradia energia sotto forma di <strong>onde elettromagnetiche</strong>. 
+            Queste onde trasportano l'informazione modulando una frequenza portante.
+        </p>
+        
+        <div class="concept-box">
+            <strong>Il concetto di "Broadcasting":</strong><br>
+            A differenza di un cavo che collega punto-punto (A a B), il wireless è intrinsecamente <em>broadcast</em>. 
+            Chiunque nel raggio di copertura può potenzialmente ricevere il segnale fisico, il che introduce sfide di sicurezza e collisioni (gestite poi nel Livello 2 MAC).
         </div>
+
+        <h3>Lo Spettro Elettromagnetico</h3>
+        <p>
+            Le reti wireless operano principalmente in due fasce:
+        </p>
+        <ul>
+            <li><strong>Onde Radio (3 kHz - 1 GHz):</strong> Omnidirezionali, penetrano gli ostacoli. Usate per la radio FM e TV.</li>
+            <li><strong>Microonde (1 GHz - 300 GHz):</strong> Direzionali, richiedono visibilità ottica (Line-of-Sight). Usate per Wi-Fi (2.4/5 GHz), Bluetooth e Ponti radio.</li>
+        </ul>
+
+        <h2>3. Confronto con i Cavi Tradizionali</h2>
+        
+        <h3>Rispetto al Doppino (UTP)</h3>
+        <p>
+            Il cavo UTP usa il rame per trasportare elettroni. Soffre di interferenze elettromagnetiche esterne (EMI), ma meno del wireless. 
+            Il wireless è più flessibile (mobilità) ma molto più soggetto a disturbi (es. forno a microonde, muri spessi) e attenuazione con la distanza.
+        </p>
+
+        <h3>Rispetto alla Fibra Ottica</h3>
+        <p>
+            La fibra è il mezzo "re". Usa la luce, è immune alle interferenze elettromagnetiche e copre grandi distanze. 
+            Il wireless non può competere in velocità e stabilità con la fibra, ma vince sull'ultimo miglio per i dispositivi mobili.
+        </p>
+        
+        <h3>Rispetto al Cavo Coassiale (Legacy)</h3>
+        <p>
+            Il coassiale (usato nelle vecchie Ethernet a Bus o per le antenne TV) offriva una buona schermatura rispetto al doppino non schermato, 
+            ma è rigido e difficile da installare rispetto alla facilità di un Access Point Wireless.
+        </p>
+
     </div>
 
     <footer>
-        <p>&copy; 2024 TuoProvider Internet Solutions. Tutti i diritti riservati.</p>
+        <p>&copy; 2024 Appunti di Reti - Progetto Didattico</p>
     </footer>
 
 </body>
