@@ -3,200 +3,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mezzi Trasmissivi: Il Wireless</title>
+    <title>Wireless | Mezzi Trasmissivi</title>
     <style>
-        /* --- Stili Base (Uguali a Index) --- */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            color: #333;
-            background-color: #f4f4f9;
-            line-height: 1.6;
-        }
-
-        header { background-color: #2c3e50; color: white; padding: 1rem 0; }
+        /* --- STILE UNIFORME AL TUO SITO --- */
+        body { font-family: Arial, sans-serif; line-height: 1.6; max-width: 900px; margin: 0 auto; padding: 20px; background-color: #f4f7f6; }
         
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        .logo { font-size: 1.5rem; font-weight: bold; }
-        .menu a { color: white; text-decoration: none; margin-left: 20px; font-weight: 500; }
-        .menu a:hover { text-decoration: underline; }
-        .active { border-bottom: 2px solid #fff; }
+        /* Header specifico per Wireless (Giallo/Ambra per distinguerlo dai cavi) */
+        header { background-color: #e0a800; color: white; padding: 25px; border-radius: 8px; text-align: center; margin-bottom: 30px; }
+        
+        .section { background: white; padding: 25px; border-radius: 8px; margin-bottom: 25px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        
+        h2 { color: #e0a800; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        h3 { color: #d39e00; margin-top: 0; }
+        
+        /* Box concetti */
+        .concept-box { background-color: #fff3cd; border-left: 5px solid #e0a800; padding: 15px; margin: 20px 0; }
 
-        /* --- Header della Lezione --- */
-        .hero-lesson {
-            background-color: #34495e; /* Colore più sobrio/accademico */
-            color: white;
-            text-align: center;
-            padding: 50px 20px;
-        }
+        /* Tabella */
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background-color: #fcefdc; color: #333; }
+        
+        /* Area Navigazione */
+        .nav-buttons { text-align: center; margin-top: 40px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+        .nav-btn { padding: 12px 25px; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; transition: background 0.3s; }
+        
+        /* Colori Bottoni */
+        .btn-home { background-color: #28a745; }    /* Verde per Home */
+        .btn-home:hover { background-color: #218838; }
+        
+        .btn-back { background-color: #0056b3; }    /* Blu per tornare ai mezzi trasmissivi */
+        .btn-back:hover { background-color: #004494; }
 
-        .container {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 0 20px;
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            border-radius: 8px;
-            padding: 40px;
+        /* Bottone Stampa */
+        .btn-print {
+            background-color: white;
+            color: #e0a800;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            transition: all 0.3s;
         }
+        .btn-print:hover { transform: scale(1.05); background-color: #fff9e6; }
 
-        h1 { margin: 0; }
-        h2 { color: #2c3e50; border-bottom: 2px solid #eee; padding-bottom: 10px; margin-top: 40px; }
-        h3 { color: #2980b9; margin-top: 30px; }
-
-        /* --- Tabella di Confronto --- */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 30px 0;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 12px;
-            text-align: left;
-        }
-        th {
-            background-color: #2980b9;
-            color: white;
-        }
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-
-        /* --- Box Concetti Chiave --- */
-        .concept-box {
-            background-color: #e8f4f8;
-            border-left: 5px solid #2980b9;
-            padding: 15px;
-            margin: 20px 0;
-        }
-
-        footer {
-            background-color: #2c3e50;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            margin-top: 50px;
+        /* Media Query per Stampa */
+        @media print {
+            .btn-print, .nav-buttons { display: none !important; }
+            body { background-color: white; padding: 0; }
+            header { background-color: white !important; color: black !important; border-bottom: 2px solid #e0a800; }
+            .section { box-shadow: none; border: 1px solid #ccc; page-break-inside: avoid; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <nav>
-            <div class="logo">Reti & Telecomunicazioni</div>
-            <div class="menu">
-                <a href="index.html">Home</a>
-                <a href="wireless.html" class="active">Mezzi Wireless</a>
-                <a href="#">Cavi Cablati</a>
-            </div>
-        </nav>
+        <h1>Trasmissione Wireless</h1>
+        <p>Mezzi Non Guidati: Onde Radio e Microonde</p>
+        <button onclick="window.print()" class="btn-print">🖨️ Stampa Pagina PDF</button>
     </header>
 
-    <section class="hero-lesson">
-        <h1>Il Livello Fisico: Trasmissione Wireless</h1>
-        <p>I mezzi trasmissivi non guidati nel modello ISO/OSI</p>
-    </section>
-
-    <div class="container">
+    <div class="section">
+        <h2>Il Mezzo "Non Guidato"</h2>
+        <p>A differenza dei cavi UTP o della fibra ottica, dove il segnale è confinato fisicamente, nel <strong>Wireless</strong> il mezzo trasmissivo è lo spazio libero (aria o vuoto).</p>
         
-        <p>
-            Nel contesto delle reti di calcolatori, il <strong>Livello 1 (Fisico)</strong> si occupa della trasmissione dei bit grezzi attraverso un mezzo fisico. 
-            Mentre i cavi (UTP, Coassiali, Fibra) sono mezzi "guidati", il Wireless utilizza lo spazio libero (aria/vuoto) come mezzo trasmissivo "non guidato".
-        </p>
+        
+        
+        <div class="concept-box">
+            <strong>Concetto Chiave:</strong> Le informazioni (bit 0 e 1) vengono convertite in <strong>Onde Elettromagnetiche</strong> modulate che viaggiano dall'antenna trasmettitrice (TX) a quella ricevente (RX).
+        </div>
+    </div>
 
-        <h2>1. Mezzi Guidati vs Non Guidati</h2>
-        <p>
-            La differenza fondamentale risiede nel modo in cui il segnale viene confinato.
-        </p>
+    <div class="section">
+        <h2>Frequenze e Spettro</h2>
+        <p>Le reti wireless utilizzano specifiche porzioni dello spettro elettromagnetico:</p>
+        
+        
 
+[Image of electromagnetic spectrum for wireless communication]
+
+
+        <ul>
+            <li><strong>Onde Radio (fino a 1 GHz):</strong> Omnidirezionali (si diffondono in tutte le direzioni). Passano attraverso gli edifici. Usate per Radio FM e TV.</li>
+            <li><strong>Microonde (da 1 GHz a 300 GHz):</strong> Più direzionali. A frequenze alte (es. Wi-Fi 5GHz) faticano a passare muri spessi. Usate per Wi-Fi, Bluetooth, Satelliti.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Confronto: Wireless vs Cablato</h2>
         <table>
             <thead>
                 <tr>
                     <th>Caratteristica</th>
-                    <th>Cavo UTP (Rame)</th>
-                    <th>Fibra Ottica (Vetro)</th>
-                    <th>Wireless (Aria)</th>
+                    <th>Cablato (Rame/Fibra)</th>
+                    <th>Wireless (Wi-Fi)</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td><strong>Natura del Segnale</strong></td>
-                    <td>Segnale Elettrico (Variazione di Tensione)</td>
-                    <td>Impulsi di Luce (Fotoni)</td>
-                    <td>Onde Elettromagnetiche (Radio/Microonde)</td>
+                    <td><strong>Mezzo Fisico</strong></td>
+                    <td>Cavo (Guidato)</td>
+                    <td>Aria (Non Guidato)</td>
                 </tr>
                 <tr>
-                    <td><strong>Confinamento</strong></td>
-                    <td>Guidato nel rame</td>
-                    <td>Guidato nel core (riflessione totale)</td>
-                    <td>Non guidato (diffusione nello spazio)</td>
+                    <td><strong>Affidabilità</strong></td>
+                    <td>Alta (Schermato)</td>
+                    <td>Media (Soggetto a interferenze)</td>
                 </tr>
                 <tr>
-                    <td><strong>Problemi Principali</strong></td>
-                    <td>Attenuazione, Diafonia (Crosstalk)</td>
-                    <td>Costo, Fragilità</td>
-                    <td>Interferenze, Ostacoli fisici, Sicurezza</td>
+                    <td><strong>Sicurezza</strong></td>
+                    <td>Alta (Accesso fisico necessario)</td>
+                    <td>Bassa (Chiunque intercetta il segnale)</td>
+                </tr>
+                <tr>
+                    <td><strong>Mobilità</strong></td>
+                    <td>Nessuna</td>
+                    <td>Totale</td>
                 </tr>
             </tbody>
         </table>
-
-        
-
-        <h2>2. La Fisica della Trasmissione Wireless</h2>
-        <p>
-            Nella trasmissione wireless, l'antenna trasmettitrice irradia energia sotto forma di <strong>onde elettromagnetiche</strong>. 
-            Queste onde trasportano l'informazione modulando una frequenza portante.
-        </p>
-        
-        <div class="concept-box">
-            <strong>Il concetto di "Broadcasting":</strong><br>
-            A differenza di un cavo che collega punto-punto (A a B), il wireless è intrinsecamente <em>broadcast</em>. 
-            Chiunque nel raggio di copertura può potenzialmente ricevere il segnale fisico, il che introduce sfide di sicurezza e collisioni (gestite poi nel Livello 2 MAC).
-        </div>
-
-        <h3>Lo Spettro Elettromagnetico</h3>
-        <p>
-            Le reti wireless operano principalmente in due fasce:
-        </p>
-        <ul>
-            <li><strong>Onde Radio (3 kHz - 1 GHz):</strong> Omnidirezionali, penetrano gli ostacoli. Usate per la radio FM e TV.</li>
-            <li><strong>Microonde (1 GHz - 300 GHz):</strong> Direzionali, richiedono visibilità ottica (Line-of-Sight). Usate per Wi-Fi (2.4/5 GHz), Bluetooth e Ponti radio.</li>
-        </ul>
-
-        <h2>3. Confronto con i Cavi Tradizionali</h2>
-        
-        <h3>Rispetto al Doppino (UTP)</h3>
-        <p>
-            Il cavo UTP usa il rame per trasportare elettroni. Soffre di interferenze elettromagnetiche esterne (EMI), ma meno del wireless. 
-            Il wireless è più flessibile (mobilità) ma molto più soggetto a disturbi (es. forno a microonde, muri spessi) e attenuazione con la distanza.
-        </p>
-
-        <h3>Rispetto alla Fibra Ottica</h3>
-        <p>
-            La fibra è il mezzo "re". Usa la luce, è immune alle interferenze elettromagnetiche e copre grandi distanze. 
-            Il wireless non può competere in velocità e stabilità con la fibra, ma vince sull'ultimo miglio per i dispositivi mobili.
-        </p>
-        
-        <h3>Rispetto al Cavo Coassiale (Legacy)</h3>
-        <p>
-            Il coassiale (usato nelle vecchie Ethernet a Bus o per le antenne TV) offriva una buona schermatura rispetto al doppino non schermato, 
-            ma è rigido e difficile da installare rispetto alla facilità di un Access Point Wireless.
-        </p>
-
     </div>
 
-    <footer>
-        <p>&copy; 2024 Appunti di Reti - Progetto Didattico</p>
-    </footer>
+    <div class="nav-buttons">
+        <a href="mezzi_trasmissivi.html" class="nav-btn btn-back">← Torna a Mezzi Trasmissivi</a>
+        
+        <a href="index.html" class="nav-btn btn-home">🏠 Home Sito</a>
+    </div>
 
 </body>
 </html>
