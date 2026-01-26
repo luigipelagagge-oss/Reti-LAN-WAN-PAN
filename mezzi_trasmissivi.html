@@ -54,15 +54,29 @@
             margin-top: 15px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.2);
             transition: all 0.3s;
+            text-decoration: none; /* Per i link che sembrano bottoni */
+            display: inline-block;
         }
         .btn-print:hover {
             background-color: #e2e6ea;
             transform: scale(1.05);
+            color: #0056b3;
+        }
+        
+        /* Bottone specifico per il video */
+        .btn-video {
+            background-color: #dc3545; /* Rosso */
+            color: white;
+            margin-left: 10px;
+        }
+        .btn-video:hover {
+            background-color: #b02a37;
+            color: white;
         }
 
         /* 🔥 2. MODIFICA CSS: Regole per nascondere elementi in Stampa */
         @media print {
-            .btn-print, .nav-buttons { display: none !important; } /* Nasconde i bottoni */
+            .btn-print, .nav-buttons, video { display: none !important; } /* Nasconde i bottoni e il video */
             body { background-color: white; padding: 0; }
             header { background-color: white !important; color: #0056b3 !important; border: 1px solid #0056b3; }
             .section { box-shadow: none; border: 1px solid #ccc; page-break-inside: avoid; }
@@ -77,6 +91,7 @@
         <p>Il Livello Fisico: Come viaggiano i bit?</p>
         
         <button onclick="window.print()" class="btn-print">🖨️ Scarica Dispensa PDF</button>
+        <a href="#video-sintesi" class="btn-print btn-video">▶️ Video di Sintesi</a>
 
     </header>
 
@@ -176,6 +191,16 @@
                 </tr>
             </tbody>
         </table>
+    </div>
+
+    <div id="video-sintesi" class="section" style="text-align: center; border: 2px solid #0056b3;">
+        <h2 style="border-bottom: none;">📺 Video di Sintesi: I Fili Invisibili</h2>
+        <p>Approfondimento sui mezzi trasmissivi e l'impatto ambientale.</p>
+        
+        <video width="90%" controls style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+            <source src="./i_fili_invisibili.mp4" type="video/mp4">
+            Il tuo browser non supporta il tag video.
+        </video>
     </div>
 
     <div class="nav-buttons">
