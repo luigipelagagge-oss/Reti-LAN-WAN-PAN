@@ -73,6 +73,20 @@
             background-color: #b02a37;
             color: white;
         }
+        
+        /* Stile per l'immagine a tutto schermo */
+        .full-screen-image-container {
+            width: 100%;
+            overflow: hidden;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        .full-screen-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
 
         /* 🔥 2. MODIFICA CSS: Regole per nascondere elementi in Stampa */
         @media print {
@@ -123,7 +137,15 @@
                 <p><strong>Contro:</strong> Rigido, ingombrante.</p>
                 <a href="coassiale_dettaglio.html" class="nav-btn" style="display:inline-block; margin-top:10px; font-size:0.9em; background-color: #6610f2;">Vai a Coassiale</a>
             </div>
+        </div>
+    </div>
 
+    <div class="full-screen-image-container">
+        <img src="Mezzi_Guidati.png" alt="Mezzi Trasmissivi: Il Livello Fisico - Riassunto" class="full-screen-image">
+    </div>
+
+    <div class="section">
+        <div class="card-container">
             <div class="card" style="border-left-color: #17a2b8;">
                 <h3>Fibra Ottica</h3>
                 <p>Filamenti di vetro che trasportano luce. Per dorsali e lunghe distanze.</p>
@@ -131,7 +153,6 @@
                 <p><strong>Contro:</strong> Costosa, fragile.</p>
                 <a href="fibra_generale.html" class="nav-btn" style="display:inline-block; margin-top:10px; font-size:0.9em; background-color: #17a2b8;">Vai alla Fibra</a>
             </div>
-
         </div>
     </div>
 
