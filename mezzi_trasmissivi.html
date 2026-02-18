@@ -73,7 +73,23 @@
             background-color: #b02a37;
             color: white;
         }
-        
+
+        /* 🔵 Bottone info per NA */
+        .btn-info {
+            background-color: #ffc107;
+            color: #1f2d3d;
+            border: none;
+            padding: 8px 14px;
+            font-size: 0.95rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+            transition: all 0.2s ease;
+        }
+        .btn-info:hover { background-color: #e0a800; }
+
         /* Stile per l'immagine a tutto schermo */
         .full-screen-image-container {
             width: 100%;
@@ -88,9 +104,81 @@
             display: block;
         }
 
+        /* 🔶 Modale NA */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.45);
+            display: none; /* hidden by default */
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+            padding: 20px;
+        }
+        .modal {
+            background: #ffffff;
+            max-width: 720px;
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+            overflow: hidden;
+            border: 1px solid #e6e6e6;
+        }
+        .modal-header {
+            background: #0056b3;
+            color: #fff;
+            padding: 14px 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .modal-title {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+        .modal-close {
+            background: transparent;
+            border: none;
+            color: #fff;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+        .modal-body {
+            padding: 18px;
+            color: #333;
+        }
+        .modal-body p { margin: 0 0 10px; }
+        .tag {
+            display: inline-block;
+            font-size: 0.85rem;
+            background: #f1f3f5;
+            color: #333;
+            border: 1px solid #e2e6ea;
+            border-radius: 999px;
+            padding: 3px 10px;
+            margin-right: 8px;
+            margin-bottom: 6px;
+        }
+        .note {
+            background: #fff8e1;
+            border-left: 4px solid #ffc107;
+            padding: 10px 12px;
+            margin-top: 10px;
+            border-radius: 6px;
+            color: #4a3b00;
+        }
+        .formula {
+            font-family: "Courier New", monospace;
+            background: #f6f8fa;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 6px 8px;
+            display: inline-block;
+        }
+
         /* 🔥 2. MODIFICA CSS: Regole per nascondere elementi in Stampa */
         @media print {
-            .btn-print, .nav-buttons, video { display: none !important; } /* Nasconde i bottoni e il video */
+            .btn-print, .nav-buttons, video, .btn-info, .modal-overlay { display: none !important; } /* Nasconde bottoni, video e modale */
             body { background-color: white; padding: 0; }
             header { background-color: white !important; color: #0056b3 !important; border: 1px solid #0056b3; }
             .section { box-shadow: none; border: 1px solid #ccc; page-break-inside: avoid; }
@@ -151,6 +239,12 @@
                 <p>Filamenti di vetro che trasportano luce. Per dorsali e lunghe distanze.</p>
                 <p><strong>Pro:</strong> Velocità estrema, no interferenze.</p>
                 <p><strong>Contro:</strong> Costosa, fragile.</p>
+
+                <!-- 🔘 Bottone aggiuntivo per NA -->
+                <button class="btn-info" id="btnNA" aria-haspopup="dialog" aria-controls="modalNA">
+                    ℹ️ Apertura Numerica (NA)
+                </button>
+
                 <a href="fibra_generale.html" class="nav-btn" style="display:inline-block; margin-top:10px; font-size:0.9em; background-color: #17a2b8;">Vai alla Fibra</a>
             </div>
         </div>
@@ -228,6 +322,68 @@
         <a href="tcp_ip_spiegazione.html" class="nav-btn btn-back">← Torna al TCP/IP</a>
         <a href="https://raw.githubusercontent.com/luigipelagagge-oss/Reti-LAN-WAN-PAN/main/mezzi_trasmissivi.html" class="nav-btn btn-source" target="_blank">Vedi Sorgente HTML</a>
     </div>
+
+    <!-- 🔶 Modale: Apertura Numerica (NA) -->
+    <div class="modal-overlay" id="modalNA" role="dialog" aria-modal="true" aria-labelledby="modalNATitle" aria-describedby="modalNADesc">
+        <div class="modal">
+            <div class="modal-header">
+                <h4 class="modal-title" id="modalNATitle">Apertura Numerica (NA) nelle Fibre Ottiche</h4>
+                <button class="modal-close" id="closeNA" aria-label="Chiudi modale">✖</button>
+            </div>
+            <div class="modal-body" id="modalNADesc">
+                <p><strong>Definizione Matematica</strong></p>
+                <p>In aria (<span class="formula">n₀ ≈ 1</span>): <span class="formula">NA = sin(θₐ)</span>, dove <em>θₐ</em> è il semiangolo di accettazione.</p>
+                <p>Equivalente in termini di indici: <span class="formula">NA = √(n<sub>core</sub><sup>2</sup> − n<sub>clad</sub><sup>2</sup>)</span>, con <em>n<sub>core</sub></em> e <em>n<sub>clad</sub></em> indici di rifrazione di nucleo e mantello.</p>
+                
+                <p style="margin-top:12px;"><strong>Significato Fisico</strong></p>
+                <p>La NA indica l’ampiezza del <em>cono di accettazione</em>: quanto “apertamente” la fibra riesce a raccogliere luce in ingresso. NA maggiore ⇒ angolo più ampio ⇒ più luce accoppiata dalla sorgente.</p>
+
+                <p style="margin-top:12px;"><strong>Differenze tra Fibre</strong></p>
+                <ul>
+                    <li><span class="tag">Monomodali</span> NA <em>bassa</em> (tipicamente ~ <strong>0.10 – 0.14</strong>): riduce la dispersione, adatta a <strong>lunghissime distanze</strong> e bit-rate elevati.</li>
+                    <li><span class="tag">Multimodali</span> NA <em>più alta</em> (tipicamente ~ <strong>0.20 – 0.50</strong>): facilita l’accoppiamento della luce (LED o VCSEL) su <strong>brevi/medie distanze</strong>.</li>
+                </ul>
+
+                <div class="note">
+                    <strong>Importanza:</strong> NA elevata migliora l’efficienza di ricezione/accoppiamento, ma può aumentare la <em>dispersione modale</em> nelle fibre multimodali. La scelta della NA è quindi cruciale per bilanciare perdite, distanza e tipo di sorgente (LED/laser).
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Apertura/chiusura modale NA con gestione accessibilità di base
+        (function () {
+            const btn = document.getElementById('btnNA');
+            const modal = document.getElementById('modalNA');
+            const closeBtn = document.getElementById('closeNA');
+            let lastFocused = null;
+
+            function openModal() {
+                lastFocused = document.activeElement;
+                modal.style.display = 'flex';
+                // Porta il focus sul titolo per screen reader
+                closeBtn.focus();
+                document.addEventListener('keydown', handleKey);
+            }
+
+            function closeModal() {
+                modal.style.display = 'none';
+                document.removeEventListener('keydown', handleKey);
+                if (lastFocused) lastFocused.focus();
+            }
+
+            function handleKey(e) {
+                if (e.key === 'Escape') closeModal();
+            }
+
+            btn.addEventListener('click', openModal);
+            closeBtn.addEventListener('click', closeModal);
+            modal.addEventListener('click', function (e) {
+                if (e.target === modal) closeModal(); // chiudi cliccando fuori
+            });
+        })();
+    </script>
 
 </body>
 </html>
